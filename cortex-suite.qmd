@@ -11,14 +11,14 @@ format:
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <style>
         .hero-suite { min-height: 55vh !important; padding-top: 100px; background-color: #1a2e30 !important; }
-        .suite-hero-logo { max-width: 80%; height: auto; margin-bottom: 1rem; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
-        .suite-hero-title { color: #fff !important; font-size: clamp(2rem, 6vw, 3.5rem) !important; margin: 0.4rem 0 !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+        .suite-hero-logo { max-width: 44%; height: auto; margin-bottom: 0.5rem; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+        .suite-hero-title { color: #fff !important; font-size: clamp(1.5rem, 4.5vw, 2.5rem) !important; margin: 0.3rem 0 !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
         .intro_f.hero-suite p.suite-hero-tagline,
-        .hero-suite .hero-cvea-content p.suite-hero-tagline { color: rgba(255,255,255,0.95) !important; font-size: clamp(2rem, 6vw, 3.5rem) !important; margin: 0.3rem 0 !important; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
-        .suite-hero-rotate { color: #fff !important; font-size: clamp(1.2rem, 3.5vw, 1.75rem) !important; font-weight: 600; margin: 0.75rem 0; min-height: 1.5em; }
+        .hero-suite .hero-cvea-content p.suite-hero-tagline { color: rgba(255,255,255,0.95) !important; font-size: clamp(1.1rem, 3.5vw, 1.75rem) !important; margin: 0.25rem 0 !important; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+        .suite-hero-rotate { color: #fff !important; font-size: clamp(1rem, 2.8vw, 1.4rem) !important; font-weight: 600; margin: 0.5rem 0; min-height: 1.5em; }
         .suite-hero-rotate .txt-rotate .wrap { border-right-color: rgba(255,255,255,0.8); }
-        .suite-hero-cta { margin-top: 1.25rem; }
-        .suite-tagline-anim { display: inline-block; margin-bottom: 1rem; color: #fff !important; font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 500; position: relative; padding: 10px 20px; cursor: default; }
+        .suite-hero-cta { margin-top: 1rem; }
+        .suite-tagline-anim { display: inline-block; margin-bottom: 0.75rem; color: #fff !important; font-size: clamp(0.95rem, 2vw, 1.2rem); font-weight: 500; position: relative; padding: 8px 16px; cursor: default; }
         .suite-tagline-anim::before, .suite-tagline-anim::after { content: ""; position: absolute; background: linear-gradient(to right, transparent, rgba(255,255,255,0.6)); animation: suite-border-r 2s linear infinite; }
         .suite-tagline-anim::before { top: 0; left: 0; width: 100%; height: 2px; }
         .suite-tagline-anim::after { top: 0; right: 0; width: 2px; height: 100%; animation: suite-border-b 2s linear infinite; animation-delay: 1s; transform: translateY(-100%); }
@@ -35,6 +35,15 @@ format:
         .suite-cta-bar { background: #1a2e30; padding: 1rem 1.5rem; text-align: center; position: relative; z-index: 9999; }
         .suite-cta-bar a { text-decoration: none; }
         .suite-btn-demos-bar { margin: 0 0.5rem; }
+        @media (max-width: 768px) {
+          .hero-suite { min-height: 45vh !important; padding-top: 70px !important; }
+          .suite-hero-logo { max-width: 36% !important; margin-bottom: 0.35rem !important; }
+          .suite-hero-title { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; margin: 0.2rem 0 !important; }
+          .hero-suite .suite-hero-tagline { font-size: clamp(0.85rem, 3vw, 1.15rem) !important; margin: 0.15rem 0 !important; }
+          .suite-hero-rotate { font-size: clamp(0.85rem, 2.5vw, 1rem) !important; margin: 0.4rem 0 !important; }
+          .suite-tagline-anim { font-size: clamp(0.8rem, 2vw, 0.95rem) !important; padding: 5px 12px !important; }
+          .suite-btn-demos { padding: 10px 20px; font-size: 0.95rem; }
+        }
         </style>
 ---
 
@@ -69,9 +78,9 @@ format:
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
-    <img src="logo-AC/logo-AC-AC-vertical-horizontal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
+    <img src="logo-AC/logo-actuarial-cortex-principal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Cortex Suite</h1>
-    <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas de Actuarial Cortex</p>
+    <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas</p>
     <p class="suite-hero-rotate animate__animated animate__fadeIn">
       <span class="txt-rotate" data-period="2000" data-rotate='["Banca", "Seguros", "Retail", "Salud", "Control", "Reservas", "Demos", "Analítica", "Cuadros de mando", "Predictivo"]'></span>
     </p>
