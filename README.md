@@ -155,7 +155,8 @@ El workflow **`.github/workflows/deploy-pages.yml`** instala **R** y **Quarto**,
 1. En GitHub: **Settings → Secrets and variables → Actions**, crea:
    - `CLOUDFLARE_API_TOKEN`: token con permiso *Cloudflare Pages — Edit* (desde [API Tokens](https://dash.cloudflare.com/profile/api-tokens)).
    - `CLOUDFLARE_ACCOUNT_ID`: ID de cuenta (panel de Cloudflare, columna derecha).
-2. Si tu proyecto en Pages no se llama `actuarial-cortex-site`, edita en el workflow la línea `--project-name=...` con el nombre correcto.
+   - `CLOUDFLARE_PAGES_PROJECT_NAME`: **nombre exacto** del proyecto en Cloudflare Pages (Workers & Pages → tu proyecto → el nombre que aparece en la URL o en el encabezado).
+2. Ese nombre debe coincidir con el proyecto en [Cloudflare Dashboard → Workers & Pages → Pages](https://dash.cloudflare.com/?to=/:account/pages).
 3. Opcional: en Cloudflare Pages, desactiva el build por Git para evitar builds duplicados y usar solo el despliegue desde Actions.
 
 Cada push a `main` construye el sitio con R (incluido el feed de noticias) y despliega a Cloudflare Pages.
