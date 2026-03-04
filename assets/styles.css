@@ -174,14 +174,6 @@ header#title-block-header.quarto-title-block.default {
   display: none !important;
 }
 
-/* Nombre del sitio al lado del logo en la barra, en blanco */
-.navbar-title,
-.navbar-brand-container .navbar-brand:not(.navbar-brand-logo) {
-  display: inline-block !important;
-  color: #fff !important;
-  font-weight: 500;
-}
-
 /* Objetivos (iconos): texto siempre visible en blanco al lado de cada icono */
 .container-blue .achievements .scroll-text {
   opacity: 1 !important;
@@ -309,6 +301,7 @@ header#title-block-header.quarto-title-block.default {
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
 }
 .portal-nav-bar a:hover {
   color: #fff;
@@ -323,8 +316,31 @@ header#title-block-header.quarto-title-block.default {
   user-select: none;
   pointer-events: none;
 }
+/* Móvil: barra en una sola fila con scroll horizontal para que no se vea recargada */
+@media (max-width: 768px) {
+  .portal-nav-bar {
+    padding: 0.4rem 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .portal-nav-bar-inner {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0.25rem 0.6rem;
+    padding: 0 0.25rem;
+    min-width: min-content;
+  }
+  .portal-nav-bar a {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+    flex-shrink: 0;
+  }
+  .portal-nav-bar .sep {
+    display: none;
+  }
+}
 @media (max-width: 576px) {
-  .portal-nav-bar { padding: 0.5rem 0.75rem; }
-  .portal-nav-bar a { font-size: 0.85rem; }
-  .portal-nav-bar .sep { display: none; }
+  .portal-nav-bar { padding: 0.35rem 0.4rem; }
+  .portal-nav-bar a { font-size: 0.78rem; padding: 0.3rem 0.45rem; }
 }
