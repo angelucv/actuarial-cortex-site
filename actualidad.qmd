@@ -25,6 +25,7 @@ Las siguientes noticias se obtienen del feed de Google Noticias en cada compilac
 #| echo: false
 #| results: asis
 #| cache: false
+#| eval: false
 url_rss <- "https://news.google.com/rss/search?q=seguros+actuarial&hl=es"
 tryCatch({
   xml <- xml2::read_xml(
@@ -51,6 +52,8 @@ tryCatch({
   cat('<p class="text-muted">No se pudieron cargar titulares en este momento. Ver en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
 })
 ```
+
+Para titulares en vivo, consulta [Google Noticias — seguros y actuarial](https://news.google.com/search?q=seguros+actuarial&hl=es){target="_blank"}.
 
 ### Enlaces a fuentes
 
