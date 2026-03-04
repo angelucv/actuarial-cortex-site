@@ -18,9 +18,39 @@ Sección de **comunicación dinámica** de Actuarial Cortex: noticias del sector
 
 ### Titulares recientes (seguros y actuarial)
 
-Consulta los titulares recientes en el enlace siguiente (búsqueda «seguros» y «actuarial»).
+Las siguientes noticias se obtienen del feed de Google Noticias en cada compilación de la página. Fuente: búsqueda «seguros» y «actuarial».
 
-[**Google Noticias — seguros y actuarial**](https://news.google.com/search?q=seguros+actuarial&hl=es){target="_blank"}
+```{r}
+#| label: noticias-google-rss
+#| echo: false
+#| results: asis
+#| cache: false
+url_rss <- "https://news.google.com/rss/search?q=seguros+actuarial&hl=es"
+tryCatch({
+  xml <- xml2::read_xml(
+    url_rss,
+    options = c("NOBLANKS", "NOCDATA"),
+    user_agent = "Mozilla/5.0 (compatible; ActuarialCortex/1.0)"
+  )
+  items <- xml2::xml_find_all(xml, "//item")[1:min(10, length(xml2::xml_find_all(xml, "//item")))]
+  if (length(items) == 0) stop("No items")
+  cat('<ul class="list-unstyled noticias-feed">\n')
+  for (it in items) {
+    title <- xml2::xml_text(xml2::xml_find_first(it, "title"))
+    link  <- xml2::xml_text(xml2::xml_find_first(it, "link"))
+    date  <- xml2::xml_text(xml2::xml_find_first(it, "pubDate"))
+    if (is.na(link)) link <- ""
+    if (is.na(date)) date <- ""
+    if (nchar(date) > 0) date <- paste0(" <small class=\"text-muted\">", date, "</small>")
+    cat(sprintf('  <li class="mb-2"><a href="%s" target="_blank" rel="noopener">%s</a>%s</li>\n',
+                link, title, date))
+  }
+  cat('</ul>\n')
+  cat('<p class="small text-muted">Más resultados en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
+}, error = function(e) {
+  cat('<p class="text-muted">No se pudieron cargar titulares. Ver en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
+})
+```
 
 ### Enlaces a fuentes
 

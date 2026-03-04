@@ -132,6 +132,36 @@ La web generada a partir de este repositorio organiza el contenido del hub en se
 
 ---
 
+## Despliegue
+
+Hay dos formas de publicar el sitio en **Cloudflare Pages**:
+
+### 1. Build en Cloudflare (sin R)
+
+En **Cloudflare Pages → Settings → Builds** usa:
+
+- **Build command:**  
+  `curl -L https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-linux-amd64.tar.gz -o quarto.tar.gz && tar -xzf quarto.tar.gz && ./quarto-1.5.57/bin/quarto render --to html --no-execute`
+- **Build output directory:** `_site`
+
+No se ejecuta código R; las noticias en Inicio y Actualidad se sustituyen por enlaces a Google Noticias.
+
+### 2. Build con R en GitHub Actions (recomendado)
+
+El workflow **`.github/workflows/deploy-pages.yml`** instala **R** y **Quarto**, renderiza el sitio (con ejecución de código R) y sube `_site` a Cloudflare Pages.
+
+**Pasos:**
+
+1. En GitHub: **Settings → Secrets and variables → Actions**, crea:
+   - `CLOUDFLARE_API_TOKEN`: token con permiso *Cloudflare Pages — Edit* (desde [API Tokens](https://dash.cloudflare.com/profile/api-tokens)).
+   - `CLOUDFLARE_ACCOUNT_ID`: ID de cuenta (panel de Cloudflare, columna derecha).
+2. Si tu proyecto en Pages no se llama `actuarial-cortex-site`, edita en el workflow la línea `--project-name=...` con el nombre correcto.
+3. Opcional: en Cloudflare Pages, desactiva el build por Git para evitar builds duplicados y usar solo el despliegue desde Actions.
+
+Cada push a `main` construye el sitio con R (incluido el feed de noticias) y despliega a Cloudflare Pages.
+
+---
+
 ## Estructura detallada del repositorio
 
 La raíz del repositorio (`actuarial-cortex-site`) se ve aproximadamente así:

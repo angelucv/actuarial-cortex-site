@@ -1,7 +1,5 @@
 # Orquestador global — modelo HCC (https://github.com/jurjoroa/hcc-website)
-# Sin ejecución de código en CI (Cloudflare); para generar con R local: quarto render --execute
-execute:
-  eval: false
+# En Cloudflare usar build con --no-execute; en GitHub Actions se ejecuta R.
 project:
   type: website
   output-dir: _site
