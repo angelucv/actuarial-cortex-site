@@ -1,0 +1,1066 @@
+---
+number: false
+---
+
+# Extensiones {#cap-extensiones .unnumbered .unlisted}
+
+Los capítulos anteriores han desarrollado el núcleo de las matemáticas actuariales de contingencias de vida en su forma **neta**: valor presente de beneficios, primas netas únicas y periódicas, y reservas matemáticas, sin considerar gastos de operación ni márgenes comerciales. En la práctica, las compañías cobran **primas brutas** (comerciales), ofrecen **valores de rescate** al asegurado que desiste del contrato, y deben cumplir una **normativa regulatoria** que fija provisiones y métodos de cálculo. Weishaus [@weishaus2013] desarrolla la **pérdida futura bruta** (*gross future loss*), la **prima bruta** por el principio de equivalencia, la **reserva bruta** (*gross premium reserve*) y la **reserva de gastos** (*expense reserve*), así como las **fórmulas de seguro saldado** (*paid-up insurance*) en el marco de la fórmula retrospectiva (Lesson 35). Neill [@neill1977] agrupa estos temas bajo *office premiums*, *surrender and paid-up values*, *bonus* y *special policies*. Este capítulo presenta esas extensiones y, además, un panorama de temas que se profundizan en cursos posteriores: tablas selectas, múltiples vidas, múltiple decremento y el paso hacia modelos estocásticos. La exposición se apoya en Jordan [@jordan1982], Neill [@neill1977] y Weishaus [@weishaus2013].
+
+## Primas comerciales (primas brutas)
+
+### De la prima neta a la prima de tarifa
+
+La **prima neta** que hemos calculado hasta ahora cubre únicamente los **beneficios** del contrato (seguro, renta o combinación), bajo el principio de equivalencia. En la realidad, la aseguradora incurre en **gastos** (adquisición, administración, etc.). Weishaus [@weishaus2013] (Lesson 27, «Gross Premiums») define la **pérdida futura bruta** en el momento de emisión como $_0 L^{\text{g}} = \text{VP}(\text{beneficios}) + \text{VP}(\text{gastos}) - \text{VP}(\text{primas brutas})$: es la variable aleatoria que mide el exceso del valor actual de lo que la aseguradora desembolsa (beneficios y gastos) sobre el valor actual de las primas que cobra. La **prima bruta** $G$ es la que hace $\mathbb{E}[_0 L^{\text{g}}] = 0$, es decir, iguala en valor esperado el valor presente de las primas brutas al valor presente de beneficios más gastos. Así, $G$ se obtiene resolviendo la ecuación de equivalencia con gastos. La prima que incluye una provisión para gastos se denomina **prima bruta**, **prima de tarifa** o **prima comercial**.
+
+Se designa por $G$ la **prima bruta anual** (o periódica) y por $P$ la prima neta anual del mismo contrato. La diferencia $G - P$ es la **carga por gastos** (o *loading*) por unidad de prima [@neill1977]. En muchos enfoques se desglosan los gastos en:
+
+- **Gastos de adquisición:** se incurren al inicio del contrato (o se reparten en los primeros años). Incluyen comisiones a intermediarios, costos de emisión y, en su caso, peritaje médico.
+- **Gastos de administración:** gastos recurrentes (cobranza, mantenimiento de la póliza, informes al asegurado).
+- **Otros gastos:** gastos de liquidación de siniestros, gastos generales, etc.
+
+Neill [@neill1977] clasifica los gastos en: (i) proporcionales a la prima (p. ej. comisión de renovación al agente); (ii) proporcionales a la suma asegurada; (iii) independientes de prima y suma asegurada (costes de administración, honorarios médicos). Las tarifas suelen expresarse por unidad de suma asegurada (por ciento o por mil); los gastos de tipo (iii) se incorporan a menudo como un **recargo fijo** por póliza (*policy fee*). Es importante precisar si los gastos de renovación se imputan desde el primer año o solo desde el segundo; en el primer caso se usa la renta anticipada $\ddot{a}$, en el segundo la renta vencida $a$ en la ecuación de equivalencia.
+
+### Ecuación de equivalencia con gastos
+
+El **principio de equivalencia** puede extenderse para incluir los gastos: en valor presente actuarial, las primas brutas deben igualar los beneficios más los gastos esperados. En notación esquemática:
+
+$$\text{Valor presente de las primas brutas} = \text{Valor presente de los beneficios} + \text{Valor presente de los gastos}.$$
+
+Si los gastos se modelan como una serie de desembolsos (iniciales y/o recurrentes), sus valores presentes se calculan con las mismas técnicas de rentas y seguros ya vistas. La incógnita es la prima bruta $G$ que satisface esta ecuación. En la práctica se suelen usar **porcentajes de la prima** y **cantidades fijas** por póliza para aproximar los gastos; entonces $G$ aparece en ambos miembros de la ecuación y se despeja por iteración o en forma cerrada según el modelo.
+
+Los detalles (por ejemplo, gastos de adquisición como porcentaje de $G$ en el primer año, gastos de cobranza como porcentaje de cada prima) se estudian en el material de **Primas Comerciales** del curso y en la normativa que exige la certificación actuarial de las tarifas.
+
+### Clasificación y modelización matemática de los gastos (ecuación de equivalencia con gastos)
+
+En un enfoque determinista, la **prima comercial** $G$ es la solución a la igualdad entre el valor actual de los **ingresos** (primas brutas) y el valor actual de los **beneficios** más **todos los egresos operativos**. El libro clasifica y modeliza los siguientes tipos de gastos observados en las evaluaciones de la EECA-UCV:
+
+1. **Gastos de adquisición (emisión):** Montos fijos o porcentajes de la primera prima o de la suma asegurada que no se repiten. Se incorporan como un **gasto único** $I$ en $t=0$ (valor presente = $I$) o como una suma de cargos en los primeros años. En la ecuación: $\text{APV(primas)} = \text{APV(beneficios)} + I + \text{APV(resto de gastos)}$.
+
+2. **Comisiones escalonadas:** Esquemas donde el porcentaje de comisión varía en los primeros años (p. ej. 60%, 35%, 20%, 10%, 5% de la prima en los años 1 a 5). El valor presente de las comisiones es $\sum_{k=0}^{n-1} c_k\, G\, v^k\, {}_kp_x$ donde $c_k$ es el porcentaje en el año $k$. Así $G$ aparece en ambos miembros y se despeja.
+
+3. **Gastos de cobranza:** Porcentajes aplicados a **cada prima** durante un período limitado (p. ej. un porcentaje $k$ de $G$ en cada pago durante $m$ años). APV = $k\, G\, \ddot{a}_{x:\overline{m}|}$ (o la renta que corresponda al período de cobranza).
+
+4. **Gastos de mantenimiento:** Montos **fijos por póliza** que pueden persistir incluso después del período de pago de primas (administración, informes al asegurado). Se modelan como una renta de vida o temporal de cuantía $c$ por año: APV = $c\, \ddot{a}_x$ o $c\, \ddot{a}_{x:\overline{n}|}$.
+
+5. **Gastos de liquidación de siniestros:** Costos incurridos al momento de pagar el beneficio, que pueden ser **porcentuales con topes monetarios** (p. ej. 2% del beneficio con máximo 50 u.m.). Su valor presente es una fracción del valor presente del beneficio por muerte (seguro) o se aproxima con un recargo sobre la PNU del beneficio.
+
+**Ecuación de equivalencia global (prima comercial $G$):**
+
+$$G\cdot \ddot{a}_{x:\overline{n}|} = \text{PNU(beneficios)} + \text{APV(gastos)} + \text{APV(margen de utilidad)}.$$
+
+En forma desarrollada: el valor presente de las primas brutas debe igualar el valor presente de los beneficios, más el valor presente de todos los gastos (adquisición, comisiones, cobranza, mantenimiento, liquidación), más un margen de utilidad si se incluye. Así se despeja la **prima comercial $G$** para estructuras de primas variables o niveladas. Si los gastos y el margen se expresan como funciones de $G$ y de la suma asegurada, la ecuación se resuelve por iteración o en forma cerrada según el modelo.
+
+**Taxonomía de gastos en el mercado (impacto en la reserva):**
+
+| Categoría de gasto | Base de aplicación | Impacto en la reserva |
+|--------------------|-------------------|------------------------|
+| **Emisión (adquisición)** | Única (al inicio) | Disminuye la reserva inicial; justifica reservas modificadas (Zillmer, Ley Venezolana) |
+| **Comisiones** | Prima pagada (porcentaje por año) | Crea la necesidad de reservas modificadas y de provisiones por comisiones diferidas |
+| **Cobranza** | Prima pagada | Gasto corriente operativo; reduce el flujo neto de primas |
+| **Liquidación** | Beneficio pagado | Aumenta el costo esperado del siniestro (se valora junto al beneficio) |
+| **Mantenimiento** | Fijo por póliza o % con tope | Gasto recurrente; puede modelarse como renta y reducir la reserva bruta |
+| **Margen de utilidad** | % sobre $G$ o fijo | No aumenta la reserva técnica; es retorno para la aseguradora |
+
+**Ecuación de equivalencia con gastos (forma genérica):**
+
+$$G\,\ddot{a}_{x:\overline{m}|} = \text{PNU(beneficios)} + I + \sum \text{APV(gastos recurrentes)} + \text{APV(comisiones)}.$$
+
+Si los gastos recurrentes y las comisiones son proporcionales a $G$, se reescribe como $(1 - k)\,G\,\ddot{a} = \text{PNU} + I + c\,\ddot{a}$ (con $k$ el porcentaje total de carga sobre la prima y $c$ el gasto fijo por año), de donde $G = (\text{PNU} + I + c\,\ddot{a}) / ((1-k)\,\ddot{a})$. Integrar estos elementos en **ejemplos prácticos** (despejar $G$ dados $P$, $I$, $k$, $c$, $\ddot{a}$) convierte el libro en una guía de **tarificación vida** alineada con los exámenes de la cátedra.
+
+### Estructura de la prima comercial
+
+Una vez obtenida $G$, suele expresarse como:
+
+$$G = P + \text{(carga por gastos)},$$
+
+donde $P$ es la prima neta. La carga por gastos puede desglosarse a su vez en cargas por adquisición, administración, etc. Si los gastos son una fracción $k$ de cada prima bruta, un coste $c$ por unidad de suma asegurada en cada renovación y un gasto inicial $I$, la ecuación de equivalencia (valor presente de primas brutas = valor presente de beneficios + gastos) con renta anticipada $\ddot{a}$ y valor del beneficio $A$ da $G\,\ddot{a} = A + k\,G\,\ddot{a} + c\,\ddot{a} + I$; como $A = P\,\ddot{a}$, se obtiene $(1-k)\,G\,\ddot{a} = (P+c)\,\ddot{a} + I$, de donde $G = \frac{1}{1-k}\bigl(P + \frac{I}{\ddot{a}} + c\bigr)$. La diferencia $G - P$ es el *loading* [@neill1977]. En muchos contratos se establece además un **margen de seguridad** o **margen de solvencia** que hace que $G$ sea algo mayor que el mínimo técnico; ese margen queda bajo responsabilidad del actuario y de la dirección de la compañía, dentro de los límites que fija la regulación.
+
+***
+
+## Valor de rescate y modificaciones de la reserva terminal
+
+### Concepto de valor de rescate
+
+Cuando el asegurado **rescinde** el contrato antes del vencimiento (por ejemplo, deja de pagar primas y solicita la cancelación), la aseguradora suele entregarle una cantidad denominada **valor de rescate** (o *surrender value*). Este valor no es en general la reserva matemática neta al día del rescate, porque la compañía debe cubrir costos de rescisión y, en muchos marcos legales, está permitido entregar un monto menor para desincentivar rescates masivos que afecten la liquidez.
+
+En el modelo más simple, el valor de rescate se define como un **porcentaje de la reserva matemática** en la fecha de rescate (que suele ser una fecha no entera, de ahí la importancia de las reservas fraccionarias vistas en el capítulo 12). Por ejemplo, se puede establecer que durante los primeros años el valor de rescate sea 0% (período de carencia) y luego un porcentaje creciente de la reserva (80%, 90%, 100%) según los años transcurridos. Otras normas fijan un **mínimo legal** en función de las primas pagadas o de la reserva.
+
+### Modificaciones de la reserva terminal
+
+La **reserva terminal** (reserva al final de cada año de contrato) es la base para el cálculo del valor de rescate en muchas legislaciones. La normativa puede exigir que se calcule la reserva con determinada tabla de mortalidad y tasa de interés, y que el valor de rescate no supere cierto múltiplo de esa reserva, o que no sea inferior a un piso definido. Las **modificaciones de reservas terminales** a las que alude el material del curso se refieren precisamente a estos ajustes: uso de tablas o hipótesis distintas para reserva técnica y para rescate, o fórmulas específicas que la ley exige para no sobrestimar el pasivo ni subestimar el derecho del asegurado.
+
+El actuario debe conocer tanto la reserva neta como las reglas legales y contractuales que ligan el valor de rescate a esa reserva, para informar correctamente a la compañía y al regulador.
+
+### Seguro saldado y prorrogado (paid-up)
+
+Cuando el asegurado **deja de pagar primas** antes del vencimiento del contrato, la póliza puede convertirse en **saldada** (*paid-up*): sin nuevos pagos, el contrato sigue en vigor con un beneficio **reducido**. El beneficio saldado es aquel cuyo valor presente actuarial (prima neta única) en la fecha de cesación coincide con la **reserva matemática** existente en ese momento. Weishaus [@weishaus2013] (Lesson 35, «Premium Difference and Paid Up Insurance Formulas») presenta la **fórmula de seguro saldado**: si en el año $k$ la reserva neta es $_kV$, la suma asegurada saldada $b^{(S)}$ para un seguro de vida entera desde $x+k$ satisface $_kV = b^{(S)}\cdot A_{x+k}$, de donde $b^{(S)} = {}_kV/A_{x+k}$. Así, la reserva se «intercambia» por un seguro o renta de menor cuantía (o menor plazo), de modo que no hay transferencia de valor entre las partes. Las **fórmulas de diferencia de prima** relacionan la prima de un contrato con primas limitadas o vitalicias y permiten expresar la reserva y el beneficio saldado en notación estándar. En un **seguro prorrogado** se mantiene la suma asegurada original pero se reduce el plazo o se cambia el tipo de cobertura (por ejemplo, de temporal a vida entera) de forma que el valor del beneficio futuro iguale la reserva. El estudiante debe ser capaz de determinar si, al convertir en saldada o prorrogada, queda algún **remanente** (por ejemplo, si la reserva supera el valor del beneficio reducido) y sugerir su utilización actuarial (por ejemplo, renta adicional o aumento de suma). Estos conceptos forman parte del TEMA 8 del programa y de la normativa sobre valores de rescate y opciones en caso de impago.
+
+## Excedentes técnicos y método de contribución de tres factores (valores $Z_t$)
+
+En pólizas con **participación en utilidades**, el asegurado recibe **dividendos** o **excedentes técnicos** que reflejan las ganancias de la aseguradora respecto a los supuestos técnicos (mortalidad, interés, gastos). En los exámenes históricos de la EECA-UCV estos excedentes se denotan **$Z_t$** (utilidad técnica en el año $t$). El **principio de contribución** descompone $Z_t$ en **tres fuentes**:
+
+1. **Utilidad por interés:** Diferencia entre la tasa de inversión **real** $i'$ y la tasa **técnica** $i$. Si los fondos se invierten a $i' > i$, el exceso de rendimiento genera un beneficio que puede repartirse (por ejemplo, $Z_t^{(i)}$ proporcional a la reserva media en el año $t$).
+
+2. **Utilidad por mortalidad:** Diferencia entre los fallecimientos **tabulados** (esperados según la tabla) y los **reales**. Si la mortalidad observada es menor que la de la tabla (por ejemplo, un 15% menos de fallecimientos en los primeros años), la aseguradora «ahorra» en beneficios por muerte y ese ahorro es utilidad por mortalidad $Z_t^{(m)}$.
+
+3. **Utilidad por gastos:** Ahorro cuando los **gastos reales** de administración (y otros) son **menores** que los recargos incluidos en la prima comercial $G$. La diferencia entre lo cargado y lo gastado es $Z_t^{(g)}$.
+
+En conjunto, $Z_t = Z_t^{(i)} + Z_t^{(m)} + Z_t^{(g)}$ (u otras descomposiciones equivalentes según el método adoptado). Integrar **ejercicios** donde se pida «Hallar $Z_1$, $Z_7$ y $Z_{18}$» a partir de datos de experiencia real (tasa de interés realizada, muertes observadas, gastos incurridos) prepara al estudiante para el nivel de exigencia de los exámenes finales de la EECA y para la realidad actuarial de las pólizas con participación en utilidades.
+
+***
+
+## Reservas modificadas: Zillmer y método de los comisionados
+
+La **reserva matemática neta** que hemos calculado en la Parte III no tiene en cuenta los gastos de adquisición ya incurridos. En la práctica regulatoria se usan a menudo **reservas modificadas** que incorporan la amortización de esos gastos iniciales, de modo que la reserva en los primeros años sea menor y refleje el «coste de adquisición» aún no recuperado.
+
+- **Método de Zillmer:** se define una **reserva Zillmer** (o reserva modificada por Zillmer) restando de la reserva neta una **cantidad de Zillmer** que amortiza los gastos de adquisición a lo largo del período de pago de primas. En su forma típica, se fija un gasto inicial por unidad de suma asegurada (por ejemplo un porcentaje de la primera prima o de la suma); esa cantidad se deduce de la reserva en cada año, repartida de forma que la secuencia de reservas modificadas siga siendo no negativa y coherente con la ecuación de recurrencia. Así, la reserva Zillmer en el año $k$ puede expresarse como $_kV^{\text{Zillmer}} = {}_kV - Z_k$, donde $Z_k$ es la parte del gasto inicial aún no amortizada. El valor de rescate suele referirse a un porcentaje de la reserva **neta** o de la reserva modificada según la normativa; en muchos países se exige que la reserva declarada para solvencia sea al menos la reserva Zillmer.
+
+- **Método de los comisionados:** en algunas jurisdicciones el regulador (o el organismo de comisionados) fija un método estándar para calcular la reserva técnica que incluye reglas sobre gastos de adquisición y, en su caso, sobre el valor de rescate mínimo. Ese método puede coincidir con el de Zillmer o variar (por ejemplo, límites sobre la reserva mínima en los primeros años, o fórmulas específicas para seguros con primas limitadas). El actuario debe aplicar el método que la normativa local exija para el balance y la solvencia.
+
+El material del curso y el programa (Tema 8) desarrollan el cálculo de reservas Zillmer y las normas de los comisionados en el contexto de la regulación venezolana.
+
+### Reserva bruta y reserva de gastos
+Además de la **reserva neta** (valor presente de beneficios futuros menos valor presente de primas netas futuras), la normativa y la contabilidad pueden exigir la **reserva bruta** (*gross premium reserve*): valor presente de beneficios futuros más valor presente de **gastos futuros** menos valor presente de **primas brutas** futuras [@weishaus2013] (Lesson 34, «Gross Premium Reserve and Expense Reserve»). Así, $_kV^{\text{g}} = \text{APV}(\text{beneficios}) + \text{APV}(\text{gastos futuros}) - G\cdot \ddot{a}_{\text{futuro}}$. Bajo las mismas hipótesis de gastos usadas para calcular $G$, la reserva bruta en el momento de emisión es cero. La **reserva de gastos** (*expense reserve*) se define como la diferencia entre la reserva bruta y la reserva neta: cuantifica el valor presente de los gastos futuros menos la parte de las primas brutas que los financia. En muchos marcos regulatorios la reserva técnica declarada es la reserva bruta (o una variante Zillmer), de modo que los gastos de adquisición ya incurridos se reflejen en una reserva inicial menor.
+
+***
+
+## Normativa regulatoria y provisiones
+
+### Marco legal y rol del actuario
+
+En Venezuela, la actividad aseguradora está regulada por leyes y normas que establecen requisitos de **solvencia**, **provisiones técnicas** y **certificación actuarial**. Las compañías deben constituir reservas matemáticas (reservas de beneficio) y, según el tipo de producto, otras provisiones (por ejemplo, para bonos, para comisiones diferidas, para siniestros ocurridos pero no notificados en ramos no-vida). La **Gaceta Oficial** y las resoluciones del ente supervisor (SUDEASEG y sus antecesores) publican las normas que fijan métodos de cálculo, tablas de mortalidad y tasas de interés técnicas admisibles.
+
+El **actuario** tiene la responsabilidad profesional de certificar que las primas y las reservas se han calculado conforme a la normativa y a la técnica actuarial. Eso incluye la verificación de que las provisiones (incluidas las de bonos y comisiones cuando apliquen) son suficientes para cumplir los compromisos con los asegurados. El material del curso (Semana 13) hace referencia a las **provisiones por bonos y comisiones** en el marco de la Gaceta y de las normas regulatorias actuariales vigentes; el estudiante debe complementar con la legislación actualizada.
+
+### Provisión para bonos y comisiones
+
+En productos que incluyen **bonos** (participación en beneficios) o **comisiones** garantizadas o diferidas, la aseguradora debe constituir provisiones adicionales a la reserva de beneficio pura. Esas provisiones se calculan con métodos que extienden los conceptos de valor presente actuarial y de reserva a flujos condicionados por la evolución del negocio (participación en resultados, comisiones por renovación, etc.). La normativa suele especificar cómo valorar estos pasivos para efectos de balance y solvencia.
+
+***
+
+## Aplicaciones: desgravamen hipotecario y otros tópicos
+
+### Seguro de desgravamen hipotecario
+
+El **desgravamen hipotecario** (o seguro de saldo de deuda) es un seguro de vida que cubre el **saldo adeudado** del préstamo hipotecario en caso de fallecimiento del deudor (y a veces del cónyuge o codeudor). Así, el acreedor (banco o entidad hipotecaria) queda cubierto y la familia del fallecido no hereda la deuda en las condiciones pactadas.
+
+Desde el punto de vista actuarial, el beneficio no es un capital fijo sino un capital que **decrece** con el tiempo (el saldo deudor). Por tanto, el valor presente del beneficio se modela como un **seguro temporal** con monto variable: en cada año $t$ el capital asegurado es el saldo proyectado del préstamo en ese momento. Las fórmulas de seguros variables $(DA)_{x:\overline{n}|}$ o análogas, o la valoración año a año con $A_{x:\overline{n}|}^1$ y capitales $C_t$, permiten calcular la prima neta única o la prima periódica del desgravamen. En la práctica se usan tablas de mortalidad y planes de amortización del crédito; el material del curso (Semana 14) aborda **cálculos de prima comercial** para este y otros productos.
+
+### Otros tópicos especiales
+
+En el mismo bloque de aplicaciones del curso se tratan **tópicos especiales** según el programa: por ejemplo, seguros con doble indemnización por accidente, cláusulas de exención de primas, o productos vinculados a fondos de inversión. Todos ellos se apoyan en los mismos pilares: valor presente actuarial de beneficios, ecuación de equivalencia y reservas. La extensión consiste en adaptar el flujo de beneficios (y en su caso de gastos) al diseño del producto.
+
+***
+
+## Rentas garantizadas, términos ciertos y seguros de renta con devolución (TEMA 7)
+
+El programa oficial de la asignatura (código 4605) incluye en el TEMA 7 las **rentas completas**, **garantizadas** y con **términos ciertos**, el análisis de planes donde la **reserva matemática supera a la suma asegurada** en caso de fallecimiento, y los **seguros de renta con devolución** en caso de fallecimiento del asegurado. Esta sección desarrolla esos conceptos siguiendo la literatura clásica de contingencias de vida [@jordan1982; @neill1977].
+
+### Rentas con período garantizado (términos ciertos)
+
+Una **renta con términos ciertos** (o **renta garantizada**) es aquella que paga durante un número **mínimo** de años (período cierto o garantizado), y luego continúa **mientras el rentista viva**. Si el rentista fallece antes de completar el período cierto, las rentas pendientes de ese período se pagan al beneficiario hasta agotar los años garantizados.
+
+Por ejemplo, una renta vitalicia anticipada de 1 por año con **garantía de 10 años** paga 1 al inicio de cada año; si $(x)$ vive más de 10 años, los pagos continúan de por vida; si $(x)$ fallece en el año 5, los pagos se siguen realizando hasta completar 10 años (los años 6 a 10 van al beneficiario). El valor presente actuarial de ese beneficio es la suma de:
+
+- El valor presente de una **renta cierta** de 10 años (los 10 primeros pagos están garantizados).
+- El valor presente de una **renta de vida** diferida 10 años (pagos del año 11 en adelante, condicionados a que $(x)$ viva).
+
+En notación estándar, si la renta es anticipada y la garantía es de $n$ años, el valor actual es $\ddot{a}_{\overline{n}|} + {}_nE_x\,\ddot{a}_{x+n}$: renta cierta $n$ años más un dotal puro por la renta vitalicia diferida. Análogamente se definen rentas **vencidas** con garantía y rentas **temporales** con período mínimo garantizado. Estas estructuras son muy usadas en pensiones y en seguros de renta para reducir el riesgo del rentista de «perder» la prima si fallece pronto.
+
+### Rentas «completas» y planes donde la reserva supera la suma asegurada
+
+En algunos contextos se llama **renta completa** a la renta que combina un período cierto y un período vitalicio, es decir, la renta garantizada descrita arriba. En otros, «completa» alude a que el contrato incluye todas las prestaciones típicas (renta por supervivencia más posible pago por fallecimiento).
+
+En productos de **ahorro con renta** (por ejemplo, planes de jubilación o seguros de renta con fase de acumulación), la **reserva matemática** crece con el tiempo porque las primas se van capitalizando. En ciertos años, la reserva puede ser **mayor** que la **suma asegurada** convenida (o que el capital garantizado en muerte). En esos casos, el beneficio por fallecimiento suele definirse como el **máximo** entre la suma asegurada y la reserva matemática (o el valor de cuenta), de modo que el beneficiario reciba al menos lo que el asegurado había «acumulado». El cálculo de la prima y de la reserva debe reflejar ese beneficio: en los años en que la reserva supera la suma asegurada, el costo por muerte es el de pagar la reserva (o el máximo entre reserva y suma), no solo la suma fija. Las fórmulas de reserva prospectiva y recurrencia se adaptan considerando ese beneficio variable en el tiempo.
+
+### Seguros de renta con devolución en caso de fallecimiento
+
+Un **seguro de renta con devolución** (o *refund annuity*) es un contrato que paga una **renta vitalicia** al asegurado, pero si este fallece antes de haber recibido en total al menos una cantidad garantizada (por ejemplo, la prima única pagada o un capital mínimo), la aseguradora paga al beneficiario la **diferencia** entre esa cantidad y lo ya cobrado en rentas. Así se «devuelve» la parte no disfrutada. Weishaus [@weishaus2013] trata estos contratos en el marco de anualidades con beneficio por fallecimiento: el valor presente del beneficio es la suma del valor de la renta vitalicia y del valor de un «seguro» que paga en el momento de la muerte el capital garantizado menos lo ya pagado en rentas (refund). La prima única se obtiene igualando ese valor total a la prima; las fórmulas de renta cierto-y-vitalicia ($\ddot{a}_{\overline{n}|} + {}_nE_x\,\ddot{a}_{x+n}$) y de seguros de muerte con montos variables permiten valorar el contrato (TEMA 7).
+
+En la forma más simple, si el asegurado pagó una prima única $P$ y fallece después de haber recibido $k$ pagos de importe $R$ cada uno ($k \cdot R < P$), el beneficiario recibe $P - k\,R$ (o el capital mínimo menos lo pagado, según el diseño). El valor presente de los beneficios del contrato es entonces: valor de la renta vitalicia **más** valor de un seguro que paga en el momento de la muerte la diferencia entre el capital garantizado y lo ya pagado. Ese seguro puede expresarse como una combinación de seguros de muerte con montos que dependen del año de fallecimiento. La prima única se obtiene igualando esa suma al valor presente de la prima; las reservas se calculan de forma prospectiva (o recurrente) teniendo en cuenta tanto la renta futura como la posible devolución en muerte.
+
+Estos productos son típicos en **planes educacionales** y en **pensiones**: el asegurado quiere renta de por vida, pero desea que, si fallece pronto, sus beneficiarios recuperen parte o todo el capital aportado. La técnica actuarial consiste en descomponer el beneficio en renta vitalicia más un seguro de «devolución» y valorar cada parte con las herramientas de los capítulos anteriores [@neill1977].
+
+***
+
+## Tablas selectas y tablas definitivas
+
+En los capítulos anteriores se ha trabajado con **tablas de mortalidad agregadas** por edad $x$, donde $l_x$ y $q_x$ dependen solo de la edad. En la realidad, la mortalidad de un recién asegurado (recién «seleccionado» por el cuestionario y el peritaje) suele ser más baja que la de una persona de la misma edad que lleva años en la cartera, porque la **selección** inicial elimina parte de los riesgos peores. Las **tablas selectas** reflejan esa idea: las probabilidades dependen de la edad $x$ y del **tiempo desde la selección** (o «años desde emisión») $s$. Se denota por $q_{[x]+s}$ la probabilidad de muerte en el año siguiente para una persona de edad $x$ seleccionada hace $s$ años. Para $s$ grande (antigüedad alta), la tabla se confunde con una **tabla definitiva** (solo edad), que suele ser más gravosa.
+
+En Matemáticas Actuariales I no siempre se profundiza en el cálculo con tablas selectas; pero es importante saber que existen y que en muchos mercados se usan para tarificación y reservas de seguros de vida individual, mejorando el ajuste a la experiencia real de la cartera.
+
+***
+
+## Panorama de extensiones teóricas
+
+### Múltiples vidas: status conjunto y último superviviente
+
+Hasta aquí se ha considerado una **única vida** $(x)$. En pensiones, seguros de vida conjuntos y rentas de supervivencia aparecen **varias vidas** $(x)$ y $(y)$. Dos definiciones estándar son:
+
+- **Status conjunto** $(xy)$: el status «vive» mientras **ambos** estén vivos. La probabilidad de que ambos sobrevivan $t$ años es ${}_tp_{xy} = {}_tp_x \cdot {}_tp_y$ bajo independencia. Las rentas y seguros sobre el status conjunto tienen valor presente expresable con funciones análogas a $a_x$, $A_x$, pero con $D_{xy}$, $N_{xy}$, etc.
+- **Último superviviente** $(xy)$ o status «vive» mientras **al menos uno** esté vivo. Se cumple ${}_tp_{\overline{xy}} = {}_tp_x + {}_tp_y - {}_tp_{xy}$. Las rentas y seguros de último superviviente se usan en pensiones de viudedad y en contratos que pagan al fallecimiento del segundo.
+
+En Jordan y en los cursos de Matemáticas Actuariales II se desarrollan las funciones conmutativas para dos (y más) vidas y las fórmulas de primas y reservas para estos contratos.
+
+### Múltiple decremento
+
+En lugar de un único «estado de salida» (muerte), muchos contratos contemplan **varias causas de salida**: muerte, invalidez, jubilación, rescate. El modelo de **múltiple decremento** introduce probabilidades de salida por causa $j$ en el año $t$, y funciones análogas a $l_x$, $d_x$ para cada causa. Las fórmulas de valor presente y de reserva se extienden; el tema se estudia en cursos avanzados de contingencias de vida o en materias de pensiones.
+
+### De los modelos determinísticos a los modelos estocásticos
+
+Como se señaló en los preliminares, todo el desarrollo de este libro se enmarca en los **modelos determinísticos de contingencias de vida** [@promislow2015]: se usan tablas de mortalidad y tasas de interés fijas, y los valores presentes son esperanzas calculadas con esas tablas. En la literatura y en la práctica moderna existen **modelos estocásticos** que incorporan la incertidumbre sobre la mortalidad y los tipos de interés mediante procesos aleatorios (cadenas de Markov, procesos de Poisson, martingalas, movimientos brownianos). Esos modelos permiten valorar opciones embebidas, analizar el riesgo de solvencia y diseñar pruebas de estrés; sin embargo, el enfoque determinístico de Jordan sigue siendo la base formativa ideal para el actuario, y el punto de partida desde el cual se construyen las extensiones estocásticas en cursos posteriores y en la investigación actuarial.
+
+***
+
+## Ejercicios
+
+En las soluciones se indica el razonamiento, los pasos intermedios y el resultado final.
+
+### Ejercicio resuelto (prima bruta con gastos)
+
+**Enunciado.** La prima neta anual de un seguro es $P = 100$ u.m. Los gastos son: 10% de cada prima cobrada, 2 u.m. por póliza y año en renovación, y 50 u.m. de gasto inicial. Si la renta de primas es $\ddot{a}_{40:\overline{20}|} = 12$, obtener la prima bruta anual $G$ (ecuación $G\,\ddot{a} = A + k\,G\,\ddot{a} + c\,\ddot{a} + I$ con $A = P\,\ddot{a}$).
+
+**Solución.**  
+**Paso 1.** Ecuación de equivalencia con gastos: VP(primas brutas) = VP(beneficios) + VP(gastos). Con $I$, $c$ por año y $k\,G$ por prima: $G\,\ddot{a} = A + I + c\,\ddot{a} + k\,G\,\ddot{a}$.  
+**Paso 2.** Como $A = P\,\ddot{a}$, queda $(1-k)\,G\,\ddot{a} = (P+c)\,\ddot{a} + I$, luego $G = \frac{1}{1-k}\bigl(P + c + \frac{I}{\ddot{a}}\bigr)$.  
+**Paso 3.** Sustituyendo $k=0{,}1$, $P=100$, $c=2$, $I=50$, $\ddot{a}=12$: $G = \frac{1}{0{,}9}\bigl(100 + 2 + \frac{50}{12}\bigr) \approx 118{,}0$ u.m.  
+**Resultado.** $G \approx 118{,}0$ u.m.; *loading* $G - P \approx 18$ u.m.
+
+***
+
+**2. Valor de rescate 90%**  
+Reserva año 8 = 3.000 u.m.; rescate = 90% de la reserva. Calcular valor de rescate.  
+**Solución.**  
+**Paso 1.** Valor de rescate = porcentaje × reserva en la fecha de rescate.  
+**Paso 2.** $0{,}90 \times 3\,000 = 2\,700$ u.m.  
+**Resultado.** 2\,700 u.m.
+
+***
+
+**3. Póliza saldada (paid-up)**  
+Sin más primas, beneficio reducido. Fórmula de la suma asegurada saldada.  
+**Solución.**  
+**Paso 1.** La reserva en $k$ se «intercambia» por un seguro de vida entera de cuantía $b^{(S)}$ desde $x+k$: $_kV = b^{(S)} A_{x+k}$.  
+**Paso 2.** $b^{(S)}={}_kV/A_{x+k}$.  
+**Resultado.** $b^{(S)}={}_kV/A_{x+k}$.
+
+***
+
+**4. Zillmer**  
+Explicar el método Zillmer.  
+**Solución.**  
+**Paso 1.** Reserva modificada = reserva neta − cantidad Zillmer (amortización lineal de gastos de adquisición).  
+**Paso 2.** Uso normativo para reserva técnica y valor de rescate mínimo.  
+**Resultado.** $_kV^{\text{Z}}={}_kV - Z_k$ con $Z_k$ no amortizado.
+
+***
+
+**5. $_0 L^{\text{g}}=0$**  
+Definir pérdida futura bruta y condición para la prima bruta $G$.  
+**Solución.**  
+**Paso 1.** $_0 L^{\text{g}}= \text{VP(beneficios)}+\text{VP(gastos)}-\text{VP(primas brutas)}$.  
+**Paso 2.** Prima bruta $G$ tal que $\mathbb{E}[_0 L^{\text{g}}]=0$.  
+**Resultado.** Equivalencia con gastos: $G\,\ddot{a}=A+\text{APV(gastos)}$.
+
+***
+
+**6. Suma asegurada saldada**  
+$_5V_{50}=2\,000$, $A_{55}=0{,}25$. Calcular $b^{(S)}$ (paid-up).  
+**Solución.**  
+**Paso 1.** $b^{(S)}={}_kV/A_{x+k}$; con $k=5$, $x=50$: $b^{(S)}=2\,000/A_{55}$.  
+**Paso 2.** $b^{(S)}=2\,000/0{,}25=8\,000$ u.m.  
+**Resultado.** $b^{(S)}=8\,000$ u.m.
+
+***
+
+**7. Ecuación prima bruta**
+Obtener $G$ a partir de la ecuación de equivalencia con gastos.  
+**Solución.**  
+**Paso 1.** De $G\,\ddot{a}=A+I+c\,\ddot{a}+k\,G\,\ddot{a}$ con $A=P\,\ddot{a}$ se agrupa: $G\,\ddot{a}-k\,G\,\ddot{a}=(P+c)\,\ddot{a}+I$.  
+**Paso 2.** $(1-k)\,G\,\ddot{a}=(P+c)\,\ddot{a}+I$ ⇒ $G=(P+c+I/\ddot{a})/(1-k)$.  
+**Resultado.** $G=\frac{(P+c)\,\ddot{a}+I}{(1-k)\,\ddot{a}}$ o $G=(P+c+I/\ddot{a})/(1-k)$.
+
+***
+
+
+**8. Loading**  
+Definir el *loading* y su interpretación.  
+**Solución.**  
+**Paso 1.** El *loading* es la diferencia entre la prima bruta y la prima neta: $L=G-P$.  
+**Paso 2.** Representa la carga por gastos por unidad de prima que paga el asegurado.  
+**Resultado.** Loading $=G-P$ (carga por gastos por prima).
+
+***
+
+
+**9. Reserva bruta**  
+Definir la reserva por prima bruta (reserva bruta).  
+**Solución.**  
+**Paso 1.** Reserva bruta en $k$ = valor presente de beneficios futuros + valor presente de gastos futuros − valor presente de primas brutas futuras.  
+**Paso 2.** $_kV^{\text{g}} = \text{APV}(\text{beneficios futuros}) + \text{APV}(\text{gastos futuros}) - G\,\ddot{a}_{\text{futuro}}$.  
+**Resultado.** $_kV^{\text{g}}$ es la reserva prospectiva incluyendo beneficios y gastos, financiada por $G$.
+
+***
+
+
+**10. Reserva de gastos**  
+Definir la reserva de gastos y su relación con la reserva bruta.  
+**Solución.**  
+**Paso 1.** Reserva de gastos = valor presente de gastos futuros − valor presente de la parte de las primas brutas que los financia.  
+**Paso 2.** Se cumple reserva bruta = reserva neta + reserva de gastos, luego reserva de gastos = reserva bruta − reserva neta.  
+**Resultado.** $_kV^e = {}_kV^{\text{g}} - {}_kV$; cuantifica el pasivo por gastos aún no recuperados.
+
+***
+
+
+**11. Tipo parcial: $G$ con datos**  
+$P=80$, $k=0{,}1$, $c=1{,}5$, $I=40$, $\ddot{a}=11$. Calcular la prima bruta $G$.  
+**Solución.**  
+**Paso 1.** $G=(P+c+I/\ddot{a})/(1-k)$.  
+**Paso 2.** $G=(80+1{,}5+40/11)/0{,}9 = (81{,}5+3{,}64)/0{,}9 \approx 95{,}35$ u.m.  
+**Resultado.** $G \approx 95{,}35$ u.m.
+
+***
+
+
+**12. Refund annuity (Tema 7)**  
+Valor presente de una renta con devolución (*refund*).  
+**Solución.**  
+**Paso 1.** Renta con reembolso: si el asegurado fallece antes de recibir un capital garantizado, se paga el remanente al fallecimiento.  
+**Paso 2.** VP = renta vitalicia (o temporal) + seguro que paga en muerte el capital no disfrutado.  
+**Resultado.** VP = valor presente de la renta + valor presente del beneficio por muerte (remanente).
+
+***
+
+
+**13. Renta garantizada**  
+Fórmula del valor presente de una renta cierto-y-vitalicia.  
+**Solución.**  
+**Paso 1.** Renta que paga durante $n$ años con certeza y luego vitalicia para $(x)$: cierto $n$ años + vitalicia diferida $n$ años.  
+**Paso 2.** VP = $\ddot{a}_{\overline{n}|}+{}_nE_x\,\ddot{a}_{x+n}$.  
+**Resultado.** VP = $\ddot{a}_{\overline{n}|}+{}_nE_x\,\ddot{a}_{x+n}$.
+
+***
+
+
+**14. Desgravamen**  
+Concepto de desgravamen (seguro de saldo deudor).  
+**Solución.**  
+**Paso 1.** Desgravamen: seguro que paga en caso de fallecimiento el saldo deudor del préstamo en ese momento.  
+**Paso 2.** Capital asegurado decreciente = saldo vivo del préstamo; se valora con $(DA)_{x:\overline{n}|}$ o suma de seguros temporales año a año.  
+**Resultado.** Seguro temporal con beneficio decreciente = saldo deudor.
+
+***
+
+
+**15. Zillmer**  
+Fórmula de la reserva Zillmer.  
+**Solución.**  
+**Paso 1.** Reserva Zillmer = reserva neta − cantidad de gasto de adquisición aún no amortizada.  
+**Paso 2.** $_kV^{\text{Zillmer}}={}_kV-Z_k$, con $Z_k$ = parte del gasto de adquisición no recuperada al año $k$.  
+**Resultado.** $_kV^{\text{Zillmer}}={}_kV-Z_k$; con amortización lineal en $m$ años: $Z_k=\alpha\,(1-k/m)$ para $k<m$.
+
+***
+
+
+**16. Método comisionados**  
+Qué es el método de los comisionados.  
+**Solución.**  
+**Paso 1.** Es el método estándar que el regulador exige para el cálculo de la reserva técnica (tabla, interés, reglas de gastos, valor de rescate).  
+**Paso 2.** La reserva declarada no puede ser menor que la que resulte de ese método; se usa también para el valor de rescate mínimo (Tema 8).  
+**Resultado.** Método normativo para reserva y rescate.
+
+***
+
+
+**17. Tipo parcial: $G$**  
+Gastos 15% prima, 3 u.m./año, 60 u.m. iniciales; $P=90$, $\ddot{a}=10$. Calcular $G$.  
+**Solución.**  
+**Paso 1.** $G=(P+c+I/\ddot{a})/(1-k)$ con $k=0{,}15$, $c=3$, $I=60$.  
+**Paso 2.** $G=(90+3+60/10)/0{,}85=99/0{,}85\approx 116{,}47$ u.m.  
+**Resultado.** $G \approx 116{,}47$ u.m.
+
+***
+
+
+**18. Gross future loss**  
+Definir la pérdida futura bruta y la condición para $G$.  
+**Solución.**  
+**Paso 1.** Pérdida futura bruta $_0 L^{\text{g}}$ = valor presente de beneficios + valor presente de gastos − valor presente de primas brutas.  
+**Paso 2.** La prima bruta $G$ es la que hace $\mathbb{E}[_0 L^{\text{g}}]=0$ (equivalencia con gastos).  
+**Resultado.** $_0 L^{\text{g}}=\text{VP}(\text{beneficios})+\text{VP}(\text{gastos})-\text{VP}(\text{primas brutas})$; $G$ tal que $\mathbb{E}[_0 L^{\text{g}}]=0$.
+
+***
+
+
+**19. Paid-up**  
+Fórmula de la suma asegurada saldada (póliza *paid-up*).  
+**Solución.**  
+**Paso 1.** Al cesar el pago de primas en $k$, la reserva $_kV$ se intercambia por un seguro de vida entera desde $x+k$ de cuantía $b^{(S)}$: $_kV=b^{(S)} A_{x+k}$.  
+**Paso 2.** $b^{(S)}={}_kV/A_{x+k}$.  
+**Resultado.** La reserva en $k$ «compra» un seguro de vida entera de cuantía $b^{(S)}={}_kV/A_{x+k}$.
+
+***
+
+
+**20. Síntesis**  
+(a) Definir prima bruta. (b) Con $P=100$, $c=2$, $I=50$, $\ddot{a}=12$, $k=0{,}1$, calcular $G$.  
+**Solución.**  
+**Paso 1.** (a) Prima bruta: la que iguala en valor presente las primas brutas a los beneficios más los gastos. (b) $G=(P+c+I/\ddot{a})/(1-k)$.  
+**Paso 2.** $G=(100+2+50/12)/0{,}9\approx 118{,}0$ u.m.  
+**Resultado.** (a) Equivalencia con gastos. (b) $G \approx 118{,}0$ u.m.
+
+***
+
+
+**21. Zillmer: desarrollo algebraico (Tema 8)**  
+La reserva Zillmer en el año $k$ se define como $_kV^{\text{Zillmer}} = {}_kV - Z_k$, donde $Z_k$ es la parte del gasto de adquisición aún no amortizada. Si el gasto inicial es $\alpha$ y se amortiza linealmente en $m$ años, escribir $Z_k$ para $k < m$ y $k \geq m$.  
+**Solución.**  
+**Paso 1.** Amortización lineal en $m$ años: cuota anual $\alpha/m$; al año $k$ ($k < m$) lo no amortizado es $Z_k = \alpha - k\,(\alpha/m) = \alpha\,(1 - k/m)$.  
+**Paso 2.** Para $k \geq m$, $Z_k = 0$. Por tanto $_kV^{\text{Zillmer}} = {}_kV - \alpha\,(1 - k/m)$ para $k < m$ y $_kV^{\text{Zillmer}} = {}_kV$ para $k \geq m$.  
+**Resultado.** $Z_k=\alpha\,(1-k/m)$ si $k<m$, $Z_k=0$ si $k\geq m$; la normativa fija $\alpha$ y $m$.
+
+
+***
+
+**22. Valor de rescate bajo Ley Venezolana (Tema 8)**  
+Reserva en el año 8 = 3.000 u.m.; norma 90% a partir del año 7. Calcular valor de rescate e indicar qué podría exigir la Ley.  
+**Solución.**  
+**Paso 1.** Valor de rescate = 90% × reserva = 0{,}90 × 3.000 = 2.700 u.m.  
+**Paso 2.** La Ley suele establecer: (i) período de carencia; (ii) porcentajes por año (tabla legal); (iii) reserva a usar (neta, Zillmer o la que indique la norma).  
+**Resultado.** Rescate = 2.700 u.m.; consultar normativa vigente y resoluciones del supervisor.
+
+
+***
+
+**23. Método de los comisionados (Tema 8)**  
+Explicar qué es el «método de los comisionados» y su relación con Zillmer y valor de rescate mínimo.  
+**Solución.**  
+**Paso 1.** Es el método estándar que el regulador exige para el cálculo de la reserva técnica (tabla, interés, reglas de gastos, valor de rescate).  
+**Paso 2.** Incluye reglas para gastos de adquisición (Zillmer o similar) y fórmula del valor de rescate mínimo; la reserva declarada no puede ser menor que la que resulte de ese método.  
+**Resultado.** Método normativo (TEMA 8); vincula reserva Zillmer y rescate mínimo.
+
+
+***
+
+**24. Prima bruta con desarrollo paso a paso**  
+Seguro con $P=90$, gastos 15% de prima, 3 u.m./año por póliza, 60 u.m. iniciales. $\ddot{a}=10$. Obtener $G$ con todos los pasos.  
+**Solución.**  
+**Paso 1.** Ecuación: $G\,\ddot{a} = A + I + c\,\ddot{a} + k\,G\,\ddot{a}$ con $A = P\,\ddot{a}$, $k=0{,}15$, $c=3$, $I=60$, $\ddot{a}=10$.  
+**Paso 2.** $(1-k)\,G\,\ddot{a} = (P+c)\,\ddot{a} + I$ ⇒ $G = [(P+c)\,\ddot{a} + I] / [(1-k)\,\ddot{a}] = [(90+3)\times 10 + 60] / [0{,}85 \times 10] = 990/8{,}5 \approx 116{,}47$ u.m.  
+**Resultado.** $G \approx 116{,}47$ u.m.
+
+
+***
+
+**25. Rentas especiales (Tema 7): garantizada y con reembolso**  
+(a) VP de renta 10 años ciertos + vitalicia para (40). (b) Cómo se valora una renta con reembolso.  
+**Solución.**  
+**Paso 1.** (a) VP = $\ddot{a}_{\overline{10}|} + {}_{10}E_{40}\,\ddot{a}_{50}$ (cierto-y-vitalicia).  
+**Paso 2.** (b) Renta con reembolso: si fallece antes de agotar un capital $C$, se paga la diferencia al fallecimiento; VP = renta + seguro que paga el remanente no disfrutado.  
+**Resultado.** (a) $\ddot{a}_{\overline{10}|} + {}_{10}E_{40}\,\ddot{a}_{50}$. (b) Renta + seguro por el remanente (TEMA 7).
+
+***
+
+**26.** Valor de rescate 85% de la reserva. Reserva 2.400 u.m. Calcular rescate.  
+**Solución.**  
+**Paso 1.** Rescate = 0{,}85 × reserva.  
+**Paso 2.** $0{,}85\times 2\,400=2\,040$ u.m.  
+**Resultado.** 2\,040 u.m.
+
+***
+
+**27.** Póliza saldada: $b^{(S)}=_kV/A_{x+k}$. Si $_5V=1\,800$, $A_{55}=0{,}28$. Calcular $b^{(S)}$.  
+**Solución.**  
+**Paso 1.** $b^{(S)}={}_5V/A_{55}$.  
+**Paso 2.** $b^{(S)}=1\,800/0{,}28\approx 6\,429$ u.m.  
+**Resultado.** $b^{(S)}\approx 6\,429$ u.m.
+
+***
+
+**28.** Zillmer: reserva modificada $_kV^{\text{Z}}=_kV-\alpha\,(n-k)/n$. Con $_4V=1\,200$, $\alpha=100$, $n=20$. Calcular $_4V^{\text{Z}}$.  
+**Solución.**  
+**Paso 1.** $_4V^{\text{Z}}=_4V-\alpha\,(n-4)/n$; $(n-k)/n=16/20$.  
+**Paso 2.** $_4V^{\text{Z}}=1\,200-100\times 16/20=1\,120$ u.m.  
+**Resultado.** $_4V^{\text{Z}}=1\,120$ u.m.
+
+***
+
+**29.** $_0 L^{\text{g}}=0$: ecuación para prima bruta $G$.  
+**Solución.**  
+**Paso 1.** Equivalencia con gastos: $\mathbb{E}[_0 L^{\text{g}}]=0$ implica valor presente de primas = valor presente de beneficios + gastos.  
+**Paso 2.** $G\,\ddot{a}=A+\text{APV(gastos)}$.  
+**Resultado.** $G\,\ddot{a}=A+\text{APV(gastos)}$.
+
+***
+
+**30.** Loading $L=G-P$. Con $G=110$, $P=95$.  
+**Solución.**  
+**Paso 1.** Loading = prima bruta − prima neta.  
+**Paso 2.** $L=G-P=110-95=15$ u.m.  
+**Resultado.** $L=15$ u.m.
+
+**31.** Reserva bruta = reserva neta + reserva de gastos.  
+**Solución.**  
+**Paso 1.** Reserva bruta incluye beneficios y gastos futuros; reserva de gastos = valor presente de gastos futuros menos cargas futuras.  
+**Paso 2.** $_kV^{\text{g}}=_kV+_kV^e$ (reserva de gastos $_kV^e$).  
+**Resultado.** $_kV^{\text{g}}=_kV+_kV^e$.
+
+***
+
+**32.** Prima bruta con $k=0{,}10$, $c=2$, $I=50$, $P=90$, $\ddot{a}=11$.  
+**Solución.**  
+**Paso 1.** $(1-k)G\,\ddot{a}=P\,\ddot{a}+c\,\ddot{a}+I$.  
+**Paso 2.** $G=[(P+c)\ddot{a}+I]/[(1-k)\ddot{a}]$.  
+**Resultado.** $G$ se despeja de la ecuación de equivalencia con gastos.
+
+***
+
+**33.** Renta con reembolso: idea del VP.  
+**Solución.**  
+**Paso 1.** Si el asegurado fallece antes de recibir un capital garantizado, se paga el remanente al fallecimiento.  
+**Paso 2.** VP = renta vitalicia (o temporal) + seguro que paga en muerte el capital no disfrutado.  
+**Resultado.** Renta + seguro por el remanente.
+
+**34.** Renta garantizada 12 años + vitalicia (42).  
+**Solución.**  
+**Paso 1.** Cierto 12 años + vitalicia diferida 12 años para (42).  
+**Paso 2.** VP $=\ddot{a}_{\overline{12}|}+{}_{12}E_{42}\,\ddot{a}_{54}$.  
+**Resultado.** VP $=\ddot{a}_{\overline{12}|}+{}_{12}E_{42}\,\ddot{a}_{54}$.
+
+***
+
+**35.** Desgravamen: beneficio = saldo deudor en momento de muerte.  
+**Solución.**  
+**Paso 1.** Seguro que paga en fallecimiento el saldo vivo del préstamo (capital asegurado decreciente).  
+**Paso 2.** Se valora como seguro temporal con beneficio decreciente (amortización del préstamo).  
+**Resultado.** Seguro temporal con $b_k$ = saldo deudor.
+
+***
+
+**36.** Zillmer: cantidad deducida en año $k$ con amortización lineal $n$ años.  
+**Solución.**  
+**Paso 1.** Gastos de adquisición $\alpha$ amortizados linealmente en $n$ años; pendiente en $k$ = $\alpha\,(n-k)/n$.  
+**Paso 2.** Es la cantidad $Z_k$ que se deduce de la reserva neta para obtener la reserva Zillmer.  
+**Resultado.** $\alpha\,(n-k)/n$ pendiente de amortizar.
+
+**37.** Método comisionados: diferencia con reserva neta.  
+**Solución.**  
+**Paso 1.** El método comisionados aplica deducciones por comisiones (y a veces gastos de adquisición) no amortizadas.  
+**Paso 2.** La reserva resultante es modificada y suele ser menor que la reserva neta; es la base normativa para reserva y rescate.  
+**Resultado.** Deducción por comisiones no amortizadas; reserva modificada menor que la neta.
+
+***
+
+**38.** $G$ con $P=100$, $k=0{,}12$, $c=2{,}5$, $I=55$, $\ddot{a}=11$.  
+**Solución.**  
+**Paso 1.** $G=[(P+c)\ddot{a}+I]/[(1-k)\ddot{a}]$.  
+**Paso 2.** $G=[(100+2{,}5)\times 11+55]/[0{,}88\times 11]\approx 116{,}5$ u.m.  
+**Resultado.** $G \approx 116{,}5$ u.m.
+
+***
+
+**39.** Gross future loss $_0 L^{\text{g}}$: definición.  
+**Solución.**  
+**Paso 1.** Pérdida futura bruta = valor presente de lo que desembolsa la aseguradora menos valor presente de lo que cobra.  
+**Paso 2.** $_0 L^{\text{g}}$ = valor presente de beneficios + gastos − valor presente de primas brutas.  
+**Resultado.** VP(beneficios)+VP(gastos)−VP(primas brutas).
+
+**40.** Paid-up: suma asegurada reducida $b^{(S)}=_kV/A_{x+k}$.  
+**Solución.**  
+**Paso 1.** Al cesar primas en $k$, la reserva $_kV$ se intercambia por un seguro de vida entera desde $x+k$ de cuantía $b^{(S)}$.  
+**Paso 2.** $b^{(S)}={}_kV/A_{x+k}$; es la cobertura que se puede «comprar» con la reserva acumulada.  
+**Resultado.** $b^{(S)}={}_kV/A_{x+k}$.
+
+***
+
+**41.** Zillmer: desarrollo $_kV^{\text{Z}}=_kV-\alpha\,(n-k)/n$ para $k\leq n$.  
+**Solución.**  
+**Paso 1.** Reserva Zillmer = reserva neta − gastos de adquisición no recuperados.  
+**Paso 2.** Con amortización lineal en $n$ años: cantidad pendiente $\alpha\,(n-k)/n$, luego $_kV^{\text{Z}}=_kV-\alpha\,(n-k)/n$.  
+**Resultado.** $_kV^{\text{Z}}=_kV-\alpha\,(n-k)/n$ para $k \leq n$.
+
+***
+
+**42.** Ley Venezolana: valor de rescate mínimo (porcentaje y carencia).  
+**Solución.**  
+**Paso 1.** La norma suele fijar el valor de rescate mínimo como porcentaje de la reserva (neta o modificada) según los años de póliza.  
+**Paso 2.** Puede establecer período de carencia (años sin derecho a rescate o con 0%).  
+**Resultado.** Según norma: % de reserva según años; posible carencia inicial.
+
+**43.** Comisionados: deducción por comisiones.  
+**Solución.**  
+**Paso 1.** Método que deduce de la reserva las comisiones de renovación aún no amortizadas (similar a Zillmer para gastos de adquisición).  
+**Paso 2.** Reserva modificada menor que la neta; uso normativo para reserva técnica y valor de rescate.  
+**Resultado.** Similar a Zillmer pero por comisiones de renovación no amortizadas.
+
+***
+
+**44.** Prima bruta: despejar $G$ cuando gastos son $I$ inicial, $c$ por póliza/año, $k\,G$ por prima.  
+**Solución.**  
+**Paso 1.** Ecuación: $G\,\ddot{a}=P\,\ddot{a}+c\,\ddot{a}+I+k\,G\,\ddot{a}$ (con $A=P\,\ddot{a}$).  
+**Paso 2.** $(1-k)G\,\ddot{a}=P\,\ddot{a}+c\,\ddot{a}+I$ ⇒ $G=[P\,\ddot{a}+c\,\ddot{a}+I]/[(1-k)\ddot{a}]$.  
+**Resultado.** $G=[P\,\ddot{a}+c\,\ddot{a}+I]/[(1-k)\ddot{a}]$.
+
+***
+
+**45.** Renta cierto-y-vitalicia 20 años (35).  
+**Solución.**  
+**Paso 1.** Cierto 20 años + vitalicia diferida 20 años para (35).  
+**Paso 2.** VP $=\ddot{a}_{\overline{20}|}+{}_{20}E_{35}\,\ddot{a}_{55}$.  
+**Resultado.** VP $=\ddot{a}_{\overline{20}|}+{}_{20}E_{35}\,\ddot{a}_{55}$.
+
+**46.** Valor de rescate = $\theta\,\times$ reserva (modificada).  
+**Solución.**  
+**Paso 1.** El valor de rescate suele expresarse como un porcentaje $\theta$ de la reserva (neta o modificada).  
+**Paso 2.** $\theta$ depende de los años de póliza según la tabla legal.  
+**Resultado.** Rescate = $\theta \times$ reserva; $\theta$ según tabla legal (años de póliza).
+
+***
+
+**47.** $_3V^{\text{Z}}$ con $_3V=1\,100$, Zillmer $\alpha=80$, $n=15$.  
+**Solución.**  
+**Paso 1.** $_3V^{\text{Z}}=_3V-\alpha\,(n-3)/n$; $(n-3)/n=12/15$.  
+**Paso 2.** $_3V^{\text{Z}}=1\,100-80\times 12/15=1\,036$ u.m.  
+**Resultado.** $_3V^{\text{Z}}=1\,036$ u.m.
+
+***
+
+**48.** Reserva de gastos: APV de gastos futuros − valor presente de cargas futuras.  
+**Solución.**  
+**Paso 1.** Reserva de gastos = valor presente de gastos futuros − valor presente de la parte de las primas brutas que los financia.  
+**Paso 2.** Cuantifica la parte de la prima bruta que aún debe «trabajar» para cubrir gastos futuros.  
+**Resultado.** Parte de la prima bruta que cubre gastos; $_kV^e={}_kV^{\text{g}}-{}_kV$.
+
+**49.** Desgravamen: beneficio en año $k$ = saldo vivo del préstamo.  
+**Solución.**  
+**Paso 1.** En el desgravamen el capital asegurado en el año $k$ es el saldo deudor del préstamo en ese momento.  
+**Paso 2.** Se valora como seguro temporal con beneficio $b_k$ = deuda pendiente (decreciente).  
+**Resultado.** Seguro temporal con $b_k$ = saldo vivo del préstamo.
+
+***
+
+**50.** Síntesis: escribir ecuación de equivalencia con gastos ($G$, $P$, $k$, $c$, $I$, $\ddot{a}$).  
+**Solución.**  
+**Paso 1.** Valor presente de primas brutas = valor presente de beneficios + valor presente de gastos.  
+**Paso 2.** Con $A=P\,\ddot{a}$, gasto inicial $I$, $c$ por año, $k\,G$ por prima: $G\,\ddot{a}=A+I+c\,\ddot{a}+k\,G\,\ddot{a}$.  
+**Resultado.** $(1-k)G\,\ddot{a}=(P+c)\,\ddot{a}+I$; $G=[(P+c)\,\ddot{a}+I]/[(1-k)\,\ddot{a}]$.
+
+
+***
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe calcular o definir lo indicado y, cuando se pida, relacionar con la normativa. Cada ítem es independiente. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Si el valor de rescate es el 90% de la reserva y la reserva neta en la fecha de rescate es 3.000 u.m., calcular el valor de rescate.
+
+***
+
+2. **Se pide:** Definir «póliza saldada» (*paid-up*) y explicar cómo se obtiene la suma asegurada reducida $b^{(S)}$.
+
+
+***
+
+ Explicar el método Zillmer: qué cantidad se deduce de la reserva y cuál es su uso normativo.
+
+
+***
+
+ Definir la pérdida futura bruta $_0 L^{\text{g}}$ y la condición $\mathbb{E}[_0 L^{\text{g}}]=0$ para la prima bruta.
+
+
+***
+
+ (50) deja de pagar primas; $_5V_{50}=2\,000$ u.m., $A_{55}=0{,}25$. Calcular la suma asegurada saldada $b^{(S)}$ (paid-up).
+
+
+***
+
+ **Se pide:** Prima bruta con gastos: 10% de cada prima, 2 u.m. por póliza y año, 50 u.m. iniciales. Prima neta $P=100$, $\ddot{a}=12$. Calcular la prima bruta $G$.
+
+
+***
+
+ Escribir la ecuación de equivalencia cuando hay gastos: $G\,\ddot{a} = A + \text{APV(gastos)}$, e indicar qué incluye cada término.
+
+
+***
+
+ Definir «reserva bruta» y «reserva de gastos» y su relación.
+
+
+***
+
+ **Se pide:** (a) Definir la pérdida futura bruta. (b) Calcular la prima bruta $G$ dados $P$, $k$, $c$, $I$ y $\ddot{a}$.
+
+
+***
+
+ Definir el *loading* (recargo) como $G - P$ e interpretar su papel en la prima comercial.
+
+
+***
+
+ Describir una renta con devolución (*refund annuity*) y escribir el valor presente según TEMA 7.
+
+
+***
+
+ Escribir la fórmula del valor presente de una renta «cierto-y-vitalicia» (garantizada $n$ años y luego vitalicia).
+
+
+***
+
+ **Se pide:** Método Zillmer: si la reserva neta en el año 3 es 1.200 u.m. y la cantidad de Zillmer (deducción) es 80 u.m., calcular la reserva modificada en el año 3.
+
+
+***
+
+ Explicar la idea del beneficio decreciente en el desgravamen hipotecario.
+
+
+***
+
+ Describir el método comisionados (TEMA 8) y su diferencia con la reserva neta.
+
+
+***
+
+ Definir la «reserva por prima bruta» (*gross premium reserve*) y su uso.
+
+
+***
+
+ **Se pide:** (50) deja de pagar en el año 5. $_5V_{50}=2\,500$ u.m., $A_{55}=0{,}30$. Calcular la suma asegurada saldada $b^{(S)}$.
+
+
+***
+
+ Si los gastos son proporcionales a la prima ($k\,G$ por cada prima), indicar cómo queda la ecuación de equivalencia para despejar $G$.
+
+
+***
+
+ Mencionar el tratamiento normativo de la provisión para bonos y comisiones (si aplica en el programa).
+
+
+***
+
+ **Se pide:** (a) Definir prima bruta. (b) Valor de rescate al 85% de la reserva; reserva 2.800 u.m. Calcular el rescate. (c) Si $_4V=1\,600$ u.m. y $A_{54}=0{,}32$, calcular la suma saldada.
+
+
+***
+
+ **Se pide:** Reserva Zillmer: si $_5V=1\,500$ u.m. y la cantidad de Zillmer no amortizada en el año 5 es 100 u.m., calcular $_5V^{\text{Zillmer}}$ e interpretar.
+
+
+***
+
+ **Se pide:** Indicar qué artículos o resoluciones (Gaceta) suelen fijar el valor de rescate mínimo: porcentaje de reserva y período de carencia.
+
+
+***
+
+ Ecuación de equivalencia con gastos: despejar $G$ cuando hay gasto inicial $I$, gasto $c$ por póliza y año, y fracción $k$ de cada prima. Aplicar con $P=95$, $k=0{,}12$, $c=2{,}5$, $I=55$, $\ddot{a}=11$.
+
+
+***
+
+ **Se pide:** Renta con término cierto 15 años y luego vitalicia para (35). Escribir la fórmula del valor presente con $\ddot{a}_{\overline{15}|}$, ${}_{15}E_{35}$, $\ddot{a}_{50}$.
+
+
+***
+
+ **Se pide:** Comparar el método comisionados con la reserva neta: diferencias y cuándo se usa cada uno en la normativa.
+
+
+***
+
+ Valor de rescate 88% de la reserva; reserva 2.600 u.m. Calcular rescate.  
+
+***
+
+ Definir póliza saldada y dar fórmula $b^{(S)}=_kV/A_{x+k}$.  
+
+***
+
+ **Se pide:** Zillmer: $_6V=1\,400$ u.m., deducción en año 6 = 90 u.m. Calcular $_6V^{\text{Z}}$.  
+
+***
+
+ Escribir $_0 L^{\text{g}}$ (pérdida futura bruta) y condición $\mathbb{E}[_0 L^{\text{g}}]=0$.  
+
+***
+
+ (55) deja de pagar; $_6V_{55}=2\,200$ u.m., $A_{61}=0{,}29$. Suma asegurada saldada $b^{(S)}$.  
+
+***
+
+ Prima bruta $G$ con gastos: 12% de prima, 3 u.m./póliza/año, 60 u.m. iniciales. $P=95$, $\ddot{a}=11$.  
+
+***
+
+ Ecuación de equivalencia con gastos: $G\,\ddot{a}=A+\text{APV(gastos)}$. Desglosar gastos.  
+
+***
+
+ Reserva bruta y reserva de gastos: definición y relación.  
+
+***
+
+ **Se pide:** (a) Pérdida futura bruta. (b) Calcular $G$ con $P$, $k$, $c$, $I$, $\ddot{a}$ dados.  
+
+***
+
+ Loading: definir e interpretar $G-P$.  
+
+***
+
+ Renta con devolución (refund): idea del valor presente (Tema 7).  
+
+***
+
+ Fórmula VP renta «cierto-y-vitalicia» ($n$ años ciertos + vitalicia).  
+
+***
+
+ **Se pide:** Zillmer: reserva neta año 4 = 1.300 u.m., deducción 75 u.m. Reserva modificada año 4.  
+
+***
+
+ Desgravamen hipotecario: beneficio decreciente, idea.  
+
+***
+
+ Método comisionados (Tema 8): descripción y diferencia con reserva neta.  
+
+***
+
+ Reserva por prima bruta (gross premium reserve): definición.  
+
+***
+
+ **Se pide:** (50) deja de pagar en año 6. $_6V_{50}=2\,600$, $A_{56}=0{,}31$. Calcular $b^{(S)}$.  
+
+***
+
+ Gastos proporcionales a la prima ($k\,G$): cómo queda la ecuación para $G$.  
+
+***
+
+ Provisión para bonos y comisiones (normativa, si aplica).  
+
+***
+
+ **Se pide:** (a) Prima bruta. (b) Rescate 85%, reserva 2.700. (c) $_5V=1\,500$, $A_{55}=0{,}27$. Suma saldada.  
+
+***
+
+ Reserva Zillmer: $_7V=1\,600$, Zillmer no amortizado 80. $_7V^{\text{Z}}$.  
+
+***
+
+ Ley Venezolana: valor de rescate mínimo (Gaceta, porcentaje, carencia).  
+
+***
+
+ Despejar $G$ en ecuación con gastos $I$, $c$, $k$. Aplicar $P=92$, $k=0{,}11$, $c=2{,}2$, $I=52$, $\ddot{a}=10{,}5$.  
+
+***
+
+ Renta término cierto 15 años + vitalicia (38). Fórmula con $\ddot{a}_{\overline{15}|}$, ${}_{15}E_{38}$, $\ddot{a}_{53}$.  
+
+***
+
+ Comparar método comisionados y reserva neta: cuándo se usa cada uno (normativa).
+
+***
+
+## Práctica para el 3er Parcial
+
+**Contenido evaluado (caps. 12–13):** Reservas modificadas (Ley Venezolana, amortización 20 años), valor de rescate (VR) por método prospectivo, porcentaje legal, Zillmer, primas comerciales (gastos, recargo), seguro saldado/prorrogado, método comisionados.
+
+A continuación se resuelven con el **mayor detalle** dos exámenes tipo basados en esos modelos: **(A)** Reservas modificadas Ley Venezolana y valor de rescate en $t=15$; **(B)** Vida entera 10.000 u.m., reservas LV, VR en $t=12$, Zillmer y método comisionados. Tabla e interés según curso (ej. Venezolana Hombres, 8\%).
+
+***
+
+## Examen tipo A (3er Parcial): Ley Venezolana y valor de rescate
+
+Basado en modelos de tercer parcial: reservas modificadas y VR.
+
+### Enunciado (Examen tipo A)
+
+- **Base:** Contrato con reserva neta $_tV$ y gastos de adquisición amortizables en 20 años.
+- **Se pide:** **(i)** Modificar las reservas durante **20 años** por el método de la **Ley Venezolana**. Obtener expresión genérica para $_tV^{\text{LV}}$, expresiones para $t=1$ y para $t>1$, y condición de no negatividad. **(ii)** Desarrollar la **fórmula del Valor de Rescate** en $t=15$ según la formulación de la prima comercial (método prospectivo). Indicar los **conceptos de ajuste** respecto a la reserva terminal neta.
+
+### Línea del tiempo (Examen tipo A)
+
+En la línea del tiempo se muestra **cuándo** se aplica la modificación de reservas (primeros 20 años) y en qué instante se calcula el valor de rescate (ej. $t=15$):
+
+| Años póliza $t$ | Reserva neta $_tV$ | Reserva modificada LV $_tV^{\text{LV}}$ | Valor de rescate (ej.) |
+|-----------------|--------------------|----------------------------------------|-------------------------|
+| 0–20            | $_tV$              | $_tV - Z_t$ ($Z_t$ = gastos no amortizados) | Según % legal de $_tV^{\text{LV}}$ |
+| $t=15$          | $_15V$             | $_15V^{\text{LV}} = {}_15V - \alpha\cdot 5/20$ | $\text{VR}_{15} = \theta_{15}\cdot {}_15V^{\text{LV}}$ |
+| $t>20$          | $_tV$              | $_tV^{\text{LV}} = {}_tV$ (sin deducción) | — |
+
+```{mermaid}
+%%| fig-width: 4
+%%| fig-cap: "Línea del tiempo — Examen A (3er Parcial): reservas LV y VR"
+gantt
+    title Reserva modificada y VR
+    dateFormat X
+    axisFormat %s
+    section Reserva LV
+    Deducción activa (0 a 20 años) :lv, 0, 20
+    Sin deducción (t>20) :sd, 20, 10
+    section Valor rescate
+    VR en t=15 (ej.) :vr, 15, 1
+```
+
+### Solución detallada (Examen tipo A)
+
+**(i) Reservas modificadas Ley Venezolana (20 años)**
+
+- La Ley exige constituir reservas técnicas; el método modificado deduce de la reserva neta la parte de **gastos de adquisición** aún no recuperada.
+- Sea $\alpha$ el gasto de adquisición por unidad de suma asegurada (con tope legal). Amortización lineal en 20 años: $Z_t = \alpha\cdot (20-t)/20$ para $t=0,1,\ldots,20$; $Z_t=0$ para $t\geq 20$.
+
+**Expresión genérica**
+
+- Para $t=0,\ldots,20$: $_tV^{\text{LV}} = {}_tV - \alpha\,\dfrac{20-t}{20}$.
+- Para $t>20$: $_tV^{\text{LV}} = {}_tV$ (sin deducción).
+
+**Caso $t=1$**
+
+- $_1V^{\text{LV}} = {}_1V - \alpha\,\dfrac{19}{20}$.
+- La reserva modificada en el primer aniversario es la reserva neta menos 19/20 del gasto inicial.
+
+**Caso $t>1$ ($t=2,\ldots,20$)**
+- $_tV^{\text{LV}} = {}_tV - \alpha\,\dfrac{20-t}{20}$; la deducción disminuye hasta anularse en $t=20$.
+
+**Condición de no negatividad**
+- La Ley suele exigir $_tV^{\text{LV}} \geq 0$. Si en algún año resulta negativo, se toma $_tV^{\text{LV}}=0$ o se limita $\alpha$ según la norma.
+
+***
+
+**(ii) Valor de rescate en $t=15$ (método prospectivo, formulación prima comercial)**
+
+- **Reserva bruta en 15:** $_{15}V^{\text{g}} = \text{APV}(\text{beneficios}) + \text{APV}(\text{gastos futuros}) - G\cdot \ddot{a}_{\text{futuro}}$.
+- **Valor de rescate (Ley venezolana):** porcentaje de la reserva (modificada) en la fecha de rescate.
+- **Fórmula:** $\text{VR}_{15} = \theta_{15}\cdot {}_15V^{\text{LV}} = \theta_{15}\cdot \bigl({}_15V - \dfrac{\alpha}{4}\bigr)$ (en $t=15$ faltan 5 años de 20 por amortizar: $\alpha\cdot 5/20 = \alpha/4$).
+
+**Conceptos de ajuste respecto a la reserva terminal (neta $_15V$)**
+
+1. **Gastos de adquisición no recuperados:** se deduce $\alpha/4$; el VR no entrega al asegurado una parte que la aseguradora aún no ha recuperado vía primas.
+2. **Porcentaje legal $\theta_{15}$:** la Ley puede fijar un escalamiento (0\% a 100\%) según el año de rescate.
+3. **Mínimo por primas pagadas:** el VR a veces no puede ser menor que un porcentaje de las primas pagadas (menos gastos).
+4. **Reserva bruta vs. neta:** si el VR se calcula sobre la reserva bruta (prima $G$), se incorporan primas comerciales y gastos futuros; la diferencia con la reserva neta es la reserva de gastos.
+
+**Resumen**
+
+| Concepto | Expresión |
+|----------|-----------|
+| Reserva modificada ($t\leq 20$) | $_tV^{\text{LV}} = {}_tV - \alpha(20-t)/20$ |
+| Caso $t=1$ | $_1V^{\text{LV}} = {}_1V - 19\alpha/20$ |
+| Valor de rescate en 15 | $\text{VR}_{15} = \theta_{15}\cdot {}_15V^{\text{LV}}$ |
+
+***
+
+## Examen tipo B (3er Parcial): Vida entera, LV, VR, Zillmer y comisionados
+
+Basado en modelos de tercer parcial: vida entera con reservas modificadas, valor de rescate, Zillmer y método comisionados.
+
+### Enunciado (Examen tipo B)
+
+Base: **seguro de vida entera** por 10.000 u.m. para (40), primas niveladas anuales. Tabla e interés según curso (ej. Venezolana Hombres, 8\%).
+
+**Se pide:**
+
+**(a)** Reservas modificadas por el **método Ley Venezolana** (amortización de gastos de adquisición en 20 años). Dar la expresión genérica de $_tV^{\text{LV}}$, las expresiones para $t=3$ y para $t=22$, y explicar por qué en $t>20$ no hay deducción.
+
+**(b)** **Valor de rescate** en $t=12$ según la formulación de la prima comercial (método prospectivo). Escribir la fórmula del VR en función de la reserva modificada y del porcentaje legal; indicar los **conceptos de ajuste** respecto a la reserva terminal neta $_12V$.
+
+**(c)** Comparar **reserva Zillmer** y **reserva neta** en $t=5$: escribir $_5V^{\text{Zillmer}}$ en función de $_5V$ y de la cantidad de Zillmer no amortizada; dar un ejemplo numérico si $_5V=320$ u.m. y la deducción Zillmer en $t=5$ es 60 u.m.
+
+**(d)** **Método comisionados:** en una frase, en qué se diferencia de la reserva neta y cuándo se usa en la normativa.
+
+### Solución detallada (Examen tipo B)
+
+***
+
+#### (a) Reservas modificadas Ley Venezolana (20 años)
+
+**Expresión genérica**
+
+- Sea $\alpha$ el gasto de adquisición por unidad de suma asegurada (tope legal). Amortización **lineal** en 20 años: la cantidad aún no recuperada en $t$ es $Z_t = \alpha\cdot (20-t)/20$ para $t=0,1,\ldots,20$, y $Z_t=0$ para $t\geq 20$.
+- **Reserva modificada Ley Venezolana:**
+  - Para $t=0,\ldots,20$: $_tV^{\text{LV}} = {}_tV - \alpha\,\dfrac{20-t}{20}$.
+  - Para $t>20$: $_tV^{\text{LV}} = {}_tV$ (sin deducción).
+
+**Caso $t=3$**
+
+- $_3V^{\text{LV}} = {}_3V - \alpha\,\dfrac{20-3}{20} = {}_3V - \alpha\cdot \dfrac{17}{20}$.
+- La reserva modificada en el tercer aniversario es la reserva neta menos 17/20 del gasto inicial (aún no recuperado).
+
+**Caso $t=22$**
+
+- Como $22>20$, no hay deducción por gastos de adquisición: $_22V^{\text{LV}} = {}_22V$.
+- **Motivo:** La Ley considera que en 20 años los gastos de adquisición quedan amortizados; a partir de $t=20$ la reserva técnica modificada coincide con la reserva neta.
+
+**Condición de no negatividad**
+
+- Si en algún $t\leq 20$ resultara $_tV^{\text{LV}}<0$, la normativa suele exigir $_tV^{\text{LV}}=0$ o limita $\alpha$ para que la reserva modificada no sea negativa.
+
+***
+
+#### (b) Valor de rescate en $t=12$ (método prospectivo, formulación prima comercial)
+
+**Fórmula**
+
+- El valor de rescate en la fecha $t=12$ es un **porcentaje legal** $\theta_{12}$ de la **reserva técnica modificada** en esa fecha:
+  $$\text{VR}_{12} = \theta_{12}\cdot {}_12V^{\text{LV}} = \theta_{12}\cdot \left({}_12V - \alpha\cdot \frac{20-12}{20}\right) = \theta_{12}\cdot \left({}_12V - \alpha\cdot \frac{8}{20}\right).$$
+
+**Conceptos de ajuste respecto a la reserva terminal neta $_12V$**
+
+1. **Gastos de adquisición no recuperados:** Se deduce $\alpha\cdot 8/20$; el asegurado no recibe esa parte porque la aseguradora aún no la ha recuperado vía primas.
+2. **Porcentaje legal $\theta_{12}$:** La Ley fija un escalamiento (por ejemplo 0\% a 100\%) según los años de vigencia; así el VR no supera el 100\% de la reserva modificada y puede ser menor en los primeros años.
+3. **Mínimo por primas pagadas:** En algunas normativas el VR no puede ser menor que un porcentaje de las primas pagadas (menos gastos), para proteger al asegurado.
+4. **Reserva bruta vs. neta:** Si el VR se calculara sobre la reserva por prima bruta, se incorporarían primas comerciales y gastos futuros; la diferencia con la reserva neta es la reserva de gastos. En la Ley venezolana suele usarse la reserva **modificada** (neta menos Zillmer/Ley).
+
+***
+
+#### (c) Reserva Zillmer vs. reserva neta en $t=5$
+
+**Fórmula**
+
+- **Reserva Zillmer** en $t=5$: $_5V^{\text{Zillmer}} = {}_5V - Z_5$, donde $Z_5$ es la **cantidad de Zillmer no amortizada** en $t=5$.
+- Con amortización lineal en $n$ años (ej. $n=20$): $Z_5 = \alpha\cdot (20-5)/20 = \alpha\cdot 15/20$.
+- Por tanto: $_5V^{\text{Zillmer}} = {}_5V - \alpha\cdot \dfrac{15}{20}$.
+
+**Ejemplo numérico**
+
+- Si $_5V = 320$ u.m. y la **deducción Zillmer en $t=5$** es 60 u.m. (es decir $Z_5=60$), entonces:
+  - $_5V^{\text{Zillmer}} = 320 - 60 = 260$ u.m.
+- Interpretación: el asegurado, en caso de rescate, no recibiría la reserva neta completa sino la reserva neta menos la parte de gastos de adquisición aún no recuperados (260 u.m. en el ejemplo).
+
+***
+
+#### (d) Método comisionados
+
+- **Diferencia con la reserva neta:** El método comisionados deduce de la reserva no solo los gastos de adquisición (como Zillmer/Ley), sino también las **comisiones de renovación** aún no amortizadas; la reserva resultante es menor que la neta y que la Zillmer.
+- **Uso en la normativa:** Se utiliza cuando la Ley o el regulador exigen constituir reservas que reflejen las comisiones comprometidas a los intermediarios; así la reserva técnica es más conservadora y evita sobrevalorar el pasivo.
+
+***
+
+### Resumen de fórmulas (Examen B — 3er Parcial)
+
+| Concepto | Expresión |
+|----------|-----------|
+| Reserva LV ($t\leq 20$) | $_tV^{\text{LV}} = {}_tV - \alpha(20-t)/20$ |
+| Reserva LV ($t>20$) | $_tV^{\text{LV}} = {}_tV$ |
+| Valor de rescate en $t$ | $\text{VR}_t = \theta_t\cdot {}_tV^{\text{LV}}$ |
+| Reserva Zillmer en $t$ | $_tV^{\text{Z}} = {}_tV - Z_t$ ($Z_t$ = deducción no amortizada) |
+
+***
+
+*Referencias: Jordan [@jordan1982]; Neill [@neill1977]; Weishaus [@weishaus2013]; Promislow [@promislow2015]; Klugman et al. [@klugman2012] (modelos de pérdidas).*

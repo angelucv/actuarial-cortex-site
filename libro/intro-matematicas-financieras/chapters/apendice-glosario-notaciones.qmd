@@ -1,0 +1,51 @@
+---
+number: false
+---
+
+# Apéndice: Glosario de notaciones {#apendice-glosario .unnumbered}
+
+Este apéndice resume la notación utilizada en la guía.
+
+## Capital, tiempo y montos
+
+| Símbolo | Significado |
+|--------|-------------|
+| $K$ | Capital inicial |
+| $t$, $n$ | Tiempo (en períodos); $n$ suele ser entero |
+| $A(t)$ | Monto acumulado en el tiempo $t$ |
+| $a(t)$ | Función de acumulación (monto de 1 UM en $t$) |
+| $I_n$ | Interés ganado en el $n$-ésimo período |
+| $v$ | Factor de descuento: $v = (1+i)^{-1}$ |
+
+## Tasas
+
+| Símbolo | Significado |
+|--------|-------------|
+| $i$ | Tasa efectiva de interés por período |
+| $d$ | Tasa efectiva de descuento |
+| $i^{(m)}$ | Tasa nominal de interés convertible $m$ veces al año |
+| $d^{(m)}$ | Tasa nominal de descuento convertible $m$ veces al año |
+| $\delta$ | Fuerza de interés (intensidad instantánea) |
+
+## Rentas (anualidades)
+
+| Símbolo | Significado |
+|--------|-------------|
+| $a_{\overline{n}|}$ | Valor presente de renta inmediata unitaria, $n$ pagos |
+| $s_{\overline{n}|}$ | Valor acumulado de renta inmediata unitaria, $n$ pagos |
+| $\ddot{a}_{\overline{n}|}$ | Valor presente de renta anticipada unitaria, $n$ pagos |
+| $\ddot{s}_{\overline{n}|}$ | Valor acumulado de renta anticipada unitaria, $n$ pagos |
+| $\bar{a}_{\overline{n}|}$, $\bar{s}_{\overline{n}|}$ | Valor presente y acumulado de renta continua unitaria |
+| $(Ia)_{\overline{n}|}$, $(Da)_{\overline{n}|}$ | VP renta creciente (1,2,…,n) y decreciente (n,…,1) |
+| $_m|a_{\overline{n}|}$ | VP renta inmediata diferida $m$ periodos ($m$ periodos sin pago, luego $n$ pagos) |
+
+Cuando la tasa se indica explícitamente: $a_{\overline{n}|i}$, $s_{\overline{10}|0{,}05}$, etc.
+
+## Relaciones útiles
+
+- $s_{\overline{n}|} = a_{\overline{n}|}(1+i)^n$; $\ddot{a}_{\overline{n}|} = (1+i)\,a_{\overline{n}|}$; $\ddot{s}_{\overline{n}|} = (1+i)\,s_{\overline{n}|}$.
+- $\ddot{a}_{\overline{n}|} = 1 + a_{\overline{n-1}|}$; $\ddot{s}_{\overline{n}|} = s_{\overline{n+1}|} - 1$.
+- Perpetuidad: $a_{\overline{\infty}|} = 1/i$, $\ddot{a}_{\overline{\infty}|} = 1/d$.
+- Renta continua: $\bar{a}_{\overline{n}|} = (1-v^n)/\delta$, con $\delta = \ln(1+i)$.
+
+Para rentas diferidas, perpetuidades y otras variantes se usan los mismos símbolos con subíndices o argumentos adicionales según el contexto.

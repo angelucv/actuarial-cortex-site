@@ -1,0 +1,891 @@
+[
+  {
+    "objectID": "servicios/index.html",
+    "href": "servicios/index.html",
+    "title": "Servicios y Demos Analíticos",
+    "section": "",
+    "text": "El eje de Extensión de Actuarial Cortex vincula el hub con la industria mediante consultoría estratégica, observatorio de variables, servicios al sector y la oferta de Cortex Suite: plataforma modular de tecnología a medida y analítica de alto nivel para transformar la operatividad de su organización. Transferencia tecnológica y aplicaciones directas de la investigación publicada en Resources y en los libros (mortalidad, reservas, riesgo territorial)."
+  },
+  {
+    "objectID": "servicios/index.html#consultoría-estratégica-portafolio",
+    "href": "servicios/index.html#consultoría-estratégica-portafolio",
+    "title": "Servicios y Demos Analíticos",
+    "section": "Consultoría estratégica — Portafolio",
+    "text": "Consultoría estratégica — Portafolio\n\nActividad Aseguradora: diseño técnico de productos, cálculo preciso de reservas, auditorías externas.\nBanca y Seguridad Social: modelado de riesgo de crédito, valuaciones de sostenibilidad fiscal.\nSectores no tradicionales: modelado actuarial del riesgo de deserción (churn), determinación de baremos, cuantificación financiera de riesgo operacional.\n\nCasos de estudio: documentos que explican problemas resueltos sin revelar datos confidenciales (en desarrollo)."
+  },
+  {
+    "objectID": "servicios/index.html#formación-y-cursos",
+    "href": "servicios/index.html#formación-y-cursos",
+    "title": "Servicios y Demos Analíticos",
+    "section": "Formación y cursos",
+    "text": "Formación y cursos\nActuarial Cortex ofrece cursos y rutas de aprendizaje en análisis de datos, modelado actuarial y matemáticas financieras con R y Python: desde fundamentos analíticos hasta machine learning y despliegue de modelos. Los programas están orientados a profesionales de banca, seguros y pensiones. Ver Cursos para el detalle de módulos y ofertas."
+  },
+  {
+    "objectID": "servicios/index.html#observatorio-actuarial-dashboard",
+    "href": "servicios/index.html#observatorio-actuarial-dashboard",
+    "title": "Servicios y Demos Analíticos",
+    "section": "Observatorio actuarial (Dashboard)",
+    "text": "Observatorio actuarial (Dashboard)\nVisualizaciones interactivas de variables biométricas (mortalidad), financieras (tasas de interés) y demográficas; boletines de indicadores mensuales. Detalle en Observatorio."
+  },
+  {
+    "objectID": "servicios/index.html#servicios-al-sector",
+    "href": "servicios/index.html#servicios-al-sector",
+    "title": "Servicios y Demos Analíticos",
+    "section": "Servicios al sector",
+    "text": "Servicios al sector\nFormulario de solicitud de asesoría técnica y convenios de pasantías industriales. Contacto."
+  },
+  {
+    "objectID": "servicios/index.html#demos-y-galería",
+    "href": "servicios/index.html#demos-y-galería",
+    "title": "Servicios y Demos Analíticos",
+    "section": "Demos y galería",
+    "text": "Demos y galería\n\nDemos interactivos: simuladores de reservas IBNR, mapas de riesgo de mortalidad (tarjetas siguientes). Para aplicaciones Streamlit o Shiny se utilizan iframes optimizados.\nFormación continua y talleres: sesiones orientadas a actuarios, reguladores y profesionales; alineadas con los materiales académicos y los libros del hub.\nInformes técnicos y policy briefs: síntesis de hallazgos en formato breve con recomendaciones de política (IVSS, Sudeaseg, aseguradoras, decisores).\nReproducibilidad: cuando el código de un demo esté en repositorio público, se enlaza desde la descripción.\n\nContacto a través de Miembros y Contacto."
+  },
+  {
+    "objectID": "servicios/index.html#galería-de-demos",
+    "href": "servicios/index.html#galería-de-demos",
+    "title": "Servicios y Demos Analíticos",
+    "section": "Galería de demos",
+    "text": "Galería de demos\nA continuación se listan los demos disponibles. Añade capturas en assets/img/ (por ejemplo dashboard-preview.png) y referéncialas en listing.contents para mostrar miniaturas en cada tarjeta."
+  },
+  {
+    "objectID": "servicios/demo-ibnr.html",
+    "href": "servicios/demo-ibnr.html",
+    "title": "Demo: Reservas Estocásticas IBNR",
+    "section": "",
+    "text": "Reemplaza https://tu-app-streamlit.app/ por la URL real de tu aplicación Streamlit (por ejemplo, en Streamlit Cloud o tu propio servidor) cuando esté desplegada."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/index.html",
+    "href": "docencia/plataforma-cursos/index.html",
+    "title": "Plataforma de cursos",
+    "section": "",
+    "text": "Los cursos de Actuarial Cortex se imparten en Moodle, la plataforma de enseñanza en línea de referencia utilizada por universidades e instituciones en todo el mundo. Inscripciones, materiales y seguimiento están disponibles en el aula virtual del Centro.\nAcceso: Plataforma de cursos (Moodle)"
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/index.html#módulos-ofrecidos",
+    "href": "docencia/plataforma-cursos/index.html#módulos-ofrecidos",
+    "title": "Plataforma de cursos",
+    "section": "Módulos ofrecidos",
+    "text": "Módulos ofrecidos\nLa formación se organiza en cuatro módulos progresivos:\nMódulo 1 — Fundamentos analíticos en entornos corporativos\nDirigido a analistas de negocios, contadores y profesionales que migran de Excel a R y Python. Configuración de entornos (Anaconda, RStudio), introducción a Python para datos y fundamentos de R para estadística.\nMódulo 2 — Ingeniería de datos y visualización avanzada\nDirigido a analistas de datos, científicos de datos junior y profesionales de BI. Manipulación de datos con Pandas y NumPy (Python), Tidyverse (R), y storytelling con ggplot2, Matplotlib, Seaborn e integración con Power BI.\nMódulo 3 — Modelado actuarial y matemáticas financieras\nDirigido a actuarios, analistas de riesgos y gestores de carteras. Series temporales financieras, modelos de supervivencia y tablas de mortalidad, simulación estocástica y análisis de riesgos (Monte Carlo, VaR).\nMódulo 4 — Machine Learning y analítica predictiva\nDirigido a científicos de datos y líderes técnicos. Machine Learning con Scikit-Learn (Python), modelado predictivo con Tidymodels (R), y automatización con FastAPI, Shiny y Streamlit.\n\nPara más información sobre los programas y fechas: Docencia — Cursos."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/alternativas-oracle.html",
+    "href": "docencia/plataforma-cursos/alternativas-oracle.html",
+    "title": "Alternativas cuando Oracle Cloud no está disponible",
+    "section": "",
+    "text": "Al intentar acceder a https://www.oracle.com/ (o al registro de Oracle Cloud) puede aparecer un mensaje como:\n\n“In compliance with U.S. and applicable Export laws we are unable to process your request…”\n\nCausa: Oracle es una empresa estadounidense y aplica las leyes de exportación de EE.UU. En ciertos países o regiones el acceso a sus servicios en la nube puede restringirse por razones de cumplimiento normativo, sin que sea un error técnico ni un fallo del usuario.\nSi te aparece ese aviso, no podrás usar Oracle Cloud para la Fase 1. En su lugar puedes usar una de las alternativas siguientes para tener Moodle operativo y seguir con la Fase 2 (primer curso y enlace al hub)."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/alternativas-oracle.html#por-qué-oracle-cloud-puede-bloquear-el-acceso",
+    "href": "docencia/plataforma-cursos/alternativas-oracle.html#por-qué-oracle-cloud-puede-bloquear-el-acceso",
+    "title": "Alternativas cuando Oracle Cloud no está disponible",
+    "section": "",
+    "text": "Al intentar acceder a https://www.oracle.com/ (o al registro de Oracle Cloud) puede aparecer un mensaje como:\n\n“In compliance with U.S. and applicable Export laws we are unable to process your request…”\n\nCausa: Oracle es una empresa estadounidense y aplica las leyes de exportación de EE.UU. En ciertos países o regiones el acceso a sus servicios en la nube puede restringirse por razones de cumplimiento normativo, sin que sea un error técnico ni un fallo del usuario.\nSi te aparece ese aviso, no podrás usar Oracle Cloud para la Fase 1. En su lugar puedes usar una de las alternativas siguientes para tener Moodle operativo y seguir con la Fase 2 (primer curso y enlace al hub)."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/alternativas-oracle.html#alternativa-1-moodlecloud-prueba-gratuita-sin-tarjeta",
+    "href": "docencia/plataforma-cursos/alternativas-oracle.html#alternativa-1-moodlecloud-prueba-gratuita-sin-tarjeta",
+    "title": "Alternativas cuando Oracle Cloud no está disponible",
+    "section": "Alternativa 1 — MoodleCloud (prueba gratuita, sin tarjeta)",
+    "text": "Alternativa 1 — MoodleCloud (prueba gratuita, sin tarjeta)\nQué es: Servicio oficial de Moodle que ofrece alojamiento gestionado de Moodle. Tiene una prueba gratuita sin tarjeta de crédito.\n\nWeb: moodlecloud.com o moodle.cloud\nPrueba gratuita: hasta 50 usuarios, 1 GB de almacenamiento; para probar la plataforma y el primer curso.\nIdioma: interfaz en español disponible.\nVentaja: Cero instalación; en minutos tienes una URL de Moodle lista para crear cursos.\nLimitación: Si moodle.com/moodlecloud también aplica restricciones por región, podría no estar disponible; en ese caso usar Alternativa 2 o 3.\n\nPasos resumidos:\n\nEntra en moodlecloud.com (o moodle.cloud).\nElige la opción de prueba gratuita o Free trial.\nRegistra tu sitio (nombre, subdominio tipo tusitio.moodlecloud.com, correo, contraseña).\nCuando esté listo, anota la URL de tu Moodle (ej. https://cvea-cursos.moodlecloud.com).\nCrea un curso de prueba y el usuario administrador; luego enlaza esa URL desde la página de Docencia del hub.\n\nSi el acceso a MoodleCloud también está bloqueado en tu red/país, usa Gnomio o un VPS."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/alternativas-oracle.html#alternativa-2-gnomio-moodle-gratuito-con-anuncios",
+    "href": "docencia/plataforma-cursos/alternativas-oracle.html#alternativa-2-gnomio-moodle-gratuito-con-anuncios",
+    "title": "Alternativas cuando Oracle Cloud no está disponible",
+    "section": "Alternativa 2 — Gnomio (Moodle gratuito con anuncios)",
+    "text": "Alternativa 2 — Gnomio (Moodle gratuito con anuncios)\nQué es: Servicio de hosting gratuito de Moodle (no dependiente de Oracle ni de la nube estadounidense). Incluye anuncios en la interfaz; hay planes de pago sin anuncios.\n\nWeb: gnomio.com\nPlan gratuito: hasta 500 usuarios registrados, 50 cursos, 2 GB de almacenamiento; subida de archivos hasta 100 MB.\nIdioma: español disponible.\nVentaja: Moodle completo sin instalar servidor; útil para validar la Fase 1 y desarrollar el Módulo 2.\n\nPasos resumidos:\n\nEntra en gnomio.com.\nRegístrate para crear un sitio Moodle gratuito (elige subdominio, correo, contraseña).\nRecibirás la URL de tu Moodle (ej. https://tusitio.gnomio.com).\nConfigura el sitio, crea un curso de prueba y usuarios.\nUsa esa URL como “plataforma de cursos” y enlázala desde la web del hub (Plataforma de cursos)."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/alternativas-oracle.html#alternativa-3-vps-en-europa-o-latinoamérica-moodle-autoinstalado",
+    "href": "docencia/plataforma-cursos/alternativas-oracle.html#alternativa-3-vps-en-europa-o-latinoamérica-moodle-autoinstalado",
+    "title": "Alternativas cuando Oracle Cloud no está disponible",
+    "section": "Alternativa 3 — VPS en Europa o Latinoamérica (Moodle autoinstalado)",
+    "text": "Alternativa 3 — VPS en Europa o Latinoamérica (Moodle autoinstalado)\nSi prefieres control total y un servidor propio (sin depender de Oracle ni de servicios en EE.UU.):\n\nContrata un VPS (servidor virtual) con un proveedor con datacenters en Europa o Latinoamérica, por ejemplo:\n\nHetzner (Alemania/Finlandia): hetzner.com\nContabo (Europa): contabo.com\nDigitalOcean (tiene regiones fuera de EE.UU.; revisar si en tu país está disponible).\nProveedores locales en tu país o región (hosting/VPS en LATAM).\n\n\nEn ese VPS puedes seguir la misma lógica que en la guía de la Fase 1 (Pasos 5–11): instalar Apache, PHP, MariaDB y Moodle en una distribución Linux (Ubuntu, Debian u Oracle Linux si la imagen está disponible). La diferencia es que la VM la creas en el panel del proveedor elegido, no en Oracle Cloud; el resto de comandos (instalación de paquetes, descarga de Moodle, configuración de Apache y base de datos) se mantiene.\n\nVentaja: Sin restricciones de Oracle; puedes usar dominio propio y HTTPS.\nCoste: Muchos VPS en Europa/LATAM tienen planes desde unos pocos euros/dólares al mes."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/alternativas-oracle.html#qué-hacer-en-el-hub-si-usas-una-alternativa",
+    "href": "docencia/plataforma-cursos/alternativas-oracle.html#qué-hacer-en-el-hub-si-usas-una-alternativa",
+    "title": "Alternativas cuando Oracle Cloud no está disponible",
+    "section": "Qué hacer en el hub si usas una alternativa",
+    "text": "Qué hacer en el hub si usas una alternativa\nEl objetivo de la Fase 1 sigue siendo el mismo: tener Moodle en línea y validar que la plataforma funciona (curso de prueba, usuarios). Da igual si ese Moodle está en MoodleCloud, Gnomio o en un VPS propio.\n\nAnota la URL de tu Moodle (ej. https://cvea-cursos.moodlecloud.com o https://cvea.gnomio.com).\nEn la página de Docencia del sitio puedes añadir un enlace: “Acceso a la plataforma de cursos (Moodle)” → esa URL.\nPasa a la Fase 2: diseñar el Módulo 2 — Ingeniería de datos y visualización avanzada dentro de ese Moodle y enlazar los contenidos (Quarto, PDF, etc.) desde la web del hub.\n\nCon cualquiera de estas alternativas puedes seguir el plan de la Plataforma de cursos sin depender de Oracle Cloud."
+  },
+  {
+    "objectID": "resources/vol2-herrera.html",
+    "href": "resources/vol2-herrera.html",
+    "title": "Proyección de la Mortalidad por Causas de Fallecimiento",
+    "section": "",
+    "text": "Proyección de la mortalidad por causas de fallecimiento integrando el modelo Lee-Carter con Análisis de Datos Composicionales (CoDa). Permite capturar la evolución de la estructura de causas y su impacto en las reservas actuariales.\nEste artículo es un placeholder. Sustituir por el manuscrito completo cuando esté disponible."
+  },
+  {
+    "objectID": "resources/vol2-herrera.html#resumen",
+    "href": "resources/vol2-herrera.html#resumen",
+    "title": "Proyección de la Mortalidad por Causas de Fallecimiento",
+    "section": "",
+    "text": "Proyección de la mortalidad por causas de fallecimiento integrando el modelo Lee-Carter con Análisis de Datos Composicionales (CoDa). Permite capturar la evolución de la estructura de causas y su impacto en las reservas actuariales.\nEste artículo es un placeholder. Sustituir por el manuscrito completo cuando esté disponible."
+  },
+  {
+    "objectID": "resources/vol1-moreno-arlet.html",
+    "href": "resources/vol1-moreno-arlet.html",
+    "title": "Modelación y Proyección de la Mortalidad Neonatal, Postneonatal y en la Niñez por Entidad Federal en Venezuela",
+    "section": "",
+    "text": "Manuscrito completo (versión extendida)\n\n\n\nVer HTML · Descargar PDF (introducción, revisión literaria, métodos, resultados, figuras y conclusiones)."
+  },
+  {
+    "objectID": "resources/vol1-moreno-arlet.html#resumen",
+    "href": "resources/vol1-moreno-arlet.html#resumen",
+    "title": "Modelación y Proyección de la Mortalidad Neonatal, Postneonatal y en la Niñez por Entidad Federal en Venezuela",
+    "section": "1 Resumen",
+    "text": "1 Resumen\nLa planificación de riesgos demográficos y actuariales en Venezuela ha dependido históricamente de proyecciones determinísticas (CELADE, INDEC), que no capturan la incertidumbre ni la heterogeneidad regional. Este estudio aplicó el modelo estocástico de Lee-Carter a los Anuarios de Mortalidad del MPPS (1995-2012), desagregados por entidad federal, sexo y edad (días/meses). El índice temporal \\(\\kappa_t\\) se modeló con series de tiempo y se proyectó hasta 2022 (R: demography, ILC).\nHallazgos: Disparidad regional severa; Zulia con tasas más elevadas en períodos Neonatal, Postneonatal y en la Niñez; concentración del riesgo en Neonatal (0-27 días); anomalía proyectada en Trujillo (ascenso de mortalidad neonatal desde 2014). La modelación estocástica subnacional es indispensable para un mapa de riesgo accionable y para que salud pública y práctica actuarial abandonen la homogeneidad nacional.\nPalabras clave: Mortalidad infantil, Lee-Carter, Venezuela, entidad federal, proyección estocástica."
+  },
+  {
+    "objectID": "resources/vol1-moreno-arlet.html#introducción",
+    "href": "resources/vol1-moreno-arlet.html#introducción",
+    "title": "Modelación y Proyección de la Mortalidad Neonatal, Postneonatal y en la Niñez por Entidad Federal en Venezuela",
+    "section": "2 Introducción",
+    "text": "2 Introducción\nLa gestión de riesgos demográficos y financieros en Venezuela ha enfrentado un desafío estructural: obsolescencia de bases técnicas y dependencia de métodos determinísticos. El rol del actuario moderno se redefine como gestor de la incertidumbre; la aplicación de modelos estocásticos resulta imprescindible para estimar nubes de valores probables y proyectar riesgos con grados de confianza. El foco de esta investigación es la mortalidad de recién nacidos, desagregando el riesgo en períodos Neonatal y Postneonatal y en las entidades con mayores tasas."
+  },
+  {
+    "objectID": "resources/vol1-moreno-arlet.html#métodos-resumen",
+    "href": "resources/vol1-moreno-arlet.html#métodos-resumen",
+    "title": "Modelación y Proyección de la Mortalidad Neonatal, Postneonatal y en la Niñez por Entidad Federal en Venezuela",
+    "section": "3 Métodos (resumen)",
+    "text": "3 Métodos (resumen)\n\nDatos: Anuarios de Mortalidad MPPS, 1995-2012, por entidad federal, sexo y edad (alta resolución temporal).\nModelo Lee-Carter; proyección del índice \\(\\kappa_t\\) hasta 2022.\nSoftware: R (demography, ILC)."
+  },
+  {
+    "objectID": "resources/vol1-moreno-arlet.html#discusión",
+    "href": "resources/vol1-moreno-arlet.html#discusión",
+    "title": "Modelación y Proyección de la Mortalidad Neonatal, Postneonatal y en la Niñez por Entidad Federal en Venezuela",
+    "section": "4 Discusión",
+    "text": "4 Discusión\nEl “Factor Zulia” y la “Advertencia de Trujillo” son hallazgos relevantes para política pública. Se recomienda focalización geográfica prioritaria y adopción de Quarto con reproducibilidad estricta.\n\nArtículo completo en carpeta de referencias del hub. PDF disponible según proceso editorial."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html",
+    "href": "resources/vol1-azuaje.html",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "",
+    "text": "Reproducibilidad\n\n\n\nLos materiales académicos del hub operan bajo una política de datos y código abiertos. Se requiere que el código fuente (R u otro) y los conjuntos de datos utilizados estén disponibles en un repositorio público antes de la publicación. Este manuscrito ha sido vaciado en la plantilla editorial a partir del Trabajo Final de Pregrado (TFPG) del autor (tutor: Prof. Angel Colmenares)."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#contexto-y-problema",
+    "href": "resources/vol1-azuaje.html#contexto-y-problema",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n1.1 Contexto y problema",
+    "text": "1.1 Contexto y problema\nEl trabajo tiene por objeto aportar soluciones al problema que actualmente tiene el sector asegurador venezolano en el área de seguros de vida, funerario y afines. El ramo de seguros de vida es considerado “noble” a nivel mundial y fue uno de los principales impulsores de las aseguradoras en Venezuela en décadas pasadas. Se desarrolla un estudio enfocado en el área técnico-actuarial con especial énfasis en la mortalidad, con la intención de contribuir al crecimiento del ramo.\nEl planteamiento del problema se puede resumir en el uso de tablas de mortalidad con datos extranjeros para la tarificación de seguros de vida y afines. Una tabla de mortalidad (TDM) puede interpretarse como un modelo que representa la distribución estadística del tiempo de supervivencia esperado de los miembros de un grupo determinado; es la base fundamental para el cálculo de tarifas y reservas. Las tarifas determinan en gran medida la rentabilidad de la compañía y el nivel de demanda de los productos; las reservas son los recursos que las aseguradoras tienen para hacer pagos futuros asociados a las pólizas vigentes.\nEn Venezuela, el mercado de productos de vida y afines ha disminuido en suscripción en los últimos años. Un estudio con las compañías aseguradoras del mercado (primas 2010-2015) muestra que, aunque las primas netas cobradas crecen año a año en términos nominales, al aplicar el índice inflacionario a 2015 (deflactar) el comportamiento real es una disminución importante en las primas y en la suscripción. Entre las causas de este fenómeno se encuentran la acelerada inflación, los planes de incentivos y la aplicación de tablas de mortalidad que no describen el adecuado comportamiento de las probabilidades de muerte y supervivencia selectas, muchas de ellas desarrolladas con estudios ajenos a la población venezolana. Pese a ello, después de deducciones de gastos administrativos, comisiones y siniestros pagados, el ramo sigue siendo de utilidad para la mayoría de las aseguradoras, por lo que el desarrollo de nuevos productos con bases técnicas adecuadas a la población a asegurar resulta de interés. En la Table 1 se presenta la evolución de las primas (sin deflactar) de los ramos de vida y funerario.\n\n\nTable 1: Evolución de las primas de los ramos de vida y funerario (sin deflactar). Fuente: SUDEASEG, estudio sectorial 2010-2015.\n\n\n\n\n\n\n\n\n\n\nAño\nVida (miles Bs)\nCrec. % acum. Vida\nFunerario (miles Bs)\nCrec. % acum. Funerario\n\n\n\n2010\n878 934\n—\n441 381\n—\n\n\n2011\n913 374\n3,92 %\n702 744\n59 %\n\n\n2012\n1 131 544\n23,89 %\n627 029\n-11 %\n\n\n2013\n1 620 789\n43,24 %\n934 843\n49 %\n\n\n2014\n2 336 644\n44,17 %\n1 355 495\n45 %\n\n\n2015\n4 056 050\n73,58 %\n2 608 075\n92 %\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de las primas (sin deflactar) de los ramos de vida y funerario, 2010-2015."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#marco-normativo-y-tablas-en-uso",
+    "href": "resources/vol1-azuaje.html#marco-normativo-y-tablas-en-uso",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n1.2 Marco normativo y tablas en uso",
+    "text": "1.2 Marco normativo y tablas en uso\nEl artículo 43 (numeral 7) de la Ley de la Actividad Aseguradora establece: “En la elaboración de las tarifas de los seguros de vida deben emplearse tablas actualizadas de mortalidad o de supervivencia rentistas, que se adapten en lo posible a la experiencia de los asegurados de la república”. La población que integra el mercado asegurador venezolano tiene características socioeconómicas y demográficas singulares respecto al resto del país. Tras revisar notas técnicas presentadas ante la Superintendencia de la Actividad Aseguradora (SUDEASEG), las tablas de mortalidad más utilizadas en el sector para beneficios asociados a muerte y supervivencia son las CSO 1958, CSO 1980 y la Tabla de Mortalidad Venezolana publicada en Gaceta 37429 de abril de 2002. Las tablas CSO se basan en población estadounidense; la TDM venezolana se desarrolló con observaciones de 1984 a 1994, comienza a describir la mortalidad desde los 20 años y en las últimas edades las tasas presentan cambios bastante radicales. El estudio se enmarca en una de las líneas de investigación acordadas entre la Escuela de Estadística y Ciencias Actuariales (EECA-UCV) y la SUDEASEG."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#finalidad-y-objetivos",
+    "href": "resources/vol1-azuaje.html#finalidad-y-objetivos",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n1.3 Finalidad y objetivos",
+    "text": "1.3 Finalidad y objetivos\nFinalidad: Construir una TDM dinámica a partir de los datos de mortalidad de la población venezolana reportados por el Ministerio del Poder Popular para la Salud (MPPS) en el periodo 1995-2011, proyectar la mortalidad hasta 2015 mediante el modelo de Lee-Carter y comparar los resultados con las TDM usadas por las aseguradoras y con las estadísticas de defunciones registradas por estas empresas, en acercamiento a lo exigido por la Ley.\nObjetivo general: Propuesta para el desarrollo de una TDM selecta por medio del modelo de Lee-Carter en lenguaje de programación R, con datos censales y su comparación con la mortalidad observada de una empresa de seguros venezolana para el año 2015.\nObjetivos específicos (resumidos): conceptualización y clasificación de tablas de mortalidad; revisión de las TDM realizadas en Venezuela; evolución de los ramos vida, funerario y afines 2011-2015; estudio de la metodología para el desarrollo de una TDM; definición y desarrollo de TDM dinámicas con el método de Lee-Carter; identificación de fuentes de datos; reconstrucción de la mortalidad poblacional; proyección de la mortalidad a 2015 en R; comparación de la proyección con una de las tablas más usadas en el sector; comparación de la TDM dinámica con la mortalidad observada por una aseguradora venezolana; y comparación de la dinámica selecta con la Tabla de Mortalidad Venezolana."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#tablas-de-mortalidad-dinámicas",
+    "href": "resources/vol1-azuaje.html#tablas-de-mortalidad-dinámicas",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n2.1 Tablas de mortalidad dinámicas",
+    "text": "2.1 Tablas de mortalidad dinámicas\nLas tablas de mortalidad dinámicas o proyectadas son un concepto que para algunos actuarios en Venezuela puede resultar novedoso, pero a nivel internacional han tomado gran importancia. Aunque el conocimiento de la evolución de la mortalidad se remonta a las primeras décadas del siglo XX, solo recientemente los cálculos actuariales han utilizado tablas de mortalidad proyectadas o dinámicas; la predicción adecuada de las probabilidades de muerte mediante este tipo de tablas se ha convertido en uno de los ejes centrales de la reducción del riesgo asumido. Predecir con exactitud el proceso de envejecimiento de la población es una preocupación central en países desarrollados por sus repercusiones económicas y sociales. En el mismo sentido, el modelo de dinámica de mortalidad de Lee-Carter ha motivado un cambio en el análisis de la evolución poblacional, apoyando nuevas hipótesis, formulaciones y herramientas para generar conclusiones al respecto."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#modelo-de-lee-carter",
+    "href": "resources/vol1-azuaje.html#modelo-de-lee-carter",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n2.2 Modelo de Lee-Carter",
+    "text": "2.2 Modelo de Lee-Carter\nLas TDM dinámicas no solo toman en cuenta las tasas de mortalidad por edad sino también las generaciones: la tasa a utilizar depende de la edad y del año calendario. Existen distintos métodos para su cálculo; uno de los más recientes y usados en países desarrollados es el método de Lee-Carter (1992) (Lee & Carter, 1992). Es un método paramétrico muy utilizado para tablas dinámicas. Dado un conjunto de observaciones de tasas en un tiempo específico \\(t\\) (\\(q_{x,t}\\)), la idea principal es obtener a partir de esta muestra una proyección de las tasas de mortalidad en el tiempo sin cambios bruscos (tasas graduadas). El modelo es válido para poblaciones no estacionarias, donde las funciones biométricas dependen de la cohorte \\(t\\). Lee y Carter proponen ajustar la medida de la mortalidad en el tiempo así:\n\\[q_{x,t} = \\exp(a_x + b_x k_t + \\varepsilon_{xt})\\]\no equivalentemente \\(\\ln(q_{x,t}) = a_x + b_x k_t + \\varepsilon_{xt}\\), donde: \\(a_x\\) es el logaritmo del comportamiento medio de la fuerza de mortalidad; \\(b_x\\) describe el patrón de desviación del perfil de edad \\(x\\) cuando \\(k_t\\) varía; \\(k_t\\) es el índice de mortalidad o tendencia en el tiempo (define la dirección de la esperanza de vida: ante una reducción del índice hay mayor esperanza de vida); \\(\\varepsilon_{xt}\\) es el término de error. En términos de tasas centrales \\(m_{x,t}\\) la formulación estándar es \\(\\log m_{x,t} = \\alpha_x + \\beta_x \\kappa_t + \\epsilon_{x,t}\\)."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#conclusión-de-la-revisión",
+    "href": "resources/vol1-azuaje.html#conclusión-de-la-revisión",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n2.3 Conclusión de la revisión",
+    "text": "2.3 Conclusión de la revisión\nLa revisión justifica el uso del método Lee-Carter para construir una tabla dinámica en Venezuela: la bibliografía lo recomienda y muchos países desarrollados en el área actuarial lo emplean, al permitir proyectar la mortalidad a futuro con una aproximación cercana a los datos reales observados."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#fuentes-de-datos",
+    "href": "resources/vol1-azuaje.html#fuentes-de-datos",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n3.1 Fuentes de datos",
+    "text": "3.1 Fuentes de datos\n\nDatos censales: Desde la página oficial del Instituto Nacional de Estadística (INE) se recolectaron los datos censales de Venezuela desde 1990 hasta 2011 por grupos de edad de 5 años. Totales censados: 1990 (18.105.265), 2001 (23.054.210), 2011 (27.227.930), desglosados por sexo (hombres/mujeres).\nMortalidad general: La información de mortalidad del país se extrajo del Ministerio del Poder Popular para la Salud (MPPS): registro de muertes desde 1995 a 2011 a nivel nacional, en grupos de edades de 5 años y por género, exceptuando la mortalidad infantil que se desglosa de forma desagregada.\nAseguradoras: A partir del Proyecto de unificación de solicitudes (SUDEASEG) se obtuvieron expuestos y defunciones de las compañías aseguradoras venezolanas para la comparación con la mortalidad observada.\nTablas de mortalidad venezolanas históricas: Se incorporan las TDM de Michalub (1941, 1961) y de Luis Escalona (1971) para enriquecer la serie temporal en la calibración del Lee-Carter.\n\nLa Table 2 resume los totales poblacionales de los tres censos utilizados.\n\n\nTable 2: Total de poblaciones censadas (INE). Fuente: TFPG, Marco metodológico.\n\n\n\nAño\nTotal población\nTotal hombres\nTotal mujeres\n\n\n\n1990\n18 105 265\n9 019 757\n9 085 508\n\n\n2001\n23 054 210\n11 402 869\n11 651 341\n\n\n2011\n27 227 930\n13 549 752\n13 678 178"
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#reconstrucción-de-la-mortalidad-1995-2011",
+    "href": "resources/vol1-azuaje.html#reconstrucción-de-la-mortalidad-1995-2011",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n3.2 Reconstrucción de la mortalidad (1995-2011)",
+    "text": "3.2 Reconstrucción de la mortalidad (1995-2011)\n\nPoblación por sexo: Se subdividió la población en masculina y femenina por censo y por grupos quinquenales de edad. Para el censo 1990, el grupo “85 y más” se desglosó hasta 100 años usando las proporciones por edad de CEPAL.\nInterpolación entre censos: Para los años sin censo (entre 1990, 2001 y 2011) se estimó la población mediante interpolación con una función de segundo grado (variable: año; incógnita: cantidad de personas en cada grupo de edad).\nEdades simples: Las distribuciones en edades simples se tomaron de los censos 2001 y 2011 (INE). Se calculó la proporción de personas de cada edad cumplida dentro de cada grupo quinquenal. Para 1995-2006 se usó la estructura porcentual del censo 2001; para el resto de años, la del 2011. Así se distribuyeron tanto la población interpolada como las defunciones del MPPS en edades simples por sexo."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#cálculo-de-tasas-brutas-y-graduación",
+    "href": "resources/vol1-azuaje.html#cálculo-de-tasas-brutas-y-graduación",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n3.3 Cálculo de tasas brutas y graduación",
+    "text": "3.3 Cálculo de tasas brutas y graduación\nLas tasas brutas de mortalidad (1995-2011 por edad y sexo) se obtuvieron como cociente entre fallecidos y sobrevivientes para cada edad. Dado que las proporciones aplicadas generan “escalones” en las gráficas, se graduaron las tasas según la tesis de Ramiro Coa Clemente mediante el método gráfico: mortalidad infantil con función de cuarto grado (excepto menores de 1 año); de 5 a 85 años con función exponencial; de 85 a 100 años por extrapolación exponencial. El procedimiento se aplicó por género. Con esto se obtuvieron 17 tablas de mortalidad (una por año) con datos poblacionales venezolanos y tasas suavizadas."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#proyección-lee-carter-en-r-y-tabla-lc15",
+    "href": "resources/vol1-azuaje.html#proyección-lee-carter-en-r-y-tabla-lc15",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n3.4 Proyección Lee-Carter en R y tabla LC15",
+    "text": "3.4 Proyección Lee-Carter en R y tabla LC15\nEl archivo a proyectar contenía las probabilidades de muerte reconstruidas y graduadas, más las TDM venezolanas (Michalub 1941, 1961; Escalona 1971) para mejorar la estimación. En R (R Core Team, 2024) se utilizaron las librerías demography (cálculos Lee-Carter) y forecast (tabla dinámica). Se leyó la data en formato demográfico (tasas y expuestos por edad, año y sexo) y se ajustó el modelo Lee-Carter con lca() para las series masculina, femenina y total hasta edad máxima 100. Los parámetros \\(a_x\\) (comportamiento del logaritmo de la fuerza de mortalidad por edad), \\(b_x\\) (patrón de desviación cuando \\(k_t\\) varía) y \\(k_t\\) (tendencia en el tiempo) se obtuvieron por serie. La proyección del índice \\(k_t\\) se realizó con forecast(..., h=20) a 20 años. A partir de las tasas proyectadas se generó la tabla de mortalidad dinámica por sexo y total, obteniendo en particular las tasas para el año 2015 (LC15). En la Table 3 se muestra una porción de la tabla dinámica (probabilidades de muerte \\(q_x\\) por edad, años 2012-2016, serie total).\n\n\nTable 3: Porción de la tabla de mortalidad dinámica por Lee-Carter (tasas \\(q_x\\), total). Fuente: TFPG, salida R.\n\n\n\nEdad\n2012\n2013\n2014\n2015\n2016\n\n\n\n0\n0,01728\n0,01563\n0,01414\n0,01280\n0,01158\n\n\n1\n0,00129\n0,00107\n0,00089\n0,00074\n0,00061\n\n\n2\n0,00055\n0,00045\n0,00037\n0,00031\n0,00025\n\n\n3\n0,00038\n0,00031\n0,00026\n0,00021\n0,00017\n\n\n4\n0,00030\n0,00025\n0,00021\n0,00018\n0,00015\n\n\n5\n0,00024\n0,00020\n0,00017\n0,00014\n0,00012\n\n\n6\n0,00030\n0,00026\n0,00023\n0,00019\n0,00017\n\n\n7\n0,00033\n0,00029\n0,00026\n0,00022\n0,00020\n\n\n8\n0,00036\n0,00032\n0,00029\n0,00026\n0,00023\n\n\n9\n0,00040\n0,00036\n0,00032\n0,00029\n0,00026\n\n\n10\n0,00043\n0,00039\n0,00036\n0,00033\n0,00030\n\n\n11\n0,00047\n0,00043\n0,00039\n0,00036\n0,00033\n\n\n12\n0,00050\n0,00046\n0,00043\n0,00040\n0,00037\n\n\n13\n0,00054\n0,00050\n0,00046\n0,00043\n0,00039\n\n\n14\n0,00057\n0,00053\n0,00049\n0,00045\n0,00042\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Probabilidades de muerte \\(q_x\\) proyectadas (LC15) por edad, año 2015 (serie total).\n\n\n\n\nLos parámetros estimados del modelo Lee-Carter (\\(a_x\\), \\(b_x\\), \\(k_t\\)) se obtienen por serie (masculina, femenina, total). En la Table 4 se muestra una porción de \\(a_x\\) y \\(b_x\\) para la serie total (edades 0-5). El índice \\(k_t\\) proyectado presenta tendencia decreciente, coherente con la mejora de la mortalidad en el tiempo.\n\n\nTable 4: Parámetros Lee-Carter (serie total), edades 0-5. Fuente: TFPG, salida R (librería demography).\n\n\n\nEdad\n\n\\(a_x\\) (total)\n\n\\(b_x\\) (total)\n\n\n\n0\n-3,667\n0,0135\n\n\n1\n-5,928\n0,0250\n\n\n2\n-6,742\n0,0264\n\n\n3\n-7,132\n0,0259\n\n\n4\n-7,391\n0,0243\n\n\n5\n-7,659\n0,0237"
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#comparación-de-la-tdm-dinámica-lc15-con-las-tablas-más-utilizadas-en-el-sector",
+    "href": "resources/vol1-azuaje.html#comparación-de-la-tdm-dinámica-lc15-con-las-tablas-más-utilizadas-en-el-sector",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n4.1 Comparación de la TDM dinámica (LC15) con las tablas más utilizadas en el sector",
+    "text": "4.1 Comparación de la TDM dinámica (LC15) con las tablas más utilizadas en el sector\nSe tomó la mortalidad proyectada a 2015 (LC15) y se comparó con la CSO 1980 (general), una de las tablas más usadas por el sector asegurador venezolano. La Table 5 muestra la comparación para las primeras edades: la relación porcentual (LC15/CSO80) indica que solo en el primer año de vida las probabilidades de LC15 están por encima de la CSO80 (edad 0: 486,63 %). En el resto de las edades, las tasas de LC15 están por debajo de la CSO80. En promedio, las tasas de mortalidad de LC15 están un 53,8 % por debajo de la CSO80.\n\n\nTable 5: Comparación de tasas \\(q_x\\) LC2015 y CSO 1980 (porción). Fuente: TFPG, Análisis de resultados.\n\n\n\nEdad\nCSO80\nLC15\n(LC15/CSO80) %\n\n\n\n0\n0,00263\n0,01280\n486,63 %\n\n\n1\n0,00103\n0,00074\n71,84 %\n\n\n2\n0,00099\n0,00031\n30,82 %\n\n\n3\n0,00097\n0,00021\n21,81 %\n\n\n4\n0,00093\n0,00018\n19,10 %\n\n\n5\n0,00088\n0,00014\n15,93 %\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Comparación de probabilidades de muerte \\(q_x\\): LC15 vs CSO 1980 (edades 0-5)."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#comparación-con-la-mortalidad-observada-de-una-aseguradora-venezolana",
+    "href": "resources/vol1-azuaje.html#comparación-con-la-mortalidad-observada-de-una-aseguradora-venezolana",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n4.2 Comparación con la mortalidad observada de una aseguradora venezolana",
+    "text": "4.2 Comparación con la mortalidad observada de una aseguradora venezolana\nSe extrajo de los archivos de la SUDEASEG la cartera y siniestros de vida en 2015 de una de las cinco primeras aseguradoras en el ranking de primas cobradas del ramo (la muestra no pudo ampliarse por fallas en la carga de datos). La cartera tiene peso importante en edades 31-60 años, por lo que el estudio se centró en ese rango. Se calcularon las tasas brutas a partir de la proporción de siniestros y del número de expuestos, se suavizaron con el método gráfico (función exponencial) y se reconstruyó la mortalidad. Al comparar con LC2015, las tasas de la aseguradora resultaron por debajo de LC15, lo cual era esperado: LC15 se construye con datos poblacionales (expuestos y muertes de la población general), mientras que una muestra de asegurados suele presentar efecto selecto (menor mortalidad). La diferencia porcentual promedio entre la experiencia de la aseguradora y LC15 fue de 14,05 % (LC15 por encima). La Table 6 ilustra el cociente Qx(aseguradora)/LC15 para edades 31-35.\n\n\nTable 6: Comparación de LC2015 con la mortalidad observada de una aseguradora venezolana (porción, edades 31-35). Fuente: TFPG, Análisis de resultados.\n\n\n\nEdad\nQx Comp. Seg.\nLC15\nQx Comp.Seg / LC15\n\n\n\n31\n0,00015492\n0,00135\n0,1148\n\n\n32\n0,00016872\n0,00145\n0,1162\n\n\n33\n0,00018375\n0,00156\n0,1176\n\n\n34\n0,00020012\n0,00168\n0,1191\n\n\n35\n0,00021794\n0,00181\n0,1206\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Tasas \\(q_x\\) de la aseguradora vs LC15 (edades 31-35). Efecto selecto: experiencia aseguradora por debajo de LC15."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#comparación-de-la-tdm-dinámica-selecta-con-la-tabla-de-mortalidad-venezolana",
+    "href": "resources/vol1-azuaje.html#comparación-de-la-tdm-dinámica-selecta-con-la-tabla-de-mortalidad-venezolana",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n4.3 Comparación de la TDM dinámica selecta con la Tabla de Mortalidad Venezolana",
+    "text": "4.3 Comparación de la TDM dinámica selecta con la Tabla de Mortalidad Venezolana\nPara aproximar LC15 a un estudio selecto se aplicó un descuento del 14,05 % a todas las probabilidades de muerte de LC15, obteniendo QxLC15CD (LC15 con descuento). Esta tabla se comparó con la Tabla de Mortalidad Venezolana (abril 2002, por sexo). La Table 7 muestra la relación QxLC15CD con las tasas de la TDM venezolana para hombres (VEN M) y mujeres (VEN F) en edades 20-27. En el caso masculino, QxLC15CD queda por debajo de la TDM venezolana en casi todas las edades, excepto en el rango 41-56 años; en promedio, QxLC15CD representa un 74,82 % de las tasas de la TDM venezolana de hombres. En el caso femenino hay mayor similitud; la aproximación selecta de LC15 tiende a estar por debajo desde la edad 69 hasta el final de la tabla. A nivel práctico, las aseguradoras en su mayoría no suelen utilizar las tasas femeninas de la tabla venezolana en las notas técnicas.\n\n\nTable 7: Comparación de LC15 con descuento (QxLC15CD) y Tabla de Mortalidad Venezolana (porción, edades 20-27). Fuente: TFPG, Análisis de resultados.\n\n\n\n\n\n\n\n\n\n\n\nEdad\nQx LC15 (desc.)\nQx VEN (M)\nQx VEN (F)\nQxLC15CD/VEN(M)\nQxLC15CD/VEN(F)\n\n\n\n20\n0,000537\n0,00091\n0,00021\n0,59\n2,56\n\n\n21\n0,000570\n0,00093\n0,00023\n0,61\n2,48\n\n\n22\n0,000607\n0,00095\n0,00025\n0,64\n2,43\n\n\n23\n0,000649\n0,00097\n0,00028\n0,67\n2,32\n\n\n24\n0,000696\n0,00100\n0,00031\n0,70\n2,24\n\n\n25\n0,000747\n0,00103\n0,00034\n0,73\n2,20\n\n\n26\n0,000804\n0,00106\n0,00038\n0,76\n2,12\n\n\n27\n0,000865\n0,00109\n0,00041\n0,79\n2,11\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Relación QxLC15CD / TDM Venezolana por sexo (edades 20-27). Valores &lt; 1 indican QxLC15CD por debajo de la TDM VEN."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#síntesis-de-hallazgos",
+    "href": "resources/vol1-azuaje.html#síntesis-de-hallazgos",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n5.1 Síntesis de hallazgos",
+    "text": "5.1 Síntesis de hallazgos\nSe realizó la conceptualización de una tabla de mortalidad y su clasificación, el repaso de las TDM elaboradas en Venezuela en las últimas décadas y el análisis de la evolución de los ramos funerario, vida y afines (2011-2015), que evidencia una situación preocupante: el cobro de primas en términos reales ha disminuido notablemente. Se revisaron los métodos para el desarrollo de una TDM y se definieron las tablas de mortalidad dinámicas con énfasis en el método de Lee-Carter. Se recopiló información censal del INE, aproximaciones poblacionales de CEPAL, defunciones del MPPS y las TDM históricas venezolanas del Ministerio de Fomento. Se recomienda que las instituciones públicas realicen estudios de esta magnitud con mayor frecuencia y dispongan de una biblioteca virtual para consultar el histórico de datos."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#recomendaciones-técnicas",
+    "href": "resources/vol1-azuaje.html#recomendaciones-técnicas",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n5.2 Recomendaciones técnicas",
+    "text": "5.2 Recomendaciones técnicas\n\nNo utilizar la tabla CSO80 para tarificación en Venezuela: tiene un recargo en las tasas que se traduce en primas más altas en los ramos de vida y funerario; la proyección LC15 muestra en promedio tasas 53,8 % por debajo de la CSO80.\nActualizar periódicamente el código del modelo Lee-Carter con datos más recientes para dar seguimiento a la evolución de las tasas de mortalidad.\nCarga de datos de aseguradoras: Solo se logró data completa de una aseguradora para las comparaciones; se sugiere a las compañías una mejor supervisión de carga y procesamiento de datos de asegurados para contar con muestras más óptimas en futuros estudios.\nTabla selecta propuesta: La diferencia porcentual entre la experiencia de la aseguradora y LC15 (14,05 %) se aplicó sobre la proyección LC15 para obtener la tabla selecta (QxLC15CD) que se propone en el estudio. Con una muestra más robusta de asegurados y siniestros, se recomienda una nueva comparación con la proyección Lee-Carter para establecer de forma definitiva una nueva TDM dinámica venezolana para el sector asegurador."
+  },
+  {
+    "objectID": "resources/vol1-azuaje.html#responsabilidad-del-sector",
+    "href": "resources/vol1-azuaje.html#responsabilidad-del-sector",
+    "title": "Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-Carter",
+    "section": "\n5.3 Responsabilidad del sector",
+    "text": "5.3 Responsabilidad del sector\nEs responsabilidad de quienes desempeñan labores en este mercado dar propuestas y soluciones para mejorarlo, en especial en el área técnico-actuarial. Las herramientas utilizadas como base para las notas técnicas del ramo están bastante desfasadas: la CSO80 se basa en datos estadounidenses y tiene más de 30 años desde su desarrollo; la Tabla Venezolana se construyó con población selecta 1984-1994. Una actualización de datos sería de gran utilidad para la industria y el regulador (SUDEASEG)."
+  },
+  {
+    "objectID": "resources/OPCIONES_ARTICULOS_HTML.html",
+    "href": "resources/OPCIONES_ARTICULOS_HTML.html",
+    "title": "1 Cómo servir los artículos HTML para verlos directamente en el navegador",
+    "section": "",
+    "text": "Los HTML autocontenidos (con estilos y scripts embebidos) sí se ven en el navegador cuando se sirven por un servidor web con la URL correcta y tipo MIME text/html. Servicios como Box o Google Drive suelen ofrecer descarga en lugar de vista previa para HTML por seguridad.\n\n\n\n\n\n\n\n\n\n\n\nOpción\nVer en navegador\nPeso del repo web\nMantenimiento\n\n\n\n\nA. Mismo repo (assets/articulos)\nEn teoría sí; en la práctica el deploy actual devuelve 404 para esos archivos\n+3–5 MB por artículo\nUn solo repo\n\n\nB. Repo aparte (ej. cvea-articulos)\nSí, sin depender del build\nRepo web ligero\nDos repos\n\n\nC. Box / Drive\nNo; suelen forzar descarga\nN/A\nSolo subir archivos\n\n\nD. Netlify / Vercel / Cloudflare\nSí\nN/A\nSubir carpeta o conectar repo\n\n\n\n\n\n\n\nRepo actual (cvea / cvea-platform): solo la web (Quarto). No subes los HTML aquí.\nRepo nuevo (ej. cvea-articulos): solo los .html de los artículos. Activas GitHub Pages en ese repo (rama main, carpeta / o /docs).\nURL tipo: https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.html\nAsí se ven directamente en el navegador, sin descargar.\n\nVentajas: el repo de la página no se vuelve pesado; los artículos se actualizan sin tocar el build de Quarto; enlaces estables y fáciles de cambiar en la web.\n\n\n\n\nArtículo Colmenares (espacio-temporal): ~3,4 MB\n\nArtículo Moreno–Colmenares (mortalidad): ~4,6 MB\n\nUn repo con 10–20 artículos similares podría rondar 50–100 MB; GitHub lo admite. Si todos estuvieran en el repo de la web, el clone y el build serían más pesados; por eso es mejor el repo separado.\n\n\n\n\nCrear en GitHub un repo nuevo (ej. cvea-articulos), vacío o con un README.\nEn tu máquina está la carpeta cvea-articulos-repo (en la raíz del proyecto) con los dos HTML y un README; esa carpeta no se sube al repo de la web (está en .gitignore). Úsala para el nuevo repo:\n\ncd cvea-articulos-repo\ngit init\ngit add .\ngit commit -m \"Artículos Resources HTML\"\ngit remote add origin https://github.com/TU_USUARIO/cvea-articulos.git\ngit branch -M main\ngit push -u origin main\n\nEn el repo en GitHub: Settings → Pages → Source: rama main, carpeta Root.\nLa web del hub ya tiene los enlaces apuntando a https://angelucv.github.io/cvea-articulos/...; en cuanto el repo exista y Pages esté activo, se verán los artículos en el navegador.\n\nCuando tengas la URL base del repo (ej. https://angelucv.github.io/cvea-articulos/), los enlaces serían:\n\nColmenares: https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.html\nMoreno–Colmenares: https://angelucv.github.io/cvea-articulos/articulo-moreno-colmenares-mortalidad-infantil.html"
+  },
+  {
+    "objectID": "resources/OPCIONES_ARTICULOS_HTML.html#opciones-comparadas",
+    "href": "resources/OPCIONES_ARTICULOS_HTML.html#opciones-comparadas",
+    "title": "1 Cómo servir los artículos HTML para verlos directamente en el navegador",
+    "section": "",
+    "text": "Opción\nVer en navegador\nPeso del repo web\nMantenimiento\n\n\n\n\nA. Mismo repo (assets/articulos)\nEn teoría sí; en la práctica el deploy actual devuelve 404 para esos archivos\n+3–5 MB por artículo\nUn solo repo\n\n\nB. Repo aparte (ej. cvea-articulos)\nSí, sin depender del build\nRepo web ligero\nDos repos\n\n\nC. Box / Drive\nNo; suelen forzar descarga\nN/A\nSolo subir archivos\n\n\nD. Netlify / Vercel / Cloudflare\nSí\nN/A\nSubir carpeta o conectar repo"
+  },
+  {
+    "objectID": "resources/OPCIONES_ARTICULOS_HTML.html#recomendación-repo-aparte-b",
+    "href": "resources/OPCIONES_ARTICULOS_HTML.html#recomendación-repo-aparte-b",
+    "title": "1 Cómo servir los artículos HTML para verlos directamente en el navegador",
+    "section": "",
+    "text": "Repo actual (cvea / cvea-platform): solo la web (Quarto). No subes los HTML aquí.\nRepo nuevo (ej. cvea-articulos): solo los .html de los artículos. Activas GitHub Pages en ese repo (rama main, carpeta / o /docs).\nURL tipo: https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.html\nAsí se ven directamente en el navegador, sin descargar.\n\nVentajas: el repo de la página no se vuelve pesado; los artículos se actualizan sin tocar el build de Quarto; enlaces estables y fáciles de cambiar en la web."
+  },
+  {
+    "objectID": "resources/OPCIONES_ARTICULOS_HTML.html#tamaño-aproximado",
+    "href": "resources/OPCIONES_ARTICULOS_HTML.html#tamaño-aproximado",
+    "title": "1 Cómo servir los artículos HTML para verlos directamente en el navegador",
+    "section": "",
+    "text": "Artículo Colmenares (espacio-temporal): ~3,4 MB\n\nArtículo Moreno–Colmenares (mortalidad): ~4,6 MB\n\nUn repo con 10–20 artículos similares podría rondar 50–100 MB; GitHub lo admite. Si todos estuvieran en el repo de la web, el clone y el build serían más pesados; por eso es mejor el repo separado."
+  },
+  {
+    "objectID": "resources/OPCIONES_ARTICULOS_HTML.html#pasos-para-el-repo-cvea-articulos",
+    "href": "resources/OPCIONES_ARTICULOS_HTML.html#pasos-para-el-repo-cvea-articulos",
+    "title": "1 Cómo servir los artículos HTML para verlos directamente en el navegador",
+    "section": "",
+    "text": "Crear en GitHub un repo nuevo (ej. cvea-articulos), vacío o con un README.\nEn tu máquina está la carpeta cvea-articulos-repo (en la raíz del proyecto) con los dos HTML y un README; esa carpeta no se sube al repo de la web (está en .gitignore). Úsala para el nuevo repo:\n\ncd cvea-articulos-repo\ngit init\ngit add .\ngit commit -m \"Artículos Resources HTML\"\ngit remote add origin https://github.com/TU_USUARIO/cvea-articulos.git\ngit branch -M main\ngit push -u origin main\n\nEn el repo en GitHub: Settings → Pages → Source: rama main, carpeta Root.\nLa web del hub ya tiene los enlaces apuntando a https://angelucv.github.io/cvea-articulos/...; en cuanto el repo exista y Pages esté activo, se verán los artículos en el navegador.\n\nCuando tengas la URL base del repo (ej. https://angelucv.github.io/cvea-articulos/), los enlaces serían:\n\nColmenares: https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.html\nMoreno–Colmenares: https://angelucv.github.io/cvea-articulos/articulo-moreno-colmenares-mortalidad-infantil.html"
+  },
+  {
+    "objectID": "resources/ENLACES_BOX_ARTICULOS.html",
+    "href": "resources/ENLACES_BOX_ARTICULOS.html",
+    "title": "1 Enlaces Box — Artículos completos (Resources)",
+    "section": "",
+    "text": "Los artículos completos (HTML autocontenidos) no se sirven correctamente desde GitHub Pages. Se usan enlaces a Box para que los lectores puedan abrirlos.\n\n\n\nAngel Colmenares — Análisis espacio-temporal de la mortalidad (BYM/INLA)\n\nArchivo local: assets/articulos/articulo-colmenares-espacio-temporal.html\n\nSubir a Box y obtener enlace de compartir (ej. https://ucv.box.com/s/xxxx).\n\nArlet Moreno y Angel Colmenares — Mortalidad neonatal, postneonatal y en la niñez (Lee-Carter)\n\nArchivo local: assets/articulos/articulo-moreno-colmenares-mortalidad-infantil.html\n\nSubir a Box y obtener enlace de compartir.\n\n\n\n\n\nCuando tengas los dos enlaces de Box, reemplaza en todo el proyecto (buscar y reemplazar):\n\n\n\n\n\n\n\nBuscar (placeholder)\nReemplazar por\n\n\n\n\nhttps://app.box.com/s/COLMENARES_ESPACIO_TEMPORAL_REEMPLAZAR\nTu enlace Box del artículo de Colmenares (espacio-temporal)\n\n\nhttps://app.box.com/s/MORENO_COLMENARES_MORTALIDAD_REEMPLAZAR\nTu enlace Box del artículo de Moreno-Colmenares (mortalidad infantil)\n\n\n\nArchivos que contienen estos placeholders:\n\nrvea/index.qmd\nrvea/vol1-colmenares.qmd\nrvea/vol1-moreno-arlet.qmd\n\nDespués de reemplazar, ejecuta quarto render y haz commit + push."
+  },
+  {
+    "objectID": "resources/ENLACES_BOX_ARTICULOS.html#archivos-a-subir-a-box",
+    "href": "resources/ENLACES_BOX_ARTICULOS.html#archivos-a-subir-a-box",
+    "title": "1 Enlaces Box — Artículos completos (Resources)",
+    "section": "",
+    "text": "Angel Colmenares — Análisis espacio-temporal de la mortalidad (BYM/INLA)\n\nArchivo local: assets/articulos/articulo-colmenares-espacio-temporal.html\n\nSubir a Box y obtener enlace de compartir (ej. https://ucv.box.com/s/xxxx).\n\nArlet Moreno y Angel Colmenares — Mortalidad neonatal, postneonatal y en la niñez (Lee-Carter)\n\nArchivo local: assets/articulos/articulo-moreno-colmenares-mortalidad-infantil.html\n\nSubir a Box y obtener enlace de compartir."
+  },
+  {
+    "objectID": "resources/ENLACES_BOX_ARTICULOS.html#dónde-pegar-los-enlaces",
+    "href": "resources/ENLACES_BOX_ARTICULOS.html#dónde-pegar-los-enlaces",
+    "title": "1 Enlaces Box — Artículos completos (Resources)",
+    "section": "",
+    "text": "Cuando tengas los dos enlaces de Box, reemplaza en todo el proyecto (buscar y reemplazar):\n\n\n\n\n\n\n\nBuscar (placeholder)\nReemplazar por\n\n\n\n\nhttps://app.box.com/s/COLMENARES_ESPACIO_TEMPORAL_REEMPLAZAR\nTu enlace Box del artículo de Colmenares (espacio-temporal)\n\n\nhttps://app.box.com/s/MORENO_COLMENARES_MORTALIDAD_REEMPLAZAR\nTu enlace Box del artículo de Moreno-Colmenares (mortalidad infantil)\n\n\n\nArchivos que contienen estos placeholders:\n\nrvea/index.qmd\nrvea/vol1-colmenares.qmd\nrvea/vol1-moreno-arlet.qmd\n\nDespués de reemplazar, ejecuta quarto render y haz commit + push."
+  },
+  {
+    "objectID": "investigacion/model-hub.html",
+    "href": "investigacion/model-hub.html",
+    "title": "Model Hub",
+    "section": "",
+    "text": "El Model Hub de Actuarial Cortex es un repositorio de herramientas técnicas reproducibles: scripts en R/Python, hojas Excel parametrizadas y bases de datos abiertas, alineadas con la investigación publicada en Resources."
+  },
+  {
+    "objectID": "investigacion/model-hub.html#contenido-previsto",
+    "href": "investigacion/model-hub.html#contenido-previsto",
+    "title": "Model Hub",
+    "section": "Contenido previsto",
+    "text": "Contenido previsto\n\nScripts R/Python: modelos de mortalidad (Lee-Carter, BYM/INLA), reservas IBNR, proyecciones demográficas.\nExcel actuarial: plantillas parametrizadas para cálculos técnicos y docencia.\nBases de datos abiertas: referencias a fuentes públicas utilizadas en los artículos (MPPS, INE, GADM, etc.).\n\nLos materiales se irán incorporando según el plan editorial y la disponibilidad de código en repositorios públicos. La plantilla de materiales está referenciada en Resources — Modelo y plantilla."
+  },
+  {
+    "objectID": "investigacion/model-hub.html#enlaces-relacionados",
+    "href": "investigacion/model-hub.html#enlaces-relacionados",
+    "title": "Model Hub",
+    "section": "Enlaces relacionados",
+    "text": "Enlaces relacionados\n\nResources — materiales académicos con código reproducible.\nDocencia — Recursos para estudiantes — acceso al Model Hub con fines pedagógicos."
+  },
+  {
+    "objectID": "contacto.html",
+    "href": "contacto.html",
+    "title": "Contacto y soporte",
+    "section": "",
+    "text": "Canales de atención de Actuarial Cortex para solicitudes de investigación, consultoría estratégica y soporte técnico."
+  },
+  {
+    "objectID": "contacto.html#consultoría-y-asesoría",
+    "href": "contacto.html#consultoría-y-asesoría",
+    "title": "Contacto y soporte",
+    "section": "Consultoría y asesoría",
+    "text": "Consultoría y asesoría\n\nAuditoría de reservas, diseño técnico de productos, valuaciones de sostenibilidad fiscal y modelado actuarial (seguros, banca, previsión social).\nCortex Suite: propuestas de implementación de la plataforma modular (ingesta, scoring, control financiero, BI) para su organización. Ver Cortex Suite.\nSolicitudes y perfiles del equipo en Miembros."
+  },
+  {
+    "objectID": "contacto.html#investigación",
+    "href": "contacto.html#investigación",
+    "title": "Contacto y soporte",
+    "section": "Investigación",
+    "text": "Investigación\n\nPara solicitar más información sobre trabajos finales de pregrado o acceso a documentos: indicar en el mensaje el título o autor del trabajo de interés.\nPropuestas de colaboración en investigación y tutoría: contactar vía los correos indicados más abajo o a través de Miembros."
+  },
+  {
+    "objectID": "contacto.html#materiales-académicos-y-publicaciones",
+    "href": "contacto.html#materiales-académicos-y-publicaciones",
+    "title": "Contacto y soporte",
+    "section": "Materiales académicos y publicaciones",
+    "text": "Materiales académicos y publicaciones\n\nEnvío de manuscritos y consultas sobre el proceso de revisión: ver Resources — Materiales académicos y Modelo y plantilla.\nPlantillas para autores: Resources."
+  },
+  {
+    "objectID": "contacto.html#formación-y-cursos",
+    "href": "contacto.html#formación-y-cursos",
+    "title": "Contacto y soporte",
+    "section": "Formación y cursos",
+    "text": "Formación y cursos\n\nInformación sobre el Demo de Shiny de tarificación telemática, Series de Tiempo y próximas ofertas: Docencia."
+  },
+  {
+    "objectID": "contacto.html#cómo-contactar",
+    "href": "contacto.html#cómo-contactar",
+    "title": "Contacto y soporte",
+    "section": "Cómo contactar",
+    "text": "Cómo contactar\n\nCorreo del hub: actuarial.cortex@gmail.com\nCorreo institucional (UCV): angel.colmenares@ucv.ve\nOtro correo de contacto: angelc.ucv@gmail.com\nInstagram: @actuarial_cortex\nEquipo y perfiles: Miembros\n\n(Se puede añadir aquí un formulario de contacto cuando esté definido.)"
+  },
+  {
+    "objectID": "observatorio.html",
+    "href": "observatorio.html",
+    "title": "Observatorio de Variables Actuariales",
+    "section": "",
+    "text": "El Observatorio es una plataforma que Actuarial Cortex pone a disposición de tomadores de decisión e investigadores. Además de ofrecer información actualizada sobre variables biométricas, financieras y de previsión, se prevé incorporar cuadros de control y dashboards con analítica de sectores financieros (seguros, banca) y otros sectores sensibles, para apoyar la evaluación de riesgo y la política pública."
+  },
+  {
+    "objectID": "observatorio.html#variables-biométricas",
+    "href": "observatorio.html#variables-biométricas",
+    "title": "Observatorio de Variables Actuariales",
+    "section": "Variables biométricas",
+    "text": "Variables biométricas\nGráficos dinámicos de las últimas tablas de mortalidad calibradas por el hub: tendencias nacionales y subnacionales, SMR, clusters de riesgo y proyecciones Lee-Carter. Basado en la investigación publicada en Resources.\n\nEnlace a dashboards: Servicios y Demos — Mapa de riesgo y visualizaciones asociadas.\nBoletines de indicadores mensuales (en desarrollo)."
+  },
+  {
+    "objectID": "observatorio.html#variables-financieras",
+    "href": "observatorio.html#variables-financieras",
+    "title": "Observatorio de Variables Actuariales",
+    "section": "Variables financieras",
+    "text": "Variables financieras\nSeguimiento de la inflación actuarial y de las tasas técnicas de descuento relevantes para reservas, tarificación y valuación de pensiones. Insumos para el sector asegurador, banca y previsión social.\n(Contenido en construcción según disponibilidad de series oficiales.)"
+  },
+  {
+    "objectID": "observatorio.html#variables-de-previsión",
+    "href": "observatorio.html#variables-de-previsión",
+    "title": "Observatorio de Variables Actuariales",
+    "section": "Variables de previsión",
+    "text": "Variables de previsión\nIndicadores de solvencia y sostenibilidad de fondos de pensiones y regímenes de previsión social. Síntesis de diagnósticos de Actuarial Cortex dirigidos a IVSS, Sudeaseg y decisores de política pública.\n\nPara consultoría sobre indicadores o convenios de datos, utilice Contacto."
+  },
+  {
+    "objectID": "miembros.html",
+    "href": "miembros.html",
+    "title": "Miembros",
+    "section": "",
+    "text": "El ecosistema que da vida a Actuarial Cortex se apoya en una red de actuarios, estadísticos y especialistas en datos con experiencia en diversos sectores —asegurador, banca, previsión social, políticas públicas y ciencia de datos—, lo que permite una visión plural sobre el riesgo, la modelización y la toma de decisiones. A continuación se presentan los perfiles del equipo central de Actuarial Cortex y un conjunto de colaboradores clave."
+  },
+  {
+    "objectID": "miembros.html#sobre-el-prof.-angel-colmenares",
+    "href": "miembros.html#sobre-el-prof.-angel-colmenares",
+    "title": "Miembros",
+    "section": "Sobre el Prof. Angel Colmenares",
+    "text": "Sobre el Prof. Angel Colmenares\n\n\n\n\nProf. Angel Colmenares\n\n\n\nProf. Angel Colmenares\nPerfil en LinkedIn\nLicenciado en Ciencias Actuariales y Magister Scientiarum en Modelos Aleatorios por la Universidad Central de Venezuela (UCV), actualmente cursando un Doctorado en Matemáticas en la misma casa de estudios. Su línea de investigación en maestría y doctorado se ha centrado en series de tiempo y econometría, con aplicaciones a riesgo financiero, previsión social y tarificación. Como profesor de la EECA-UCV —y Jefe del Departamento de Actuariado— ha liderado reformas curriculares y promovido convenios interinstitucionales. Su experiencia profesional incluye roles de alta dirección como Vicepresidente de Suscripción en C.N.A. de Seguros La Previsora, Vicepresidente Ejecutivo de Riesgo en el Banco de Venezuela y Profesional V Actuarial en la Superintendencia de la Actividad Aseguradora, lo que le confiere una profunda comprensión del riesgo en los sectores de seguros y finanzas."
+  },
+  {
+    "objectID": "miembros.html#colaboradores",
+    "href": "miembros.html#colaboradores",
+    "title": "Miembros",
+    "section": "Colaboradores",
+    "text": "Colaboradores\n\n\n\n\nProf. Jorge Dias\n\n\n\nProf. Jorge Dias — Colaborador\nPerfil en LinkedIn\nLicenciado en Ciencias Actuariales por la Universidad Central de Venezuela (UCV), con una Maestría en Estadísticas Aplicadas de la Universidad Jiaotong de Pekín y candidato a Doctor en Finanzas y Seguros en la Universidad de Economía y Negocios Internacionales de Pekín. Profesor en la Escuela de Estadística y Ciencias Actuariales de la UCV, con experiencia en Seguros de Personas y Matemáticas de Pensiones. Su trayectoria combina docencia, investigación y experiencia en la Superintendencia de la Actividad Aseguradora, aportando una visión integral al análisis de reservas y solvencia.\n\n\n\n\n\n\nJosé Manuel Coello\n\n\n\nJosé Manuel Coello — Colaborador\nPerfil en LinkedIn\nActuario egresado de la UCV y magíster en Ciencias de la Computación. Se desempeña como data scientist / data analyst, con experiencia en modelos de riesgo de crédito, minería de datos y automatización de procesos analíticos en banca y empresas de tecnología. Integra Python, R y SQL para construir sistemas de monitoreo, scoring y dashboards en tiempo real, puenteando la actuaria clásica y la ciencia de datos moderna."
+  },
+  {
+    "objectID": "miembros.html#profesores-del-departamento-de-actuariado-eeca-ucv",
+    "href": "miembros.html#profesores-del-departamento-de-actuariado-eeca-ucv",
+    "title": "Miembros",
+    "section": "Profesores del Departamento de Actuariado (EECA-UCV)",
+    "text": "Profesores del Departamento de Actuariado (EECA-UCV)\nComo Jefe del Departamento de Actuariado de la Escuela de Estadística y Ciencias Actuariales (EECA-UCV), el Prof. Angel Colmenares pone a disposición esta plataforma de Actuarial Cortex para reconocer la labor de los profesores del departamento. Ellos forman a las nuevas generaciones de actuarios y, en muchos casos, actúan como jurados de los Trabajos Finales de Pregrado (TFPG) de los cuales ha sido tutor; por ello se les considera editores de las investigaciones realizadas en este marco. A continuación se listan sus perfiles en LinkedIn:\n\nCarlos Eduardo Domínguez Matute\nWilden Diamond\nTeodoro Thonon\nManuel Rodríguez Costa\nRafael Pinto\nDoménico Zuzolo\nLuis Pitta\n\nMención especial. Por su entrega a la EECA durante más de 30 años de servicios, se destaca a los profesores Alberto Ruiz, Felipe Moreno y Jesús Yépez.\nIn memoriam. El hub Actuarial Cortex expresa un agradecimiento especial al Prof. Enrique Guzmán, de quien el Prof. Colmenares reconoce sus enseñanzas y el rigor con que formó a varias generaciones de actuarios. Asimismo, rinde homenaje al querido Prof. Gilhem Frederick Ernest Senior, uno de los primeros actuarios graduados del país y referente de excelencia profesional. El Prof. Colmenares tuvo el honor de trabajar bajo su dirección en la SUDEASEG, conociendo de primera mano su excelencia profesional. El Instituto de Altos Estudios de la SUDEASEG lleva su nombre en su honor."
+  },
+  {
+    "objectID": "index.html#inicio-identidad-y-propósito",
+    "href": "index.html#inicio-identidad-y-propósito",
+    "title": "Inicio",
+    "section": "Inicio — Identidad y propósito",
+    "text": "Inicio — Identidad y propósito\nActuarial Cortex es un hub personal de conocimiento y tecnología actuarial impulsado por el Prof. Angel Colmenares. Con un enfoque en Conocimiento — Tecnología — Formación, integra modelos, herramientas y materiales docentes aplicados a seguros, pensiones, riesgo financiero y ciencia de datos, sirviendo de puente entre la academia y la práctica profesional.\n\n\nSobre Cortex: Identidad, ejes del hub (conocimiento aplicado, tecnología y demos, formación continua). Ver página Sobre Cortex.\n\nNuestro Equipo: Perfiles del equipo central, colaboradores y profesores del departamento. Miembros.\n\nMateriales y sello editorial: Recursos académicos y plantillas. Resources — Materiales académicos."
+  },
+  {
+    "objectID": "index.html#enlaces-rápidos",
+    "href": "index.html#enlaces-rápidos",
+    "title": "Inicio",
+    "section": "Enlaces rápidos",
+    "text": "Enlaces rápidos\n\n\nInvestigación — Resources, Model Hub\n\nDocencia — Cursos, recursos, próximas ofertas\n\nExtensión / Servicios — Consultoría, demos, observatorio\n\nCortex Suite — Plataforma modular: tecnología a medida y analítica para su operatividad\n\nObservatorio — Variables biométricas, financieras y de previsión\n\nActualidad — Noticias, eventos, Call for Papers\n\nContacto — Solicitudes y soporte"
+  },
+  {
+    "objectID": "index.html#últimas-noticias-del-sector",
+    "href": "index.html#últimas-noticias-del-sector",
+    "title": "Inicio",
+    "section": "Últimas noticias del sector",
+    "text": "Últimas noticias del sector\nTitulares recientes (seguros y actuarial). Ver todas en Actualidad.\n\n\nSantiago Romera (AREA XXI), acreditado en el Registro de Actuarios de la República Dominicana - SegurosNews\n\n\n20 nuevos profesionales se suman al ecosistema actuarial para anticipar y gestionar los riesgos en Ecuador - United Nations Development Programme\n\n\nSantiago Romera (AREA XXI), acreditado en el Registro Nacional de Actuarios dominicano - Grupo Aseguranza"
+  },
+  {
+    "objectID": "sobre-cortex.html",
+    "href": "sobre-cortex.html",
+    "title": "Sobre Actuarial Cortex",
+    "section": "",
+    "text": "Actuarial Cortex es un hub personal de conocimiento y tecnología actuarial propuesto por el Prof. Angel Colmenares. No es un centro institucional, sino un espacio independiente donde convergen su experiencia académica, profesional y de consultoría en seguros, pensiones y riesgo financiero.\nEl propósito de Actuarial Cortex es construir y compartir modelos, herramientas y narrativas técnicas que tengan impacto real en la toma de decisiones: desde reservas y tarificación hasta analítica avanzada y visualización de datos. La idea es acercar la matemática actuarial —tradicionalmente asociada a textos y aulas universitarias— a un ecosistema más modular, tecnológico y orientado a productos.\nPara organizar este hub se plantean tres grandes ejes de trabajo:"
+  },
+  {
+    "objectID": "sobre-cortex.html#ejes-del-hub-actuarial-cortex",
+    "href": "sobre-cortex.html#ejes-del-hub-actuarial-cortex",
+    "title": "Sobre Actuarial Cortex",
+    "section": "Ejes del Hub Actuarial Cortex",
+    "text": "Ejes del Hub Actuarial Cortex\nDe forma resumida, Actuarial Cortex integra estos tres ejes bajo una misma identidad personal:\n\n\n\n\n\n\n\nEje\nContenido\n\n\n\n\nConocimiento aplicado\nLibros, notas técnicas, scripts en R/Python y cuadernos reproducibles sobre seguros, pensiones y riesgo.\n\n\nTecnología y demos\nDemos analíticos, dashboards interactivos y prototipos sectoriales derivados de la experiencia con Cortex Suite y otros proyectos.\n\n\nFormación continua\nCursos y materiales en matemáticas actuariales, financieras y ciencia de datos, pensados para actuarios y profesionales afines.\n\n\n\nActuarial Cortex se nutre de la experiencia laboral del Prof. Colmenares en seguros, banca y pensiones, y de su labor como profesor desde 2011 en la Universidad Central de Venezuela (EECA-UCV). Se presenta aquí como una plataforma personal e independiente, donde el diseño de contenidos, demos y rutas formativas responde a su propia visión sobre la profesión actuarial en el siglo XXI."
+  },
+  {
+    "objectID": "cortex-suite.html#demos-interactivos-por-sector",
+    "href": "cortex-suite.html#demos-interactivos-por-sector",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "Demos interactivos por sector",
+    "text": "Demos interactivos por sector\nA continuación se presenta la propuesta de valor y los demos interactivos para cinco ecosistemas: Banca, Seguros, Retail, Salud y Control General (cadena de suministro e industria)."
+  },
+  {
+    "objectID": "cortex-suite.html#cortex-bank-suite",
+    "href": "cortex-suite.html#cortex-bank-suite",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "1. Cortex Bank Suite",
+    "text": "1. Cortex Bank Suite\nEl sector financiero venezolano opera hoy bajo un esquema bimonetario único, donde la agilidad en el manejo de liquidez y la mitigación del riesgo crediticio son vitales. Cortex Bank Suite es una plataforma integral que permite a las instituciones bancarias, de microfinanzas y casas de bolsa evaluar la salud de su cartera y el valor de sus activos en tiempo real.\nQué ofrece el aplicativo\n\nVisión general: Indicadores de liquidez, solvencia, morosidad e intermediación; evolución de captaciones y cartera a lo largo del tiempo.\nRiesgo de crédito: Visualización del flujo de la cartera entre estados de riesgo (normal, riesgo significativo, impago); relación entre puntuación crediticia y probabilidad de incumplimiento; ajuste de parámetros y cálculo de la pérdida esperada.\nRiesgo de mercado y tesorería: Gráficos de evolución de índices o bonos; mapa de correlaciones entre distintas carteras de inversión.\n\nAbrir Cortex Bank Suite"
+  },
+  {
+    "objectID": "cortex-suite.html#cortex-insurance-suite",
+    "href": "cortex-suite.html#cortex-insurance-suite",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "2. Cortex Insurance Suite",
+    "text": "2. Cortex Insurance Suite\nEl mercado asegurador venezolano se encuentra en una encrucijada financiera y técnica crítica. Las aseguradoras enfrentan el reto de reestructurar sus modelos operativos para proteger a sus clientes mientras mantienen su solvencia frente a la inflación de costos. Cortex Insurance Suite es una cabina de mando actuarial y financiera que automatiza el control de primas, siniestros y el cálculo riguroso de reservas, alineada con las exigencias de la SUDEASEG.\nQué ofrece el aplicativo\n\nReservas y siniestralidad: Tablas que muestran la evolución de los siniestros en el tiempo; posibilidad de elegir distintos métodos de proyección de reservas (incluyendo ajuste por inflación).\nVisión general por ramos: Panel de primas cobradas, siniestros pagados y siniestralidad promedio por ramo, con tacómetro de cumplimiento de metas técnicas.\nRamos y productos: Análisis de indicadores de siniestralidad por producto dentro de cada ramo (automóviles, salud, personas, patrimoniales, fianzas).\nCumplimiento normativo y estrés: Evaluación visual del nivel de cumplimiento en materia de legitimación de capitales (LC/FT) y simulaciones de estrés sobre patrimonio y reservas.\n\nAbrir Cortex Insurance Suite"
+  },
+  {
+    "objectID": "cortex-suite.html#cortex-retail-suite",
+    "href": "cortex-suite.html#cortex-retail-suite",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "3. Cortex Retail Suite",
+    "text": "3. Cortex Retail Suite\nEl sector de consumo masivo en Venezuela está experimentando un notable renacimiento. La gestión comercial se enfrenta a un sistema bimonetario y a un consumidor que en gran medida utiliza ahorros para financiar compras. Cortex Retail Suite es una cabina de inteligencia comercial que captura en tiempo real las ventas y emplea analítica basada en evidencia para identificar relaciones entre margen, volumen y rotación.\nQué ofrece el aplicativo\n\nInteligencia comercial: Indicadores de volumen de ventas, ticket promedio en distintas monedas e índice de confianza del consumidor; visualización de la participación de mercado por categoría y tipo de marca (tradicional vs genérica), con filtros por región y tipo de tienda.\nPrecios y elasticidad: Curva de demanda según precio y tipo de cambio; posibilidad de simular cambios en costos importados y en tasas de cambio para ver el impacto en las ventas, con avisos cuando los precios salen de rangos sostenibles.\nInventario y canastas: Red de afinidades entre productos (qué se compra junto con qué), para apoyar decisiones de surtido y promociones.\nAnálisis a la medida: Herramienta de exploración donde el usuario puede cruzar variables (forma de pago, categoría, hora, etc.) y construir sus propias tablas y gráficos sin programar.\n\nAbrir Cortex Retail Suite"
+  },
+  {
+    "objectID": "cortex-suite.html#cortex-health-suite",
+    "href": "cortex-suite.html#cortex-health-suite",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "4. Cortex Health Suite",
+    "text": "4. Cortex Health Suite\nEl sector salud en Venezuela enfrenta mayor demanda, prevalencia de enfermedades crónicas y alta variabilidad en costos médicos. Fondos autoadministrados y empresas de medicina prepagada —reguladas por SUDEASEG— necesitan garantizar calidad sin comprometer viabilidad financiera. Cortex Health Suite consolida estadísticas de morbilidad y siniestralidad, audita facturas clínicas contra baremos en tiempo real e incorpora modelos que calculan la solvencia de reservas técnicas de salud.\nQué ofrece el aplicativo\n\nMonitoreo epidemiológico: Indicadores de admisión, prevalencia de enfermedades no transmisibles y uso de telemedicina frente a atención presencial; mapas que muestran la distribución geográfica de los siniestros y el rendimiento de la red de prestadores.\nAuditoría clínica: Comparación del costo facturado por procedimiento frente a los baremos acordados; gráficos de control para detectar desviaciones; ajuste del nivel de sensibilidad de la auditoría para resaltar los casos que requieren revisión manual.\nSolvencia y reservas: Proyección del patrimonio del fondo a varios años mediante simulaciones; posibilidad de introducir inflación médica e inflación general por separado para ver el impacto en las reservas.\nTarificación y modalidades: Comparación de la rentabilidad entre atención tradicional, asistencia domiciliaria y telemedicina; simulador de primas donde se pueden ajustar coaseguro, deducible y tope de cobertura, y comprobar si se cumple el margen de suficiencia exigido por la normativa.\n\nAbrir Cortex Health Suite"
+  },
+  {
+    "objectID": "cortex-suite.html#cortex-control-suite-visión-general-y-industria",
+    "href": "cortex-suite.html#cortex-control-suite-visión-general-y-industria",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "5. Cortex Control Suite (visión general y industria)",
+    "text": "5. Cortex Control Suite (visión general y industria)\nEl tejido productivo venezolano abarca logística, agroindustria y manufactura, con retos que van desde la volatilidad en el abastecimiento de combustible hasta la optimización de flotas e inventarios en tiempo real. Cortex Control Suite es una torre de control que permite desde el levantamiento de datos operativos en planta o en la carretera hasta tableros directivos predictivos.\nQué ofrece el aplicativo\n\nCadena de suministro y flotas: Indicadores de costo por kilómetro, rendimiento de combustible y entregas a tiempo (OTIF); mapa con la ubicación de la flota y las rutas entre centros de distribución y puntos de entrega; posibilidad de simular variaciones en el precio o la disponibilidad del combustible.\nEficiencia industrial y mantenimiento: Medidor de la efectividad global de los equipos (OEE); mapa de calor de fallas por zona de la planta o turno; curva que muestra la probabilidad de falla de un equipo en los próximos 30 días y opción de simular una orden de mantenimiento preventivo.\nSostenibilidad y gastos: Diagrama que desglosa el presupuesto operativo (combustible, peajes, mantenimiento, depreciación) hasta el margen operativo neto; selector de periodos y escenarios de sobrecostos.\nAnálisis a la medida: Exploración libre de los datos: cruce de estado de las máquinas, tiempos de ciclo, costos y otras variables para detectar ineficiencias sin necesidad de programar.\n\nAbrir Cortex Control Suite"
+  },
+  {
+    "objectID": "cortex-suite.html#cortex-suite-lab-otros-desarrollos-demostrativos",
+    "href": "cortex-suite.html#cortex-suite-lab-otros-desarrollos-demostrativos",
+    "title": "Cortex Suite: Solución Tecnológica a la Medida",
+    "section": "Cortex Suite Lab — Otros desarrollos demostrativos",
+    "text": "Cortex Suite Lab — Otros desarrollos demostrativos\nTarificación actuarial telemática\n\nAplicativo Shiny (telemática): Ver demo en línea\nEjemplo detallado (HTML): Xaringan1 — Tarificación telemática\n\nPrototipo Actuarial Insurtech (Shiny, R)\n\nDashboard avanzado (ActuarialInsurtechCARAMELS): indicadores técnicos, comparación aseguradora vs mercado, simulación de cartera; referencia en Referencias/ActuarialInsurtechCARAMELS/.\n\n\nPara conocer más o solicitar una propuesta adaptada a su organización: Contacto · Miembros."
+  },
+  {
+    "objectID": "actualidad.html",
+    "href": "actualidad.html",
+    "title": "Actualidad",
+    "section": "",
+    "text": "Sección de comunicación dinámica de Actuarial Cortex: noticias del sector, eventos académicos y notificaciones."
+  },
+  {
+    "objectID": "actualidad.html#novedades",
+    "href": "actualidad.html#novedades",
+    "title": "Actualidad",
+    "section": "Novedades",
+    "text": "Novedades\nÚltimas incorporaciones al sitio: nuevos artículos, libros publicados, cursos o secciones y noticias.\n\n\nFecha\nTipo\nNovedad\nEnlace\n\n\n—\n—\nSin novedades recientes.\n—"
+  },
+  {
+    "objectID": "actualidad.html#noticias-tiempo-real",
+    "href": "actualidad.html#noticias-tiempo-real",
+    "title": "Actualidad",
+    "section": "Noticias del sector en tiempo real",
+    "text": "Noticias del sector en tiempo real\nTitulares recientes (seguros y actuarial)\nLas siguientes noticias se obtienen del feed de Google Noticias en cada compilación de la página. Fuente: búsqueda «seguros» y «actuarial».\n\n\nSantiago Romera (AREA XXI), acreditado en el Registro de Actuarios de la República Dominicana - SegurosNews Tue, 03 Mar 2026 20:49:26 GMT\n\n\n20 nuevos profesionales se suman al ecosistema actuarial para anticipar y gestionar los riesgos en Ecuador - United Nations Development Programme Mon, 02 Mar 2026 20:42:47 GMT\n\n\nSantiago Romera (AREA XXI), acreditado en el Registro Nacional de Actuarios dominicano - Grupo Aseguranza Tue, 03 Mar 2026 12:10:14 GMT\n\n\nSuperintendencia de Seguros lanza Oficina Virtual y pone en marcha el Registro Nacional de Actuarios - Acento Tue, 03 Mar 2026 03:00:34 GMT\n\n\nModernización actuarial en seguros 2025: estrategias clave - PwC Tue, 11 Nov 2025 08:00:00 GMT\n\n\nSuperintendencia de Seguros lanza oficina virtual y pone en marcha el Registro Nacional de Actuarios - Periódico elDinero Mon, 02 Mar 2026 14:21:25 GMT\n\n\nLos actuarios catalanes plantean soluciones financieras ante las pérdidas por eventos catastróficos - SegurosNews Fri, 27 Feb 2026 12:47:14 GMT\n\n\nDel Dato al Impacto: Telemática y Análisis Actuarial para la Nueva Era del Seguro de Daños - SAS: Data and AI Solutions Tue, 12 Aug 2025 03:53:29 GMT\n\n\nEl actuario Juan Antonio Ortiz Pérez analiza los nuevos retos digitales del sector asegurador - Anáhuac Mon, 05 Jan 2026 08:00:00 GMT\n\n\nDirectora actuarial dice que la Caja no está en quiebra: seguro de salud tiene cubierto hasta 2035 - Semanario Universidad Fri, 06 Feb 2026 08:00:00 GMT\n\n\n\nMás resultados en Google Noticias.\n\nEnlaces a fuentes\nEnlaces a portales de noticias y actualidad del mundo actuarial y asegurador. Abre los enlaces para ver titulares y noticias actualizadas.\n\n\nFuente\nEnlace\nDescripción\n\n\n\nSOA — News & Publications\nsoa.org/news-and-publications\nNoticias, investigaciones y comunicados de la Society of Actuaries.\n\n\nCAS — News & Updates\ncasact.org/news\nActualidad de la Casualty Actuarial Society (seguros de no vida).\n\n\nIAA — News\nactuaries.org/news\nNoticias de la International Actuarial Association.\n\n\nThe Actuary (IFoA)\ntheactuary.com\nRevista y noticias del Instituto de Actuarios del Reino Unido.\n\n\nGoogle Noticias — búsqueda “actuarial”\nnews.google.com\nTitulares recientes que mencionan temas actuariales.\n\n\nGoogle Noticias — búsqueda “seguros”\nnews.google.com\nNoticias del sector asegurador."
+  },
+  {
+    "objectID": "actualidad.html#revistas-e-instancias-de-referencia",
+    "href": "actualidad.html#revistas-e-instancias-de-referencia",
+    "title": "Actualidad",
+    "section": "Revistas e instancias de referencia",
+    "text": "Revistas e instancias de referencia\nEnlaces a revistas e instancias de interés para la comunidad actuarial y estadística:\nRevistas y publicaciones\n\n\nAnales del Instituto de Actuarios Españoles — Principal publicación científica en español en ciencia actuarial (JCR, FECYT).\n\nSociety of Actuaries (SOA) — Publicaciones, investigación y certificación (EE. UU. e internacional).\n\nCasualty Actuarial Society (CAS) — Seguros de no vida y riesgo operacional.\n\nInternational Actuarial Association (IAA) — Asociación internacional de actuarios.\n\nASTIN Bulletin — Revista del Comité ASTIN (IAE).\n\nRepositorios e información sectorial\n\n\nFASECOLDA — Biblioteca — Catálogo y recursos del sector asegurador colombiano (referencia regional).\n\nIVSS — Instituto Venezolano de los Seguros Sociales.\n\nSudeaseg — Superintendencia de la Actividad Aseguradora (Venezuela).\n\nTendencias e insurtech\n\n\nChina Insurtech (HTML) — Exploración de tendencias y modelos de negocio insurtech en Asia."
+  },
+  {
+    "objectID": "actualidad.html#calendario",
+    "href": "actualidad.html#calendario",
+    "title": "Actualidad",
+    "section": "Calendario de eventos",
+    "text": "Calendario de eventos\nCalendario para eventos organizados o coorganizados por Actuarial Cortex: defensas de TFPG, seminarios, conferencias y ofertas de formación. Las fechas se irán actualizando aquí.\n\n\nFecha\nEvento\nLugar / modalidad\n\n\n\nPor definir\nPróximas defensas TFPG (Vol. II y III)\nUCV / por anunciar\n\n\nPor definir\nWebinars y cursos (Series de Tiempo, módulos R/Python)\nCursos\n\n\n\nPara proponer un evento: Contacto."
+  },
+  {
+    "objectID": "actualidad.html#noticias-y-blog",
+    "href": "actualidad.html#noticias-y-blog",
+    "title": "Actualidad",
+    "section": "Noticias y blog",
+    "text": "Noticias y blog\nArtículos de opinión técnica y análisis de coyuntura económica y actuarial."
+  },
+  {
+    "objectID": "actualidad.html#editorial-notificaciones",
+    "href": "actualidad.html#editorial-notificaciones",
+    "title": "Actualidad",
+    "section": "Editorial (Notificaciones)",
+    "text": "Editorial (Notificaciones)\n\n\nCall for Papers: Resources — Materiales académicos mantiene convocatoria abierta para manuscritos con revisión por pares.\n\nActualizaciones: nuevas publicaciones, volúmenes y libros se anunciarán en esta sección y en la página de Resources.\n\n\nPara proponer noticias o eventos: Contacto."
+  },
+  {
+    "objectID": "investigacion/index.html",
+    "href": "investigacion/index.html",
+    "title": "Investigación",
+    "section": "",
+    "text": "El eje de Investigación de Actuarial Cortex articula la producción científica en los materiales académicos (Resources) y el repositorio de modelos y herramientas (Model Hub)."
+  },
+  {
+    "objectID": "investigacion/index.html#resources-materiales-académicos",
+    "href": "investigacion/index.html#resources-materiales-académicos",
+    "title": "Investigación",
+    "section": "Resources — Materiales académicos",
+    "text": "Resources — Materiales académicos\nMateriales académicos con revisión editorial y artículos con código reproducible (R/Python/Julia). En Resources se listan también los trabajos finales de pregrado (TFPG) en los que el Prof. Angel Colmenares ha sido tutor y los tesistas han aceptado su publicación.\nIr a Resources"
+  },
+  {
+    "objectID": "investigacion/index.html#model-hub-otros-materiales",
+    "href": "investigacion/index.html#model-hub-otros-materiales",
+    "title": "Investigación",
+    "section": "Model Hub (Otros materiales)",
+    "text": "Model Hub (Otros materiales)\nRepositorio de scripts en R/Python, hojas Excel parametrizadas y bases de datos abiertas para replicación y uso pedagógico.\nIr al Model Hub"
+  },
+  {
+    "objectID": "resources/articulos.html",
+    "href": "resources/articulos.html",
+    "title": "Artículos",
+    "section": "",
+    "text": "Resources · Portal · Artículos\n\nEn esta página se listan los artículos de Resources por volumen. Los publicados incluyen enlace para lectura en línea (HTML) y descarga (PDF).\n\n  \n    Volumen I— Fundamentos, demografía y sostenibilidad del sistema de previsión social\n  \n  Trabajos sobre mortalidad subnacional, bases técnicas y proyecciones del sistema de previsión social. Incluye modelación espacial (BYM/INLA), Lee-Carter estocástico, actualización de tablas (Masjuán, CSO 1980) y diagnósticos territorializados. Tesistas vinculados: Daylin Moreno, José Raúl Gálvez, Daniel Azuaje, Arlet Moreno.\n  \n    Análisis espacio-temporal de la mortalidad en Venezuela (1996-2016)Angel Colmenares·BYM/INLA, SMR, clusters(2024)Análisis en 335 municipios con modelo Bayesiano BYM vía INLA; tendencia nacional 1,4% anual; clusters de riesgo en arco central y fronteras; superficie heterogénea que invalida tablas únicas nacionales.HTMLPDF\n    Mortalidad neonatal, postneonatal y en la niñez por entidad federalArlet Moreno, Angel Colmenares·Lee-Carter estocástico(2025)Lee-Carter a datos MPPS 1995-2012; desagregación por entidad federal, sexo y edad; proyección de κ_t hasta 2022; disparidad regional (Zulia, Trujillo) y riesgo concentrado en fase neonatal.HTMLPDF\n    Tema por definirProf. Jorge Dias·Por definir(—)Artículo en planificación para este volumen.Próximamente\n    Valuación de Bases TécnicasDaylin Moreno·Bases Masjuán(2024)Desfase de las bases de Masjuán (1960) frente a la realidad del siglo XXI; diagnóstico para tarificación y previsión social.Próximamente\n    Propuesta para el desarrollo de una tabla de mortalidad selecta por medio del método de Lee-CarterDaniel Azuaje·Lee-Carter, datos censales, R(versión preliminar)Tabla de mortalidad dinámica LC15 en R a partir de datos censales (INE, MPPS); comparación con CSO 1980, mortalidad observada de una aseguradora venezolana y Tabla de Mortalidad Venezolana.HTMLPDF\n  \n\n\n\n  \n    Volumen II— Las dimensiones de la mortalidad (causa, género y territorio)\n  \n  Proyección de la mortalidad por causas (Lee-Carter, CoDa), tablas de decrecimiento múltiple con Cadenas de Markov, y análisis por género y región. Heterogeneidad geográfica y mapeo del riesgo por causas de fallecimiento.\n  \n    Proyección de la mortalidad por causas (Lee-Carter y CoDa)Iliria Herrera·CoDa, causas de fallecimiento(2024)Análisis de datos composicionales para proyección de mortalidad por causas; integración Lee-Carter y CoDa.Próximamente\n    Tablas de decrecimiento múltiple con Cadenas de MarkovWilliams Fernandez·Markov(2024)Metodología alternativa para causas de fallecimiento mediante tablas de decrecimiento múltiple.Próximamente\n    Principales causas de fallecimiento (población masculina)Kelvin Guedez·Decrecimiento múltiple(2024)Tablas de decrecimiento múltiple y sobremortalidad masculina por causas externas.Próximamente\n    Principales causas de fallecimiento (población femenina)Dorielys Rangel·Riesgo femenino(2024)Perfil de riesgo femenino y enfermedades crónicas en tablas de decrecimiento por causas.Próximamente\n    Tablas de decrecimiento múltiple (Occidental, Andes, Central)Kennya Briceño·Regiones(2024)Heterogeneidad geográfica de la mortalidad por causas en regiones Occidental, Andes y Central.Próximamente\n    Principales causas (regiones Los Llanos y Capital)Daniela Godoy·Mapeo(2024)Mapeo geográfico del riesgo por causas en Los Llanos y Capital.Próximamente\n    Principales causas (regiones Oriental y Guayana)Oriana Lopez·Cobertura nacional(2024)Cobertura nacional del mapa de riesgo por causas en Oriental y Guayana.Próximamente\n  \n\n\n\n  \n    Volumen III— Perspectivas internacionales y fronteras en la modelización\n  \n  Comparativas internacionales de métodos de proyección (Chile, Japón, Países Bajos, Bélgica, Italia, Grecia), medición del riesgo de longevidad (Portugal) e impacto en rentas vitalicias y pensiones \n  \n    Análisis comparativo de métodos de proyección (Chile y Japón)Eleazar Domínguez·Lee-Carter y variantes(2025)Comparativa Lee-Carter, Lee-Miller, BMS, Hyndman-Ullah en contextos Chile y Japón.Próximamente\n    Medición del riesgo de longevidad (Portugal)Oliver Triveño·Longevidad(2025)Impacto financiero del riesgo de longevidad en rentas vitalicias y pensiones (caso Portugal).Próximamente\n    Comparativa internacional (Países Bajos, Bélgica)Luis Alvarez·En desarrollo(—)Comparativa de proyección y modelización en contexto Países Bajos y Bélgica.Próximamente\n    Comparativa internacional (Italia, Grecia)José Mendoza·En desarrollo(—)Comparativa de proyección y modelización en contexto Italia y Grecia.Próximamente\n  \n\nPlan editorial completo y estado de manuscritos: Portal de materiales."
+  },
+  {
+    "objectID": "resources/index.html#curso-de-series-de-tiempo",
+    "href": "resources/index.html#curso-de-series-de-tiempo",
+    "title": "Materiales Académicos",
+    "section": "1 Curso de Series de Tiempo",
+    "text": "1 Curso de Series de Tiempo\nCurso orientado a actuarios y profesionales que requieran proyecciones de mortalidad, siniestralidad o indicadores económicos.\nIr al curso Series de Tiempo con Python"
+  },
+  {
+    "objectID": "resources/index.html#plantilla-de-libros-y-materiales-docentes",
+    "href": "resources/index.html#plantilla-de-libros-y-materiales-docentes",
+    "title": "Materiales Académicos",
+    "section": "2 Plantilla de Libros y Materiales Docentes",
+    "text": "2 Plantilla de Libros y Materiales Docentes\nEl modelo para los libros de Actuarial Cortex es la plantilla Quarto Book basada en Applied Machine Learning Using mlr3 in R. Incluye partes, capítulos, PDF descargable, sidebar y búsqueda; ya está adaptada al hub (título, logo, pie de página).\nLibro de referencia: Applied Machine Learning Using mlr3 in R — Descargar PDF (coloca el PDF compilado en la carpeta resources/ con el nombre mlr3book.pdf para habilitar el enlace)."
+  },
+  {
+    "objectID": "resources/portal.html",
+    "href": "resources/portal.html",
+    "title": "Portal de materiales",
+    "section": "",
+    "text": "Portal de materiales · Resources · Artículos\nEl Portal de materiales es la interfaz de referencia de Actuarial Cortex para el control editorial de los materiales académicos (Resources). Desde aquí se accede al plan de publicación de los tres volúmenes, el estado de cada manuscrito y el enlace al repositorio donde se gestionan los artículos.\nRepositorio editorial: cvea-rvea (manuscritos en Quarto, plantilla editorial, referencias BibTeX)."
+  },
+  {
+    "objectID": "resources/portal.html#volumen-i-fundamentos-demografía-y-sostenibilidad-del-sistema-de-previsión-social",
+    "href": "resources/portal.html#volumen-i-fundamentos-demografía-y-sostenibilidad-del-sistema-de-previsión-social",
+    "title": "Portal de materiales",
+    "section": "1 Volumen I — Fundamentos, demografía y sostenibilidad del sistema de previsión social",
+    "text": "1 Volumen I — Fundamentos, demografía y sostenibilidad del sistema de previsión social\n\n\n\nArtículo / tema\nAutor(es)\nEstado\nVer artículo\nCarpeta en repo\n\n\n\n\nAnálisis espacio-temporal de la mortalidad en Venezuela (1996-2016)\nProf. Angel Colmenares\nListo\nHTML · PDF\nvol1/art-colmenares/\n\n\nModelación y proyección de la mortalidad neonatal, postneonatal y en la niñez por entidad federal\nArlet Moreno, Prof. Angel Colmenares\nListo\nHTML · PDF\nvol1/art-moreno-arlet/\n\n\nTema por definir\nProf. Jorge Dias\nPendiente\n—\nvol1/art-dias/\n\n\nValuación actuarial de bases técnicas Masjuán\nDaylin Moreno\nBorrador\n—\nvol1/art-moreno-daylin/\n\n\nPensiones y jubilaciones; gobernanza y sostenibilidad\nJosé Raúl Gálvez\nBorrador\n—\nvol1/art-galvez/\n\n\nTabla de mortalidad dinámica Lee-Carter (LC15)\nDaniel Azuaje\nBorrador\n—\nvol1/art-azuaje/"
+  },
+  {
+    "objectID": "resources/portal.html#volumen-ii-las-dimensiones-de-la-mortalidad-causa-género-y-territorio",
+    "href": "resources/portal.html#volumen-ii-las-dimensiones-de-la-mortalidad-causa-género-y-territorio",
+    "title": "Portal de materiales",
+    "section": "2 Volumen II — Las dimensiones de la mortalidad (causa, género y territorio)",
+    "text": "2 Volumen II — Las dimensiones de la mortalidad (causa, género y territorio)\n\n\n\n\n\n\n\n\n\nArtículo / tema\nAutor(es)\nEstado\nCarpeta en repo\n\n\n\n\nProyección de la mortalidad por causas (Lee-Carter y CoDa)\nIliria Herrera\nBorrador\nvol2/\n\n\nTablas de decrecimiento múltiple con Cadenas de Markov\nWilliams Fernandez\nPendiente\nvol2/\n\n\nPrincipales causas (población masculina)\nKelvin Guedez\nPendiente\nvol2/\n\n\nPrincipales causas (población femenina)\nDorielys Rangel\nPendiente\nvol2/\n\n\nTablas de decrecimiento múltiple (regiones)\nKennya Briceño\nPendiente\nvol2/\n\n\nPrincipales causas (Los Llanos y Capital)\nDaniela Godoy\nPendiente\nvol2/\n\n\nPrincipales causas (Oriental y Guayana)\nOriana Lopez\nPendiente\nvol2/"
+  },
+  {
+    "objectID": "resources/portal.html#volumen-iii-perspectivas-internacionales-y-fronteras-en-la-modelización",
+    "href": "resources/portal.html#volumen-iii-perspectivas-internacionales-y-fronteras-en-la-modelización",
+    "title": "Portal de materiales",
+    "section": "3 Volumen III — Perspectivas internacionales y fronteras en la modelización",
+    "text": "3 Volumen III — Perspectivas internacionales y fronteras en la modelización\n\n\n\n\n\n\n\n\n\nArtículo / tema\nAutor(es)\nEstado\nCarpeta en repo\n\n\n\n\nAnálisis comparativo de métodos de proyección (Chile y Japón)\nEleazar Domínguez\nPendiente\nvol3/\n\n\nMedición del riesgo de longevidad (Portugal)\nOliver Triveño\nPendiente\nvol3/\n\n\nComparativa internacional (Países Bajos, Bélgica)\nLuis Alvarez\nPendiente\nvol3/\n\n\nComparativa internacional (Italia, Grecia)\nJosé Mendoza\nPendiente\nvol3/"
+  },
+  {
+    "objectID": "resources/portal.html#leyenda-de-estados",
+    "href": "resources/portal.html#leyenda-de-estados",
+    "title": "Portal de materiales",
+    "section": "4 Leyenda de estados",
+    "text": "4 Leyenda de estados\n\nListo: manuscrito compilado (HTML/PDF), listo para revisión o publicación.\nBorrador: en redacción o revisión interna.\nPendiente: planificado; carpeta o tema por definir."
+  },
+  {
+    "objectID": "resources/portal.html#enlaces-rápidos",
+    "href": "resources/portal.html#enlaces-rápidos",
+    "title": "Portal de materiales",
+    "section": "5 Enlaces rápidos",
+    "text": "5 Enlaces rápidos\n\nResources — Presentación de los materiales académicos con accesos rápidos.\nArtículos — Listado por volumen con enlaces a manuscritos publicados.\nRepositorio cvea-rvea — Código, manuscritos y plantilla (acceso según permisos).\nActuarial Cortex — Miembros — Equipo y contacto."
+  },
+  {
+    "objectID": "resources/vol1-colmenares.html",
+    "href": "resources/vol1-colmenares.html",
+    "title": "Análisis Espacio-Temporal de la Mortalidad en Venezuela (1996-2016)",
+    "section": "",
+    "text": "Manuscrito completo (versión extendida)\n\n\n\nVer HTML · Descargar PDF (introducción, revisión literaria, métodos, resultados, figuras y conclusiones)."
+  },
+  {
+    "objectID": "resources/vol1-colmenares.html#resumen",
+    "href": "resources/vol1-colmenares.html#resumen",
+    "title": "Análisis Espacio-Temporal de la Mortalidad en Venezuela (1996-2016)",
+    "section": "1 Resumen",
+    "text": "1 Resumen\nResumen: La evaluación de la mortalidad sub-nacional es crítica para la solvencia de sistemas de previsión social y la tarificación de seguros de vida. Este estudio analiza la mortalidad en los 335 municipios de Venezuela (1996-2016) combinando normalización geográfica (GADM), clusters de K-means, índices de autocorrelación espacial de Moran y un modelo jerárquico Bayesiano Besag-York-Mollié (BYM) mediante INLA. Se identificó una tendencia nacional de incremento del riesgo del 1.4% anual, con clusters de riesgo persistentes en el arco central y zonas fronterizas. La interpolación IDW del riesgo bayesiano revela una superficie de mortalidad heterogénea que invalida el uso de tablas de mortalidad únicas nacionales. Existe un exceso de mortalidad crónico en regiones específicas que requiere ajustes actuariales territorializados.\nAbstract: Sub-national mortality assessment is critical for the solvency of social security systems and life insurance pricing. This study analyzes mortality across Venezuela’s 335 municipalities (1996-2016) combining geographic normalization (GADM), K-means clustering, Moran’s spatial autocorrelation indices, and a Bayesian Besag-York-Mollié (BYM) hierarchical model via INLA. A national increasing risk trend of 1.4% per year was identified, with persistent risk clusters in the central arc and border areas. IDW interpolation of Bayesian risk reveals a heterogeneous mortality surface that invalidates the use of single national mortality tables. There is chronic excess mortality in specific regions requiring territorialized actuarial adjustments.\nPalabras clave: Mortalidad, Venezuela, INLA, SMR, Análisis Espacial."
+  },
+  {
+    "objectID": "resources/vol1-colmenares.html#introducción",
+    "href": "resources/vol1-colmenares.html#introducción",
+    "title": "Análisis Espacio-Temporal de la Mortalidad en Venezuela (1996-2016)",
+    "section": "2 Introducción",
+    "text": "2 Introducción\nLa dinámica demográfica de Venezuela ha experimentado transformaciones estructurales profundas en las últimas dos décadas. El análisis de la mortalidad, entendido como el componente esencial del riesgo actuarial y la base de la seguridad social, requiere una lente geográfica de alta resolución que permita identificar desigualdades territoriales que las métricas nacionales agregadas suelen ocultar.\nDurante décadas, la práctica actuarial en el país ha dependido de tablas de mortalidad estáticas (Masjuán, CSO 1980), con un desfase significativo frente a la realidad actual. El presente artículo aborda el período 1996-2016 y emplea una estrategia que transita desde la exploración por clusters de K-means hasta la modelización bayesiana avanzada mediante el modelo BYM con INLA. Este trabajo se integra en el primer volumen de Resources como aporte del hub Actuarial Cortex."
+  },
+  {
+    "objectID": "resources/vol1-colmenares.html#métodos-resumen",
+    "href": "resources/vol1-colmenares.html#métodos-resumen",
+    "title": "Análisis Espacio-Temporal de la Mortalidad en Venezuela (1996-2016)",
+    "section": "3 Métodos (resumen)",
+    "text": "3 Métodos (resumen)\n\nCuraduría de datos: normalización de nombres entre MPPS, INE y cartografía GADM.\nK-means: segmentación de trayectorias de tasas de mortalidad por municipio.\nÍndice de Moran: validación de la estructura geográfica del riesgo.\nModelo BYM (INLA): riesgo relativo suavizado por municipio.\nInterpolación IDW: superficies de riesgo continuo para visualización."
+  },
+  {
+    "objectID": "resources/vol1-colmenares.html#conclusiones-y-recomendaciones",
+    "href": "resources/vol1-colmenares.html#conclusiones-y-recomendaciones",
+    "title": "Análisis Espacio-Temporal de la Mortalidad en Venezuela (1996-2016)",
+    "section": "4 Conclusiones y recomendaciones",
+    "text": "4 Conclusiones y recomendaciones\nComo editor del hub se presentan recomendaciones estratégicas: (1) transición hacia tablas dinámicas (Lee-Carter, BYM); (2) territorialización de reservas según mapa de riesgo; (3) monitoreo del incremento del 1.4% anual; (4) integración de datos y código abierto (Quarto, R) para reproducibilidad.\n\nArtículo completo con código reproducible (R, INLA, sf, gstat) y figuras en carpeta de referencias del hub. PDF disponible según proceso editorial."
+  },
+  {
+    "objectID": "resources/vol1-moreno.html",
+    "href": "resources/vol1-moreno.html",
+    "title": "Valuación Actuarial de Bases Técnicas",
+    "section": "",
+    "text": "Investigación sobre el desfase de las bases técnicas de Masjuán (1960) frente a la realidad demográfica y actuarial del siglo XXI. Análisis de la solvencia del sistema de pensiones y la subestimación sistemática de la supervivencia.\nEste artículo es un placeholder. Sustituir por el contenido completo del manuscrito (por ejemplo, a partir de la plantilla del hub en la carpeta de referencias del proyecto o material equivalente)."
+  },
+  {
+    "objectID": "resources/vol1-moreno.html#resumen",
+    "href": "resources/vol1-moreno.html#resumen",
+    "title": "Valuación Actuarial de Bases Técnicas",
+    "section": "",
+    "text": "Investigación sobre el desfase de las bases técnicas de Masjuán (1960) frente a la realidad demográfica y actuarial del siglo XXI. Análisis de la solvencia del sistema de pensiones y la subestimación sistemática de la supervivencia.\nEste artículo es un placeholder. Sustituir por el contenido completo del manuscrito (por ejemplo, a partir de la plantilla del hub en la carpeta de referencias del proyecto o material equivalente)."
+  },
+  {
+    "objectID": "resources/vol1-moreno.html#referencias",
+    "href": "resources/vol1-moreno.html#referencias",
+    "title": "Valuación Actuarial de Bases Técnicas",
+    "section": "2 Referencias",
+    "text": "2 Referencias\n\nMoreno, D. (2018). Evaluación de la solvencia del sistema de pensiones en Venezuela: Un análisis de longevidad. Trabajo de Grado, UCV."
+  },
+  {
+    "objectID": "docencia/index.html#cursos",
+    "href": "docencia/index.html#cursos",
+    "title": "Docencia",
+    "section": "Transformando datos en decisiones estratégicas y gestión de riesgos",
+    "text": "Transformando datos en decisiones estratégicas y gestión de riesgos\nEn la era de la información, la capacidad para modelar escenarios, predecir tendencias y cuantificar riesgos es el activo más valioso de cualquier organización. Nuestro centro de formación está especializado en capacitar a profesionales del sector financiero, asegurador, científico y empresarial.\nAprende a dominar el análisis complejo y la creación de modelos predictivos utilizando las herramientas de código abierto líderes en la industria —R y Python—, integrándolas de manera fluida en entornos corporativos.\nLos módulos que se describen a continuación se dictan en la plataforma Moodle, referente en enseñanza en línea. Inscripciones, materiales y seguimiento: Acceso a la plataforma de cursos (Moodle).\n\nMódulos de aprendizaje\nHemos estructurado nuestros programas en módulos especializados y progresivos. Ya sea que busques automatizar reportes, adentrarte en el Machine Learning o desarrollar modelos actuariales complejos, tenemos un camino para ti:\nMódulo 1 — Fundamentos analíticos en entornos corporativos\n\nDirigido a: Analistas de negocios, contadores, estudiantes de economía/matemáticas y profesionales que buscan migrar de Excel a lenguajes de programación.\nObjetivo: Instalar, configurar y dominar los entornos de desarrollo de R y Python, sentando las bases de la programación orientada a datos.\nConfiguración del entorno de trabajo: Instalación y gestión de entornos con Anaconda (Jupyter Notebooks) y RStudio. Manejo de variables de entorno y terminal para analistas.\nIntroducción a Python para datos: Sintaxis básica, estructuras de datos (listas, diccionarios), bucles y funciones. Introducción a la vectorización.\nFundamentos de R para estadística: Sintaxis de R, manejo de data frames, vectores y funciones base. ¿Cuándo usar R y cuándo usar Python?\n\nMódulo 2 — Ingeniería de datos y visualización avanzada\n\nDirigido a: Analistas de datos, científicos de datos junior y profesionales de inteligencia de negocios (BI).\nObjetivo: Extraer, limpiar, transformar (ETL) y visualizar grandes volúmenes de datos de manera eficiente.\nManipulación de datos con Python (Pandas y NumPy): Limpieza de datos estructurados, manejo de valores nulos, agrupaciones y cruce de bases de datos.\nEl ecosistema Tidyverse en R: Uso avanzado de dplyr y tidyr para la manipulación elegante y eficiente de conjuntos de datos complejos.\nStorytelling y visualización interactiva: Creación de gráficos estáticos y dinámicos usando ggplot2 (R), Matplotlib y Seaborn (Python). Integración con herramientas como Power BI.\n\nMódulo 3 — Modelado actuarial y matemáticas financieras\n\nDirigido a: Actuarios, analistas de riesgos, gestores de carteras y auditores financieros.\nObjetivo: Aplicar programación avanzada para el cálculo de primas, reservas, análisis de supervivencia y modelado de riesgos.\nMatemáticas financieras y series de tiempo: Análisis y pronóstico de series temporales financieras usando statsmodels (Python) y el ecosistema forecast / fpp3 (R).\nModelos de supervivencia y tablas de mortalidad: Uso de paquetes especializados en R (como survival y lifecontingencies) para seguros de vida y pensiones.\nSimulación estocástica y análisis de riesgos: Implementación del método Monte Carlo, modelos de cadenas de Markov y cuantificación de riesgo (VaR) combinando NumPy (Python) y librerías estadísticas de R.\n\nMódulo 4 — Machine Learning y analítica predictiva\n\nDirigido a: Científicos de datos, estadísticos y líderes técnicos de proyectos analíticos.\nObjetivo: Entrenar, evaluar y desplegar modelos de aprendizaje automático para la toma de decisiones automatizada.\nMachine Learning clásico con Scikit-Learn (Python): Regresión lineal/logística, árboles de decisión, Random Forest y clustering. Ajuste de hiperparámetros.\nModelado predictivo con Tidymodels (R): Preprocesamiento, validación cruzada y evaluación de modelos predictivos estadísticos.\nAutomatización y despliegue: Creación de APIs para modelos predictivos (FastAPI en Python) y aplicaciones web interactivas con Shiny (R) y Streamlit (Python).\n\n\n\n¿Por qué estudiar con nosotros?\n\nEnfoque corporativo real: Enseñamos a utilizar R y Python integrados en los flujos de trabajo (incl. Office/Power BI) que utilizan las empresas e instituciones financieras.\nRigor Científico y Matemático: No solo enseñamos a escribir código; enseñamos la estadística, la probabilidad y la matemática actuarial que fundamentan los modelos.\nEficiencia y Escalabilidad: Aprende a superar los límites de las hojas de cálculo tradicionales procesando millones de registros en segundos.\nProyectos Aplicados: Casos de estudio reales: desde la predicción de abandono de clientes (churn) hasta la tarificación de pólizas de seguros.\n\nLos cursos están orientados inicialmente a programación en software libre para los diversos sectores: banca, seguros y pensiones. Se dictan en la plataforma Moodle, referente en enseñanza en línea; el acceso a inscripciones y materiales está en el enlace Plataforma de cursos (Moodle)."
+  },
+  {
+    "objectID": "docencia/index.html#formación-continua",
+    "href": "docencia/index.html#formación-continua",
+    "title": "Docencia",
+    "section": "Formación continua",
+    "text": "Formación continua\n\nCurso de Series de Tiempo (Python)\nFicha técnica, programa, objetivos e inscripción del curso orientado a actuarios y profesionales que requieran proyecciones de mortalidad, siniestralidad o indicadores económicos.\nIr al curso Series de Tiempo con Python\nRecurso complementario: Series de tiempo y actores del mercado (HTML) — Análisis dinámico de actores y series temporales.\n\n\nPlataforma de cursos (Moodle)\nLos cursos de Actuarial Cortex se dictan en Moodle, la plataforma líder de cursos en línea de código abierto, utilizada por universidades e instituciones en todo el mundo. Inscripciones, materiales y seguimiento están disponibles en nuestra aula virtual. El acceso principal está en el inicio de esta sección (botón Abrir Portal de Cursos). Resumen de módulos: Plataforma de cursos — módulos ofrecidos.\n\n\nPróximas ofertas\nWebinars y certificaciones en temas emergentes (por ejemplo, IA en Actuaría). Las convocatorias se publicarán en Actualidad.\n(Próximas ofertas se anunciarán aquí.)"
+  },
+  {
+    "objectID": "docencia/index.html#recursos",
+    "href": "docencia/index.html#recursos",
+    "title": "Docencia",
+    "section": "Recursos para estudiantes",
+    "text": "Recursos para estudiantes\n\nGuías metodológicas para TFPG: reproducibilidad y referencias en formato APA; ver Resources — Modelo y plantilla.\nAcceso al Model Hub: scripts en R/Python, Excel actuarial y bases de datos abiertas con fines pedagógicos; ver Model Hub."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "",
+    "text": "Sigue estos pasos en orden. En cada uno se indica qué hacer y qué anotar. Al final tendrás Moodle funcionando en una VM de Oracle Cloud."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-1-crear-cuenta-en-oracle-cloud-free-tier",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-1-crear-cuenta-en-oracle-cloud-free-tier",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 1 — Crear cuenta en Oracle Cloud (Free Tier)",
+    "text": "Paso 1 — Crear cuenta en Oracle Cloud (Free Tier)\n\nAbre en el navegador: https://www.oracle.com/cloud/free/\nPulsa “Start for free” (o “Comenzar gratis”).\nCompleta el formulario:\n\nCountry: tu país (ej. Venezuela).\nEmail: correo que usarás para entrar siempre.\nPassword: contraseña segura (anótala en un gestor de contraseñas).\n\nEn Cloud Account Name elige un nombre (ej. cvea-cursos). Será parte de tu identificador; anótalo.\nHome Region: elige la más cercana (ej. São Paulo o Phoenix). No podrás cambiarla luego.\nIndica si eres estudiante/profesor si aplica; acepta términos.\nVerificación: te pedirán tarjeta de crédito/débito. Oracle no cobra si solo usas recursos Always Free; la usa para verificación. Revisa FAQ Free Tier.\nTras verificar el correo, entra a la consola: https://cloud.oracle.com/\n\nAnota: Tenancy name (aparece arriba a la derecha o en el menú de perfil) y Region.\n\n\nCheckpoint: Puedes entrar a la consola Oracle Cloud y ves el dashboard."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-2-crear-la-red-vcn-si-no-existe",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-2-crear-la-red-vcn-si-no-existe",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 2 — Crear la red (VCN) si no existe",
+    "text": "Paso 2 — Crear la red (VCN) si no existe\n\nEn la consola: menú ≡ → Networking → Virtual cloud networks.\nSi tu región ya tiene una VCN por defecto (ej. “Default VCN for…”), puedes usarla. Si no:\n\nStart VCN Wizard → Create VCN with Internet Connectivity.\nVCN name: moodle-vcn (o el que quieras).\nCompartment: el por defecto.\nDeja el resto y pulsa Next y Create.\n\nLuego: Networking → Virtual cloud networks → tu VCN → Security Lists → Default Security List.\n\nAdd Ingress Rules (si no existen ya):\n\nSource: 0.0.0.0/0\nIP Protocol: TCP\nDestination port range: 22 (SSH), luego repite para 80 (HTTP) y 443 (HTTPS).\n\nO una sola regla: Source 0.0.0.0/0, Destination port range: 22,80,443.\n\n\nCheckpoint: La VCN existe y permite tráfico en 22, 80 y 443."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-3-crear-la-vm-instancia-de-computación",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-3-crear-la-vm-instancia-de-computación",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 3 — Crear la VM (instancia de computación)",
+    "text": "Paso 3 — Crear la VM (instancia de computación)\n\nMenú ≡ → Compute → Instances.\nCreate instance.\nRellena:\n\nName: moodle-cvea\nPlacement: misma región que tu tenancy.\nImage and shape:\n\nImage: Oracle Linux (por defecto suele ser 8 o 9). No cambies a otra distro si quieres seguir esta guía al pie.\nShape: Change shape → Ampere o AMD → elegir un shape Always Free:\n\nAMD: VM.Standard.E2.1.Micro (1 OCPU, 1 GB RAM).\nO el equivalente en tu región (puede llamarse “Always Free eligible”).\n\n\nNetworking:\n\nPrimary VNIC: crear nueva o existente; Public IPv4 address: Assign a public IPv4 address (debe quedar marcado).\n\nAdd SSH keys:\n\nGenerate a key pair for me → descarga la clave privada (.key) y guárdala en un lugar seguro.\n\nO Upload public key si ya tienes una (ej. id_rsa.pub).\n\n\nCreate. Espera a que el estado sea Running (icono verde).\nEn la lista de instancias, anota la Public IP address de moodle-cvea.\n\nCheckpoint: Tienes una VM en estado Running y una IP pública (ej. 129.146.xxx.xxx)."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-4-conectar-por-ssh-a-la-vm",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-4-conectar-por-ssh-a-la-vm",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 4 — Conectar por SSH a la VM",
+    "text": "Paso 4 — Conectar por SSH a la VM\nEn tu PC (PowerShell o terminal):\n\nSi elegiste Generate a key pair, la clave privada suele llamarse ssh-key-2025-xx-xx.key (o similar). Mueve ese archivo a ~/.ssh/ y ajusta permisos:\n\n# En PowerShell (Windows) o bash (Linux/Mac)\n# Sustituir &lt;IP_PUBLICA&gt; por la IP del Paso 3\n# Sustituir ruta del .key por la tuya\n\nssh -i ruta/a/tu-key.key opc@&lt;IP_PUBLICA&gt;\nEn Windows con PuTTY: convertir la clave a .ppk con PuTTYgen y usar esa clave en Session → SSH → Auth.\n\nUsuario por defecto en Oracle Linux es opc.\nSi es la primera vez, acepta el fingerprint con yes.\n\nCheckpoint: Estás dentro de la VM y ves el prompt [opc@moodle-cvea ~]$."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-5-instalar-apache-php-y-dependencias",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-5-instalar-apache-php-y-dependencias",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 5 — Instalar Apache, PHP y dependencias",
+    "text": "Paso 5 — Instalar Apache, PHP y dependencias\nDentro de la VM, ejecuta (puedes copiar y pegar cada bloque):\n# Actualizar sistema\nsudo dnf update -y\n\n# Apache y PHP (y extensiones que Moodle necesita)\nsudo dnf install -y httpd php php-cli php-common php-mysqlnd php-xml php-gd php-mbstring php-zip php-json php-curl php-intl php-soap unzip\n\n# Habilitar e iniciar Apache\nsudo systemctl enable --now httpd\nComprobar que Apache responde:\ncurl -s -o /dev/null -w \"%{http_code}\" http://localhost\nDebería devolver 200. Desde tu navegador, prueba http://&lt;IP_PUBLICA&gt; y deberías ver la página por defecto de Apache.\nCheckpoint: http://&lt;IP_PUBLICA&gt; muestra la página de Apache."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 6 — Instalar MariaDB y crear base de datos para Moodle",
+    "text": "Paso 6 — Instalar MariaDB y crear base de datos para Moodle\n# Instalar MariaDB\nsudo dnf install -y mariadb-server\nsudo systemctl enable --now mariadb\nSeguridad básica de MariaDB (ejecuta y responde según indicaciones):\nsudo mysql_secure_installation\n\nContraseña root: puedes dejarla vacía en desarrollo o poner una y anotarla.\nRemove anonymous users: Y\nDisallow root login remotely: Y\nRemove test database: Y\nReload privileges: Y\n\nCrear base de datos y usuario para Moodle (cambia TU_PASSWORD_SEGURA por una contraseña fuerte):\nsudo mysql -e \"\nCREATE DATABASE moodle CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nCREATE USER 'moodleuser'@'localhost' IDENTIFIED BY 'TU_PASSWORD_SEGURA';\nGRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'localhost';\nFLUSH PRIVILEGES;\nEXIT;\n\"\nAnota en un lugar seguro: usuario: moodleuser, contraseña: la que pusiste, base de datos: moodle, host: localhost.\nCheckpoint: Puedes entrar a MariaDB: mysql -u moodleuser -p moodle (te pedirá la contraseña)."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-7-descargar-e-instalar-moodle-en-el-servidor",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-7-descargar-e-instalar-moodle-en-el-servidor",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 7 — Descargar e instalar Moodle en el servidor",
+    "text": "Paso 7 — Descargar e instalar Moodle en el servidor\nSigue estos comandos en la VM (sustituye la versión por una estable reciente si prefieres; 4.3 es LTS):\n# Ir al directorio web\ncd /var/www/html\n\n# Descargar Moodle 4.3 LTS (compatible con PHP 8.0/8.1; si tienes PHP 8.2+ puedes usar la última estable desde https://download.moodle.org/)\nsudo curl -L -o moodle.tgz https://download.moodle.org/download.php/direct/stable43/moodle-latest-43.tgz\n\n# Descomprimir\nsudo tar -xzf moodle.tgz\n\n# Crear directorio de datos (fuera del document root por seguridad)\nsudo mkdir -p /var/moodledata\nsudo chown -R apache:apache /var/moodledata\nsudo chmod 0777 /var/moodledata\n\n# Permisos para el código de Moodle\nsudo chown -R apache:apache /var/www/html/moodle\nsudo chmod -R 0755 /var/www/html/moodle\nSi la descarga falla por versión, entra a https://download.moodle.org/ y elige la última estable; copia la URL del .tgz y úsala en el curl.\nCheckpoint: Existe /var/www/html/moodle y /var/moodledata con propietario apache."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-8-configurar-apache-para-moodle-y-php",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-8-configurar-apache-para-moodle-y-php",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 8 — Configurar Apache para Moodle (y PHP)",
+    "text": "Paso 8 — Configurar Apache para Moodle (y PHP)\nCrear un archivo de configuración para Moodle:\nsudo tee /etc/httpd/conf.d/moodle.conf &lt;&lt; 'EOF'\n&lt;VirtualHost *:80&gt;\n    DocumentRoot /var/www/html/moodle\n    &lt;Directory /var/www/html/moodle&gt;\n        Options -Indexes +FollowSymLinks\n        AllowOverride All\n        Require all granted\n    &lt;/Directory&gt;\n    ErrorLog logs/moodle_error.log\n    CustomLog logs/moodle_access.log combined\n&lt;/VirtualHost&gt;\nEOF\nAjustar php.ini para límites que Moodle recomienda:\n# Buscar php.ini (puede ser /etc/php.ini o /etc/php.d/...)\nsudo sed -i 's/^memory_limit = .*/memory_limit = 256M/' /etc/php.ini\nsudo sed -i 's/^upload_max_filesize = .*/upload_max_filesize = 64M/' /etc/php.ini\nsudo sed -i 's/^post_max_size = .*/post_max_size = 64M/' /etc/php.ini\nsudo sed -i 's/^max_execution_time = .*/max_execution_time = 300/' /etc/php.ini\nReiniciar Apache:\nsudo systemctl restart httpd\nCheckpoint: Al abrir http://&lt;IP_PUBLICA&gt; en el navegador deberías ver el instalador de Moodle (idioma, etc.). Si ves “403 Forbidden”, revisa permisos de /var/www/html/moodle (propietario apache) y que DocumentRoot en el VirtualHost apunte a ese directorio."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-9-abrir-puertos-en-el-firewall-oracle-linux",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-9-abrir-puertos-en-el-firewall-oracle-linux",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 9 — Abrir puertos en el firewall (Oracle Linux)",
+    "text": "Paso 9 — Abrir puertos en el firewall (Oracle Linux)\n# Firewalld\nsudo firewall-cmd --permanent --add-service=http\nsudo firewall-cmd --permanent --add-service=https\nsudo firewall-cmd --permanent --add-service=ssh\nsudo firewall-cmd --reload\nAdemás, en Oracle Cloud la VCN debe permitir tráfico (Paso 2). Si aun así no cargas la página, revisa la Security List de la subred de la VM (puertos 80 y 443).\nCheckpoint: Desde tu navegador, http://&lt;IP_PUBLICA&gt; abre el instalador de Moodle."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-10-completar-el-instalador-de-moodle-en-el-navegador",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-10-completar-el-instalador-de-moodle-en-el-navegador",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 10 — Completar el instalador de Moodle en el navegador",
+    "text": "Paso 10 — Completar el instalador de Moodle en el navegador\n\nAbre http://&lt;IP_PUBLICA&gt; (o http://&lt;IP_PUBLICA&gt;/ si configuraste el VirtualHost como raíz).\nIdioma: Español (o el que prefieras) → Siguiente.\nRutas:\n\nDirectorio de datos: /var/moodledata (debe estar en verde si los permisos son correctos).\n\nBase de datos:\n\nDriver: MariaDB / MySQL nativo.\nHost: localhost\nBase de datos: moodle\nUsuario: moodleuser\nContraseña: la que definiste en el Paso 6.\nPrefijo de tablas: mdl_ (por defecto).\n\nSiguiente y espera a que Moodle cree las tablas.\nPerfil del administrador: nombre, apellido, correo y contraseña del admin. Anótalos.\nNombre del sitio: p. ej. “Actuarial Cortex — Plataforma de cursos”.\nFinaliza el asistente. Si aparece aviso de “Secure base URL” o HTTPS, puedes dejarlo para más adelante (por ahora HTTP con IP está bien para validar).\n\nCheckpoint: Entras al sitio Moodle y ves el escritorio (dashboard) como administrador."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-11-crear-un-curso-de-prueba-y-un-usuario",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-11-crear-un-curso-de-prueba-y-un-usuario",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 11 — Crear un curso de prueba y un usuario",
+    "text": "Paso 11 — Crear un curso de prueba y un usuario\n\nCurso de prueba:\nInicio del sitio → Crear curso (o Site administration → Courses → Add a new course).\n\nNombre: “Curso de prueba Actuarial Cortex”.\n\nGuardar. Entra al curso y añade una sección o recurso (p. ej. una etiqueta con texto).\n\nUsuario de prueba:\nSite administration → Users → Accounts → Add a new user.\n\nCompleta nombre, apellido, correo, contraseña.\n\nCrea el usuario y asígnalo al curso de prueba si quieres (Participants → Add users).\n\n\nCheckpoint: Existe un curso visible y al menos un usuario además del admin; puedes entrar con ese usuario y ver el curso."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Paso 12 — Anotar la URL y opcionalmente enlazar desde el hub",
+    "text": "Paso 12 — Anotar la URL y opcionalmente enlazar desde el hub\n\nURL de la plataforma (por ahora): http://&lt;IP_PUBLICA&gt;\nAnótala; más adelante se puede poner un dominio y HTTPS (Let’s Encrypt) y actualizar el enlace en la web del hub.\nPara enlazar desde la página de Docencia: en Docencia (o en la guía Plataforma de cursos) se puede añadir un botón o enlace: “Acceso a la plataforma de cursos (Moodle)” → http://&lt;IP_PUBLICA&gt;.\n\nCuando tengas dominio propio, cambias esa URL por https://tudominio.edu y configuras SSL en la VM (certbot + Apache)."
+  },
+  {
+    "objectID": "docencia/plataforma-cursos/fase1-pasos.html#resumen-de-la-fase-1",
+    "href": "docencia/plataforma-cursos/fase1-pasos.html#resumen-de-la-fase-1",
+    "title": "Fase 1 — Pasos ejecutables",
+    "section": "Resumen de la Fase 1",
+    "text": "Resumen de la Fase 1\n\n\n\nPaso\nAcción\nResultado\n\n\n\n\n1\nCuenta Oracle Cloud Free Tier\nAcceso a la consola\n\n\n2\nVCN y reglas de tráfico\nRed con puertos 22, 80, 443\n\n\n3\nCrear VM Oracle Linux (Always Free)\nIP pública anotada\n\n\n4\nSSH a la VM\nSesión en la VM\n\n\n5\nApache + PHP\nPágina por defecto en http://IP\n\n\n6\nMariaDB + BD moodle\nBase de datos lista\n\n\n7\nDescargar Moodle, moodledata\nArchivos en /var/www/html/moodle\n\n\n8\nVirtualHost y php.ini\nApache sirve Moodle\n\n\n9\nFirewall (y Security List)\nPuertos abiertos\n\n\n10\nInstalador web Moodle\nSitio Moodle funcionando\n\n\n11\nCurso y usuario de prueba\nValidación completa\n\n\n12\nAnotar URL / enlace al hub\nListo para Fase 2\n\n\n\nSi algo falla en un paso, detente ahí y revisa: permisos, firewall en la VM, Security List en Oracle, y que la IP sea la pública correcta. Cuando todos los checkpoints estén cumplidos, la Fase 1 está terminada y puedes pasar a la Fase 2 (diseño del Módulo 2 y contenidos en Quarto)."
+  },
+  {
+    "objectID": "docencia/series-tiempo/index.html",
+    "href": "docencia/series-tiempo/index.html",
+    "title": "Series de Tiempo con Python para Actuarios",
+    "section": "",
+    "text": "Este curso del eje de Formación de Actuarial Cortex proporciona las bases computacionales para proyectar variables de riesgo. Integra modelos estocásticos con el despliegue en entornos productivos (Python, Quarto) y está orientado a actuarios, estadísticos y profesionales que requieran proyecciones de mortalidad, siniestralidad o indicadores económicos."
+  },
+  {
+    "objectID": "docencia/series-tiempo/index.html#objetivos-del-curso",
+    "href": "docencia/series-tiempo/index.html#objetivos-del-curso",
+    "title": "Series de Tiempo con Python para Actuarios",
+    "section": "Objetivos del curso",
+    "text": "Objetivos del curso\n\nComprender y aplicar modelos de series de tiempo (ARIMA, suavizamiento, tendencias) en contextos actuariales.\nConectar la proyección de mortalidad y otras variables de riesgo con el ecosistema Python (pandas, statsmodels, scikit-learn cuando aplique).\nGenerar informes y dashboards reproducibles con Quarto para auditoría y toma de decisiones."
+  },
+  {
+    "objectID": "docencia/series-tiempo/index.html#temas-cubiertos",
+    "href": "docencia/series-tiempo/index.html#temas-cubiertos",
+    "title": "Series de Tiempo con Python para Actuarios",
+    "section": "Temas cubiertos",
+    "text": "Temas cubiertos\n\nModelos estocásticos para series de tiempo (estacionariedad, autocorrelación, predicción).\nProyección de mortalidad y variables actuariales (índices temporales, escenarios).\nBuenas prácticas de código y despliegue en entornos productivos (Python/Quarto).\nIntegración con los estándares del hub: reproducibilidad y documentación de supuestos."
+  },
+  {
+    "objectID": "docencia/series-tiempo/index.html#material-en-línea",
+    "href": "docencia/series-tiempo/index.html#material-en-línea",
+    "title": "Series de Tiempo con Python para Actuarios",
+    "section": "Material en línea",
+    "text": "Material en línea\nEl desarrollo del curso está publicado en:\nSeries de Tiempo con Python (Web)\nLos módulos del curso se irán incorporando en esta plataforma según estén disponibles."
+  },
+  {
+    "objectID": "docencia/series-tiempo/index.html#relación-con-la-investigación",
+    "href": "docencia/series-tiempo/index.html#relación-con-la-investigación",
+    "title": "Series de Tiempo con Python para Actuarios",
+    "section": "Relación con la investigación",
+    "text": "Relación con la investigación\nLos temas del curso se alinean con los artículos de Resources (Lee-Carter, proyecciones por entidad federal, análisis espacio-temporal) y con los libros y materiales docentes. Los participantes pueden apoyarse en los manuscritos y el código publicado en Resources para profundizar."
+  },
+  {
+    "objectID": "servicios/demo-mapa.html",
+    "href": "servicios/demo-mapa.html",
+    "title": "Demo: Mapa de Riesgo de Mortalidad",
+    "section": "",
+    "text": "Aquí puede embeberse un dashboard de mapa de riesgo (por ejemplo, basado en el análisis espacio-temporal INLA/BYM del artículo de mortalidad municipal en Resources, Vol. I). Reemplaza la URL por tu aplicación publicada."
+  }
+]

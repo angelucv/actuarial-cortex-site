@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Fase 1 — Pasos ejecutables – Actuarial Cortex</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo-AC/logo-ac-blanco.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d329e753491efaeac79c98c4b193a686.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cb0134d757334781baadea181c3b850e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- Cargar css-doodle en el head para que el fondo animado se vea desde el primer render -->
+<script src="https://unpkg.com/css-doodle@0.24.2/css-doodle.min.js"></script>
+<!-- Configuración MathJax para fórmulas complejas en la web -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* Logo horizontal en la barra: altura fija para que no desborde (sustituye cvea_teal) */
+.navbar-logo {
+  max-height: 48px !important;
+  width: auto !important;
+}
+</style>
+<!-- Meta y título Actuarial Cortex -->
+<title>Actuarial Cortex — Hub de conocimiento y tecnología actuarial</title>
+<meta name="description" content="Actuarial Cortex — Conocimiento, tecnología y formación en ciencias actuariales. Resources, Cursos y Cortex Suite.">
+<style>
+/* Panel de menú propio (no dropdown Bootstrap): enlaces normales que sí redirigen */
+#cortex-custom-menu-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 300px;
+  max-width: 85vw;
+  height: 100vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.98);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+  z-index: 1050;
+  transition: transform 0.25s ease;
+  transform: translateX(-100%);
+  padding-bottom: 1rem;
+}
+body.cortex-menu-open #cortex-custom-menu-panel {
+  transform: translateX(0);
+}
+.cortex-menu-panel-logo,
+.cortex-menu-panel-logo-bottom {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 0.5rem;
+  background: #0b1720;
+  text-align: center;
+}
+.cortex-menu-panel-logo-bottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+.cortex-menu-panel-logo a,
+.cortex-menu-panel-logo-bottom a {
+  display: inline-block;
+}
+/* Mismo tamaño logo arriba y abajo */
+.cortex-menu-panel-logo img,
+.cortex-menu-panel-logo-bottom img {
+  max-height: 100px;
+  width: auto;
+}
+#cortex-custom-menu-panel .cortex-menu-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+#cortex-custom-menu-panel .cortex-menu-link:hover {
+  background: rgba(23, 104, 172, 0.08);
+  color: #1768ac;
+}
+/* Ocultar el dropdown de Bootstrap; usamos solo nuestro panel */
+#cortex-menu-dropdown .dropdown-menu {
+  display: none !important;
+}
+.cortex-menu-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1040;
+  display: none;
+  cursor: pointer;
+}
+body.cortex-menu-open .cortex-menu-backdrop {
+  display: block;
+}
+body.cortex-menu-open .page-body,
+body.cortex-menu-open .content-inner,
+body.cortex-menu-open main.content,
+body.cortex-menu-open #quarto-document-content {
+  margin-left: 300px !important;
+  transition: margin-left 0.25s ease;
+}
+@media (max-width: 991.98px) {
+  body.cortex-menu-open .page-body,
+  body.cortex-menu-open .content-inner,
+  body.cortex-menu-open main.content,
+  body.cortex-menu-open #quarto-document-content {
+    margin-left: 0 !important;
+  }
+}
+</style>
+<script>
+(function() {
+  function initCortexMenuPanel() {
+    var dropdown = null;
+    var navs = document.querySelectorAll('.navbar .navbar-nav');
+    for (var n = 0; n < navs.length; n++) {
+      var items = navs[n].querySelectorAll('.dropdown');
+      for (var i = 0; i < items.length; i++) {
+        var t = items[i].querySelector('.dropdown-toggle');
+        if (t && (t.textContent || '').indexOf('Menú') !== -1) { dropdown = items[i]; break; }
+      }
+      if (dropdown) break;
+    }
+    if (!dropdown) return;
+    var menu = dropdown.querySelector('.dropdown-menu');
+    if (!menu) return;
+    dropdown.id = 'cortex-menu-dropdown';
+
+    var logoLink = document.querySelector('.navbar-brand[href]');
+    var logoHref = (logoLink && logoLink.getAttribute('href')) ? logoLink.getAttribute('href') : 'index.html';
+    if (logoHref.indexOf('.qmd') !== -1) logoHref = logoHref.replace(/\.qmd/g, '.html');
+    var logoImg = document.querySelector('.navbar-brand img');
+    var baseSrc = (logoImg && logoImg.getAttribute('src')) ? logoImg.getAttribute('src') : '';
+    baseSrc = baseSrc.replace(/\\/g, '/');
+    var dir = baseSrc ? baseSrc.split('/').slice(0, -1).join('/') : 'logo-AC';
+    if (!dir) dir = 'logo-AC';
+    var logoSrc = dir + '/logo-AC-AC-vertical-blanco.png';
+
+    /* Recoger enlaces del menú (mismos href que genera Quarto por página) */
+    var links = [];
+    menu.querySelectorAll('a.dropdown-item').forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (href && href !== '#') {
+        if (href.indexOf('.qmd') !== -1) href = href.replace(/\.qmd/g, '.html');
+        var text = (a.querySelector('.dropdown-text') && a.querySelector('.dropdown-text').textContent) || a.textContent || '';
+        if (text) links.push({ href: href, text: text.trim() });
+      }
+    });
+
+    /* Crear panel propio con enlaces HTML normales (sin Bootstrap) */
+    var panel = document.getElementById('cortex-custom-menu-panel');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.id = 'cortex-custom-menu-panel';
+      var topLogo = '<div class="cortex-menu-panel-logo"><a href="' + logoHref + '"><img src="' + logoSrc + '" alt="Actuarial Cortex" onerror="this.style.display=\'none\'"></a></div>';
+      var list = '';
+      links.forEach(function(item) {
+        list += '<a class="cortex-menu-link" href="' + item.href + '">' + (item.text || item.href) + '</a>';
+      });
+      var bottomLogo = '<div class="cortex-menu-panel-logo-bottom"><a href="' + logoHref + '"><img src="' + logoSrc + '" alt="Actuarial Cortex" onerror="this.style.display=\'none\'"></a></div>';
+      panel.innerHTML = topLogo + list + bottomLogo;
+      document.body.appendChild(panel);
+    }
+
+    var backdrop = document.getElementById('cortex-menu-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'cortex-menu-backdrop';
+      backdrop.className = 'cortex-menu-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    function openPanel() {
+      document.body.classList.add('cortex-menu-open');
+    }
+    function closePanel() {
+      document.body.classList.remove('cortex-menu-open');
+    }
+    function togglePanel() {
+      document.body.classList.toggle('cortex-menu-open');
+    }
+
+    var toggleEl = dropdown.querySelector('.dropdown-toggle') || dropdown.querySelector('[data-bs-toggle="dropdown"]');
+    if (toggleEl) {
+      toggleEl.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        ev.stopImmediatePropagation();
+        togglePanel();
+      }, true);
+    }
+
+    backdrop.addEventListener('click', closePanel);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCortexMenuPanel);
+  } else {
+    initCortexMenuPanel();
+  }
+})();
+</script>
+
+
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-AC\logo-ac-blanco.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Actuarial Cortex</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-menú" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-list" role="img">
+</i> 
+ <span class="menu-text">Menú</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-menú">    
+        <li>
+    <a class="dropdown-item" href="../../index.html">
+ <span class="dropdown-text">Inicio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sobre-cortex.html">
+ <span class="dropdown-text">Sobre Cortex</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../miembros.html">
+ <span class="dropdown-text">Miembros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../resources/index.html">
+ <span class="dropdown-text">Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../investigacion/model-hub.html">
+ <span class="dropdown-text">Model Hub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docencia/index.html">
+ <span class="dropdown-text">Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cortex-suite.html">
+ <span class="dropdown-text">Cortex Suite</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../servicios/index.html">
+ <span class="dropdown-text">Servicios</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../observatorio.html">
+ <span class="dropdown-text">Observatorio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../actualidad.html">
+ <span class="dropdown-text">Actualidad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contacto.html">
+ <span class="dropdown-text">Contacto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../index.html" aria-current="page"> <i class="bi bi-house-fill" role="img">
+</i> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../sobre-cortex.html"> <i class="bi bi-building" role="img">
+</i> 
+<span class="menu-text">Sobre Cortex</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../miembros.html"> <i class="bi bi-people-fill" role="img">
+</i> 
+<span class="menu-text">Miembros</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cortex-suite.html"> <i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+<span class="menu-text">Cortex Suite</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../docencia/index.html"> <i class="bi bi-journal-bookmark-fill" role="img">
+</i> 
+<span class="menu-text">Portal de cursos</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="mailto:actuarial.cortex@gmail.com" title="" class="quarto-navigation-tool px-1" aria-label="Correo Actuarial Cortex"><i class="bi bi-envelope-fill"></i></a>
+    <a href="https://instagram.com/actuarial_cortex" title="" class="quarto-navigation-tool px-1" aria-label="Instagram Actuarial Cortex"><i class="bi bi-instagram"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Fase 1 — Pasos ejecutables</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../logo-AC\logo-ac-blanco.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#paso-1-crear-cuenta-en-oracle-cloud-free-tier" id="toc-paso-1-crear-cuenta-en-oracle-cloud-free-tier" class="nav-link active" data-scroll-target="#paso-1-crear-cuenta-en-oracle-cloud-free-tier">Paso 1 — Crear cuenta en Oracle Cloud (Free Tier)</a></li>
+  <li><a href="#paso-2-crear-la-red-vcn-si-no-existe" id="toc-paso-2-crear-la-red-vcn-si-no-existe" class="nav-link" data-scroll-target="#paso-2-crear-la-red-vcn-si-no-existe">Paso 2 — Crear la red (VCN) si no existe</a></li>
+  <li><a href="#paso-3-crear-la-vm-instancia-de-computación" id="toc-paso-3-crear-la-vm-instancia-de-computación" class="nav-link" data-scroll-target="#paso-3-crear-la-vm-instancia-de-computación">Paso 3 — Crear la VM (instancia de computación)</a></li>
+  <li><a href="#paso-4-conectar-por-ssh-a-la-vm" id="toc-paso-4-conectar-por-ssh-a-la-vm" class="nav-link" data-scroll-target="#paso-4-conectar-por-ssh-a-la-vm">Paso 4 — Conectar por SSH a la VM</a></li>
+  <li><a href="#paso-5-instalar-apache-php-y-dependencias" id="toc-paso-5-instalar-apache-php-y-dependencias" class="nav-link" data-scroll-target="#paso-5-instalar-apache-php-y-dependencias">Paso 5 — Instalar Apache, PHP y dependencias</a></li>
+  <li><a href="#paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle" id="toc-paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle" class="nav-link" data-scroll-target="#paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle">Paso 6 — Instalar MariaDB y crear base de datos para Moodle</a></li>
+  <li><a href="#paso-7-descargar-e-instalar-moodle-en-el-servidor" id="toc-paso-7-descargar-e-instalar-moodle-en-el-servidor" class="nav-link" data-scroll-target="#paso-7-descargar-e-instalar-moodle-en-el-servidor">Paso 7 — Descargar e instalar Moodle en el servidor</a></li>
+  <li><a href="#paso-8-configurar-apache-para-moodle-y-php" id="toc-paso-8-configurar-apache-para-moodle-y-php" class="nav-link" data-scroll-target="#paso-8-configurar-apache-para-moodle-y-php">Paso 8 — Configurar Apache para Moodle (y PHP)</a></li>
+  <li><a href="#paso-9-abrir-puertos-en-el-firewall-oracle-linux" id="toc-paso-9-abrir-puertos-en-el-firewall-oracle-linux" class="nav-link" data-scroll-target="#paso-9-abrir-puertos-en-el-firewall-oracle-linux">Paso 9 — Abrir puertos en el firewall (Oracle Linux)</a></li>
+  <li><a href="#paso-10-completar-el-instalador-de-moodle-en-el-navegador" id="toc-paso-10-completar-el-instalador-de-moodle-en-el-navegador" class="nav-link" data-scroll-target="#paso-10-completar-el-instalador-de-moodle-en-el-navegador">Paso 10 — Completar el instalador de Moodle en el navegador</a></li>
+  <li><a href="#paso-11-crear-un-curso-de-prueba-y-un-usuario" id="toc-paso-11-crear-un-curso-de-prueba-y-un-usuario" class="nav-link" data-scroll-target="#paso-11-crear-un-curso-de-prueba-y-un-usuario">Paso 11 — Crear un curso de prueba y un usuario</a></li>
+  <li><a href="#paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub" id="toc-paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub" class="nav-link" data-scroll-target="#paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub">Paso 12 — Anotar la URL y opcionalmente enlazar desde el hub</a></li>
+  <li><a href="#resumen-de-la-fase-1" id="toc-resumen-de-la-fase-1" class="nav-link" data-scroll-target="#resumen-de-la-fase-1">Resumen de la Fase 1</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Fase 1 — Pasos ejecutables</h1>
+<p class="subtitle lead">Construir la infraestructura Moodle en Oracle Cloud paso a paso</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Sigue estos pasos en orden. En cada uno se indica qué hacer y qué anotar. Al final tendrás Moodle funcionando en una VM de Oracle Cloud.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Si Oracle te muestra “Export laws” / acceso denegado
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si al abrir oracle.com o al registrarte aparece un mensaje de restricción por leyes de exportación de EE.UU., <strong>no podrás completar estos pasos con Oracle Cloud</strong>. En ese caso usa las <a href="../../docencia/plataforma-cursos/alternativas-oracle.html">alternativas (MoodleCloud, Gnomio o VPS)</a> para tener Moodle en línea y continuar con la Fase 2.</p>
+</div>
+</div>
+<hr>
+<section id="paso-1-crear-cuenta-en-oracle-cloud-free-tier" class="level2">
+<h2 class="anchored" data-anchor-id="paso-1-crear-cuenta-en-oracle-cloud-free-tier">Paso 1 — Crear cuenta en Oracle Cloud (Free Tier)</h2>
+<ol type="1">
+<li>Abre en el navegador: <strong>https://www.oracle.com/cloud/free/</strong></li>
+<li>Pulsa <strong>“Start for free”</strong> (o “Comenzar gratis”).</li>
+<li>Completa el formulario:
+<ul>
+<li><strong>Country:</strong> tu país (ej. Venezuela).</li>
+<li><strong>Email:</strong> correo que usarás para entrar siempre.</li>
+<li><strong>Password:</strong> contraseña segura (anótala en un gestor de contraseñas).</li>
+</ul></li>
+<li>En <strong>Cloud Account Name</strong> elige un nombre (ej. <code>cvea-cursos</code>). Será parte de tu identificador; anótalo.</li>
+<li><strong>Home Region:</strong> elige la más cercana (ej. <strong>São Paulo</strong> o <strong>Phoenix</strong>). No podrás cambiarla luego.</li>
+<li>Indica si eres estudiante/profesor si aplica; acepta términos.</li>
+<li>Verificación: te pedirán <strong>tarjeta de crédito/débito</strong>. Oracle no cobra si solo usas recursos <em>Always Free</em>; la usa para verificación. Revisa <a href="https://www.oracle.com/cloud/free/faq/">FAQ Free Tier</a>.</li>
+<li>Tras verificar el correo, entra a la consola: <strong>https://cloud.oracle.com/</strong>
+<ul>
+<li>Anota: <strong>Tenancy name</strong> (aparece arriba a la derecha o en el menú de perfil) y <strong>Region</strong>.</li>
+</ul></li>
+</ol>
+<p><strong>Checkpoint:</strong> Puedes entrar a la consola Oracle Cloud y ves el dashboard.</p>
+<hr>
+</section>
+<section id="paso-2-crear-la-red-vcn-si-no-existe" class="level2">
+<h2 class="anchored" data-anchor-id="paso-2-crear-la-red-vcn-si-no-existe">Paso 2 — Crear la red (VCN) si no existe</h2>
+<ol type="1">
+<li>En la consola: menú <strong>≡ → Networking → Virtual cloud networks</strong>.</li>
+<li>Si tu región ya tiene una VCN por defecto (ej. “Default VCN for…”), puedes usarla. Si no:
+<ul>
+<li><strong>Start VCN Wizard → Create VCN with Internet Connectivity</strong>.</li>
+<li><strong>VCN name:</strong> <code>moodle-vcn</code> (o el que quieras).</li>
+<li><strong>Compartment:</strong> el por defecto.</li>
+<li>Deja el resto y pulsa <strong>Next</strong> y <strong>Create</strong>.</li>
+</ul></li>
+<li>Luego: <strong>Networking → Virtual cloud networks</strong> → tu VCN → <strong>Security Lists</strong> → <strong>Default Security List</strong>.
+<ul>
+<li><strong>Add Ingress Rules</strong> (si no existen ya):
+<ul>
+<li><strong>Source:</strong> 0.0.0.0/0</li>
+<li><strong>IP Protocol:</strong> TCP</li>
+<li><strong>Destination port range:</strong> 22 (SSH), luego repite para 80 (HTTP) y 443 (HTTPS).</li>
+</ul></li>
+<li>O una sola regla: <strong>Source</strong> 0.0.0.0/0, <strong>Destination port range:</strong> 22,80,443.</li>
+</ul></li>
+</ol>
+<p><strong>Checkpoint:</strong> La VCN existe y permite tráfico en 22, 80 y 443.</p>
+<hr>
+</section>
+<section id="paso-3-crear-la-vm-instancia-de-computación" class="level2">
+<h2 class="anchored" data-anchor-id="paso-3-crear-la-vm-instancia-de-computación">Paso 3 — Crear la VM (instancia de computación)</h2>
+<ol type="1">
+<li>Menú <strong>≡ → Compute → Instances</strong>.</li>
+<li><strong>Create instance</strong>.</li>
+<li>Rellena:
+<ul>
+<li><strong>Name:</strong> <code>moodle-cvea</code></li>
+<li><strong>Placement:</strong> misma región que tu tenancy.</li>
+<li><strong>Image and shape:</strong>
+<ul>
+<li><strong>Image:</strong> <strong>Oracle Linux</strong> (por defecto suele ser 8 o 9). No cambies a otra distro si quieres seguir esta guía al pie.</li>
+<li><strong>Shape:</strong> <strong>Change shape</strong> → <strong>Ampere</strong> o <strong>AMD</strong> → elegir un shape <strong>Always Free</strong>:
+<ul>
+<li>AMD: <strong>VM.Standard.E2.1.Micro</strong> (1 OCPU, 1 GB RAM).</li>
+<li>O el equivalente en tu región (puede llamarse “Always Free eligible”).</li>
+</ul></li>
+</ul></li>
+<li><strong>Networking:</strong>
+<ul>
+<li><strong>Primary VNIC:</strong> crear nueva o existente; <strong>Public IPv4 address:</strong> <strong>Assign a public IPv4 address</strong> (debe quedar marcado).</li>
+</ul></li>
+<li><strong>Add SSH keys:</strong>
+<ul>
+<li><strong>Generate a key pair for me</strong> → descarga la clave privada (<code>.key</code>) y guárdala en un lugar seguro.<br>
+</li>
+<li>O <strong>Upload public key</strong> si ya tienes una (ej. <code>id_rsa.pub</code>).</li>
+</ul></li>
+</ul></li>
+<li><strong>Create</strong>. Espera a que el estado sea <strong>Running</strong> (icono verde).</li>
+<li>En la lista de instancias, anota la <strong>Public IP address</strong> de <code>moodle-cvea</code>.</li>
+</ol>
+<p><strong>Checkpoint:</strong> Tienes una VM en estado <em>Running</em> y una IP pública (ej. 129.146.xxx.xxx).</p>
+<hr>
+</section>
+<section id="paso-4-conectar-por-ssh-a-la-vm" class="level2">
+<h2 class="anchored" data-anchor-id="paso-4-conectar-por-ssh-a-la-vm">Paso 4 — Conectar por SSH a la VM</h2>
+<p>En tu PC (PowerShell o terminal):</p>
+<ul>
+<li>Si elegiste <strong>Generate a key pair</strong>, la clave privada suele llamarse <code>ssh-key-2025-xx-xx.key</code> (o similar). Mueve ese archivo a <code>~/.ssh/</code> y ajusta permisos:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># En PowerShell (Windows) o bash (Linux/Mac)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sustituir &lt;IP_PUBLICA&gt; por la IP del Paso 3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sustituir ruta del .key por la tuya</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> ruta/a/tu-key.key opc@<span class="op">&lt;</span>IP_PUBLICA<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En Windows con PuTTY: convertir la clave a <code>.ppk</code> con PuTTYgen y usar esa clave en Session → SSH → Auth.</p>
+<ul>
+<li>Usuario por defecto en Oracle Linux es <strong><code>opc</code></strong>.</li>
+<li>Si es la primera vez, acepta el fingerprint con <code>yes</code>.</li>
+</ul>
+<p><strong>Checkpoint:</strong> Estás dentro de la VM y ves el prompt <code>[opc@moodle-cvea ~]$</code>.</p>
+<hr>
+</section>
+<section id="paso-5-instalar-apache-php-y-dependencias" class="level2">
+<h2 class="anchored" data-anchor-id="paso-5-instalar-apache-php-y-dependencias">Paso 5 — Instalar Apache, PHP y dependencias</h2>
+<p>Dentro de la VM, ejecuta (puedes copiar y pegar cada bloque):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Actualizar sistema</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update <span class="at">-y</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apache y PHP (y extensiones que Moodle necesita)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> httpd php php-cli php-common php-mysqlnd php-xml php-gd php-mbstring php-zip php-json php-curl php-intl php-soap unzip</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Habilitar e iniciar Apache</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> httpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Comprobar que Apache responde:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="at">-o</span> /dev/null <span class="at">-w</span> <span class="st">"%{http_code}"</span> http://localhost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Debería devolver <code>200</code>. Desde tu navegador, prueba <strong>http://&lt;IP_PUBLICA&gt;</strong> y deberías ver la página por defecto de Apache.</p>
+<p><strong>Checkpoint:</strong> <code>http://&lt;IP_PUBLICA&gt;</code> muestra la página de Apache.</p>
+<hr>
+</section>
+<section id="paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle" class="level2">
+<h2 class="anchored" data-anchor-id="paso-6-instalar-mariadb-y-crear-base-de-datos-para-moodle">Paso 6 — Instalar MariaDB y crear base de datos para Moodle</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar MariaDB</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> mariadb-server</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> mariadb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Seguridad básica de MariaDB (ejecuta y responde según indicaciones):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mysql_secure_installation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Contraseña root: puedes dejarla vacía en desarrollo o poner una y anotarla.</li>
+<li>Remove anonymous users: <strong>Y</strong></li>
+<li>Disallow root login remotely: <strong>Y</strong></li>
+<li>Remove test database: <strong>Y</strong></li>
+<li>Reload privileges: <strong>Y</strong></li>
+</ul>
+<p>Crear base de datos y usuario para Moodle (cambia <code>TU_PASSWORD_SEGURA</code> por una contraseña fuerte):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mysql <span class="at">-e</span> <span class="st">"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">CREATE DATABASE moodle CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">CREATE USER 'moodleuser'@'localhost' IDENTIFIED BY 'TU_PASSWORD_SEGURA';</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">GRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'localhost';</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">FLUSH PRIVILEGES;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">EXIT;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Anota en un lugar seguro: <strong>usuario:</strong> <code>moodleuser</code>, <strong>contraseña:</strong> la que pusiste, <strong>base de datos:</strong> <code>moodle</code>, <strong>host:</strong> <code>localhost</code>.</p>
+<p><strong>Checkpoint:</strong> Puedes entrar a MariaDB: <code>mysql -u moodleuser -p moodle</code> (te pedirá la contraseña).</p>
+<hr>
+</section>
+<section id="paso-7-descargar-e-instalar-moodle-en-el-servidor" class="level2">
+<h2 class="anchored" data-anchor-id="paso-7-descargar-e-instalar-moodle-en-el-servidor">Paso 7 — Descargar e instalar Moodle en el servidor</h2>
+<p>Sigue estos comandos en la VM (sustituye la versión por una estable reciente si prefieres; 4.3 es LTS):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ir al directorio web</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /var/www/html</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Descargar Moodle 4.3 LTS (compatible con PHP 8.0/8.1; si tienes PHP 8.2+ puedes usar la última estable desde https://download.moodle.org/)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> curl <span class="at">-L</span> <span class="at">-o</span> moodle.tgz https://download.moodle.org/download.php/direct/stable43/moodle-latest-43.tgz</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomprimir</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar <span class="at">-xzf</span> moodle.tgz</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear directorio de datos (fuera del document root por seguridad)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /var/moodledata</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> apache:apache /var/moodledata</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 0777 /var/moodledata</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Permisos para el código de Moodle</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> apache:apache /var/www/html/moodle</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod <span class="at">-R</span> 0755 /var/www/html/moodle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si la descarga falla por versión, entra a <a href="https://download.moodle.org/">https://download.moodle.org/</a> y elige la última estable; copia la URL del .tgz y úsala en el <code>curl</code>.</p>
+<p><strong>Checkpoint:</strong> Existe <code>/var/www/html/moodle</code> y <code>/var/moodledata</code> con propietario <code>apache</code>.</p>
+<hr>
+</section>
+<section id="paso-8-configurar-apache-para-moodle-y-php" class="level2">
+<h2 class="anchored" data-anchor-id="paso-8-configurar-apache-para-moodle-y-php">Paso 8 — Configurar Apache para Moodle (y PHP)</h2>
+<p>Crear un archivo de configuración para Moodle:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tee /etc/httpd/conf.d/moodle.conf <span class="op">&lt;&lt; 'EOF'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;VirtualHost *:80&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">    DocumentRoot /var/www/html/moodle</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;Directory /var/www/html/moodle&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">        Options -Indexes +FollowSymLinks</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">        AllowOverride All</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">        Require all granted</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/Directory&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">    ErrorLog logs/moodle_error.log</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">    CustomLog logs/moodle_access.log combined</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/VirtualHost&gt;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ajustar <code>php.ini</code> para límites que Moodle recomienda:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscar php.ini (puede ser /etc/php.ini o /etc/php.d/...)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sed <span class="at">-i</span> <span class="st">'s/^memory_limit = .*/memory_limit = 256M/'</span> /etc/php.ini</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sed <span class="at">-i</span> <span class="st">'s/^upload_max_filesize = .*/upload_max_filesize = 64M/'</span> /etc/php.ini</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sed <span class="at">-i</span> <span class="st">'s/^post_max_size = .*/post_max_size = 64M/'</span> /etc/php.ini</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sed <span class="at">-i</span> <span class="st">'s/^max_execution_time = .*/max_execution_time = 300/'</span> /etc/php.ini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reiniciar Apache:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart httpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Checkpoint:</strong> Al abrir <strong>http://&lt;IP_PUBLICA&gt;</strong> en el navegador deberías ver el <strong>instalador de Moodle</strong> (idioma, etc.). Si ves “403 Forbidden”, revisa permisos de <code>/var/www/html/moodle</code> (propietario <code>apache</code>) y que <code>DocumentRoot</code> en el VirtualHost apunte a ese directorio.</p>
+<hr>
+</section>
+<section id="paso-9-abrir-puertos-en-el-firewall-oracle-linux" class="level2">
+<h2 class="anchored" data-anchor-id="paso-9-abrir-puertos-en-el-firewall-oracle-linux">Paso 9 — Abrir puertos en el firewall (Oracle Linux)</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Firewalld</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>http</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>https</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>ssh</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Además, en <strong>Oracle Cloud</strong> la VCN debe permitir tráfico (Paso 2). Si aun así no cargas la página, revisa la <strong>Security List</strong> de la subred de la VM (puertos 80 y 443).</p>
+<p><strong>Checkpoint:</strong> Desde tu navegador, <strong>http://&lt;IP_PUBLICA&gt;</strong> abre el instalador de Moodle.</p>
+<hr>
+</section>
+<section id="paso-10-completar-el-instalador-de-moodle-en-el-navegador" class="level2">
+<h2 class="anchored" data-anchor-id="paso-10-completar-el-instalador-de-moodle-en-el-navegador">Paso 10 — Completar el instalador de Moodle en el navegador</h2>
+<ol type="1">
+<li>Abre <strong>http://&lt;IP_PUBLICA&gt;</strong> (o http://&lt;IP_PUBLICA&gt;/ si configuraste el VirtualHost como raíz).</li>
+<li><strong>Idioma:</strong> Español (o el que prefieras) → <strong>Siguiente</strong>.</li>
+<li><strong>Rutas:</strong>
+<ul>
+<li><strong>Directorio de datos:</strong> <code>/var/moodledata</code> (debe estar en verde si los permisos son correctos).</li>
+</ul></li>
+<li><strong>Base de datos:</strong>
+<ul>
+<li><strong>Driver:</strong> MariaDB / MySQL nativo.</li>
+<li><strong>Host:</strong> <code>localhost</code></li>
+<li><strong>Base de datos:</strong> <code>moodle</code></li>
+<li><strong>Usuario:</strong> <code>moodleuser</code></li>
+<li><strong>Contraseña:</strong> la que definiste en el Paso 6.</li>
+<li><strong>Prefijo de tablas:</strong> <code>mdl_</code> (por defecto).</li>
+</ul></li>
+<li><strong>Siguiente</strong> y espera a que Moodle cree las tablas.</li>
+<li><strong>Perfil del administrador:</strong> nombre, apellido, correo y contraseña del admin. Anótalos.</li>
+<li><strong>Nombre del sitio:</strong> p.&nbsp;ej. “Actuarial Cortex — Plataforma de cursos”.</li>
+<li>Finaliza el asistente. Si aparece aviso de “Secure base URL” o HTTPS, puedes dejarlo para más adelante (por ahora HTTP con IP está bien para validar).</li>
+</ol>
+<p><strong>Checkpoint:</strong> Entras al sitio Moodle y ves el escritorio (dashboard) como administrador.</p>
+<hr>
+</section>
+<section id="paso-11-crear-un-curso-de-prueba-y-un-usuario" class="level2">
+<h2 class="anchored" data-anchor-id="paso-11-crear-un-curso-de-prueba-y-un-usuario">Paso 11 — Crear un curso de prueba y un usuario</h2>
+<ol type="1">
+<li><strong>Curso de prueba:</strong><br>
+<strong>Inicio del sitio → Crear curso</strong> (o <strong>Site administration → Courses → Add a new course</strong>).
+<ul>
+<li>Nombre: “Curso de prueba Actuarial Cortex”.<br>
+</li>
+<li>Guardar. Entra al curso y añade una sección o recurso (p.&nbsp;ej. una etiqueta con texto).</li>
+</ul></li>
+<li><strong>Usuario de prueba:</strong><br>
+<strong>Site administration → Users → Accounts → Add a new user</strong>.
+<ul>
+<li>Completa nombre, apellido, correo, contraseña.<br>
+</li>
+<li>Crea el usuario y asígnalo al curso de prueba si quieres (Participants → Add users).</li>
+</ul></li>
+</ol>
+<p><strong>Checkpoint:</strong> Existe un curso visible y al menos un usuario además del admin; puedes entrar con ese usuario y ver el curso.</p>
+<hr>
+</section>
+<section id="paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub" class="level2">
+<h2 class="anchored" data-anchor-id="paso-12-anotar-la-url-y-opcionalmente-enlazar-desde-el-hub">Paso 12 — Anotar la URL y opcionalmente enlazar desde el hub</h2>
+<ul>
+<li><p><strong>URL de la plataforma (por ahora):</strong> <code>http://&lt;IP_PUBLICA&gt;</code><br>
+Anótala; más adelante se puede poner un dominio y HTTPS (Let’s Encrypt) y actualizar el enlace en la web del hub.</p></li>
+<li><p>Para <strong>enlazar desde la página de Docencia:</strong> en <a href="../../docencia/index.html">Docencia</a> (o en la guía <a href="../../docencia/plataforma-cursos/index.html">Plataforma de cursos</a>) se puede añadir un botón o enlace: <em>“Acceso a la plataforma de cursos (Moodle)”</em> → <code>http://&lt;IP_PUBLICA&gt;</code>.</p></li>
+</ul>
+<p>Cuando tengas dominio propio, cambias esa URL por <code>https://tudominio.edu</code> y configuras SSL en la VM (certbot + Apache).</p>
+<hr>
+</section>
+<section id="resumen-de-la-fase-1" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-de-la-fase-1">Resumen de la Fase 1</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Paso</th>
+<th>Acción</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Cuenta Oracle Cloud Free Tier</td>
+<td>Acceso a la consola</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>VCN y reglas de tráfico</td>
+<td>Red con puertos 22, 80, 443</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Crear VM Oracle Linux (Always Free)</td>
+<td>IP pública anotada</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>SSH a la VM</td>
+<td>Sesión en la VM</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Apache + PHP</td>
+<td>Página por defecto en http://IP</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>MariaDB + BD moodle</td>
+<td>Base de datos lista</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Descargar Moodle, moodledata</td>
+<td>Archivos en /var/www/html/moodle</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>VirtualHost y php.ini</td>
+<td>Apache sirve Moodle</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Firewall (y Security List)</td>
+<td>Puertos abiertos</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Instalador web Moodle</td>
+<td>Sitio Moodle funcionando</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Curso y usuario de prueba</td>
+<td>Validación completa</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Anotar URL / enlace al hub</td>
+<td>Listo para Fase 2</td>
+</tr>
+</tbody>
+</table>
+<p>Si algo falla en un paso, detente ahí y revisa: permisos, firewall en la VM, Security List en Oracle, y que la IP sea la pública correcta. Cuando todos los checkpoints estén cumplidos, la <strong>Fase 1</strong> está terminada y puedes pasar a la <a href="../../docencia/plataforma-cursos/index.html#fase-2--primer-curso-módulo-2-ingeniería-de-datos-y-visualización-avanzada">Fase 2</a> (diseño del Módulo 2 y contenidos en Quarto).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ © Actuarial Cortex
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Conocimiento - Tecnología - Formación
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:actuarial.cortex@gmail.com">
+<p>actuarial.cortex@gmail.com</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://instagram.com/actuarial_cortex">
+<p><span class="citation" data-cites="actuarial_cortex">@actuarial_cortex</span></p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

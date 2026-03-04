@@ -1,0 +1,3350 @@
+--- PAGE 1 ---
+UNIVERSIDAD CENTRAL DE VENEZUELA
+FACULTAD DE CIENCIAS ECONOMICAS Y SOCIALES
+ESCUELA DE ESTADISTICAS Y CIENCIAS ACTUARIALES
+Trabajo Especial de Pregrado:
+PROPUESTA PARA EL DESARROLLO DE UNA TABLA
+DE MORTALIDAD SELECTA POR MEDIO DEL
+M ´ETODO DE LEE CARTER:
+UNA APLICACION EN R A PARTIR DE DATOS CENSALES, Y SU COMPARACI´ON CON
+LA MORTALIDAD OBSERV ADA DE UNA EMPRESA DE SEGUROS VENEZOLANA
+Para optar por el titulo de Licenciado en Ciencias Actuariales
+Autor:
+Daniel Azuaje
+Tutor:
+Prof. Angel Colmenares
+
+--- PAGE 3 ---
+Dedicatoria
+Dedicado a
+mi familia biologica
+y de vida
+La presente investigaci´on se la dedico a todas aquellas personas que colaboraron en mi desa-
+rrollo personal y profesional. A mi familia biol ´ogica, porque formo mis bases y valores como
+ser humano, y a mi familia elegida en el camino de la vida, porque es con quienes he elegido
+compartir lo m´as valioso de mi vida, El Tiempo.
+I
+
+--- PAGE 4 ---
+´Indice general
+Lista de Figuras y Gr´aﬁcos V
+Lista de Tablas VII
+Agradecimientos XI
+Introducci´on 1
+1 Planteamiento del Problema 3
+1.1 Tablas de Mortalidad . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2 Aportes de las TDM en el Mercado Financiero Mundial . . . . . . . . . . . . . 4
+1.3 Tablas de Mortalidad en Venezuela y Aportes al Mercado Financiero . . . . . . 5
+1.4 Antecedentes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.5 Finalidad . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.6 Objetivo General . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.7 Objetivos Especiﬁcos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2 Marco Te ´orico 13
+2.1 Glosario de T ´erminos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.2 Bases Te ´oricas para el Desarrollo de una Tabla de Mortalidad . . . . . . . . . . 14
+2.2.1 Estructura de una TDM . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2.3 Tipos de TDM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2.4 Tablas de Mortalidad Din ´amicas . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3 Marco Metodol ´ogico 25
+3.0.1 Fuente de los Datos . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+3.0.2 Reconstrucci ´on de la Mortalidad en el Periodo 1995 a 2011 . . . . . . . 27
+3.0.3 Calculo de las Tasas Brutas . . . . . . . . . . . . . . . . . . . . . . . . 32
+II
+
+--- PAGE 5 ---
+´INDICE GENERAL III
+3.0.4 Graduaci ´on de las Tasas . . . . . . . . . . . . . . . . . . . . . . . . . 32
+3.0.5 Proyecci ´on de la Mortalidad para el A ˜no 2015 por Medio de Tablas
+Din´amicas con el Lenguaje de Programaci´on R . . . . . . . . . . . . . 33
+4 An ´alisis de los Resultados 45
+4.1 Comparaci ´on de la TDM Din ´amica con Respecto a las tablas de mortalidad
+m´as Utilizadas en el Sector Asegurador Venezolano . . . . . . . . . . . . . . . 45
+4.2 Comparaci ´on de la TDM Din´amica con Respecto a la mortalidad observada por
+una empresa del Sector Asegurador Venezolano . . . . . . . . . . . . . . . . . 46
+4.3 Comparaci ´on de la TDM Din´amica selecta con Respecto a la Tabla de Mortali-
+dad Venezolana . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+5 Conclusiones y Recomendaciones 49
+6 Anexos 53
+6.1 Anexo 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+6.1.1 Interpolaci ´on de la Poblaci´on Masculina . . . . . . . . . . . . . . . . . 58
+6.1.2 Interpolaci ´on de la Poblaci´on Femenina . . . . . . . . . . . . . . . . . 69
+6.1.3 Interpolaci ´on de la Poblaci´on Total . . . . . . . . . . . . . . . . . . . . 79
+6.2 Anexo 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 89
+6.2.1 Comparaci ´on de las LC15 con la CSO80 . . . . . . . . . . . . . . . . . 89
+6.3 Anexo 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 101
+
+--- PAGE 6 ---
+IV ´INDICE GENERAL
+
+--- PAGE 7 ---
+´Indice de ﬁguras
+Figura 2.2.1 Funci ´on de Supervivientes . . . . . . . . . . . . . . . . . . . . . . . . 14
+Figura 2.2.2 Funci ´on de Defunciones . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+Figura 2.2.3 Funci ´on de Defunciones . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+Figura 2.4.1 TDM Din ´amica . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+Figura 3.0.1 Datos Censales de la Poblaci ´on de 0 a 4 . . . . . . . . . . . . . . . . . 28
+Figura 3.0.2 Datos Censales de la Poblaci ´on de 5 a 9 . . . . . . . . . . . . . . . . . 28
+V
+
+--- PAGE 9 ---
+´Indice de tablas
+Tabla 1.3.1 (Porci ´on) Evoluci´on del Ramo de Vida . . . . . . . . . . . . . . . . . . 7
+Tabla 1.3.2 (Porci ´on) Evoluci´on del Ramo de Funerario . . . . . . . . . . . . . . . 7
+Tabla 3.0.1 Total Poblaciones Censadas . . . . . . . . . . . . . . . . . . . . . . . . 27
+Tabla 3.0.2 (Porci ´on) Interpolaci´on Poblaci´on Masculina de 0 a 4 a˜nos . . . . . . . 29
+Tabla 3.0.3 Edades y N ´umero de Personas . . . . . . . . . . . . . . . . . . . . . . 30
+Tabla 3.0.4 Composici ´on Etaria. N´umero de Personas . . . . . . . . . . . . . . . . 30
+Tabla 3.0.5 Proporci ´on Etaria por Edad . . . . . . . . . . . . . . . . . . . . . . . . 31
+Tabla 3.0.6 Distribuci ´on de Fallecimientos por Edades Simples y Edades . . . . . . 31
+Tabla 3.0.7 (Porci ´on) Tasas Brutas 1995 . . . . . . . . . . . . . . . . . . . . . . . . 32
+Tabla 3.0.8 (Porci ´on) Tasas Brutas, Tasas Graduadas(Gra) . . . . . . . . . . . . . . 33
+Tabla 3.0.9 (Porci ´on) Tabla de Mortalidad Din´amica por LC . . . . . . . . . . . . . 43
+Tabla 4.1.1 (Porci ´on) Comparaci´on de Tasas LC2015 y CSO80 . . . . . . . . . . . 46
+Tabla 4.2.1 (Porci ´on) Comparaci´on de LC2015 y una Aseguradora Venezolana . . . 47
+Tabla 4.3.1 (Porci ´on)Comparaci´on LC15 con Descuento (QxLC15CD) y TDM Ve-
+nezolana . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+Tabla 6.0.1 Evoluci ´on del Ramo de Vida . . . . . . . . . . . . . . . . . . . . . . . 53
+Tabla 6.0.2 Add caption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+Tabla 6.0.3 Tabla de Mortalidad Venezolana. 2003 . . . . . . . . . . . . . . . . . . 54
+Tabla 6.0.3 Tabla de Mortalidad Venezolana. 2003 . . . . . . . . . . . . . . . . . . 55
+Tabla 6.0.3 Tabla de Mortalidad Venezolana. 2003 . . . . . . . . . . . . . . . . . . 56
+Tabla 6.0.3 Tabla de Mortalidad Venezolana. 2003 . . . . . . . . . . . . . . . . . . 57
+Tabla 6.0.3 Tabla de Mortalidad Venezolana. 2003 . . . . . . . . . . . . . . . . . . 58
+Tabla 6.1.1 Interpolaci ´on Poblaci´on Masculina de 0 a 4 a˜nos . . . . . . . . . . . . . 58
+Tabla 6.1.2 Interpolaci ´on Poblaci´on Masculina de 5 a 9 A˜nos . . . . . . . . . . . . 59
+Tabla 6.1.3 Interpolaci ´on Poblaci´on Masculina de 10 a 14 A˜nos . . . . . . . . . . . 59
+VII
+
+--- PAGE 10 ---
+VIII ´INDICE DE TABLAS
+Tabla 6.1.4 Interpolaci ´on Poblaci´on de 15 a 19 A˜nos . . . . . . . . . . . . . . . . . 60
+Tabla 6.1.5 Interpolaci ´on de la Poblaci´on Masculina de 20 a 24 A˜nos . . . . . . . . 60
+Tabla 6.1.6 Interpolaci ´on de la Poblaci´on Masculina de 25 a 29 A˜nos . . . . . . . . 61
+Tabla 6.1.7 Interpolaci ´on de la Poblaci´on Masculina de 30 a 34 A˜nos . . . . . . . . 61
+Tabla 6.1.8 Interpolaci ´on de la Poblaci´on Masculina de 35 a 39 A˜nos . . . . . . . . 62
+Tabla 6.1.9 Interpolaci ´on de la Poblaci´on de 40 a 44 A˜nos . . . . . . . . . . . . . . 62
+Tabla 6.1.10 Interpolaci´on de la Poblaci´on Masculina de 45 a 49 . . . . . . . . . . . 63
+Tabla 6.1.11 Interpolaci´on de la Poblaci´on Masculina de 50 a 54 A˜nos . . . . . . . . 63
+Tabla 6.1.12 Interpolaci´on de la Poblaci´on Masculina de 55 a 59 A˜nos . . . . . . . . 64
+Tabla 6.1.13 Interpolaci´on de la Poblaci´on Masculina de 60 a 64 A˜nos . . . . . . . . 64
+Tabla 6.1.14 Interpolaci´on de la Poblaci´on Masculina de 65 a 69 A˜nos . . . . . . . . 65
+Tabla 6.1.15 Interpolaci´on de la Poblaci´on Masculina de 70 a 74 A˜nos . . . . . . . . 65
+Tabla 6.1.16 Interpolaci´on de la Poblaci´on Masculina de 75 a 79 A˜nos . . . . . . . . 66
+Tabla 6.1.17 Interpolaci´on de la Poblaci´on Masculina de 80 a 84 A˜nos . . . . . . . . 66
+Tabla 6.1.18 Interpolaci´on de la Poblaci´on Masculina de 85 a 89 A˜nos . . . . . . . . 67
+Tabla 6.1.19 Interpolaci´on de la Poblaci´on Masculina de 90 a 94 A˜nos . . . . . . . . 67
+Tabla 6.1.20 Interpolaci´on de la Poblaci´on Masculina de 95 a 99 A˜nos . . . . . . . . 68
+Tabla 6.1.21 Interpolaci´on de la Poblaci´on Masculina de mas de 100 A˜nos . . . . . . 68
+Tabla 6.1.22 Interpolaci´on de la Poblaci´on Femenina de 0 a 4 . . . . . . . . . . . . . 69
+Tabla 6.1.23 Interpolaci´on de la Poblaci´on Femenina de 5 a 9 . . . . . . . . . . . . . 69
+Tabla 6.1.24 Interpolaci´on de la Poblaci´on Femenina de 10 a 14 . . . . . . . . . . . . 70
+Tabla 6.1.25 Interpolaci´on de la Poblaci´on Femenina de 15 a 19 . . . . . . . . . . . . 70
+Tabla 6.1.26 Interpolaci´on de la Poblaci´on Femenina de 20 a 24 . . . . . . . . . . . . 71
+Tabla 6.1.27 Interpolaci´on de la Poblaci´on Femenina de 25 a 29 . . . . . . . . . . . . 71
+Tabla 6.1.28 Interpolaci´on de la Poblaci´on Femenina de 30 a 34 . . . . . . . . . . . . 72
+Tabla 6.1.29 Interpolaci´on de la Poblaci´on Femenina de 35 a 39 . . . . . . . . . . . . 72
+Tabla 6.1.30 Interpolaci´on de la Poblaci´on Femenina de 40 a 44 . . . . . . . . . . . . 73
+Tabla 6.1.31 Interpolaci´on de la Poblaci´on Femenina de 45 a 49 . . . . . . . . . . . . 73
+Tabla 6.1.32 Interpolaci´on de la Poblaci´on Femenina de 50 a 54 . . . . . . . . . . . . 74
+Tabla 6.1.33 Interpolaci´on de la Poblaci´on Femenina de 55 a 59 . . . . . . . . . . . . 74
+Tabla 6.1.34 Interpolaci´on de la Poblaci´on Femenina de 60 a 65 . . . . . . . . . . . . 75
+Tabla 6.1.35 Interpolaci´on de la Poblaci´on Femenina de 65 a 69 . . . . . . . . . . . . 75
+
+--- PAGE 11 ---
+´INDICE DE TABLAS IX
+Tabla 6.1.36 Interpolaci´on de la Poblaci´on Femenina de 70 a 74 . . . . . . . . . . . . 76
+Tabla 6.1.37 Interpolaci´on de la Poblaci´on Femenina de 75 a 79 . . . . . . . . . . . . 76
+Tabla 6.1.38 Interpolaci´on de la Poblaci´on Femenina de 80 a 84 . . . . . . . . . . . . 77
+Tabla 6.1.39 Interpolaci´on de la Poblaci´on Femenina de 85 a 89 . . . . . . . . . . . . 77
+Tabla 6.1.40 Interpolaci´on de la Poblaci´on Femenina de 90 a 94 . . . . . . . . . . . . 78
+Tabla 6.1.41 Interpolaci´on de la Poblaci´on Femenina de 95 a 99 . . . . . . . . . . . . 78
+Tabla 6.1.42 Interpolaci´on de la Poblaci´on Femenina de mas de 100 . . . . . . . . . 79
+Tabla 6.1.43 Interpolaci´on de la Poblaci´on Total entre 0 y 4 . . . . . . . . . . . . . . 79
+Tabla 6.1.44 Interpolaci´on de la Poblaci´on Total entre 5 y 9 . . . . . . . . . . . . . . 80
+Tabla 6.1.45 Interpolaci´on de la Poblaci´on Total entre 10 y 14 . . . . . . . . . . . . . 80
+Tabla 6.1.46 Interpolaci´on de la Poblaci´on Total entre 15 y 19 . . . . . . . . . . . . . 81
+Tabla 6.1.47 Interpolaci´on de la Poblaci´on Total entre 20 y 24 . . . . . . . . . . . . . 81
+Tabla 6.1.48 Interpolaci´on de la Poblaci´on Total entre 25 y 29 . . . . . . . . . . . . . 82
+Tabla 6.1.49 Interpolaci´on de la Poblaci´on Total entre 29 y 34 . . . . . . . . . . . . . 82
+Tabla 6.1.50 Interpolaci´on de la Poblaci´on Total entre 35 y 39 . . . . . . . . . . . . . 83
+Tabla 6.1.51 Interpolaci´on de la Poblaci´on Total entre 40 y 44 . . . . . . . . . . . . . 83
+Tabla 6.1.52 Interpolaci´on de la Poblaci´on Total entre 45 y 49 . . . . . . . . . . . . . 84
+Tabla 6.1.53 Interpolaci´on de la Poblaci´on Total entre 49 y 54 . . . . . . . . . . . . . 84
+Tabla 6.1.54 Interpolaci´on de la Poblaci´on Total entre 54 y 59 . . . . . . . . . . . . . 85
+Tabla 6.1.55 Interpolaci´on de la Poblaci´on Total entre 60 y 64 . . . . . . . . . . . . . 85
+Tabla 6.1.56 Interpolaci´on de la Poblaci´on Total entre 65 y 69 . . . . . . . . . . . . . 86
+Tabla 6.1.57 Interpolaci´on de la Poblaci´on Total entre 70 y 74 . . . . . . . . . . . . . 86
+Tabla 6.1.58 Interpolaci´on de la Poblaci´on entre 75 y 79 . . . . . . . . . . . . . . . . 87
+Tabla 6.1.59 Interpolaci´on de la Poblaci´on entre 75 y 79 . . . . . . . . . . . . . . . . 87
+Tabla 6.1.60 Interpolaci´on de la Poblaci´on entre 75 y 79 . . . . . . . . . . . . . . . . 88
+Tabla 6.1.61 Interpolaci´on de la Poblaci´on entre 90 y 94 . . . . . . . . . . . . . . . . 88
+Tabla 6.1.62 Interpolaci´on de la Poblaci´on entre 95 y 99 . . . . . . . . . . . . . . . . 89
+Tabla 6.1.63 Interpolaci´on de la Poblaci´on con mas de 100 . . . . . . . . . . . . . . 89
+Tabla 6.2.1 Comparaci ´on de las LC15 con la CSO80 . . . . . . . . . . . . . . . . . 94
+Tabla 6.2.2 Comparaci ´on de Tasas Comp. de Seg. y LC15 . . . . . . . . . . . . . . 95
+Tabla 6.3.1 Tabla de Mortalidad Din ´amica Desarrollada por el Metodo de Lee Carter 101
+Tabla 6.3.2 Tabla de Mortalidad Din ´amica Desarrollada por el Metodo de Lee Carter 102
+
+--- PAGE 12 ---
+X ´INDICE DE TABLAS
+Tabla 6.3.3 Tabla de Mortalidad Din ´amica Desarrollada por el Metodo de Lee Carter 103
+
+--- PAGE 13 ---
+Agradecimientos
+Desde un punto de vista personal, el dar gracias es una de las cosas m ´as importantes y
+poderosas en la vida, de eso depende el enfoque de tu energ ´ıa y por lo tanto la expansi ´on de
+aquello por lo que agradeces.
+Siempre me he considerado una persona de pocos amigos, pero la vida afortunadamente me
+ha permitido tener a los mejores. Gracias por esto.
+Dar las gracias a todos los colaboradores e impulsores en el desarrollo de mi carrera son
+muchos, tendr´ıa que tener al menos una resma de hojas para mencionarlos a todos. Sin embargo
+me encargare de hacer estos reconocimientos de forma personal.
+En lo particular quiero enfocar estas l´ıneas a aquellos que con su sello personal me ayuda-
+ron de forma signiﬁcativa durante todo este viaje de pregrado en la UCV:
+Comenzando con mi familia biol´ogica, uno de los pilares m´as grandes y fuertes que tengo,
+la Sra. Nora Cabanerio (mi mama) que me demostr´o desde que tengo uso de raz´on, que siempre
+tienes el poder para cambiar tu realidad, solo debes mantener una buena actitud ante la vida. Mi
+papa y hermanos que gracias a esa uni ´on familiar podemos marchar como todo UN TANQUE
+DE PAZ (y no de guerra), blindados cuid´andonos los unos con los otros.
+Pasando a la otra familia, a aquella encontrada y escogida. Por orden cronol ´ogico, los pri-
+meros en entrar son mis hermanos del Cronopios69, un grupo scout que formo, reformo y
+reaﬁrmo muchos de mis valores como ser humano.
+Sigue la familia Pereira Vel ´asquez, que han jugado un papel important ´ısimo en todos los
+procesos de mi vida, han sido mama, papa, hermanos y conﬁdentes.
+XI
+
+--- PAGE 14 ---
+XII Agradecimientos
+Continuando con la secuencia entra la familia de Atl´antida, gente con vocaci´on de servicio.
+Est´a ahora la familia Guerrero, en especial Hernando Guerrero y Hernan Henrique Gue-
+rrero, los cuales me incluyeron dentro de su n ´ucleo como un miembro m ´as, gracias por la
+conﬁanza, el aprendizaje, las oportunidades y las experiencias otorgadas en todos estos a˜nos.
+Mi familia de la UCV , Los Chuleteros episodio I II y III; ODALYYSS JARAA que deﬁniti-
+vamente sin ella no hubiese llegado ni a la mitad del desarrollo de este trabajo de investigaci´on,
+no hay un WORDART para ti pero si unas buenas MAYUSCULAS. Carlita P ´erez, porque sin
+ella no hubiese llegado ni a la mitad de la carrera. Hugo, Vanesa, Mar´ıa Eugenia, porque todos
+llenaron este viaje de excelentes recuerdos y experiencias, la Promo 92 porque est ´a integrada
+de gente de calidad! Por ultimo a ´Angel Colmenares, porque fue un excelente tutor y un profe-
+sor de vocaci´on, personas enfocadas en las soluciones y no en los problemas son las que deben
+formar este pa´ıs.
+A TODOS MUCHAS GRACIAS
+
+--- PAGE 15 ---
+Introducci´on
+El trabajo de investigaci´on que se presenta a continuaci ´on tiene como objeto aportar solu-
+ciones al problema que actualmente tiene el sector asegurador venezolano en el´area de seguros
+de vida, funerario y aﬁnes.
+El ramo de Seguros de Vida es considerado como “noble” a nivel mundial y adem ´as fue
+uno de los principales impulsores de las aseguradoras en Venezuela en d ´ecadas pasadas. Veri-
+ﬁcando esta importante caracter ´ıstica, se procede a desarrollar un estudio enfocado en el ´area
+t´ecnico-actuarial haciendo especial ´enfasis en la mortalidad, con la intenci ´on de contribuir al
+crecimiento del ramo
+En el planteamiento del problema se se˜nalar´a conceptos b´asicos de una tabla de mortalidad
+(de ahora en adelante las referiremos como TDM), los tipos de tablas y la contribuci ´on que
+estas han dado al mercado ﬁnanciero Mundial.
+Pasando al caso venezolano se expondr ´a los adelantos que hist ´oricamente tiene Venezuela
+en el desarrollo de estudios de la mortalidad y sus principales autores. En materia de seguros
+en el pa´ıs, se estudiara las regulaciones dictadas y las instituciones encargadas del desarrollo
+de investigaciones en materia de mortalidad. Por ´ultimo se har ´a una breve rese ˜na de c ´omo ha
+sido el comportamiento del ramo de vida, funerario y aﬁnes los ´ultimos a˜nos en el pa´ıs.
+En el Marco Te ´orico se har ´a un breve repaso de las deﬁniciones b ´asicas de la Teor ´ıa de
+la Mortalidad, las variables que se deben tomar en cuenta, los m ´etodos existentes para la pro-
+yecci´on y suavizaci ´on de las tasas de muerte para ﬁnalmente poder generar esta matriz de
+probabilidades.
+En el marco metodol´ogico se expondr´a el m´etodo y plan de trabajo, se expondr´an los n´ume-
+
+--- PAGE 16 ---
+2 Introducci´on
+ros de c´omo ha disminuido el mercado de seguros de vida, funerario y aﬁnes en Venezuela. Se
+explicara paso a paso el desarrollo una TDM con registros nacionales diferenciada por sexo,
+cuales son los datos, las fuentes de donde provienen y el procesamiento de los mismos. Por
+ultimo en este cap ´ıtulo, una vez construida la TDM en Venezuela, por medio de la Teor ´ıa de
+Lee Carter, la cual habla acerca de la proyecci ´on de la mortalidad a trav ´es del tiempo; se har ´a
+una reconstrucci ´on en lenguaje de programaci ´on R del comportamiento de las proba-
+bilidades de muerte proyectada a 20 a˜nos.
+Finalmente se har ´a un an ´alisis de los resultados, haciendo las Comparaci ´ones respectivas
+entre las tablas calculadas y las que actualmente m´as se usan en Venezuela para los c´alculos de
+primas de productos de Vida, funerario y aﬁnes.
+Esto es parte del desarrollo de una de las l´ıneas de investigaci´on acordadas entre la Escuela
+de Estad´ısticas y Ciencias Actuariales y la Superintendencia de la Actividad Aseguradora (re-
+ferida como SUDEASEG). Esperamos que el estudio sea de agrado y f ´acil comprensi ´on del
+lector; y que adem ´as pueda contribuir al desarrollo de los procesos ﬁnancieros adaptados al
+pa´ıs
+.
+
+--- PAGE 17 ---
+CAP´ITULO 1
+Planteamiento del Problema
+An´alisis de la Situaci ´on Encontrada: Uso de Tablas de Mortalidad con datos extranjeros
+para la tariﬁcaci ´on de Seguros de Vida y aﬁnes.
+SECCI ´ON 1.1
+Tablas de Mortalidad
+Seg´un (Armando Zarruk) “Una tabla de mortalidad (TDM) puede interpretarse como un
+modelo que representa la distribuci ´on estad´ıstica del tiempo de sobrevivencia esperado de los
+miembros un grupo determinado”.
+La TDM Es dise˜nada especialmente para medir la mortalidad, sin embargo es empleada por
+una gran cantidad de especialistas de distintas maneras. Es adoptada por proveedores de salud,
+dem´ografos, actuarios y en muchos estudios de longevidad, fertilidad, migraci´on y crecimiento
+de la poblaci´on, as´ı como en proyecciones del tama˜no y caracter´ısticas de la poblaci´on y estu-
+dios de la viudez, orfandad y otros. Por lo tanto la evoluci ´on de la mortalidad est´a ligada a los
+cambios estructurales que se producen al interior de una sociedad. Su importancia es evidente
+para las compa˜n´ıas de seguros de vida, ya que´estas son la base fundamental para el c´alculo de
+tarifas y reservas. Mientras las tarifas, que constituyen el precio de los productos de seguros,
+determinan en gran medida la rentabilidad de la compa ˜n´ıa y de alguna forma el nivel de de-
+manda de los productos, las reservas, o recursos que las aseguradoras tienen para hacer pagos
+futuros asociados a las p´olizas vigentes.
+A trav´es de la historia se han desarrollado gran cantidad de tablas de mortalidad, la evolu-
+3
+
+--- PAGE 18 ---
+4 CAP ´ITULO 1. PLANTEAMIENTO DEL PROBLEMA
+ci´on de la tecnolog´ıa y bases de datos, ha permitido que estas se aproximen cada vez m´as a la
+realidad de la poblaci´on bajo estudio, y por lo tanto los c´alculos a partir de estas sean de mejor
+provecho.
+Una de las primeras tablas de mortalidad conocidas fue la del ingl ´es Jhon Graunt publica-
+da en 1662 basada en la poblaci ´on Londinense; posteriormente, una tabla de mortalidad m ´as
+completa fue publicada en 1693 por Edmond Halley basadas en los registros de muertes y na-
+cimientos de la ciudad de Breslau entre 1687 a 1691; para el siglo XVIII ya se ten ´ıan varios
+avances en el ´area de estad ´ısticas y ciencias actuariales, en este siglo comienza a usarse el
+termino de actuario, y en 1747 se publica una nueva TDM por Halley y Dodson; para 1783 Ri-
+chard Price publica la Tabla de Northampton y fue ampliamente usada por el sector asegurador
+brit´anico hasta el siglo XIX.
+Finalmente (Armando Zarruk) detalla que “para la elaboraci ´on de una la tabla de mortali-
+dad, en esencia, se necesita compilar informaci´on del n´umero y edad de las personas expuestas
+al riesgo de muerte, as ´ı como sus edades al momento de la muerte. En la interpretaci ´on m´as
+com´un de las tablas, se asume que ´estas describen los tiempos de muerte de una cohorte hi-
+pot´etica de reci´en nacidos, que est´an sujetos a las tasas de la mortalidad descritas en la tabla, y
+que se observan hasta que la ´ultima muerte haya ocurrido”.
+SECCI ´ON 1.2
+Aportes de las TDM en el Mercado Financiero Mundial
+El desarrollo de distintas tablas de mortalidad cada una con caracter ´ısticas deﬁnidas, ha
+permitido que a trav ´es del tiempo se puedan ampliar distintos tipos de estudios y toma de de-
+cisiones para las poblaciones. Con la aceleraci ´on del proceso de globalizaci ´on de la econom´ıa
+mundial, ocurrida en las ´ultimas d´ecadas del siglo XX y el acelerado desarrollo de la banca y el
+seguro; se ha tenido que extender las investigaciones de la personas que han contribuido espe-
+cialmente con el impulso de estos mercados, esto ha permitido el perfeccionamiento de nuevas
+TDM para el sector, lo cual ha tra ´ıdo grandes cambios y beneﬁcios en las ofertas y demandas
+de las empresas.
+Para el mercado asegurador mundial las p ´olizas de vida han determinado en gran parte la
+
+--- PAGE 19 ---
+1.3 Tablas de Mortalidad en Venezuela y Aportes al Mercado Financiero 5
+solvencia y la estabilidad ﬁnanciera de las aseguradoras que operan en el ramo; el ´exito en cre-
+cimiento y permanencia de los clientes ha dependido, entre otros aspectos, de la disponibilidad
+de tablas de mortalidad apropiadas que reﬂejen una adecuada medici´on de la siniestralidad que
+se deber´a enfrentar en la operaci´on.
+Algunos pa´ıses como Colombia, Ecuador, Estados Unidos, M´exico, Chile, y algunos otros;
+relativamente iguales en antig ¨uedad a Venezuela, han venido desarrollando el ´area estad´ıstica
+y actuarial en el estudio de la poblaci´on y observado la trascendencia que estos tienen a la hora
+de toma de decisiones para el desarrollo econ ´omico y ﬁnanciero, han perfeccionado TDM se-
+lectas se˜nalando la importancia que tienen para el mercado asegurador; algunos de estos pa´ıses
+a partir de estos estudios, han tomado estas tablas como principal opci ´on para el desarrollo de
+beneﬁcios de Vida y aﬁnes, lo que ha permitido mejores c´alculos para sus reservas y una mayor
+demanda en la adquisici´on de los productos.
+SECCI ´ON 1.3
+Tablas de Mortalidad en Venezuela y Aportes al Mercado Financiero
+Haciendo un repaso de los estudios relacionados con la poblaci ´on venezolana, se tiene
+que los censos en Venezuela se han desarrollado desde el siglo XIX con el primero que se
+realiz´o en 1873, sin embargo los registros formales de investigaciones acerca de TDM se tienen
+hasta mediados del siglo pasado. Algunas de las tablas m ´as importantes desarrolladas entre
+instituciones p´ublicas o actuarios durante este siglo son las siguientes:
+1937/ 38 y 39 por el Ministerio de Sanidad espec´ıﬁcamente de la ciudad de Caracas.
+1941. Erich Michalub en Venezuela
+1941. Julio Paez Celis en Venezuela
+1950. Erich Michalub en Venezuela
+1950. Julio Paez Celis en Venezuela, solo para los nacidos en el pa´ıs
+1950. Jose Montesinos
+1961. Teresina Ruocco
+
+--- PAGE 20 ---
+6 CAP ´ITULO 1. PLANTEAMIENTO DEL PROBLEMA
+1961. Erich Michalub
+1971. Julio Paez Celis y Nelson Escalona
+1971. Luis Escalona
+Este fue el comienzo de los estudios formales de la mortalidad en Venezuela, sin embargo
+no se tiene registro de que ninguna de estas tablas est´e siendo utilizada en el mercado ﬁnanciero
+venezolano.
+En Venezuela, el mercado ﬁnanciero de productos de vida y aﬁnes, al veriﬁcar los datos, se
+muestra que ha disminuido la suscripci´on de los mismos durante los´ultimos a˜nos. Se desarroll´o
+un estudio con todas las compa˜n´ıas aseguradoras del mercado, veriﬁcando las primas cobradas
+en un periodo de 2010 a 2015 y se evidencia que si bien en la mayor ´ıa de los casos las primas
+netas cobradas son superiores a ˜no a a ˜no, cuando le aplicamos el ´ındice inﬂacionario a 2015
+(deﬂactamos), el comportamiento real es una disminuci´on importante en las primas del ramo y
+a su vez de la suscripci´on.
+Estudiando los motivos principales del fen ´omeno de decrecimiento en la suscripci ´on, se
+comprueba que es debido entre varios aspectos, a la acelerada inﬂaci´on de las ´ultimas d´ecadas,
+planes de incentivos especiales para la comercializaci ´on de los productos y a la aplicaci ´on de
+tablas de mortalidad que no describen el adecuado comportamiento de las probabilidades de
+muerte y supervivencia selectas, muchas de estas adem ´as desarrolladas bajo estudios ajenos a
+la poblaci´on venezolana.
+Otra informaci ´on importante que mostro el estudio en menci ´on, es que a pesar de la im-
+portante bajada de primas (deﬂactadas) y suscripci´on, es que despu´es de hacer las deducciones
+respectivas de gastos administrativos, comisiones e incluso siniestros pagados, el ramo sigue
+siendo de utilidad para la mayor ´ıa de las aseguradoras, por lo que podr´ıa ser interesante e in-
+cluso rentable el desarrollo de nuevos productos adaptados al mercado con unas bases t´ecnicas
+adecuadas a la poblaci´on a asegurar. A continuaci´on se presentan los resultados de este estudio:
+
+--- PAGE 21 ---
+1.3 Tablas de Mortalidad en Venezuela y Aportes al Mercado Financiero 7
+EVOLUCI´ON DE LAS PRIMAS DEL RAMO DE VIDA SIN DEFLACTAR
+A˜no 2,010 2,011 2,012 2,013 2,014 2,015
+Vida 878,934.00913,374.001,131,544.001,620,789.002,336,644.004,056,050.00
+Crecimiento % Acumulado 3.92 % 23.89 % 43.24 % 44.17 % 73.58 %
+Tabla 1.3.1: (Porci´on) Evoluci´on del Ramo de Vida
+EVOLUCI´ON DE LAS PRIMAS DEL RAMO DE FUNERARIO SIN DEFLACTAR
+A˜no 2,010 2,011 2,012 2,013 2,014 2,015
+Funerario 441,381.00702,744.00627,029.00934,843.001,355,495.002,608,075.00
+Crecimiento % Acumulado 59 % -11 % 49 % 45 % 92 %
+Tabla 1.3.2: (Porci´on) Evoluci´on del Ramo de Funerario
+El resto del estudio se encuentra en el Anexo 1.
+´Ambito de Desarrollo
+Si bien es ajeno a la investigaci ´on un posible control de la inﬂaci ´on para contribuir con el
+mercado de p´olizas de vida y aﬁnes, no lo son los estudios relacionados con la mortalidad, estos
+tienen gran campo para el desarrollo y tomas de decisiones.
+Por otra parte los articulo 43 (numeral 7) de la Ley de la Actividad Aseguradora establecen
+lo siguiente:
+“En la elaboraci´on de las tarifas de los seguros de vida deben emplearse tablas actualizadas
+de mortalidad o de supervivencia rentistas, que se adapten en lo posible a la experiencia de los
+asegurados de la rep´ublica”.
+Este ´ultimo art´ıculo claramente se˜nala que las tablas de mortalidad deben aproximarse en la
+medida de lo posible a tablas selectas con datos actualizados de las personas aseguradas, por lo
+que es importante el desarrollo de dichos estudios para una adecuada tariﬁcaci´on del ramo, mo-
+tivado a que la poblaci ´on que integra el mercado asegurador venezolano, tiene caracter ´ısticas
+
+--- PAGE 22 ---
+8 CAP ´ITULO 1. PLANTEAMIENTO DEL PROBLEMA
+socioecon´omicas y demogr´aﬁcas bastantes singulares con respecto al resto que integran el pa´ıs.
+Despu´es de realizar la revisi ´on de algunas notas t ´ecnicas presentadas ante la SUDEASEG
+se constat ´o que las tablas de mortalidad m ´as utilizadas en el mercado asegurador venezolano
+para la construcci´on de beneﬁcios asociados a muerte y supervivencia son las CSO 1958, CSO
+1980 y la Tabla de Mortalidad Venezolana publicada en gaceta 37429 de fecha abril de 2002.
+En primera instancia, al veriﬁcar en la p ´agina de la “Society of Actuaries” se ˜nala que la po-
+blaci´on bajo estudio con las que se desarroll ´o las probabilidades de muerte y supervivencia
+de las tablas CSO es la estadounidense; y como segundo punto la TDM venezolana si bien es
+un estudio selecto, esta se desarrolla con observaciones de 1984 a 1994 (Anexo 2) y ha tendi-
+do diversas valoraciones en la muestra de sus probabilidades, principalmente que comienza a
+describir la mortalidad a la edad de 20 a ˜nos cumplidos, y en las ultimas edades evaluadas son
+bastante radicales en el cambio de las tasas de muerte.
+El ´area de seguros de la Superintendencia de la Actividad Aseguradora hace 2 a ˜nos soli-
+cito al Departamento de Investigaci ´on Actuarial un estudio de las TDM m ´as adecuadas que
+deber´ıan usar en el sector asegurador, por la falta de datos necesarios para el desarrollo de una
+tabla de mortalidad selecta, solo se tomaron las tablas utilizadas y se compararon con las cifras
+de Ministerio del Poder Popular para la Salud (MPPS). Por lo que al ﬁnal se sugirieron el uso
+de aquellas con menor diferencia con respecto a la mortalidad del MPPS.
+Por lo expuesto anteriormente se puede deducir que de seguir el descontrol inﬂacionario
+en el pa´ıs, la falta de unos planes de incentivo adecuados para la comercializaci ´on de p ´olizas
+de vida y a ﬁnes y sin unas TDM adecuadas que se aproximen al real comportamiento de
+probabilidades de muerte y supervivencia que describan las caracter´ısticas socioecon´omicas y,
+por consecuencia, demogr´aﬁcas de la poblaci ´on en condiciones de contratar un seguro, podr´ıa
+hacer que un ramo que se considera de gran utilidad para el crecimiento y desarrollo de las
+aseguradoras a nivel mundial, en Venezuela acabe por extinguirse.
+
+--- PAGE 23 ---
+1.4 Antecedentes 9
+SECCI ´ON 1.4
+Antecedentes
+las Tablas de Mortalidad Din´amicas es un concepto que para algunos actuarios en Venezue-
+la puede ser novedoso, sin embargo este tipo de estudios est ´an tomando mucha importancia a
+nivel internacional.
+Seg´un Deb´on Aucejo, Ana; Mart´ınez Ruiz, Francisco y Montes Suay, Francisco. De la Uni-
+versidad de Valencia reﬁere el desarrollo de estos nuevos m ´etodos de estudio por la siguiente
+raz´on:
+“Aunque en la literatura actuarial el conocimiento de la evoluci ´on de la mortalidad se re-
+monta a las primeras d ´ecadas del siglo XX, s ´olo recientemente los c ´alculos actuariales han
+utilizado las tablas de mortalidad proyectadas o din ´amicas. En consecuencia, la predicci ´on
+adecuada de las probabilidades de muerte mediante este tipo de tablas se ha convertido en uno
+de los ejes centrales de la reducci´on del riesgo que se asume. Predecir con exactitud el proceso
+de envejecimiento de la poblaci´on es ahora m´as que nunca una preocupaci ´on central en pa´ıses
+del mundo desarrollado, por sus repercusiones econ´omicas y sociales”.
+Adem´as de Vicente Merino,Ana; Hern ´andez March, Julio; Albarr ´an Lozano; Irene en su
+estudio desarrollado de “PROYECCI ´ON Y ESTUDIO DE UNA POBLACI ´ON. EL PAPEL
+DE LA MORTALIDAD” reﬁeren:
+“La mortalidad espa ˜nola ha experimentado un descenso muy notable a lo largo del siglo
+XX. Valgan dos datos como bot ´on de muestra: la mortalidad infantil ha pasado de 186 por
+mil a principios de siglo (Fern ´andez, J.A. y Leguina, J.,1991) a 5,66 por mil en el a ˜no 2000
+(Population Reference Bureau, 2000) y la esperanza de vida al nacer de 34,8 a ˜nos en 1900 a
+81,9 a ˜nos para las mujeres y 74,7 para los hombres (I.N.E., 1999; p ´ag.22). Ello ha situado a
+Espa˜na entre los pa´ıses con menor mortalidad del mundo; en concreto y con respecto a la´ultima
+medida, s ´olo Francia en las mujeres (con 82 a ˜nos de esperanza de vida), y Suecia e Italia en
+los hombres (con 76,5 a ˜nos y 74,9, respectivamente) superan a Espa ˜na dentro del conjunto de
+pa´ıses de la U.E.”
+Por otro lado Molina, Carlos Andres reﬁere en su tesis de Magister lo siguiente:
+“El modelo de din´amica de mortalidad de Lee-Carter ha motivado un cambio en el an´alisis de la
+
+--- PAGE 24 ---
+10 CAP ´ITULO 1. PLANTEAMIENTO DEL PROBLEMA
+evoluci´on poblacional apoyando nuevas hip ´otesis, formulaciones y herramientas para generar
+conclusiones al respecto”.
+Por lo antes visto es importante desarrollar un estudio actualizado del comportamiento de
+la poblaci ´on y las defunciones de las ultimas d ´ecadas, debido que los datos de la mortalidad
+que se usan en el sector asegurador venezolano, en su mayor ´ıa, tienen m´as de una d ´ecada de
+vigencia.
+SECCI ´ON 1.5
+Finalidad
+Se propone la construcci´on de una TDM din´amica basado en los datos de la mortalidad de
+la poblaci ´on venezolana reportada por el MPPS en el periodo 1995 a 2011, y por medio del
+modelo de Lee Carter proyectar la mortalidad hasta el a ˜no 2015 con el ﬁn de compararla con
+las TDM usadas por las aseguradoras y las estad ´ısticas de defunciones registradas por estas
+empresas de tal forma obtener un acercamiento a lo exigido por el art ´ıculo 42 de la Ley de la
+Actividad Aseguradora.
+SECCI ´ON 1.6
+Objetivo General
+Propuesta para el desarrollo de una TDM selecta por medio del modelo de LC en leguaje
+de programaci´on R, con datos censales y su comparaci ´on con la mortalidad observada de una
+empresa de seguros venezolana para el a˜no 2015.
+SECCI ´ON 1.7
+Objetivos Especiﬁcos
+1. Conceptualizaci ´on de una Tabla de Mortalidad y su clasiﬁcaci´on.
+2. Revisi ´on de las tablas de mortalidad realizadas en Venezuela.
+3. Evoluci ´on de los ramos de seguros funerario, vida y aﬁnes para el periodo 2011 2015.
+4. Estudio de la metodolog ´ıa para el desarrollo de una Tabla de Mortalidad.
+5. Deﬁnici ´on y desarrollo de las TDM din´amicas basadas en el m´etodo de Lee Carter.
+6. Identiﬁcaci ´on de las fuentes de datos para la elaboraci´on de la TDM selecta.
+
+--- PAGE 25 ---
+1.7 Objetivos Especiﬁcos 11
+7. Reconstrucci ´on de la mortalidad poblacional.
+8. Proyecci ´on de la mortalidad para el a ˜no 2015 por medio del lenguaje de programaci ´on
+R.
+9. Comparaci ´on de la proyecci´on con una de las tablas de mortalidad utilizadas en el sector
+asegurador venezolano.
+10. Comparaci ´on de la TDM Din ´amica con Respecto a la mortalidad observada por una
+empresa del Sector Asegurador Venezolano.
+11. Din ´amica selecta con Respecto a la Tabla de Mortalidad Venezolana.
+
+--- PAGE 26 ---
+12 CAP ´ITULO 1. PLANTEAMIENTO DEL PROBLEMA
+
+--- PAGE 27 ---
+CAP´ITULO 2
+Marco Te´orico
+SECCI ´ON 2.1
+Glosario de T´erminos
+Antes de veriﬁcar cada uno de los pasos necesarios para el desarrollo de una TDM es ne-
+cesario conocer algunos conceptos b ´asicos que si bien no tienen que ver con la teor ´ıa de la
+mortalidad ser´a de gran utilidad en el desarrollo la comprensi ´on de los procedimientos a reali-
+zar en la investigaci´on:
+Deﬂactar: Se trata de convertir o transformar una magnitud econ´omica expresada en t´ermi-
+nos nominales, a otra magnitud econ ´omica expresada en t´erminos reales, tomando como dife-
+rencia el efecto inﬂacionario o una subida en los precios.
+Interpolar: Es la construcci ´on a trav ´es de una funci ´on matem ´atica, de cierto n ´umero de
+valores en un intervalo en el que solo conocemos el comportamiento de sus extremos.
+Extrapolar: Es la construcci ´on a trav ´es de una funci ´on matem´atica, de cierto n ´umero de
+valores extremos o futuros, de los cuales solo conocemos el comportamiento de un intervalo.
+13
+
+--- PAGE 28 ---
+14 CAP´ITULO 2. MARCO TE ´ORICO
+SECCI ´ON 2.2
+Bases Te´oricas para el Desarrollo de una Tabla de Mortalidad
+2.2.1. Estructura de una TDM
+La Tabla de Mortalidad es un arreglo de probabilidades que da informaci ´on de la vulnera-
+bilidad a la muerte de acuerdo a la edad de las personas, estas probabilidades generalmente se
+obtienen analizando los patrones de mortalidad de una poblaci´on particular durante un per´ıodo
+de tiempo determinado, usualmente un ano calendario. En muchos casos se asume que ´estas
+describen los tiempos de muerte de una cohorte hipot´etica de reci´en nacidos, que est´an sujetos
+a las tasas de la mortalidad descritas en la tabla, y que se observan hasta que la ´ultima muerte
+haya ocurrido.
+La estructura b´asica normalmente es un arreglo rectangular que incluyen generalmente las
+siguientes columnas:
+1. x: Representa la edad de las personas bajo estudio
+2. lx:Representa el n ´umero de sobrevivientes a la edad x, se asume adem´as que existe una
+corte inicial loque representa los reci´en nacidos.
+El comportamiento de esta funci´on de sobrevivencia se describe de la siguiente manera:
+Figura 2.2.1: Funci´on de Supervivientes
+
+--- PAGE 29 ---
+2.2 Bases Te´oricas para el Desarrollo de una Tabla de Mortalidad 15
+N´otese que en los primeros a ˜nos existe una elevaci ´on de la curva por la alta mortalidad
+infantil. Esta funci´on por lo general podr´ıa llegar a los 100 a˜nos o mas.
+dx: Representa el n ´umero de defunciones que se generaron entre las edades x y x+ 1. Se
+determina mediante la siguiente formula:
+dx = lx − l(x+1) (2.1)
+El comportamiento graﬁco de esta funci ´on se describe a continuaci´on:
+Figura 2.2.2: Funci´on de Defunciones
+En valor maximo que toma la curva se llama valor modal de defunciones
+qx: Indica la probabilidad de fallecer a la edad x, esto es, la probabilidad de que una persona
+de edad xno sobreviva a la edad x+ 1. Se determina mediante la siguiente formula:
+qx = dx
+lx
+(2.2)
+px: Indica la probabilidad de que una persona de edadxsobreviva a la edadx+1. Se determina
+mediante la siguiente formula:
+px = l(x+1)
+lx
+(2.3)
+Cabe acotar que
+qx + px = 1 (2.4)
+
+--- PAGE 30 ---
+16 CAP´ITULO 2. MARCO TE ´ORICO
+A continuaci´on se presenta un fragmento de TDM de la ”Society of Actuaries”llamada CSO
+80 de hombres
+Figura 2.2.3: Funci´on de Defunciones
+Existen otros s´ımbolos y formulaciones que en muchas ocasiones se toman en cuenta en la
+estructura de una TDM o para determinar ciertos factores importantes de los que depende el
+tipo de estudio que se este realizando, algunas de estas:
+nLx: N ´umero total de a ˜nos personas que habr ´an vivido dentro de un intervalo de tiempo ( x;
+x+ n)
+Donde:
+nmx= Tasa Central de Mortalidad
+nmx = ((TotaldeMuertesenelIntervalo (x− (x+ n)))
+(TotaldePersonasenelintervalo (x− (x+ n)) (2.5)
+Tx: Es el tiempo que le falta por vivir a la generaci´on de edad xhasta su extinci´on.
+Tx =
+∑
+∀k>x
+nLx (2.6)
+e0
+x : Indica la esperanza de vida completa, y corresponde al n ´umero de a˜nos esperados de vida
+para una persona de edadx, es decir, al n´umero de a˜nos promedio que vivir´a la persona despu´es
+de los xa˜nos ya alcanzados.
+
+--- PAGE 31 ---
+2.3 Tipos de TDM 17
+e0
+x = Tx
+lx
+(2.7)
+SECCI ´ON 2.3
+Tipos de TDM
+Existen varios tipos de tablas de mortalidad, las cuales se diferencian de acuerdo al tipo de
+poblaci´on que est ´an bajo estudio y el desglose o separaci ´on de las edades en el desarrollo de
+las probabilidades. Algunas de estas son:
+Tablas de Periodo: Se les llama de Periodo o est ´aticas y asumen que las probabilidades
+de muerte dependen exclusivamente de la edad alcanzada.
+Tablas Generacionales: Las TDM din ´amicas o generacionales asumen que las tasas de
+mortalidad, adem´as de depender de la edad, dependen del a ˜no calendario en que se al-
+canza dicha edad.
+Tablas Completas: Son TDM completas cuando se presenta informaci ´on para cada una
+de las edades.
+Tablas Abreviadas: La tabla es abreviada cuando la informaci´on se agrupa por rangos de
+edades, que usualmente son de 5 ´o de 10 a ˜nos. Es muy usual encontrar estas tablas de
+mortalidad, especialmente en la descripci ´on de las probabilidades de los primeros a ˜nos
+de vida.
+Tablas Acordes con las Caracter ´ısticas Demogr´aﬁcas: Estas tablas se presentan cuando
+las probabilidades de muerte var´ıan considerablemente de acuerdo con la poblaci´on que
+se est´a analizando. Por ejemplo, en general, la mortalidad de las mujeres en las edades
+j´ovenes es considerablemente m´as baja que la de los hombres.
+Tablas Selectas: Se desprenden de los estudios de una poblaci ´on asegurada. Son Las
+tablas de mortalidad que no s´olo dependen de la edad alcanzada sino tambi´en del tiempo
+que lleva en vigencia la p´oliza.
+Tablas Ultimas: Una tabla que excluye la experiencia de mortalidad de los asegurados
+durante los primeros a˜nos de la p´oliza (o el per´ıodo selecto).
+
+--- PAGE 32 ---
+18 CAP´ITULO 2. MARCO TE ´ORICO
+Las tablas de Mortalidad juegan un papel importante en cualquier sociedad para la toma
+de decisiones relacionadas con la poblaci´on, motivado a que podr´ıan proteger a instituciones o
+familias de posibles da ˜nos ﬁnancieros producidos por la muerte de una o varias personas que
+tienen un valor importante en la estabilidad de la sociedad o grupo.
+Para la construcci´on de una TDM es de gran importancia tener una base de datos que tenga
+los siguientes registros:
+1. Poblaci ´on por edades simples y sexo.
+2. Defunciones por edades simples y sexo
+3. Per ´ıodo de tiempo de la recolecci´on de los datos
+M´etodos de Graduaci´on Param´etricos
+Se toma en cuenta cuando se conoce la funci ´on que describe a la probabilidad de muerte
+qxo la fuerza de mortalidad µx. Los modelos de graduaci´on param´etrica tienen como ﬁnalidad
+suavizar las curvas de las probabilidades de muerte y de la fuerza de mortalidad, cuando ya es
+conocido el comportamiento de cada una de estas y podemos describirlas a trav ´es de alguna
+funci´on conocida. Existen diversos modelos o leyes de estimaci´on param´etrica, algunos de es-
+tos:
+M´etodo de Moivre Ha habido diversidad de m´etodos param´etricos a lo largo del estudio de
+la mortalidad, uno de los m´as antiguos y m´as sencillos es el que describe el matem´atico Franc´es
+Abraham de Moivre (1724), este m´etodo se utiliza para simpliﬁcar los c´alculos actuariales pero
+solo en rangos de edades muy peque ˜nos. Donde la fuerza de Mortalidad y la probabilidad de
+fallecimiento se comportan de la misma manera, tienden a inﬁnito cuando la edad lo hace hacia
+la edad l´ımite.
+µx = 1
+ω− x x≥ 0 (2.8)
+qx = 1
+ω− x x≥ 0 (2.9)
+Donde ω: Es la edad m´axima de supervivencia
+
+--- PAGE 33 ---
+2.3 Tipos de TDM 19
+A raiz de la ley de Moivre en el siglo XX surgieron nuevas leyes de mortalidad. A estos
+m´etodos se les denomina M´etodos Cl´asicos.
+Ley de Gompertz 1825 Desarrollado por el actuario y matem ´atico Benjamin Gompertz, el
+modelo establece que la fuerza de mortalidad crece de forma exponencial. Establece que B.
+Gompertz (1825) “Si las fuerzas del hombre para resistir la muerte son tales, que al ﬁnal de
+intervalos de edades iguales e inﬁnitamente peque˜nos, este pierde iguales cantidades del poder
+para oponerse a la muerte que ten´ıa al principio de dichos intervalos.”. La ley de Gompertz se
+utiliza generalmente para la modelaci ´on del cierre de las tablas de mortalidad, entre rangos de
+edades de entre 90 o 100 a ˜nos, los estudiosos del ´area indican que esta ley siempre estable-
+ce probabilidades mayores a las observadas. La Tasa instant ´anea de mortalidad se considera
+creciente con un crecimiento relativo constante.
+µx = Bcx, x ≥ 0, B > 0, c> 1 (2.10)
+Ley de Makeham 1860 El modelo es una generalizaci ´on de la ley de Gompertz, toma en
+cuenta la mortalidad que es independiente de la edad, reﬁri ´endose a esta como aquella morta-
+lidad que ocurre de forma accidental. Est ´a representada por una constante que llamaremos A.
+Describi´endose matem´aticamente de la siguiente manera:
+µx = A+ Bcx, x ≥ 0, A ≥ −B, B > 0, c> 1 (2.11)
+Ley de Dormoy 1874Dormoy era un actuario franc´es que establece 3 leyes de complejidad
+creciente que se describen de la siguiente manera:
+Primera Ley de Dormoy : En la primera ley se establece un modelo exponencial
+para las probabilidades de fallecimiento, en donde la fuerza instant´anea de mortalidad se asume
+constante. La formulaci´on se establece de la siguiente manera:
+µx = − ln S, 0 <S <1 (2.12)
+Segunda Ley de Dormoy : En la Segunda ley se asume una fuerza instant ´anea de
+mortalidad lineal, es decir, se hace un ajuste en la formulaci ´on de la primera ley para que
+
+--- PAGE 34 ---
+20 CAP´ITULO 2. MARCO TE ´ORICO
+aparezca reﬂejada la variable edad; por lo que la fuerza de mortalidad es un polinomio de primer
+grado creciente con la edad. Matem´aticamente quedar´ıa expresado de la siguiente manera:
+µx = 2 ln (S2)x− ln S1, 0 <S1 <1, 0 <S2 <1 (2.13)
+Para el siglo XX con los avances tecnol´ogicos se han desarrollado diversas investigaciones
+matem´atico-actuariales, aportando nuevas teor´ıas para el´area de la mortalidad:
+Ley de Wilfred Perks (1932): La esta proposici ´on de Perks viene a ser una variante de la
+ley propuesta por Makeham, esta establece unas modiﬁcaciones en especial para las edades mas
+avanzadas; esto motivado a que Makeham en su propuesta, los c ´alculos de las probabilidaes
+de fallecimiento para edades de las mencionadas ”tercera edad”siempre son por encima de
+la media de los valores observados. Matem ´aticamente Perks establece la formulaci ´on de la
+siguiente manera:
+µx = A+ Bcx
+Kc−x + 1 +Dcx (2.14)
+Kc−x: Es una exponencial negativa
+Ley de Heligman y Pollard (1980):De las leyes m´as relevantes del sigloXX se encuentra
+la teor´ıa desarrollada por M. Heligman y J. H. Pollard, mientras que algunas otras leyes mode-
+lan razonablemente bien algunos grupos de edades, esta hip ´otesis describe bastante bien todos
+los periodos. Matem´aticamente se describe de la siguiente forma:
+Primera Ley :
+qx = A(x+B)c
++ Dexp(−E(lnx−lnF)2
++ GHx
+1 + GHx (2.15)
+Segunda Ley :
+qx = A(x+B)c
++ Dexp(−E(lnx−lnF)2
++ GHx
+1 + KGHx (2.16)
+Tercera Ley :
+qx = A(x+B)c
++ Dexp(−E(lnx−lnF)2
++ GHxk
+1 + GHxk (2.17)
+
+--- PAGE 35 ---
+2.4 Tablas de Mortalidad Din´amicas 21
+Metodos de Graduaci´on no Param´etricos
+En los m´etodos de graduaci´on no Param´etricos, segun (Armando Zabruk, 2010) “el objetivo
+es hacer una suavizaci ´on de los datos observados mediante t ´ecnicas espec´ıﬁcas, con base en
+alg´un criterio predeﬁnido, pero sin necesidad de utilizar una ley de mortalidad expl ´ıcita”.Es
+decir no existe ning ´un comportamiento predeﬁnido de las probabilidades, los datos graduados
+suelen obtenerse mediante el uso de las probabilidades contiguas. Existen varias leyes que
+indican como se debe proceder para el estudio de estos datos.
+Metodo de Splines: El m´etodo de Spline explica que para suavizar las tasas de mortalidad
+cuando no tienen un comportamiento param ´etrico, se debe acotar la gr ´aﬁca en subsecciones
+y de esta manera adaptar un polinomio de bajo orden en cada uno de los subintervalos. Estos
+puntos de uni´on de cada segmento son llamados nudos.
+Metodo de Kaplan Meier: El m´etodo de Kaplam toma en cuenta una muestra o poblaci´on
+de tama ˜no “n”, formada por k tiempos ( k < n), esto ser´ıat1 < t2 < . < tken los cuales se
+parametriza el estudio y se maniﬁestan las defunciones. En cada uno de los tiempos t existe
+una cantidad expuestos y se observanfi defunciones. Por lo que la funci´on de Kaplan quedar´ıa
+expresada:
+S(ti) =
+∏
+ti<t
+ni − fi
+ni
+(2.18)
+Esta funci ´on representa la probabilidad que tiene un individuo de sobrevivir mas alla del
+tiempo t
+SECCI ´ON 2.4
+Tablas de Mortalidad Din´amicas
+Las TDM Din ´amicas o Proyectadas es un nuevo concepto de tablas que no solo toman en
+cuenta las tasas de mortalidad como habitualmente se describen, sino tambi´en las generaciones,
+es decir la tasa de mortalidad a utilizar depende de la edad y del a ˜no calendario (o la genera-
+ci´on).
+Los estudios en materia de mortalidad han revelado que a medida que pasa el tiempo, la
+esperanza de vida ha ido en aumento y de no tomar esto en cuenta podr ´ıa comprometer a ins-
+
+--- PAGE 36 ---
+22 CAP´ITULO 2. MARCO TE ´ORICO
+tituciones, empresas o pa ´ıses a nivel econ´omico, social y demogr ´aﬁco. Por lo que el uso de
+las probabilidades de muerte y supervivencia adecuadas para las tariﬁcaciones de productos
+ﬁnancieros es de vital importancia. Desde esta problem ´atica surge la necesidad de usar TDM
+con nuevas estructuras.
+Las Tablas din ´amicas vienen a indicar una proyecci ´on de las tasas de mortalidad en el
+tiempo, esta se desglosa en forma de matriz de datos con las probabilidades suavizadas de la
+siguiente manera:
+Figura 2.4.1: TDM Din´amica
+Existen distintos m´etodos para el c´alculo de estas tablas de mortalidad; uno de los m ´as re-
+cientes y m´as usados en pa´ıses desarrollados es:
+M´etodo de Lee Carter (1992): El m´etodo de Lee Carter (LC) es un m ´etodo param´etrico
+de los m ´as utilizados para el c ´alculo de tablas din ´amicas. Consideremos una tabla din ´amica
+de mortalidad con tasas brutas, es decir un conjunto de observaciones calculadas en un tiempo
+espec´ıﬁco t (qxt). La idea principal es obtener a partir de esta muestra, una proyecci ´on de las
+tasas de mortalidad en el tiempo sin cambios bruscos (tasas de mortalidad graduadas). Se debe
+anotar que este modelo es v´alido para poblaciones no estacionarias, en las cuales las funciones
+biom´etricas dependen de la cohorte t. Lee Carter propone ajustar la medida de la mortalidad en
+el tiempo de la siguiente manera:
+qx,t = exp(ax+bxkt+ϵxt) (2.19)
+
+--- PAGE 37 ---
+2.4 Tablas de Mortalidad Din´amicas 23
+O lo que es equivalente
+ln (qx,t) = ax + bxkt + ϵxt (2.20)
+Donde:
+µx: Fuerza de la mortalidad.
+qx,t: Tasa de mortalidad para la edad xen el tiempo t
+dx,t: Muertes registradas para la edad xen el periodo t.
+Ex,t: Expuestos al riesgo en la edad xcorrespondientes al periodo o cohorte t.
+ax: Logaritmo del comportamiento medio de µx(Fuerza de la mortalidad).
+bx: Descripci´on del patr´on de desviaci´on del perﬁl de edad xa medida que kvaria.
+kt: Indice de mortalidad o tendencia en el tiempo de la fuerza de mortalidad. Este par´ame-
+tro deﬁne la direcci ´on de la esperanza de vida, ante una reducci´on en el indice de morta-
+lidad habr´a una mayor esperanza de vida. Este ´ındice podr´a ser negativo para asi reﬂejar
+cambios en la din´amica de la tasa de mortalidad central.
+ϵxt : T´ermino de error. ϵxt ∼ i.i.d.N(0,σ2). Estos son reﬂejos de inﬂuencias historicas
+que no son explicadas aun por el modelo.
+
+--- PAGE 38 ---
+24 CAP´ITULO 2. MARCO TE ´ORICO
+
+--- PAGE 39 ---
+CAP´ITULO 3
+Marco Metodol´ogico
+En el Marco Te ´orico se observ ´o que los desarrollos respecto a la Teor ´ıa de la Mortalidad,
+si bien tienen muchos a˜nos en estudio y observaci´on, son recientemente los avances en las pre-
+dicciones de la esperanza de vida de las poblaciones, estos adelantos se han podido conseguir
+gracias al impulso tecnol´ogico, especialmente en recolecci´on, almac´en y an´alisis de datos.
+Cabe destacar que todos los pa´ıses en especial los desarrollados, motivan e invierten en in-
+vestigaciones para el desarrollo de la materia, se˜nalan que ha pasado a ser de gran importancia
+para la sociedad, fundamentalmente porque ha permitido realizar signiﬁcativas tomas de deci-
+siones nivel poblacional, econ´omico y ﬁnanciero, llevando de esta manera tanto a instituciones
+p´ublicas, privadas y a pa´ıses enteros a potenciar el crecimiento en cada una de estas´areas.
+Tomando en cuenta el cap´ıtulo II (planteamiento del problema), se se ˜nala que algunas de
+las caracter´ısticas de algunos productos ﬁnancieros de vida y aﬁnes, desarrollados en Vene-
+zuela es que toman experiencias ajenas al pa ´ıs para la tariﬁcaci´on de los mismos, teniendo en
+muchos casos datos suﬁcientes para armar la estructura de costos con cifras nacionales. Esta
+problem´atica, el ´ındice inﬂacionario y la falta de incentivos para el desarrollo de nuevas l´ıneas
+de investigaci´on ha llevado a que las empresas aseguradoras cada d´ıa tengan menos suscripcio-
+nes en el ramo.
+El estudio realizado desde los datos de la p ´agina de la SUDEASEG en la secci ´on de Se-
+guros en Cifras, como se mencion ´o en anteriores cap ´ıtulos, si bien a simple vista las primas
+de seguros de vida y productos aﬁnes, en la mayor ´ıa de los cierres de operaciones anuales los
+resultados arrojados son positivos, al aplicarle el´ındice inﬂacionario a 2015(Anexo 1), la pers-
+25
+
+--- PAGE 40 ---
+26 CAP ´ITULO 3. MARCO METODOL ´OGICO
+pectiva cambia en su totalidad.
+Por otra parte la Ley de la Actividad Aseguradora indica en el art´ıculo 43 (numeral 7):
+“En la elaboraci´on de las tarifas de los seguros de vida deben emplearse tablas actualizadas
+de mortalidad o de supervivencia rentistas, que se adapten en lo posible a la experiencia de los
+asegurados de la republica”.
+Lo anterior se˜nala a la Superintendencia de la Actividad Aseguradora est´a en la obligaci´on
+de sugerir a las compa ˜n´ıas de seguros para el c ´alculo de su tariﬁcaci ´on, cuales TDM deben
+usarse, tomando en cuenta como criterio, cu´ales de estas se acercan m´as a las condiciones de la
+poblaci´on venezolana.
+Por estas razones se realiza una investigaci´on que espera favorecer al desarrollo del merca-
+do ﬁnanciero con el desglose y proyecci ´on de una tabla de mortalidad completa actualizada de
+al menos 100 a˜nos de edad a partir de datos nacionales, tomando en cuenta TDM desarrolladas
+anteriormente, datos censales y registros de las muertes ocurridas en el pa´ıs. Aunado, al culmi-
+nar este estudio se proyectaran las tasas de muerte por el m´etodo de Lee Carter y de esta manera
+poder prever un posible cambio estructural del comportamiento de los datos. A partir de esto,
+comparar la diferencia existente entre los resultados arrojados y las TDM m ´as utilizadas por
+las aseguradoras venezolanas en sus tarifas.
+Una vez alcanzado este punto se estudiara a partir de una muestra de personas venezolanas
+aseguradas, el desarrollo de una TDM selecta desde la experiencia del mercado asegurador,
+basados en el historial de asegurados y siniestros de compa ˜n´ıas especialistas en los ramos de
+vida y funerario desglosados por edad.
+A continuaci ´on se veriﬁcara los datos, plan de trabajo y procedimientos utilizados para el
+desarrollo de la propuesta:
+3.0.1. Fuente de los Datos
+Desde la p´agina oﬁcial del Instituto Nacional de Estad´ısticas (INE), se recolectaron los da-
+tos censales de Venezuela desde 1990 a 2011 por grupos de edad de 5 a˜nos.
+
+--- PAGE 41 ---
+27
+Otros de los datos necesarios para desarrollar la investigaci ´on es la mortalidad general del
+pa´ıs, la informaci´on fue extra´ıda de la p´agina del Ministerio del Poder Popular Para la Salud
+(MPPS), la data arrojada por el ministerio cuenta con el registro de las muertes ocurridas desde
+1995 a 2011 a nivel nacional en grupos de edades de 5 a ˜nos y por g ´eneros, exceptuando la
+mortalidad infantil la cual se desglosa de forma desagregada.
+A partir de los datos del Proyecto de uniﬁcaci ´on de solicitudes fase 1 se obtuvieron los
+datos los expuestos defunciones de las compa˜n´ıas aseguradoras venezolanas.
+Por ´ultimo se toman en cuenta las tablas de mortalidad venezolanas, estas son:
+1941 de Erich Michalub
+1961 de Erich Michalub
+1971 de Luis Escalona
+3.0.2. Reconstrucci ´on de la Mortalidad en el Periodo 1995 a 2011
+A continuaci´on se muestra el total poblacional de los 3 censos registrados antes mencio-
+nados:
+Tabla 3.0.1: Total Poblaciones Censadas
+A˜no Total Poblaci ´on Total Hombres Total Mujeres
+2,011 27,227,930 13,549,752 13,678,178
+2,001 23,054,210 11,402,869 11,651,341
+1,990 18,105,265 9,019,757 9,085,508
+Para poder conseguir una aproximaci ´on del crecimiento poblacional en el tiempo, se
+realiz´o una proyecci´on de la siguiente manera:
+
+--- PAGE 42 ---
+28 CAP ´ITULO 3. MARCO METODOL ´OGICO
+1. Se diferenciaron las poblaciones por sexo: Del total general poblacional se subdivi-
+dieron en masculino (M) o Varones (V) y femenino (F) o Hembras (H).
+2. Se separa cada poblaci ´on (M y F) de los censos por grupos de edades, es decir:
+IMAGENES/IMAGEN_1.PNG
+Figura 3.0.1: Datos Censales de la Poblaci´on de 0 a 4
+IMAGENES/IMAGEN_2.PNG
+Figura 3.0.2: Datos Censales de la Poblaci´on de 5 a 9
+Cabe destacar que todos los datos censales encontrados, est´an desglosados de forma
+de grupos de edades de 5 a˜nos, a excepci´on de los dos ´ultimos censos donde adem´as
+se lograron hallar en edades simples.
+En el caso del censo del a˜no 1990, culmina con un rango de poblaci´on de 85 y m´as,
+y el INE no hace ninguna otra menci ´on p´ublica de un desglose m´as detallado de la
+distribuci´on en las edades siguientes. Por ser una de las ﬁnalidades obtener la mayor
+cantidad de datos de forma exacta, el comportamiento de esta poblaci´on se desgloso
+en las mismas proPorci´ones que indica la p´agina oﬁcial de la Comisi´on Econ´omica
+para Am´erica Latina y el Caribe (CEPAL) la cual tiene un estimado del detalle en
+grupos de edades en la misma estructura pero hasta llegar a los 100 a ˜nos de edad.
+Esta referencia se realiza con la ﬁnalidad de hacer comprender al lector, de que los
+datos usados en estas ´ultimas edades para el censo de 1990 no son publicos, por lo
+que podr´ıan encontrar peque˜nas diferencias en la disposici´on de datos del INE.
+3. Se se ˜nal´o que los arreglos anteriores se realizan con la ﬁnalidad de poder estimar
+un comportamiento poblacional en el tiempo (entre censo y censo). Por lo que se
+
+--- PAGE 43 ---
+29
+realiza un gr´aﬁco de los 3 datos poblacionales en el tiempo. Se estima, el compor-
+tamiento de la evoluci´on de inviduos en los a˜nos donde no se tienen datos censales,
+mediante una funci´on de segundo grado donde la inc ´ognita es la “cantidad total de
+personas en esas edades” y la variable conocida es el “a ˜no” en estudio (interpola-
+ci´on):
+A continuaci´on un fragmento del estudio desarrollado:
+Datos Censales 00 - 04
+1,990 1,194,896
+2,001 1,266,429
+2,011 1,254,208
+A˜nos Interpolaci´on
+1,995 4,500
+1,996 4,504
+1,997 4,509
+1,998 4,513
+1,999 4,518
+2,000 4,522
+2,001 4,527
+2,002 4,531
+2,003 4,536
+2,004 4,540
+2,005 4,545
+2,006 4,550
+2,007 4,554
+2,008 4,559
+2,009 4,563
+2,010 4,568
+2,011 4,572
+Tabla 3.0.2: (Porci´on) Interpolaci´on Poblaci´on Masculina de 0 a 4 a˜nos
+El desarrollo de este estudio se puede veriﬁcar en el Anexo 3
+
+--- PAGE 44 ---
+30 CAP ´ITULO 3. MARCO METODOL ´OGICO
+4. El paso anterior nos permite obtener un estimado de la poblaci ´on venezolana por
+a˜no, en grupos de edades de 5 a ˜nos. Las distribuciones referenciales que se tienen
+en existencia del desglose en edades simples, son los datos facilitados por el INE
+en los censos de 2001 y 2011. El paso a seguir es, el c ´alculo de una proporci ´on
+del n´umero de personas que tienen una edad especiﬁca en a ˜nos cumplidos, entre el
+n´umero total del grupo. Esta proporci ´on representa la cantidad de individuos que
+componen esa edad. Visto matem´aticamente es de la siguiente manera:
+• Censo 2001:
+Edades y N´umero de Personas
+Hombre Mujer Total
+0 4 1266429 1203652 2470081
+Tabla 3.0.3: Edades y N´umero de Personas
+Composici´on Etaria. N´umero de Personas
+Hombre Mujer Total
+0 236369 227101 463470
+1 258273 246956 505229
+2 265544 249011 514555
+3 250624 238686 489310
+4 255619 241898 497517
+Tabla 3.0.4: Composici´on Etaria. N´umero de Personas
+Porporci´on Etaria por edad
+
+--- PAGE 45 ---
+31
+Hombre Mujer Total
+0.18664 0.18868 0.18763
+0.20394 0.20517 0.20454
+0.20968 0.20688 0.20832
+0.19790 0.19830 0.19809
+0.20184 0.20097 0.20142
+Tabla 3.0.5: Proporci´on Etaria por Edad
+Una vez hallado estos c ´alculos para cada una de las edades en cada censo, se acota el
+estudio censal al mismo periodo de tiempo en los que se tienen registros de las muertes
+del Ministerio de Salud, 1995 a 2011. Como para cada uno de los a ˜nos en estudio, la
+forma de los registros est´a en grupos de edades de 5 a˜nos y sexo, a excepci´on de n´umero
+de muertos ni ˜nos y ni ˜nas (0-5 a ˜nos), que se encuentra completa. Determinamos con las
+proPorci´ones dadas anteriormente, de qu ´e forma (aproximadamente) se distribuyen los
+individuos (de las proyecciones) y el n ´umero de muertes en edades simples. Para el pe-
+riodo 1995 a 2006 se utiliza la estructura porcentual del censo de 2001; para el resto de
+los a˜nos, los del 2011. Arrojando los siguientes resultados:
+Tabla 3.0.6: Distribuci´on de Fallecimientos por Edades Simples y Edades
+edad Prop 2001 Prop 2011 1,995 1,996 1,997 1,998
+0 0.18868 0.168193452 5,291 5,083 4,745 4,577
+1 0.20517 0.208449557 637 740 582 608
+2 0.20688 0.216637669 249 279 256 255
+3 0.1983 0.205350918 157 162 158 162
+4 0.20097 0.201368403 98 129 130 108
+5 0.189 0.203336286 79 81 75 77
+De esta manera se tienen 2 tablas desagregadas con datos totales de poblaci´on y mortalidad
+en el mismo periodo de tiempo, disociadas por sexo.
+
+--- PAGE 46 ---
+32 CAP ´ITULO 3. MARCO METODOL ´OGICO
+3.0.3. Calculo de las Tasas Brutas
+El desarrollo de los c ´alculos anteriores permite completar el estudio de las tasas brutas
+de mortalidad desde 1995 a 2011 por edad y sexo. Se consigue con la divisi ´on del n ´umero
+de fallecidos entre el n ´umero total de sobrevivientes para cada una las edades. Los resultados
+obtenidos son:
+Tabla 3.0.7: (Porci´on) Tasas Brutas 1995
+edad 1995
+0 30.54728
+1 2.77151
+2 1.06284
+3 0.77523
+4 0.56006
+5 0.44409
+6 0.44409
+7 0.44409
+8 0.44409
+Completado este estudio, se veriﬁca que se presentan ciertas anomal´ıas, principalmente por
+las proPorci´ones aplicadas en cada grupo de edad, lo que genera .escalones.en las gr´aﬁcas. Estas
+singularidades deben ser graduadas o suavizadas, para tal efecto se propone seg ´un la T´esis de
+Grado de Ramiro Coa Clemente el uso del m ´etodo gr´aﬁco mediante el uso de funciones que
+modelen en gran medida el comportamiento de las tasas brutas.
+3.0.4. Graduaci ´on de las Tasas
+La mortalidad infantil se proyecta mediante una funci ´on de cuarto grado a excepci ´on de
+los individuos con menos de 1 a˜no.
+Para las tasas a partir 5 a˜nos de edad hasta los 85, se estima mediante una funci ´on expo-
+nencial. Para que los datos se adapten de una mejor manera, de los 85 a los 100 a ˜nos de
+
+--- PAGE 47 ---
+33
+edad se calcularon mediante la funci´on exponencial dada (extrapolaci´on).
+Cabe destacar que todo el procedimiento anterior, se estableci´o para tablas de mortalidad
+diferenciadas por g´eneros.
+Tabla 3.0.8: (Porci´on) Tasas Brutas, Tasas Graduadas(Gra)
+edad 1995 1995 Grad 1996 1996 Grad
+0 30.54728 30.54728 29.39359 29.39359
+1 2.77151 2.77150 3.26511 3.26510
+2 1.06284 1.06280 1.37525 1.37500
+3 0.77523 0.77510 0.89294 0.89110
+4 0.56006 0.55960 0.70835 0.70160
+5 0.44409 0.44270 0.48529 0.46750
+6 0.44409 0.56132 0.48529 0.55125
+7 0.44409 0.59847 0.48529 0.58786
+Hasta este punto se ha logrado obtener diecisiete (17) tablas de mortalidad realizada con
+datos poblacionales venezolanos relativamente recientes (1995 a 2011). Adem´as se suavizaron
+las tasas mediante el m´etodo grafico para evitar los cambios bruscos de las mismas.
+3.0.5. Proyecci ´on de la Mortalidad para el A˜no 2015 por Medio de Tablas
+Din´amicas con el Lenguaje de Programaci´on R
+En pa´ıses desarrollados recientemente se ha venido ampliando con mucho inter ´es la apli-
+caci´on de tablas de Mortalidad Din ´amicas. Por esta raz ´on para que en el presente estudio se
+pueda utilizar una mortalidad m´as actualizada, se procede a desarrollar una TDM din´amica por
+el m´etodo de Lee Carter con datos venezolanos:
+El archivo a proyectar contiene el desarrollo de las probabilidades de muerte realizadas
+anteriormente, para obtener una mejor estimaci´on se sumaran al estudio las TDM venezolanas
+siguientes:
+
+--- PAGE 48 ---
+34 CAP ´ITULO 3. MARCO METODOL ´OGICO
+1941. Desarrollada por Erich Michalub.
+1961. Elaborada por Erich Michalub.
+1971. Realizada por Luis Escalona.
+El primer bloque de c ´odigo contiene las librer´ıas en las cuales se encuentran las funciones
+necesarias a utilizar para el desarrollo del estudio de la proyecci ´on de la mortalidad. Aunado a
+la lectura de los archivos que contienen las tablas de mortalidad mencionadas anteriormente y
+una tabla de expuestos (grupo cerrado) que comienza con 100.000 personas para cada una de
+las TDM.
+library(demography) #calculos de lc
+library(forecast) #tabla Din´amica
+vzla<-read.demogdata("C:/Users/Daniel/Desktop/ARCHIVO DE
+PRUEBA/Mx_vzlaprueba0.txt", "C:/Users/Daniel/Desktop/ARCHIVO
+DE PRUEBA/Exposures_vzlapru0.txt",type="mortality", label="
+Venezuela")
+La siguiente linea de c ´odigos nos permite desplegar gr ´aﬁcamente el c ´alculo del logaritmo
+de las tasas de mortalidad reﬂejada en cada una de las tablas por edad, g´enero y los totales. Esto
+basado en la f´ormula de Lee Carter 2.20
+par(mfrow=c(1,3))
+plot(vzla,series="male",datatype="rate", main="Male rates")
+plot(vzla,series="female",datatype="rate", main="Female rates
+")
+plot(vzla,"total",datatype="rate", main="Total rates")
+
+--- PAGE 49 ---
+35
+0 20 40 60 80 100
+−8 −6 −4 −2 0
+Male rates
+Age
+Log death rate
+0 20 40 60 80 100
+−8 −6 −4 −2
+Female rates
+Age
+Log death rate
+0 20 40 60 80 100
+−8 −6 −4 −2 0
+Total rates
+Age
+Log death rate
+show(vzla)
+## Mortality data for Venezuela
+## Series: female male total
+## Years: 1941 - 2011
+## Ages: 0 - 100
+Del logaritmo de las tasas mostradas en el c ´odigo anterior, la siguiente l´ınea de caracteres
+las graﬁca en el tiempo, en este caso desde 1941, periodo en que tenemos la primera TDM;
+ademas interpola los a˜nos en los que no se posee informaci´on.
+
+--- PAGE 50 ---
+36 CAP ´ITULO 3. MARCO METODOL ´OGICO
+par(mfrow=c(1,3))
+plot(vzla,series="male",datatype="rate",plot.type="time", main
+="Male rates",xlab="Years")
+plot(vzla,series="female",datatype="rate",plot.type="time",
+main="Female rates",xlab="Years")
+plot(vzla,series="total",datatype="rate",plot.type="time",
+main="Total rates",xlab="Years")
+1940 1960 1980 2000
+−8 −6 −4 −2 0
+Male rates
+Y ears
+Log death rate
+1940 1960 1980 2000
+−8 −6 −4 −2
+Female rates
+Y ears
+Log death rate
+1940 1960 1980 2000
+−8 −6 −4 −2 0
+Total rates
+Y ears
+Log death rate
+Se puede veriﬁcar rapidamente que la tendencia del comportamiento de las tasas de morta-
+
+--- PAGE 51 ---
+37
+lidad es a disminuir, lo que se traduce en un aumento en la esperanza de vida de los individuos
+entre generaciones.
+Una vez calculado y graﬁcado elln(qxt), la librer´ıa de demography calculara en el siguiente
+codigo los par´ametros de la ecuaci´on de Lee Carter (LC) para cada una de los g´eneros, adem´as
+de graﬁcar el comportamiento de cada uno.
+vzlaLcaM<-lca(vzla,series="male",max.age=100)
+vzlaLcaF<-lca(vzla,series="female",max.age=100)
+vzlaLcaT<-lca(vzla,series="total",max.age=100)
+par(mfrow=c(1,3))
+plot(vzlaLcaT$ax, main="ax", xlab="Age",ylab="ax",type="l")
+lines(x=vzlaLcaF$age, y=vzlaLcaF$ax, main="ax", col="red")
+lines(x=vzlaLcaM$age, y=vzlaLcaM$ax, main="ax", col="blue")
+legend("topleft" , c("Male","Female","Total"),cex=0.8,col=c("
+blue","red","black"),lty=1);
+plot(vzlaLcaT$bx, main="bx", xlab="Age",ylab="bx",type="l")
+lines(x=vzlaLcaF$age, y=vzlaLcaF$bx, main="bx", col="red")
+lines(x=vzlaLcaM$age, y=vzlaLcaM$bx, main="bx", col="blue")
+legend("topright" , c("Male","Female","Total"),cex=0.8,col=c("
+blue","red","black"),lty=1);
+plot(vzlaLcaT$kt, main="kt", xlab="Year",ylab="kt",type="l")
+lines(x=vzlaLcaF$year, y=vzlaLcaF$kt, main="kt", col="red")
+lines(x=vzlaLcaM$year, y=vzlaLcaM$kt, main="kt", col="blue")
+legend("topright" , c("Male","Female","Total"),cex=0.8,col=c("
+blue","red","black"),lty=1);
+
+--- PAGE 52 ---
+38 CAP ´ITULO 3. MARCO METODOL ´OGICO
+0 20 40 60 80 100
+−7 −6 −5 −4 −3 −2
+ax
+Age
+ax
+Male
+Female
+Total
+0 20 40 60 80 100
+0.010 0.015 0.020 0.025
+bx
+Age
+bx
+Male
+Female
+Total
+kt
+Y ear
+kt
+2000 2100 2200 2300
+−20 0 20 40 60 80 100 120
+Male
+Female
+Total
+REpasando lo indicado en el marco te ´orico, los par ´ametros del modelo de LC tienen el
+siguiente signiﬁcado:
+axmuestra el comportamiento del logaritmo de la fuerza de mortalidad con respecto de
+la edad.
+bxse˜nala el patr´on de desviaci´on de la edad cuando ktvaria en el tiempo.
+ktexpone la tendencia de la fuerza de mortalidad con respecto al tiempo.
+Las siguientes lineas de codigo muestran una parte de la matriz de datos de los valo-
+res de la variable ax, bx y kt para cada las edades de 0 a 5, para la poblaci ´on total son
+axT bxT ktT ; para la poblaci ´on masculina axM bxM ktM y para la poblaci ´on fe-
+menina axF bxF ktF
+
+--- PAGE 53 ---
+39
+axF<-vzlaLcaF$ax
+axM<-vzlaLcaM$ax
+axT<-vzlaLcaT$ax
+head(axT)
+## 0 1 2 3 4 5
+## -3.667272 -5.928367 -6.741669 -7.131770 -7.390963 -7.658941
+head(axM)
+## 0 1 2 3 4 5
+## -3.560436 -5.868021 -6.658301 -7.042582 -7.295065 -7.526123
+head(axF)
+## 0 1 2 3 4 5
+## -3.793027 -5.932344 -6.775998 -7.172146 -7.447449 -7.806685
+bxF<-vzlaLcaF$bx
+bxM<-vzlaLcaM$bx
+bxT<-vzlaLcaT$bx
+head(bxT)
+## 0 1 2 3 4
+## 0.01349111 0.02499612 0.02641202 0.02594322 0.02430306
+## 5
+## 0.02369374
+head(bxM)
+
+--- PAGE 54 ---
+40 CAP ´ITULO 3. MARCO METODOL ´OGICO
+## 0 1 2 3 4
+## 0.01572555 0.02908317 0.03035652 0.02995306 0.02829881
+## 5
+## 0.02748025
+head(bxF)
+## 0 1 2 3 4
+## 0.01092862 0.01985596 0.02116937 0.02063824 0.01914250
+## 5
+## 0.01917469
+ktF<-vzlaLcaF$kt
+ktM<-vzlaLcaM$kt
+ktT<-vzlaLcaT$kt
+head(ktF)
+## Time Series:
+## Start = 1941
+## End = 2041
+## Frequency = 0.05
+## [1] 148.096818 76.574104 68.288260 4.161155 2.799398
+## [6] -2.561624
+head(ktM)
+## Time Series:
+## Start = 1941
+## End = 2041
+## Frequency = 0.05
+## [1] 101.37126139 40.84628210 25.58218317 0.09846026
+## [5] -0.48939514 -5.19780422
+
+--- PAGE 55 ---
+41
+head(ktT)
+## Time Series:
+## Start = 1941
+## End = 2041
+## Frequency = 0.05
+## [1] 119.305586 54.993294 44.133457 1.302306 1.132732
+## [6] -3.297486
+Con los comandos que siguen se calcula la proyecci ´on de las tasas de mortalidad (en este
+caso a 20 a ˜nos) basados en el comportamiento de las mortalidades observadas desde 1941 a
+2011. Desde este punto se hace uso de la librer´ıa forecast
+fM<-forecast(vzlaLcaM,h=20)
+fF<-forecast(vzlaLcaF,h=20)
+fT<-forecast(vzlaLcaT,h=20)
+De la siguiente manera puedo graﬁcar esta proyecci ´on, por g ´eneros y el total de las kt
+poblacionales por g´enero y la total
+par(mfrow=c(1,3))
+plot(fM$kt.f,main="Male")
+plot(fF$kt.f,main="Female")
+plot(fT$kt.f,main="Total")
+
+--- PAGE 56 ---
+42 CAP ´ITULO 3. MARCO METODOL ´OGICO
+Male
+2000 2200 2400 2600
+−200 −100 0 100
+Female
+2000 2200 2400 2600
+−300 −200 −100 0 100
+Total
+2000 2200 2400 2600
+−300 −200 −100 0 100
+Por ultimo con la siguiente linea de c ´odigos, se puede generar la Tabla de Mortalidad
+Din´amica basados en el m ´etodo de Lee Carter, el total, disociados por g ´enero y proyectada
+a 20 a˜nos.
+ratesM<-cbind(vzla$rate$male[1:100,],fM$rate$male[1:100,])
+ratesF<-cbind(vzla$rate$female[1:100,],fF$rate$female[1:100,])
+ratesT<-cbind(vzla$rate$total[1:100,],fT$rate$total[1:100,])
+
+--- PAGE 57 ---
+43
+Edad 2,012 2,013 2,014 2,015 2,016
+0 0.01727755 0.01563287 0.01414475 0.01279829 0.01158000
+1 0.00129022 0.00107194 0.00089059 0.00073993 0.00061475
+2 0.00054907 0.00045141 0.00037113 0.00030512 0.00025086
+3 0.00037680 0.00031086 0.00025646 0.00021159 0.00017456
+4 0.00030492 0.00025464 0.00021265 0.00017759 0.00014830
+5 0.00023740 0.00019915 0.00016706 0.00014015 0.00011757
+6 0.00030299 0.00026152 0.00022572 0.00019483 0.00016816
+7 0.00033207 0.00029135 0.00025563 0.00022428 0.00019678
+8 0.00036322 0.00032358 0.00028827 0.00025681 0.00022878
+9 0.00039617 0.00035776 0.00032307 0.00029175 0.00026347
+10 0.00043055 0.00039317 0.00035904 0.00032787 0.00029940
+11 0.00046563 0.00042842 0.00039418 0.00036267 0.00033369
+12 0.00050108 0.00046323 0.00042824 0.00039589 0.00036598
+13 0.00053685 0.00049700 0.00046010 0.00042595 0.00039432
+14 0.00057264 0.00052979 0.00049015 0.00045347 0.00041954
+Tabla 3.0.9: (Porci´on) Tabla de Mortalidad Din´amica por LC
+Otra Porci´on de esta Tabla Puede apreciarse en el Anexo 5.
+De esta manera se ha conseguido desarrollar una TDM din ´amica con la poblaci´on venezo-
+lana con una proyecci´on a 20 A˜nos, diferenciadas por sexo.
+
+--- PAGE 58 ---
+44 CAP ´ITULO 3. MARCO METODOL ´OGICO
+
+--- PAGE 59 ---
+CAP´ITULO 4
+An´alisis de los Resultados
+En el cap´ıtulo anterior se estudi´o todos los procedimientos realizados para la obtenci ´on de
+las resultados que ayudan al alcance de los objetivos de este trabajo investigativo. A continua-
+ci´on se presenta la explicaci´on y an´alisis de cada una de las operaciones desarrolladas.
+El problema observado al comienzo de este informe llevo a la investigaci´on y desarrollo de
+una matriz con un conjunto de datos que contiene la informaci´on de los resultados del cobro de
+primas en los seguros de vida, funerario y aﬁnes desde el 2011 al 2015. Si bien los resultados
+de primas generados eran crecientes para el ramo, estudiando el ´ındice inﬂacionario de esos
+a˜nos y aplic ´andoselo a las cifras el panorama del ramo resulto preocupante, concluyendo en
+una elevada disminuci´on de la suscripci´on.
+SECCI ´ON 4.1
+Comparaci´on de la TDM Din´amica con Respecto a las tablas de
+mortalidad m´as Utilizadas en el Sector Asegurador Venezolano
+Mediante el estudio desarrollado en el cap ´ıtulo anterior, de los resultados obtenidos, se
+realizara una comparaci´on de las tasas de mortalidad generadas, con aquellas que contienen las
+TDM m´as utilizadas en el sector asegurador venezolano mediante el siguiente procedimiento:
+Se toma la mortalidad proyectada a 2015 de LC (LC15) y se veriﬁca la diferencia de tasas
+con respecto a la TDM CSO80 (General) que es una de las m ´as utilizadas por el sector
+asegurador venezolano, los resultados fueron los siguientes:
+45
+
+--- PAGE 60 ---
+46 CAP ´ITULO 4. AN ´ALISIS DE LOS RESULTADOS
+Tabla 4.1.1: (Porci´on) Comparaci´on de Tasas LC2015 y CSO80
+Edad CSO80 LC15 (LC/CSO80) %
+0 0.0026300 0.0127983 486.63 %
+1 0.0010300 0.0007399 71.84 %
+2 0.0009900 0.0003051 30.82 %
+3 0.0009700 0.0002116 21.81 %
+4 0.0009300 0.0001776 19.10 %
+5 0.0008800 0.0001401 15.93 %
+El resto de la tabla se puede veriﬁcar en el anexo 4.
+En los datos arrojados anteriormente al realizar la divisi ´on de la LC15 y la CSO80 se
+est´a obteniendo el valor de la representaci ´on porcentual de las primeras tasas de LC15
+con respecto a la tabla CSO80, concluyendo as´ı que las probabilidades de LC15 solo en
+el primer a ˜no de vida est ´a por encima de la CSO80,adem ´as en promedio la tassas de
+moralidad de LC15 estan un 53,8 % por debajo de la CSO80.
+SECCI ´ON 4.2
+Comparaci´on de la TDM Din´amica con Respecto a la mortalidad
+observada por una empresa del Sector Asegurador Venezolano
+Realizado el procedimiento anterior, se extrae de los archivos de la SUDEASEG la cartera
+y siniestros de vida en 2015 de una de las 5 primeras aseguradoras en el ranking de Primas
+cobradas del ramo, cabe destacar que la muestra no pudo ser mayor por motivos de errores de
+las datas. Una de las caracter ´ısticas de esta cartera es que el peso de asegurados se encuentra
+en las edades comprendidas entre 31 y 60 a˜nos, por lo que el estudio se har´a en estas edades.
+Se calculan las tasas brutas basados en la proporci ´on de siniestros y el n ´umero de expues-
+tos, las mismas se suavizaron por medio del m ´etodo gr´aﬁco con una funci ´on exponencial. Se
+reconstruye la mortalidad a trav´es de esta funci ´on y al comparar con la LC2015 los resultados
+arrojados son:
+
+--- PAGE 61 ---
+4.3 Comparaci´on de la TDM Din´amica selecta con Respecto a la Tabla de Mortalidad Venezolana 47
+Tabla 4.2.1: (Porci´on) Comparaci´on de LC2015 y una Aseguradora Venezolana
+Edad QxComp. Seg. LC15 QxComp.Seg/LC15
+31 0.00015492 0.001350 0.114790
+32 0.00016872 0.001452 0.116183
+33 0.00018375 0.001562 0.117623
+34 0.00020012 0.001680 0.119098
+35 0.00021794 0.001808 0.120576
+el resto de la tabla se puede encontar en el anexo 4
+En este caso al veriﬁcar los datos obtenemos que las tasas arrojadas por el estudio selecto
+de esta compa ˜n´ıa aseguradora al a˜no 2015 est´an por debajo del valor de las probabilidades de
+LC15, cabe resaltar en este punto que LC15 est´a desarrollada con datos poblacionales tanto en
+expuestos como en muertes; por esta raz ´on era de esperarse que al realizar la selecci ´on de una
+muestra de asegurados las tasas estuvieran por debajo del valor la TDM poblacional.
+SECCI ´ON 4.3
+Comparaci´on de la TDM Din´amica selecta con Respecto a la Tabla de
+Mortalidad Venezolana
+La otra TDM de uso com ´un en Venezuela es la TDM Venezolana de abril de 2002. Cabe
+destacar que esta se desarroll´o con datos selectos, para veriﬁcar las diferencias existentes entre
+esta tabla y LC15 donde los datos son de la poblaci ´on venezolana, el procedimiento fue el
+siguiente:
+De las desigualdades porcentuales existentes entre la tasas arrojadas del estudio de la com-
+pa˜n´ıa aseguradora y LC15 se calcul ´o un promedio, siendo este de un 14.05 % de diferencia
+(estando por encima LC15 como se veriﬁc ´o en el paso anterior), luego este valor se le aplic ´o
+a LC15 en todas sus probabilidades de muerte (con la intenci ´on de aproximarla a un estudio
+selecto); al comparar con la TDM venezolana para cada sexo, los resultados fueron:
+
+--- PAGE 62 ---
+48 CAP ´ITULO 4. AN ´ALISIS DE LOS RESULTADOS
+Edad Qx LC15 DESCQxVEN (M)QxVEN (F)QxLC15CD/VEN(M)QxLC15CD/VEN(F)
+20 0.000537119 0.00091 0.00021 0.590241 2.55771107
+21 0.000570249 0.00093 0.00023 0.6131714 2.47934529
+22 0.000607196 0.00095 0.00025 0.6391532 2.42878234
+23 0.000648847 0.00097 0.00028 0.6689148 2.31731201
+24 0.000695626 0.001 0.00031 0.6956263 2.24395571
+25 0.000747337 0.00103 0.00034 0.72557 2.1980503
+26 0.000803947 0.00106 0.00038 0.758441 2.1156512
+27 0.000865179 0.00109 0.00041 0.7937421 2.1101925
+Tabla 4.3.1: (Porci´on)Comparaci´on LC15 con Descuento (QxLC15CD) y TDM Venezolana
+El resto de la tabla se puede encontrar en el anexo 4
+Los resultados anteriores muestran las diferencias y la relaci´on porcentual que posee QxLC15CD
+con respecto de la TDM venezolana. Se puede veriﬁcar que el caso masculino en comparaci´on
+a la aproximaci ´on selecta de LC15, todas las tasas a excepcion del renglon de edades de 41 a
+56 a˜nos estan por debajo, adem´as en promedio QxLC15CD representa un 74,82 % de las tasas
+de la CSO80 de hombres. Cuando se analiza el caso femenino, si existen bastantes similitudes;
+la aproximaci´on selecta de LC15 tiende a estar por debajo desde la edad 69 hasta el ﬁnal de la
+tabla, sin embargo cabe resaltar que a nivel pr ´actico las aseguradoras en su mayor´ıa no suelen
+tomar en cuenta las tasas venezolanas femeninas en las notas tecnicas.
+
+--- PAGE 63 ---
+CAP´ITULO 5
+Conclusiones y Recomendaciones
+Se realiz´o la conceptualizaci ´on de una Tabla de Mortalidad a partir de lo sugerido por Ar-
+mando Zarruk y la clasiﬁcaci ´on que este plantea. Igualmente Se deﬁnieron todos los tipos de
+TDM que existen y el aporte que estas tienen al mercado ﬁnanciero mundial.
+Como sugerencia se propone que bien sea la Escuela de Estad´ısticas y Ciencias Actuariales
+o la Superintendencia de la Actividad Aseguradora plantee una conceptualizaci ´on gen´erica de
+esta base t´ecnica actuarial.
+Se realiz´o un breve repaso de las Tablas de Mortalidad elaboradas en el pa´ıs en las ´ultimas
+d´ecadas.
+Se evidencia que estos estudios no se actualizan con la frecuencia debida, por lo que se
+plantea que las instituciones con acceso directo a la informaci´on tengan un departamento asig-
+nado a la observaci´on y an´alisis de los datos necesarios para el desarrollo.
+El an´alisis de la evoluci ´on de los ramos de los seguros funerario, vida y aﬁnes para el pe-
+riodo 2011 2015, evidencia una situaci ´on preocupante respecto a la suscripci ´on. El cobro de
+primas para estos ramos en t´erminos reales ha disminuido notablemente los ´ultimos a˜nos.
+Se hizo un repaso por todos los m ´etodos para el desarrollo de una Tabla de Mortalidad,
+presentando un panorama evolutivo de las distintas leyes de mortalidad.
+Al ﬁnalizar el Marco Te ´orico se realiz ´o una deﬁnici ´on de lo que se entiende por Tablas de
+49
+
+--- PAGE 64 ---
+50 CAP ´ITULO 5. CONCLUSIONES Y RECOMENDACIONES
+Mortalidad din´amicas con especial ´enfasis en el m´etodo de Lee Carter.
+Se sugiere el uso de este m ´etodo, debido a que en las bibliograf ´ıas lo recomiendan y mu-
+chos pa´ıses desarrollados en el ´area actuarial lo emplean, motivado a que permite proyectar la
+mortalidad a futuro con una aproximaci´on bastante cercana a los datos reales observados.
+Se recopilo la informaci ´on censal del INE, y las aproximaciones poblacionales de la CE-
+PAL, el n´umero de fallecimientos de Ministerio del Poder Popular para la Salud y las tablas de
+Mortalidad del libro de Estad ´ıstica Venezolana de la Direcci´on de Estad´ısticas del Ministerio
+de Fomento.
+Con el p ´arrafo anterior se sugiere a las instituciones p ´ublicas realizar estudios de estas
+magnitudes de manera m ´as frecuente. Adem ´as de tener una biblioteca virtual donde se pueda
+consultar de manera amplia y sencilla el hist´orico de los datos.
+Se logr´o conseguir la data completa de una aseguradora para hacer las Comparaci´ones res-
+pectivas, este estudio no pudo ser m´as amplio debido a fallas de las compa ˜n´ıas al momento de
+la suscripci´on y carga de datos.
+Se sugiere a las compa ˜n´ıas aseguradoras una mejor supervisi´on de carga y procesamiento
+de datos de sus asegurados, con el ﬁn de poder contar con una muestra m ´as ´optima de datos
+para el desarrollo de este tipo de trabajo.
+Se realiz ´o la reconstrucci ´on general de la mortalidad por medio de los datos censales de
+1990, 2001 y 2011 junto con los datos obtenidos de los anuarios obtenidos por el MPPS.
+Se desarroll ´o la proyecci ´on de la mortalidad para el a ˜no 2015 por medio del lenguaje de
+programaci´on R.
+Se recomienda peri´odicamente actualizar el c´odigo del modelo de Lee Carter con datos m´as
+recientes a ﬁn de dar seguimiento a la evoluci´on de las tasas de mortalidad.
+
+--- PAGE 65 ---
+51
+Al realizar la comparaci´on de la proyecci´on con la tabla de mortalidad CSO80 y se eviden-
+cia que la mortalidad proyectada es menor a las tasas reﬂejadas en dicha tabla.
+Se recomienda no utilizar la tabla CSO80, debido a que tiene un recargo en las tasas que
+expone lo que supone un aumento de primas en los ramos de vida y funerario.
+En el desarrollo de la comparaci ´on de la LC15 con respecto a la mortalidad observada de
+una empresa aseguradora venezolana, se logr ´o calcular la diferencia porcentual de una con
+respecto de la otra, este porcentaje se aplic´o sobre la proyecci´on de LC15 para la obtenci´on de
+la tabla selecta que se propone en el presente estudio.//
+Finalmente se comparan los resultados obtenidos en la tabla de mortalidad selecta calculada
+con la ´unica TDM desarrollada para el sector asegurador venezolano, basados en la muestra de
+asegurados de 1984 a 1994.
+Como sugerencia se propone que, luego de tener una muestra m´as robusta de asegurados y
+siniestros, hacer una nueva comparaci´on con la proyecci´on realizada por LC para establecer de
+forma deﬁnitiva una nueva TDM din´amica venezolana para el sector asegurador.
+Es responsabilidad de todos los que desempe ˜namos labores en este mercado, dar propues-
+tas y posibles soluciones para mejorarlo, en especial el´area t´ecnica-actuarial. Las herramientas
+utilizadas como datos para el desarrollo de las notas t ´ecnicas del ramo en menci ´on, est´an bas-
+tante desfasadas. Mencionando algunas de las ya estudiadas, la TDM CSO80 est´a realizada con
+datos estadounidenses, adem´as de tener m ´as de 30 a ˜nos de antig ¨uedad desde su desarrollo, en
+la misma situaci ´on se encuentra la Tabla Venezolana, los datos con los que se desarroll ´o estas
+probabilidades fue con una poblaci ´on selecta entre los a ˜nos 1984 y 1994. Por esta raz ´on una
+posible actualizaci´on de datos ser´ıa de gran utilidad.
+
+--- PAGE 66 ---
+52 CAP ´ITULO 5. CONCLUSIONES Y RECOMENDACIONES
+
+--- PAGE 67 ---
+CAP´ITULO 6
+Anexos
+Anexo 1
+Anexo 1.1. Comportamiento Total de las Primas de Vida y Funerario en el Sector Asegu-
+rador
+Tabla 6.0.1: Evoluci´on del Ramo de Vida
+RESUMEN DE RESULTADOS VIDA
+EVOLUCI´ON DE LAS PRIMAS DEL RAMO DE VIDA
+Ramo 2,010 2,011 2,012 2,013 2,014 2,015
+Vida 878,934.00913,374.001,131,544.001,620,789.002,336,644.004,056,050.00
+Terminos % 3.92 % 23.89 %43.24 %44.17 %73.58 %
+Decrecimiento de las primas de 2010 a 2015 sin ajuste de inﬂacion361 %
+2,010 2,011 2,012 2,013 2,014
+Infacion Anualizada al 2015 1132.52 %887.76 %739.39 %473.38 %280.87 %
+EVOLUCI´ON DE PRIMAS (DEFLACTADOS AL 2015)
+Ramo 2,010 2,011 2,012 2,013 2,014 2,015
+Vida 9,954,075.3058,108,601.4868,366,470.9877,672,472.1606,562,921.8434,056,050.00
+-18.54 %3.18 % -8.30 % -14.46 %-38.20 %
+Decrecimiento de las primas de 2007 al 2015 deﬂactados-59 %
+53
+
+--- PAGE 68 ---
+54 CAP´ITULO 6. ANEXOS
+Tabla 6.0.2: Add caption
+RESUMEN DE RESULTADOS FUNERARIO
+EVOLUCI´ON DE LAS PRIMAS DEL RAMO DE FUNERARIO
+Ramo 2,010 2,011 2,012 2,013 2,014 2,015
+Funerario 441,381.00702,744.00627,029.00934,843.001,355,495.002,608,075.00
+Terminos % 59 % -11 % 49 % 45 % 92 %
+EVOLUCI´ON de las primas de 2007 a 2015 sin ajuste de inﬂacion 491 %
+EVOLUCI´ON DE LAS PRIMAS DEL RAMO DE FUNERARIO (DEFLACTADOS AL 2015)
+Ramo 2,010 2,011 2,012 2,013 2,014 2,015
+Funerario 4,998,714.026,238,705.114,636,160.804,425,348.953,807,172.912,608,075.00
+Terminos % 25 % -26 % -5 % -14 % -31 %
+Evoluci´on de las primas de 2007 a 2015 sin ajuste de inﬂacion -48 %
+Anexo 2. TABLA DE MORTALIDAD VENEZOLANA. ABRIL DE 2003
+Tabla 6.0.3: Tabla de Mortalidad Venezolana. 2003
+Edad QxVEN (M) QxVEN (F)
+20 0.00091 0.00021
+21 0.00093 0.00023
+22 0.00095 0.00025
+23 0.00097 0.00028
+24 0.001 0.00031
+25 0.00103 0.00034
+26 0.00106 0.00038
+27 0.00109 0.00041
+28 0.00113 0.00045
+
+--- PAGE 69 ---
+55
+Tabla 6.0.3: Tabla de Mortalidad Venezolana. 2003
+Edad QxVEN (M) QxVEN (F)
+29 0.00117 0.0005
+30 0.00122 0.00055
+31 0.001270 0.000600
+32 0.001330 0.000650
+33 0.001390 0.000720
+34 0.001450 0.000780
+35 0.001530 0.000860
+36 0.001610 0.000940
+37 0.001700 0.001020
+38 0.001800 0.001120
+39 0.001910 0.001220
+40 0.002030 0.001330
+41 0.002160 0.001450
+42 0.002310 0.001590
+43 0.002470 0.001730
+44 0.002640 0.001890
+45 0.002840 0.002060
+46 0.003050 0.002240
+47 0.003280 0.002440
+48 0.003540 0.002660
+49 0.003830 0.002900
+50 0.004140 0.003160
+51 0.004490 0.003450
+
+--- PAGE 70 ---
+56 CAP´ITULO 6. ANEXOS
+Tabla 6.0.3: Tabla de Mortalidad Venezolana. 2003
+Edad QxVEN (M) QxVEN (F)
+52 0.004870 0.003750
+53 0.005290 0.004090
+54 0.005750 0.004450
+55 0.006250 0.004850
+56 0.006810 0.005280
+57 0.007430 0.005750
+58 0.008100 0.006260
+59 0.008840 0.006820
+60 0.009660 0.007420
+61 0.01056 0.00808
+62 0.01155 0.00879
+63 0.01264 0.00957
+64 0.01384 0.01041
+65 0.01515 0.01133
+66 0.0166 0.01233
+67 0.01819 0.01342
+68 0.01994 0.0146
+69 0.02187 0.01588
+70 0.02398 0.01728
+71 0.0263 0.01879
+72 0.02885 0.02044
+73 0.03165 0.02223
+74 0.03472 0.02417
+
+--- PAGE 71 ---
+57
+Tabla 6.0.3: Tabla de Mortalidad Venezolana. 2003
+Edad QxVEN (M) QxVEN (F)
+75 0.0381 0.02629
+76 0.0418 0.02858
+77 0.04586 0.03107
+78 0.0503 0.03377
+79 0.05518 0.0367
+80 0.06052 0.03989
+81 0.06636 0.04334
+82 0.07275 0.04708
+83 0.07974 0.05114
+84 0.08737 0.05553
+85 0.09571 0.06029
+86 0.10479 0.06544
+87 0.11469 0.07102
+88 0.12547 0.07705
+89 0.13718 0.08357
+90 0.14989 0.09061
+91 0.16368 0.10071
+92 0.17859 0.11328
+93 0.19857 0.12937
+94 0.22365 0.15063
+95 0.25605 0.17993
+96 0.29955 0.22255
+97 0.36118 0.28908
+
+--- PAGE 72 ---
+58 CAP´ITULO 6. ANEXOS
+Tabla 6.0.3: Tabla de Mortalidad Venezolana. 2003
+Edad QxVEN (M) QxVEN (F)
+98 0.45562 0.40256
+99 0.62051 0.61309
+100 1 1
+SECCI ´ON 6.1
+Anexo 3
+6.1.1. Interpolaci ´on de la Poblaci´on Masculina
+Datos Censales00 - 04A˜no Interpolaci´on
+1,990 1,194,8961,9951,238,466
+2,001 1,266,4291,9961,244,969
+2,011 1,254,2081,9971,250,736
+1,9981,255,768
+1,9991,260,064
+2,0001,263,624
+2,0011,266,448
+2,0021,268,537
+2,0031,269,890
+2,0041,270,507
+2,0051,270,388
+2,0061,269,534
+2,0071,267,944
+2,0081,265,619
+2,0091,262,557
+2,0101,258,760
+2,0111,254,227
+Tabla 6.1.1: Interpolaci´on Poblaci´on Masculina de 0 a 4 a˜nos
+
+--- PAGE 73 ---
+6.1 Anexo 3 59
+Datos Censales 05 - 09Interpolaci´on
+1,990 1,146,087 1,995 1,283,517
+2,001 1,352,926 1,996 1,302,321
+2,011 1,236,217 1,997 1,318,222
+1,998 1,331,221
+1,999 1,341,317
+2,000 1,348,511
+2,001 1,352,803
+2,002 1,354,192
+2,003 1,352,680
+2,004 1,348,264
+2,005 1,340,947
+2,006 1,330,727
+2,007 1,317,605
+2,008 1,301,580
+2,009 1,282,653
+2,010 1,260,824
+2,011 1,236,093
+Tabla 6.1.2: Interpolaci´on Poblaci´on Masculina de 5 a 9 A˜nos
+Datos Censales 10 - 14Interpolaci´on
+1,990 1,087,702 1,995 1,190,618
+2,001 1,269,705 1,996 1,207,164
+2,011 1,298,191 1,997 1,222,406
+1,998 1,236,344
+1,999 1,248,977
+2,000 1,260,305
+2,001 1,270,329
+2,002 1,279,048
+2,003 1,286,463
+2,004 1,292,574
+2,005 1,297,380
+2,006 1,300,881
+2,007 1,303,078
+2,008 1,303,971
+2,009 1,303,559
+2,010 1,301,842
+2,011 1,298,821
+Tabla 6.1.3: Interpolaci´on Poblaci´on Masculina de 10 a 14 A˜nos
+
+--- PAGE 74 ---
+60 CAP´ITULO 6. ANEXOS
+Censo 15 - 19 Interpolaci´on
+1,990 968,497 1,995 1,051,458
+2,001 1,154,745 1,996 1,068,390
+2,011 1,336,159 1,997 1,085,437
+1,998 1,102,599
+1,999 1,119,876
+2,000 1,137,269
+2,001 1,154,776
+2,002 1,172,399
+2,003 1,190,137
+2,004 1,207,991
+2,005 1,225,959
+2,006 1,244,043
+2,007 1,262,242
+2,008 1,280,557
+2,009 1,298,986
+2,010 1,317,531
+2,011 1,336,191
+Tabla 6.1.4: Interpolaci´on Poblaci´on de 15 a 19 A˜nos
+Datos Censales 20 - 24 Interpolaci´on
+1,990 858,225 1,995 955,874
+2,001 1,072,826 1,996 975,384
+2,011 1,280,125 1,997 995,010
+1,998 1,014,753
+1,999 1,034,611
+2,000 1,054,587
+2,001 1,074,678
+2,002 1,094,885
+2,003 1,115,209
+2,004 1,135,649
+2,005 1,156,206
+2,006 1,176,878
+2,007 1,197,667
+2,008 1,218,572
+2,009 1,239,594
+2,010 1,260,731
+2,011 1,281,985
+Tabla 6.1.5: Interpolaci´on de la Poblaci´on Masculina de 20 a 24 A˜nos
+
+--- PAGE 75 ---
+6.1 Anexo 3 61
+Censo 25 - 29 Interpolaci´on
+1,990 772,081 1,995 822,920
+2,001 918,063 1,996 836,191
+2,011 1,159,400 1,997 850,497
+1,998 865,837
+1,999 882,212
+2,000 899,621
+2,001 918,065
+2,002 937,543
+2,003 958,056
+2,004 979,603
+2,005 1,002,185
+2,006 1,025,801
+2,007 1,050,452
+2,008 1,076,138
+2,009 1,102,858
+2,010 1,130,613
+2,011 1,159,402
+Tabla 6.1.6: Interpolaci´on de la Poblaci´on Masculina de 25 a 29 A˜nos
+Censo 30 - 34 Interpolaci´on
+1,990 671,020 1,995 744,734
+2,001 857,675 1,996 761,703
+2,011 1,105,617 1,997 779,417
+1,998 797,876
+1,999 817,080
+2,000 837,030
+2,001 857,725
+2,002 879,166
+2,003 901,351
+2,004 924,283
+2,005 947,959
+2,006 972,380
+2,007 997,547
+2,008 1,023,460
+2,009 1,050,117
+2,010 1,077,520
+2,011 1,105,668
+Tabla 6.1.7: Interpolaci´on de la Poblaci´on Masculina de 30 a 34 A˜nos
+
+--- PAGE 76 ---
+62 CAP´ITULO 6. ANEXOS
+Censo 35 - 39 Interpolaci´on
+1,990 570,519 1,995 662,868
+2,001 768,107 1,996 680,832
+2,011 942,311 1,997 698,745
+1,998 716,606
+1,999 734,415
+2,000 752,173
+2,001 769,879
+2,002 787,534
+2,003 805,137
+2,004 822,688
+2,005 840,187
+2,006 857,635
+2,007 875,032
+2,008 892,377
+2,009 909,670
+2,010 926,911
+2,011 944,101
+Tabla 6.1.8: Interpolaci´on de la Poblaci´on Masculina de 35 a 39 A˜nos
+Censo 40 - 44 Interpolaci´on
+1,990 437,768 1,995 559,917
+2,001 691,549 1,996 582,988
+2,011 873,509 1,997 605,594
+1,998 627,736
+1,999 649,414
+2,000 670,628
+2,001 691,377
+2,002 711,663
+2,003 731,483
+2,004 750,840
+2,005 769,732
+2,006 788,160
+2,007 806,124
+2,008 823,623
+2,009 840,658
+2,010 857,229
+2,011 873,336
+Tabla 6.1.9: Interpolaci´on de la Poblaci´on de 40 a 44 A˜nos
+
+--- PAGE 77 ---
+6.1 Anexo 3 63
+Censo 45 - 49 Interpolaci´on
+1,990 318,990 1,995 434,514
+2,001 561,907 1,996 456,597
+2,011 747,704 1,997 478,347
+1,998 499,763
+1,999 520,846
+2,000 541,594
+2,001 562,009
+2,002 582,091
+2,003 601,838
+2,004 621,252
+2,005 640,333
+2,006 659,079
+2,007 677,492
+2,008 695,572
+2,009 713,317
+2,010 730,729
+2,011 747,807
+Tabla 6.1.10: Interpolaci´on de la Poblaci´on Masculina de 45 a 49
+Censo 50 - 54 Interpolaci´on
+1,990 268,059 1,995 345,453
+2,001 449,661 1,996 361,962
+2,011 651,255 1,997 378,819
+1,998 396,024
+1,999 413,576
+2,000 431,476
+2,001 449,723
+2,002 468,318
+2,003 487,261
+2,004 506,552
+2,005 526,190
+2,006 546,175
+2,007 566,509
+2,008 587,189
+2,009 608,218
+2,010 629,594
+2,011 651,318
+Tabla 6.1.11: Interpolaci´on de la Poblaci´on Masculina de 50 a 54 A˜nos
+
+--- PAGE 78 ---
+64 CAP´ITULO 6. ANEXOS
+Censo 55 - 59 Interpolaci´on
+1,990 213,658 1,995 228,347
+2,001 296,106 1,996 235,842
+2,011 530,935 1,997 244,860
+1,998 255,401
+1,999 267,464
+2,000 281,050
+2,001 296,158
+2,002 312,789
+2,003 330,943
+2,004 350,620
+2,005 371,819
+2,006 394,540
+2,007 418,785
+2,008 444,551
+2,009 471,841
+2,010 500,653
+2,011 530,988
+Tabla 6.1.12: Interpolaci´on de la Poblaci´on Masculina de 55 a 59 A˜nos
+Censo 60 - 64 Interpolaci´on
+1,990 182,223 1,995 190,881
+2,001 238,627 1,996 196,008
+2,011 407,656 1,997 202,257
+1,998 209,628
+1,999 218,119
+2,000 227,733
+2,001 238,468
+2,002 250,324
+2,003 263,301
+2,004 277,400
+2,005 292,621
+2,006 308,963
+2,007 326,427
+2,008 345,011
+2,009 364,718
+2,010 385,546
+2,011 407,495
+Tabla 6.1.13: Interpolaci´on de la Poblaci´on Masculina de 60 a 64 A˜nos
+
+--- PAGE 79 ---
+6.1 Anexo 3 65
+Censo 65 - 69 Interpolaci´on
+1,990 122,834 1,995 141,589
+2,001 177,284 1,996 146,538
+2,011 267,691 1,997 151,878
+1,998 157,607
+1,999 163,726
+2,000 170,234
+2,001 177,132
+2,002 184,419
+2,003 192,096
+2,004 200,162
+2,005 208,619
+2,006 217,464
+2,007 226,700
+2,008 236,325
+2,009 246,339
+2,010 256,743
+2,011 267,537
+Tabla 6.1.14: Interpolaci´on de la Poblaci´on Masculina de 65 a 69 A˜nos
+Censo 70 - 74 Interpolaci´on
+1,990 88,974 1,995 111,142
+2,001 139,265 1,996 115,713
+2,011 189,285 1,997 120,326
+1,998 124,980
+1,999 129,675
+2,000 134,410
+2,001 139,187
+2,002 144,005
+2,003 148,863
+2,004 153,763
+2,005 158,703
+2,006 163,685
+2,007 168,707
+2,008 173,770
+2,009 178,875
+2,010 184,020
+2,011 189,206
+Tabla 6.1.15: Interpolaci´on de la Poblaci´on Masculina de 70 a 74 A˜nos
+
+--- PAGE 80 ---
+66 CAP´ITULO 6. ANEXOS
+Censo 75 - 79 Interpolaci´on
+1,990 57,796 1,995 72,962
+2,001 92,800 1,996 76,144
+2,011 130,126 1,997 79,379
+1,998 82,666
+1,999 86,005
+2,000 89,397
+2,001 92,842
+2,002 96,338
+2,003 99,888
+2,004 103,489
+2,005 107,143
+2,006 110,850
+2,007 114,608
+2,008 118,420
+2,009 122,283
+2,010 126,200
+2,011 130,168
+Tabla 6.1.16: Interpolaci´on de la Poblaci´on Masculina de 75 a 79 A˜nos
+Censo 80 - 84 Interpolaci´on
+1,990 37,974 1,995 42,322
+2,001 52,273 1,996 43,621
+2,011 78,996 1,997 45,052
+1,998 46,613
+1,999 48,305
+2,000 50,127
+2,001 52,081
+2,002 54,165
+2,003 56,379
+2,004 58,725
+2,005 61,201
+2,006 63,807
+2,007 66,545
+2,008 69,413
+2,009 72,412
+2,010 75,541
+2,011 78,802
+Tabla 6.1.17: Interpolaci´on de la Poblaci´on Masculina de 80 a 84 A˜nos
+
+--- PAGE 81 ---
+6.1 Anexo 3 67
+Censo 85 - 89 Interpolaci´on
+1,990 17,663 1,995 20,842
+2,001 26,615 1,996 21,656
+2,011 40,560 1,997 22,525
+1,998 23,449
+1,999 24,429
+2,000 25,464
+2,001 26,554
+2,002 27,700
+2,003 28,901
+2,004 30,157
+2,005 31,468
+2,006 32,835
+2,007 34,257
+2,008 35,735
+2,009 37,267
+2,010 38,855
+2,011 40,499
+Tabla 6.1.18: Interpolaci´on de la Poblaci´on Masculina de 85 a 89 A˜nos
+Censo 90 - 94 Interpolaci´on
+1,990 3,933 1,995 8,403
+2,001 11,962 1,996 9,133
+2,011 14,875 1,997 9,821
+1,998 10,468
+1,999 11,073
+2,000 11,636
+2,001 12,157
+2,002 12,636
+2,003 13,074
+2,004 13,470
+2,005 13,824
+2,006 14,137
+2,007 14,407
+2,008 14,636
+2,009 14,823
+2,010 14,968
+2,011 15,072
+Tabla 6.1.19: Interpolaci´on de la Poblaci´on Masculina de 90 a 94 A˜nos
+
+--- PAGE 82 ---
+68 CAP´ITULO 6. ANEXOS
+Censo 95 - 99 Interpolaci´on
+1,990 858 1,995 2,126
+2,001 3,083 1,996 2,328
+2,011 3,878 1,997 2,519
+1,998 2,698
+1,999 2,865
+2,000 3,021
+2,001 3,164
+2,002 3,297
+2,003 3,417
+2,004 3,526
+2,005 3,623
+2,006 3,708
+2,007 3,782
+2,008 3,844
+2,009 3,895
+2,010 3,933
+2,011 3,960
+Tabla 6.1.20: Interpolaci´on de la Poblaci´on Masculina de 95 a 99 A˜nos
+Censos 100 +Interpolaci´on
+1,990 - 1,995 722
+2,001 1,261 1,996 836
+2,011 1,054 1,997 938
+722 1,998 1,027
+836 1,999 1,103
+938 2,000 1,166
+2,001 1,216
+2,002 1,253
+2,003 1,277
+2,004 1,289
+2,005 1,288
+2,006 1,273
+2,007 1,246
+2,008 1,206
+2,009 1,153
+2,010 1,087
+2,011 1,008
+Tabla 6.1.21: Interpolaci´on de la Poblaci´on Masculina de mas de 100 A˜nos
+
+--- PAGE 83 ---
+6.1 Anexo 3 69
+6.1.2. Interpolaci ´on de la Poblaci´on Femenina
+Censos Personas 0-4 Interpolaci´on
+1,990 1,148,163 1,995 1,183,452
+2,001 1,203,652 1,996 1,188,497
+2,011 1,183,423 1,997 1,192,868
+1,998 1,196,566
+1,999 1,199,591
+2,000 1,201,944
+2,001 1,203,623
+2,002 1,204,629
+2,003 1,204,961
+2,004 1,204,621
+2,005 1,203,608
+2,006 1,201,921
+2,007 1,199,562
+2,008 1,196,529
+2,009 1,192,824
+2,010 1,188,445
+2,011 1,183,393
+Tabla 6.1.22: Interpolaci´on de la Poblaci´on Femenina de 0 a 4
+Datos Censales 05 - 09Interpolaci´on
+1,990 1,107,711 1,995 1,238,092
+2,001 1,298,331 1,996 1,255,421
+2,011 1,166,147 1,997 1,269,841
+1,998 1,281,352
+1,999 1,289,953
+2,000 1,295,645
+2,001 1,298,428
+2,002 1,298,302
+2,003 1,295,266
+2,004 1,289,321
+2,005 1,280,466
+2,006 1,268,703
+2,007 1,254,030
+2,008 1,236,448
+2,009 1,215,956
+2,010 1,192,555
+2,011 1,166,245
+Tabla 6.1.23: Interpolaci´on de la Poblaci´on Femenina de 5 a 9
+
+--- PAGE 84 ---
+70 CAP´ITULO 6. ANEXOS
+Datos Censales 10 - 14Interpolaci´on
+1,990 1,059,292 1,995 1,170,631
+2,001 1,243,519 1,996 1,187,379
+2,011 1,218,588 1,997 1,202,294
+1,998 1,215,377
+1,999 1,226,628
+2,000 1,236,046
+2,001 1,243,632
+2,002 1,249,385
+2,003 1,253,306
+2,004 1,255,394
+2,005 1,255,649
+2,006 1,254,073
+2,007 1,250,663
+2,008 1,245,422
+2,009 1,238,348
+2,010 1,229,441
+2,011 1,218,702
+Tabla 6.1.24: Interpolaci´on de la Poblaci´on Femenina de 10 a 14
+Datos Censales 15 - 19Interpolaci´on
+1,990 954,017 1,995 1,043,589
+2,001 1,145,976 1,996 1,061,040
+2,011 1,305,161 1,997 1,078,345
+1,998 1,095,504
+1,999 1,112,518
+2,000 1,129,385
+2,001 1,146,106
+2,002 1,162,681
+2,003 1,179,111
+2,004 1,195,394
+2,005 1,211,532
+2,006 1,227,523
+2,007 1,243,369
+2,008 1,259,069
+2,009 1,274,623
+2,010 1,290,030
+2,011 1,305,292
+Tabla 6.1.25: Interpolaci´on de la Poblaci´on Femenina de 15 a 19
+
+--- PAGE 85 ---
+6.1 Anexo 3 71
+Datos Censales 20 - 24Interpolaci´on
+1,990 866,962 1,995 975,483
+2,001 1,097,428 1,996 996,434
+2,011 1,280,524 1,997 1,017,134
+1,998 1,037,583
+1,999 1,057,779
+2,000 1,077,724
+2,001 1,097,418
+2,002 1,116,859
+2,003 1,136,050
+2,004 1,154,988
+2,005 1,173,675
+2,006 1,192,111
+2,007 1,210,294
+2,008 1,228,227
+2,009 1,245,907
+2,010 1,263,336
+2,011 1,280,514
+Tabla 6.1.26: Interpolaci´on de la Poblaci´on Femenina de 20 a 24
+Datos Censales 25 - 29Interpolaci´on
+1,990 797,461 1,995 859,086
+2,001 958,505 1,996 873,726
+2,011 1,184,932 1,997 889,129
+1,998 905,293
+1,999 922,220
+2,000 939,909
+2,001 958,359
+2,002 977,572
+2,003 997,547
+2,004 1,018,285
+2,005 1,039,784
+2,006 1,062,046
+2,007 1,085,069
+2,008 1,108,855
+2,009 1,133,403
+2,010 1,158,713
+2,011 1,184,785
+Tabla 6.1.27: Interpolaci´on de la Poblaci´on Femenina de 25 a 29
+
+--- PAGE 86 ---
+72 CAP´ITULO 6. ANEXOS
+Datos Censales 30 - 34Interpolaci´on
+1,990 695,674 1,995 780,597
+2,001 894,850 1,996 798,704
+2,011 1,114,124 1,997 817,175
+1,998 836,009
+1,999 855,207
+2,000 874,770
+2,001 894,696
+2,002 914,986
+2,003 935,639
+2,004 956,657
+2,005 978,038
+2,006 999,784
+2,007 1,021,893
+2,008 1,044,366
+2,009 1,067,203
+2,010 1,090,404
+2,011 1,113,968
+Tabla 6.1.28: Interpolaci´on de la Poblaci´on Femenina de 30 a 34
+Datos Censales 35 - 39Interpolaci´on
+1,990 593,061 1,995 702,746
+2,001 816,358 1,996 723,046
+2,011 962,942 1,997 742,809
+1,998 762,034
+1,999 780,722
+2,000 798,873
+2,001 816,486
+2,002 833,562
+2,003 850,101
+2,004 866,103
+2,005 881,568
+2,006 896,495
+2,007 910,885
+2,008 924,737
+2,009 938,053
+2,010 950,831
+2,011 963,072
+Tabla 6.1.29: Interpolaci´on de la Poblaci´on Femenina de 35 a 39
+
+--- PAGE 87 ---
+6.1 Anexo 3 73
+Datos censales 40 - 44Interpolaci´on
+1,990 450,116 1,995 591,809
+2,001 729,825 1,996 617,238
+2,011 881,981 1,997 641,693
+1,998 665,176
+1,999 687,686
+2,000 709,224
+2,001 729,789
+2,002 749,381
+2,003 768,001
+2,004 785,648
+2,005 802,322
+2,006 818,024
+2,007 832,753
+2,008 846,510
+2,009 859,294
+2,010 871,105
+2,011 881,944
+Tabla 6.1.30: Interpolaci´on de la Poblaci´on Femenina de 40 a 44
+Datos Censales 45 - 49Interpolaci´on
+1,990 325,227 1,995 454,173
+2,001 592,190 1,996 478,442
+2,011 781,077 1,997 502,199
+1,998 525,443
+1,999 548,175
+2,000 570,394
+2,001 592,102
+2,002 613,296
+2,003 633,978
+2,004 654,148
+2,005 673,805
+2,006 692,950
+2,007 711,583
+2,008 729,702
+2,009 747,310
+2,010 764,405
+2,011 780,988
+Tabla 6.1.31: Interpolaci´on de la Poblaci´on Femenina de 45 a 49
+
+--- PAGE 88 ---
+74 CAP´ITULO 6. ANEXOS
+Datos Censales 50 - 54Interpolaci´on
+1,990 276,801 1,995 359,695
+2,001 471,292 1,996 377,376
+2,011 686,679 1,997 395,424
+1,998 413,840
+1,999 432,623
+2,000 451,774
+2,001 471,292
+2,002 491,177
+2,003 511,430
+2,004 532,050
+2,005 553,038
+2,006 574,393
+2,007 596,115
+2,008 618,205
+2,009 640,662
+2,010 663,487
+2,011 686,679
+Tabla 6.1.32: Interpolaci´on de la Poblaci´on Femenina de 50 a 54
+Datos Censales 55 - 59Interpolaci´on
+1,990 221,681 1,995 242,024
+2,001 319,847 1,996 250,948
+2,011 577,864 1,997 261,479
+1,998 273,618
+1,999 287,364
+2,000 302,718
+2,001 319,679
+2,002 338,247
+2,003 358,423
+2,004 380,206
+2,005 403,596
+2,006 428,594
+2,007 455,199
+2,008 483,412
+2,009 513,232
+2,010 544,659
+2,011 577,694
+Tabla 6.1.33: Interpolaci´on de la Poblaci´on Femenina de 55 a 59
+
+--- PAGE 89 ---
+6.1 Anexo 3 75
+Datos Censales 60 - 64Interpolaci´on
+1,990 193,315 1,995 207,792
+2,001 261,898 1,996 214,027
+2,011 440,702 1,997 221,371
+1,998 229,824
+1,999 239,386
+2,000 250,057
+2,001 261,837
+2,002 274,727
+2,003 288,725
+2,004 303,833
+2,005 320,049
+2,006 337,375
+2,007 355,810
+2,008 375,354
+2,009 396,007
+2,010 417,769
+2,011 440,641
+Tabla 6.1.34: Interpolaci´on de la Poblaci´on Femenina de 60 a 65
+Datos Censales 65 - 69Interpolaci´on
+1,990 135,951 1,995 162,030
+2,001 204,213 1,996 168,236
+2,011 300,997 1,997 174,772
+1,998 181,639
+1,999 188,837
+2,000 196,366
+2,001 204,225
+2,002 212,415
+2,003 220,936
+2,004 229,788
+2,005 238,970
+2,006 248,483
+2,007 258,327
+2,008 268,501
+2,009 279,007
+2,010 289,843
+2,011 301,009
+Tabla 6.1.35: Interpolaci´on de la Poblaci´on Femenina de 65 a 69
+
+--- PAGE 90 ---
+76 CAP´ITULO 6. ANEXOS
+Datos Censales 70 - 74Interpolaci´on
+1,990 102,688 1,995 129,817
+2,001 163,512 1,996 135,346
+2,011 221,170 1,997 140,898
+1,998 146,472
+1,999 152,069
+2,000 157,688
+2,001 163,330
+2,002 168,994
+2,003 174,681
+2,004 180,390
+2,005 186,122
+2,006 191,877
+2,007 197,654
+2,008 203,453
+2,009 209,275
+2,010 215,119
+2,011 220,986
+Tabla 6.1.36: Interpolaci´on de la Poblaci´on Femenina de 70 a 74
+Datos Censales 75 - 79Interpolaci´on
+1,990 72,986 1,995 89,424
+2,001 113,044 1,996 93,066
+2,011 162,866 1,997 96,835
+1,998 100,732
+1,999 104,757
+2,000 108,909
+2,001 113,190
+2,002 117,597
+2,003 122,133
+2,004 126,796
+2,005 131,587
+2,006 136,505
+2,007 141,552
+2,008 146,725
+2,009 152,027
+2,010 157,456
+2,011 163,013
+Tabla 6.1.37: Interpolaci´on de la Poblaci´on Femenina de 75 a 79
+
+--- PAGE 91 ---
+6.1 Anexo 3 77
+Datos Censales 80 - 84Interpolaci´on
+1,990 50,004 1,995 57,223
+2,001 71,518 1,996 59,179
+2,011 109,899 1,997 61,315
+1,998 63,629
+1,999 66,123
+2,000 68,796
+2,001 71,648
+2,002 74,680
+2,003 77,890
+2,004 81,280
+2,005 84,850
+2,006 88,598
+2,007 92,526
+2,008 96,633
+2,009 100,920
+2,010 105,385
+2,011 110,030
+Tabla 6.1.38: Interpolaci´on de la Poblaci´on Femenina de 80 a 84
+Datos Censales 85 - 89Interpolaci´on
+1,990 24,797 1,995 30,518
+2,001 40,261 1,996 31,924
+2,011 63,581 1,997 33,418
+1,998 35,001
+1,999 36,671
+2,000 38,430
+2,001 40,261
+2,002 42,212
+2,003 44,235
+2,004 46,346
+2,005 48,546
+2,006 50,834
+2,007 53,210
+2,008 55,674
+2,009 58,227
+2,010 60,868
+2,011 63,581
+Tabla 6.1.39: Interpolaci´on de la Poblaci´on Femenina de 85 a 89
+
+--- PAGE 92 ---
+78 CAP´ITULO 6. ANEXOS
+Datos Censales90 - 94 Interpolaci´on
+1,990 7,458 1,995 12,686
+2,001 18,208 1,996 13,663
+2,011 25,495 1,997 14,617
+1,998 15,546
+1,999 16,453
+2,000 17,335
+2,001 18,208
+2,002 19,029
+2,003 19,841
+2,004 20,629
+2,005 21,393
+2,006 22,133
+2,007 22,850
+2,008 23,543
+2,009 24,213
+2,010 24,859
+2,011 25,495
+Tabla 6.1.40: Interpolaci´on de la Poblaci´on Femenina de 90 a 94
+Datos Censales95 - 99 Interpolaci´on
+1,990 2,143 1,995 3,470
+2,001 5,035 1,996 3,732
+2,011 7,834 1,997 3,997
+1,998 4,263
+1,999 4,531
+2,000 4,800
+2,001 5,035
+2,002 5,344
+2,003 5,618
+2,004 5,894
+2,005 6,172
+2,006 6,451
+2,007 6,732
+2,008 7,014
+2,009 7,298
+2,010 7,584
+2,011 7,834
+Tabla 6.1.41: Interpolaci´on de la Poblaci´on Femenina de 95 a 99
+
+--- PAGE 93 ---
+6.1 Anexo 3 79
+Datos Censales100 + Interpolaci´on
+1,990 - 1,995 1,145
+2,001 1,879 1,996 1,316
+2,011 2,192 1,997 1,473
+1,998 1,618
+1,999 1,749
+2,000 1,866
+2,001 1,879
+2,002 2,062
+2,003 2,140
+2,004 2,205
+2,005 2,256
+2,006 2,294
+2,007 2,319
+2,008 2,330
+2,009 2,328
+2,010 2,313
+2,011 2,192
+Tabla 6.1.42: Interpolaci´on de la Poblaci´on Femenina de mas de 100
+6.1.3. Interpolaci ´on de la Poblaci´on Total
+Datos Censales 00 - 04Interpolaci´on
+1,990 2,343,059 1,995 2,421,918
+2,001 2,470,081 1,996 2,433,465
+2,011 2,437,631 1,997 2,443,604
+1,998 2,452,334
+1,999 2,459,655
+2,000 2,465,567
+2,001 2,470,071
+2,002 2,473,165
+2,003 2,474,851
+2,004 2,475,128
+2,005 2,473,996
+2,006 2,471,456
+2,007 2,467,506
+2,008 2,462,148
+2,009 2,455,381
+2,010 2,447,205
+2,011 2,437,621
+Tabla 6.1.43: Interpolaci´on de la Poblaci´on Total entre 0 y 4
+
+--- PAGE 94 ---
+80 CAP´ITULO 6. ANEXOS
+Datos Censales 05 - 09Interpolaci´on
+1,990 2,253,798 1,995 2,521,609
+2,001 2,651,257 1,996 2,557,742
+2,011 2,402,364 1,997 2,588,063
+1,998 2,612,572
+1,999 2,631,270
+2,000 2,644,156
+2,001 2,651,231
+2,002 2,652,494
+2,003 2,647,945
+2,004 2,637,585
+2,005 2,621,413
+2,006 2,599,429
+2,007 2,571,634
+2,008 2,538,028
+2,009 2,498,609
+2,010 2,453,379
+2,011 2,402,338
+Tabla 6.1.44: Interpolaci´on de la Poblaci´on Total entre 5 y 9
+Datos Censales 10 - 14Interpolaci´on
+1,990 2,146,994 1,995 2,360,453
+2,001 2,513,224 1,996 2,393,746
+2,011 2,516,779 1,997 2,423,903
+1,998 2,450,923
+1,999 2,474,805
+2,000 2,495,551
+2,001 2,513,160
+2,002 2,527,632
+2,003 2,538,966
+2,004 2,547,164
+2,005 2,552,225
+2,006 2,554,149
+2,007 2,552,936
+2,008 2,548,586
+2,009 2,541,099
+2,010 2,530,475
+2,011 2,516,714
+Tabla 6.1.45: Interpolaci´on de la Poblaci´on Total entre 10 y 14
+
+--- PAGE 95 ---
+6.1 Anexo 3 81
+Datos Censales 15 - 19Interpolaci´on
+1,990 1,922,514 1,995 2,095,047
+2,001 2,300,721 1,996 2,129,430
+2,011 2,641,320 1,997 2,163,782
+1,998 2,198,103
+1,999 2,232,393
+2,000 2,266,653
+2,001 2,300,882
+2,002 2,335,080
+2,003 2,369,248
+2,004 2,403,385
+2,005 2,437,491
+2,006 2,471,566
+2,007 2,505,611
+2,008 2,539,625
+2,009 2,573,608
+2,010 2,607,561
+2,011 2,641,483
+Tabla 6.1.46: Interpolaci´on de la Poblaci´on Total entre 15 y 19
+Datos Censales 20 - 24Interpolaci´on
+1,990 1,725,187 1,995 1,929,362
+2,001 2,170,254 1,996 1,969,822
+2,011 2,560,649 1,997 2,010,147
+1,998 2,050,337
+1,999 2,090,392
+2,000 2,130,311
+2,001 2,170,095
+2,002 2,209,743
+2,003 2,249,256
+2,004 2,288,634
+2,005 2,327,876
+2,006 2,366,983
+2,007 2,405,955
+2,008 2,444,791
+2,009 2,483,492
+2,010 2,522,058
+2,011 2,560,488
+Tabla 6.1.47: Interpolaci´on de la Poblaci´on Total entre 20 y 24
+
+--- PAGE 96 ---
+82 CAP´ITULO 6. ANEXOS
+Datos Censales 25 - 29Interpolaci´on
+1,990 1,569,542 1,995 1,682,006
+2,001 1,876,568 1,996 1,709,918
+2,011 2,344,332 1,997 1,739,626
+1,998 1,771,130
+1,999 1,804,431
+2,000 1,839,529
+2,001 1,876,424
+2,002 1,915,115
+2,003 1,955,603
+2,004 1,997,888
+2,005 2,041,969
+2,006 2,087,847
+2,007 2,135,522
+2,008 2,184,993
+2,009 2,236,261
+2,010 2,289,325
+2,011 2,344,187
+Tabla 6.1.48: Interpolaci´on de la Poblaci´on Total entre 25 y 29
+Datos Censales 30 - 34Interpolaci´on
+1,990 1,366,694 1,995 1,525,331
+2,001 1,752,525 1,996 1,560,407
+2,011 2,219,741 1,997 1,596,591
+1,998 1,633,885
+1,999 1,672,288
+2,000 1,711,800
+2,001 1,752,421
+2,002 1,794,151
+2,003 1,836,991
+2,004 1,880,939
+2,005 1,925,997
+2,006 1,972,164
+2,007 2,019,440
+2,008 2,067,825
+2,009 2,117,320
+2,010 2,167,923
+2,011 2,219,636
+Tabla 6.1.49: Interpolaci´on de la Poblaci´on Total entre 29 y 34
+
+--- PAGE 97 ---
+6.1 Anexo 3 83
+Datos Censales 35 - 39Interpolaci´on
+1,990 1,163,580 1,995 1,363,654
+2,001 1,584,465 1,996 1,401,916
+2,011 1,905,253 1,997 1,439,590
+1,998 1,476,674
+1,999 1,513,170
+2,000 1,549,076
+2,001 1,584,394
+2,002 1,619,123
+2,003 1,653,263
+2,004 1,686,814
+2,005 1,719,776
+2,006 1,752,149
+2,007 1,783,933
+2,008 1,815,129
+2,009 1,845,735
+2,010 1,875,753
+2,011 1,905,181
+Tabla 6.1.50: Interpolaci´on de la Poblaci´on Total entre 35 y 39
+Datos Censales 40 - 44Interpolaci´on
+1,990 887,884 1,995 1,152,124
+2,001 1,421,374 1,996 1,200,624
+2,011 1,755,490 1,997 1,247,686
+1,998 1,293,311
+1,999 1,337,500
+2,000 1,380,252
+2,001 1,421,566
+2,002 1,461,444
+2,003 1,499,885
+2,004 1,536,889
+2,005 1,572,456
+2,006 1,606,587
+2,007 1,639,280
+2,008 1,670,536
+2,009 1,700,356
+2,010 1,728,739
+2,011 1,755,684
+Tabla 6.1.51: Interpolaci´on de la Poblaci´on Total entre 40 y 44
+
+--- PAGE 98 ---
+84 CAP´ITULO 6. ANEXOS
+Datos Censales 45 - 49Interpolaci´on
+1,990 644,217 1,995 888,686
+2,001 1,154,097 1,996 935,039
+2,011 1,528,781 1,997 980,546
+1,998 1,025,206
+1,999 1,069,021
+2,000 1,111,989
+2,001 1,154,111
+2,002 1,195,387
+2,003 1,235,817
+2,004 1,275,400
+2,005 1,314,138
+2,006 1,352,030
+2,007 1,389,075
+2,008 1,425,274
+2,009 1,460,627
+2,010 1,495,134
+2,011 1,528,795
+Tabla 6.1.52: Interpolaci´on de la Poblaci´on Total entre 45 y 49
+Datos Censales 50 - 54Interpolaci´on
+1,990 544,860 1,995 705,148
+2,001 920,953 1,996 739,338
+2,011 1,337,934 1,997 774,244
+1,998 809,864
+1,999 846,199
+2,000 883,250
+2,001 921,015
+2,002 959,496
+2,003 998,691
+2,004 1,038,602
+2,005 1,079,228
+2,006 1,120,568
+2,007 1,162,624
+2,008 1,205,395
+2,009 1,248,880
+2,010 1,293,081
+2,011 1,337,997
+Tabla 6.1.53: Interpolaci´on de la Poblaci´on Total entre 49 y 54
+
+--- PAGE 99 ---
+6.1 Anexo 3 85
+Datos Censales 55 - 59Interpolaci´on
+1,990 435,339 1,995 470,381
+2,001 615,953 1,996 486,800
+2,011 1,108,799 1,997 506,350
+1,998 529,029
+1,999 554,839
+2,000 583,778
+2,001 615,847
+2,002 651,047
+2,003 689,376
+2,004 730,836
+2,005 775,425
+2,006 823,145
+2,007 873,994
+2,008 927,974
+2,009 985,083
+2,010 1,045,323
+2,011 1,108,692
+Tabla 6.1.54: Interpolaci´on de la Poblaci´on Total entre 54 y 59
+Datos Censales 60 - 64Interpolaci´on
+1,990 375,538 1,995 399,071
+2,001 500,525 1,996 410,434
+2,011 848,358 1,997 424,027
+1,998 439,851
+1,999 457,905
+2,000 478,190
+2,001 500,705
+2,002 525,451
+2,003 552,428
+2,004 581,635
+2,005 613,072
+2,006 646,741
+2,007 682,639
+2,008 720,769
+2,009 761,129
+2,010 803,719
+2,011 848,540
+Tabla 6.1.55: Interpolaci´on de la Poblaci´on Total entre 60 y 64
+
+--- PAGE 100 ---
+86 CAP´ITULO 6. ANEXOS
+Datos Censales 65 - 69Interpolaci´on
+1,990 258,785 1,995 303,619
+2,001 381,497 1,996 314,774
+2,011 568,688 1,997 326,650
+1,998 339,246
+1,999 352,563
+2,000 366,599
+2,001 381,357
+2,002 396,834
+2,003 413,032
+2,004 429,950
+2,005 447,588
+2,006 465,947
+2,007 485,026
+2,008 504,826
+2,009 525,346
+2,010 546,586
+2,011 568,546
+Tabla 6.1.56: Interpolaci´on de la Poblaci´on Total entre 65 y 69
+Datos Censales 70 - 74Interpolaci´on
+1,990 191,662 1,995 241,356
+2,001 302,777 1,996 251,458
+2,011 410,455 1,997 261,623
+1,998 271,851
+1,999 282,143
+2,000 292,499
+2,001 302,917
+2,002 313,400
+2,003 323,946
+2,004 334,555
+2,005 345,228
+2,006 355,964
+2,007 366,763
+2,008 377,627
+2,009 388,553
+2,010 399,543
+2,011 410,597
+Tabla 6.1.57: Interpolaci´on de la Poblaci´on Total entre 70 y 74
+
+--- PAGE 101 ---
+6.1 Anexo 3 87
+75 - 79 Interpolaci´on
+130,782 1,995 162,386
+205,844 1,996 169,210
+292,992 1,997 176,214
+1,998 183,398
+1,999 190,762
+2,000 198,307
+2,001 206,031
+2,002 213,936
+2,003 222,020
+2,004 230,285
+2,005 238,730
+2,006 247,355
+2,007 256,160
+2,008 265,145
+2,009 274,310
+2,010 283,656
+2,011 293,181
+Tabla 6.1.58: Interpolaci´on de la Poblaci´on entre 75 y 79
+Datos Censales 80 - 84Interpolaci´on
+1,990 87,978 1,995 99,545
+2,001 123,791 1,996 102,801
+2,011 188,895 1,997 106,366
+1,998 110,242
+1,999 114,428
+2,000 118,923
+2,001 123,729
+2,002 128,844
+2,003 134,270
+2,004 140,005
+2,005 146,050
+2,006 152,406
+2,007 159,071
+2,008 166,046
+2,009 173,332
+2,010 180,927
+2,011 188,832
+Tabla 6.1.59: Interpolaci´on de la Poblaci´on entre 75 y 79
+
+--- PAGE 102 ---
+88 CAP´ITULO 6. ANEXOS
+Datos Censales 85 - 89Interpolaci´on
+1,990 42,460 1,995 51,361
+2,001 66,876 1,996 53,580
+2,011 104,141 1,997 55,943
+1,998 58,450
+1,999 61,100
+2,000 63,894
+2,001 66,831
+2,002 69,912
+2,003 73,136
+2,004 76,503
+2,005 80,015
+2,006 83,669
+2,007 87,467
+2,008 91,409
+2,009 95,494
+2,010 99,723
+2,011 104,095
+Tabla 6.1.60: Interpolaci´on de la Poblaci´on entre 75 y 79
+Datos Censales 90 - 94Interpolaci´on
+1,990 11,391 1,995 21,083
+2,001 30,170 1,996 22,790
+2,011 40,370 1,997 24,432
+1,998 26,008
+1,999 27,519
+2,000 28,965
+2,001 30,345
+2,002 31,660
+2,003 32,909
+2,004 34,093
+2,005 35,211
+2,006 36,264
+2,007 37,251
+2,008 38,173
+2,009 39,030
+2,010 39,821
+2,011 40,547
+Tabla 6.1.61: Interpolaci´on de la Poblaci´on entre 90 y 94
+
+--- PAGE 103 ---
+6.2 Anexo 4 89
+Datos Censales 95 - 99Interpolaci´on
+1,990 3,001 1,995 5,595
+2,001 8,118 1,996 6,060
+2,011 11,712 1,997 6,516
+1,998 6,961
+1,999 7,396
+2,000 7,821
+2,001 8,236
+2,002 8,641
+2,003 9,035
+2,004 9,420
+2,005 9,795
+2,006 10,159
+2,007 10,514
+2,008 10,858
+2,009 11,193
+2,010 11,517
+2,011 11,831
+Tabla 6.1.62: Interpolaci´on de la Poblaci´on entre 95 y 99
+Datos Censales 100 +Interpolaci´on
+1,990 - 1,995 1,866
+2,001 3,140 1,996 2,152
+2,011 3,246 1,997 2,411
+1,998 2,644
+1,999 2,851
+2,000 3,032
+2,001 3,187
+2,002 3,315
+2,003 3,418
+2,004 3,494
+2,005 3,544
+2,006 3,567
+2,007 3,565
+2,008 3,536
+2,009 3,481
+2,010 3,400
+2,011 3,293
+Tabla 6.1.63: Interpolaci´on de la Poblaci´on con mas de 100
+SECCI ´ON 6.2
+Anexo 4
+6.2.1. Comparaci ´on de las LC15 con la CSO80
+Edad CSO80 LC2015 LC/CSO80
+0 0.002630 0.01279829 486.63 %
+1 0.001030 0.00073993 71.84 %
+
+--- PAGE 104 ---
+90 CAP´ITULO 6. ANEXOS
+Edad CSO80 LC2015 LC/CSO80
+2 0.000990 0.00030512 30.82 %
+3 0.000970 0.00021159 21.81 %
+4 0.000930 0.00017759 19.10 %
+5 0.000880 0.00014015 15.93 %
+6 0.000830 0.00019483 23.47 %
+7 0.000780 0.00022428 28.75 %
+8 0.000750 0.00025681 34.24 %
+9 0.000740 0.00029175 39.43 %
+10 0.000750 0.00032787 43.72 %
+11 0.000810 0.00036267 44.77 %
+12 0.000920 0.00039589 43.03 %
+13 0.001070 0.00042595 39.81 %
+14 0.001240 0.00045347 36.57 %
+15 0.001420 0.00047969 33.78 %
+16 0.001590 0.00050548 31.79 %
+17 0.001720 0.00053224 30.94 %
+18 0.001820 0.00056031 30.79 %
+19 0.001880 0.00059075 31.42 %
+20 0.001900 0.00062490 32.89 %
+21 0.001900 0.00066344 34.92 %
+22 0.001880 0.00070642 37.58 %
+23 0.001840 0.00075488 41.03 %
+24 0.001800 0.00080931 44.96 %
+25 0.001750 0.00086947 49.68 %
+
+--- PAGE 105 ---
+6.2 Anexo 4 91
+Edad CSO80 LC2015 LC/CSO80
+26 0.001720 0.00093533 54.38 %
+27 0.001710 0.00100657 58.86 %
+28 0.001700 0.00108320 63.72 %
+29 0.001720 0.00116607 67.79 %
+30 0.001750 0.00125440 71.68 %
+31 0.001800 0.00134964 74.98 %
+32 0.001870 0.00145223 77.66 %
+33 0.001950 0.00156221 80.11 %
+34 0.002050 0.00168028 81.97 %
+35 0.002170 0.00180751 83.30 %
+36 0.002320 0.00194433 83.81 %
+37 0.002490 0.00209112 83.98 %
+38 0.002680 0.00224834 83.89 %
+39 0.002900 0.00241841 83.39 %
+40 0.003150 0.00260109 82.57 %
+41 0.003420 0.00279741 81.80 %
+42 0.003710 0.00300791 81.08 %
+43 0.004030 0.00323475 80.27 %
+44 0.004370 0.00347944 79.62 %
+45 0.004730 0.00374188 79.11 %
+46 0.005120 0.00402444 78.60 %
+47 0.005530 0.00432803 78.26 %
+48 0.005970 0.00465345 77.95 %
+49 0.006460 0.00500065 77.41 %
+
+--- PAGE 106 ---
+92 CAP´ITULO 6. ANEXOS
+Edad CSO80 LC2015 LC/CSO80
+50 0.007000 0.00536951 76.71 %
+51 0.007630 0.00576008 75.49 %
+52 0.008330 0.00617107 74.08 %
+53 0.009130 0.00660286 72.32 %
+54 0.010010 0.00705447 70.47 %
+55 0.010960 0.00752686 68.68 %
+56 0.011970 0.00802105 67.01 %
+57 0.013040 0.00853887 65.48 %
+58 0.014180 0.00908397 64.06 %
+59 0.015420 0.00966084 62.65 %
+60 0.016800 0.01027632 61.17 %
+61 0.018360 0.01093673 59.57 %
+62 0.020120 0.01165086 57.91 %
+63 0.022090 0.01242033 56.23 %
+64 0.024270 0.01325241 54.60 %
+65 0.026620 0.01414928 53.15 %
+66 0.029130 0.01511052 51.87 %
+67 0.031790 0.01614150 50.78 %
+68 0.034650 0.01724225 49.76 %
+69 0.037810 0.01840890 48.69 %
+70 0.041370 0.01963883 47.47 %
+71 0.045430 0.02092649 46.06 %
+72 0.050080 0.02226745 44.46 %
+73 0.055340 0.02366172 42.76 %
+
+--- PAGE 107 ---
+6.2 Anexo 4 93
+Edad CSO80 LC2015 LC/CSO80
+74 0.061100 0.02510652 41.09 %
+75 0.067250 0.02660530 39.56 %
+76 0.073700 0.02815823 38.21 %
+77 0.080370 0.02977052 37.04 %
+78 0.087320 0.03145463 36.02 %
+79 0.094760 0.03321639 35.05 %
+80 0.102940 0.03505857 34.06 %
+81 0.112090 0.03698473 33.00 %
+82 0.122410 0.03900712 31.87 %
+83 0.133840 0.04113489 30.73 %
+84 0.146120 0.04338248 29.69 %
+85 0.158980 0.04575957 28.78 %
+86 0.172210 0.04827799 28.03 %
+87 0.185730 0.05093884 27.43 %
+88 0.199530 0.05376418 26.95 %
+89 0.213690 0.05676435 26.56 %
+90 0.228430 0.05996379 26.25 %
+91 0.244110 0.06336201 25.96 %
+92 0.261430 0.06696258 25.61 %
+93 0.282130 0.07079900 25.09 %
+94 0.309970 0.07488218 24.16 %
+95 0.351860 0.07922431 22.52 %
+96 0.420990 0.08385740 19.92 %
+97 0.541000 0.08878225 16.41 %
+
+--- PAGE 108 ---
+94 CAP´ITULO 6. ANEXOS
+Edad CSO80 LC2015 LC/CSO80
+98 0.745150 0.09401895 12.62 %
+99 1.000000 0.09956971 9.96 %
+Difenrecia Promedio 53.80 %
+Tabla 6.2.1: Comparaci´on de las LC15 con la CSO80
+Comparaci´on de Tasas, Aseguradora Nacional(QxComp.Seg.) y LC15
+Edad QxComp. Seg. LC15 QxComp. Seg./ LC15
+31 0.000154925 0.001350 11.48 %
+32 0.000168724 0.001452 11.62 %
+33 0.000183752 0.001562 11.76 %
+34 0.000200119 0.001680 11.91 %
+35 0.000217943 0.001808 12.06 %
+36 0.000237356 0.001944 12.21 %
+37 0.000258497 0.002091 12.36 %
+38 0.000281521 0.002248 12.52 %
+39 0.000306596 0.002418 12.68 %
+40 0.000333905 0.002601 12.84 %
+41 0.000363645 0.002797 13.00 %
+42 0.000396035 0.003008 13.17 %
+43 0.00043131 0.003235 13.33 %
+44 0.000469727 0.003479 13.50 %
+45 0.000511565 0.003742 13.67 %
+46 0.00055713 0.004024 13.84 %
+47 0.000606754 0.004328 14.02 %
+
+--- PAGE 109 ---
+6.2 Anexo 4 95
+Edad QxComp. Seg. LC15 QxComp. Seg./ LC15
+48 0.000660797 0.004653 14.20 %
+49 0.000719655 0.005001 14.39 %
+50 0.000783754 0.005370 14.60 %
+51 0.000853563 0.005760 14.82 %
+52 0.00092959 0.006171 15.06 %
+53 0.001012388 0.006603 15.33 %
+54 0.001102561 0.007054 15.63 %
+55 0.001200766 0.007527 15.95 %
+56 0.001307718 0.008021 16.30 %
+57 0.001424197 0.008539 16.68 %
+58 0.00155105 0.009084 17.07 %
+59 0.001689202 0.009661 17.49 %
+60 0.001839659 0.010276 17.90 %
+Diferencia Promedio 14.05 %
+Tabla 6.2.2: Comparaci´on de Tasas Comp. de Seg. y LC15
+Comparaci´on de la LC15 con Descuento (LC15CD) y la Tabla de Mortali-
+dad Venezolana por Genero
+Edad QxLC15CD QxVEN (M) QxVEN (F) QxLC15CD/VEN(M) QxLC15CD/VEN(F)
+20 0.000537119 0.00091 0.00021 59.02 % 255.77 %
+21 0.000570249 0.00093 0.00023 61.32 % 247.93 %
+22 0.000607196 0.00095 0.00025 63.92 % 242.88 %
+23 0.000648847 0.00097 0.00028 66.89 % 231.73 %
+24 0.000695626 0.001 0.00031 69.56 % 224.40 %
+
+--- PAGE 110 ---
+96 CAP´ITULO 6. ANEXOS
+Edad QxLC15CD QxVEN (M) QxVEN (F) QxLC15CD/VEN(M) QxLC15CD/VEN(F)
+25 0.000747337 0.00103 0.00034 72.56 % 219.81 %
+26 0.000803947 0.00106 0.00038 75.84 % 211.57 %
+27 0.000865179 0.00109 0.00041 79.37 % 211.02 %
+28 0.000931051 0.00113 0.00045 82.39 % 206.90 %
+29 0.001002279 0.00117 0.0005 85.66 % 200.46 %
+30 0.001078199 0.00122 0.00055 88.38 % 196.04 %
+31 0.001160064 0.001270 0.000600 91.34 % 193.34 %
+32 0.001248241 0.001330 0.000650 93.85 % 192.04 %
+33 0.001342777 0.001390 0.000720 96.60 % 186.50 %
+34 0.001444263 0.001450 0.000780 99.60 % 185.16 %
+35 0.001553621 0.001530 0.000860 101.54 % 180.65 %
+36 0.001671219 0.001610 0.000940 103.80 % 177.79 %
+37 0.001797393 0.001700 0.001020 105.73 % 176.22 %
+38 0.001932524 0.001800 0.001120 107.36 % 172.55 %
+39 0.002078706 0.001910 0.001220 108.83 % 170.39 %
+40 0.00223573 0.002030 0.001330 110.13 % 168.10 %
+41 0.002404476 0.002160 0.001450 111.32 % 165.83 %
+42 0.002585407 0.002310 0.001590 111.92 % 162.60 %
+43 0.002780379 0.002470 0.001730 112.57 % 160.72 %
+44 0.002990699 0.002640 0.001890 113.28 % 158.24 %
+45 0.003216279 0.002840 0.002060 113.25 % 156.13 %
+46 0.003459148 0.003050 0.002240 113.41 % 154.43 %
+47 0.003720096 0.003280 0.002440 113.42 % 152.46 %
+48 0.003999807 0.003540 0.002660 112.99 % 150.37 %
+
+--- PAGE 111 ---
+6.2 Anexo 4 97
+Edad QxLC15CD QxVEN (M) QxVEN (F) QxLC15CD/VEN(M) QxLC15CD/VEN(F)
+49 0.004298237 0.003830 0.002900 112.23 % 148.22 %
+50 0.004615279 0.004140 0.003160 111.48 % 146.05 %
+51 0.004950993 0.004490 0.003450 110.27 % 143.51 %
+52 0.005304253 0.004870 0.003750 108.92 % 141.45 %
+53 0.005675393 0.005290 0.004090 107.29 % 138.76 %
+54 0.006063565 0.005750 0.004450 105.45 % 136.26 %
+55 0.006469604 0.006250 0.004850 103.51 % 133.39 %
+56 0.006894377 0.006810 0.005280 101.24 % 130.58 %
+57 0.007339461 0.007430 0.005750 98.78 % 127.64 %
+58 0.007807992 0.008100 0.006260 96.39 % 124.73 %
+59 0.008303831 0.008840 0.006820 93.93 % 121.76 %
+60 0.008832857 0.009660 0.007420 91.44 % 119.04 %
+61 0.0094005 0.01056 0.00808 89.02 % 116.34 %
+62 0.010014322 0.01155 0.00879 86.70 % 113.93 %
+63 0.010675708 0.01264 0.00957 84.46 % 111.55 %
+64 0.011390912 0.01384 0.01041 82.30 % 109.42 %
+65 0.012161798 0.01515 0.01133 80.28 % 107.34 %
+66 0.012988025 0.0166 0.01233 78.24 % 105.34 %
+67 0.013874189 0.01819 0.01342 76.27 % 103.38 %
+68 0.014820321 0.01994 0.0146 74.32 % 101.51 %
+69 0.015823095 0.02187 0.01588 72.35 % 99.64 %
+70 0.016880259 0.02398 0.01728 70.39 % 97.69 %
+71 0.017987051 0.0263 0.01879 68.39 % 95.73 %
+72 0.019139657 0.02885 0.02044 66.34 % 93.64 %
+
+--- PAGE 112 ---
+98 CAP´ITULO 6. ANEXOS
+Edad QxLC15CD QxVEN (M) QxVEN (F) QxLC15CD/VEN(M) QxLC15CD/VEN(F)
+73 0.020338081 0.03165 0.02223 64.26 % 91.49 %
+74 0.021579933 0.03472 0.02417 62.15 % 89.28 %
+75 0.022868186 0.0381 0.02629 60.02 % 86.98 %
+76 0.024202986 0.0418 0.02858 57.90 % 84.69 %
+77 0.025588805 0.04586 0.03107 55.80 % 82.36 %
+78 0.027036357 0.0503 0.03377 53.75 % 80.06 %
+79 0.028550654 0.05518 0.0367 51.74 % 77.79 %
+80 0.030134068 0.06052 0.03989 49.79 % 75.54 %
+81 0.031789668 0.06636 0.04334 47.90 % 73.35 %
+82 0.03352799 0.07275 0.04708 46.09 % 71.21 %
+83 0.035356883 0.07974 0.05114 44.34 % 69.14 %
+84 0.037288765 0.08737 0.05553 42.68 % 67.15 %
+85 0.039331952 0.09571 0.06029 41.09 % 65.24 %
+86 0.041496626 0.10479 0.06544 39.60 % 63.41 %
+87 0.043783715 0.11469 0.07102 38.18 % 61.65 %
+88 0.046212197 0.12547 0.07705 36.83 % 59.98 %
+89 0.048790946 0.13718 0.08357 35.57 % 58.38 %
+90 0.051540977 0.14989 0.09061 34.39 % 56.88 %
+91 0.05446187 0.16368 0.10071 33.27 % 54.08 %
+92 0.057556686 0.17859 0.11328 32.23 % 50.81 %
+93 0.060854221 0.19857 0.12937 30.65 % 47.04 %
+94 0.06436386 0.22365 0.15063 28.78 % 42.73 %
+95 0.068096067 0.25605 0.17993 26.59 % 37.85 %
+96 0.072078375 0.29955 0.22255 24.06 % 32.39 %
+
+--- PAGE 113 ---
+6.2 Anexo 4 99
+Edad QxLC15CD QxVEN (M) QxVEN (F) QxLC15CD/VEN(M) QxLC15CD/VEN(F)
+97 0.076311459 0.36118 0.28908 21.13 % 26.40 %
+98 0.080812585 0.45562 0.40256 17.74 % 20.07 %
+99 0.085583657 0.62051 0.61309 13.79 % 13.96 %
+Diferencias Promedio 74.83 % 125.24 %
+
+--- PAGE 114 ---
+100 CAP´ITULO 6. ANEXOS
+
+--- PAGE 115 ---
+6.3 Anexo 5 101
+SECCI ´ON 6.3
+Anexo 5
+Porci´on de la TDM Din´amica Desarrollada por el Metodo de Lee Carter
+Edad 2011 2012 2013 2014 2015 2016 2017
+0 0.0216896 0.01727755 0.01563287 0.01414475 0.01279829 0.01158 0.01048
+1 0.0011936 0.00129022 0.00107194 0.00089059 0.00073993 0.00061475 0.00051
+2 0.0006739 0.00054907 0.00045141 0.00037113 0.00030512 0.00025086 0.00021
+3 0.0004898 0.0003768 0.00031086 0.00025646 0.00021159 0.00017456 0.00014
+4 0.0003833 0.00030492 0.00025464 0.00021265 0.00017759 0.0001483 0.00012
+5 0.000286 0.0002374 0.00019915 0.00016706 0.00014015 0.00011757 0.00010
+6 0.00042016 0.00030299 0.00026152 0.00022572 0.00019483 0.00016816 0.00015
+7 0.00044731 0.00033207 0.00029135 0.00025563 0.00022428 0.00019678 0.00017
+8 0.0004762 0.00036322 0.00032358 0.00028827 0.00025681 0.00022878 0.00020
+9 0.00050697 0.00039617 0.00035776 0.00032307 0.00029175 0.00026347 0.00024
+10 0.00053972 0.00043055 0.00039317 0.00035904 0.00032787 0.0002994 0.00027
+11 0.00057458 0.00046563 0.00042842 0.00039418 0.00036267 0.00033369 0.00031
+12 0.0006117 0.00050108 0.00046323 0.00042824 0.00039589 0.00036598 0.00034
+13 0.00065122 0.00053685 0.000497 0.0004601 0.00042595 0.00039432 0.00037
+14 0.00069329 0.00057264 0.00052979 0.00049015 0.00045347 0.00041954 0.00039
+15 0.00073807 0.00060892 0.00056238 0.00051939 0.00047969 0.00044303 0.00041
+16 0.00078575 0.00064592 0.00059523 0.00054852 0.00050548 0.00046581 0.00043
+17 0.00083651 0.00068475 0.00062959 0.00057887 0.00053224 0.00048937 0.00045
+18 0.00089055 0.00072563 0.00066572 0.00061074 0.00056031 0.00051404 0.00047
+19 0.00094808 0.00076957 0.00070464 0.00064519 0.00059075 0.00054091 0.00050
+20 0.00100933 0.00081681 0.00074705 0.00068325 0.0006249 0.00057153 0.00052
+21 0.00107453 0.00086846 0.0007939 0.00072574 0.00066344 0.00060648 0.00055
+22 0.00114395 0.00092519 0.00084562 0.00077289 0.00070642 0.00064567 0.00059
+23 0.00121785 0.00098679 0.00090249 0.00082539 0.00075488 0.00069039 0.00063
+24 0.00129652 0.00105383 0.00096505 0.00088375 0.00080931 0.00074113 0.00068
+25 0.00138028 0.00112694 0.0010336 0.00094799 0.00086947 0.00079745 0.00073
+26 0.00146945 0.00120498 0.00110741 0.00101774 0.00093533 0.00085959 0.00079
+27 0.00156438 0.00128911 0.00118707 0.0010931 0.00100657 0.00092689 0.00085
+28 0.00166544 0.00137928 0.00127254 0.00117406 0.0010832 0.00099938 0.00092
+29 0.00177302 0.00147555 0.0013642 0.00126125 0.00116607 0.00107807 0.00100
+30 0.00188756 0.00157909 0.00146246 0.00135444 0.0012544 0.00116175 0.00108
+31 0.0020095 0.00168941 0.00156758 0.00145453 0.00134964 0.00125231 0.00116
+32 0.00213932 0.00180766 0.00168044 0.00156217 0.00145223 0.00135002 0.00126
+33 0.00227752 0.00193382 0.00180104 0.00167738 0.00156221 0.00145495 0.00136
+34 0.00242465 0.00207006 0.001931 0.00180129 0.00168028 0.00156741 0.00146
+35 0.00258128 0.00221491 0.00206981 0.00193422 0.00180751 0.0016891 0.00158
+Tabla 6.3.1: Tabla de Mortalidad Din´amica Desarrollada por el Metodo de Lee Carter
+
+--- PAGE 116 ---
+102 CAP´ITULO 6. ANEXOS
+Edad 2011 2012 2013 2014 2015 2016 2017
+36 0.00274804 0.00237009 0.0022187 0.00207699 0.00194433 0.00182014 0.00170
+37 0.00292556 0.00253729 0.00237889 0.00223037 0.00209112 0.00196057 0.00184
+38 0.00311456 0.00271591 0.00255014 0.00239449 0.00224834 0.0021111 0.00198
+39 0.00331576 0.00290721 0.00273418 0.00257145 0.00241841 0.00227447 0.00214
+40 0.00352996 0.00311212 0.0029315 0.00276136 0.00260109 0.00245013 0.00231
+41 0.003758 0.00333171 0.00314314 0.00296524 0.00279741 0.00263909 0.00249
+42 0.00400077 0.00356737 0.00337018 0.0031839 0.00300791 0.00284165 0.00268
+43 0.00425922 0.00381929 0.00361356 0.00341891 0.00323475 0.0030605 0.00290
+44 0.00453437 0.00408933 0.00387499 0.00367189 0.00347944 0.00329707 0.00312
+45 0.0048273 0.00437882 0.00415529 0.00394317 0.00374188 0.00355087 0.00337
+46 0.00513914 0.00468885 0.00445601 0.00423473 0.00402444 0.00382459 0.00363
+47 0.00547114 0.00501999 0.00477785 0.00454738 0.00432803 0.00411927 0.00392
+48 0.00582458 0.00537504 0.00512287 0.00488252 0.00465345 0.00443513 0.00423
+49 0.00620085 0.00575472 0.00549151 0.00524034 0.00500065 0.00477193 0.00455
+50 0.00660143 0.00615898 0.0058837 0.00562073 0.00536951 0.00512951 0.00490
+51 0.00702789 0.00658862 0.00629998 0.00602399 0.00576008 0.00550774 0.00527
+52 0.0074819 0.00704457 0.00674047 0.00644949 0.00617107 0.00590468 0.00565
+53 0.00796523 0.00752684 0.00720531 0.00689751 0.00660286 0.0063208 0.00605
+54 0.0084798 0.0080374 0.00769541 0.00736797 0.00705447 0.00675431 0.00647
+55 0.0090276 0.00857773 0.00821207 0.00786201 0.00752686 0.00720601 0.00690
+56 0.00961079 0.00914931 0.00875661 0.00838077 0.00802105 0.00767678 0.00735
+57 0.01023166 0.00975383 0.00933076 0.00892604 0.00853887 0.0081685 0.00781
+58 0.01089263 0.01039463 0.00993798 0.00950138 0.00908397 0.0086849 0.00830
+59 0.0115963 0.01107567 0.01058242 0.01011113 0.00966084 0.0092306 0.00882
+60 0.01234544 0.01180075 0.011269 0.01076122 0.01027632 0.00981327 0.00937
+61 0.01314296 0.0125756 0.01200369 0.0114578 0.01093673 0.01043935 0.00996
+62 0.01399201 0.01340508 0.0127928 0.01220849 0.01165086 0.0111187 0.01061
+63 0.01489591 0.01429629 0.01364143 0.01301657 0.01242033 0.0118514 0.01131
+64 0.01585819 0.01524916 0.01455221 0.01388711 0.01325241 0.01264672 0.01207
+65 0.01688265 0.01626849 0.01552898 0.01482308 0.01414928 0.0135061 0.01289
+66 0.01797328 0.01735982 0.01657512 0.01582589 0.01511052 0.0144275 0.01378
+67 0.01913437 0.01852524 0.01769391 0.01689989 0.0161415 0.01541715 0.01473
+68 0.02037047 0.01976779 0.01888731 0.01804605 0.01724225 0.01647426 0.01574
+69 0.02168642 0.0210895 0.02015519 0.01926226 0.0184089 0.01759334 0.01681
+70 0.02308739 0.02249211 0.0214977 0.02054725 0.01963883 0.01877056 0.01794
+71 0.02457885 0.0239756 0.02291282 0.02189714 0.02092649 0.01999886 0.01911
+72 0.02616667 0.02554327 0.02440101 0.02330984 0.02226745 0.02127169 0.02032
+73 0.02785706 0.02719857 0.02596447 0.02478637 0.02366172 0.02258811 0.02156
+74 0.02965665 0.0289444 0.02760399 0.02632566 0.02510652 0.02394384 0.02284
+Tabla 6.3.2: Tabla de Mortalidad Din´amica Desarrollada por el Metodo de Lee Carter
+
+--- PAGE 117 ---
+6.3 Anexo 5 103
+Edad 2011 2012 2013 2014 2015 2016 2017
+75 0.0315725 0.03078418 0.02932296 0.02793109 0.0266053 0.02534243 0.02414
+76 0.03361211 0.03272665 0.03112692 0.02960539 0.02815823 0.02678181 0.02547
+77 0.03578348 0.03477389 0.03301903 0.03135273 0.02977052 0.02826816 0.02684
+78 0.03809513 0.03692705 0.03500456 0.03318215 0.03145463 0.02981704 0.02826
+79 0.04055611 0.03919477 0.03709109 0.03510032 0.03321639 0.03143359 0.02975
+80 0.04317607 0.04158911 0.03928721 0.03711271 0.03505857 0.03311812 0.03129
+81 0.04596528 0.04412581 0.04160408 0.03922646 0.03698473 0.0348711 0.03288
+82 0.04893468 0.0468121 0.04405076 0.0414523 0.03900712 0.03670618 0.03454
+83 0.05209591 0.04966034 0.04663836 0.04380027 0.04113489 0.03863171 0.03628
+84 0.05546135 0.05267711 0.0493764 0.04628251 0.04338248 0.04066417 0.03812
+85 0.0590442 0.05587914 0.05227898 0.04891077 0.04575957 0.04281139 0.04005
+86 0.06285851 0.05927973 0.05535887 0.05169734 0.04827799 0.04508481 0.04210
+87 0.06691923 0.06290452 0.05863239 0.0546504 0.05093884 0.04747935 0.04425
+88 0.07124227 0.06675997 0.06211194 0.05778752 0.05376418 0.05002096 0.04654
+89 0.07584459 0.07086659 0.06581419 0.06112201 0.05676435 0.05271736 0.04896
+90 0.08074422 0.07523306 0.06975396 0.06467389 0.05996379 0.05559672 0.05155
+91 0.08596037 0.07989258 0.07395155 0.06845231 0.06336201 0.05865024 0.05429
+92 0.09151349 0.08487937 0.07842939 0.07246954 0.06696258 0.0618741 0.05717
+93 0.09742534 0.09019852 0.08320357 0.07675109 0.070799 0.0653085 0.06024
+94 0.10371911 0.09588172 0.08829783 0.0813138 0.07488218 0.06895928 0.06350
+95 0.11041946 0.10195966 0.09373571 0.08617509 0.07922431 0.07283416 0.06696
+96 0.11755266 0.10844707 0.09953879 0.09136227 0.0838574 0.07696901 0.07065
+97 0.12514667 0.11539605 0.1057392 0.09689048 0.08878225 0.08135256 0.07454
+98 0.13323125 0.12283924 0.11236469 0.10278332 0.09401895 0.08600193 0.07867
+99 0.14183811 0.1308338 0.1194508 0.10905816 0.09956971 0.09090679 0.08300
+Tabla 6.3.3: Tabla de Mortalidad Din´amica Desarrollada por el Metodo de Lee Carter
+
+--- PAGE 118 ---
+104 CAP´ITULO 6. ANEXOS
+
+--- PAGE 119 ---
+Bibliograf´ıa
+[1] R AMIRO COA CLEMENTE Tablas Modelo de Mortalidad para America Latina.Centro
+Latinoamericano de Demograﬁa, 1986
+[2] A RMANDO ZARRUK , ANDR ´ES MAURICIO VILLEGAS , FABIO ORTIZ . Tablas de Morta-
+lidad. Evoluci´on en el Sector Asegurador ColombianoFederacion de Aseguradores Co-
+lombianos
+[3] S OCIETY OF ACTUARIES Mortality Table ConstructionSchaumburg, IL. 2007
+[4] A NA DEBON AUCEJO Graduacion de Tasas de Mortalidad. Aplicaciones ActuarialesDe-
+partamento de Investigacion Operativa. Universidad de Valencia. 2003
+[5] M ANUEL MENDOZA RAMIREZ ; ANA M. M ADRIGAL ; EVANGELINA MARTINEZ Tablas
+de Mortalidad CNSFComision Nacional de Seguros y Finanzas. MExico. 2000
+[6] A NTONIO FERNANDEZ MORALES Tablas de mortalidad Din´amicas con hoja de calculo
+en la practica actuarialDepartamento de Economia Aplicada (Estadistica y Econome-
+tria)Universidad de Malaga. 2016
+[7] A NA DE VICENTE MERINO ; JULIO HERN ´ANDEZ MARCH ; IRENE ALBARR ´AN LOZANO ;
+CRUZ RAM´IREZ P ´EREZ Proyecci´on y Estudio de una Poblaci´on. El Papel de la Mortalidad
+Universidad Complutense de Madrid. Espana. 2000
+[8] A NTONIO FERNANDEZ MORALES Nociones Basicas de Estadistica Actuarial VidaUni-
+versidad de Malaga. Espana. 2006
+[9] A LEJANDRO MINA VALDES Uso de las funciones de supervivencia en las ciencias socia-
+les y en los estudios de poblaci´on. Aplicaci´on al caso de M´exico Red de Revistas Cient´ıﬁcas
+de Am´erica Latina, el Caribe, Espa˜na y Portugal.2009
+[10] A NA DEBON AUCEO Modelo Lee-Carter extendidoUniversidad Politecnica de Valencia
+105
+
+--- PAGE 120 ---
+106 BIBLIOGRAF´IA
+[11] C ARLOS ANDRES OCHOA MOLINA El modelo Lee-Carter para estimar y pronosticar
+mortalidad: Una aplicacion para ColombiaUniversidad Nacional de Colombia. 2015
+[12] R. L EE The Lee-Carter method for forecasting mortality, with various extensions and
+applications North American Actuarial Journal, V ol. 4, No.1, pp. 80-91. 2000
+Pagina Oﬁcial del INE: www.ine.gov.ve
+Pagina Oﬁcial del Ministerio del Poder Popular para la Salud: www.mpps.gob.ve
+Pagina Oﬁcial de la Superintendencia de la Actividad Aseguradora: www.sudeaseg.gob.ve
+

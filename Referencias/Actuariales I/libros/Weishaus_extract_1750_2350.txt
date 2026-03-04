@@ -1,0 +1,710 @@
+EXAMPLE 2F An excerpt of a mortality table, assumed to apply to 201G mortality, is:
+
+Reduction factors are
+
+r -  0.98  X < 70
+
+x -  { 0.99  X c'. 70
+
+Calculate the probability that someone age 68 on June 30, 2010 will still be alive on June 30, 2015.
+
+SOA Ml.CStudy Manqal-13'h edition
+
+ANSWER: The survival probabilities are
+
+p(68, 0}= 0.98950
+
+p(69, 1) =1-(0.01175)(0.98) = 0.98849
+
+p(70, 2) =1-(0.01340)(0.992}= 0.98687
+
+p(71, 3) = 1-(0.01522)(0.993) = 0.98523
+
+p(72, 4) = 1-(0.01800)(0.994) = 0.98271
+
+Therefore, 5p(68,0) =(0.98950)(0.98849)(0.98687)(0.98523)(0.9827 l) = j 0.934561.	□
+
+Reduction factors have never appeared on an SOA exam, nor do they appear in any sample questions.
+
+Note
+
+Although we've spoken about human mortality throughout this lesson, everything applies equally well to any situation in which you want to study the time of failure random variable. Failure doesn't even have to be a bad thing. Thus, we can study random variables such as time until becoming an FSA, time until first marriage, etc. Define a random variable measuring time until the event of interest, and then you can define the actuarial functions and build a life table.
+
+Exercises
+
+Probability Notation
+
+[CAS4-S87:16] (1 point) You are given the following survival function:
+
+(x)= {(10000-x2)/10000   O	x	100
+
+So	O	X > 100
+
+Calculate q32.
+
+Less than 0.005
+
+At least 0.005, but less than 0.006
+
+At least 0.006, but less than 0.007
+
+P_t least 0.007, but less than 0.008
+
+At least 0.008
+
+You are given
+
+S10(25) = 0.9
+
+0(15) =0.05.
+
+Determine S10(10}.
+
+Table 2.1: Summary for this lesson
+
+SOA MLC Study Manual-13th edition	Exercises continue on the next page ...
+
+You are given the survival function
+
+So( t) =
+
+t2-  I90t +9000
+
+9000
+
+t S 90
+
+Determine the probability that a life currently age 36 dies between ages 72 and 81.
+
+Actuarial Notation
+
+[CAS4-S88:16) (1 point) Which of the following are equivalent to I Px?
+
+tluqx-i+uPx
+
+(B}	t+u qx-  t qx + 1+11Px
+
+,qx- t+uqx + tPHu
+
+tqx-t+uqx-  tPx+u
+
+The correct answer is not given by (A), (B), (C), or (D).
+
+. You are given:
+
+The probability that a person age 50 is alive at age 55 is 0.9.
+
+The probability that a person age 55 is not alive at age 60 is 0.15.
+
+The probability that a person age 50 is alive at age 65 is 0.54.
+
+Calculate the probability that a person age 55 dies between ages 60 and 65.
+
+[4-S86:13)Youare given that 11qx =0.10 fort =0,1,... ,9.
+
+Calculate zPx+s·
+
+(A) 0.40	(B) 0.60	(C) 0.72	(D) 0.80	(E) 0.81
+
+[150-82-94:10) You are given the following:
+
+The probability that a person age 20 will survive 30 years is 0.7.
+
+The probability that a person age 45 will die within 5 years and that another person age 40 will survive 5 years is 0.0475.
+
+The probability that a person age 20 will survive 20 years and that another person age 40 will die within 5 years is 0.04.
+
+Calculate the probability that a person age 20 will survive 25 years.
+
+(A) 0.74	(B) 0.75	(C) 0.76	(D) 0.77	(E) 0.78
+
+[CAS4A-S98:13] (2 points) You are given the following information:
+
+The probability that two 70-year-olds are both alive in 20 years is 16%.
+
+The probability that two 80-year-olds are both alive in 20 years is I%.
+
+There is an 8% chance of a 70-year-old living 30 years.
+
+All lives are independent and have the same expected mortality. Determine the probability ofan 80-year-old living 10 years.
+
+Less than 0.35
+
+At least 0.35, but less than 0.45
+
+At least 0.45, but less than 0.55
+
+At least 0.55, but less than 0.65
+
+At least 0.65
+
+Life Tables
+
+2,9,  You are given the following mortality table:
+
+Calculate q60.
+
+[CAS4A-S93:2] (I point) You are given the following information:
+
+11 = 9700
+
+ql = q, =0.020 q, =0.026 d3=232
+
+Determine the expected number of smvivors to age 5.
+
+Less than 8,845
+
+At least 8,845, but less than 8,850
+
+At least 8,850, but less than 8,855
+
+At least 8,855, but less than 8,860
+
+At least 8,860
+
+SOA MLCStudy Manual-131h edition
+
+Exercises continue on the next page ...
+
+[CAS4A-F93:l] (1 point) You are given the following mortality table:
+
+Determine the probability that a life age 21 will die within two years.
+
+Less than 0.0960
+
+At least 0.0960, but less than 0.1010
+
+At least 0.1010, but less than 0.1060
+
+At least 0.1060, but less than 0.1110
+
+{E)	Atleast0.1110
+
+Jack enters a mortality study at age 25. He dies between ages 65 and 67. Which of the following does not express the likelihood of this event?
+
+(A}	40P2s• 2q55
+
+(65)- (67)
+
+(B)
+
+(25)
+
+(C)	40P2s-	42P2s
+
+(D}  d66 +d61
+
+/25
+
+(E)	40(2q25
+
+[Ct.S4A-S92:4] \2 points) You are given the following mortality table:
+
+In a group of 800 people age 50, determine the expected number who will die wbile age 54.
+
+Less than 21
+
+At least 21, but less than 24
+
+At least 24, but less than 27 (D}	At least 27, but less than 30
+
+(E)	At least 30
+
+[CAS4A-S99:I2J (2 points) Given the following portion of a life table:
+
+Determine the value of P1·Pl· P3 • P1 • Ps • q6.
+
+Less than 0.055
+
+At least 0.055, but less than 0.065
+
+At least 0.065, but less than 0.075
+
+At least 0.075
+
+The answer cannot be determined from the given information.
+
+(3-S00:28] For a mortality study on college students:
+
+Students entered the study on their birthdays in 1963.
+
+You have no information about mortality before birthdays in 1963.
+
+Dick, who turned 20 in 1963, died between his 32nd and 33rd birthdays.
+
+Jane, who turned 21 in 1963, was alive on her birthday in 1998, at which time she left the study.
+
+All lifetimes are independent.
+
+Likelihoods are based upon the Illustrative Life Table. Calculate the likelihood for these two students.
+
+(A) 0.00138	(B) 0.00146	(C) 0.00149	(D) 0.00156	(E) 0.00169
+
+Mortality follows the Illustrative Life Table. Jack and Jill are two independent lives of ages 25 and 30 respectively.
+
+Calculate the probability ot Jack and Jill both living to at least age 65 but not to age 90.
+
+SOA MI.C Study Manual-13111edition	Exercises continue on the next page ...
+
+[CAS4A-F98:15] (2 points) Light bulbs burn out according to the following life table:
+
+A new plant has 2,500 light bulbs. Burned out light bulbs are replaced with new light bulbs at the end of each year.
+
+What is the expected number of new light bulbs that will be needed at the end of year 3'?
+
+Less than 800
+
+At least 800, but less than 860
+
+At least 860, but less than 920
+
+At least 920, but less than 980
+
+At least 980
+
+You are given the following life table;
+
+80	5000	59
+
+81	4941	77
+
+82	4864	74
+
+83	4790	80
+
+Let X be the number of survivors to age 83 from a cohort of 5000 lives at age 80.
+
+Calculate Var(X).
+
+You are given
+
+In year 2012, lx=I00-x
+
+Reduction factors are 0.95 for x < 50, 0.98 for x	50.
+
+Calculate the probability that a life age 48 in 2012 will die between ages 50 and 52.
+
+[M-F05:31] The graph of a piecewise linear survival function, So(t), consists of 3 line segments with endpoints (O,l). (25,0.50), (75,0.40), (100,0).
+
+Calculate 201ssq1s.
+
+55q35
+
+(A) 0.69	(B) 0.71	(C) 0.73	(D) 0.75	(E) 0.77
+
+Additional old SOA Exam MLC questions: Fl3:24
+
+Additional old CAS Exam 3/3L questions: S05:29, S07:5, S08:14, F08:14, S09:2, F09:l, S10:2, Fl0:2, Sl 1:2, S12:4, S13:1, Fl3:l
+
+Solutions
+
+Translate q32 into survival functions and use using equation (2.2).
+
+q32 = fdl)= 1-S_dl)
+
+c: (l)= So(33)
+
+'-'32	$i32
+
+10000-332
+
+= ----	0.992758
+
+10000-322
+
+J d1)= 1-0.992758=I0.0072421	(D)
+
+The probability of (10) surviving 25 years is the probability of (10) sUIViving IO years and then another
+
+15 years.
+
+S10(25) =S10(1O)Sw(l5)
+
+0.9 = Srn(lO}(l -0.05)
+
+0 9
+
+S10(10) =
+
+• 0.95
+
+=I 0.9474 I
+
+2.3.  We will need So{36), So(72), and S0(01).
+
+362- 190(36) + 9000
+
+So(36) =	=0.384
+
+9000
+
+<:.( }	722-190(72)+ 9000
+
+--u72 =	=0.056
+
+9000
+
+812 -  J90(81)+ 9000
+
+So(81) =	=0.019
+
+9000
+
+36J9q36 := 36P36-	4SP36
+
+So(72)	So(8l)
+
+=-----
+
+So(36)	So(36)
+
+=--	=0.096354
+
+0.384	0.384
+
+2.4.  Using rluqx = cPx-r+uPx, (A) becomes rPx -2 t+uPx, so it doesn't work.
+
+In (B), we note that t+uqx +t+uPx = 1, so it becomes 1-1 qx = 1 Px, the correct answer.
+
+(C) and (D) each have I Px+u which is a function of survival to age x + u, and no other term to cancel it, so those expressions cannot possibly equal t Px which only depends on survival to age x.
+
+(B)
+
+We need s1sq55 = sPss - 10Pss•
+
+The answer is 0.85 - 0.6 =I 0.25].
+
+SOA MLC Study Manual-J31h edition
+
+Copyright ©2013 /\SM
+
+sPss = 1-sqss = 1-0.15=0.85
+
+1sPso = 0.54
+
+sPso rnPss = 0.54
+
+0.9 10p55 = 0.54
+
+10Pss =0.6
+
+It's probably easiest to go from ,1Cfx to 2Px+s, which is what we need, by using a life table. If we start with a radix of lx = 10, then since 1/10 of the population dies each year, l:x+t = 10-	t. Then
+
+l.,+7	10-7 2Px+s=-=--=
+
+Z:x+s	10-5
+
+(B)
+
+Perhaps the best way to do this exercise is to construct a life table. Let l20 = 1. By (i), 150 =0.7. In (iii), we are given that the following is equal to 0.04:
+
+and since we set 120 = 1, we have 140- /45 = 0.04. Let x = /45, which incidentally is the final answer we're looking for, since we're looking for 25p20 = /45//20 and we've set 120 = 1. The expression that is equal to 0.0475 by (ii) is
+
+-([45-	lso)(/45)- l4-s	lso _ x-0.7
+
+Let's solve for x.
+
+sCf4ssP4-o
+
+l	l	-	I	-	+o	04-
+
+4s	40	40	X	•
+
+X -0.7 = 0.0475(X + 0.04)
+
+0.9525x =0.7+ 0.04(0.0475) = 0.7019
+
+X =I o. 736903 I	(A)
+
+2.0.  There are three variables: x = w/J7o, y = 10p80, and z = ioP.lo• We are given
+
+l.	(xy)2 = 0.16==> xy =0.4
+
+(yz)2=0.01:=>yz=0.1
+
+xyz=0.08
+
+and we want y. From the first and third statement, z = 0.08/0.4 = 0.2. Then from the second statement,
+
+y = 0.1/0.2 ;cc; . (C)
+
+Did you notice that you are given x-6oiC/6o rather than qx?
+
+Since 21q60 = 0.07, then d62 = 0.07160 = 70 and 162 = 163 + d62 = 780 +70 = 850. Then 161 = 850 + d61 = 950 and d50 = /60-161 = 1000-950=50, so ({Go= d6a/ /60 =50/1000 =Io.os I.
+
+We recursively compute lx through x = 5.
+
+l2 = 11(1- qi)= 9700(1-0.020)= 9506
+
+13 = /2(1 -q2) =9506(1-0.020) = 9315.88
+
+14 = /3 -d3 =9315.88-232 =9083.88
+
+15= l4(1-q4) = 9083.88(1-0.026) =i8847.70 j	(B)
+
+2.ll.  We need 121 and l23.
+
+l21 = 30,000-1,200 = 28,800
+
+123 = 23,900/(1-0.0700) = 25,698.92
+
+2(f21
+
+28,800-25,698.92   I	I
+
+= ------	=0.1077.
+
+28,800
+
+(D)
+
+All of these expressions are fine except for (D}, which should have d65 + d66 in the numerator.
+
+154 = 1000(1- 0.020)-  32- 30- 28 = 890. Then 41q50 = (890/1000)(0.028) = 0.02492. For 800 people,
+
+800(0.02492) =I19.9361. (A)
+
+They gave you superfluous information for year 2. It's the usual CAS type of humor-it's not that the answer cannot be determined from the given information (almost never the right answer choice), rather there is too much information provided.
+
+We back out 17 = 20, since everyone dies that year. We calculate 16 = l5-d5 = 80. 11 = 1000(0.875) = 875.
+
+Then what the question is asking for is
+
+(C)
+
+For independent lifetimes, we multiply the likelihood for each life together to get the likelihood of the joint event.
+
+For DI•Ck , ht econd'1t1• 0n •IS age 20
+
+, and d
+
+eath
+
+occurs at age 32, so we need
+
+-dl3-2 = -l32-l-l3-3.
+
+20	20
+
+For Jane, the conditior. is age 21 and she survived to age 56, so we need l 56.
+
+121
+
+Looking up the Illustrative Life Table, we find
+
+The answer is
+
+9,471,591-  9,455,522) (8.563,435)-I
+
+(C)
+
+(	9,617,802	9,607,896  -	0.0014891
+
+For Jack, we need (/65 -190)/ l25, and for Jill we need ([65 -190)/ /30. From the Illustrative Life Table, we have
+
+7,533,964-  l,058,491)(7,533,964-1,058,491=) I0.4614[
+
+(	9,565,017	9,501,381
+
+We have to keep track of three cohorts of light bulbs, the ones installed at times 0, 1, and 2. From the life table, the unconditional probabilities of failure are q0 = 0.2 in year 0, 11q0 = 0.2 in year 1, and 21q0 = 0.3 in year 3. Of the 2500 original bulbs, 500 apiece fail in years I and 2 and 750 in year 3. 500 new ones are installed
+
+in year 1, and 100 apiece fail in years 2 and 3. Finally 500+100 = 600 are installed in year 2, of which 120 fail in year 3. The answer is 750+ 100+ 120 =970. (D). Here's a table with these results:
+
+SOA MLC Study Manual-l31h edition
+
+2,18,  Xis binomial with parameters 5000 and 3p80 = 4790/5000, so its variance is
+
+5000(4-790) (
+
+1-- 4790) =1201.18/
+
+5000	5000
+
+The variance is l803p80 3q80. Notice that the variance of the number who die in the three years is the same.
+
+First, q(x,OJ= Ux-lx+il/ l, = 1/(100-xJ, so q(48,0J = 1/52, q(49,0J = 1/51, q(50, OJ= 1/50, and q(51, OJ=
+
+1/49. Then	•
+
+p(48, OJ= 1-1/52 = 0.980769
+
+p(49, lJ= 1-0.95/51= 0.981373
+
+p(50,2J = 1-0.982/50= 0.980792 p(51,3J = 1-0.983/49= 0.980792
+
+2p(48, OJ= (0.980769J(0.981373J = 0.962500
+
+2p(50,2J= (0.980792J(0.980792J =0.961953 z12q(48, OJ= 0.962500(1-0.961953J =I 0.0:16621
+
+The given fraction is
+
+201ssq15	20P1sssq35
+
+55q35	55q35
+
+20P1=s
+
+S,,(35J
+
+S,,(l5J
+
+By linear interpolation, S,,(15J = 0.7 and S,,(35J = 0.48. So the quotient is 0.48/0.7 =I 0,6857141. (Al
+
+Quiz Solutions
+
+2-1.  Use equation (2.1) to relate S50 to S40.
+
+Sso(30J=	s,o(40J
+
+S,o(lOJ
+
+s,0(40J= l.3-o.02(4oJ = o.5 S40(10J= l -0.005(10J = 0.95
+
+0 5
+
+S50(30J=	•  =I 0,52631
+
+0.95  ·	·
+
+2-2. Since 312q45 = 3p4szq4,, we deduce 2q48 = (l/6J/(2/3J = 1/4, and therefore /50/ 148 = 1- 2q48 = 3/4 and
+
+148= 450(4/3J = 600. Then /50= 148 -  d48- d49, or 450 = 600-80-d49, implying d49 = -
+
+SOA MLC Study Manual-13th edition
+
+Lesson 3
+
+Survival Distributions: Force of Mortality
+
+Reading: Actuarial Mathematics for Life Contingent Risks zed edition 2.3
+
+As discussed in the previous lesson, we are assuming that the distribution function of the time-to-death ran­ dom variable Tx, or F,(t), is differentiable, and therefore the probability density function of the time-to-death random variable, or f,( t ), is
+
+(t)= dF,(t) =- dS,(t)
+
+fx	dt	dt
+
+We can derive F or S from f by integrating:
+
+FAt)=i' fAu)du
+
+S,(t)=J,"" f,(u)du
+
+A function related to density is the force of mortality, denoted byµ,. For the time-to-death random variable T.x, this is the hazard rate function discussed in Lesson 1, in the third bullet o:q page 1. It measures the rate of mortality at age x, given survival to age x. It can also be defined as the probability of death in a small amount of time after age x1 given survival to age x, or
+
+Now,
+
+µ,=
+
+1
+
+Jim -Pr(1,j x+dxl1,j>x)
+
+dx	>O+ dx
+
+Pr[To	x + h I To> x)
+
+so the force of mortality can be written as
+
+So(x)-So(x + h) So(x)
+
+µ=,
+
+_l_	lim So(x)-So(x + h)
+
+So(x)h~o	h dS,,(x)/dx
+
+So(x)
+
+fo(x)
+
+So(x)
+
+(')
+
+('*)
+
+Since S,(t) =So(x + t)/S0(x), differentiating this expression witl1 respect to t, we get
+
+f,(t)= fo(x + t)/So(x)
+
+It follows that
+
+SOA MLCStudy Manual- J31hedition
+
+f,(t)
+
+S,(t)
+
+f,(x+ t)/So(x)
+
+So(x+ t)/So(x)
+
+37
+
+fo(x+t) So(x + t)
+
+and by(")
+
+Therefore
+
+fo(x+ t)		fAt) µx+r= So(x+t)	Sx{t)
+
+f,(t)
+
+µ_Hf= S,(t)
+
+(3.1)
+
+regardless of which x or t you pick. As long as you hold the sum x + t fixed, you're free to pick any x and t you wish in order to calculate µx+t· For example, if you want to calculate µ50 and you are given probability functions fi0(t) and .5':i0(1), you may calculate µ50 = fi0(20)/S:i0(20).
+
+In the Bower's textbook formerly on the syllabus, despite the fact that µn, is only a function of x + t and
+
+not a function of x and t separately, they used the notationµ,( t) to mean the same as what we mean by µx+·t This emphasizes that x is generally held fixed and only t varies. On the exam, they can use either notation. Just remember thatµx+1 = µ,( t). For example, µ50 = µ30(20) = µ15(35). The "default" value of the argument t is 0, not 1. µ20 is not µ20(!). Sometimes, the notation µ(x) is used to mean µx, In this manual, we will almost always use the notation µx and not µ,(t) or µ(x), and the exam will do the same, except for those cases in whichµ is a function of both x and t, which will be discussed later on in the course.
+
+Since S,(t) =, px  and F,(t) = ,qx  so that f,(t) = d1qxfdt, formula (3.1) can be written as
+
+d,qx/dt
+
+µ-x+1=- -
+
+1Px
+
+(3.2)
+
+The derivative of the logarithm of a function equals the derivative of the function divided by the function:
+
+Therefore from(*), we have
+
+dlnh(x)
+
+dx
+
+dh(x)/dx h(x)
+
+for any function h
+
+dlnS,,(x)
+
+dx
+
+or
+
+dlnS,(t)
+
+dt dln,px dt
+
+where we're free to choose any x and t that add up to the subscript ofµ. Going in the other direction
+
+S,(t)=exp(-L'µx+. ds J
+
+1
+
+1Px=exp(-J, µx+,dsJ
+
+=exp(- J:+rµ,dsJ
+
+(3.3)
+
+(3.4)
+

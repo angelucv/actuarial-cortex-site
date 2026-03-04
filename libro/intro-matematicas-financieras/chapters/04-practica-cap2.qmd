@@ -1,0 +1,614 @@
+---
+number: false
+---
+
+# Práctica capítulo 2 {#practica-cap2 .unnumbered}
+
+Ejercicios sobre resolución de problemas de interés, ecuación de valor, tiempo desconocido, tasas nominal/efectiva y aplicaciones. Nivel orientado a formación actuarial. Se incluyen ejercicios resueltos (1--33) y ejercicios propuestos (4.1, 1--40).
+
+---
+
+## Ejercicios resueltos (1--33)
+
+### 1. Pago adicional en ecuación de valor
+
+A cambio de pagos de \$2.000 al final de 4 años y \$5.000 al final de 10 años, un inversionista acepta pagar \$3.000 inmediatamente y hacer un pago adicional $X$ al final de 3 años. Hallar $X$ si la tasa nominal anual convertible trimestralmente es $i^{(4)} = 0{,}06$.
+
+**Solución detallada**
+
+**Paso 1 — Unificar a trimestres.** La tasa nominal 6% convertible trimestralmente implica una tasa efectiva por trimestre $j = 0{,}06/4 = 0{,}015$. El factor de descuento por trimestre es $v = 1/(1+j) = 1/1{,}015 \approx 0{,}98522$.
+
+**Paso 2 — Expresar todos los plazos en trimestres.** 4 años = 16 trimestres, 10 años = 40 trimestres, 3 años = 12 trimestres.
+
+**Paso 3 — Plantear la ecuación de valor en $t=0$.** En la fecha focal “hoy”, el valor presente de lo que el inversionista *recibe* debe igualar el valor presente de lo que *paga*. Recibe: \$2.000 dentro de 16 trimestres y \$5.000 dentro de 40 trimestres. Paga: \$3.000 hoy y $X$ dentro de 12 trimestres. Por tanto:
+$$2.000\,v^{16} + 5.000\,v^{40} = 3.000 + X\,v^{12}.$$
+
+**Paso 4 — Despejar $X$.** Trasladando $3.000$ y dividiendo por $v^{12}$:
+$$X = \frac{2.000\,v^{16} + 5.000\,v^{40} - 3.000}{v^{12}}.$$
+
+**Paso 5 — Cálculo numérico.** Con $v = 1/1{,}015$: $v^{12} = (1{,}015)^{-12} \approx 0{,}8360$, $v^{16} \approx 0{,}7880$, $v^{40} \approx 0{,}5510$. Numerador: $2.000(0{,}7880) + 5.000(0{,}5510) - 3.000 = 1.576 + 2.755 - 3.000 = 1.331$. Entonces $X = 1.331/0{,}8360 \approx 1.592{,}70$.
+
+**Interpretación:** El pago único $X$ al final del año 3 equilibra la operación: el inversionista entrega 3.000 hoy y 1.592,70 en 3 años a cambio de 2.000 en 4 años y 5.000 en 10 años, todo valorado al 6% nominal trimestral. **Errores frecuentes:** usar años en unos términos y trimestres en otros; descontar el pago de 3 años como si estuviera en el futuro (hay que traerlo al presente con $v^{12}$).
+
+### 2. Tarjeta de crédito — saldar deuda
+
+Tarjeta con saldo impago \$1.000; interés 18% nominal capitalizable mensualmente. Pagos: \$200 en 1 mes, \$300 en 2 meses. ¿Cuánto pagar en 3 meses para saldar?
+
+**Solución detallada**
+
+**Paso 1 — Tasa mensual.** 18% nominal capitalizable mensualmente $\Rightarrow$ tasa efectiva mensual $j = 0{,}18/12 = 0{,}015$ (1,5% al mes).
+
+**Paso 2 — Fecha focal.** Conviene tomar la fecha “hoy” = momento actual del saldo. A 3 meses, el saldo inicial habrá crecido; de ese monto se restan los valores acumulados de los dos pagos ya realizados (porque cada pago “corta” el saldo desde su fecha). Alternativamente, se toma como fecha focal el mes 3: se lleva todo a ese instante. *Valor del saldo inicial a 3 meses:* $1.000(1+j)^3$. *Valor de los pagos ya hechos a 3 meses:* \$200 se hizo hace 2 meses, así que a 3 meses vale $200(1+j)^2$; \$300 se hizo hace 1 mes, así que vale $300(1+j)^1$. El pago $X$ se hace exactamente en el mes 3, por tanto no se capitaliza. La ecuación de valor en $t=3$ es:
+$$1.000(1{,}015)^3 = 200(1{,}015)^2 + 300(1{,}015) + X.$$
+
+**Paso 3 — Despejar $X$.**
+$$X = 1.000(1{,}015)^3 - 200(1{,}015)^2 - 300(1{,}015).$$
+
+**Paso 4 — Cálculo.** $(1{,}015)^2 = 1{,}030225$, $(1{,}015)^3 = 1{,}045678375$. Entonces: $1.000(1{,}045678) = 1.045{,}68$; $200(1{,}030225) = 206{,}05$; $300(1{,}015) = 304{,}50$. Por tanto $X = 1.045{,}68 - 206{,}05 - 304{,}50 = 535{,}13$ (dólares).
+
+**Interpretación:** En el mes 3 debes pagar \$535,13 para liquidar la deuda. Los pagos anteriores reducen el saldo; el interés mensual hace que el saldo crezca, por eso el tercer pago debe cubrir el saldo restante más los intereses de ese periodo.
+
+### 3. Igualdad de VP y acumulación a 10 años
+
+A cierta tasa $i$, el VP de (i) \$200 al final de 5 años y \$500 al final de 10 años coincide con (ii) \$400,94 al final de 5 años. A la misma tasa, \$100 hoy y \$120 al final de 5 años se acumulan a $P$ al final de 10 años. Calcular $P$.
+
+**Solución detallada**
+
+**Paso 1 — Obtener $v^5$ y $(1+i)^n$.** Valorando en $t=0$: el VP del flujo (i) es $200\,v^5 + 500\,v^{10}$; el VP del flujo (ii) es $400{,}94\,v^5$. Igualando:
+$$200\,v^5 + 500\,v^{10} = 400{,}94\,v^5.$$
+Restando $200\,v^5$: $500\,v^{10} = 200{,}94\,v^5$, luego $500\,v^5 = 200{,}94$ (dividiendo entre $v^5 \neq 0$). Así $v^5 = 200{,}94/500 = 0{,}40188$. Entonces $(1+i)^5 = 1/v^5 = 1/0{,}40188 \approx 2{,}4883$ y $(1+i)^{10} = (1+i)^5\cdot(1+i)^5 \approx (2{,}4883)^2 \approx 6{,}1916$.
+
+**Paso 2 — Calcular $P$.** En $t=10$, el monto de \$100 hoy es $100(1+i)^{10}$ y el de \$120 en 5 años es $120(1+i)^5$. Por tanto:
+$$P = 100(1+i)^{10} + 120(1+i)^5 \approx 100(6{,}1916) + 120(2{,}4883) = 619{,}16 + 298{,}60 = 917{,}76.$$
+
+**Interpretación:** La primera condición determina implícitamente la tasa (a través de $v^5$). Con esa misma tasa, el segundo flujo (100 hoy y 120 en 5 años) acumula \$917,76 al final de 10 años.
+
+### 4. Fondo con depósitos variables y descuento nominal
+
+Tres depósitos a fin de los años 1, 3 y 5; el depósito en $t$ es $100(1{,}025)^t$. Valor del fondo al final del año 7 si la tasa nominal de descuento convertible trimestralmente es $4/41$.
+
+**Solución detallada**
+
+**Paso 1 — Tasa efectiva trimestral.** La nominal de descuento convertible trimestralmente $d^{(4)} = 4/41$ implica descuento por trimestre $d_q = (4/41)/4 = 1/41$. La relación $v = 1 - d_q$ da el factor de descuento trimestral; la tasa de interés trimestral es $i_q = d_q/(1-d_q) = (1/41)/(40/41) = 1/40 = 0{,}025$. Así, cada trimestre el capital se multiplica por $(1+i_q) = 1{,}025$.
+
+**Paso 2 — Depósitos y plazos hasta $t=7$.** Depósito 1: en $t=1$, monto $100(1{,}025)^1$, queda invertido 6 años = 24 trimestres. Depósito 2: en $t=3$, monto $100(1{,}025)^3$, queda 4 años = 16 trimestres. Depósito 3: en $t=5$, monto $100(1{,}025)^5$, queda 2 años = 8 trimestres. Valor futuro en $t=7$ (capitalización trimestral):
+$$F_7 = 100(1{,}025)^1(1{,}025)^{24} + 100(1{,}025)^3(1{,}025)^{16} + 100(1{,}025)^5(1{,}025)^8.$$
+Agrupando potencias: $1+24=25$, $3+16=19$, $5+8=13$. Por tanto $F_7 = 100[(1{,}025)^{25} + (1{,}025)^{19} + (1{,}025)^{13}]$.
+
+**Paso 3 — Cálculo.** $(1{,}025)^{13} \approx 1{,}3776$, $(1{,}025)^{19} \approx 1{,}5960$, $(1{,}025)^{25} \approx 1{,}8519$. Suma $\approx 4{,}8255$; $F_7 \approx 100(4{,}8255) = 482{,}55$.
+
+**Interpretación:** Los depósitos crecen con el índice $(1{,}025)^t$ y luego se capitalizan trimestralmente al 2,5% hasta el año 7. El valor total del fondo al cierre del año 7 es \$482,55.
+
+### 5. Interés simple y dependencia de la fecha focal
+
+Monto a pagar al final de 10 años equivalente a \$100 hoy y \$100 al final de 5 años. Interés simple 5% anual desde la fecha de cada pago. Repetir con fecha focal al final de 15 años.
+
+**Solución detallada**
+
+Con interés simple, un capital $C$ en el instante $t_0$ vale en $T$: $C(T) = C\bigl[1 + i(T - t_0)\bigr]$ (con $T > t_0$). Aquí $i = 0{,}05$.
+
+**(a) Fecha focal $T = 10$ años.** Los \$100 de hoy ($t_0=0$) se llevan 10 años: $100[1 + 0{,}05(10)] = 100(1{,}5) = 150$. Los \$100 del año 5 se llevan 5 años: $100[1 + 0{,}05(5)] = 100(1{,}25) = 125$. Monto equivalente en $t=10$: $150 + 125 = 275$.
+
+**(b) Fecha focal $T = 15$ años.** Los \$100 de hoy se llevan 15 años: $100[1 + 0{,}05(15)] = 100(1{,}75) = 175$. Los \$100 del año 5 se llevan 10 años: $100[1 + 0{,}05(10)] = 150$. Monto equivalente en $t=15$: $175 + 150 = 325$.
+
+**Interpretación:** Con interés simple, el “monto equivalente” cambia según la fecha focal (275 en $t=10$ vs 325 en $t=15$). Esto muestra que la equivalencia financiera bajo interés simple *no es invariante* ante la elección de la fecha focal, a diferencia del interés compuesto.
+
+### 6. Tiempo para duplicación relativa (6% vs 4%)
+
+¿Durante cuánto tiempo debe acumularse \$1.000 al 6% efectivo para que sea el doble del valor acumulado de \$1.000 al 4% efectivo (mismo horizonte)?
+
+**Solución detallada**
+
+**Paso 1 — Ecuación.** Llamando $t$ al tiempo en años: monto al 6% es $1.000(1{,}06)^t$; monto al 4% es $1.000(1{,}04)^t$. Queremos $1.000(1{,}06)^t = 2 \cdot 1.000(1{,}04)^t$. Simplificando 1.000: $(1{,}06)^t = 2(1{,}04)^t$, luego $(1{,}06/1{,}04)^t = 2$.
+
+**Paso 2 — Despejar $t$.** Tomando logaritmo natural: $t \ln(1{,}06/1{,}04) = \ln 2$, así $t = \ln 2 / \ln(1{,}06/1{,}04)$. Con $\ln 2 \approx 0{,}6931$ y $\ln(1{,}06/1{,}04) = \ln(1{,}01923\ldots) \approx 0{,}0190$: $t \approx 0{,}6931/0{,}0190 \approx 36{,}5$ años (usando más precisión: $\ln(1{,}06/1{,}04) \approx 0{,}0190$, $t \approx 36{,}1$ años).
+
+**Interpretación:** La razón $(1{,}06/1{,}04)^t$ mide cuánto más crece el depósito al 6% que al 4%. Para que esa razón sea 2, hacen falta unos 36 años.
+
+### 7. Ecuación de valor con tasa de descuento y retiros
+
+Inversión \$3.000 hoy y \$2.000 en 2 años; retiros \$5.000 en $n$ años y \$5.000 en $n+5$ años; cuenta en cero. Tasa efectiva de descuento $d = 6\%$. Hallar $n$.
+
+**Solución detallada**
+
+**Paso 1 — Tasa de interés efectiva.** $d = 0{,}06$ $\Rightarrow$ $i = d/(1-d) = 0{,}06/0{,}94 \approx 0{,}06383$ (6,383% efectivo anual).
+
+**Paso 2 — Ecuación de valor en $t=n$.** En la fecha $n$, el valor de los depósitos debe igualar el valor de los retiros. Depósitos llevados a $t=n$: $3.000(1+i)^n$ (los 3.000 de hoy) y $2.000(1+i)^{n-2}$ (los 2.000 del año 2). Retiros: \$5.000 en $n$ (ya en la fecha focal) y \$5.000 en $n+5$ (valor presente en $n$: $5.000(1+i)^{-5}$). Por tanto:
+$$3.000(1+i)^n + 2.000(1+i)^{n-2} = 5.000 + 5.000(1+i)^{-5}.$$
+
+**Paso 3 — Resolución numérica.** El término $5.000(1+i)^{-5}$ es constante $\approx 3.670{,}99$. Definimos $x = (1+i)^n$. Entonces $(1+i)^{n-2} = x/(1+i)^2 \approx x/1{,}1317$. La ecuación queda $3.000\,x + 2.000\,x/1{,}1317 \approx 5.000 + 3.670{,}99$, es decir $3.000\,x + 1.767{,}2\,x \approx 8.670{,}99$, $4.767{,}2\,x \approx 8.670{,}99$, $x \approx 1{,}819$. Así $(1{,}06383)^n \approx 1{,}819$ $\Rightarrow$ $n = \ln 1{,}819 / \ln 1{,}06383 \approx 0{,}598/0{,}0619 \approx 9{,}67$ años. Con calculadora: $n \approx 9{,}66$ años.
+
+**Interpretación:** $n$ es el momento del primer retiro de 5.000; el segundo retiro ocurre 5 años después. La ecuación de valor en $t=n$ permite obtener $n$ numéricamente.
+
+### 8. VP de dos pagos igual a 100; hallar n
+
+VP de dos pagos de \$100 al final de $n$ y $2n$ años es \$100. Si $i = 0{,}08$, hallar $n$.
+
+**Solución detallada**
+
+**Paso 1 — Ecuación en $v^n$.** Factor de descuento $v = 1/(1+i) = 1/1{,}08 \approx 0{,}92593$. El valor presente de los dos pagos es $100\,v^n + 100\,v^{2n} = 100$. Dividiendo entre 100: $v^n + v^{2n} = 1$.
+
+**Paso 2 — Cambio de variable.** Sea $x = v^n$. Entonces $v^{2n} = (v^n)^2 = x^2$. La ecuación queda $x + x^2 = 1$, es decir $x^2 + x - 1 = 0$. La raíz positiva es $x = (-1 + \sqrt{1+4})/2 = (-1+\sqrt{5})/2 \approx 0{,}61803$.
+
+**Paso 3 — Obtener $n$.** $v^n = x$ $\Rightarrow$ $n \ln v = \ln x$ $\Rightarrow$ $n = \ln x / \ln v$. Con $\ln 0{,}61803 \approx -0{,}4812$ y $\ln 0{,}92593 \approx -0{,}07696$: $n \approx (-0{,}4812)/(-0{,}07696) \approx 6{,}25$ años. (Revisando: $\ln v = \ln(1/1{,}08) = -\ln 1{,}08 \approx -0{,}07696$; $n = \ln 0{,}618 / (-\ln 1{,}08) \approx 6{,}25$.)
+
+**Interpretación:** Dos pagos de \$100 en $n$ y $2n$ años tienen hoy el mismo valor que \$100 en total cuando $n \approx 6{,}25$ años al 8% efectivo.
+
+### 9. Tiempo equivalente (pagos kn en kn)
+
+Pagos $n$ al final de $n$ años, $2n$ al final de $2n$, …, $n^2$ al final de $n^2$ años. Calcular $t$ por tiempo equivalente.
+
+**Solución detallada**
+
+**Definición.** El tiempo equivalente $t$ es el instante en que un pago único igual a la suma de los montos ($\sum A_k$) tendría el mismo valor actual que el flujo. Con interés compuesto, el tiempo equivalente (ponderado por montos) es $t = \frac{\sum A_k t_k}{\sum A_k}$, donde $A_k$ es el pago en $t_k$.
+
+**Pagos.** Para $k = 1, 2, \ldots, n$: pago $A_k = k\,n$ en tiempo $t_k = k\,n$ años.
+
+**Suma de montos.** $\sum_{k=1}^n A_k = n(1+2+\cdots+n) = n \cdot \frac{n(n+1)}{2} = \frac{n^2(n+1)}{2}$.
+
+**Suma ponderada.** $\sum_{k=1}^n A_k t_k = \sum_{k=1}^n (k\,n)(k\,n) = n^2 \sum_{k=1}^n k^2 = n^2 \cdot \frac{n(n+1)(2n+1)}{6} = \frac{n^3(n+1)(2n+1)}{6}$.
+
+**Tiempo equivalente.** $t = \frac{n^3(n+1)(2n+1)/6}{n^2(n+1)/2} = \frac{n(2n+1)/6}{1/2} = \frac{n(2n+1)}{3}$ años.
+
+**Interpretación:** El flujo de pagos $n, 2n, \ldots, n^2$ en los instantes $n, 2n, \ldots, n^2$ equivale (en el sentido del promedio ponderado por monto) a un solo pago en el instante $t = n(2n+1)/3$.
+
+### 10. Regla del n para triplicar
+
+Desarrollar una regla práctica para aproximar los años que tarda el dinero en triplicarse. Hallar $n$ entero positivo tal que $t \approx n/i(\%)$.
+
+**Solución detallada**
+
+**Paso 1 — Tiempo exacto para triplicar.** Con interés compuesto: $(1+i)^t = 3$ $\Rightarrow$ $t = \ln 3 / \ln(1+i)$. Para $i$ pequeño, $\ln(1+i) \approx i$, así $t \approx \ln 3 / i = 1{,}098612\ldots / i$.
+
+**Paso 2 — Expresar en función del tanto por ciento.** Si la tasa se da en porcentaje, $i = i(\%)/100$. Entonces $t \approx 1{,}0986 / (i(\%)/100) = 109{,}86 / i(\%)$ años.
+
+**Paso 3 — Regla práctica.** Tomando el entero más próximo: $n = 110$. Regla: *el dinero se triplica aproximadamente en $110/i(\%)$ años* (por ejemplo, al 10% en unos 11 años, al 5% en unos 22 años). Es la análoga a la “regla del 72” para duplicar (donde $\ln 2 \approx 0{,}693$ da $69{,}3/i(\%) \approx 72/i(\%)$).
+
+### 11. Igualar montos A (simple) y B (compuesto)
+
+A deposita 10 hoy y 30 en 5 años (interés simple 11%). B deposita 10 en $n$ años y 30 en $2n$ (efectivo 9,15%). Al final de 10 años los montos son iguales. Calcular $n$.
+
+**Solución detallada**
+
+**Paso 1 — Monto de A en $t=10$ (interés simple 11%).** Los 10 de hoy: $10[1 + 0{,}11(10)] = 10(2{,}1) = 21$. Los 30 depositados en $t=5$: $30[1 + 0{,}11(5)] = 30(1{,}55) = 46{,}5$. Total $F_A = 21 + 46{,}5 = 67{,}5$.
+
+**Paso 2 — Monto de B en $t=10$ (interés compuesto 9,15%).** Los 10 en $n$: quedan $10-n$ años, monto $10(1{,}0915)^{10-n}$. Los 30 en $2n$: quedan $10-2n$ años, monto $30(1{,}0915)^{10-2n}$. Así $F_B = 10(1{,}0915)^{10-n} + 30(1{,}0915)^{10-2n}$.
+
+**Paso 3 — Ecuación.** $F_A = F_B$ $\Rightarrow$ $67{,}5 = 10(1{,}0915)^{10-n} + 30(1{,}0915)^{10-2n}$. Sea $x = (1{,}0915)^{-n}$. Entonces $(1{,}0915)^{10-n} = (1{,}0915)^{10}\,x$ y $(1{,}0915)^{10-2n} = (1{,}0915)^{10}\,x^2$. Con $(1{,}0915)^{10} \approx 2{,}399$: $67{,}5 = 10\cdot 2{,}399\,x + 30\cdot 2{,}399\,x^2$ $\Rightarrow$ $23{,}99\,x + 71{,}97\,x^2 = 67{,}5$. Resolviendo la cuadrática $71{,}97\,x^2 + 23{,}99\,x - 67{,}5 = 0$: $x = \frac{-23{,}99 + \sqrt{23{,}99^2 + 4\cdot 71{,}97\cdot 67{,}5}}{2\cdot 71{,}97}$. El valor positivo da $x \approx 0{,}822$ $\Rightarrow$ $(1{,}0915)^{-n} = 0{,}822$ $\Rightarrow$ $n = -\ln 0{,}822 / \ln 1{,}0915 \approx 2{,}0$ años.
+
+**Interpretación:** $n \approx 2$ años: B deposita 10 en el año 2 y 30 en el año 4; al 9,15% compuesto, al final del año 10 tiene el mismo monto que A (67,5).
+
+### 12. Fondo A (nominal mensual) vs B (fuerza variable); instante de igualdad
+
+Fondo A: nominal 12% convertible mensualmente. Fondo B: fuerza $\delta_t = t/6$. Montos iguales en $t=0$. Hallar el primer $t>0$ en que los fondos vuelven a ser iguales.
+
+**Solución detallada**
+
+**Paso 1 — Función de acumulación de A.** Tasa mensual $j = 0{,}12/12 = 0{,}01$. En $t$ años hay $12t$ meses, así $a_A(t) = (1{,}01)^{12t}$.
+
+**Paso 2 — Función de acumulación de B.** Fuerza de interés $\delta_s = s/6$. Entonces $a_B(t) = \exp\bigl(\int_0^t \delta_s\,ds\bigr) = \exp\bigl(\int_0^t \frac{s}{6}\,ds\bigr) = \exp\bigl(\frac{t^2}{12}\bigr) = e^{t^2/12}$.
+
+**Paso 3 — Igualar y despejar $t>0$.** $a_A(t) = a_B(t)$ $\Rightarrow$ $(1{,}01)^{12t} = e^{t^2/12}$. Tomando logaritmos: $12t\,\ln 1{,}01 = t^2/12$. Para $t \neq 0$: $12\,\ln 1{,}01 = t/12$ $\Rightarrow$ $t = 144\,\ln 1{,}01$. Con $\ln 1{,}01 \approx 0{,}00995$: $t \approx 144(0{,}00995) \approx 1{,}43$ años.
+
+**Interpretación:** En $t=0$ ambos valen 1. La fuerza de B al inicio es 0 y luego crece; A crece a tasa constante. Se vuelven a igualar cuando $t \approx 1{,}43$ años (la otra solución $t=0$ se descarta).
+
+### 13. Tasa nominal semestral para 1000 → 3000 en 15 años
+
+Hallar $i^{(2)}$ tal que \$1.000 en 15 años (30 semestres) sea \$3.000.
+
+**Solución detallada**
+
+**Paso 1 — Fórmula.** Con capitalización semestral, $i^{(2)}$ es la tasa nominal anual; la tasa por semestre es $j = i^{(2)}/2$. En 15 años hay 30 semestres: $1.000(1+j)^{30} = 3.000$.
+
+**Paso 2 — Despejar $j$.** $(1+j)^{30} = 3$ $\Rightarrow$ $1+j = 3^{1/30}$ $\Rightarrow$ $j = 3^{1/30} - 1$. Con $3^{1/30} \approx 1{,}0369$: $j \approx 0{,}0369$ (3,69% por semestre).
+
+**Paso 3 — Tasa nominal anual.** $i^{(2)} = 2j = 2(3^{1/30}-1) \approx 0{,}0739$, es decir **7,39% nominal convertible semestralmente**.
+
+**Interpretación:** Al 7,39% nominal semestral (3,69% cada semestre), \$1.000 se triplican en 15 años.
+
+### 14. Tasa efectiva para acumulación dada
+
+Pagos \$300 hoy, \$200 en 1 año, \$100 en 2 años acumulan \$700 en 2 años. Hallar la tasa efectiva $i$.
+
+**Solución detallada**
+
+**Paso 1 — Ecuación de valor en $t=2$.** Llevando cada pago al final del año 2: los 300 de hoy capitalizan 2 años: $300(1+i)^2$; los 200 del año 1 capitalizan 1 año: $200(1+i)$; los 100 del año 2 ya están en la fecha. Suma = 700:
+$$300(1+i)^2 + 200(1+i) + 100 = 700.$$
+
+**Paso 2 — Cambio de variable.** Sea $x = 1+i$. Entonces $300\,x^2 + 200\,x + 100 = 700$ $\Rightarrow$ $300\,x^2 + 200\,x - 600 = 0$ $\Rightarrow$ $3x^2 + 2x - 6 = 0$.
+
+**Paso 3 — Raíz positiva.** $x = \frac{-2 + \sqrt{4 + 72}}{6} = \frac{-2 + \sqrt{76}}{6} = \frac{-2 + 2\sqrt{19}}{6} \approx \frac{-2 + 8{,}718}{6} \approx 1{,}1197$. Así $i = x - 1 \approx 0{,}1197$ (**11,97%** efectivo anual).
+
+**Interpretación:** A esa tasa, los tres pagos (300, 200, 100) acumulados al final del año 2 suman 700.
+
+### 15. VP de dos flujos iguales; dado $v^n$, hallar $i$
+
+Flujo (i): \$100 en 0, \$200 en $n$, \$300 en $2n$. Flujo (ii): \$600 en 10. VP iguales a tasa $i$. Dado $v^n = 0{,}75941$, determinar $i$.
+
+**Solución detallada**
+
+**Paso 1 — Valor presente de ambos flujos.** VP(i) $= 100 + 200\,v^n + 300\,v^{2n}$. VP(ii) $= 600\,v^{10}$. Igualando: $100 + 200\,v^n + 300\,v^{2n} = 600\,v^{10}$.
+
+**Paso 2 — Sustituir $v^n$.** Dado $v^n = 0{,}75941$, se tiene $v^{2n} = (v^n)^2 = (0{,}75941)^2 \approx 0{,}57669$. Lado izquierdo: $100 + 200(0{,}75941) + 300(0{,}57669) = 100 + 151{,}882 + 173{,}007 = 424{,}89$. Por tanto $600\,v^{10} = 424{,}89$ $\Rightarrow$ $v^{10} = 424{,}89/600 \approx 0{,}70815$.
+
+**Paso 3 — Obtener $i$.** $v^{10} = 0{,}70815$ $\Rightarrow$ $v = (0{,}70815)^{1/10} \approx 0{,}9661$. Como $v = 1/(1+i)$, $1+i = 1/v \approx 1{,}0351$ $\Rightarrow$ $i \approx 0{,}0351$ (**3,51%** efectivo anual).
+
+**Interpretación:** Con $v^n = 0{,}75941$, los dos flujos tienen el mismo valor actual; de ahí se deduce la tasa implícita $i \approx 3{,}51\%$.
+
+---
+
+## Ejercicios resueltos (16--33)
+
+### 16. Inversión con interés simple creciente (i, 2i, …, 10i)
+
+Inversión \$1.000 acumula \$1.825 en 10 años: interés simple $i$ el 1.º año, $2i$ el 2.º, …, $10i$ el 10.º. Hallar $i$.
+
+**Solución detallada**
+
+**Paso 1 — Interés total.** Con interés simple, solo el principal genera interés cada año; las tasas varían por año. Año $k$ aporta $1.000 \cdot k\,i$. Total interés $= 1.000(i + 2i + \cdots + 10i) = 1.000\,i(1+2+\cdots+10) = 1.000\,i \cdot 55 = 55.000\,i$ (en las mismas unidades que el principal). O bien: monto $M = 1.000 + 1.000(i+2i+\cdots+10i) = 1.000(1 + 55i)$.
+
+**Paso 2 — Ecuación.** $1.000(1+55i) = 1.825$ $\Rightarrow$ $1+55i = 1{,}825$ $\Rightarrow$ $55i = 0{,}825$ $\Rightarrow$ $i = 0{,}825/55 = 0{,}015$ (**1,5%** anual).
+
+**Interpretación:** La suma $1+2+\cdots+10 = 55$ es el “factor acumulado” de las tasas; el interés simple total es 55 veces la tasa base $i$ aplicada al principal.
+
+### 17. Fuerza de interés $\delta_t = kt$; duplicar en 10 años
+
+Cantidad se duplica en 10 años con $\delta_t = k\,t$. Hallar $k$.
+
+**Solución detallada**
+
+**Paso 1 — Función de acumulación.** Con fuerza de interés $\delta_t = k\,t$, $a(t) = \exp\bigl(\int_0^t \delta_s\,ds\bigr) = \exp\bigl(\int_0^t k\,s\,ds\bigr) = \exp\bigl(k\,\frac{t^2}{2}\bigr)$.
+
+**Paso 2 — Condición de duplicación.** En $t=10$: $a(10) = e^{k \cdot 50} = 2$ $\Rightarrow$ $50k = \ln 2$ $\Rightarrow$ $k = \frac{\ln 2}{50} \approx \frac{0{,}6931}{50} \approx 0{,}01386$.
+
+**Interpretación:** La fuerza de interés crece linealmente con el tiempo; la integral $\int_0^{10} k\,s\,ds = 50k$ da el logaritmo del factor de acumulación, por eso $e^{50k} = 2$.
+
+### 18. Suma de monto y VP con $d=i$
+
+Suma del valor acumulado de 1 en 3 años con tasa $i$ y del VP de 1 en 3 años con descuento efectivo $d=i$ es 2,0096. Hallar $i$.
+
+**Solución detallada**
+
+**Paso 1 — Expresar ambas cantidades.** Valor acumulado de 1 en 3 años (interés efectivo $i$): $(1+i)^3$. Valor presente de 1 en 3 años con descuento efectivo $d$: si $d=i$, entonces $v = 1-d = 1-i$, y el VP de 1 pagadero en 3 años es $(1-d)^3 = (1-i)^3$. Suma: $(1+i)^3 + (1-i)^3 = 2{,}0096$.
+
+**Paso 2 — Desarrollar.** $(1+i)^3 = 1 + 3i + 3i^2 + i^3$ y $(1-i)^3 = 1 - 3i + 3i^2 - i^3$. Sumando se cancelan los términos en $i$ e $i^3$: $(1+i)^3 + (1-i)^3 = 2 + 6i^2$.
+
+**Paso 3 — Resolver.** $2 + 6i^2 = 2{,}0096$ $\Rightarrow$ $6i^2 = 0{,}0096$ $\Rightarrow$ $i^2 = 0{,}0016$ $\Rightarrow$ $i = 0{,}04$ (**4%**). (Se toma $i>0$.)
+
+**Interpretación:** La identidad $(1+i)^3+(1-i)^3 = 2+6i^2$ permite despejar $i$ a partir de la suma dada.
+
+### 19. Días invertidos (actual/actual y 30/360)
+
+Del 7/12/1941 al 8/8/1945. (a) Base actual/actual. (b) Base 30/360.
+
+**Solución detallada**
+
+**(a) Base actual/actual (días naturales).** De 7/dic/1941 a 8/ago/1945: resto de dic/41 = 24 días; años completos 1942, 1943, 1944 = 365+365+366 = 1.096 (1944 bisiesto); de 1/ene/1945 a 8/ago/1945 = 31+28+31+30+31+30+31+8 = 220 días. **Total: 24+1.096+220 = 1.340 días.**
+
+**(b) Base 30/360.** Cada mes = 30 días, año = 360. De 7/dic/1941 a 8/ago/1945: diferencia 3 años, 8 meses, 1 día (de día 7 a día 8 = 1; de dic a ago = 8 meses). Días = $3\times 360 + 8\times 30 + 1 = 1.080 + 240 + 1 = 1.321$ días.
+
+### 20. Interés simple: exacto, ordinario, banquero
+
+\$10.000 en julio y agosto (62 días) al 6% simple. (a) Exacto (365). (b) Ordinario (30/360). (c) Banquero (exactos/360).
+
+**Solución detallada**
+
+Fórmula de interés simple: $I = P \cdot r \cdot t$, con $t = D/\text{base}$ según la convención.
+
+**(a) Exacto (base 365).** Días reales = 62. $I = 10.000 \times 0{,}06 \times \frac{62}{365} = \frac{37.200}{365} \approx 101{,}92$.
+
+**(b) Ordinario (base 360, días 30/360).** Julio y agosto en 30/360: 30+30 = 60 días. $I = 10.000 \times 0{,}06 \times \frac{60}{360} = \frac{36.000}{360} = 100$.
+
+**(c) Banquero (días reales / base 360).** 62 días, base 360. $I = 10.000 \times 0{,}06 \times \frac{62}{360} = \frac{37.200}{360} \approx 103{,}33$.
+
+**Interpretación:** El método banquero (real/360) da el interés más alto para el mismo periodo; el exacto (real/365) el más bajo; el ordinario (30/360) puede ser intermedio según los días del mes.
+
+### 21. Regla del banquero vs exacto y ordinario
+
+(a) Demostrar que banquero (exactos/360) siempre favorece al prestamista frente a exacto (exactos/365). (b) Demostrar que usualmente favorece frente a ordinario (30/360). (c) Contraejemplo de (b).
+
+**Solución detallada**
+
+**(a)** Con los *mismos* días reales $D_{\text{ex}}$: interés exacto $I_{\text{ex}} = P\,r\,D_{\text{ex}}/365$, interés banquero $I_{\text{banq}} = P\,r\,D_{\text{ex}}/360$. Como $1/360 > 1/365$, para el mismo $D_{\text{ex}}$ se tiene $I_{\text{banq}} > I_{\text{ex}}$. El prestamista cobra más con la regla del banquero.
+
+**(b)** Ordinario usa 30/360: $I_{\text{ord}} = P\,r\,D_{30/360}/360$, donde $D_{30/360}$ es el número de días en convención 30/360. Banquero: $I_{\text{banq}} = P\,r\,D_{\text{ex}}/360$. Si $D_{\text{ex}} \geq D_{30/360}$ (por ejemplo entre el 1 y el 31 de un mes, días reales 30 y 30/360 puede ser 30), entonces $I_{\text{banq}} \geq I_{\text{ord}}$. En muchos intervalos los días reales son $\geq$ que los 30/360, por eso *usualmente* el banquero favorece al prestamista también frente al ordinario.
+
+**(c)** Contraejemplo: del 1 de febrero al 1 de marzo (año no bisiesto). Días reales $D_{\text{ex}} = 28$. En 30/360 suele contarse 30 días. Entonces $I_{\text{banq}} = P\,r\cdot 28/360$ y $I_{\text{ord}} = P\,r\cdot 30/360$, luego $I_{\text{banq}} < I_{\text{ord}}$. El banquero no siempre favorece al prestamista frente al ordinario.
+
+### 22. Letra: descuento y tasa efectiva
+
+Letra \$100 comprada por \$96 tres meses antes del vencimiento. (a) $d^{(4)}$. (b) Tasa efectiva anual.
+
+**Solución detallada**
+
+**(a) Tasa nominal de descuento convertible trimestralmente.** El descuento en 3 meses (1 trimestre) es $100 - 96 = 4$. Con descuento simple comercial: $D = F\,d\,t$; aquí $F=100$, $t=1/4$ año, $D=4$. Si $d$ es la tasa trimestral de descuento: $100\,d\cdot 1 = 4$ $\Rightarrow$ $d = 0{,}04$ por trimestre. La nominal anual (convertible trimestralmente) es $d^{(4)} = 4d = 0{,}16$ (**16%**). (O bien: $100\cdot d^{(4)}/4 = 4$ $\Rightarrow$ $d^{(4)} = 0{,}16$.)
+
+**(b) Tasa efectiva anual.** Se invierten \$96 y en 3 meses se reciben \$100. Tasa efectiva trimestral $i_q = 100/96 - 1 = 4/96 = 1/24 \approx 0{,}04167$. Tasa efectiva anual $i = (1+i_q)^4 - 1 = (1+1/24)^4 - 1 = (25/24)^4 - 1 \approx 1{,}1774 - 1 \approx 0{,}1774$ (**17,74%**).
+
+**Interpretación:** El descuento nominal 16% trimestral implica un descuento de 4% por trimestre; la rentabilidad efectiva para el comprador es 17,74% anual.
+
+### 23. CD y penalización por retiro anticipado
+
+CD 2 años al 9% efectivo. Penalización A: acreditar 7% por tiempo real. B: perder 3 meses (acreditar $t-0{,}25$ años al 9%). Ratio A/B si entrega en (a) 6 meses; (b) 18 meses.
+
+**Solución detallada**
+
+**Montos.** Con 1 unidad invertida: opción A al tiempo $t$ (años): $M_A = (1{,}07)^t$. Opción B: se acreditan solo $t - 0{,}25$ años al 9%: $M_B = (1{,}09)^{t-0{,}25}$. Ratio $R = M_A/M_B = (1{,}07)^t / (1{,}09)^{t-0{,}25}$.
+
+**(a) $t = 0{,}5$ años (6 meses).** $M_A = (1{,}07)^{0{,}5} \approx 1{,}0344$; $M_B = (1{,}09)^{0{,}5-0{,}25} = (1{,}09)^{0{,}25} \approx 1{,}0218$. $R \approx 1{,}0344/1{,}0218 \approx 1{,}0123$. Conviene A (recibe ~1,23% más).
+
+**(b) $t = 1{,}5$ años (18 meses).** $M_A = (1{,}07)^{1{,}5} \approx 1{,}1068$; $M_B = (1{,}09)^{1{,}25} \approx 1{,}1137$. $R \approx 1{,}1068/1{,}1137 \approx 0{,}994$. Conviene B (perder 3 meses pero al 9% compensa).
+
+**Interpretación:** A plazos cortos la penalización B (perder 3 meses) duele más; a plazos más largos el 9% sobre $t-0{,}25$ supera al 7% sobre $t$.
+
+### 24. Inversión con tasa variable (16 meses + 4 meses)
+
+\$5.000 del 1/sep (año 1) al 1/may (año 2): 20 meses. Primeros 16 meses 5,4% nominal mensual; últimos 4 meses 3,6% nominal mensual. Monto.
+
+**Solución detallada**
+
+**Paso 1 — Tasas mensuales.** 5,4% nominal mensual $\Rightarrow$ $i_1 = 0{,}054/12 = 0{,}0045$ por mes. 3,6% nominal mensual $\Rightarrow$ $i_2 = 0{,}036/12 = 0{,}003$ por mes.
+
+**Paso 2 — Capitalización en dos tramos.** Los 5.000 se capitalizan 16 meses al 0,45% mensual y luego 4 meses al 0,3% mensual: $M = 5.000\,(1+i_1)^{16}(1+i_2)^4 = 5.000\,(1{,}0045)^{16}(1{,}003)^4$.
+
+**Paso 3 — Cálculo.** $(1{,}0045)^{16} \approx 1{,}0744$; $(1{,}003)^4 \approx 1{,}0121$. $M \approx 5.000 \times 1{,}0744 \times 1{,}0121 \approx 5.437{,}50$.
+
+**Interpretación:** El monto final es el principal multiplicado por los factores de cada tramo; al bajar la tasa en el segundo tramo, el crecimiento total es menor que si hubiera sido 5,4% los 20 meses.
+
+### 25. APY vs tasa cotizada (5,1% diaria)
+
+Razón APY / tasa cotizada con capitalización diaria 5,1%.
+
+**Solución detallada**
+
+**Paso 1 — APY.** La tasa cotizada 5,1% con capitalización diaria implica tasa por día $j = 0{,}051/365$. El rendimiento efectivo anual (APY) es $\mathrm{APY} = (1+j)^{365} - 1 = (1 + 0{,}051/365)^{365} - 1$. Con $(1 + 0{,}051/365)^{365} \approx 1{,}05232$: $\mathrm{APY} \approx 0{,}05232$ (5,232%).
+
+**Paso 2 — Razón.** $R = \mathrm{APY}/\text{tasa cotizada} = 0{,}05232/0{,}051 \approx 1{,}0259$. El APY es aproximadamente 2,59% mayor que la tasa nominal cotizada (o bien, la razón es ~1,026).
+
+**Interpretación:** La capitalización diaria hace que el rendimiento efectivo supere la tasa nominal; la razón R > 1 cuantifica ese efecto.
+
+### 26. Asociación 7% + bono 2% cada 3 años; tasa equivalente (2, 3, 4 años)
+
+Inversión que rinde 7% efectivo anual más un bono único de 2% al cumplir cada 3 años.
+
+**Solución detallada**
+
+**(a) Plazo 2 años.** No hay bono; solo 7% anual. Factor $= (1{,}07)^2 = 1{,}1449$. Tasa efectiva equivalente $i_2 = 1{,}1449 - 1 = 14{,}49\%$.
+
+**(b) Plazo 3 años.** Un bono al final: factor $= (1{,}07)^3 \cdot (1{,}02) = 1{,}2250 \cdot 1{,}02 \approx 1{,}2495$. Tasa anual equivalente: $(1{,}2495)^{1/3} - 1 \approx 0{,}0904$ (**9,04%**).
+
+**(c) Plazo 4 años.** Sigue habiendo un solo bono (en $t=3$). Factor $= (1{,}07)^4 \cdot (1{,}02) \approx 1{,}3108 \cdot 1{,}02 \approx 1{,}3370$. Tasa anual equivalente: $(1{,}3370)^{1/4} - 1 \approx 0{,}0814$ (**8,14%**).
+
+### 27. CDs semestrales; monto máximo a 6 años
+
+Tasas $j^{(2)}$: 1 año 5%, 2 años 6%, 3 años 7%, 4 años 8%. \$1.000 hoy, horizonte 6 años. Óptimo: 4 años al 8% (4%) + 2 años al 6% (3%): $M_{\max} = 1.000(1{,}04)^8(1{,}03)^4 \approx 1.423{,}40$.
+
+**Solución detallada**
+
+**Estructura.** Tasas nominales semestrales: 1 año → 5%, 2 años → 6%, 3 años → 7%, 4 años → 8%. Semestres por plazo: 2, 4, 6, 8. Para maximizar el monto a 6 años (12 semestres) conviene usar el CD de mayor tasa el mayor tiempo posible: 4 años al 8% (8 semestres al 4% por semestre) y los 2 años restantes al 6% (4 semestres al 3% por semestre).
+
+**Cálculo.** $M = 1.000\,(1+0{,}08/2)^8\,(1+0{,}06/2)^4 = 1.000\,(1{,}04)^8\,(1{,}03)^4$. $(1{,}04)^8 \approx 1{,}3686$; $(1{,}03)^4 \approx 1{,}1255$. $M \approx 1.000 \times 1{,}3686 \times 1{,}1255 \approx 1.423{,}40$.
+
+### 28. Descuento por pronto pago (90% a 2 meses vs X% hoy)
+
+Opción 1: pagar 90% a 2 meses. Opción 2: descontar $X\%$ y pagar hoy. Con $i_{\text{eff}}=8\%$: $P(1-X/100) = 0{,}90\,P\,v^{2/12}$ $\Rightarrow$ $X = 100\bigl(1 - 0{,}90(1{,}08)^{-1/6}\bigr) \approx 11{,}15\%$.
+
+**Solución detallada**
+
+**Equivalencia.** Precio de lista $P$. Opción 1: pagar $0{,}90\,P$ dentro de 2 meses. Opción 2: pagar hoy $P(1 - X/100)$. Valorando en $t=0$ con tasa efectiva 8%: el VP de $0{,}90\,P$ en 2 meses es $0{,}90\,P\,(1{,}08)^{-2/12}$. Igualando al pago al contado: $P(1 - X/100) = 0{,}90\,P\,(1{,}08)^{-1/6}$. Simplificando $P$: $1 - X/100 = 0{,}90\,(1{,}08)^{-1/6}$. Entonces $X = 100\bigl(1 - 0{,}90\,(1{,}08)^{-1/6}\bigr)$. Con $(1{,}08)^{-1/6} \approx 0{,}9872$: $X \approx 100(1 - 0{,}8885) \approx 11{,}15\%$. **Interpretación:** Un descuento de ~11,15% al contado es equivalente a pagar 90% a 2 meses al 8% efectivo.
+
+### 29. Minorista: 30% abajo hoy vs 25% abajo en 6 meses; tasa de indiferencia
+
+$0{,}70\,P = 0{,}75\,P\,(1+i)^{-1/2}$ $\Rightarrow$ $(1+i)^{1/2} = 0{,}75/0{,}70 = 15/14$ $\Rightarrow$ $1+i = (15/14)^2 = 225/196$ $\Rightarrow$ $i \approx 14{,}80\%$.
+
+**Solución detallada**
+
+**Opciones.** Precio $P$. Hoy: pagar $0{,}70\,P$ (30% de descuento). En 6 meses: pagar $0{,}75\,P$ (25% de descuento). Indiferencia cuando los valores actuales coinciden: $0{,}70\,P = 0{,}75\,P\,(1+i)^{-1/2}$ (6 meses = 1/2 año). Simplificando: $0{,}70/0{,}75 = (1+i)^{-1/2}$ $\Rightarrow$ $(1+i)^{1/2} = 0{,}75/0{,}70 = 15/14$. Entonces $1+i = (15/14)^2 = 225/196 \approx 1{,}1480$ $\Rightarrow$ $i \approx 14{,}80\%$. Por debajo de esa tasa conviene pagar en 6 meses; por encima, conviene el 30% hoy.
+
+### 30. Depósito con dos tramos de tasa; monto a 5 y 10,5 años
+
+\$1.000; años 0--7 nominal $i$ semestral; 7--10,5 nominal $2i$ trimestral. Monto a 10,5 años: \$1.980. Tasa por semestre $i/2$ en ambos tramos; 21 semestres en 10,5 años: $1.000(1+i/2)^{21} = 1.980$ (ajustar si la partición es distinta). Para $X$ a 5 años: $X = 1.000(1+i/2)^{10}$. Con $1+i/2 = (1{,}98)^{1/21}$: $i/2 \approx 0{,}0332$, $X \approx 1.000(1{,}0332)^{10} \approx 1.384$.
+
+**Solución detallada**
+
+**Enfoque unificado (si la capitalización se considera semestral).** Si se interpreta que en 0--7 y 7--10,5 se usa la misma frecuencia y la tasa por semestre es $j = i/2$ (con $i$ la nominal semestral del primer tramo), en 10,5 años hay 21 semestres: $1.000(1+j)^{21} = 1.980$ $\Rightarrow$ $1+j = (1{,}98)^{1/21} \approx 1{,}0332$ $\Rightarrow$ $j \approx 0{,}0332$. Monto a 5 años (10 semestres): $X = 1.000(1+j)^{10} \approx 1.000(1{,}0332)^{10} \approx 1.384$. **Nota:** Si el segundo tramo fuera trimestral con tasa $2i$, habría que escribir 7 años = 14 semestres y 3,5 años = 7 semestres (o 14 trimestres) y usar $(1+i/2)^{14}(1+i)^{14}$ u otra combinación según el enunciado; la versión aquí asume un único $j$ semestral equivalente para simplificar.
+
+### 31. Fondos A (6%) y B (8%); suma \$2.000 a 20 años; A mitad de B a 10 años
+
+$A_0(1{,}06)^{10} = \frac{1}{2}B_0(1{,}08)^{10}$ $\Rightarrow$ $A_0 \approx 0{,}6028\,B_0$. $A_0(1{,}06)^{20}+B_0(1{,}08)^{20}=2.000$ $\Rightarrow$ $B_0 \approx 303{,}30$, $A_0 \approx 182{,}82$. Suma a 5 años: $S_5 = A_0(1{,}06)^5+B_0(1{,}08)^5 \approx 244{,}37 + 445{,}80 \approx 690$.
+
+**Solución detallada**
+
+**Condiciones.** Inversiones iniciales $A_0$ y $B_0$. A 10 años: $A_0(1{,}06)^{10} = \frac{1}{2}B_0(1{,}08)^{10}$ $\Rightarrow$ $A_0 = B_0\,\frac{(1{,}08)^{10}}{2(1{,}06)^{10}} = B_0\,\frac{2{,}1589}{2\cdot 1{,}7908} \approx 0{,}6028\,B_0$. A 20 años: $A_0(1{,}06)^{20}+B_0(1{,}08)^{20}=2.000$. Sustituyendo $A_0$: $0{,}6028\,B_0(1{,}06)^{20}+B_0(1{,}08)^{20}=2.000$ $\Rightarrow$ $B_0\bigl(0{,}6028\times 3{,}2071 + 4{,}6610\bigr) \approx 2.000$ $\Rightarrow$ $B_0(1{,}933+4{,}661) \approx 2.000$ $\Rightarrow$ $B_0 \approx 303{,}30$, $A_0 \approx 182{,}82$. **Suma a 5 años:** $S_5 = 182{,}82(1{,}06)^5+303{,}30(1{,}08)^5 \approx 244{,}37+445{,}80 \approx 690{,}17$.
+
+### 32. Dos años con tasas i e i−0,05; saldo hipotético a 3 años con i+0,09
+
+$10.000(1+i)(1+i-0{,}05)=12.093{,}75$. Con $x=1+i$: $x(x-0{,}05)=1{,}209375$ $\Rightarrow$ $x^2-0{,}05x-1{,}209375=0$ $\Rightarrow$ $x=(0{,}05+\sqrt{4{,}84})/2=1{,}125$ $\Rightarrow$ $i=0{,}125$. Con tasa constante $i+0{,}09=0{,}215$: saldo a 3 años $= 10.000(1{,}215)^3 \approx 17.936$.
+
+**Solución detallada**
+
+**Paso 1 — Obtener $i$.** Año 1: factor $(1+i)$; año 2: tasa $i-0{,}05$, factor $(1+i-0{,}05)$. Saldo a 2 años: $10.000(1+i)(1+i-0{,}05)=12.093{,}75$ $\Rightarrow$ $(1+i)(1+i-0{,}05)=1{,}209375$. Sea $x=1+i$; entonces $x(x-0{,}05)=1{,}209375$ $\Rightarrow$ $x^2-0{,}05x-1{,}209375=0$. Discriminante $0{,}0025+4\cdot 1{,}209375=4{,}84$; $x=\frac{0{,}05+\sqrt{4{,}84}}{2}=\frac{0{,}05+2{,}2}{2}=1{,}125$ $\Rightarrow$ $i=0{,}125$ (12,5%).
+
+**Paso 2 — Saldo hipotético a 3 años.** Tasa constante $i+0{,}09=0{,}215$. Saldo $= 10.000(1{,}215)^3 \approx 10.000\times 1{,}7936 \approx 17.936$.
+
+### 33. Pagaré con descuento simple; reducción del nominal por pago anticipado
+
+Pagaré \$1.000 a 1 año; recibe \$920 $\Rightarrow$ $1000(1-d)=920$, $d=0{,}08$. A los 6 meses paga \$288. Reducción del nominal: $\Delta F = A/(1-d\,t) = 288/(1-0{,}08\cdot 0{,}5) = 288/0{,}96 = 300$. Nuevo nominal: $1.000 - 300 = 700$.
+
+**Solución detallada**
+
+**Tasa de descuento.** Valor nominal $F=1.000$, valor efectivo (lo que se recibe) 920, plazo 1 año. Descuento simple: valor efectivo $= F(1-d\,t)$. Así $1.000(1-d)=920$ $\Rightarrow$ $1-d=0{,}92$ $\Rightarrow$ $d=0{,}08$ (8% anual).
+
+**Pago anticipado a 6 meses.** El deudor paga 288 (en $t=0{,}5$ años). Ese pago “cancela” una parte del nominal. En descuento simple, un pago $A$ en $t$ equivale a reducir el nominal en $\Delta F$ tal que el valor actual del nominal reducido coincide: $A = \Delta F\,(1-d\,t')$ donde $t'$ es el tiempo que falta hasta el vencimiento. Aquí $t'=0{,}5$ años: $288 = \Delta F\,(1-0{,}08\times 0{,}5) = \Delta F\cdot 0{,}96$ $\Rightarrow$ $\Delta F = 288/0{,}96 = 300$. **Nuevo nominal:** $1.000 - 300 = 700$ (quedan 700 por pagar al vencimiento).
+
+---
+
+## Ejercicios resueltos (selección complementaria R1--R20)
+
+**R2 (Equipos).** Fecha comparación $t=3$ (15/jun), $j=0{,}03$. $2.000(1{,}03)^3 = 700(1{,}03)^2 + 800(1{,}03) + Y$. $Y = 2.000(1{,}03)^3 - 700(1{,}03)^2 - 800(1{,}03) \approx 543{,}18$.
+
+**R3 (Crédito semanal).** VP recibido $= 900(1+v+v^2+v^3)$, $v=1/1{,}06$. VP pagado $= 1.000(v^4+v^5+v^6)+Xv^7$. Igualando: $X = (900(1+v+v^2+v^3) - 1.000(v^4+v^5+v^6))/v^7 \approx 1.595{,}95$ (Bs.).
+
+**R4.** $n = \ln(M/K)/\ln(1+i)$. Duplicar: $n = \ln 2/\ln 1{,}05 \approx 14{,}21$ años.
+
+**R5.** Exacto: $n = 0{,}6931/\ln(1+i)$. Para $i=8\%$: $n \approx 9{,}01$; regla 72: $72/8=9$. Para $i=12\%$: exacto $\approx 6{,}12$, regla $72/12=6$.
+
+**R6.** $\sum = 300v + 500v^3 + 200v^5$ con $v=1/1{,}02$. $t = (\ln 1.000 - \ln \sum)/\ln v \approx 2{,}78$ meses. Aproximación ponderada: $(300\cdot 1+500\cdot 3+200\cdot 5)/1.000 = 2{,}8$.
+
+**R7.** $100\,a_{\overline{n}|0{,}05} = 1.000 \Rightarrow a_{\overline{n}|} = 10$. $a_{\overline{14}|} < 10 < a_{\overline{15}|}$; 14 pagos completos. Balloon: $X_1 = 1.000(1{,}05)^{14} - 100\,s_{\overline{14}|} \approx 20{,}07$. Drop: $X_2 \approx 21{,}07$. Fraccionario: $k$ con $a_{\overline{14+k}|}=10$ da $k \approx 0{,}2067$.
+
+**R8.** $1.000\,s_{\overline{n}|0{,}08} = 25.000 \Rightarrow s_{\overline{n}|} = 25$. $s_{\overline{14}|} \approx 24{,}215$, $s_{\overline{15}|} \approx 27{,}152$. 14 depósitos; depósito final $X = 25.000 - 1.000\,s_{\overline{14}|} \approx 785$.
+
+**R9.** Tres flujos: -\$500 en $t=0$, +\$200 en $t=2$, +\$400 en $t=5$; $i=6\%$. Ecuación de valor en $t=5$: $-500(1{,}06)^5 + 200(1{,}06)^3 + 400 = 0$? No; hallar $X$ en $t=5$ para equilibrar: $X = 500(1{,}06)^5 - 200(1{,}06)^3 - 400 \approx 94{,}50$.
+
+**R10.** Préstamo \$10.000 al 12\% nominal mensual, 24 cuotas mensuales $R$. $R\,a_{\overline{24}|j} = 10.000$, $j=0{,}01$. $R = 10.000/a_{\overline{24}|0{,}01} \approx 470{,}73$.
+
+**R11.** Deuda \$5.000; pagos \$1.000 en $t=1,2,3,4$; $i=5\%$. Saldo después del pago en $t=2$: valor en $t=2$ de lo que falta = $1.000\,a_{\overline{2}|0{,}05} + 1.000\,v^2\,a_{\overline{2}|}$? No: saldo = $5.000(1{,}05)^2 - 1.000(1{,}05) - 1.000 = 5.000(1{,}1025) - 2.050 = 3.462{,}50$.
+
+**R12.** Tiempo para triplicar: $n = \ln 3/\ln(1+i)$. Con $i=7\%$: $n \approx 16{,}24$ años.
+
+**R13.** Serie de 5 pagos de \$100 en $t=1,\ldots,5$; $i=4\%$. Fecha equivalente $t$ para un pago único de \$500: $\sum 100 v^k = 500 v^t$ $\Rightarrow$ $100\,a_{\overline{5}|} = 500 v^t$ $\Rightarrow$ $t = \ln(100\,a_{\overline{5}|}/500)/\ln v \approx 2{,}94$.
+
+**R14.** Inversión \$P$ al 6\%; retiros \$200 en $t=3$ y \$300 en $t=7$. Para que el balance en $t=10$ sea \$1.000: $P(1{,}06)^{10} - 200(1{,}06)^7 - 300(1{,}06)^3 = 1.000$ $\Rightarrow$ $P \approx (1.000 + 300{,}64 + 200\cdot 1{,}50)/1{,}7908 \approx 717{,}90$ (ajustar con valores exactos).
+
+**R15.** Ecuación de valor con fecha en $t=0$ vs $t=n$: demostrar que dan el mismo resultado. Basta ver que una ecuación es la otra multiplicada por $(1+i)^n$.
+
+**R16.** Flujos -\$1.000 (0), +\$600 (1), +\$600 (2). TIR $i$: $1.000 = 600(v+v^2)$ $\Rightarrow$ $v+v^2 = 1{,}6667$; $i \approx 0{,}13$ (13\%).
+
+**R17.** Depósito \$D$ en $t=0$; retiros \$R$ en $t=5,10,15$; saldo cero en $t=20$; $i=5\%$. $D(1{,}05)^{20} = R\bigl((1{,}05)^{15}+(1{,}05)^{10}+(1{,}05)^5\bigr)$. Si $R=1.000$: $D \approx 2.723{,}25$.
+
+**R18.** Pagaré \$8.000 en $t=4$; se reemplaza por dos pagos iguales en $t=2$ y $t=6$. $i=7\%$. $8.000\,v^4 = X(v^2+v^6)$ $\Rightarrow$ $X = 8.000\,v^4/(v^2+v^6) \approx 4.363{,}63$.
+
+**R19.** Fondo con aportes \$C$ al inicio de años 0,1,2; $i=6\%$. Valor en $t=3$: $C\bigl((1{,}06)^3+(1{,}06)^2+(1{,}06)\bigr) = C\,\ddot{s}_{\overline{4}|} - C$ (ajustar: son 3 pagos en 0,1,2) $= C(1{,}06)((1{,}06)^3-1)/0{,}06 \approx 3{,}3746\,C$.
+
+**R20.** Deuda \$12.000; cuotas mensuales $R$ a 3 años; $i^{(12)}=0{,}12$. $R = 12.000/a_{\overline{36}|0{,}01} \approx 398{,}57$.
+
+---
+
+## Ejercicios de nivel avanzado (20)
+
+**A1.** Demostrar que la ecuación de valor es equivalente en cualquier fecha de comparación (ley de equivalencia financiera).
+
+**A2.** Flujos $c_0, c_1, \ldots, c_n$ en $t=0,\ldots,n$. Probar que existe al menos una tasa $i > -1$ que hace el VPN nulo si hay cambio de signo en los $c_t$.
+
+**A3.** Préstamo \$L$ a $n$ periodos, cuota $R$, tasa $i$. Deducir el saldo insoluto justo después del pago $k$: $R\,a_{\overline{n-k}|}$ (método prospectivo).
+
+**A4.** Método retrospectivo: saldo en $k$ = $L(1+i)^k - R\,s_{\overline{k}|}$. Verificar que coincide con el prospectivo.
+
+**A5.** Con fuerza de interés $\delta_t$, escribir la ecuación de valor en términos de integrales y deducir el factor de acumulación.
+
+**A6.** Serie de pagos continuos con intensidad $\rho(t)$ en $[0,n]$. Valor acumulado en $n$ con fuerza $\delta$ constante.
+
+**A7.** Dos planes de pago para el mismo préstamo. Plan A: 24 cuotas mensuales $R$. Plan B: 12 cuotas semestrales $S$. Relacionar $R$ y $S$ si la tasa es $i^{(12)} = i^{(2)}$ equivalente.
+
+**A8.** Fondo de amortización: préstamo \$P$ con pago único al final; el deudor deposita en un fondo que paga $j$. Deducir el depósito periódico para que el fondo alcance $P(1+i)^n$ en $n$.
+
+**A9.** Tiempo de duplicación con fuerza de interés variable $\delta_t = \alpha/(1+\alpha t)$. Hallar $t$ tal que $a(t)=2$.
+
+**A10.** Ecuación de valor con dos incógnitas: deuda \$D$; pagos \$P_1$ en $t_1$ y \$P_2$ en $t_2$ con $P_1+P_2$ fijo. ¿Qué relación entre $t_1,t_2,i$ hace que $P_1=P_2$?
+
+**A11.** Sinking fund: préstamo \$100.000 a 10 años, interés 8\% sobre el principal; fondo al 6\%. Cuota total anual (interés + depósito al fondo). Comparar con amortización nivelada al 8\%.
+
+**A12.** Fecha de equivalencia de una anualidad: demostrar que el promedio ponderado por valor presente de las fechas es $t^* = \sum t_k c_k v^{t_k} / \sum c_k v^{t_k}$.
+
+**A13.** Valor actual neto (VAN) de un proyecto con flujos $F_0,\ldots,F_n$ y tasa $r$. Criterio TIR: tasa $r^*$ tal que VAN=0. Ejemplo numérico con 3 periodos.
+
+**A14.** Perpetuidad con primer pago en $t=1$ de 1 UM. Valor en $t=0$ es $1/i$. Si el primer pago es en $t=k$, valor en $t=0$ = $v^{k-1}/i$.
+
+**A15.** Renta con pagos en $t=2,4,6,\ldots,20$ (10 pagos). Expresar valor presente en $t=0$ en términos de $a_{\overline{10}|}$ y tasa efectiva por biperiodo.
+
+**A16.** Ecuación de valor con inflación: flujos en nominal; tasa real $r$ y tasa inflación $f$. Escribir ecuación con tasa nominal $i = (1+r)(1+f)-1$.
+
+**A17.** Préstamo con cuotas en progresión aritmética: primera cuota $R$, incremento $d$. Valor presente de la serie y relación con $R$, $d$, $n$, $i$.
+
+**A18.** Tiempo de recuperación de la inversión (payback) descontado: dado flujo inicial $-\mathit{Inv}$ y flujos positivos $F_1,\ldots,F_n$, hallar el menor $m$ tal que $\sum_{k=1}^m F_k v^k \geq \mathit{Inv}$.
+
+**A19.** Bonos: valor nominal $N$, cupón $C$ por periodo, $n$ periodos, tasa de rendimiento $i$. Precio $P = C\,a_{\overline{n}|} + N\,v^n$. Deducir y aplicar con $N=100$, $C=5$, $n=10$, $i=6\%$.
+
+**A20.** Inversión con dos tasas: $i_1$ los primeros $k$ años e $i_2$ los siguientes $n-k$. Monto de \$1 en $n$ años. Expresar tasa efectiva nivelada $i$ tal que $(1+i)^n = (1+i_1)^k(1+i_2)^{n-k}$.
+
+---
+
+## Ejercicios propuestos (4.1)
+
+Los siguientes ejercicios se proponen para afianzar ecuación de valor, tasas, tiempo desconocido, TIR y rendimientos ponderados.
+
+1. Considera la ecuación $2.000(1+i)^4 - 300(1+i)^2 + 600(1+i) = 2.925$. Describe una situación financiera de la cual esta sea la ecuación de valor en $t=4$. Explica el origen de depósitos y los motivos de los retiros.
+
+2. Considera la ecuación $\sum_{k=1}^{35} 2.000(1+i)^{35-k} = \sum_{m=1}^{30} 10.000\,v^m$. Describe una situación financiera de la cual esta sea la ecuación de valor en $t=35$.
+
+3. Redacta un anuncio para un fondo de inversión indicando los rendimientos anuales logrados en cada uno de cinco años y el rendimiento anual ponderado por tiempo del período.
+
+4. Investiga tres fondos mutuos y el foco de portafolio de cada uno. Para cada fondo, anota las tasas de rendimiento anual en varios periodos (desde inicio a fecha reciente y un periodo reciente de cinco años). Comenta similitudes y diferencias.
+
+5. El Sr. López deposita $K$ en una cuenta con descuento efectivo anual del 4%. El saldo al final de tres años es \$982. Halla $K$.
+
+6. Marianne deposita \$2.000 en un certificado a 5 años. Al vencimiento el saldo es \$2.580,64. Halla la tasa efectiva anual.
+
+7. Suzanne hizo un único depósito de \$1.800. La cuenta tuvo tasa nominal del 3,2% convertible mensualmente y el saldo actual es \$1.965,35. ¿Hace cuánto tiempo realizó el depósito?
+
+8. (A) Usa la regla del 72 para aproximar el tiempo para duplicar a 5% y a 10% efectivo anual. (B) Calcula el tiempo exacto en cada caso.
+
+9. Deriva una regla de $n$ que aproxime el tiempo para triplicar el dinero, optimizada para tasas cercanas a 8% efectivo anual. Compara las aproximaciones a 4% y 12% con los valores exactos.
+
+10. Sidney pide \$12.000 bajo interés compuesto con descuento efectivo anual del 6%. Paga \$4.000 al final del año 1, $X$ al final del año 2 y \$3.000 al final del año 3 para liquidar exactamente. Halla $X$.
+
+11. Rafael deposita \$1.500 hoy, \$500 al año y \$1.000 al segundo año. Justo después del tercer depósito el saldo es \$3.078. Halla la tasa efectiva anual.
+
+12. Esteban pide \$20.000 al 6% efectivo anual. Pacta pagar \$10.000 al final de $T$ años y \$12.000 al final de $2T$ años. Halla $T$.
+
+13. Shakari deposita \$3.500 hoy, \$500 a los 6 meses y \$800 a los 9 meses. Un año después del inicio el saldo es \$5.012. Suponiendo interés compuesto a tasa efectiva anual constante $i$, halla $i$.
+
+14. Un préstamo se repaga con \$8.000 al año 1, \$9.000 al año 2 y \$20.000 al año 4. Se renegocia por un pago único de \$37.000 en $T$ con el mismo valor presente total al 5% efectivo anual. (A) Estima $T$ por tiempo equiparado. (B) Encuentra $T$ exacto.
+
+15. Anne y Frank piden cada uno \$12.000 a su padre. Anne pagará \$6.000 en 2 años y \$8.000 en 4 años. Frank prefiere un solo pago de \$15.000. ¿Cuándo debe pagar Frank para que ambos tengan la misma tasa efectiva?
+
+16. Sean $b_1,\ldots,b_n > 0$, $A = \frac{1}{n}\sum b_k$, $G = (\prod b_k)^{1/n}$. Demuestra $A \geq G$ (y $A > G$ si no todos son iguales) usando: (a) ecuación de la tangente a $y = \ln x$ en $(A,\ln A)$; (b) concavidad de $\ln x$; (c)–(d) deducir $\ln G \leq \ln A$; (e) concluir.
+
+17. *(Desigualdad AM–GM: mismo enunciado que 16 con notación $A$, $G$.)*
+
+18. Pagas \$1.000 en $t=0$, recibes \$4.000 en $t=1$, pagas \$2.000 en $t=2$. Sea $C = C_0 - C_1 + C_2 = 1.000$. Halla $T$ tal que un ingreso de \$C en $t=T$ tenga igual valor presente al flujo original si $i=1\%$. Muestra que $T > \bar{T} = (C_0\cdot 0 + C_1\cdot 1 + C_2\cdot 2)/C$.
+
+19. [Calculadora] Dax pide \$300.000 al 4,75% efectivo anual. Pacta 10 pagos equiespaciados: los 4 primeros de \$25.000 y los 6 siguientes de \$40.000. ¿Cuándo debe hacer el primer pago?
+
+20. Monto equivalente al final de 8 años para \$400 hoy y \$300 al final de 4 años: (a) cada pago devenga 6% simple desde su fecha, comparando en $t=0$; (b) igual pero comparando en $t=8$; (c) explica por qué (a) y (b) pueden dar resultados distintos con interés simple; (d) repite (a) y (b) con interés compuesto.
+
+21. Usa el método de Newton para la ecuación $f(t) = 525(1{,}1)^{2t} + 525(1{,}1)^t - 1000 = 0$. Elige conjetura inicial $T_1$ y genera aproximaciones hasta centésimas. ¿Por qué $T_1 = 0{,}3$ es razonable?
+
+22. Pagos de \$3.000 ahora y \$8.000 en 8 años son equivalentes a \$10.000 en 4 años a la tasa $i$ o a la tasa $j$. Halla $|j-i|$ y explica por qué el rendimiento no es único.
+
+23. Success, Inc. paga \$100.000 hoy y \$101.000 en 2 años a cambio de \$200.000 en 1 año. Muestra que no existe una TIR para esta transacción de 2 años.
+
+24. Sigmund, Inc. paga \$150.000 hoy y \$40.000 en 4 años; recibe \$210.000 en 2 años. Halla la TIR del arreglo (horizonte 4 años).
+
+25. A paga hoy \$1.000.000 a B y \$1.000.000 a C. B paga \$2.200.000 a D en 3 años. C paga \$800.000 a B en 2 años y \$350.000 a D en 2 años. D paga \$3.200.000 a A en 6 años. Calcula la tasa (a centésimas) para cada firma en su horizonte (A: 6 años, B: 3, C: 2, D: 4).
+
+26. Sulsa invierte \$8.572,80 en $t=0$ y \$28.500 en $t=2$; recibe \$27.074 en $t=1$ y \$10.000 en $t=3$. Escribe la ecuación de valor en $t=0$ y verifica que se satisface para $v = 0{,}94$, $0{,}95$ y $0{,}96$. Halla las tres tasas anuales correspondientes.
+
+27. Pedro invierte \$100.000 en $t=0$ y \$60.000 en $t=2$; recibe \$60.000 en $t=1$ y \$126.500 en $t=3$. Escribe la ecuación de valor en $t=3$, explica por qué la TIR es única y encuéntrala.
+
+28. Demuestra: si $1 < j \leq i$ y $\sum C_{t_k}(1+i)^{T-t_k} = \sum C_{t_k}(1+j)^{T-t_k}$, y además $B_{t_1}(i),\ldots,B_{t_{n-1}}(i) > 0$, entonces $j = i$.
+
+29. Ezequiel abre el 1 de enero con \$50 y hace depósitos al fin de cada trimestre por 4 años; luego no aporta más. Cierra exactamente a los 7 años con \$3.423,28. Depósitos por año: 1.º \$60/trim; 2.º \$75/trim; 3.º \$50/trim; 4.º \$300, \$450, \$800 y \$240. Halla su rendimiento anual para los 7 años.
+
+30. Préstamo de \$20.000 a repagar con 33 pagos mensuales al fin de mes: el primero \$400 y cada pago aumenta \$25. Halla la tasa anual (a centésimas). Pista: usa NPV y tanteo/IRR.
+
+31. Ángela presta \$8.000 a Kathy. Kathy paga \$6.000 al final de 1,5 años y \$4.000 al final de 3 años. Lo recibido en $t=1{,}5$ se reinvierte al 6% efectivo anual. Halla la tasa efectiva de Kathy y el rendimiento anual de Ángela.
+
+32. Kurt presta \$14.000 a Randy. Randy paga \$4.000 al año 1, \$6.000 al año 2 y al año 3. Los cobros en $t=1$ y $t=2$ se reinvierten al 3% efectivo anual. Halla (a décima) la tasa efectiva de Randy y el rendimiento anual de Kurt.
+
+33. El 15/01/2000 la Empresa A presta \$6.000 a B y \$17.000 a C. B paga \$7.000 el 15/01/2002 y se reinvierte al 5% efectivo anual. C paga \$22.500 el 15/01/2004. ¿Cuál es el rendimiento anual de A en los 4 años? Compáralo con las tasas efectivas pagadas por B y C.
+
+34. Sandra invierte \$10.832 en $t=0$. A los 3 meses su saldo es \$11.902 y deposita \$2.000. Dos meses después su saldo es \$14.308 y retira \$7.000. A los 2 años sus tenencias valen \$12.566. (A) Escribe la ecuación con el rendimiento dólar-ponderado anual exacto $i$. (B) Calcula el rendimiento aproximado usando las fórmulas de rendimiento ponderado.
+
+35. El 1/feb Arshak tiene \$19.800. Deposita \$1.200 el 1/abr y \$2.600 el 1/may. Retira \$8.400 el 1/jul. El 1/nov su saldo es \$14.820. Halla el rendimiento dólar-ponderado aproximado anual.
+
+36. El fondo de Franklin tenía \$290.000 el 01/01/1995 y \$448.000 dos años después. El interés ganado en los dos años fue \$34.000 y la tasa anual fue 5,4%. Estima la fecha promedio (dólar-ponderada) de las contribuciones.
+
+37. Una firma tiene \$5.000.000 al inicio de un periodo de 2 años y \$7.000.000 al final. Hace una única contribución de \$1.200.000. ¿Cuál es la diferencia en el rendimiento anual dólar-ponderado aproximado si la contribución se hace a los 6 meses versus a 1 año?
+
+38. Antonio invierte \$9.400 el 01/01/1988. El 01/01/1989 su saldo es \$10.600 y deposita \$2.400. El 01/07/1989 su saldo es \$14.400 y retira \$1.000. El 01/01/1992 su saldo es $P$. Expresa el rendimiento anual ponderado por tiempo como función de $P$.
+
+39. Arthur compra \$2.000 en acciones. A los 6 meses valen \$2.200 y compra \$1.000 más. Ocho meses después sus tenencias valen \$2.700 y vende \$800. Diez meses después valen \$2.100. (A) Calcula el rendimiento ponderado por tiempo anual del periodo de 2 años. (B) Calcula el rendimiento dólar-ponderado anual. (C) ¿Cuál debería ser mayor? Explica.
+
+40. Bright Future Investment Fund tiene \$1.205.000 el 1/ene. El 1/may el saldo es \$1.230.000 y justo después se añade \$800.000. Sin más aportes, si el rendimiento anual ponderado por tiempo es 16%, ¿cuál es el saldo a fin de año?

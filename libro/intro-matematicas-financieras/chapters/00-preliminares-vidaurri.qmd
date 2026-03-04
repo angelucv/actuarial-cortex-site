@@ -1,0 +1,279 @@
+---
+number: false
+---
+
+# Preliminares matemáticos {#cap-preliminares .unnumbered}
+
+Este capítulo incorpora contenido de **Vidaurri Aguirre, *Matemáticas Financieras*, 6.ª ed., Cengage (2017)** [@vidaurri2017], capítulos 1 a 4: preliminares (calculadora, notación científica, logaritmos), porcentaje y aplicaciones, variación proporcional, y sucesiones y series. Constituye la base numérica y algebraica sobre la que se apoyan el interés simple, el descuento y las anualidades.
+
+## Evolución de la notación numérica y la jerarquía operativa
+
+El lenguaje matemático es la interfaz a través de la cual el actuario modela la realidad económica. La forma en que escribimos y procesamos los números dicta la complejidad de los problemas que podemos resolver. La expansión de esta sección contextualiza cómo la humanidad pasó de sistemas de conteo primitivos a la notación científica y a las reglas estrictas de prioridad algorítmica que hoy procesan las computadoras.
+
+### Arquímedes y el desafío de los órdenes de magnitud
+
+El texto actual de la guía instruye al estudiante a desplazar el punto decimal para expresar números masivos o microscópicos en base 10, definiendo la notación científica como $a \times 10^n$. La narrativa se amplía aquí para situar el origen de este pensamiento en la Antigua Grecia, específicamente con el genio de **Arquímedes de Siracusa** (287 a.C. – 212 a.C.). En su célebre tratado *El Arenario* (*Psammites* o *The Sand Reckoner*), Arquímedes se enfrentó a un problema fundamental: el sistema de numeración griego tradicional era insuficiente para expresar cantidades astronómicas.
+
+Para demostrar que el número de granos de arena en el universo no era infinito, Arquímedes ideó un sistema de representación numérica basado en «miríadas de miríadas» (orden de magnitud de $10^8$), logrando estimar que se necesitarían aproximadamente $10^{63}$ granos de arena para llenar el universo conocido según el modelo heliocéntrico de Aristarco de Samos. Este esfuerzo intelectual fue el primer intento riguroso en la historia de la humanidad por clasificar los números en órdenes de magnitud progresivos, sentando las bases conceptuales de lo que milenios después se formalizaría como la notación científica.
+
+### Simon Stevin y la revolución de los decimales
+
+El dominio de las finanzas y el cálculo de intereses requería una precisión que las fracciones ordinarias no podían proporcionar de manera ágil. El eslabón crítico en esta evolución fue el matemático e ingeniero flamenco **Simon Stevin** (1548–1620). En 1585, Stevin publicó su obra *De Thiende* (*El Décimo*), donde introdujo y abogó por el uso sistemático de las **fracciones decimales** en la matemática europea.
+
+Stevin demostró las ventajas de utilizar un sistema decimal estandarizado, eliminando el engorroso uso de fracciones tradicionales en los cálculos comerciales. Más relevante aún para este libro, Stevin fue pionero en la aplicación de estos conceptos a la matemática financiera; en 1582 publicó *Tafelen van Interest*, un compendio de tablas numéricas con las reglas de interés simple y compuesto, repletas de ejemplos prácticos que estandarizaron la forma en que banqueros y prestamistas calculaban los rendimientos a lo largo del tiempo. Posteriormente, la notación moderna de los exponentes (escribir $x^2$, $x^3$ en la parte superior derecha) fue introducida por el filósofo y matemático francés **René Descartes** en el siglo XVII, permitiendo una compresión visual que facilitó el desarrollo del álgebra financiera y la teoría de ecuaciones.
+
+### La controversia histórica del orden de las operaciones (PEMDAS)
+
+El manual establece reglas estrictas de prioridad para el uso de la calculadora: primero signos de agrupación, luego potencias, a continuación multiplicaciones y divisiones, y finalmente sumas y restas. Es imperativo enseñar que estas reglas, comúnmente memorizadas mediante acrónimos mnemotécnicos como **PEMDAS** o **BODMAS**, no son axiomas demostrables matemáticamente, sino **convenciones tipográficas** desarrolladas a lo largo de los siglos para evitar ambigüedades en la lectura de expresiones algebraicas.
+
+Para ilustrar este punto se cita al historiador matemático **Florian Cajori** (1859-1930) y su obra en dos volúmenes *A History of Mathematical Notations* (1928-1929). Cajori documenta cómo el simbolismo actual no nació perfecto, sino que fue el resultado de un desarrollo azaroso, con múltiples titubeos, competencias entre símbolos y retrocesos evolutivos. Cajori señala que, históricamente, no siempre existió un acuerdo absoluto sobre el orden de evaluación, documentando debates sobre la prelación del signo de división ($\div$) frente a la multiplicación cuando se escriben en línea recta sin paréntesis.
+
+La incorporación de este contexto enseña al estudiante actuarial una lección vital: la necesidad de ser meticuloso y explícito con la sintaxis matemática. Al programar modelos financieros complejos en lenguajes modernos (Python, R o en la codificación de celdas en hojas de cálculo), la máquina evaluará la expresión siguiendo esta convención histórica. Entender que la jerarquía es una convención humana previene errores en la modelización de flujos de caja y en la auditoría de algoritmos financieros.
+
+## Calculadora y reglas de prioridad de las operaciones
+
+Las calculadoras electrónicas se clasifican en básicas, científicas, financieras y graficadoras. Para evaluar expresiones matemáticas es necesario seguir un **orden establecido** [@vidaurri2017, §1.1]:
+
+1. **En primer lugar:** operaciones dentro de signos de agrupación (paréntesis, corchetes, llaves).
+2. **En segundo lugar:** elevaciones a potencia y raíces.
+3. **A continuación:** multiplicaciones y divisiones.
+4. **Al final:** sumas y restas.
+
+Cuando varias operaciones están en el mismo nivel de prioridad, se realizan **de izquierda a derecha**.
+
+Las calculadoras con **lógica algebraica** respetan este orden. Las de **lógica aritmética** ejecutan las operaciones en el orden en que se teclean; el resultado puede ser incorrecto. Las calculadoras científicas y graficadoras suelen usar lógica algebraica; las financieras y básicas, lógica aritmética, por lo que conviene usar paréntesis para forzar el orden correcto.
+
+**Ejemplo (Vidaurri 1.1).** Calcular $250 + (21)(45)$. Primero la multiplicación: $(21)(45) = 945$; luego $250 + 945 = 1\,195$. Con calculadora algebraica se teclea en el orden escrito; con calculadora aritmética, $250+21\times 45$ daría $271\times 45 = 12\,195$ (incorrecto).
+
+## Notación científica
+
+La **notación científica** consiste en escribir un número en la forma
+
+$$a \times 10^n$$
+
+donde $a$ es un número mayor o igual a 1 y menor que 10, y $n$ es un entero (positivo o negativo) [@vidaurri2017, §1.2].
+
+**De notación ordinaria a científica:** mover el punto decimal $n$ lugares hacia la **izquierda** (números grandes) equivale a dividir entre $10^n$ y compensar multiplicando por $10^n$; por tanto, $48\,350\,000 = 4{,}835 \times 10^7$. Para números menores que 1, mover el punto hacia la **derecha** y compensar con $10^{-n}$: $0{,}000\,008 = 8 \times 10^{-6}$.
+
+**De notación científica a ordinaria:** si el exponente es positivo, mover el punto a la derecha; si es negativo, a la izquierda. Ejemplo: $6{,}7 \times 10^5 = 670\,000$; $4{,}613 \times 10^{-7} = 0{,}0000004613$.
+
+**Aplicación en Venezuela: Luis Márquez Muñoz-Tébar y las reconversiones monetarias.** Un punto de integración histórica para Venezuela es la figura de **Luis Márquez Muñoz-Tébar**, ingeniero civil egresado de la UCV en 1887, puente entre la ingeniería clásica y la formalización técnica del Estado: destacó en obras hidráulicas y fue precursor de los estudios estadísticos que condujeron a la organización de la Dirección General de Estadística y Censos Nacionales. Como ejercicio de aplicación de la notación científica y el manejo de órdenes de magnitud, pueden considerarse las **tres reconversiones monetarias** que ha experimentado Venezuela en las últimas décadas. El paso al bolívar fuerte (2008), al bolívar soberano (2018) y al bolívar digital (2021) implicó la eliminación de 3, 5 y 6 ceros respectivamente, sumando **catorce ceros** respecto al cono monetario original; en notación de potencias de 10, las equivalencias acumuladas son $10^3$, $10^8$ y $10^{14}$. Este fenómeno proporciona un escenario real para practicar el desplazamiento del punto decimal y el uso de $a \times 10^n$, comprendiendo que la arquitectura de la moneda es una convención humana optimizada para el procesamiento de transacciones masivas.
+
+| Fase de reconversión monetaria | Año | Factor de reducción (ceros eliminados) | Equivalencia acumulada respecto al bolívar de 1879 |
+|--------------------------------|-----|----------------------------------------|---------------------------------------------------|
+| Bolívar Fuerte | 2008 | 3 | $10^3$ |
+| Bolívar Soberano | 2018 | 5 | $10^8$ |
+| Bolívar Digital | 2021 | 6 | $10^{14}$ |
+
+En calculadoras, la tecla $\boxed{\text{EXP}}$ o $\boxed{\text{EE}}$ introduce el exponente en base 10. El número $3{,}47 \times 10^{-3}$ se introduce como `3.47 EXP (-) 3`.
+
+## La teoría de logaritmos y la primera revolución computacional
+
+En los preliminares, los logaritmos se presentan mediante sus leyes algebraicas con el propósito operativo de despejar exponentes (por ejemplo la variable de tiempo $n$ o la tasa $i$ en ecuaciones de valor). Esa presentación gana profundidad al situarlos en su contexto histórico: fueron el mayor avance en la capacidad de cómputo de la humanidad antes de los ordenadores digitales.
+
+### John Napier y el genio de la cinemática matemática
+
+El descubrimiento público de los logaritmos fue materializado en **1614** por el matemático escocés **John Napier** (1550–1617) en su obra *Mirifici Logarithmorum Canonis Descriptio*. En una época de descubrimientos astronómicos y navegación oceánica, los científicos se enfrentaban a multiplicaciones interminables de números de muchas cifras. Napier buscaba un mecanismo que simplificara estas operaciones. Su genialidad fue conceptualizar el problema mediante un modelo cinemático: dos partículas moviéndose a lo largo de líneas; la primera a velocidad constante (progresión aritmética), la segunda con velocidad decreciente proporcional a la distancia restante (progresión geométrica). La correspondencia entre ambas escalas estableció la relación fundamental: la **multiplicación** en la escala geométrica equivalía a la **adición** en la aritmética. Así nació la ley $\log(mn) = \log(m) + \log(n)$: la multiplicación se reducía a una suma, y la potenciación a una multiplicación.
+
+### Henry Briggs, Jost Bürgi y la adopción financiera
+
+El matemático inglés **Henry Briggs** (1561–1630) viajó a Edimburgo en 1615 y 1616 para colaborar con Napier. Briggs propuso calibrar el sistema con base 10, creando los **logaritmos comunes** (o vulgares), alineados con el sistema decimal. En **1624** publicó *Arithmetica Logarithmica*, con logaritmos de treinta mil números naturales con catorce decimales de precisión. En paralelo, el relojero y astrónomo suizo **Jost Bürgi** (1552–1632) había desarrollado un sistema de logaritmos de forma independiente (1603–1611) para Johannes Kepler, pero retrasó la publicación de sus tablas hasta 1620, perdiendo la prioridad histórica frente a Napier.
+
+Esta revolución tuvo un impacto inmediato en las finanzas. Las tablas de Briggs fueron el motor de cálculo para mercaderes, banqueros y primeros actuarios. Durante más de tres siglos, hasta la llegada de las calculadoras electrónicas en la década de 1970, la valoración de anualidades complejas, la proyección de intereses compuestos a largo plazo y la estructuración de la deuda soberana dependieron del uso de tablas logarítmicas y de la regla de cálculo. Aplicar un logaritmo para despejar una Tasa Interna de Retorno (TIR) es la culminación de un legado de cuatro siglos de ingeniería matemática.
+
+## Logaritmos
+
+La **logaritmación** es la operación inversa de la potenciación: dado una base $b$ y el resultado $N$ de una potencia, hallar el exponente $L$. Se escribe $\log_b N = L$ si y sólo si $b^L = N$, con $b > 0$, $b \neq 1$ y $N > 0$ [@vidaurri2017, §1.3–1.4].
+
+**Leyes de los logaritmos** (base $b > 0$, $b \neq 1$):
+
+- $\log_b 1 = 0$; $\log_b b = 1$.
+- $\log_b(MN) = \log_b M + \log_b N$.
+- $\log_b(M/N) = \log_b M - \log_b N$.
+- $\log_b M^n = n \log_b M$.
+- $\log_b \sqrt[n]{M} = (1/n)\log_b M$.
+
+**Sistemas usuales:** logaritmos **decimales** (base 10, se denotan $\log$ o $\log_{10}$) y **naturales** (base $e$, se denotan $\ln$). Relación: $\log_b N = \frac{\ln N}{\ln b}$.
+
+Los logaritmos se usan para despejar exponentes (p. ej. en $a_n = a_1 r^{n-1}$ para hallar $n$) y en modelos financieros (tiempo para duplicar capital, etc.).
+
+## El nacimiento de la aritmética comercial: proporcionalidad y porcentajes
+
+El manual aborda el cálculo de porcentajes y la variación proporcional (regla de tres directa e inversa) como herramientas fundamentales para el descuento comercial, el cálculo de utilidades y el reparto de capitales. La historia de estos conceptos se entrelaza con la globalización del comercio; su inclusión conecta al estudiante con las raíces de la economía de mercado.
+
+### Brahmagupta y la formalización algorítmica en la India
+
+La **regla de tres**, piedra angular de la proporcionalidad financiera, tiene sus raíces más profundas en la matemática de la antigua India. Fue el astrónomo y matemático indio **Brahmagupta** (598–668 d.C.), director del observatorio de Ujjain, quien en su obra *Brahmasphutasiddhanta* (628 d.C.) no solo formalizó el uso del número cero como entidad matemática con valor propio, sino que estableció las reglas operativas para los números positivos y negativos, denominándolos «fortunas» y «deudas». Este marco fue revolucionario para la contabilidad y el comercio. La matemática india perfeccionó la regla de tres simple, directa, inversa y compuesta, creando algoritmos reproducibles para calcular proporciones en transacciones de intercambio. Estos conocimientos trascendieron la India y fueron absorbidos por el mundo islámico; figuras como **Al-Khwarizmi** en el siglo IX y **Al-Biruni** (973-1050) tradujeron y expandieron estos conceptos; Al-Biruni dedicó un tratado completo a la aplicación de la regla de tres india, facilitando su adopción por los mercaderes árabes que dominaban las rutas comerciales del Mediterráneo y Asia.
+
+### La Aritmética de Treviso y Luca Pacioli: el Renacimiento financiero
+
+La importación de la aritmética indo-arábiga a Europa desencadenó una revolución económica. El hito que marca la democratización del cálculo financiero es la publicación en **1478** de la **Aritmética de Treviso** (autor anónimo), reconocida como el primer libro de matemáticas impreso en Occidente. Escrita en dialecto veneciano con propósito pragmático, instruía a la emergente clase media burguesa en prácticas mercantiles: uso del sistema posicional hindú-árabe, regla de tres para participaciones en sociedades según tiempo y capital, conversión de divisas y reparto de utilidades.
+
+En **1494**, el fraile franciscano y matemático italiano **Luca Pacioli** (1445–1517) consolidó esta revolución con su *Summa de arithmetica, geometria, proportioni et proportionalita*. Pacioli, considerado padre de la contabilidad moderna, integró la regla de tres y las particiones proporcionales en un marco analítico estricto. Su exposición del sistema de partida doble proporcionó a los mercaderes venecianos la herramienta para auditar la realidad de sus empresas, estableciendo un paradigma de control financiero que perdura hasta hoy y que constituye la base de la contabilidad a costo amortizado exigida por las normativas de información financiera.
+
+### La evolución tipográfica del símbolo de porcentaje
+
+El concepto de tributación fraccionaria existía desde la antigüedad; en la Roma de Augusto se aplicaba un impuesto del 1/100 (*centesima rerum venalium*) sobre bienes vendidos en subasta. La formalización del porcentaje comercial y su simbología ocurrieron durante el Renacimiento en la península itálica. Los escribanos y comerciantes italianos usaban la expresión latina «per cento» en contratos y letras de cambio. Hacia **1425**, la necesidad de agilizar la escritura llevó a abreviar la expresión como «p. cº» o «p. $\circ$». Con el tiempo, la letra «p» fue perdiendo forma, quedando dos círculos; para evitar confusión con $0/0$, se adoptó la barra diagonal inclinada, cristalizando en el símbolo **%** en el siglo XVIII. Esta viñeta histórica muestra que la notación matemática es una tecnología humana optimizada para la eficiencia en los mercados financieros.
+
+| Época histórica | Hito en la matemática comercial | Actores principales | Impacto en la teoría financiera |
+|-----------------|--------------------------------|---------------------|----------------------------------|
+| Siglo VII (India) | Invención del cero y formalización de la regla de tres | Brahmagupta | Cálculos algorítmicos de proporciones y tratamiento de deudas (números negativos). |
+| Siglo XI (Arabia) | Tratados sobre la regla de tres y álgebra | Al-Biruni, Al-Khwarizmi | Sistematización de ecuaciones aplicadas a herencias y comercio. |
+| 1478 (Italia) | Publicación de la Aritmética de Treviso | Anónimo veneciano | Primer manual impreso para enseñar matemáticas financieras a mercaderes. |
+| 1494 (Italia) | Publicación de la *Summa* de Pacioli | Luca Pacioli | Estandarización de la partida doble y la proporcionalidad en contabilidad. |
+| Siglos XV–XVIII | Evolución del «per cento» al símbolo % | Escribanos europeos | Aceleración de la documentación de contratos, intereses y descuentos. |
+
+**Proporcionalidad en la economía colonial venezolana.** La introducción de la regla de tres y el reparto proporcional puede ilustrarse con el funcionamiento de las **Cajas de comunidades de indios** durante la época colonial, las cuales financiaban litigios territoriales y actuaban como mecanismos de ahorro colectivo mucho antes de la instauración de la banca comercial en 1839. Esta narrativa muestra que la proporcionalidad financiera es un principio operativo ancestral en la economía venezolana, vinculando el rigor de Luca Pacioli con la historia de las finanzas agrarias nacionales.
+
+## Porcentaje y sus aplicaciones
+
+El **porcentaje** (tanto por ciento) proviene del latín *per centum*: por ciento significa **centésima** [@vidaurri2017, cap. 2]. Así, $15\% = 15/100 = 0{,}15$; cualquier decimal se expresa en % multiplicando por 100 y añadiendo el símbolo %.
+
+**Términos:** si se pide el “$p\%$ de $B$”, $B$ es la **base**, $p\%$ es el **porcentaje** y el resultado es el **producto**: $\text{producto} = (\text{porcentaje}/100) \times \text{base}$.
+
+**Cambio porcentual.** Si una magnitud pasa de $N_1$ a $N_2$, el cambio porcentual (en decimal) es
+
+$$\mathrm{cp} = \frac{N_2}{N_1} - 1. \tag{0.1}$$
+
+Multiplicando por 100 se obtiene el porcentaje. Si $\mathrm{cp} > 0$ hay aumento; si $\mathrm{cp} < 0$, disminución.
+
+**Ejemplo.** Automóviles en una zona: 720\,713 en 2001 y 1\,782\,030 en 2012. $\mathrm{cp} = 1\,782\,030/720\,713 - 1 \approx 1{,}4726$ → 147,26% de incremento.
+
+### Utilidad sobre el costo y sobre el precio de venta
+
+La **utilidad bruta** $U_b$ es la cantidad que se suma al costo $C$ para cubrir gastos de operación y ganancia: **precio de venta** $P = C + U_b$ [@vidaurri2017, §2.2]. La utilidad bruta puede expresarse como porcentaje **del costo** o **del precio de venta**:
+
+- **Sobre el costo:** $U_b = x\%$ de $C$ → $P = C + x\,C = C(1+x)$.
+- **Sobre el precio de venta:** $U_b = x\%$ de $P$ → $P = C + x\,P$ → $P(1-x) = C$ → $P = C/(1-x)$.
+
+Conversión entre ambos: si la utilidad es el 60% del costo, con $C=100$ se tiene $U_b=60$, $P=160$; el porcentaje sobre el precio es $60/160 = 0{,}375 = 37{,}5\%$.
+
+### Descuento comercial (porcentaje)
+
+En ventas, el **descuento comercial** es una rebaja aplicada sobre el precio de lista (o valor nominal). Si el descuento es $d\%$ del precio $P$, el precio final es $P - (d/100)P = P(1-d/100)$. Para recuperar el precio antes del descuento a partir del precio final: si $P_{\mathrm{final}} = P(1-d)$, entonces $P = P_{\mathrm{final}}/(1-d)$ [@vidaurri2017, §2.3].
+
+## Variación proporcional
+
+### Variación proporcional directa
+
+Se dice que $y$ es **directamente proporcional** a $x$ si existe una constante $k \neq 0$ tal que
+
+$$y = k\,x. \tag{0.2}$$
+
+$k$ es la **constante de proporcionalidad directa**. Si $x$ aumenta, $y$ aumenta en la misma proporción [@vidaurri2017, §3.1].
+
+**Ejemplo.** Reparto de \$68\,640 entre tres personas que trabajaron 24, 18 y 10 días. La cantidad $D$ que recibe cada uno es proporcional a los días $t$: $D = k\,t$. Total de días $= 52$, luego $k = 68\,640/52 = 1\,320$. Cada uno recibe: $(1320)(24) = 31\,680$, $(1320)(18) = 23\,760$, $(1320)(10) = 13\,200$.
+
+### Variación proporcional inversa
+
+Se dice que $y$ es **inversamente proporcional** a $x$ si existe $k \neq 0$ tal que
+
+$$y\,x = k \quad \Leftrightarrow \quad y = \frac{k}{x}. \tag{0.3}$$
+
+Si $x$ aumenta, $y$ disminuye [@vidaurri2017, §3.2].
+
+**Ejemplo.** Velocidad $v$ y tiempo $t$ para recorrer una distancia fija $d$: $v\,t = d$, luego $t = d/v$ (inversamente proporcionales).
+
+### Variación proporcional mixta y reparto proporcional
+
+En la **variación mixta** una magnitud depende de varias otras (directa o inversamente). El **reparto proporcional** consiste en distribuir una cantidad $T$ entre varios participantes de forma directamente o inversamente proporcional a ciertos números (días trabajados, capital aportado, etc.). Si las partes son $x_1, x_2, \ldots, x_n$ y son proporcionales a $a_1, a_2, \ldots, a_n$, entonces $x_j = k\,a_j$ con $k = T/(a_1+\cdots+a_n)$ [@vidaurri2017, §3.3].
+
+## Sucesiones, series y la intersección axiomática con el interés
+
+La base algorítmica del valor del dinero en el tiempo reside en la teoría de las sucesiones. El manual aborda las fórmulas sumatorias para las progresiones aritméticas (aumento aditivo constante) y geométricas (crecimiento multiplicativo por una razón común $r$). Estas estructuras distinguen el interés simple del interés compuesto.
+
+### El crecimiento lineal y Carl Friedrich Gauss
+
+El interés simple se comporta matemáticamente como una **progresión aritmética**. La anécdota del matemático alemán **Carl Friedrich Gauss** (1777–1855), «el príncipe de las matemáticas», ilustra el poder de la estructura: siendo niño en primaria, su profesor pidió sumar los naturales del 1 al 100. Gauss escribió 5050 en segundos al detectar la simetría: $1+100 = 101$, $2+99 = 101$, …, formando 50 pares que suman 101. Había derivado intuitivamente la fórmula $S_n = \frac{n}{2}(a_1 + a_n)$. Esta observación de patrones estructurales es superior a la iteración mecánica, una habilidad crítica para el actuario que diseña tablas de amortización.
+
+### El interés compuesto y el descubrimiento del número $e$
+
+La **progresión geométrica** es el andamiaje del interés compuesto y de las rentas ciertas (anualidades). Sus orígenes aplicados al crecimiento de la riqueza se remontan a Babilonia y al Antiguo Egipto. El hito más profundo en la historia del interés compuesto es el **descubrimiento del número $e$**. A diferencia de $\pi$ (origen geométrico), el número irracional y trascendente $e \approx 2{,}71828\ldots$ tiene un **origen estrictamente financiero**.
+
+En **1683**, el matemático suizo **Jacob Bernoulli** (1654–1705) imaginó un capital de 1 unidad al 100% anual ($i=1$). Con capitalización anual el monto es 2; semestral $(1+1/2)^2 = 2{,}25$; mensual $(1+1/12)^{12} \approx 2{,}613$. Bernoulli preguntó por el **límite** si la capitalización se hacía infinitamente frecuente, es decir el valor de
+
+$$\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n.$$
+
+Demostró que este límite no crece hasta el infinito, sino que converge a una constante entre 2 y 3: la primera definición en la historia de un número mediante un proceso de límite. Aproximadamente medio siglo después, **Leonhard Euler** (1707–1783) calculó sus decimales con precisión, descubrió que la derivada de $e^x$ es $e^x$ y la bautizó con la letra $e$. Esta narrativa sienta las bases para la **fuerza de interés** $\delta$ y la función de acumulación continua $A(t) = K \cdot e^{\delta t}$, que se desarrollan en capítulos posteriores.
+
+## Sucesiones y series aritméticas
+
+Una **sucesión aritmética** (progresión aritmética) es aquella en la que cada término, a partir del segundo, se obtiene sumando al anterior una constante $d$ llamada **diferencia común**: $a_n = a_{n-1} + d$ [@vidaurri2017, §4.2]. Se cumple
+
+$$a_n = a_1 + (n-1)\,d. \tag{0.4}$$
+
+La **serie aritmética** es la suma $S_n = a_1 + a_2 + \cdots + a_n$. Por la idea de Gauss (sumar primer término con último, segundo con penúltimo, etc.):
+
+$$S_n = \frac{n\,(a_1 + a_n)}{2}. \tag{0.5}$$
+
+Sustituyendo $a_n = a_1 + (n-1)d$ se obtiene la forma alternativa
+
+$$S_n = \frac{n}{2}\,\bigl[2\,a_1 + (n-1)\,d\bigr]. \tag{0.6}$$
+
+**Ejemplo.** Suma de los primeros 50 términos de 5, 12, 19, …: $d=7$, $a_{50} = 5 + 49(7) = 348$, $S_{50} = 50(5+348)/2 = 8\,825$.
+
+## Sucesiones y series geométricas
+
+Una **sucesión geométrica** (progresión geométrica) es aquella en la que cada término, a partir del segundo, se obtiene multiplicando el anterior por una constante $r$ (razón común): $a_n = a_{n-1}\,r$, $r \neq 0$ [@vidaurri2017, §4.3]. Se cumple
+
+$$a_n = a_1\,r^{n-1}. \tag{0.7}$$
+
+La **serie geométrica** (suma de los $n$ primeros términos) es
+
+$$S_n = a_1 + a_1 r + a_1 r^2 + \cdots + a_1 r^{n-1} = \frac{a_1(1 - r^n)}{1 - r}, \quad r \neq 1. \tag{0.8}$$
+
+Si $|r| < 1$, la suma **infinita** existe: $S_\infty = a_1/(1-r)$.
+
+**Ejemplo.** Sueldo inicial \$172\,200 con aumentos anuales del 8% durante 5 años. Los sueldos forman una progresión geométrica con $r = 1{,}08$. Sueldo en el año 6: $a_6 = 172\,200\,(1{,}08)^5 \approx 253\,018{,}29$.
+
+Estos conceptos se utilizan en matemáticas financieras para valorar rentas, amortizaciones y capitalización compuesta. Siguiendo a Díaz Mata y Villalobos, la **capitalización compuesta** es en esencia una **progresión geométrica** (crecimiento por razón constante $(1+i)$), mientras que la **capitalización simple** se comporta como una **progresión aritmética** (crecimiento por diferencia constante).
+
+**Propiedades de logaritmos y despeje de plazos.** En las ecuaciones de valor el tiempo $n$ suele aparecer en el exponente. La propiedad $\log(a^n) = n\,\log(a)$ permite transformar relaciones multiplicativas en aditivas y despejar el plazo en problemas de acumulación o descuento. La expansión de Taylor para funciones logarítmicas se utiliza en análisis de sensibilidad (duración y convexidad de bonos) para aproximaciones lineales cuando los cambios en la tasa son pequeños [@kellison2008; @broverman2017].
+
+## Series de Taylor y aproximación iterativa
+
+Para las «Perspectivas avanzadas y tendencias 2026» (Parte III), el estudiante debe comprender el análisis de sensibilidad y la medición del riesgo. Se incorporan aquí dos bloques analíticos que sirven de transición hacia la matemática financiera superior.
+
+### Series de potencias de Taylor y análisis de sensibilidad
+
+La matemática del riesgo exige comprender cómo varía el valor de un activo cuando cambian las condiciones del mercado. En **1715**, **Brook Taylor** (1685–1731) publicó el teorema que permite expandir funciones suaves en series infinitas de potencias (esbozado antes por James Gregory en 1671). La serie de Taylor aproxima $f(x)$ alrededor de un punto $a$ mediante
+
+$$f(x) \approx f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots$$
+
+En el contexto actuarial, la relación entre el precio de un bono y la tasa de rendimiento no es lineal sino una curva convexa descendente. Para estimar la caída de precio $\Delta P$ ante un choque en la tasa $\Delta i$ se usa una aproximación de Taylor de segundo orden:
+
+$$\frac{\Delta P}{P} \approx -D_{\mathrm{mod}}\, \Delta i + \frac{1}{2}\, C\, (\Delta i)^2$$
+
+donde la **Duración modificada** $D_{\mathrm{mod}}$ (derivada de la Duración de Macaulay, 1938) mide la sensibilidad lineal, y la **Convexidad** $C$ (segundo término) cuantifica la curvatura y corrige el error de la aproximación lineal. Esta noción es la base de la **Estrategia de inmunización actuarial** (Frank M. Redington, 1952): igualar duraciones de activos y pasivos y asegurar que la convexidad de los activos sea superior a la de los pasivos para inmunizar el superávit frente a movimientos de la curva de tipos.
+
+### Método de Newton-Raphson
+
+Para transacciones con un solo pago futuro, raíces enésimas o logaritmos bastan para despejar $n$ o $i$. Cuando hay **múltiples flujos de caja irregulares**, el cálculo de la TIR exige hallar las raíces de un polinomio de grado $n$. Por el teorema de Abel-Ruffini no existen fórmulas algebraicas cerradas para polinomios de grado superior a cuatro. Por ello se introduce el **método de Newton-Raphson** (Newton, finales del s. XVII; Raphson): utiliza la derivada para construir sucesivas rectas tangentes que convergen con rapidez a una raíz de $f(x)=0$:
+
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+
+En finanzas computacionales, la TIR se calcula con algoritmos (p. ej. en hojas de cálculo o en Python) que ejecutan iteraciones de Newton-Raphson. Entender este método desmitifica la herramienta: cuando no converge o arroja error, suele deberse a la naturaleza del polinomio (raíces múltiples, regla de los signos de Descartes).
+
+## Epílogo preliminar: la frontera del cálculo estocástico
+
+El último pilar de la expansión de los preliminares sirve de prólogo a la Parte III: la transición de la matemática financiera determinista hacia la evaluación estocástica del riesgo.
+
+### De Witt, Halley y los albores de la ciencia actuarial
+
+La ciencia actuarial, que fusiona aritmética financiera y probabilidad, tiene su punto de ignición en el siglo XVII en el norte de Europa. En **1671**, **Jan de Witt** (Gran Pensionario de la República Holandesa, con Joannes Hudde) publicó *Waerdye van lyfrenten naer proportie van losrenten* (*El valor de las rentas vitalicias en proporción a los bonos de rescate*). De Witt aplicó la teoría de la probabilidad y la esperanza matemática a un problema financiero práctico: demostró que las anualidades vitalicias debían valorarse como el valor presente descontado de cada flujo futuro multiplicado por la probabilidad de supervivencia. En **1693**, **Edmond Halley** utilizó datos demográficos de Breslavia para construir las primeras tablas de mortalidad estadísticamente sólidas, sentando las bases operativas de la industria de seguros de vida.
+
+### Louis Bachelier, Kiyosi Itô y el dinamismo estocástico moderno
+
+En **1900**, el matemático francés **Louis Bachelier** presentó en la Sorbona su tesis *Théorie de la spéculation*: fue el primero en usar la generalización continua del paseo aleatorio (movimiento browniano) para modelar estocásticamente los precios de opciones en bolsa, adelantándose a Einstein. En la década de 1930, **Andrey Kolmogorov** dotó a la teoría de la probabilidad de rigor axiomático. En la de 1940, **Kiyosi Itô** desarrolló el **cálculo estocástico** (Lema de Itô), permitiendo resolver ecuaciones diferenciales con «ruido» aleatorio. Estas herramientas culminaron en el modelo de valoración de opciones de Black, Scholes y Merton (1973), basado en el Lema de Itô y el movimiento browniano geométrico. Mencionar este linaje en los preliminares prepara al estudiante para la Parte III: simulaciones de Monte Carlo, proyecciones de la curva de tipos (modelos tipo Vasicek) y gestión de riesgo en instrumentos como criptoactivos y bonos sostenibles (Greenium).
+
+### Pilares matemáticos y su aplicación en matemáticas financieras
+
+Antes de abordar las fórmulas financieras es necesario establecer la base algebraica que permite su manipulación [@diazmata2013]. La teoría de exponentes da el lenguaje del crecimiento geométrico: los **exponentes negativos** son esenciales para el descuento (valor actual de flujos futuros); los **exponentes fraccionarios** permiten la equivalencia de tasas en distintos periodos de capitalización. La resolución de la variable **tiempo** $n$ en ecuaciones de valor exige el uso de **logaritmos**: la propiedad de transformar productos en sumas y potencias en productos permite despejar incógnitas en modelos de interés compuesto y anualidades. Las **progresiones aritméticas** (diferencia común $d$) modelan créditos con gradientes lineales; las **geométricas** (razón $r$) son el fundamento del interés compuesto y de las rentas variables que crecen a una tasa porcentual fija. La convergencia de la serie geométrica cuando $|r|<1$ es esencial para las **perpetuidades** ($n \to \infty$).
+
+| Concepto matemático | Aplicación en matemáticas financieras | Relevancia teórica |
+|---------------------|--------------------------------------|--------------------|
+| Exponente cero | Definición del capital inicial ($t=0$) | $a(0)=1$ como condición inicial |
+| Exponente negativo | Factor de actualización o descuento | $v=(1+i)^{-1}$ para valor presente |
+| Exponente fraccionario | Tasas equivalentes en periodos menores al año | Conversión de tasas nominales a efectivas |
+| Logaritmo natural | Despeje de plazos y fuerza de interés | Base para modelos de crecimiento continuo $\delta=\ln(1+i)$ |
+| Serie geométrica | Valuación de anualidades de cuota fija | Suma de flujos de efectivo descontados $a_{\overline{n}|}$ |

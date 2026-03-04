@@ -1,0 +1,681 @@
+THE  MORTALITY TABLE
+
+Mortality experience
+
+The subject of Life Contingencies, a knowledge of which is fundamental to the actuary, is an application of mathematics dealing with calculations in respect of payments depending on human survivorship or death. Such calculations, which usually include the element of compound interest as well as mortality, are required in connection with life assurance, pension funds and friendly societies.
+
+Although the rate or rates of interest money will earn in future are not known, problems in compound interest can be solved by making assumptions as to the future rate of interest. Once the assumptions are made, numerical results are obtained with the aid of tables
+
+containing functions such as (I +it, vn, etc. Similarly, although the
+
+mortality a group of persons will experience in the future is not known, problems in life contingencies can be solved by making assumptions on future mortality and numerical results will be obtained with the aid of tables of functions based on that mortality. The basic table, a mortality table, sometimes referred to as a life table, is strictly confined to the fundamental functions which will be explained in this chapter and which do not involve compound interest. Other functions which are based on the mortality table and which iJ)volve compound interest as well as mortality will be described commencing with Chapter 2.
+
+As the best indication-of what is likely to happen in the future is often a knowledge of what has happened in the past, mortality tables are usually based, directly or indirectly, on the mortality which has actually been experienced by a suitable group of persons. Before the functions comprised in the mortality table are studied we will first consider how such a mortality experience could be investigated and how the results could be recorded.
+
+If a large number, n,., of persons attaining the birthday oc during a
+
+short period of time could be kept under observation from that age until all of them had died, the number of them surviving to each
+
+-2	CHAPTER  ONE
+
+birthday, x = ix+ I, x = a+2, and so 011, would form a non­ increasing sequence nx and ultimately at some value of x equal, say, to w we should have n., = 0, when they have all died.
+
+The number of persons who died between exact age x and exact· age x+1 would be nx-nx+t• that is -An.,,. The ratio -Anxfn.,, would be the proportion of persons dying between exact age x and exact age x + 1 out of a given number (in this case n.,,) attaining age x. This proportion forms a useful measure of the mortality at age x and may be referred to as the observed rate of mortality at age x.
+
+If oc were a young age, such as 20, or even 0, and w were in the neighbourhood of 105 or 110, as it might quite well be, it would take nearly a century to carry out such a set of observations. Furthermore, during this period economic, social, sanitary, medical and other conditions, which are likely to have important influences on mortality, would probably have changed very considerably, so that the recorded values of n.,,, -Anx and - t:..n.,,/n.,,, would provide very little indication of the mortality likely to be experienced by a comparable group of persons in the future. Observations of the mortality of groups of persons are thus not conducted precisely in the manner just described.
+
+In the past 200 years or so, however, observed rates of mortality have been computed for various kinds of groups of persons, in different parts of the world, at all ages, and during different periods of years. The technical processes by y.hich these rates have been obtained is not the subject of this book. It is sufficient for our purpose to say that there exists a large amount of data (usually in the form of rates of mortality) from which it is apparent that mortality varies, not only with regard to age and sex, but also with regard to many other characteristics of the persons concerned and their environment, some of which were mentioned in the previous paragraph. Improve­ ments in many of these conditions have caused rates of mortality in most countries and at most ages to fall for a century, but the infor­ mation available enables reasonable assumptions to be made on the mortality likely to be experienced in the future by various groups of persons.
+
+Let us now return to the illustrative group of nx persons observed from age rx to age w. If a sudden change took place in the environ­ mental conditions in the year in which these persons attained age y­ such change could on the one hand be an epidemic or a war or some other change which increased rates of mortality or on the other hand
+
+might be the introduction of a new drug or a new surgical treatment which reduced rates of mortality-this would cause a break at age y in the progression of the observed rates of mortality, -!w,,jn,,, from age to age. Also it is known that in certain parts of the world rates of mortality fluctuate from year to year owing to variations in weather conditions. Apart from influences such as these, which we may refer to briefly as 'sudden changes' and which would produce irregularities in the series - !w,,/n,,, we should expect that changing economic, social and other conditions would be gradual in their effect and would not unduly disturb the steady progression of the rates from age to age.
+
+If we divided the nx persons into a number of sub-groups by some random process, the known features of statistical regularity would lead us to expect that the rates of mortality observed at the same age x in different sub-groups would be approximately the same. There would be variations between the sub-groups but these would have all the characteristics of random variations. If, on the other hand, we were to divide the n,, persons into a number of sub-groups according to some feature likely to affect mortality, for example sex or occupa­ ation, we should expect the observed rates of mortality at any age x in these sub-groups to differ to a larger extent than could be explained by random variations.
+
+Statistical considerations also suggest that the irregularities in the progression of the observed rates of mortality, -An,,/n,., from age to age (apart from irregularities due to 'sudden changes') could be reduced by increasing the number, n", of persons observed. This involves the conception of the group of n" persons as a random
+
+sample from some larger group of persons. A less precise way of looking at the matter is to assume that additional persons could be included who would be constituted similarly to the original group n,, with regard to all the characteristics influencing mortality. In practice, however, it would be very unusual to be able precisely to define the population from which n,, was to be regarded as a random sample or to include an additional group of persons similarly constituted, and the possibility of reducing irregularities by increasing n" is therefore to be regarded from a theoretical standpoint rather than as a practical possibility. Also even if n,. could be made very large, the numbers surviving to very high ages would be small and therefore there would be irregularities in the progression of the observed rate of mortality from age to age at these high ages.
+
+The mortality table
+
+It follows from what has been said in the previous section that the idea of a group of persons attaining age a: and being gradually reduced in numbers, until they are all dead, by the operation of mortality in such a way that the rates of mortality at successive ages form a smooth series is a purely theoretical conception. It is, never­ theless, a very useful conception which forms the basis of the theory of life contingencies and has been shown by long use to be suitable for solving most practical problems in life assurance and similar work. The fundamental function of the mortality table is a function known as Ix· This hypothetical function corresponds to the empirical sequence nx which has been discussed above. It is a positive non­ increasing function representing the number oflives who are expected to survive to age x out of I,, lives who attain age a:, this being the youngest age for which /,, is tabulated. For theoretical purposes it is convenient to assume that /,, is a continuous function, having values for all x and not just integers and with unique finite differential coefficients to any required order at all points.
+
+Just as -An,Jn,, is the observed rate of mortality at age x, so
+
+-A/,,//,, is the rate of mortality at age x assumed in the mortality table. The mortality assumption on which the table is based may take the form of an assumed rate of mortality for each integral age x, since, given such a series of rates and a suitable arbitrary value of/,,, a column of/,, can be constructed for integral values of x. In fact, the Ix column in most mortality tables is constructed in this way. In this event, although I,,will be defined for integral ages only, we can assume that it exists for all values of x, integral and fractional. Sometimes/,. is defined by a mathematical formula, in which event we can obtain the rates of mortality by calculating numerical values of Ix for integral ages. In this case, Ix will be defined for all values of x.
+
+As described, Ix represents the number of lives who, according to the mortality table, are expected to survive to age x out of I,, lives who attain age ix. Since the mortality table can start at any age, lx+r may be regarded as representing the number of lives who are expected to survive to age x+t out of l,, lives aged x; both x and x+t not neces­ sarily being integers. Although in the definition of the mortality table nothing was said about the various characteristics of the individual hypothetical lives, the Ix lives in the mortality table, like the n,. persons in the illustrative mortality investigation, are not necessarily
+
+to be regarded as all exactly identical from the point of view of the various characteristics which influence mortality. l,,+1/l,, is a function which expresses the mortality assumption in the form of the expected proportions surviving to each age and hence it gives the probability relations as applicable to random samples. The ratio l,,+1//,, is the probability of survival to age x+t in respect of an individual life aged x taken at random from an indefinitely large number of lives who are assumed to experience, as a whole, the mortality on which
+
+the table is based. It will be seen that 1-1,,+1/Ix is analogous to the 'cumulative distribution function' of probability theory. In dealing with problems in life contingencies, whenever we refer to a life aged x
+
+we imply, unless a specific statement is made to the contrary, that a life taken at random is intended.
+
+If a random sample of m lives aged xis taken, the expected number surviving to age x+t is ml,.+1/l,,but the actual number is subject to random variations. For sufficiently large values of m these random
+
+variations are small relative to the expected number. Many of the functions developed in this book are similarly subject to random variations. Practical work usually concerns groups of lives which may be reg-arded as random samples, and these random variations are usually small in relation to the errors involved in the choice of a mortality table, to variations in mortality from year to year and to errors arising from deviations of actual rates of interest and expenses from those assumed. Accordingly they are usually ignored in practice, but the fact that they exist should not be overlooked and some mples are described in Chapter 1I.
+
+A possible table of I,, which starts at age O and ceases at age 100
+
+is shown in Table 1.1.
+
+We \VOuld then have the probability (rounded to four decimal places) of a member of the group at birth, taken at random, living to exact age 1 as 0·9929 and to exact age 2 as 0·9912. If we wished to find the probability of a member aged exactly 1 living to exact age 2 we would divide /2 by /1 that-4S 9,911,725 by 9,929,200 to give
+
+·9982.	:--'   \
+
+It is important ro-.-,-emember thaf the figures in the /,, column have
+
+no meanin individually and are only meaningful when related to each other-'--'-thus robability of a person living from exact age 20
+
+to exact age 30 js lro = 9•480•358 = ·9809. While the table should
+
+120	9,664,994
+
+strictly be interpreted only in this way this ratio is sometimes said
+
+verbally to be the 'number alive at age 30' divided by the 'number alive at age 20'.
+
+Because the figures in the table have no meaning except when
+
+divided by each other, all the figures in a mortality table could be• multiplied by a factor and no change would be made in the mortality
+
+TABLE 1.1
+
+represented-thus Table 1.2a and b would apart from the rounding of certain of the figures represent the same mortality, the first being the previous table multiplied by 10, and the second by½-
+
+While the table shown commences at age O this is not necessary and, for example, a mortality table intended for use in life assurance offices to show the mortality of annuitants might commence at age 40. Normally the /,, figure for the lowest age is taken as some convenient round number such as 1,000,000, 999,999 or 500,000-this is called
+
+the radix of the table. The first age at which the value of t., becomes negligible is called the limiting age and is denoted by w, so that I,,, = 0-in the table above m = 100. Some mortality tables are assumed to conform to a mathematical formula so that the I,, column converges asymptotically to zero and never actually becomes 0. However, for practical purposes, a limiting age such as 100, 105 or 110 is assumed for all mortality tables.
+
+TABLE 1.2a	TABLE 1.2b
+
+Probabilities of living and dying-rate of mortality
+
+Table 1.3 is an extract of a mortality table which will be used to exemplify the notation used in this section. This introduces the symbol d!C which is the difference between successive I,, figures. Thus
+
+d.JC = IJC-l_T+l•  or dx = -Alx.	(1.3.1) In the convenient (but strictly incorrect) interpretation of the mortality table mentioned in the previous section dx represents the 'number dying aged x last birthday'.
+
+TABLE 1.3
+
+Probability of death and survival can be obtained directly from the
+
+/" and d" columns of the mortality table. The symbol (x) is used to denote 'a person aged,x', or 'a life aged x'.
+
+The probability that (x) will survive to age x+ 1, is denoted by Px,
+
+so
+
+thus
+
+Px = -lx+ -1,
+
+P4o	1	80,935	•
+
+(1.3.2)
+
+The probability of a person age x dying during the year, the rate of mortality; is given the symbol qx, so
+
+thus
+
+l	'
+
+q40  = d40  =	= ·0056.
+
+140	80,935
+
+(1.3.3)
+
+The probability of (x) living for a year plus the probability of (x)
+
+dying within a year must obviously be I, so
+
+Px+qx = 1, or Px = 1-qx, or q" = 1-Px·	(1.3.4)
+
+The probability that (x) will live for 11 years to age x+n is given the symbol nPx;
+
+for example
+
+nPx= -lx+-n
+
+1x
+
+78,357
+
+sP40	·9681.
+
+80,935
+
+(1.3.5)
+
+Another way of looking at nPx is to consider it as the product of successive probabilities of living each year
+
+The probability that (x) will die within 11 years is given the symbol
+
+(1.3.6)
+
+so		=	80,935-78,357 or 455+481+5l1+546+585 or 1_.9681 q			80,935	80,935
+
+all equalling ·0319.
+
+It can be seen that if no figure prefixes the symbol p or q, I is assumed, i.e. 1Px	p,,; lqx	q,,.
+
+The probability that (x) will live m years but die in the following
+
+n years, or that (x) will die between ages x+m and x+m+n is given the symbol
+
+Thus	I	_ l43-/4s _ 79,488-78,357 _ 1,131
+
+-	140	-	80,935	-	80,935
+
+When n = 1 it may be omitted and the symbol becomes
+
+(1.3.7)
+
+being the probability that (x) will die in a year, deferred m years; thus	2lq42 ==d44 =	= ·0073.
+
+/42	79,999
+
+Mortality tables
+
+It will be seen that a mortality table is defined either by the /,, or q,, (or -p,,) columns. If the q" figures are given, the /,, column will be obtainecl by choosing a suitable radix (/0) and successively obtaining the d,, and /,, figures:-
+
+d0 = lo.qo 11 = 10-do
+
+d1 = l1.q1  and generally
+
+d,, = l,,.q,,
+
+lx+l = lx-dx•
+
+The radix is arbitrary and is chosen so that a suitable degree of accuracy is obtained when the /,, figures are divided. Apart from this
+
+IO	CHAPTER  ONE
+
+point the absolute value of an individual value of/,, is of no conse­ quence. There is no reason why the value of Ix should not be recorded in decimals and this is sometimes done at the high ages of a table in. order to obtain a smoother run of figures.
+
+The examples in this book will normally use the tables given in Appendix III-The English Life Table No. 12-Males, the Al967-70 Table for Assured Lives and the a(55) tables for Annuitants.
+
+The English Life Table No. 12-Males is constructed from the mortality rates experienced by the male population in England in the years 1960, 1961 and 1962. The A1967-70 table is based on the experience within these years of lives assured of United Kingdom life assurance companies (and has the unusual radix of 34,489 decided so that the value of the largest function calculated did not exceed the capacity of the computer). The a(55) tables give the rates of mortality separately for males and females and were based on the mortality experience of annuitants of United Kingdom life offices in 1946 to 1948, but projected into the future so that estimated rates were obtained thought to be applicable for annuities purchased in 1955.
+
+Mortality rates have been tending to decrease at most·ages and in most countries of the world for more than a hundred years, and published tables thus gradually cease to represent the experienced mortality. The English Life Tables are published at ten-year intervals, being based on the ten-yearly population census, while the assurance and annuitants tables are published at longer intervals. It might be thought that tables would become out of date quickly but is is common practice to adjust published tables, the most usual method being to deduct (or perhaps add) a certain number of years to the actual age before entering the table. One example of this is the common deduction of about four years from the age of a female policyholder in calculating the premiums for a life assurance policy, the published premium rates having been based on male mortality.
+
+Example 1.1
+
+Using the mortality table given in section 1.2, find the probability of a person aged 30,
+
+surviving to age 40
+
+dying before age 40
+
+dying between the ages of 60 and 80.
+
+Solution
+
+(i)	=	/40 =  9,241,359=  ·9748
+
+ioP3
+
+30
+
+9,480,358
+
+(ii)	=	13-0 14=0	238,999=	.0252
+
+10 30
+
+30
+
+9,480,358	or,
+
+1oq30 = 1- 10P30 = 1- ·9748 = ·0252
+
+iii)	=	160-180=  5,072,326=	.
+
+3012oq30	130	9,480,358	•
+
+Example 1.2
+
+If a mortality table is represented by the function
+
+Ix= 1000 100-x
+
+find (i) the probability of a life surviving from birth to age 19
+
+(ii) the probability of a life aged 36 dying before age 51.
+
+Solution
+
+i	=	11=9	l,000 100-19=  2=
+
+()  t9Po	lo	1,000 100	•o
+
+..)	_	/36-151 _  l,000 64-1,000 49 _  _.
+
+lJ  15q36 -  ---	-	- 11" -	•
+
+136	1,000 64
+
+Example 1.3
+
+Complete Table 1.4a.
+
+TABLE 1.4a
+
+Solution
+
+d90  = q90. l90 = ½(3,000) = 1,000
+
+:. 191 = 2,000
+
+d91 = q91- l91 =!(2,000) = 800
+
+:.  192 = 1,200
+
+and proceeding similarly we obtain Table 1.4b.
+
+TABLE 1.4b
+
+Example 1.4
+
+Prove that
+
+Solution
+
+Iq =	fx+m- lx+m+n
+
+m n x	Ix
+
+lx	l"
+
+Example 1.5
+
+A life aged 50 is subject to the mortality of the English Life Table No. 12-Males, for IO years, then the a(55) Male table, for 20 years, then the A1967-70 table with a deduction of 2 years for the remainder of life. Find the probability that the life lives to age 90.
+
+Solution
+
+In this type of question the probabilities in the age ranges should be kept separate so that the /" figures on one mortality table are
+
+always divided by a figure from the same table. Thus the required probability
+
+probability of living}
+
+{ for further 10 years
+
+. (10P78 on A1967-70)
+
+Note. The figures are taken from the Ix column of the tables; an explanation of the lcxJ column will follow later in section 1.10.
+
+Exercise 1.1
+
+Using the Al967-70 table, find the values of 20p40, 30q25, 20115q42.
+
+Exercise 1.2
+
+Using the same mortality as stated in Example 1.5 above, find the probability that the life aged 50 dies between the ages of 70 and 85.
+
+Exercise 1.3
+
+A man aged 56 is subject to the mortality of the English Life Table No. 12-Males, and his brother aged 60 is subject to the mortality of the a(55), Males table. Who is more likely to survive 10 years?
+
+The graph of/,,
+
+, So far consideration has been given mainly to exact integral ages­ this being the method by which tables are usually tabulated. If the interpretation of the mortality table as being based on a certain number of lives at an earlier age is considered it might be thought that Ix would be a discontinuous function decreasing by 1 each time one of the lives died during the year. However, this 'number alive' inter­ pretation is only a useful shorthand-the Ix figures are as previously discussed only meaningful when divided by each other to give probabilities, and considered in this way it will be obvious that Ix is a continuous function of x, as has already been mentioned in section 1.2.
+
+Actual determination of Ix at fractional ages when required will mainly bedone bysome form of interpolation except perhaps where the
+
+mortality table is known to have been based on a mathematical ex­ pression. The graph of/,, according to the English Life Table No. 12- Males is shown in Figure I.I. The general shape of the curve should be noted as well as the obvious fact that /,, is always decreasing. In most tables /,, falls steeply at the infantile ages, and there are at least two points of inflexion.
+
+In the symbol (x) for a life aged exactly x, x may thus not neces­ sarily be an integer.
+
+...:
+
+rn	20	30	40	so	so	10	so	so	1 oo 11 o
+
+Age x
+
+FIGURE 1.1 Graph of / -English Life Table No. 12-Males.
+
+The force of mortality
+
+As 1,, is a continuous function it can be differentiated and the ratio that the rate of decrease of/,, at age x bears to the value of/" at that age is called the force of mortality at age x and is represented by the symbolµ,,.
+
+(1.6.1)
+
+(1.6.2)
+
+This is a measure of the mortality at the precise moment of attaining age x expressed in the form of an annual rate. The negative sign is introduced so that µ" will be positive. l;,c being a decreasing function. The differential coefficient is divided by ( because as we have seen the absolute magnitude of the !.,. figure is arbitrary and depends on the radix of the table, and by dividing by Ix we obtain a figure which is independent of the radix.
+
+Rewriting formula (I.6.1)
+
+(1.6.3)
+
+and integrating over the range a. to the limiting age of the table•,
+
+x being written as ex+ t
+
+w-« di	f"'-"
+
+f	dt = -	l,,+1µ,,+1dt
+
+o	dt	o
+
+i.e.	[l,,+,J;-« = -	f:-«	l,,+1µ,,+1dt
+
+and as I,,,= 0
+
+As /.,. = 0 for all x>w, oo is often substituted for w-o: in such integrals, and writing x for ex we obtain
+
+(1.6.4)
+
+If the limits of integration above had been taken as O and I we would
+
+have obtained
+
+:.  l,.+1-l,, = - I:l,,+,µ,.+1dt
+
+and as I..+ 1 -1,. = -d,., we obtain (writing x for o:)
+
+dx = J:lx+rµx+tdt.	(1.6.5)
+
+Integrating formula (1.6.2) from age IX to IX+ n again writing IX+ t for
+
+x,
+
+i.e.
+
+la+n - e-S" /l«+tdl
+
+• - la	0
+
+and writing x instead of IX
+
+(1.6.6)
+
+and
+
+nPX
+
+(1.6.7)
+
+Formula (1.6.6) bears an obvious and important similarity to the compound interest formula:
+
+Present value of 1 due n years hence= e-J;1•41, where 15, is the
+
+varying force of interest; thus the force of mortality is analogous to
+
+the force of interest.
+
+The probability .qx can then be expressed
+
+(1.6.8)
+
+An alternative formula can be derived by integrating formula (1.6.3) from age IX to IX+ n when x is rewritten IX+ t
+
+.". [la+rJ = -
+
+l,,+tµa+1dt
+
+.". la+n- la= - J:la+tµ«+,dt
+
+and rewriting x for IX and dividing by Ix
+
+nqx = -lCx.--...l..x..c+c...'n--" = 1- f"	[x+tµx+td t
+
+(l.6.9)
+
+lx	Ix 0
+
+or	.q_, = I:1P:cJlx+,dt.
+
+(l .6.10)
+
+When n = 1,	qx = J:rPxµx+,dt.	(1.6.11)
+
+This form of expression is particularly useful when extended to multiple life functions, and can be roughly described as 'keep the life alive until duration t; kill him off at that instant; then add (i.e. integrate) these probabilities over the required time range'.
+
+Thus the probability nlmqx may similarly be expressed
+
+nlmq.r = J,.•+mtPxµx+tdt.
+
+The graph of the function µ:xx:f is called the curve of deaths. An
+
+example is given in Figure 1.2 using the same table of mortality as
+
+4000
+
+3000
+
+>c
+
+:i.
+
+2000
+
+·1000
+
+o	-.	l	J_ _t	--1.._L ---.
+
+10 20 30 40 50 60 70 80 90 100110
+
+Age x
+
+FIGURE 1.2. Graph of / µ -English Life Table No. 12-Males.
+
+was used to demonstrate the graph of Ix. The maximum and minimum points of the curve will correspond with the points of inflexion on the
+
+curve of
+
+di	d2l	•	d({ ll )
+
+Ix, as	lxµx so that --f	0 when	0.
+
+dx	dx	dx
+
+It will be found from an examination of mortality tables that at
+
+some parts of the table q" > µ" and at others q" < µ". From formula
+
+(1.6.9)
+
+f&,  = J:fx+tµ_d,dt.
+
+If lx+,µx+r is increasing, lxqx will exceed the value at the start of the interval i.e. l"µ"; so that qx> µx if the graph of lxµx is increasing.
+
+Considering the graph of Ix, as - di" = lxµx it follows that if/"µ" is
+
+dx
+
+increasing di" is decreasing, that is the gradient of the tangent to the
+
+dx
+
+curve is d creasing and the curve of/" is concave to the x-axis as demonstrated in Figure 1.3.
+
+So if the curve of /" is concave to the x-axis qx > µx, and if Ix is convex to the x-axis qx<µx.
+
+Thus µ" and q" will be most nearly equal when Ix is most nearly a linear function of x, i.e. near the point of inflexion and will differ
+
+most widely where the curvature of I" is greatest.
+
+Now di may be expressed as h.m Ix+h -1 ..., so
+
+dx	h o	h
+
+and as hq,, may be regarded as the annual rate of mortality based
+
+upon the mortality in the interval x to x +h, we see more clearly the statement at the beginning of this section describing µ,, as a nominal
+
+annual rate of mortality based on the mortality at the instant of attaining age x.
+
+While by definition q,, cannot exceed 1, asµ,, is an instantaneous rate it may exceed I and normally will do so at the beginning and end of a mortality table. Mortality is high in the period immediately following birth and for example in the first hour after birth
+
+1	q
+
+(24)(365)  0
+
+will considerably exceed	1	so that the ratio
+
+(24)(365)
+
+hqo (where h =
+
+h	.	(24)(365)
+
+>1.
+
+or 1 hour) approximating to µ,. will be
+
+In the last year of the mortality table the rate of mortality is I for all x>m- l, that is m-x<1,
+
+:. w-"q" = -1-  >1, so that µ,,>1.
+
+m-x	o,-x
+
+Agex
+
+Agex
+
+FIGURE 1.3. (a) Graph of /,, concave to x-axis. (b) Graph of Ix convex to x-axis.
+
+Example 1.6
+
+Find 1,, ifµ,,= -1-.
+
+100-x
+
+Solution
+
+Using formula (1.6.7) lx = 10e- J:l'tdr, where 10 is the arbitrary radix.
+
+lx = lo.e- Jx	1
+
+O·  100
+
+Example L7
+
+Find the differential coefficient of ,Px with respect to t and x.
+
+Solution
+
+lx+r
+
+rPx=	-,-
+
+:. loge (,px) = loge lx+,-loge Ix,
+
+and differentiating with respect to t
+
+l  d	1	d
+
+-	d- (,Px) = - -  • -d Ox+r) = - µx+I
+
+1Px t	x+t	t
+
+.  d
+
+• dt  (iP,) = -,px.µx+t·
+
+Differentiating with respect to x instead of t
+
+.	d
+
+• dx (iPx) = 1PJµx-µx+t).
+
+These two formulae are worth remembering.
+
+(1.6.12)
+
+(1.6.13)
+
+Example 1.8
+
+A life is subject to a constant force of mortality of ·039221. Find the probability
+
+That he will live 10 years
+
+That he will die within 15 years.
+
+Solution
+
+ioPx = e- JIO <·039221
+
+)dr,
+
+and as ·039221 is {J
+
+at 4% interest
+
+15px similarly is v15 at 4% = ·5553
+
+:. 15qx = 1- ·5553 = ·4447.
+
+Exercise 1.4
+
+Show by integrating formula (1.6.10) using the result (1.6.12) that
+
+nqx = 1-nPx•
+
+Exercise 1.5
+
+A life aged 50 is subject to a constant force of mortality of ·048790. Find the probability that he will die between the ages of 70 and 80.
+
+Estimation ofµ,. from the mortality table
+
+When /,. is tabulated and any underlying mathematical formula is not known, values of µJC can be found only approximately, the for­ mulae demonstrated below being the most useful.
+
+From formula (1.6.6)
+
+(1.7.1)
+
+sometimes expressed as
+
+,	= cologe Px,
+
+where 'colog' is written for ' - log'. The integral represents the mean value of µx+t between x and x+1 and if it is assumed that this approximates to µx+t we have
+
+(1.7.2)
+
+the approximation being closest where µx+1 does not differ much from a linear function in the range.
+
+Alternatively taking the value of zPx-1>
+
+so that
+
+µ,,+,dt = -loge (Px-t ·Px)
+
+-1
+
+and if the integral is considered as approximately equal to 2µ,, we get
+
+2µx =: -(loge Px-1 +loge Px)
+
+{l.7.3)
+
+Another method of approach is to assume that Ix follows a mathe­ matical form, normally a polynomial, and use the Taylor expansion
+
+to obtain a value of dlx (or l ) which can be used in the basic formula
+
+dx
+
+1 'di
+
+µ,,= - - -".
+
+l" dx
+
+For example, assuming a function of the second degree,
+
+lx+h = (.,+hl. +  :  J;
+
+and
+
+Subtracting	lx-1-lx+l = -21
+
+:. µ" = - _! .l	= !_ Ux-1-lx+1)
+
+'"	21"
+
+21"
+
+(dx-1+d,,).

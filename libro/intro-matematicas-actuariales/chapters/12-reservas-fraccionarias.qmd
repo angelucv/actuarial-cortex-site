@@ -1,0 +1,586 @@
+---
+number: false
+---
+
+# Reservas en momentos fraccionarios {#cap-reservas-fraccionarias .unnumbered .unlisted}
+
+Las reservas definidas en el capítulo anterior se han calculado en **instantes enteros**: al final de cada año de contrato (o al inicio del siguiente). En la práctica, la normativa y la contabilidad exigen a menudo el valor de la reserva en **fechas intermedias**, por ejemplo a mitad de año o al cierre del ejercicio fiscal, que no coincide con el aniversario del contrato. Weishaus [@weishaus2013] (Lesson 41, «Other Topics») trata explícitamente las **reservas entre fechas de pago** (*reserves between premium dates*): la reserva en un instante $k+t$ con $0 < t < 1$, es decir, entre el aniversario $k$ y el aniversario $k+1$. El método estándar es la **interpolación lineal** entre las reservas terminales $_kV$ y $_{k+1}V$; bajo hipótesis adicionales (por ejemplo UDD o reserva continua de Thiele) pueden obtenerse fórmulas más refinadas. Este capítulo aborda la **reserva en instantes no enteros** (momentos fraccionarios) y los métodos de aproximación más usados, siguiendo a Jordan [@jordan1982], Weishaus y al material del curso.
+
+## Hipótesis de distribución de muertes dentro del año (edades fraccionarias)
+
+Para valorar la reserva (o seguros y rentas) en un **instante fraccionario** $k+t$ o a una **edad no entera** $x+s$, se necesita una hipótesis sobre la mortalidad **dentro del año de edad**. Las tres más usadas son:
+
+### UDD (Uniform Distribution of Deaths)
+
+Bajo **UDD**, las muertes se distribuyen **uniformemente** en cada año de edad: ${}_tq_x = t\cdot q_x$ para $0 \leq t \leq 1$. Equivalentemente, ${}_tp_x = 1 - t\,q_x$ y $l_{x+t} = l_x - t\,d_x = (1-t)\,l_x + t\,l_{x+1}$ (interpolación lineal de $l_x$). La fuerza de mortalidad en $x+t$ resulta $\mu_{x+t} = q_x/(1 - t\,q_x)$. Las probabilidades y funciones conmutativas a edad $x+t$ se expresan en función de los valores en $x$ y $x+1$.
+
+### Fuerza de mortalidad constante en el año (CFM)
+
+Si $\mu_{x+s} = \mu$ (constante) para $0 \leq s < 1$, entonces ${}_tp_x = e^{-\mu t}$ y $p_x = e^{-\mu}$, de donde ${}_tp_x = (p_x)^t$ y $\mu_{x+t} = -\ln(p_x)$ (independiente de $t$). Así ${}_tq_x = 1 - (p_x)^t$. Esta hipótesis (CFM) suele dar valores ligeramente distintos a UDD, sobre todo cuando $q_x$ no es pequeño.
+
+### Balducci (hipótesis recíproca)
+
+Bajo la **hipótesis de Balducci**, se supone que $1/l_{x+t}$ es lineal en $t$: $\frac{1}{l_{x+t}} = \frac{1-t}{l_x} + \frac{t}{l_{x+1}}$. De ahí ${}_tp_x = \frac{p_x}{1 - (1-t)\,q_x}$ y la fuerza de mortalidad es $\mu_{x+t} = q_x/(1 - (1-t)\,q_x)$. Balducci suele utilizarse en contextos legales o en tablas antiguas; en la práctica moderna, UDD y fuerza constante son más frecuentes.
+
+### Comparación analítica de las tres hipótesis
+
+La siguiente tabla resume las expresiones de ${}_tp_x$ y $\mu_{x+t}$ bajo cada hipótesis, y la aplicación típica en valoración. En edades avanzadas, donde $q_x$ no es pequeño, las **divergencias** entre UDD, CFM y Balducci son apreciables: el estudiante debe discernir cuál hipótesis es más conservadora según el tipo de riesgo (por ejemplo, para reservas en momento fraccionario o para seguros pagaderos al momento de la muerte).
+
+| Hipótesis | Función ${}_tp_x$ | Fuerza de mortalidad $\mu_{x+t}$ | Aplicación típica |
+|-----------|-------------------|----------------------------------|-------------------|
+| **UDD (lineal)** | $1 - t\cdot q_x$ | $q_x/(1 - t\cdot q_x)$ | Seguros pagaderos en momento de muerte; interpolación de $l_x$ |
+| **CFM (exponencial)** | $(p_x)^t$ | $-\ln(p_x)$ (constante en el año) | Modelos estocásticos de vida; aproximaciones continuas |
+| **Balducci (recíproca)** | $p_x/(1 - (1-t)q_x)$ | $q_x/(1 - (1-t)q_x)$ | Tablas de construcción histórica; algunas normas |
+
+Comparando las tres hipótesis se obtienen reservas (y valores de $A_{x+t}$, $\ddot{a}_{x+t}$) ligeramente diferentes a edades fraccionarias; la **precisión del método prospectivo exacto** (valorar beneficios y primas futuras a edad $x+k+t$ bajo UDD o CFM) puede contrastarse con la **aproximación lineal** de la reserva entre $_kV$ y $_{k+1}V$.
+
+***
+
+## Reserva en el instante $k + t$
+
+Sea $k$ un entero no negativo y $t$ un número tal que $0 < t < 1$. El instante $k + t$ representa un momento situado $t$ años **después** del final del año $k$ de contrato (o $t$ años después del aniversario $k$). Se desea definir o aproximar la reserva en ese instante, que se denota $_kV_t$ o, en notación más explícita, la reserva a la «edad» $k+t$ del contrato. En la literatura anglosajona se habla de *reserve at duration $k+t$* o *reserve between premium dates* cuando las primas se pagan en los enteros $0, 1, 2, \ldots$ y se valora la reserva en un instante intermedio [@weishaus2013].
+
+Si se conocen las reservas en los instantes enteros $_kV$ (reserva al final del año $k$) y $_{k+1}V$ (reserva al final del año $k+1$), un enfoque habitual es **interpolar** entre estos dos valores.
+
+### Reserva exacta vs. aproximación lineal
+
+Bajo UDD (o fuerza constante), la **reserva prospectiva exacta** en $k+t$ se define como el valor presente actuarial de los beneficios futuros menos el valor presente de las primas futuras, valorando a la **edad fraccionaria** $x+k+t$. Eso requiere expresar $A_{x+k+t}$, $\ddot{a}_{x+k+t}$, etc., en función de los valores en $x+k$ y $x+k+1$ mediante la hipótesis elegida. La **aproximación lineal** ${}_{k+t}V \approx (1-t)\,{}_kV + t\,{}_{k+1}V$ es una **simplificación**: la reserva verdadera (bajo Thiele o bajo prospectivo exacto con UDD) en general no es lineal en $t$; la linealidad es cómoda para reporting y suele ser aceptada por la normativa. En contratos con **primas fraccionadas** (pago $m$ veces al año), el cálculo de la reserva exacta en $k+t$ debe considerar la **prima pendiente de cobro** hasta el final del año póliza: si la prima se cobra al inicio de cada subperíodo, entre $k$ y $k+1$ puede haber una o más primas por cobrar, y el valor presente de esas primas futuras reduce la reserva. Esta distinción separa un cálculo puramente académico de una **valoración actuarial apta para auditoría externa** (p. ej. normas SUDEASEG).
+
+## Interpolación lineal (reserva entre dos enteros)
+
+El método más simple consiste en suponer que la reserva varía **linealmente** entre $_kV$ y $_{k+1}V$ a lo largo del año:
+
+$$_kV_t \approx (1-t)\cdot {}_kV + t\cdot {}_{k+1}V.$$
+
+Así, para $t = 0$ se obtiene $_kV$ y para $t = 1$ se obtiene $_{k+1}V$. Para $t = 1/2$, la reserva a mitad del año $k+1$ es el promedio de $_kV$ y $_{k+1}V$. Weishaus [@weishaus2013] (Lesson 41.2, «Reserves between premium dates») presenta esta fórmula como la aproximación **lineal** o *straight-line*: la reserva en el instante $k+t$ se aproxima por la interpolación lineal entre el valor al final del año $k$ y el valor al final del año $k+1$.
+
+Esta aproximación es fácil de aplicar cuando solo se dispone de las reservas terminales (al cierre de cada año) y se necesita una estimación en una fecha intermedia. No tiene en cuenta explícitamente el momento exacto del pago de la prima dentro del año ni el del posible fallecimiento; por eso se considera una aproximación de primer orden. En muchas normas y prácticas de reporting se acepta o se exige esta interpolación por su simplicidad y homogeneidad.
+
+## Otras aproximaciones
+
+Bajo la hipótesis de **mortalidad uniforme en el año** (UDD), la probabilidad de muerte y la distribución del momento de muerte dentro del año pueden modelarse de forma que la reserva en $k+t$ se exprese en función de $_kV$, $_{k+1}V$, la prima $P$ y las probabilidades $q_{x+k}$. Las fórmulas resultantes son algo más precisas que la interpolación lineal pura cuando las primas y los beneficios se pagan en momentos concretos del año, pero requieren más detalle en el contrato.
+
+En la práctica actuarial también se usan **factores de interpolación** tabulados o reglas normativas que fijan cómo pasar de la reserva en enteros a la reserva en fracciones de año (por ejemplo, para el cierre contable). El método lineal sigue siendo muy utilizado por su simplicidad y por estar permitido o recomendado en muchas normas.
+
+### Definición prospectiva en instantes fraccionarios
+En teoría, la reserva en el instante $k+t$ podría definirse de forma **prospectiva** como el valor presente actuarial (a la edad $x+k+t$) de los beneficios futuros menos el valor presente de las primas futuras. Eso exigiría valorar seguros y rentas a **edad fraccionaria** $x+k+t$, lo cual requiere una hipótesis sobre la mortalidad entre edades enteras (por ejemplo UDD o fuerza constante). Bajo UDD, $A_{x+k+t}$ y $\ddot{a}_{x+k+t}$ (y análogos temporales) pueden expresarse en función de los valores en $x+k$ y $x+k+1$; sustituyendo en la fórmula prospectiva se obtiene una expresión para $_kV_t$ que depende de $_kV$, $_{k+1}V$, $P$, $q_{x+k}$ y $t$. Weishaus [@weishaus2013] indica que estas fórmulas refinadas se usan cuando se desea mayor precisión o cuando la normativa lo exige; el programa (TEMA 5) menciona «reservas fraccionarias» en este contexto.
+
+### Relación con la ecuación de Thiele (reserva continua)
+
+Cuando el contrato se valora en forma **continua** (beneficio y primas continuos), la reserva $_s\bar{V}$ en cualquier instante $s$ (incluido $s = k+t$) satisface la **ecuación diferencial de Thiele** (véase capítulo 11). Integrando esa ecuación desde $s = k$ hasta $s = k+t$ con condición inicial $_k\bar{V}$, se obtiene el valor «exacto» de la reserva continua en $k+t$. La **interpolación lineal** entre $_kV$ y $_{k+1}V$ puede interpretarse como una aproximación a esa curva continua: se aproxima la reserva verdadera (que evoluciona según Thiele) por la recta que une los dos valores terminales. Para contratos discretos (prima anual, beneficio al final del año de muerte), la reserva «exacta» en $k+t$ no está definida por Thiele de la misma forma, pero la interpolación lineal sigue siendo la práctica estándar para reporting entre fechas de pago [@weishaus2013].
+
+## Aplicación en normativa y reporting
+
+Las reservas en momentos fraccionarios son necesarias para:
+
+- **Cierre de ejercicio:** la compañía debe reportar la reserva matemática a la fecha de cierre (31 de diciembre o la que corresponda), que en general no coincide con el aniversario de cada póliza.
+- **Valor de rescate:** en muchos contratos el asegurado puede rescindir y recibir un valor de rescate, que suele definirse como una proporción de la reserva matemática en la fecha de rescate; esa fecha es típicamente no entera.
+- **Auditoría y supervisión:** el regulador puede exigir reservas valoradas en fechas estándar; las fórmulas de interpolación permiten obtener cifras homogéneas a partir de las reservas en aniversarios.
+
+En el material del curso se abordan también las **modificaciones de reservas terminales** y el **valor de rescate** en relación con la normativa (Gaceta, provisiones). La reserva fraccionaria es el puente entre la teoría en años enteros y las necesidades de reporting en fechas arbitrarias. Weishaus [@weishaus2013] (Lesson 41) incluye además **reservas en seguros semicontinuos** (beneficio pagadero en el momento del fallecimiento, primas pagaderas anualmente): la reserva neta en enteros se calcula con la fórmula prospectiva usando $\bar{A}_{x+k}$ y la renta $\ddot{a}_{x+k}$; entre fechas de pago puede aplicarse de nuevo la interpolación lineal entre las reservas terminales o fórmulas más refinadas según el contexto.
+
+***
+
+## Reservas modificadas: método temporal preliminar completo (FPT) y Ley Venezolana
+
+La **reserva matemática neta** en los primeros años puede ser **insuficiente** por los altos **gastos de adquisición** ya incurridos: si no se ajusta, aparecerían reservas negativas o pérdidas artificiales en el balance. Por eso la normativa exige a menudo **reservas modificadas** durante un período (p. ej. 20 o 25 años). El método de **Zillmer** (1863) [@zillmer1863] formaliza la deducción de los gastos de adquisición no recuperados de la reserva. Esta sección detalla el **método temporal preliminar completo (FPT)** y el **método de la Ley Venezolana**, y la relación con el valor de rescate.
+
+### Método temporal preliminar completo (FPT)
+
+En el **Full Preliminary Term (FPT)**, la **reserva al final del primer año se fija en cero**: la primera prima se «consume» íntegramente en gastos y en el costo del riesgo del primer año. No se constituye reserva en $t=1$. Las primas de los años siguientes se ajustan para que el valor presente de todos los beneficios sea igual al valor presente de la primera prima (solo cubre el primer año) más el valor presente de las primas de los años 2 a $n$. Así se definen dos niveles de prima: una **prima $\alpha$** (menor que la prima nivelada $P$) para el año 1, y una **prima $\beta$** (mayor que $P$) para los años $2, \ldots, n$. La reserva al final del año 1 es 0 (o cercana a 0 según la variante).
+
+### Método de la Ley Venezolana (amortización lineal) y expresiones genéricas ${}_t V^{\text{mod}}$
+
+El **método de la Ley Venezolana** (amortización de gastos de adquisición en 20 años, o el plazo que fije la norma) deduce de la reserva neta la parte de gastos aún no recuperada. Sea $\alpha$ el gasto de adquisición por unidad de suma asegurada (con tope legal). Amortización **lineal** en $n$ años (p. ej. $n=20$): la cantidad no recuperada en $t$ es $Z_t = \alpha\,(n-t)/n$ para $t=0,\ldots,n$; $Z_t=0$ para $t \geq n$. La **reserva modificada** es $_tV^{\text{LV}} = {}_tV - Z_t$.
+
+**Deducción de las expresiones genéricas para ${}_t V^{\text{mod}}$:**
+
+- **Para $t = 1$:** La reserva neta al final del primer año es ${}_1V$. El Zillmer no amortizado es $Z_1 = \alpha\,(n-1)/n$. Por tanto ${}_1V^{\text{mod}} = {}_1V - \alpha\,(n-1)/n$. En el método **FPT** (temporal preliminar completo), la reserva al final del año 1 se fija en **cero**, lo que determina la prima $\alpha$ del primer año y la prima $\beta$ de los años siguientes.
+- **Para $t > 1$:** ${}_tV^{\text{mod}} = {}_tV - Z_t = {}_tV - \alpha\,(n-t)/n$ para $t \leq n$, y ${}_tV^{\text{mod}} = {}_tV$ para $t \geq n$ (amortización completa). El estudiante debe dominar la comparación con un **Ordinary of Life (OV)** para obtener los parámetros $\alpha$ y $\beta$ según la Ley Venezolana.
+
+El parámetro $\alpha$ suele limitarse por comparación con la prima de un **seguro ordinario de vida (OV)** para la misma edad. La **vinculación con el valor de rescate** es obligatoria: el asegurado tiene derecho a una parte de la **reserva modificada**; el valor de rescate se calcula como porcentaje legal de $_tV^{\text{LV}}$.
+
+### Valor de rescate: enfoque implícito y gastos no amortizados
+
+El **valor de rescate (VR)** no es simplemente un porcentaje de la reserva neta: es un **mecanismo de equidad** que, en el enfoque implícito de la Ley Venezolana, descuenta los **gastos de adquisición no amortizados** (Zillmer no amortizado). Así, VR = porcentaje legal × (reserva neta − Zillmer no amortizado) = porcentaje × $_tV^{\text{LV}}$, de modo que el asegurado no recibe el beneficio de gastos que la aseguradora aún no ha recuperado. La normativa de la Superintendencia de la Actividad Aseguradora (SUDEASEG) y los artículos de la Ley de la Actividad Aseguradora referentes a provisiones técnicas establecen los criterios para el cálculo del VR mínimo y el uso de la reserva modificada en cada jurisdicción.
+
+### Resumen comparativo (reserva neta vs. modificada)
+
+| Concepto | Reserva neta | Reserva modificada (Zillmer / Ley Venezolana) |
+|----------|--------------|-----------------------------------------------|
+| Prima año 1 | Prima nivelada $P$ | Prima $\alpha$ (menor que $P$) en FPT |
+| Primas años $2 \ldots n$ | Prima nivelada $P$ | Prima $\beta$ (mayor que $P$) en FPT |
+| Reserva al final año 1 | Mayor que cero | Cercana o igual a cero (FPT); en LV $_1V^{\text{LV}} = {}_1V - \alpha(n-1)/n$ |
+
+***
+
+## Ejercicios
+
+En las soluciones se indica el razonamiento, los pasos intermedios y el resultado final.
+
+### Ejercicio resuelto (interpolación lineal de la reserva)
+
+**Enunciado.** La reserva al final del año 5 de un contrato es $_5V = 1\,200$ u.m. y al final del año 6 es $_6V = 1\,350$ u.m. Estimar la reserva a los 5 años y 4 meses (instante $k+t$ con $k=5$, $t = 4/12$) por interpolación lineal.
+
+**Solución.**  
+**Paso 1.** Interpolación lineal: $_kV_t \approx (1-t)\,{}_kV + t\,{}_{k+1}V$. Con $k=5$, $t=4/12=1/3$: $_5V_{4/12} \approx (1-t)\,{}_5V + t\,{}_6V$.  
+**Paso 2.** $_5V_{1/3} \approx (2/3)(1\,200) + (1/3)(1\,350) = 800 + 450 = 1\,250$ u.m.  
+**Resultado.** $_5V_{4/12} \approx 1\,250$ u.m.
+
+***
+
+**2. Reserva 7 años 6 meses**  
+$_7V=2\,000$, $_8V=2\,200$. Calcular reserva a 7 años 6 meses.  
+**Solución.**  
+**Paso 1.** $t=6/12=0{,}5$; $_7V_{1/2}\approx (1-t)\,{}_7V+t\,{}_8V$.  
+**Paso 2.** $_7V_{1/2}\approx 0{,}5\times 2\,000+0{,}5\times 2\,200=2\,100$ u.m.  
+**Resultado.** $_7V_{1/2}\approx 2\,100$ u.m.
+
+***
+
+**3. Reserva 7 años 9 meses**  
+Con $_7V=2\,000$, $_8V=2\,200$, reserva a 7 años 9 meses.  
+**Solución.**  
+**Paso 1.** $t=9/12=0{,}75$; $_7V_{3/4}\approx (1-t)\,{}_7V+t\,{}_8V$.  
+**Paso 2.** $_7V_{3/4}\approx 0{,}25\times 2\,000+0{,}75\times 2\,200=2\,150$ u.m.  
+**Resultado.** $_7V_{3/4}\approx 2\,150$ u.m.
+
+***
+
+**4. Valor de rescate**  
+¿Por qué en fecha no entera se usa la reserva fraccionaria para el valor de rescate?  
+**Solución.**  
+**Paso 1.** El rescate se valora en la fecha efectiva de rescisión, que suele ser no entera.  
+**Paso 2.** Se usa la reserva fraccionaria (p. ej. interpolación lineal entre $_kV$ y $_{k+1}V$); la normativa suele aceptar la interpolación lineal.  
+**Resultado.** Reserva fraccionaria para valorar el rescate en fecha no entera.
+
+***
+
+**5. Reserva en $k+1/2$**  
+Fórmula de la reserva a mitad del año $k+1$ bajo interpolación lineal.  
+**Solución.**  
+**Paso 1.** Con $t=1/2$: $_kV_{1/2}\approx (1-1/2)\,{}_kV+(1/2)\,{}_{k+1}V$.  
+**Paso 2.** $_kV_{1/2}\approx ({}_kV+{}_{k+1}V)/2$ (promedio de las reservas terminales).  
+**Resultado.** $_kV_{1/2}\approx ({}_kV+{}_{k+1}V)/2$.
+
+***
+
+**6–20. (Resueltos)**  
+6. Between premium dates: primas en enteros; se valora entre dos aniversarios. 7. $_5V_t$ con $t=3/12$: $(9/12)1\,000+(3/12)1\,080=1\,020$ u.m. 8. $t=1/2$: $(1\,000+1\,080)/2=1\,040$ u.m. 9. Definición prospectiva en $k+t$ requiere valorar a edad $x+k+t$ (UDD, etc.). 10. Thiele: reserva continua en $k+t$ satisface la EDO; lineal aproxima la curva. 11. Tipo parcial: $_4V=1\,100$, $_5V=1\,200$. Reserva a 4 años 4 meses. Sol.: $t=4/12$ ⇒ $_4V_{1/3}\approx 1\,133{,}33$. 12. Cierre ejercicio: reserva 31/12 con interpolación entre aniversarios. 13. $_kV_t=(1-t)\,{}_kV+t\,{}_{k+1}V$; para $t=0$ y $t=1$ se recuperan terminales. 14. Semicontinuo: reserva en enteros con $\bar{A}_{x+k}$, $\ddot{a}_{x+k}$; entre fechas, lineal. 15. Normativa: muchas normas exigen o aceptan interpolación lineal. 16. Tipo parcial: $_6V=1\,500$, $_7V=1\,600$. Reserva a 6a 8m. $t=8/12$ ⇒ $_6V_{2/3}\approx 1\,566{,}67$. 17. Relación con valor de rescate: rescate = % de reserva (a menudo fraccionaria). 18. Fórmulas UDD: reserva en $k+t$ con fórmulas refinadas (no solo lineal). 19. Ventaja lineal: solo se necesitan $_kV$ y $_{k+1}V$. 20. Síntesis: (a) Reserva entre fechas de pago. (b) $_5V=1\,000$, $_6V=1\,080$. Reserva a 5a 3m y a 5a 6m.
+
+**21. (Tema 5) Reserva en $k+t$ y balance**  
+La reserva en $k+t$ por interpolación lineal se usa en la reserva de balance cuando el cierre contable no coincide con aniversario. Explicar.  
+**Solución.**  
+**Paso 1.** El balance exige valorar el pasivo en la fecha de cierre; si esa fecha es $k+t$, no se dispone de la reserva exacta en ese instante.  
+**Paso 2.** Se usa $_kV_t \approx (1-t)\,{}_kV + t\,{}_{k+1}V$ para obtener un valor coherente con las reservas terminales (Tema 5).  
+**Resultado.** Interpolación lineal para reserva de balance en cierre no aniversario.
+
+**22. Valor de rescate y reserva fraccionaria**  
+Si el valor de rescate es 90% de la reserva y el asegurado rescinde a los 7 años y 4 meses, indicar qué reserva se usa.  
+**Solución.**  
+**Paso 1.** Se usa la reserva en el instante $7+4/12$: $_7V_{4/12} \approx (1-4/12)\,{}_7V + (4/12)\,{}_8V$.  
+**Paso 2.** Valor de rescate = $0{,}90 \times {}_7V_{4/12}$.  
+**Resultado.** Reserva $_7V_{4/12}$; rescate = 90% de esa reserva.
+
+**23. Tipo parcial**  
+$_9V=2\,400$, $_{10}V=2\,600$. Calcular la reserva a los 9 años y 3 meses y a los 9 años y 9 meses.  
+**Solución.**  
+**Paso 1.** $t=3/12=0{,}25$: $_9V_{0{,}25} \approx (1-t)\,{}_9V + t\,{}_{10}V$. $t=9/12=0{,}75$: $_9V_{0{,}75} \approx (1-t)\,{}_9V + t\,{}_{10}V$.  
+**Paso 2.** $_9V_{0{,}25} \approx 0{,}75\times 2\,400 + 0{,}25\times 2\,600 = 2\,450$ u.m.; $_9V_{0{,}75} \approx 0{,}25\times 2\,400 + 0{,}75\times 2\,600 = 2\,550$ u.m.  
+**Resultado.** 2\,450 u.m. y 2\,550 u.m.
+
+**24. Thiele y lineal**  
+La ecuación de Thiele define la reserva continua ${}_t\bar{V}$. ¿Por qué la interpolación lineal entre $_kV$ y $_{k+1}V$ es solo una aproximación?  
+**Solución.**  
+**Paso 1.** La reserva continua satisface la EDO de Thiele y en general no es lineal en $t$.  
+**Paso 2.** La interpolación lineal asume que entre $k$ y $k+1$ la reserva varía linealmente; es una aproximación numérica sencilla a la curva real.  
+**Resultado.** Lineal aproxima la curva de Thiele por la recta que une $_kV$ y $_{k+1}V$.
+
+**25. Normativa**  
+Indicar por qué las normas suelen aceptar la interpolación lineal para la reserva en momento fraccionario.  
+**Solución.**  
+**Paso 1.** Por simplicidad de cálculo y homogeneidad del reporting.  
+**Paso 2.** La diferencia con métodos más refinados (UDD, Thiele) suele ser pequeña para reporting y valor de rescate; la norma puede exigir un método concreto (Tema 5).  
+**Resultado.** Simplicidad y diferencia pequeña en la práctica.
+
+***
+
+### Ejercicios resueltos tipo parcial (20)
+
+Ejercicios de nivel examen sobre reserva en momento fraccionario, interpolación lineal y valor de rescate. Soluciones por pasos.
+
+**1. Tipo parcial — Interpolación lineal**  
+$_5V=1\,200$ u.m., $_6V=1\,350$ u.m. Calcular la reserva a 5 años 4 meses.
+
+**Solución.**
+
+**Paso 1.** $t = 4/12 = 1/3$. Fórmula: $_5V_{1/3} \approx (1-t)\,{}_5V + t\,{}_6V$.  
+**Paso 2.** $_5V_{1/3} \approx (2/3)(1\,200) + (1/3)(1\,350) = 800 + 450 = 1\,250$ u.m.  
+**Resultado.** $_5V_{4/12} \approx 1\,250$ u.m.
+
+***
+
+**2. Tipo parcial — Reserva a mitad de año**  
+Escribir la fórmula de $_kV_{1/2}$ bajo interpolación lineal y comprobar que es el promedio de $_kV$ y $_{k+1}V$.
+
+**Solución.**  
+**Paso 1.** Con $t=1/2$: $_kV_{1/2} \approx (1-0{,}5)\,{}_kV + 0{,}5\,{}_{k+1}V$.  
+**Paso 2.** $_kV_{1/2} = ({}_kV + {}_{k+1}V)/2$; coincide con el promedio de las reservas terminales.  
+**Resultado.** $_kV_{1/2}\approx ({}_kV+{}_{k+1}V)/2$.
+
+***
+
+**3. Tipo parcial — Between premium dates**  
+Explicar qué es la «reserva entre fechas de pago» y por qué se usa la interpolación lineal.
+
+**Solución.**  
+**Paso 1.** Reserva entre fechas de pago: valor de la reserva en un instante $k+t$ con $0 < t < 1$ (entre dos aniversarios).  
+**Paso 2.** Se usa interpolación lineal porque solo se dispone de $_kV$ y $_{k+1}V$; es simple y la normativa suele aceptarla.  
+**Resultado.** Definición y uso de la interpolación lineal.
+
+***
+
+**4. Tipo parcial — Valor de rescate**  
+Si el rescate es 90% de la reserva y el asegurado rescinde a los 7 años y 4 meses, indicar qué reserva se usa y escribir la fórmula del rescate.
+
+**Solución.**  
+**Paso 1.** Se usa la reserva en $7+4/12$: $_7V_{4/12} \approx (1-4/12)\,{}_7V + (4/12)\,{}_8V$.  
+**Paso 2.** Valor de rescate = $0{,}90 \times {}_7V_{4/12}$.  
+**Resultado.** Reserva $_7V_{4/12}$; rescate = 90% de esa reserva.
+
+***
+
+**5. Tipo parcial — Dos instantes**  
+$_9V=2\,400$ u.m., $_{10}V=2\,600$ u.m. Calcular la reserva a 9 años 3 meses y a 9 años 9 meses.
+
+**Solución.**  
+**Paso 1.** $t=0{,}25$: $_9V_{0{,}25} \approx (1-t)\,{}_9V + t\,{}_{10}V$. $t=0{,}75$: $_9V_{0{,}75} \approx (1-t)\,{}_9V + t\,{}_{10}V$.  
+**Paso 2.** $_9V_{0{,}25} \approx 0{,}75(2\,400) + 0{,}25(2\,600) = 2\,450$ u.m.; $_9V_{0{,}75} \approx 0{,}25(2\,400) + 0{,}75(2\,600) = 2\,550$ u.m.  
+**Resultado.** 2\,450 u.m. y 2\,550 u.m.
+
+***
+
+**6. Tipo parcial — Cierre fiscal**  
+El aniversario del contrato es 15 de marzo. ¿Cómo se calcula la reserva a 31 de diciembre del mismo año?
+
+**Solución.**  
+**Paso 1.** Desde 15/03 hasta 31/12 transcurren unos 9,5 meses; desde el último aniversario (15/03), $t \approx 9{,}5/12$.  
+**Paso 2.** Con $_kV$ y $_{k+1}V$ en los aniversarios que enmarcan 31/12: $_kV_t \approx (1-t)\,{}_kV + t\,{}_{k+1}V$.  
+**Resultado.** $t\approx 9{,}5/12$; reserva por interpolación lineal.
+
+***
+
+**7. Tipo parcial — Thiele vs lineal**  
+¿Por qué la interpolación lineal es solo una aproximación a la reserva continua de Thiele?
+
+**Solución.**  
+**Paso 1.** La reserva continua satisface la EDO de Thiele y en general no es lineal en $t$.  
+**Paso 2.** La interpolación lineal aproxima la curva por la recta que une $_kV$ y $_{k+1}V$.  
+**Resultado.** Lineal es aproximación a la curva de Thiele.
+
+***
+
+**8. Tipo parcial — Fórmula general**  
+Escribir $_kV_t$ en función de $_kV$, $_{k+1}V$ y $t$. Verificar para $t=0$ y $t=1$.
+
+**Solución.**  
+**Paso 1.** $_kV_t \approx (1-t)\,{}_kV + t\,{}_{k+1}V$.  
+**Paso 2.** $t=0$ → $_kV_0 = {}_kV$. $t=1$ → $_kV_1 = {}_{k+1}V$. Se recuperan las reservas terminales.  
+**Resultado.** Fórmula general; verificación en $t=0$ y $t=1$.
+
+***
+
+**9. Tipo parcial — Normativa**  
+Indicar por qué las normas suelen aceptar la interpolación lineal para la reserva en momento fraccionario.
+
+**Solución.**  
+**Paso 1.** Por simplicidad de cálculo y homogeneidad del reporting.  
+**Paso 2.** La diferencia con métodos más refinados (UDD, Thiele) suele ser pequeña en la práctica.  
+**Resultado.** Simplicidad y homogeneidad; diferencia pequeña.
+
+***
+
+**10. Tipo parcial — Integrador**  
+$_4V=1\,000$ u.m., $_5V=1\,100$ u.m. Calcular la reserva a 4 años 6 meses y el valor de rescate al 85% en ese momento.
+
+**Solución.**  
+**Paso 1.** $t = 6/12 = 0{,}5$. $_4V_{0{,}5} \approx (1-t)\,{}_4V + t\,{}_5V = 0{,}5(1\,000) + 0{,}5(1\,100) = 1\,050$ u.m.  
+**Paso 2.** Valor de rescate = $0{,}85 \times 1\,050 = 892{,}50$ u.m.  
+**Resultado.** Reserva 1\,050 u.m.; rescate 892,50 u.m.
+
+***
+
+**11. Tipo parcial — Tres meses**  
+$_3V=1\,100$, $_4V=1\,200$ u.m. Reserva a 3 años 3 meses.  
+**Solución.**  
+**Paso 1.** $t=3/12=0{,}25$; $_3V_{0{,}25}\approx (1-t)\,{}_3V+t\,{}_4V$.  
+**Paso 2.** $_3V_{0{,}25}\approx 0{,}75(1\,100)+0{,}25(1\,200)=1\,125$ u.m.  
+**Resultado.** $_3V_{0{,}25}\approx 1\,125$ u.m.
+
+***
+
+**12. Tipo parcial — Promedio**  
+Comprobar que $_kV_{1/2}=({}_kV+{}_{k+1}V)/2$.  
+**Solución.**  
+**Paso 1.** Con $t=1/2$: $_kV_{1/2}=(1-0{,}5)\,{}_kV+0{,}5\,{}_{k+1}V$.  
+**Paso 2.** $_kV_{1/2}=({}_kV+{}_{k+1}V)/2$.  
+**Resultado.** $_kV_{1/2}=({}_kV+{}_{k+1}V)/2$.
+
+***
+
+**13. Tipo parcial — Rescate 80%**  
+Reserva a 6a 6m = 1\,400 u.m. Rescate al 80%. Calcular valor de rescate.  
+**Solución.**  
+**Paso 1.** Valor de rescate = porcentaje × reserva en la fecha de rescisión.  
+**Paso 2.** $0{,}80 \times 1\,400 = 1\,120$ u.m.  
+**Resultado.** 1\,120 u.m.
+
+***
+
+**14. Tipo parcial — Between premium dates**  
+Definir «reserva entre fechas de pago» y fórmula usada.  
+**Solución.**  
+**Paso 1.** Reserva entre fechas de pago: valor de la reserva en un instante $k+t$ con $0<t<1$ (entre dos aniversarios).  
+**Paso 2.** Fórmula: $_kV_t \approx (1-t)\,{}_kV+t\,{}_{k+1}V$.  
+**Resultado.** Definición y fórmula de interpolación lineal.
+
+***
+
+**15. Tipo parcial — Thiele**  
+¿Por qué la reserva de Thiele no es lineal en $t$?  
+**Solución.**  
+**Paso 1.** La reserva continua satisface la EDO de Thiele.  
+**Paso 2.** La evolución entre $k$ y $k+1$ sigue la dinámica de la ecuación, no una recta.  
+**Resultado.** Thiele no es lineal; la lineal es aproximación.
+
+***
+
+**16. Tipo parcial — Cierre 30/06**  
+Aniversario 01/03. ¿Cómo se obtiene $t$ para la reserva a 30/06?  
+**Solución.**  
+**Paso 1.** Desde el aniversario 01/03 hasta 30/06 transcurren unos 4 meses.  
+**Paso 2.** $t$ = fracción de año = $4/12$.  
+**Resultado.** $t \approx 4/12$.
+
+***
+
+**17. Tipo parcial — Normativa**  
+Indicar por qué la interpolación lineal es aceptada en normativa.  
+**Solución.**  
+**Paso 1.** Simplicidad de cálculo y homogeneidad del reporting.  
+**Paso 2.** Diferencia pequeña con métodos más refinados en la práctica.  
+**Resultado.** Simplicidad y homogeneidad; diferencia pequeña.
+
+***
+
+**18. Tipo parcial — Fórmula general**  
+Escribir $_kV_t$ y verificar para $t=0$ y $t=1$.  
+**Solución.**  
+**Paso 1.** $_kV_t \approx (1-t)\,{}_kV+t\,{}_{k+1}V$.  
+**Paso 2.** $t=0$ → $_kV_0={}_kV$; $t=1$ → $_kV_1={}_{k+1}V$.  
+**Resultado.** Fórmula general; se recuperan las terminales.
+
+***
+
+**19. Tipo parcial — Dos reservas**  
+$_8V=2\,100$, $_9V=2\,300$. Reserva a 8a 4m y a 8a 8m.  
+**Solución.**  
+**Paso 1.** $t=4/12$: $_8V_{1/3}\approx (1-1/3)\,{}_8V+(1/3)\,{}_9V$. $t=8/12$: $_8V_{2/3}\approx (1-2/3)\,{}_8V+(2/3)\,{}_9V$.  
+**Paso 2.** $_8V_{1/3}\approx 2\,166{,}67$ u.m.; $_8V_{2/3}\approx 2\,233{,}33$ u.m.  
+**Resultado.** 2\,166,67 u.m. y 2\,233,33 u.m.
+
+***
+
+**20. Tipo parcial — Integrador**  
+$_5V=1\,300$, $_6V=1\,400$. Reserva a 5a 6m; rescate al 90% en ese momento.  
+**Solución.**  
+**Paso 1.** $t=6/12=0{,}5$: $_5V_{0{,}5}\approx 0{,}5(1\,300)+0{,}5(1\,400)=1\,350$ u.m.  
+**Paso 2.** Rescate $=0{,}90 \times 1\,350 = 1\,215$ u.m.  
+**Resultado.** Reserva 1\,350 u.m.; rescate 1\,215 u.m.
+
+***
+
+### Ejercicios propuestos (40)
+
+En los siguientes ejercicios se debe obtener el resultado solicitado y, cuando se indique, justificar con las fórmulas del capítulo. Cada ítem es independiente. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Dadas $_7V=2\,000$ u.m. y $_8V=2\,200$ u.m., calcular la reserva a 7 años 6 meses y a 7 años 9 meses por interpolación lineal.
+
+***
+
+2. **Se pide:** Explicar por qué en el valor de rescate en una fecha no entera se utiliza la reserva fraccionaria y no la reserva terminal.
+
+
+***
+
+3. **Se pide:** Escribir la fórmula de la reserva en el instante $k+1/2$ (mitad del año $k+1$) bajo interpolación lineal y comprobar que coincide con el promedio de $_kV$ y $_{k+1}V$.
+
+
+***
+
+4. **Se pide:** Explicar el concepto «reserva entre fechas de pago» (*between premium dates*) y en qué contexto se usa.
+
+
+***
+
+5. **Se pide:** Con $_5V=1\,000$ u.m. y $_6V=1\,080$ u.m., calcular la reserva a 5 años 3 meses y a 5 años 6 meses.
+
+
+***
+
+6. **Tipo parcial.** **Se pide:** Dadas $_3V=800$ u.m. y $_4V=900$ u.m., calcular la reserva a 3 años 9 meses por interpolación lineal.
+
+
+***
+
+7. **Se pide:** Describir la definición prospectiva de la reserva en el instante $k+t$ (edad $x+k+t$) y qué hipótesis se necesitan para evaluarla.
+
+
+***
+
+8. **Se pide:** Relacionar la reserva en $k+t$ (interpolación lineal) con la ecuación diferencial de Thiele para la reserva continua.
+
+
+***
+
+9. **Se pide:** Enumerar ventajas e inconvenientes de la interpolación lineal para la reserva entre dos aniversarios.
+
+
+***
+
+10. **Tipo parcial.** **Se pide:** El aniversario del contrato es el 1 de junio. Indicar cómo se calcula la reserva al cierre fiscal (31 de diciembre) del año en curso.
+
+
+***
+
+11. **Se pide:** Escribir la expresión de $_kV_t$ para $t=0{,}25$, $t=0{,}5$ y $t=0{,}75$ en función de $_kV$ y $_{k+1}V$.
+
+
+***
+
+12. **Se pide:** Describir cómo se obtienen las reservas semicontinuas entre fechas de pago (Weishaus 41.1).
+
+
+***
+
+13. **Se pide:** Bajo hipótesis UDD, indicar si existe una fórmula más refinada que la lineal para $_kV_t$ y en qué consiste.
+
+
+***
+
+14. **Tipo parcial.** **Se pide:** (a) Definir qué es la «reserva entre fechas de pago». (b) Con $_8V=2\,100$ u.m. y $_9V=2\,250$ u.m., calcular la reserva a 8 años 4 meses.
+
+
+***
+
+15. **Se pide:** Explicar el uso de la reserva fraccionaria en normativa y en el reporting actuarial (cierres contables, supervisión).
+
+
+***
+
+16. **Se pide:** Justificar por qué la interpolación lineal puede verse como una aproximación a la curva de reserva que satisface la ecuación de Thiele.
+
+
+***
+
+17. **Tipo parcial.** **Se pide:** Calcular la reserva a 10 años 2 meses si $_10V=3\,000$ u.m. y $_{11}V=3\,200$ u.m., usando interpolación lineal.
+
+
+***
+
+18. **Se pide:** Si el valor de rescate es el 90% de la reserva y en el año 8 la reserva neta es 3.000 u.m., indicar qué reserva se debe usar si el asegurado rescinde a mitad de año y calcular el rescate correspondiente.
+
+
+***
+
+19. **Se pide:** Escribir la fórmula general $_kV_t \approx (1-t)\,{}_kV + t\,{}_{k+1}V$ y verificar que para $t=0$ y $t=1$ se obtienen las reservas terminales.
+
+
+***
+
+20. **Tipo parcial.** **Se pide:** (a) Definir la interpolación lineal de la reserva. (b) Con $_5V=1\,200$ u.m. y $_6V=1\,350$ u.m., calcular la reserva a 5 años 4 meses.
+
+
+***
+
+21. **Se pide:** Dadas $_4V=1\,100$ u.m. y $_5V=1\,200$ u.m., calcular la reserva a 4 años 4 meses y a 4 años 8 meses.  
+
+***
+
+22. **Se pide:** Explicar la relación entre valor de rescate mínimo (Ley) y reserva fraccionaria.  
+
+***
+
+23. **Se pide:** Escribir $_6V_{7/12}$ en función de $_6V$, $_7V$ y comprobar que para $t=7/12$ la fórmula da un valor entre ambos.
+
+***
+
+24. **Tipo parcial.** **Se pide:** $_2V=600$, $_3V=700$. Reserva a 2a 6m; rescate al 85% en ese momento.  
+
+***
+
+25. **Se pide:** Describir el uso de la reserva fraccionaria en el cierre contable cuando la fecha de cierre no es aniversario.  
+
+***
+
+26. **Se pide:** Comparar $_kV_{0{,}25}$ y $_kV_{0{,}75}$ para $_kV=1\,000$, $_{k+1}V=1\,100$ u.m.  
+
+***
+
+27. **Se pide:** Justificar que bajo interpolación lineal $_kV_t$ es creciente en $t$ si $_{k+1}V > {}_kV$.  
+
+***
+
+28. **Tipo parcial.** **Se pide:** Aniversario 15/06. Calcular $t$ para la reserva a 31/12 del mismo año.  
+
+***
+
+29. **Se pide:** Relacionar la reserva de balance con la reserva en momento fraccionario (Tema 5).  
+
+***
+
+30. **Se pide:** Si el valor de rescate es 90% de la reserva y $_7V_{1/2}=1\,450$ u.m., calcular el rescate.  
+
+***
+
+31. **Se pide:** Escribir la fórmula de interpolación lineal y las hipótesis implícitas.  
+
+***
+
+32. **Tipo parcial.** **Se pide:** $_9V=2\,200$, $_{10}V=2\,400$. Reserva a 9a 3m y a 9a 9m.  
+
+***
+
+33. **Se pide:** Explicar por qué la reserva continua (Thiele) y la lineal pueden diferir en $k+t$.  
+
+***
+
+34. **Se pide:** Definir «reserva terminal» y «reserva en momento fraccionario».  
+
+***
+
+35. **Se pide:** Con $_1V=200$, $_2V=350$ u.m., calcular la reserva a 1 año 6 meses.  
+
+***
+
+36. **Tipo parcial.** **Se pide:** (a) Fórmula $_kV_t$. (b) $_8V=2\,000$, $_9V=2\,150$. Reserva a 8a 3m.  
+
+***
+
+37. **Se pide:** Indicar qué información se necesita para calcular la reserva a 5 años 7 meses por interpolación lineal.  
+
+***
+
+38. **Se pide:** Relacionar valor de rescate y prima de tarifa (concepto de carga por gastos).  
+
+***
+
+39. **Se pide:** Si $_4V_{0{,}5}=1\,050$ y el rescate es 88% de la reserva, calcular el rescate en ese momento.  
+
+***
+
+40. **Tipo parcial.** **Se pide:** Ley Venezolana: explicar por qué la reserva modificada en $t=1$ es $_1V - \alpha\cdot 19/20$ (amortización 20 años).
+
+***
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013]; Ross [@ross2010]; Batten [@batten1978]; Zillmer [@zillmer1863].*

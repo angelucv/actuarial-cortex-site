@@ -1,0 +1,361 @@
+---
+number: false
+---
+
+# Tablas de mortalidad {#cap-tablas-mortalidad .unnumbered .unlisted}
+
+Las **tablas de mortalidad** (o *life tables*) resumen, por edad entera, el número de supervivientes y de fallecimientos en una cohorte hipotética. A partir de ellas se obtienen las probabilidades $p_x$, $q_x$ y las funciones que se usan en el cálculo de primas y reservas. Este capítulo define las magnitudes fundamentales ($l_x$, $d_x$, $q_x$, $p_x$, $L_x$, $T_x$, $e_x$), su interpretación, construcción y uso, incluyendo la visión de Weishaus [@weishaus2013] de la tabla como realización concreta del modelo de supervivencia, la construcción recursiva a partir de las $q_x$, las tablas ilustrativas y las tendencias de mortalidad, en línea con Jordan [@jordan1982], Bowers et al. [@bowers1997], Neill [@neill1977], Chiang [@chiang1984] y Preston et al. [@preston2001].
+
+## La tabla de mortalidad como realización del modelo (Weishaus)
+
+Una **tabla de mortalidad** es una forma concreta de representar la variable aleatoria de supervivencia [@weishaus2013]. La tabla fija un **número de vidas** en una edad inicial entera $x_0$ (por lo general $x_0 = 0$). Ese número se denomina **radix**. Para cada edad entera $x > x_0$ se lista el **número esperado de supervivientes** a la edad $x$; la notación para ese número es $l_x$. Suponiendo $x_0 = 0$, el número de supervivientes a la edad $x$ en la cohorte es una variable aleatoria binomial con parámetros $l_0$ y ${}_xp_0$, de modo que el **valor esperado** es $l_x = l_0 \cdot {}_xp_0$. Análogamente, $l_{x+t} = l_x \cdot {}_tp_x$. Por tanto, la probabilidad de supervivencia puede **leerse** de la tabla:
+
+$${}_tp_x = \frac{l_{x+t}}{l_x};$$
+
+en particular $p_x = l_{x+1}/l_x$. Así, la tabla permite pasar de probabilidades a números esperados y viceversa.
+
+## La función $l_x$ (supervivientes)
+
+Se fija una **raíz** o **radix** $l_0$ (por ejemplo $l_0 = 100\,000$ o $1\,000\,000$). La función $l_x$ representa el **número de supervivientes** a la edad $x$ en una cohorte cerrada que parte de $l_0$ recién nacidos y está sujeta a las probabilidades de muerte de la tabla. Así, $l_x$ es proporcional a la función de supervivencia $S(x)$: si $S(0)=1$, se suele tomar $l_x = l_0 \cdot S(x)$, de modo que $l_x$ decrece con $x$ y $l_\omega = 0$ para una edad límite $\omega$.
+
+En los cálculos actuariales, $l_x$ se usa como denominador para definir probabilidades y otras funciones. Por ejemplo, la probabilidad de que un recién nacido sobreviva hasta $x$ es $l_x/l_0 = S(x)$. Neill [@neill1977] subraya que $l_{x+1}/l_x$ expresa el supuesto de mortalidad en forma de proporciones esperadas que sobreviven a cada edad y proporciona las relaciones de probabilidad aplicables a una vida $(x)$ elegida al azar de una población que experimenta esa mortalidad.
+
+## $d_x$ (fallecimientos entre $x$ y $x+1$)
+
+$$d_x = l_x - l_{x+1} = l_x\,q_x.$$
+
+Es el **número esperado de fallecimientos** entre las edades $x$ y $x+1$ en la cohorte. Se cumple $\sum_{x} d_x = l_0$. De aquí, $q_x = d_x/l_x$ [@weishaus2013]. La tabla permite calcular de forma directa la probabilidad diferida ${}_{u|t}q_x$ como $(l_{x+u} - l_{x+u+t})/l_x$.
+
+**Notación ${}_nd_x$ (Weishaus):** $d_x$ coincide con ${}_1d_x$. El símbolo ${}_nd_x$ denota el **número de fallecimientos** ocurridos en los $n$ años siguientes a la edad $x$, es decir ${}_nd_x = \sum_{j=0}^{n-1} d_{x+j}$. Así, ${}_nd_x = l_x - l_{x+n}$.
+
+## Probabilidades anuales $q_x$ y $p_x$
+
+$$q_x = \frac{d_x}{l_x} = 1 - \frac{l_{x+1}}{l_x}, \qquad p_x = \frac{l_{x+1}}{l_x} = 1 - q_x.$$
+
+- $q_x$: probabilidad de que $(x)$ fallezca antes de cumplir $x+1$.
+- $p_x$: probabilidad de que $(x)$ sobreviva al menos un año.
+
+Para varios años:
+
+$${}_np_x = \frac{l_{x+n}}{l_x}, \qquad {}_nq_x = 1 - {}_np_x = \frac{l_x - l_{x+n}}{l_x}.$$
+
+La probabilidad de fallecer entre $x+n$ y $x+n+m$ es ${}_{n|m}q_x = (l_{x+n} - l_{x+n+m})/l_x = {}_np_x \cdot {}_mq_{x+n}$. Cuando $n=1$ puede omitirse el prefijo y se escribe ${}_m|q_x$ (probabilidad de fallecer en el año diferido $m$ años). La probabilidad ${}_np_x$ también puede verse como el **producto** de las probabilidades anuales de supervivencia: ${}_np_x = p_x\,p_{x+1}\cdots p_{x+n-1}$ [@neill1977].
+
+## $L_x$ y $T_x$ (años-persona vividos)
+
+$L_x$ representa los **años-persona** vividos por la cohorte entre las edades $x$ y $x+1$. Bajo la hipótesis de **distribución uniforme de las muertes** (UDD) en cada año de edad, los $d_x$ fallecidos viven en promedio medio año en ese intervalo, por lo que:
+
+$$L_x = l_{x+1} + \tfrac{1}{2}\,d_x = \tfrac{1}{2}(l_x + l_{x+1}).$$
+
+$T_x$ es el total de años-persona vividos desde la edad $x$ hasta el final de la tabla:
+
+$$T_x = \sum_{k=0}^{\omega-x-1} L_{x+k} = \sum_{k=1}^{\omega-x} l_{x+k} + \tfrac{1}{2}\,l_x \quad \text{(bajo UDD)}.$$
+
+Alternativamente, $T_x = \int_0^{\omega-x} l_{x+t}\,dt$ si se interpreta $l$ como función continua. $T_x$ se usa para calcular la esperanza de vida.
+
+## Esperanza de vida $e_x$ y $\mathring{e}_x$
+
+La **esperanza de vida curta** (o *curtate expectation of life*) a la edad $x$ es el número esperado de **años completos** vividos después de $x$, es decir la esperanza de $K_x$:
+
+$$e_x = \mathbb{E}[K_x] = \frac{1}{l_x}\sum_{k=1}^{\omega-x-1} l_{x+k} = \sum_{k=1}^{\omega-x-1} {}_kp_x.$$
+
+La **esperanza de vida completa** (o *complete expectation of life*) es la esperanza de $T_x$ (incluye la fracción del año de fallecimiento):
+
+$$\mathring{e}_x = \mathbb{E}[T_x] = \frac{T_x}{l_x}.$$
+
+Bajo UDD, $\mathring{e}_x \approx e_x + 1/2$.
+
+## Construcción recursiva y tablas ilustrativas
+
+Las tablas se construyen a partir de datos de mortalidad observada (censos, registros civiles, estudios de cohortes). Se estiman las $q_x$ (o las tasas centrales de mortalidad $m_x = d_x/L_x$) y se elige un **radix** $l_0$. La tabla queda definida por la columna de $q_x$ (o de $p_x$): con $d_x = l_x\,q_x$ y $l_{x+1} = l_x - d_x = l_x\,(1-q_x)$ se obtienen recursivamente $l_x$ y $d_x$ para todas las edades [@neill1977]. El radix es arbitrario y se elige para lograr la precisión deseada al dividir las $l_x$; el valor absoluto de cada $l_x$ carece de significado por sí solo.
+
+**Construir una tabla auxiliar para resolver probabilidades.** A veces conviene **construir** una minitabla con un radix arbitrario (por ejemplo $l_{60} = 1\,000\,000$) y calcular $l_{61}, l_{62}, \ldots$ con $l_{x+1} = l_x\,(1-q_x)$ a partir de las $q_x$ dadas; entonces probabilidades como ${}_{2|3}q_{60}$ se obtienen como $(l_{62} - l_{65})/l_{60}$ [@weishaus2013]. Los ejercicios de examen pueden pedir completar huecos en una tabla a partir de probabilidades dadas (por ejemplo despejar $l_0$ de $l_1/l_0 = p_0$ y $d_0 = l_0 - l_1$).
+
+**Tablas ilustrativas.** En muchos manuales (p. ej. Bowers, Weishaus) se usan **tablas ilustrativas** (Illustrative Life Table): versiones resumidas donde a menudo se **omite** la columna $d_x$ y se deduce de $l_x$ cuando hace falta; en su lugar puede darse la columna de tasas $1000\,q_x$ (mortalidad por mil). Las probabilidades se obtienen igualmente con $l_{x+n}/l_x$ y $d_x = l_x - l_{x+1}$ [@weishaus2013].
+
+## Construcción e interpretación
+
+Las funciones $L_x$, $T_x$ y $e_x$ se derivan de $l_x$ y $d_x$ según las fórmulas ya vistas. En la **guía docente** de Matemáticas Actuariales I (EECA-UCV) y en la práctica internacional se hace referencia a tablas como la **Commissioners Standard Ordinary (CSO)** y a tablas nacionales (por ejemplo venezolanas). Neill [@neill1977] cita la English Life Table No. 12 (hombres), la tabla A1967-70 para asegurados del Reino Unido y las tablas a(55) para rentistas; la elección depende del propósito (seguros individuales, pensiones, regulación). En este libro se usarán las notaciones $l_x$, $d_x$, $q_x$, $p_x$, $L_x$, $T_x$, $e_x$ de forma estándar.
+
+### Radix, edad límite e interpretación de las cifras (Neill)
+
+Como señala Neill [@neill1977], las cifras de la columna $l_x$ **no tienen significado aislado**: solo cobran sentido en **relación unas con otras**, por ejemplo como cocientes $l_{x+n}/l_x$ que dan probabilidades de supervivencia. Por tanto, si se multiplican todos los valores $l_x$ por una misma constante, la mortalidad representada por la tabla no cambia (las $q_x$ y las probabilidades derivadas se mantienen). La **raíz** o **radix** de la tabla es el valor de $l_x$ en la **edad inicial** (la menor edad tabulada); suele elegirse un número redondo (por ejemplo 100.000, 1.000.000 o 999.999) por conveniencia. La **edad límite** $\omega$ es la primera edad a partir de la cual $l_x$ se considera nulo ($l_\omega = 0$); en la práctica se toma a menudo $\omega = 100$, 105 o 110. La tabla puede comenzar en cualquier edad (por ejemplo, una tabla para rentistas podría empezar en 40). En todos los casos, las probabilidades y el resto de las funciones se obtienen a partir de los cocientes entre valores de $l_x$ (y de $d_x$), no de las cifras en sí. Las tasas de mortalidad han tendido a disminuir en la mayoría de los países; es habitual **ajustar** tablas publicadas, por ejemplo restando (o sumando) años a la edad al entrar en la tabla (p. ej. unos cuatro años para mujeres en primas de seguro de vida) [@neill1977].
+
+### Tendencias de mortalidad y factores de proyección (Weishaus)
+
+Si se asume que la mortalidad **mejora** en el tiempo, puede definirse una tasa de mortalidad que dependa del año: $q(x,s)$ para la edad $x$ en el año $Y+s$ respecto a un año base $Y$. Con una **mejora a porcentaje fijo** por año, $q(x,s) = q(x,0)\,r^s$, donde $r$ (complemento de la tasa de mejora) se denomina **factor de reducción** o de proyección [@weishaus2013]. Al calcular probabilidades como ${}_1p(x,0)$ en este contexto hay que aplicar el factor de reducción correspondiente a cada edad alcanzada en cada año, ya que la edad alcanzada varía con el año.
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. Lectura de tabla: $l_x$, $d_x$, $q_x$ (Jordan)**  
+Con $l_{60}=80\,000$, $l_{61}=78\,400$, $l_{65}=74\,000$, calcular $d_{60}$, $q_{60}$, $p_{60}$, ${}_5p_{60}$.  
+**Solución.** $d_{60}=1\,600$, $q_{60}=0{,}02$, $p_{60}=0{,}98$, ${}_5p_{60}=74\,000/80\,000=0{,}925$.
+
+**2. Completar tabla con huecos (Weishaus)**  
+$l_1=890$, $p_0=0{,}98$, $d_0=50$. Hallar $l_0$. Si $l_2=800$, hallar ${}_2p_0$.  
+**Solución.** $l_0=l_1+d_0=940$; ${}_2p_0=800/940 \approx 0{,}851$.
+
+**3. $d_x$, ${}_nd_x$ (Weishaus)**  
+$l_{50}=90\,000$, $l_{51}=89\,100$, $l_{52}=88\,050$. Calcular $d_{50}$, $d_{51}$, ${}_2d_{50}$.  
+**Solución.** $d_{50}=900$, $d_{51}=1\,050$, ${}_2d_{50}=l_{50}-l_{52}=1\,950$.
+
+**4. ${}_np_x$ como producto (Neill)**  
+Si $p_{40}=0{,}99$, $p_{41}=0{,}98$, $p_{42}=0{,}97$, $p_{43}=0{,}96$, $p_{44}=0{,}95$, calcular ${}_5p_{40}$.  
+**Solución.** ${}_5p_{40}=0{,}99\times 0{,}98\times 0{,}97\times 0{,}96\times 0{,}95 \approx 0{,}858$.
+
+**5. Radix y proporciones**  
+Si $l_0=100\,000$ y $l_{40}=95\,000$, interpretar en términos de cohorte.  
+**Solución.** De 100.000 recién nacidos, 95.000 llegan vivos a 40; proporción $95\%$.
+
+**6. Tipo parcial: tabla mínima**  
+$l_{70}=1\,000$, $l_{71}=980$, $l_{72}=958$. Calcular $q_{70}$, $q_{71}$, ${}_2p_{70}$, ${}_2d_{70}$.  
+**Solución.** $q_{70}=0{,}02$, $q_{71}=22/980$, ${}_2p_{70}=0{,}958$, ${}_2d_{70}=42$.
+
+**7. Construcción recursiva**  
+Dado $l_{60}=80\,000$ y $q_{60}=0{,}02$, $q_{61}=0{,}022$, obtener $l_{61}$ y $l_{62}$.  
+**Solución.** $l_{61}=l_{60}(1-q_{60})=78\,400$; $l_{62}=l_{61}(1-q_{61})=78\,400\times 0{,}978=76\,675{,}2$.
+
+**8. ${}_3q_x$ y ${}_3d_x$**  
+Con $l_x$, $l_{x+1}$, $l_{x+2}$, $l_{x+3}$, expresar ${}_3q_x$ y ${}_3d_x$.  
+**Solución.** ${}_3q_x=1-l_{x+3}/l_x$; ${}_3d_x=l_x-l_{x+3}$ (Weishaus notación).
+
+**9. Verificar $d_x = l_x\,q_x$**  
+Si $l_{45}=92\,000$ y $q_{45}=0{,}015$, calcular $d_{45}$ y $l_{46}$.  
+**Solución.** $d_{45}=92\,000\times 0{,}015=1\,380$; $l_{46}=90\,620$.
+
+**10. Tabla ilustrativa: $1000\,q_x$**  
+Si en una tabla se da $1000\,q_{50}=10$, obtener $q_{50}$ y $p_{50}$.  
+**Solución.** $q_{50}=0{,}01$, $p_{50}=0{,}99$.
+
+**11. Proyección $q(x,s)=q(x,0)\,r^s$ (Weishaus)**  
+Si $q(60,0)=0{,}02$ y $r=0{,}98$, calcular $q(60,5)$.  
+**Solución.** $q(60,5)=0{,}02\times 0{,}98^5 \approx 0{,}0181$.
+
+**12. Tipo parcial: completar filas**  
+$l_{55}=85\,000$, $q_{55}=0{,}012$, $q_{56}=0{,}014$, $q_{57}=0{,}016$. Calcular $l_{56}$, $l_{57}$, $l_{58}$.  
+**Solución.** $l_{56}=85\,000\times 0{,}988=83\,980$; $l_{57}=83\,980\times 0{,}986\approx 82\,803$; $l_{58}=82\,803\times 0{,}984\approx 81\,478$.
+
+**13. Número de fallecimientos entre edades**  
+Entre 40 y 45 años, ¿cuántos fallecimientos hay en la tabla si $l_{40}=95\,000$ y $l_{45}=91\,000$?  
+**Solución.** ${}_5d_{40}=l_{40}-l_{45}=4\,000$.
+
+**14. Relación ${}_np_x = l_{x+n}/l_x$**  
+Dado ${}_4p_{30}=0{,}96$ y $l_{30}=98\,000$, hallar $l_{34}$.  
+**Solución.** $l_{34}={}_4p_{30}\cdot l_{30}=0{,}96\times 98\,000=94\,080$.
+
+**15. Doblar radix**  
+Si se reemplaza $l_x$ por $2\,l_x$ para todo $x$, ¿cambian $q_x$ y ${}_np_x$?  
+**Solución.** No: $q_x=d_x/l_x$, $d_x=l_x-l_{x+1}$; al doblar, numerador y denominador se doblan.
+
+**16. Esperanza abreviada $e_x$**  
+Definir $e_x$ con $l_x$. Si $l_{70}=1\,000$, $l_{71}=980$, $l_{72}=958$, estimar $e_{70}$ (aproximación a 2 años).  
+**Solución.** $e_x \approx (l_{71}+l_{72}+\cdots)/l_{70}-1/2$; con 2 años: $e_{70}\approx (980+958)/1000 - 0{,}5 = 1{,}438$.
+
+**17. Tipo parcial: tres edades**  
+$l_{60}=80\,000$, $l_{65}=76\,000$, $l_{70}=70\,000$. Calcular ${}_5p_{60}$, ${}_5p_{65}$, ${}_{10}p_{60}$.  
+**Solución.** ${}_5p_{60}=76\,000/80\,000=0{,}95$; ${}_5p_{65}=70\,000/76\,000\approx 0{,}921$; ${}_{10}p_{60}=70\,000/80\,000=0{,}875$.
+
+**18. Recuperar $l_x$ desde $q_x$**  
+Dado $l_{50}=90\,000$ y $q_{50}=0{,}01$, $q_{51}=0{,}011$, $q_{52}=0{,}012$, obtener $l_{51}$, $l_{52}$, $l_{53}$.  
+**Solución.** $l_{51}=89\,100$, $l_{52}=89\,100\times 0{,}989\approx 88\,120$, $l_{53}=88\,120\times 0{,}988\approx 87\,063$.
+
+**19. Minitabla para ${}_2p_x$**  
+Con $l_{40}$, $l_{41}$, $l_{42}$, escribir ${}_2p_{40}$ y ${}_2q_{40}$.  
+**Solución.** ${}_2p_{40}=l_{42}/l_{40}$; ${}_2q_{40}=1-l_{42}/l_{40}=(l_{40}-l_{42})/l_{40}$.
+
+**20. Síntesis tipo parcial**  
+(a) Definir $d_x$ y ${}_nd_x$. (b) Con $l_{55}=84\,000$, $l_{56}=83\,160$, $l_{60}=79\,500$, calcular $q_{55}$, ${}_5p_{55}$, ${}_4d_{56}$.  
+**Solución.** (a) $d_x$ es el número de fallecimientos entre las edades $x$ y $x+1$: $d_x = l_x - l_{x+1}$. ${}_nd_x$ es el número de fallecimientos entre $x$ y $x+n$: ${}_nd_x = l_x - l_{x+n} = \sum_{j=0}^{n-1} d_{x+j}$. (b) $q_{55} = d_{55}/l_{55} = (84\,000 - 83\,160)/84\,000 = 840/84\,000 = 0{,}01$. ${}_5p_{55} = l_{60}/l_{55} = 79\,500/84\,000 \approx 0{,}946$. ${}_4d_{56} = l_{56} - l_{60} = 83\,160 - 79\,500 = 3\,660$.
+
+**21. Relación $l_{x+1} = l_x - d_x$**  
+Dado $l_{60}=80\,000$ y $d_{60}=1\,600$, obtener $l_{61}$ y $q_{60}$.  
+**Solución.** $l_{61} = l_{60} - d_{60} = 80\,000 - 1\,600 = 78\,400$. $q_{60} = d_{60}/l_{60} = 1\,600/80\,000 = 0{,}02$. Es la base para construir o completar tablas a partir de $l_x$ y $q_x$.
+
+**22. Probabilidad y tabla**  
+Explicar por qué $q_x = d_x/l_x$ y ${}_np_x = l_{x+n}/l_x$ son consistentes con la interpretación de $l_x$ como número de supervivientes.  
+**Solución.** $l_x$ representa el número de vivos a la edad $x$ en la tabla (cohorte determinística). La proporción que fallece en el año es $d_x/l_x = q_x$. La proporción que sobrevive $n$ años es $l_{x+n}/l_x = {}_np_x$. Así las probabilidades se leen directamente de las columnas de la tabla (Jordan, Weishaus).
+
+**23. Tipo parcial: completar una fila**  
+Se tiene $l_{70}=10\,000$, $q_{70}=0{,}02$, $q_{71}=0{,}022$, $q_{72}=0{,}024$. Calcular $l_{71}$, $l_{72}$, $l_{73}$ y ${}_3d_{70}$.  
+**Solución.** $l_{71} = l_{70}(1-q_{70}) = 10\,000 \times 0{,}98 = 9\,800$. $l_{72} = 9\,800 \times 0{,}978 = 9\,584{,}4$. $l_{73} = 9\,584{,}4 \times 0{,}976 \approx 9\,354{,}4$. ${}_3d_{70} = l_{70} - l_{73} \approx 645{,}6$.
+
+**24. Radix y escalado**  
+Si una tabla tiene $l_0=100\,000$ y otra tiene $l_0=1$, ¿cómo se relacionan los $l_x$ y las probabilidades $q_x$, ${}_np_x$?  
+**Solución.** Si se escala $l_x \to k\,l_x$ para todo $x$ (por ejemplo $k=1/100\,000$), entonces $d_x = l_x - l_{x+1}$ también se multiplica por $k$, por tanto $q_x = d_x/l_x$ y ${}_np_x = l_{x+n}/l_x$ no cambian. Las probabilidades son independientes del radix; el radix solo fija la escala del «número» de supervivientes.
+
+**25. Cobertura Tema 1: uso de la tabla en evaluación**  
+Indicar cómo se usan $l_x$, $d_x$, $q_x$ en el cálculo de primas netas y reservas (conexión con temas 2–5).  
+**Solución.** Las funciones $l_x$, $d_x$ definen las probabilidades ${}_np_x$, $q_x$ que entran en el valor presente actuarial. Con el interés se construyen $D_x = v^x l_x$, $C_x = v^{x+1} d_x$, $M_x$, $N_x$, etc., con las que se calculan PNU, primas niveladas y reservas. Sin la tabla (o su equivalente $S$ o $\mu$) no puede evaluarse ningún beneficio contingente (programa Temas 2–5).
+
+**26.** $l_{62}=77\,000$, $l_{63}=76\,230$. Calcular $d_{62}$, $q_{62}$, $p_{62}$. **Solución.** $d_{62}=770$; $q_{62}=770/77\,000=0{,}01$; $p_{62}=0{,}99$.
+
+**27.** Con $l_{48}=88\,000$, $l_{50}=86\,500$, $l_{52}=84\,800$, calcular ${}_2p_{48}$, ${}_4p_{48}$, ${}_2d_{50}$. **Solución.** ${}_2p_{48}=86\,500/88\,000\approx 0{,}983$; ${}_4p_{48}=84\,800/88\,000\approx 0{,}964$; ${}_2d_{50}=86\,500-84\,800=1\,700$.
+
+**28.** Explicar por qué $q_x$ no cambia si se escala $l_x \to k\,l_x$. **Solución.** $q_x=d_x/l_x$; al escalar, $d_x$ y $l_x$ se multiplican por $k$ y el cociente se mantiene.
+
+**29.** $l_{65}=75\,000$, $l_{66}=73\,500$, $l_{70}=68\,000$. Calcular $q_{65}$, ${}_5p_{65}$, ${}_4d_{66}$. **Solución.** $q_{65}=1\,500/75\,000=0{,}02$; ${}_5p_{65}=68\,000/75\,000\approx 0{,}9067$; ${}_4d_{66}=73\,500-68\,000=5\,500$.
+
+**30.** Definir ${}_nd_x$ y dar relación con $l_x$. **Solución.** ${}_nd_x=l_x-l_{x+n}$; número de fallecimientos entre $x$ y $x+n$.
+
+**31.** Tabla da $1000\,q_{55}=15$. Con $l_{55}=82\,000$ obtener $q_{55}$, $d_{55}$, $l_{56}$. **Solución.** $q_{55}=0{,}015$; $d_{55}=1\,230$; $l_{56}=80\,770$.
+
+**32.** ${}_3p_x = p_x\,p_{x+1}\,p_{x+2}$. Verificar con $l_x$. **Solución.** ${}_3p_x=l_{x+3}/l_x=(l_{x+1}/l_x)(l_{x+2}/l_{x+1})(l_{x+3}/l_{x+2})=p_x\,p_{x+1}\,p_{x+2}$.
+
+**33.** $l_{58}=78\,000$, $l_{59}=76\,800$, $l_{60}=75\,500$, $l_{63}=72\,000$. Calcular ${}_3p_{58}$, ${}_5p_{58}$, ${}_{2|2}q_{58}$. **Solución.** ${}_3p_{58}=75\,500/78\,000\approx 0{,}968$; ${}_5p_{58}=72\,000/78\,000\approx 0{,}923$; ${}_{2|2}q_{58}={}_2p_{58}-{}_4p_{58}$.
+
+**34.** Relación $l_{x+1}=l_x(1-q_x)$. **Solución.** $l_{x+1}=l_x-d_x=l_x-l_x\,q_x=l_x(1-q_x)$.
+
+**35.** $l_{72}=8\,000$, $l_{73}=7\,840$, $l_{75}=7\,500$. Calcular $q_{72}$, ${}_3p_{72}$, ${}_2d_{73}$. **Solución.** $q_{72}=160/8\,000=0{,}02$; ${}_3p_{72}=7\,500/8\,000=0{,}9375$; ${}_2d_{73}=7\,840-7\,500=340$.
+
+**36.** Interpretar $l_{40}/l_0$ en una cohorte. **Solución.** Proporción de la cohorte inicial que llega viva a 40; equivale a ${}_{40}p_0$.
+
+**37.** Dado $l_{50}=90\,000$, $q_{50}=0{,}012$, $q_{51}=0{,}013$, obtener $l_{51}$, $l_{52}$. **Solución.** $l_{51}=90\,000\times 0{,}988=88\,920$; $l_{52}=88\,920\times 0{,}987\approx 87\,764$.
+
+**38.** ${}_4q_x$ en función de $l_x$. **Solución.** ${}_4q_x=1-l_{x+4}/l_x=(l_x-l_{x+4})/l_x={}_4d_x/l_x$.
+
+**39.** Tipo parcial: $l_{68}=9\,000$, $l_{69}=8\,820$, $l_{70}=8\,620$. Calcular $q_{68}$, $q_{69}$, ${}_2p_{68}$. **Solución.** $q_{68}=0{,}02$; $q_{69}=200/8\,820\approx 0{,}0227$; ${}_2p_{68}=8\,620/9\,000\approx 0{,}9578$.
+
+**40.** Suma ${}_nd_x = d_x + d_{x+1} + \cdots + d_{x+n-1}$. **Solución.** ${}_nd_x=l_x-l_{x+n}=(l_x-l_{x+1})+(l_{x+1}-l_{x+2})+\cdots = d_x+\cdots+d_{x+n-1}$.
+
+**41.** $l_{45}=92\,000$, $l_{50}=88\,000$, $l_{55}=83\,000$. Calcular ${}_5p_{45}$, ${}_{10}p_{45}$, ${}_5d_{50}$. **Solución.** ${}_5p_{45}=88\,000/92\,000\approx 0{,}9565$; ${}_{10}p_{45}=83\,000/92\,000\approx 0{,}9022$; ${}_5d_{50}=5\,000$.
+
+**42.** Radix $l_0=1$. ¿Cómo se interpretan $l_x$? **Solución.** $l_x$ son proporciones o probabilidades de supervivencia desde 0 hasta $x$ (tabla normalizada).
+
+**43.** Completar: $l_{64}=72\,000$, $q_{64}=0{,}018$, $q_{65}=0{,}020$. Hallar $l_{65}$, $l_{66}$. **Solución.** $l_{65}=72\,000\times 0{,}982=70\,704$; $l_{66}=70\,704\times 0{,}98\approx 69\,290$.
+
+**44.** ${}_2p_{55}$ y ${}_2q_{55}$ con $l_{55}$, $l_{56}$, $l_{57}$. **Solución.** ${}_2p_{55}=l_{57}/l_{55}$; ${}_2q_{55}=1-l_{57}/l_{55}$.
+
+**45.** Tipo parcial: tres edades. $l_{60}=80\,000$, $l_{62}=77\,600$, $l_{65}=74\,000$. Calcular $q_{60}$ (necesitas $l_{61}$), ${}_5p_{60}$, ${}_3d_{62}$. **Solución.** Si $l_{61}$ no se da, ${}_5p_{60}=74\,000/80\,000=0{,}925$; ${}_3d_{62}=l_{62}-l_{65}=3\,600$.
+
+**46.** Proyección: $l_{70}=10\,000$, $q_{70}=0{,}03$, $q_{71}=0{,}032$, $q_{72}=0{,}034$. Calcular $l_{71}$, $l_{72}$, $l_{73}$. **Solución.** $l_{71}=9\,700$; $l_{72}=9\,700\times 0{,}968\approx 9\,390$; $l_{73}=9\,390\times 0{,}966\approx 9\,071$.
+
+**47.** Relación $e_x$ con $l_{x+k}$. **Solución.** $e_x=\sum_{k \geq 1} l_{x+k}/l_x - 1/2$ (aproximación abreviada) o según definición de tabla.
+
+**48.** $l_{52}=86\,000$, $l_{53}=85\,140$, $l_{57}=81\,000$. Calcular ${}_4p_{53}$, ${}_5d_{52}$. **Solución.** ${}_4p_{53}=l_{57}/l_{53}=81\,000/85\,140\approx 0{,}9514$; ${}_5d_{52}=l_{52}-l_{57}=5\,000$.
+
+**49.** Verificar $d_x=l_x-l_{x+1}$. **Solución.** Por definición: $d_x$ son los que mueren entre $x$ y $x+1$, luego $l_{x+1}=l_x-d_x$.
+
+**50.** Síntesis: con $l_{55}=84\,000$, $l_{60}=79\,000$, $l_{65}=73\,500$, calcular ${}_5p_{55}$, ${}_{10}p_{55}$, ${}_5d_{60}$. **Solución.** ${}_5p_{55}=79\,000/84\,000\approx 0{,}9405$; ${}_{10}p_{55}=73\,500/84\,000\approx 0{,}875$; ${}_5d_{60}=5\,500$.
+
+
+---
+
+### Ejercicios resueltos tipo parcial (20)
+
+Ejercicios de nivel examen sobre $l_x$, $d_x$, $q_x$, radix y uso de la tabla. Soluciones por pasos.
+
+**1.** Con $l_{40}=95\,000$, $l_{41}=94\,100$, calcular $q_{40}$, $d_{40}$. **Solución.** $d_{40}=l_{40}-l_{41}=900$; $q_{40}=d_{40}/l_{40}=900/95\,000=0{,}00947$.
+
+**2.** Con $l_{70}=1\,000$, $l_{71}=980$, $l_{72}=958$, calcular ${}_2p_{70}$, ${}_2q_{70}$. **Solución.** ${}_2p_{70}=l_{72}/l_{70}=0{,}958$; ${}_2q_{70}=1-0{,}958=0{,}042$.
+
+**3.** Explicar por qué al duplicar el radix no cambian $q_x$ ni ${}_np_x$. **Solución.** $q_x=d_x/l_x$ y ${}_np_x=l_{x+n}/l_x$ son cocientes; si $l \to k\,l$, numerador y denominador se multiplican por $k$ y el cociente no varía.
+
+**4.** $l_{60}=80\,000$, $l_{61}=78\,400$, $l_{65}=74\,000$. Calcular $d_{60}$, ${}_5p_{60}$. **Solución.** $d_{60}=1\,600$; ${}_5p_{60}=l_{65}/l_{60}=74\,000/80\,000=0{,}925$.
+
+**5.** Definir radix. **Solución.** Valor inicial $l_0$ (o $l_x$ en una edad base) que fija la escala de la tabla; las probabilidades no dependen de su valor.
+
+**6.** Tabla da $1000\,q_{60}=15$. Con $l_{60}=80\,000$ obtener $q_{60}$, $d_{60}$. **Solución.** $q_{60}=15/1000=0{,}015$; $d_{60}=q_{60}\,l_{60}=1\,200$.
+
+**7.** Escribir ${}_np_x$ como producto de $p_x$, $p_{x+1}$, …, $p_{x+n-1}$. **Solución.** ${}_np_x = p_x \cdot p_{x+1} \cdots p_{x+n-1}$ (cadena de supervivencia).
+
+**8.** $l_{55}=85\,000$, $l_{60}=81\,000$. Calcular ${}_5p_{55}$ y número de fallecimientos entre 55 y 60. **Solución.** ${}_5p_{55}=81\,000/85\,000 \approx 0{,}9529$; fallecimientos = ${}_5d_{55}=4\,000$.
+
+**9.** Relación $d_x = l_x - l_{x+1}$ y $q_x = d_x/l_x$. **Solución.** $d_x$ son los que mueren entre $x$ y $x+1$; $q_x$ es la probabilidad de muerte en ese año.
+
+**10.** $l_{50}=90\,000$, $l_{51}=89\,100$, $l_{55}=85\,000$. Calcular $q_{50}$, ${}_5p_{50}$, ${}_4d_{51}$. **Solución.** $q_{50}=900/90\,000=0{,}01$; ${}_5p_{50}=85\,000/90\,000 \approx 0{,}9444$; ${}_4d_{51}=l_{51}-l_{55}=4\,100$.
+
+**11.** $l_{44}=93\,000$, $l_{45}=92\,000$, $l_{49}=88\,500$. Calcular $q_{44}$, ${}_5p_{44}$, ${}_4d_{45}$. **Solución.** $q_{44}=1\,000/93\,000\approx 0{,}01075$; ${}_5p_{44}=88\,500/93\,000\approx 0{,}9516$; ${}_4d_{45}=3\,500$.
+
+**12.** Explicar por qué al duplicar el radix no cambian $e_x$ ni las probabilidades. **Solución.** $e_x$ y las probabilidades son cocientes de $l_x$; al escalar, no cambian.
+
+**13.** $l_{66}=74\,000$, $l_{67}=72\,800$, $l_{70}=70\,000$. Calcular $d_{66}$, ${}_4p_{66}$, ${}_3d_{67}$. **Solución.** $d_{66}=1\,200$; ${}_4p_{66}=l_{70}/l_{66}=70\,000/74\,000\approx 0{,}9459$; ${}_3d_{67}=2\,800$.
+
+**14.** Escribir ${}_np_x$ como cociente de $l$. **Solución.** ${}_np_x=l_{x+n}/l_x$.
+
+**15.** Tipo parcial: $l_{62}=77\,000$, $l_{63}=76\,230$, $l_{65}=74\,500$. Calcular $q_{62}$, ${}_3p_{62}$, ${}_{2|1}q_{62}$. **Solución.** $q_{62}=0{,}01$; ${}_3p_{62}=74\,500/77\,000\approx 0{,}9675$; ${}_{2|1}q_{62}={}_2p_{62}-{}_3p_{62}$.
+
+**16.** Recursión $l_{x+n}$ desde $l_x$ y $q_x,\ldots,q_{x+n-1}$. **Solución.** $l_{x+k+1}=l_{x+k}(1-q_{x+k})$ para $k=0,\ldots,n-1$.
+
+**17.** $1000\,q_{48}=12$, $l_{48}=89\,000$. Calcular $q_{48}$, $d_{48}$, $l_{49}$. **Solución.** $q_{48}=0{,}012$; $d_{48}=1\,068$; $l_{49}=87\,932$.
+
+**18.** ${}_3d_x$ en función de $l_x$. **Solución.** ${}_3d_x=l_x-l_{x+3}$.
+
+**19.** Tipo parcial: completar. $l_{69}=8\,500$, $q_{69}=0{,}02$, $q_{70}=0{,}022$, $q_{71}=0{,}024$. $l_{70}$, $l_{71}$, $l_{72}$, ${}_3d_{69}$. **Solución.** $l_{70}=8\,330$; $l_{71}=8\,330\times 0{,}978\approx 8\,147$; $l_{72}=8\,147\times 0{,}976\approx 7\,951$; ${}_3d_{69}=549$.
+
+**20.** Síntesis: definir radix; con $l_{40}=95\,000$, $l_{45}=91\,000$, $l_{50}=86\,000$, calcular ${}_5p_{40}$, ${}_{10}p_{40}$, ${}_5d_{45}$. **Solución.** Radix: valor inicial $l_0$. ${}_5p_{40}=0{,}9579$; ${}_{10}p_{40}=86\,000/95\,000\approx 0{,}9053$; ${}_5d_{45}=5\,000$.
+
+
+---
+
+### Ejercicios propuestos (40)
+
+En cada ejercicio se debe calcular o explicar lo indicado usando $l_x$, $d_x$, $q_x$, ${}_np_x$. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Con $l_{40}=95\,000$, $l_{41}=94\,100$, $l_{45}=91\,000$, calcular $q_{40}$, ${}_4p_{41}$, $d_{40}$ (Jordan).
+
+2. **Se pide:** Explicar por qué al duplicar el radix en proporción no cambian $q_x$, ${}_np_x$, $e_x$ (Neill).
+
+3. **Se pide:** $l_{70}=1\,000$, $l_{71}=980$, $l_{72}=958$, $l_{73}=934$: calcular ${}_3d_{70}$, ${}_3q_{70}$, ${}_2p_{71}$ (Weishaus).
+
+4. **Se pide:** Dado $l_0$ y $l_{20}$, interpretar el cociente $l_{20}/l_0$.
+
+5. **Se pide:** Si $p_x=0{,}99$ para $x=60,\ldots,64$, calcular ${}_5p_{60}$.
+
+6. **Tipo parcial.** **Se pide:** Completar: $l_{65}=?$ si $l_{64}=88\,000$ y $q_{64}=0{,}015$.
+
+7. **Se pide:** Expresar ${}_np_x$ como producto $p_x\,p_{x+1}\cdots p_{x+n-1}$ (Neill).
+
+8. **Se pide:** Con $l_{50}=90\,000$, $l_{55}=86\,000$, calcular ${}_5d_{50}$ y ${}_5q_{50}$.
+
+9. **Se pide:** Definir radix y dar un ejemplo con $l_0=100\,000$.
+
+10. **Tipo parcial.** **Se pide:** $l_{40}=96\,000$, $q_{40}=0{,}01$, $q_{41}=0{,}011$. Calcular $l_{41}$, $l_{42}$.
+
+11. **Se pide:** Verificar ${}_nd_x = \sum_{j=0}^{n-1} d_{x+j}$ (Weishaus).
+
+12. **Se pide:** Si la tabla da $1000\,q_{60}=15$, obtener $q_{60}$, $p_{60}$, $d_{60}$ si $l_{60}=80\,000$.
+
+13. **Se pide:** Proyección: $q(70,0)=0{,}03$, $r=0{,}99$. Calcular $q(70,10)$.
+
+14. **Se pide:** Con $l_{45}$, $l_{46}$, $l_{47}$, escribir $q_{45}$, $q_{46}$, ${}_2p_{45}$.
+
+15. **Tipo parcial.** **Se pide:** Tabla con $l_{60}=80\,000$, $l_{61}=78\,400$, $l_{65}=74\,000$. Calcular $d_{60}$, ${}_5p_{60}$, ${}_4d_{61}$.
+
+16. **Se pide:** ¿Qué es una tabla de mortalidad «agregada» por edad? (Jordan).
+
+17. **Se pide:** Construcción: dado $l_{70}$ y $q_{70},\ldots,q_{74}$, escribir $l_{71},\ldots,l_{75}$.
+
+18. **Se pide:** Deducir la relación $d_x = l_x - l_{x+1}$ y $q_x = d_x/l_x$.
+
+19. **Se pide:** Con $l_{55}=85\,000$, $l_{60}=81\,000$, calcular ${}_5p_{55}$ y el número de fallecimientos entre 55 y 60.
+
+20. **Tipo parcial.** **Se pide:** (a) Definir $l_x$ y $d_x$. (b) Con $l_{50}=90\,000$, $l_{51}=89\,100$, $l_{55}=85\,000$, calcular $q_{50}$, ${}_5p_{50}$, ${}_4d_{51}$ (Jordan/Neill/Weishaus).
+
+21. **Se pide:** Con $l_{62}=77\,000$, $l_{63}=76\,230$, calcular $d_{62}$, $q_{62}$, $p_{62}$ y ${}_2p_{62}$ si $l_{64}=75\,400$.  
+22. **Se pide:** Demostrar ${}_nd_x = d_x + d_{x+1} + \cdots + d_{x+n-1}$ usando $l_{x+j+1} = l_{x+j} - d_{x+j}$.  
+23. **Tipo parcial.** **Se pide:** Tabla con $l_{55}$, $l_{56}$, $l_{57}$, $l_{60}$. Escribir $q_{55}$, ${}_2p_{55}$, ${}_3q_{55}$, ${}_5p_{55}$ en función de esos valores.  
+24. **Se pide:** Interpretar el cociente $l_{65}/l_{25}$ en términos de probabilidad de supervivencia.  
+25. **Se pide:** Si la tabla da $1000\,q_{40}=12$, obtener $q_{40}$, $p_{40}$ y, con $l_{40}=95\,000$, calcular $d_{40}$ y $l_{41}$.  
+26. **Se pide:** Con $l_{58}=78\,000$, $l_{60}=75\,000$, $l_{62}=72\,000$, calcular ${}_2p_{58}$, ${}_4p_{58}$, ${}_2d_{60}$.  
+27. **Se pide:** Relación entre $L_x$ (años-persona vividos) y $l_x$, $l_{x+1}$ (notación de tabla).  
+28. **Tipo parcial.** **Se pide:** $l_{64}=72\,000$, $l_{65}=70\,800$, $l_{68}=67\,500$. Calcular $q_{64}$, ${}_4p_{64}$, ${}_3d_{65}$.  
+29. **Se pide:** Si se triplica el radix, ¿cambian $q_x$, ${}_np_x$, $e_x$? Justificar.  
+30. **Se pide:** Con $l_{46}=91\,000$, $l_{47}=90\,090$, $l_{50}=87\,500$, calcular $q_{46}$, ${}_4p_{46}$, ${}_3d_{47}$.  
+31. **Se pide:** Escribir ${}_2q_x$ en función de $l_x$, $l_{x+2}$.  
+32. **Se pide:** Proyección: $l_{75}=6\,000$, $q_{75}=0{,}04$, $q_{76}=0{,}042$. Calcular $l_{76}$, $l_{77}$.  
+33. **Tipo parcial.** **Se pide:** Completar una fila: $l_{71}=9\,000$, $q_{71}=0{,}025$, $q_{72}=0{,}027$. Hallar $l_{72}$, $l_{73}$, ${}_2d_{71}$.  
+34. **Se pide:** Interpretar $d_{50}/(l_{50}+l_{51})/2$ (tasa central de mortalidad aproximada).  
+35. **Se pide:** $l_{54}=85\,000$, $l_{55}=84\,150$, $l_{59}=80\,000$. Calcular ${}_5p_{54}$, ${}_4d_{55}$, $q_{54}$.  
+36. **Se pide:** Verificar que ${}_np_x \cdot l_x = l_{x+n}$.  
+37. **Tipo parcial.** **Se pide:** Con $l_{67}=73\,000$, $l_{68}=71\,500$, $l_{70}=68\,500$, calcular $q_{67}$, ${}_3p_{67}$, ${}_{2|1}q_{67}$.  
+38. **Se pide:** Definir esperanza abreviada $e_x$ con sumatoria de $l_{x+k}$.  
+39. **Se pide:** Si $l_{52}=86\,000$ y ${}_3p_{52}=0{,}96$, hallar $l_{55}$.  
+40. **Tipo parcial.** **Se pide:** (a) ¿Qué es el radix? (b) $l_{60}=80\,000$, $l_{65}=74\,000$, $l_{70}=67\,000$. Calcular ${}_5p_{60}$, ${}_{10}p_{60}$, ${}_5d_{65}$.
+
+---
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013]; Chiang [@chiang1984]; Preston et al. [@preston2001]; Lee y Carter [@lee1992] (proyección de mortalidad).*

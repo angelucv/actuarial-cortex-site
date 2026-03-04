@@ -1,0 +1,64 @@
+---
+number: false
+---
+
+# Apéndice: Glosario de notaciones {#apendice-glosario .unnumbered .unlisted}
+
+Este glosario recoge la notación estándar (Jordan [@jordan1982], Weishaus [@weishaus2013], IAN [@ian1954; @soa1986]) y la **simbología conmutativa dual** utilizada en las pizarras de la EECA-UCV, en particular para beneficios variables y rentas crecientes o decrecientes.
+
+## Supervivencia y mortalidad
+
+| Símbolo | Significado |
+|--------|-------------|
+| $S(x)$ | Función de supervivencia |
+| $F(x)$ | Función de distribución del tiempo de muerte |
+| $\mu_x$ | Fuerza de mortalidad a la edad $x$ |
+| $l_x$ | Número de supervivientes a la edad $x$ |
+| $d_x$ | Número de fallecimientos entre $x$ y $x+1$ |
+| $q_x$, $p_x$ | Probabilidad de muerte y de supervivencia en un año |
+| $e_x$ | Expectativa de vida a la edad $x$ |
+
+## Funciones conmutativas estándar y duales (EECA-UCV)
+
+Además de $D_x = v^x l_x$, $N_x = \sum_{t\ge 0} D_{x+t}$, $C_x = v^{x+1}d_x$, $M_x = \sum_{t\ge 0} C_{x+t}$, en la práctica docente de la UCV se usan:
+
+| Símbolo | Significado | Uso |
+|--------|-------------|-----|
+| $N_x$ | Suma de $D_x$ hacia adelante | Rentas de vida: $\ddot{a}_x = N_x/D_x$, $a_x = N_{x+1}/D_x$ |
+| $S_x$ | Suma de $N_x$: $S_x = \sum_{t\ge 0} N_{x+t}$ | Rentas **crecientes**: $(I\ddot{a})_x = S_x/D_x$, $(Ia)_x = S_{x+1}/D_x$ |
+| $M_x$ | Suma de $C_x$ hacia adelante | Seguros: $A_x = M_x/D_x$, $A_{x:\overline{n}|}^1 = (M_x - M_{x+n})/D_x$ |
+| $R_x$ | Suma de $M_x$: $R_x = \sum_{t\ge 0} M_{x+t}$ | Seguros **crecientes**: $(IA)_x$ y expresiones compactas para sumatorias de seguros temporales con capital variable |
+
+Con $S_x$ y $R_x$ se compactan fórmulas de rentas y seguros crecientes que en los exámenes se piden tanto en **sumatorias** como en **símbolos actuariales y conmutativos**. Las tablas de equivalencia permiten pasar de la forma $\sum_{k} b_k\, v^{k+1}\, {}_k|q_x$ a cocientes de $M_x$, $R_x$, $D_x$, etc., según el tipo de beneficio.
+
+## Seguros y anualidades contingentes
+
+| Símbolo | Significado |
+|--------|-------------|
+| $\bar{A}_x$ | Valor presente actuarial de un seguro vitalicio pagadero al momento de muerte |
+| $A_x$ | Valor presente actuarial de un seguro vitalicio pagadero al fin del año de fallecimiento |
+| $A_{x:\overline{n}|}^1$ | Seguro temporal a $n$ años (pago solo por muerte en el período) |
+| $A_{x:\overline{n}|}$ | Seguro mixto (dotal) a $n$ años |
+| ${}_nE_x$ | Dotal puro: valor presente de 1 u.m. pagadera en $n$ años si $(x)$ sobrevive |
+| $a_x$, $\ddot{a}_x$ | Renta vitalicia vencida y anticipada |
+| $\ddot{a}_{x:\overline{n}|}$ | Renta temporal anticipada $n$ años |
+
+## Primas y reservas
+
+| Símbolo | Significado |
+|--------|-------------|
+| $P$ | Prima neta nivelada |
+| $P_x$, $P_{x:\overline{n}|}$ | Prima nivelada vida entera y mixto a $n$ años |
+| $_t V$ o $_kV$ | Reserva de beneficio al tiempo $t$ (año $k$) |
+| $_tV^{\text{LV}}$, $_tV^{\text{Z}}$ | Reserva modificada (Ley Venezolana, Zillmer) |
+
+## Identidades útiles (verificación y simplificación)
+
+Las siguientes igualdades permiten **verificar resultados** y **simplificar cálculos** en los ejercicios y exámenes:
+
+- **Identidad de King (vida entera):** $A_x = 1 - d\,\ddot{a}_x$. Equivalente: $\ddot{a}_x = (1 - A_x)/d$.
+- **Mixto:** $A_{x:\overline{n}|} = 1 - d\,\ddot{a}_{x:\overline{n}|}$; $\ddot{a}_{x:\overline{n}|} = (1 - A_{x:\overline{n}|})/d$.
+- **Relación seguros y rentas:** $A_x = v\,\ddot{a}_x - a_x$; $A_{x:\overline{n}|}^1 = v\,\ddot{a}_{x:\overline{n}|} - a_{x:\overline{n}|}$.
+- **Diferido:** ${}_{n|}A_x = {}_nE_x\, A_{x+n}$; ${}_n|\ddot{a}_x = {}_nE_x\, \ddot{a}_{x+n}$.
+- **Temporal = vida entera − diferido:** $A_{x:\overline{n}|}^1 = A_x - {}_nE_x\, A_{x+n}$.
+- **Regla de momentos:** $\mathbb{E}[Z^2] = {}^2A$ (mismo tipo de seguro valorado a doble fuerza de interés); $\operatorname{Var}(Z) = {}^2A - (A)^2$.

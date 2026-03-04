@@ -1,0 +1,362 @@
+Moments of annual insurances	178
+
+Standard insurances and notation	179
+
+Illustrative Life Table	181
+
+Constant force and uniform mortality	183
+
+Normal approximation	185
+
+mthlyinsurance.	186
+
+Exercises	186
+
+Solutions	200
+
+Insurance: Continuous-Moments-Part 1	213
+
+Definitions and general formulas. . . . . . . . . . . . . .	213
+
+Constant force of mortality	214
+
+Exercises	221
+
+Solutions	231
+
+Insurance: Continuous-Moments-Part 2	241
+
+12.l Uniform survival function.	241
+
+Other mortality functions	243
+
+.l  Integrating at11e-c1 (Gamma Integrands)	244
+
+Variance of endowment insurance	245
+
+Normal approximation	246
+
+Exercises	248
+
+Solutions	255
+
+Insurance: Probabilities and Percentiles	265
+
+13.l Introduction	265
+
+Probabilities for continuous insurance variables	266
+
+Distribution functions of insurance present values	270
+
+Probabilities for discrete variables	271
+
+Percentiles	272
+
+Exercises	274
+
+SOAM1.CSli,dyManwal-131"h edttim.1 Copyrigh:t ©2013 ASM
+
+Solutions	279
+
+Insurance: Recursive Formulas, Vru·ying Insurance	289
+
+14.l Recursive formulas	289
+
+Varying insurance	291
+
+Exercises	299
+
+Solutions	307
+
+Insurance: Relationships between Ax, A 111l, and Ax	319
+
+Uniform distribution of deaths	319
+
+Claims acceleration approach	321
+
+Exercises ...... ,	323
+
+Solutions	325
+
+Supplementary Questions: Insurances	329
+
+Solutions	330
+
+Annuities: Continuous, Expectation	333
+
+17.l Whole life annuity	334
+
+Temporary and deferred life annuities .................. ,	336
+
+n-year certain-and-life annuity	339
+
+Exercises	341
+
+Solutions	346
+
+Annuities: Discrete, Expectation	353
+
+l Annuities-due	3S3
+
+Annuities-immediate	357
+
+nithly annuities	359
+
+Actuarial Accumulated Value	360
+
+Exercises	361
+
+Solutions	374
+
+Annuities: Variance	385
+
+Whole Life and Temporary Life Annuities	385
+
+Other Annuities	387
+
+Typical Exam Questions	388
+
+Combinations ofAnnuitie  and Insurances with No Variance	390
+
+Exercises	392
+
+Solutions	401
+
+Annuities: Probabilities and Percentiles	415
+
+Probabilities for continuous annuities ........................................ ,	415
+
+Distribution functions of annuity present values	418
+
+Prnbabilities for discrete annuities	419
+
+Percentiles	420
+
+Exercises	423
+
+Solutions	427
+
+Annuities: Varying Annuities, Recursive Formulas	435
+
+Increasing and Decreasing Annuities	435
+
+21.l.l Geometrically increasing annuities	435
+
+Arithmetically increasing annuities	435
+
+Recursive formulas ..................................................•	437
+
+Exercises	438
+
+Solutions	444
+
+Annuities: m-thly Payments	451
+
+22.l Uniform distribution of deaths assumption	451
+
+Woolhous:e's forn1ula.	452
+
+Exercises	456
+
+Solutions	460
+
+Supplementary Questions: Annuities	467
+
+Solutions	470
+
+Premiums: Net Premiums for Fully Continuous Insurances	475
+
+Future loss . . . . . . . . . . . . . . . . . . . . . . . .	475
+
+Net premium	476
+
+Expected value of future loss	479
+
+International Actuarial Premium Notation	480
+
+Exercises	482
+
+Solutions	488
+
+Premiums: Net Premiums from Life Tables	497
+
+Ex:erdses	498
+
+Solutions	506
+
+Premiums: Net Premiums from Formulas	515
+
+Exercises	518
+
+Solutions	525
+
+Premiums: Net Premiums Paid on an mthlyBasis	535
+
+Exercises	536
+
+Solutions	540
+
+Premiums: Gross Premiums	545
+
+Gross future loss	545
+
+Gross premium	546
+
+Ex<!rcises	548
+
+Solutions	555
+
+Premiums: Variance of Future Loss, Continuous	561
+
+Exercises	564
+
+Solutions	570
+
+Premiums: Variance of Future Loss, Discrete	577
+
+30.l Variance of net future loss	577
+
+Variance of gross future loss	579
+
+Exercises	581
+
+Solutions	588
+
+Premiums: Probabilities and Percentiles of Future Loss	597
+
+31.l Probabilities	597
+
+Fully continuous insurances	597
+
+Discrete insurances	601
+
+Annuities	601
+
+Gross future loss ......._.	604
+
+Percentiles	605
+
+Exercises	606
+
+Solutions··········••-•·••··•••······•	610
+
+Premium: Special Topics	617
+
+32.l The portfolio percentile premium principle	617
+
+Extra risks.	619
+
+Exercises	619
+
+Solutions	621
+
+Supplementary Questions: Premiums	625
+
+Solutions	628
+
+Reserves: Prospective Net Premium Reserve	635
+
+34.l International Actuarial Reserve Notation	640
+
+Exercises	641
+
+Solutions	648
+
+Reserves: Gross Premium Reserve and Expense Reserve	657
+
+Gross premium reserve	657
+
+Expense reserve	659
+
+Exercises	661
+
+Solutions	664
+
+Reserves: Retrospective Formula	669
+
+Retrospective Reserve Formula	669
+
+Relationships between premiums	671
+
+Premium Difference and Paid Up Insurance Formulas	673
+
+Exercises	675
+
+Solutions	681
+
+Reserves: Special Formulas for Whole Life and Endowrnent Insurance	689
+
+Annuity-ratio formula	689
+
+Insurance-ratio formula	690
+
+Premium-ratio formula	691
+
+Exercises	693
+
+Solutions	702
+
+Reserves: Variance of Loss	713
+
+Exercises	715
+
+Solutions	721
+
+Reserves: Recursive Formulas	729
+
+Net premium reserve	729
+
+Insurances and annuities with payment of reserve upon death	732
+
+Gross premium reserve	736
+
+Exercises	739
+
+Solutions	758
+
+Reserves: Modified Reserves	777
+
+Exercises	778
+
+Solutions	782
+
+Reserves: Other Topics	789
+
+41.l Reserves on semicontbmous insmanc-e	789
+
+412 Reserves between premium dates ................................ ,	790
+
+Thiele's differential equation	792
+
+Policy alterations	795
+
+Exercises	797
+
+Solutions	809
+
+Supplementary Questions: Reserves	823
+
+Solutions	826
+
+Markov Chains: Discrete-Probabilities	831
+
+Introduction.	831
+
+Discrete Markov chains	834
+
+Exercises	838
+
+Solutions	842
+
+Markov Chains: Continuous-Probabilities	817
+
+Probabilities-direct calculation ...... ,	848
+
+Kolmogorov's forward equations	851
+
+Exercises	853
+
+Solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . .	862
+
+Markov Chains: Prtmiums and Reserves	869
+

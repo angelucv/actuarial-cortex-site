@@ -1,0 +1,230 @@
+---
+number: false
+---
+
+# Interés compuesto e inflación {#cap-interes-compuesto-inflacion .unnumbered}
+
+Este capítulo amplía el contenido del **Capítulo 6** de @vidaurri2017 (*Interés compuesto e inflación*): interés compuesto con períodos de capitalización, tasas nominal y efectiva, ecuaciones de valor a interés compuesto, capitalización continua e inflación. Se integra con el Capítulo 1 (Medición del interés) del presente libro.
+
+## Introducción
+
+El dinero y el tiempo están estrechamente ligados con la vida de las personas y de los negocios. Cuando se generan excedentes de efectivo, se ahorran durante un período determinado a fin de ganar un interés que aumente el capital original; en otras ocasiones se tiene necesidad de recursos financieros durante un tiempo y se debe pagar un interés por su uso. En **períodos cortos** suele utilizarse el interés simple. En **períodos largos** se utilizará casi exclusivamente el **interés compuesto**.
+
+## Conceptos básicos
+
+En interés simple el capital original sobre el que se calculan los intereses permanece sin variación durante todo el tiempo que dura la operación. En **interés compuesto**, los intereses generados se suman al capital original en períodos establecidos y, a su vez, generan un nuevo interés en el siguiente lapso; se dice que el interés se **capitaliza**. El capital no es constante: aumenta al final de cada período por la adición de los intereses ganados. La cantidad acumulada al final se conoce como **monto compuesto**; la diferencia entre el monto compuesto y el capital original es el **interés compuesto**.
+
+**Ejemplo (comparación simple vs compuesto).** Se depositan \$100\,000 en una cuenta que paga 10\% de interés semestral (20\% anual). A interés **simple** en 6 meses: $I = 100\,000(0{,}10)(1) = 10\,000$. Si en cambio se depositan \$100\,000 en una cuenta al 20\% anual **convertible trimestralmente** (5\% trimestral): 1.er trimestre $I = 100\,000(0{,}05)(1) = 5\,000$; 2.º trimestre el capital es $105\,000$, luego $I = 105\,000(0{,}05)(1) = 5\,250$. Interés total = $5\,000 + 5\,250 = 10\,250$. El interés compuesto es mayor porque el capital se incrementa por la adición de los intereses al final de cada período.
+
+**Período de capitalización:** intervalo al final del cual se convierte el interés en capital (anual, semestral, trimestral, mensual, etc.). **Frecuencia de conversión:** número de veces que el interés se capitaliza en un año. Ejemplo: 5\% anual capitalizable trimestralmente $\Rightarrow$ frecuencia 4, período de capitalización trimestral (3 meses).
+
+**Tasa de interés compuesto:** suele expresarse en forma anual junto con su período de capitalización (p. ej. 28\% anual capitalizable mensualmente, 10\% anual capitalizable semestralmente). Si no se menciona la capitalización, se entiende anual. Para resolver problemas, la tasa anual debe convertirse a la tasa que corresponda al período de capitalización; **período de capitalización y tasa deben ser equivalentes**. Conclusiones: (a) el interés compuesto es mayor que el interés simple; (b) a mayor frecuencia de conversión (con la misma tasa nominal anual), mayor es el interés obtenido.
+
+**Ejemplo (crecimiento simple vs compuesto).** Depósito de \$100\,000 a 5 años, tasa 20\% anual. A interés simple: $M = C(1+it)$, incrementos constantes (\$20\,000 por año). A interés compuesto anual: $M = C(1+i)^n$; año 0: 100\,000; 1: 120\,000; 2: 144\,000; 3: 172\,800; 4: 207\,360; 5: 248\,832. El monto a interés simple crece en forma aritmética (recta); a interés compuesto, en forma geométrica (curva exponencial ascendente).
+
+## Interés compuesto: definiciones y fórmula fundamental
+
+En **interés simple** el capital que genera el interés permanece constante. En **interés compuesto**, el interés generado en un período se convierte en capital para el siguiente: se suma al capital y con ese nuevo capital se calcula el interés del período siguiente, y así sucesivamente. La suma total al final del proceso es el **monto compuesto** (valor futuro) $F$; la diferencia entre el monto compuesto y el capital original $P$ es el **interés compuesto** $I$ [@vidaurri2017, §6.1]:
+
+$$I = F - P. \tag{6.1}$$
+
+**Período de capitalización** (o de conversión) es el intervalo al final del cual se capitalizan los intereses (por ejemplo semestral, mensual). La **frecuencia de capitalización** es el número de veces que el interés se capitaliza en un año. La tasa debe expresarse en la misma unidad que el período de capitalización (por ejemplo 36% anual capitalizable cada mes $\Rightarrow$ $i = 36\%/12 = 3\%$ mensual).
+
+| Si los intereses se capitalizan cada: | Frecuencia $m$ |
+|---------------------------------------|----------------|
+| Año                                   | 1              |
+| Semestre                              | 2              |
+| Cuatrimestre                          | 3              |
+| Trimestre                             | 4              |
+| Bimestre                              | 6              |
+| Mes                                   | 12             |
+| Quincena                              | 24             |
+| Semana                                | 52             |
+| Día                                   | 365            |
+
+**Fórmula del monto compuesto:** con capital $P$, tasa por período de capitalización $i$ (en decimal) y $n$ períodos de capitalización,
+
+$$F = P\,(1 + i)^n. \tag{6.2}$$
+
+El interés compuesto es $I = F - P = P\bigl((1+i)^n - 1\bigr)$. Bajo interés compuesto el monto crece en forma **geométrica**; bajo interés simple, en forma **aritmética**. Para un mismo capital, tasa y plazo, el monto compuesto es mayor que el monto simple porque se ganan intereses sobre los intereses ya capitalizados [@vidaurri2017].
+
+**Ejemplo.** Se depositan \$50\,000 en un banco al 18\% anual capitalizable mensualmente. Monto en 2 años: $i = 0{,}18/12 = 0{,}015$, $n = 24$; $M = 50\,000(1{,}015)^{24} = 50\,000(1{,}429503) \approx 71\,475{,}14$ (interés compuesto \$21\,475{,}14).
+
+**Ejemplo.** Depósito \$100\,000 al 4,8\% capitalizable mensualmente. (a) Monto en 9 meses: $i = 0{,}048/12 = 0{,}004$, $n = 9$; $M = 100\,000(1{,}004)^9 \approx 103\,658{,}10$. (b) Si la caja de ahorros presta ese dinero al 30\% anual capitalizable mensualmente, el pago a los 9 meses sería $M = 100\,000(1{,}025)^9 \approx 124\,886{,}30$; la diferencia con lo pagado al ahorrador (\$103\,658{,}10) es la utilidad del intermediario (\$21\,228{,}20).
+
+**Ejemplo.** Préstamo \$1\,500\,000 a un año, 12\% convertible trimestralmente. $i = 0{,}12/4 = 0{,}03$, $n = 4$; $M = 1\,500\,000(1{,}03)^4 \approx 1\,688\,263{,}22$.
+
+### Monto compuesto con período de interés fraccionario
+
+Cuando $n$ no es entero puede usarse la fórmula $M = P(1+i)^n$ con $n$ fraccionario (calculadora o logaritmos), o el **método aproximado**: monto compuesto hasta el último período completo y luego interés simple por la fracción. **Ejemplo:** liquidar el préstamo anterior a los 7,5 meses: $n = 7{,}5/3 = 2{,}5$ trimestres; método exacto $M = 1\,500\,000(1{,}03)^{2{,}5} \approx 1\,615\,043{,}86$; método aproximado $M = 1\,500\,000(1{,}03)^2[1+(0{,}03)(0{,}5)] \approx 1\,615\,220{,}25$. Se recomienda el método exacto cuando sea posible.
+
+**Ejemplo.** Préstamo \$150\,000 a 3 años, 20\% convertible semestralmente; cancelación anticipada a los 15 meses. Exacto: $n = 2{,}5$ semestres, $i = 0{,}10$, $M = 150\,000(1{,}10)^{2{,}5} \approx 190\,358{,}81$. Aproximado: $M = 150\,000(1{,}10)^2[1+0{,}10(3/6)] = 190\,575{,}00$ (diferencia \$216{,}19).
+
+**Valor presente a interés compuesto:** despejando $P$ de (6.2), $P = F/(1+i)^n = F\,(1+i)^{-n}$. A la tasa utilizada en el descuento se le llama a menudo **tasa de descuento** (no confundir con descuento bancario simple).
+
+**Tasas variables:** si en $n_1$ períodos rige la tasa $i_1$, en $n_2$ períodos la tasa $i_2$, etc., el monto es
+
+$$F = P\,(1+i_1)^{n_1}(1+i_2)^{n_2}\cdots(1+i_k)^{n_k}. \tag{6.3}$$
+
+**Tasa desconocida:** de $F = P(1+i)^n$ se obtiene $i = (F/P)^{1/n} - 1$. **Tiempo desconocido:** tomando logaritmos, $n = \ln(F/P)/\ln(1+i)$ (o con logaritmos decimales: $n = (\log F - \log P)/\log(1+i)$).
+
+**Ejemplo (Vidaurri 6.1).** \$500\,000 al 15% anual capitalizable cada mes, 6 meses. $i = 0{,}15/12 = 0{,}0125$, $n = 6$; $F = 500\,000(1{,}0125)^6 = 538\,691{,}60$; $I = 38\,691{,}60$. A interés simple: $F = 500\,000[1+0{,}0125(6)] = 537\,500$ (menor).
+
+**Ejemplo (Vidaurri 6.2).** \$325\,000 al 12% con capitalización trimestral, 10 años. $i = 0{,}12/4 = 0{,}03$, $n = 40$; $F = 325\,000(1{,}03)^{40} \approx 1\,060\,162{,}28$; $I \approx 735\,162{,}28$.
+
+**Ejemplo (Vidaurri 6.8).** Valor presente de \$120\,000 dentro de 2 años al 30% capitalizable cada bimestre. $i = 0{,}30/6 = 0{,}05$, $n = 12$; $P = 120\,000(1{,}05)^{-12} \approx 66\,820{,}49$.
+
+**Ejemplo (duplicar capital).** Para duplicar un capital en un año con capitalización semanal ($n=52$): $2 = (1+i)^{52}$ $\Rightarrow$ $i = 2^{1/52}-1 \approx 1{,}3419\%$ semanal, es decir $\approx 69{,}78\%$ anual [@vidaurri2017].
+
+**Tiempo para triplicar (Vidaurri 6.16).** Con 18% compuesto cada cuatrimestre: $3 = (1+0{,}18/3)^n$ $\Rightarrow$ $\log 3 = n\log 1{,}06$ $\Rightarrow$ $n \approx 18{,}85$ cuatrimestres (en la práctica, 19 cuatrimestres para superar el triple).
+
+**Anatocismo.** Se llama **anatocismo** a la capitalización de intereses (intereses sobre intereses). En derecho y banca suele estar permitido y pactado; la fórmula $F = P(1+i)^n$ es la expresión matemática de ese acuerdo [@vidaurri2017, tema especial §6.1].
+
+## Períodos de capitalización fraccionarios
+
+Cuando el número de períodos $n$ no es entero (p. ej. 3 años y 9 meses con capitalización semestral $\Rightarrow$ $n = 7{,}5$), dos enfoques [@vidaurri2017, §6.2]:
+
+- **Método teórico (exacto):** se usa directamente $F = P(1+i)^n$ con $n$ fraccionario (p. ej. $n = 7{,}5$ semestres).
+- **Regla comercial:** se calcula el monto compuesto para los períodos **enteros** y sobre ese monto se aplica **interés simple** para la fracción de período restante. Suele dar un resultado ligeramente distinto (a veces mayor). En el libro se utiliza el método teórico salvo indicación contraria.
+
+Para el **valor presente** con fracción de período se aplica el mismo criterio: método teórico $P = F(1+i)^{-n}$ con $n$ fraccionario, o regla comercial (descuento compuesto para enteros y simple para la fracción).
+
+## Valor actual o presente
+
+El **valor actual** (o valor presente) es el capital que hoy debe invertirse a una tasa dada para obtener un monto futuro. De $M = P(1+i)^n$ se despeja $P = M/(1+i)^n = M(1+i)^{-n}$. Si se conocen tres de las cuatro variables (monto, capital, tiempo, tasa), puede calcularse la cuarta.
+
+**Ejemplo.** ¿Cuánto depositar para tener \$50\,000 en 3 años al 20\% anual convertible semestralmente? $i = 0{,}10$ semestral, $n = 6$; $P = 50\,000/(1{,}10)^6 \approx 28\,223{,}70$. **Ejemplo.** Juan Pérez debe pagar \$425\,000 (50\% del valor de una casa) en año y medio; tasa 6\% capitalizable mensualmente. $i = 0{,}005$, $n = 18$; $P = 425\,000(1{,}005)^{-18} \approx 388\,507{,}87$ (equivalente hoy a \$425\,000 en 18 meses). **Ejemplo.** Inversión \$50\,000 que generará \$80\,000 en 2 años; inflación promedio 25\% anual. Valor actual de \$80\,000: $P = 80\,000(1{,}25)^{-2} = 51\,200$; conviene invertir (51\,200 > 50\,000). **Ejemplo.** Inversión \$350\,000; ingresos \$100\,000, \$200\,000 y \$300\,000 en los años 1, 2 y 3; inflación 40\%. VP de ingresos: $100\,000(1{,}40)^{-1} + 200\,000(1{,}40)^{-2} + 300\,000(1{,}40)^{-3} \approx 71\,429 + 102\,041 + 109\,329 = 282\,799$; no conviene (282\,799 < 350\,000).
+
+### Valor actual de deudas que devengan interés
+
+Para deudas que devengan interés se calcula primero el **monto** de la deuda a su vencimiento y luego se descuenta a la fecha deseada. **Ejemplo:** Préstamo \$2\,000\,000 a un año con 15\% de interés; documento descontado en un banco al 2\% mensual. Monto a pagar: $M = 2\,000\,000(1{,}15) = 2\,300\,000$. Cantidad recibida: $P = 2\,300\,000(1{,}02)^{-12} \approx 1\,813\,534{,}30$. Tasa efectiva para la empresa vendedora: interés pagado \$186\,465{,}70 sobre \$2\,000\,000 $\approx$ 9,32\% anual. **Ejemplo:** Documento \$500\,000 a 3 meses con 2\% mensual; el banco descuenta al 22\% anual. Monto del documento: $M = 500\,000(1{,}02)^3 \approx 530\,604$; valor actual al 22\%: $P = 530\,604(1{,}22)^{-3/12} \approx 504\,871$. **Ejemplo:** Documento \$1\,000\,000 a 36 meses al 12\% convertible mensualmente; se descuenta al 16\% convertible trimestralmente. Monto: $M = 1\,000\,000(1{,}01)^{36} \approx 1\,430\,769$; valor actual: $P = 1\,430\,769(1{,}04)^{-12} \approx 893\,654$ (pérdida \$106\,346 respecto al valor nominal). **Ejemplo:** Documento \$75\,000 a 3 años al 12,5\% semestral; se descuenta a los 10 meses al 28\% convertible trimestralmente. Monto a pagar: $M = 75\,000(1{,}125)^6 \approx 152\,046{,}49$; faltan 26 meses = 8,67 trimestres; $P = 152\,046{,}49(1{,}07)^{-8{,}6667} \approx 84\,589{,}61$ (método exacto). Con método aproximado: descuento a 9 trimestres y luego interés simple 1 mes hacia adelante: $P \approx 84\,632{,}93$.
+
+## Tasas equivalente, nominal y efectiva
+
+**Tasa nominal:** tasa anual que se capitaliza $m$ veces al año; es la tasa convenida en el contrato. **Tasas equivalentes:** dos tasas nominales con distintos períodos de capitalización son equivalentes si producen el mismo monto compuesto al final de un mismo plazo [@vidaurri2017, §6.3].
+
+Si $i$ es la tasa nominal capitalizable $m$ veces al año e $i_{\mathrm{eq}}$ es la tasa nominal equivalente capitalizable $q$ veces al año, entonces
+
+$$\left(1 + \frac{i}{m}\right)^{m/q} - 1 = \frac{i_{\mathrm{eq}}}{q}
+\quad \Rightarrow \quad
+i_{\mathrm{eq}} = q\left[\left(1 + \frac{i}{m}\right)^{m/q} - 1\right]. \tag{6.4}$$
+
+**Tasa efectiva anual** $i_e$: tasa anual capitalizable **una vez** al año equivalente a la tasa nominal $i$ capitalizable $m$ veces. Refleja el rendimiento real en un año por la reinversión de intereses:
+
+$$i_e = \left(1 + \frac{i}{m}\right)^m - 1. \tag{6.5}$$
+
+Para obtener la **tasa nominal** a partir de la efectiva: $i = m\bigl[(1+i_e)^{1/m} - 1\bigr]$ (6.6).
+
+**Tasa efectiva por período** (para un período que contiene $n$ capitalizaciones): $i_{\mathrm{ep}} = (1 + i/m)^n - 1$ (6.7). Se usa cuando el horizonte no es un año (p. ej. 9 meses, $n=9$ si la capitalización es mensual).
+
+**Relación nominal–efectiva:** si $j$ es la tasa nominal anual y $m$ el número de períodos de capitalización al año, la tasa efectiva anual $i$ satisface $C(1+i) = C(1+j/m)^m$, es decir
+
+$$i = (1 + j/m)^m - 1.$$
+
+**Ejemplo.** Depósito \$1\,000 al 4,8\% anual convertible mensualmente. Monto al año: $M = 1\,000(1{,}004)^{12} \approx 1\,049{,}07$; interés \$49,07; tasa efectiva anual $49{,}07/1\,000 = 4{,}91\%$. **Ejemplo.** Préstamo al 16\% convertible trimestralmente: $i = (1+0{,}16/4)^4 - 1 \approx 16{,}98\%$ efectivo. **Ejemplo.** Tasa nominal $j$ convertible trimestralmente que produce 40\% efectivo: $(1+i)^{1/4} - 1 = j/4$ $\Rightarrow$ $j = 4[(1{,}40)^{1/4}-1] \approx 35{,}10\%$. **Ejemplo.** Tasa nominal convertible mensualmente equivalente a 14\% convertible trimestralmente: se igualan las tasas efectivas anuales, $(1+j/12)^{12} = (1{,}035)^4$ $\Rightarrow$ $j \approx 13{,}84\%$. **Ejemplo.** ¿A qué tasa nominal convertible trimestralmente \$30\,000 crecen a \$100\,000 en 5 años? $(1+j/4)^{20} = 100\,000/30\,000$ $\Rightarrow$ $j = 4[(10/3)^{1/20}-1] \approx 24{,}82\%$.
+
+**Comparación de ofertas:** cuando hay distintas tasas nominales y distintas frecuencias de capitalización, se comparan las **tasas efectivas anuales**; la mayor indica la mejor opción para el inversionista [@vidaurri2017]. **CAT** (costo anual total) y **GAT** (ganancia anual total) son indicadores que incorporan comisiones y otros cargos.
+
+**Ejemplo (Vidaurri 6.22).** Tasa efectiva del 22,3% anual capitalizable cada trimestre: $i_e = (1 + 0{,}223/4)^4 - 1 \approx 24{,}24\%$ anual. **Ejemplo (Vidaurri 6.23).** Banco ABC 26% con capitalización diaria vs Banco XYZ 27,5% cada 28 días: se calcula $i_e$ para cada uno; el que dé mayor $i_e$ conviene.
+
+## Tiempo y tasa de interés (incógnitas)
+
+**Tiempo desconocido:** de $M = P(1+i)^n$ se obtiene $M/P = (1+i)^n$; aplicando logaritmos, $n = \log(M/P) / \log(1+i)$ (o con logaritmos naturales: $n = \ln(M/P)/\ln(1+i)$). **Ejemplo:** ¿En cuánto tiempo se duplica un capital al 36\% anual convertible mensualmente? $i = 0{,}03$ mensual; $2 = (1{,}03)^n$ $\Rightarrow$ $n = \log 2/\log 1{,}03 \approx 23{,}45$ meses. Al 24\% anual convertible mensualmente: $n \approx 35$ meses. **Ejemplo (inflación):** ¿En cuánto tiempo \$1 reduce su poder adquisitivo a 50\% con inflación de 50\% anual? Se busca $n$ tal que $1/(1{,}50)^n = 0{,}50$ (valor real del peso futuro), es decir $(1{,}50)^n = 2$ $\Rightarrow$ $n = \log 2/\log 1{,}50 \approx 1{,}71$ años (no un año).
+
+**Tasa de interés desconocida:** de $M = P(1+i)^n$ se despeja $i = (M/P)^{1/n} - 1$. **Ejemplo:** ¿A qué tasa \$15\,000 se convierten en \$50\,000 en 5 años? Capitalización semestral: $n = 10$, $(50\,000/15\,000)^{1/10} - 1 \approx 12{,}79\%$ semestral (25,58\% nominal). Capitalización trimestral: $n = 20$, $i \approx 6{,}20\%$ trimestral (24,8\% nominal). Capitalización mensual: $n = 60$, $i \approx 2{,}03\%$ mensual (24,32\% nominal). A mayor frecuencia de conversión, menor tasa nominal necesaria para el mismo monto.
+
+## Ecuaciones de valor a interés compuesto
+
+Una **ecuación de valor** es una igualdad que establece que la suma de los valores (en una fecha común) de un conjunto de deudas es igual a la suma de los valores de otro conjunto que las reemplaza. La fecha común se llama **fecha focal** (o fecha de valuación) y se elige de forma arbitraria; **a diferencia del interés simple, en interés compuesto el resultado no depende de la fecha focal** [@vidaurri2017, §6.4].
+
+Se usan **diagramas de tiempo**: una línea con escala temporal donde se ubican las obligaciones originales (arriba) y las propuestas (abajo). Trasladar un valor futuro al presente: $P = F(1+i)^{-n}$. Trasladar al futuro: $F = P(1+i)^n$. **Ejemplo:** Sustituir 3 pagos mensuales de \$100 por un pago trimestral $X$ al 2\% mensual. Fecha focal mes 3: $X = 100(1{,}02)^2 + 100(1{,}02) + 100 = 306{,}04$. Fecha focal 0: $X(1{,}02)^{-3} = 100(1{,}02)^{-1} + 100(1{,}02)^{-2} + 100(1{,}02)^{-3}$ $\Rightarrow$ $X = 306{,}04$ (mismo resultado).
+
+**Ejemplo.** Deuda: \$250\,000 a 3 meses y \$250\,000 a 6 meses. Liquidar con 3 pagos bimestrales: \$100\,000, \$200\,000 y $X$, al 36\% convertible mensualmente ($i = 0{,}03$ mensual). Fecha focal mes 6: $250\,000(1{,}03)^3 + 250\,000 = 100\,000(1{,}03)^4 + 200\,000(1{,}03)^2 + X$ $\Rightarrow$ $X \approx 198\,451$. **Ejemplo.** Tres documentos de \$15\,000 a 30, 60 y 90 días; liquidar con dos pagos iguales $X$ a 30 y 60 días al 1,5\% mensual. Fecha focal mes 1: $X + X(1{,}015)^{-1} = 15\,000 + 15\,000(1{,}015)^{-1} + 15\,000(1{,}015)^{-2}$ $\Rightarrow$ $X \approx 22\,334{,}16$. **Ejemplo.** Maquinaria \$100\,000 en dos pagos de \$50\,000 a 6 y 12 meses más intereses al 24\% convertible semestralmente. Pagos con interés: 56\,000 y 62\,720. Renegociación a los 3 meses: tres pagos trimestrales \$30\,000, \$50\,000 y $X$ al 20\% convertible trimestralmente. Fecha focal mes 12: $X + 30\,000(1{,}05)^2 + 50\,000(1{,}05) = 56\,000(1{,}05) + 62\,720(1{,}05)^{-1}$ $\Rightarrow$ $X \approx 32\,958{,}33$.
+
+**Tiempo equivalente (fecha de vencimiento promedio):** tiempo $x$ en que un pago único igual a la suma de las deudas cancela el conjunto. **Ejemplo:** Deudas \$150\,000 a 2 trimestres y \$250\,000 a 6 trimestres; liquidar con un pago de \$400\,000. Al 4,5\% trimestral: $400\,000(1{,}045)^x = 150\,000(1{,}045)^{-2} + 250\,000(1{,}045)^{-6}$; se despeja $x \approx 4{,}42$ trimestres. **Ejemplo:** Perfil de deuda 5\,000, 7\,000 y 8\,000 MDD en años 1, 2 y 3 (incluyen 10\% anual). Pago único 20\,000 MDD: $20\,000(1{,}10)^x = 5\,000(1{,}10)^{-1} + 7\,000(1{,}10)^{-2} + 8\,000(1{,}10)^{-3}$ $\Rightarrow$ $x \approx 2{,}12$ años.
+
+**Ejemplo (Vidaurri 6.28).** Deuda: \$12\,200 hoy y \$16\,400 en 2 meses. Pago único hoy al 25,8% capitalizable cada mes. Fecha focal: hoy. VP de \$16\,400 = $16\,400/(1+0{,}258/12)^2 \approx 15\,716{,}91$. Ecuación: $12\,200 + 15\,716{,}91 = x$ $\Rightarrow$ $x = 27\,916{,}91$.
+
+**Ejemplo (Vidaurri 6.31).** Deudas: \$27\,810 en 4 meses y \$46\,560 en 8 meses. Sustituir por dos pagos iguales en 5 y 11 meses al 23% capitalizable cada quincena. Con fecha focal en mes 11: $27\,810(1+0{,}23/24)^{14} + 46\,560(1+0{,}23/24)^{6} = x(1+0{,}23/24)^{12} + x$; se despeja $x \approx 38\,224{,}89$.
+
+## Aplicaciones
+
+**Cedes vs pagarés con rendimiento liquidable al vencimiento.** En un **certificado de depósito** (Cede) los intereses se pagan periódicamente (p. ej. mensual) y no se reinvierten: es interés simple sobre el capital constante. En un **pagaré con rendimiento al vencimiento** los intereses se capitalizan y se reciben al final. **Ejemplo:** \$100\,000 a 3 meses al 6\% anual convertible mensualmente. Cede: interés mensual $I = 100\,000(0{,}06/12)(1) = 500$; al cabo de 3 meses se recibe el capital \$100\,000 (más los intereses ya cobrados). Pagaré: $M = 100\,000(1{,}005)^3 \approx 101\,507{,}51$ (diferencial \$7{,}51 por la reinversión implícita).
+
+**Valor actual y descuento por pronto pago.** **Ejemplo:** Computadora \$12\,000; opciones: 10\% de descuento al contado o 3 pagos de \$4\,000 a 1, 2 y 3 meses “sin intereses”. Tasa de mercado 12\% convertible mensualmente. Precio al contado con descuento: \$10\,800. Valor actual de los 3 pagos: $4\,000[(1{,}01)^{-1}+(1{,}01)^{-2}+(1{,}01)^{-3}] \approx 11\,763{,}94$. Conviene pagar al contado (10\,800 < 11\,763{,}94). **Valor actual neto (VAN):** valor presente de todos los flujos del proyecto (egresos e ingresos). **Ejemplo:** Inversión \$10\,800 que genera \$4\,000 mensuales durante 3 meses. A 12\% anual convertible mensualmente (1\% mensual): VAN = $-10\,800 + 4\,000[(1{,}01)^{-1}+(1{,}01)^{-2}+(1{,}01)^{-3}] \approx 963{,}94$ (el proyecto incrementa el valor en \$963{,}94). A 36\% anual (3\% mensual): VAN $\approx 514{,}44$. A 72\% anual (6\% mensual): VAN $\approx -107{,}96$ (no convendría). La tienda que ofrece “3 meses sin intereses” está cargando implícitamente una tasa cercana a 70\% anual a quienes eligen ese plan.
+
+## Capitalización continua
+
+Cuando la frecuencia de capitalización $m$ tiende a infinito, el monto compuesto tiende a un **límite finito**. Con tasa nominal anual $i$ y tiempo $t$ en años [@vidaurri2017, §6.5]:
+
+$$F = P\,e^{it}. \tag{6.9}$$
+
+El valor presente es $P = F\,e^{-it}$. La relación con la fuerza de interés es $\delta = i$ (tasa instantánea). La **tasa efectiva anual** $r$ correspondiente a una tasa nominal $i$ capitalizada continuamente es
+
+$$r = e^i - 1. \tag{6.10}$$
+
+**Ejemplo.** \$200\,000 al 20% anual, 3 años. Trimestral: $F = 200\,000(1+0{,}20/4)^{12} \approx 359\,171$. Mensual: $\approx 362\,626$. Continuamente: $F = 200\,000\,e^{0{,}20(3)} = 200\,000\,e^{0{,}6} \approx 364\,423{,}76$ (cota superior). **Ejemplo (Vidaurri 6.40).** Duplicar capital en 3 años con capitalización continua: $2 = e^{3i}$ $\Rightarrow$ $i = (\ln 2)/3 \approx 23{,}10\%$ anual.
+
+## Inflación
+
+La **inflación** es el incremento continuo y generalizado de los precios de bienes y servicios; reduce el **poder adquisitivo** del dinero [@vidaurri2017, §6.6]. Se mide con índices de precios (p. ej. INPC en México). **Deflación** es la disminución sostenida de precios.
+
+**Tasa de inflación** en un período (con índices $I_1$ al inicio e $I_2$ al final):
+
+$$\lambda = \frac{I_2}{I_1} - 1. \tag{6.11}$$
+
+**Valor en pesos corrientes** (nominales) y **valor real** (pesos constantes). Si la inflación se comporta de forma compuesta con tasa $\lambda$ por período:
+
+$$\mathrm{VC} = \mathrm{VR}\,(1+\lambda)^n, \qquad
+\mathrm{VR} = \frac{\mathrm{VC}}{(1+\lambda)^n}. \tag{6.12--6.13}$$
+
+**Inflación acumulada** en $n$ períodos con tasa constante $\lambda_0$ por período: $\lambda_{\mathrm{acum}} = (1+\lambda_0)^n - 1$ (6.14). Si la tasa varía por período: $\lambda_{\mathrm{acum}} = (1+\lambda_1)(1+\lambda_2)\cdots(1+\lambda_n) - 1$ (6.15).
+
+**Ejemplo (Vidaurri 6.42).** INPC dic/2013 = 111,508, dic/2014 = 116,059 $\Rightarrow$ $\lambda = 116{,}059/111{,}508 - 1 = 4{,}08\%$ anual. **Ejemplo (Vidaurri 6.43).** Escritorio \$2\,180 en dic/2008; inflación 6,53% anual constante hasta dic/2015 (7 años). VC = $2\,180(1{,}0653)^7 \approx 3\,394{,}38$ pesos de dic/2015.
+
+### Ecuación de Fisher y rendimiento real
+
+La medición del interés no ocurre en un vacío matemático: la **inflación** y el **riesgo** alteran el valor real de los rendimientos [@broverman2017]. Es fundamental distinguir entre la **tasa de interés nominal** $i$ (crecimiento de las unidades monetarias) y la **tasa de interés real** $i_{\mathrm{real}}$ (crecimiento del poder adquisitivo). La **Ecuación de Fisher** relaciona ambas con la tasa de inflación $r$:
+
+$$1 + i = (1 + i_{\mathrm{real}})(1 + r), \qquad i_{\mathrm{real}} = \frac{1+i}{1+r} - 1. \tag{Fisher}$$
+
+En forma continua: $\delta_{\mathrm{nominal}} = \delta_{\mathrm{real}} + \delta_{\mathrm{inflación}}$, lo que simplifica los cálculos en modelos de tiempo continuo.
+
+| Escenario económico | Tasa nominal $i$ | Inflación $r$ | Tasa real $i_{\mathrm{real}}$ | Implicación |
+|--------------------|------------------|---------------|-------------------------------|-------------|
+| Inflación moderada | 10%              | 4%            | $\approx 5{,}77\%$            | Crecimiento positivo del poder de compra |
+| Hiperinflación     | 50%              | 100%          | $-25\%$                       | Pérdida de capital real a pesar de ganancia nominal |
+| Deflación          | 3%               | $-2\%$        | $\approx 5{,}10\%$            | Rendimiento real superior al nominal |
+
+### Componentes de la tasa: riesgo de crédito y liquidez
+
+Una tasa de interés de mercado se descompone conceptualmente en [@broverman2017]:
+
+- **Tasa libre de riesgo:** asociada a deuda soberana de alta solvencia.
+- **Prima por inflación:** compensa la pérdida esperada de poder adquisitivo.
+- **Prima por incumplimiento (default):** basada en la probabilidad de que el deudor no cumpla; las agencias de calificación (Moody's, Standard & Poor's, Fitch) evalúan este riesgo.
+- **Prima de liquidez:** compensa la dificultad de convertir el activo en efectivo sin pérdida de valor.
+
+El aumento del riesgo de incumplimiento incrementa el rendimiento exigido por el mercado; así se conecta la matemática financiera con la realidad de los mercados corporativos y de bonos.
+
+### Unidades de cuenta indexadas (UDIS, UVR)
+
+En América Latina se usan unidades de cuenta indexadas para proteger el capital de la inflación: **UDIS** (Unidades de Inversión, México) y **UVR** (Unidades de Valor Real, Colombia). Los contratos denominados en estas unidades ajustan el principal por un índice de precios, integrando interés compuesto e inflación en un marco práctico de protección del capital.
+
+## Ejercicios recomendados
+
+- **Monto compuesto (sección 3.3):** 4–11 (interés en cuentas con distintas capitalizaciones; monto acumulado a 1, 2, 3 y 5 años; comparación simple vs compuesto; tabulación del crecimiento; préstamo y reembolso; retiro anticipado con método exacto y aproximado).
+- **Tasa nominal, efectiva y equivalentes (sección 3.4):** 15–25 (tasa efectiva según frecuencia; tasa nominal que produce un rendimiento dado; equivalencia entre tasas; mejor alternativa; inflación que triplica precios).
+- **Valor actual (sección 3.5):** 26–33 (depósito para acumular un monto; préstamo documentado; valor presente según tasa; deuda con intereses y descuento; descuento por pronto pago; proyectos con flujos; pagaré en dólares).
+- **Tiempo y tasa (secciones 3.6 y 3.7):** 36–46 (tiempo para duplicar; reducción del valor adquisitivo; fecha en que una inversión alcanza un valor; tasa para quintuplicar; tasa nominal según capitalización; crecimiento poblacional).
+
+## Resumen de fórmulas (interés compuesto e inflación)
+
+| Concepto | Fórmula |
+|----------|---------|
+| Monto compuesto | $F = P(1+i)^n$ |
+| Valor presente | $P = F(1+i)^{-n}$ |
+| Tasas variables | $F = P\prod(1+i_j)^{n_j}$ |
+| Tasa efectiva anual | $i_e = (1+i/m)^m - 1$ |
+| Capitalización continua | $F = P\,e^{it}$, $r = e^i - 1$ |
+| Inflación | $\mathrm{VC} = \mathrm{VR}(1+\lambda)^n$, $\mathrm{VR} = \mathrm{VC}/(1+\lambda)^n$ |

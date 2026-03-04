@@ -1,0 +1,996 @@
+---
+number: false
+---
+
+# Reserva de beneficio {#cap-reservas .unnumbered .unlisted}
+
+Cuando un contrato se paga con primas periódicas, en cada momento futuro el asegurador tiene obligaciones por los beneficios pendientes y, a cambio, espera recibir las primas futuras. La **reserva matemática** (o **reserva de beneficio**) en un instante dado es el valor actuarial de esas obligaciones futuras menos el valor actuarial de las primas futuras, es decir, el «saldo» que el asegurador debe tener constituido para cumplir el contrato. Weishaus [@weishaus2013] la denomina **reserva prospectiva neta** (*prospective net premium reserve*) cuando se valora como valor presente de beneficios futuros menos valor presente de primas netas futuras, y desarrolla la **fórmula retrospectiva**, las **fórmulas especiales** (annuity-ratio, insurance-ratio, premium-ratio), la **fórmula recursiva** y la **varianza de la pérdida futura** $_k L$. Este capítulo presenta la definición **prospectiva** y **retrospectiva** de la reserva, la **ecuación de recurrencia** y la reserva al término del año, siguiendo a Jordan [@jordan1982], Weishaus y al material de Reservas Matemáticas del curso. En la literatura anglosajona la reserva matemática suele denominarse *policy value*; Neill [@neill1977] la trata en el marco de valoración de pólizas (primas ya cobradas frente a beneficios por pagar).
+
+## Necesidad de la reserva
+
+En un contrato con primas niveladas, las primas pagadas en los primeros años suelen ser mayores que el «costo» inmediato del riesgo (porque la probabilidad de muerte es baja al inicio). Esa diferencia se acumula para hacer frente a los beneficios en años posteriores, cuando el riesgo es mayor. La **reserva matemática** cuantifica, en cada momento, los recursos que deben estar constituidos para que el asegurador pueda cumplir el contrato en el futuro. Su cálculo es central en la regulación y en la contabilidad técnica de las aseguradoras.
+
+::: {.callout-note}
+## Nota histórica: Thiele y la ecuación de la reserva
+
+El actuario danés **Thorvald N. Thiele** (1838–1910) formuló en 1875 la **ecuación diferencial** que satisface la reserva matemática en tiempo continuo [@thiele1875]: $\frac{d}{dt}\,{}_t\bar{V} = \delta\,{}_t\bar{V} + P - \mu_{x+t}(b - {}_t\bar{V})$, donde $\delta$ es la fuerza de interés, $P$ la prima y $b$ el beneficio por fallecimiento. Esta relación expresa que la variación instantánea de la reserva es la capitalización del saldo actual más la prima recibida menos el «costo» esperado del beneficio por muerte. La **fórmula de recurrencia** en tiempo discreto que se estudia en este capítulo ($_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot b$) es la versión anual de la misma lógica: la reserva al año siguiente es la reserva actual más la prima, capitalizada, menos el beneficio esperado pagado en el año.
+:::
+
+## Notación actuarial internacional para reservas
+En la **notación actuarial internacional** (IAN), la reserva matemática en el año $k$ se denota con el símbolo $_kV$ y subíndices que identifican el tipo de contrato [@weishaus2013]. Para un seguro de vida entera: $_kV_x$; para un temporal a $n$ años: $_kV_{x:\overline{n}|}^1$; para un dotal a $n$ años: $_kV_{x:\overline{n}|}$. El presubíndice $k$ indica que la reserva se valora después de $k$ años de vigencia (típicamente al final del año $k$, justo después del cobro de la prima correspondiente al inicio del año $k+1$, o al inicio del año $k+1$ según la convención). La reserva en el momento de emisión es ${}_0V = 0$ cuando la prima se ha fijado por el principio de equivalencia. Weishaus (Lesson 33, «Prospective Net Premium Reserve») presenta esta notación y la define como el valor esperado de la pérdida futura del asegurador en el instante $k$, condicionado a que el asegurado esté vivo.
+
+## Reserva prospectiva
+
+Sea un contrato emitido a la edad $x$ con primas netas niveladas. En un instante posterior, supongamos que el asegurado tiene edad $x+k$ y sigue vivo. Los **beneficios futuros** del contrato tienen un valor presente actuarial (a la edad $x+k$); las **primas futuras** que aún se cobrarán también tienen un valor presente actuarial. La **reserva prospectiva** en el momento $k$ (después de $k$ años de contrato) se define como:
+
+$$_kV = \text{Valor presente actuarial de los beneficios futuros} - \text{Valor presente actuarial de las primas futuras}.$$
+
+Por ejemplo, para un **seguro de vida entera** por 1 unidad, con prima anual $P_x$ pagadera al inicio de cada año mientras viva, la reserva prospectiva al final del año $k$ (o al inicio del año $k+1$), denotada $_kV_x$, es:
+
+$$_kV_x = A_{x+k} - P_x\,\ddot{a}_{x+k}.$$
+
+En efecto, a la edad $x+k$ el valor de los beneficios futuros es $A_{x+k}$ y el valor de las primas futuras (que se pagarán al inicio de cada año mientras $(x+k)$ viva) es $P_x\,\ddot{a}_{x+k}$.
+
+Para un **seguro temporal** de $n$ años por 1, con prima $P_{x:\overline{n}|}^1$ durante $n$ años, la reserva al año $k$ ($k < n$) es:
+
+$$_kV_{x:\overline{n}|}^1 = A_{x+k:\overline{n-k}|}^1 - P_{x:\overline{n}|}^1\,\ddot{a}_{x+k:\overline{n-k}|}.$$
+
+Para un **seguro dotal** de $n$ años por 1, con prima $P_{x:\overline{n}|}$:
+
+$$_kV_{x:\overline{n}|} = A_{x+k:\overline{n-k}|} - P_{x:\overline{n}|}\,\ddot{a}_{x+k:\overline{n-k}|}.$$
+
+En todos los casos, una vez definida la prima por la ecuación de equivalencia, la reserva prospectiva puede expresarse en términos de funciones conmutativas $D$, $N$, $M$.
+
+### Fórmulas especiales para vida entera y dotal
+Weishaus [@weishaus2013] (Lesson 36, «Special Formulas for Whole Life and Endowment Insurance») presenta expresiones alternativas que evitan calcular la prima explícitamente. Para un **seguro de vida entera** por 1 u.m. con prima nivelada $P_x = A_x/\ddot{a}_x$:
+
+$$_kV_x = 1 - \frac{\ddot{a}_{x+k}}{\ddot{a}_x} \qquad \text{(fórmula cociente de anualidades).}$$
+
+Se obtiene usando $A_{x+k} = 1 - d\,\ddot{a}_{x+k}$ y $P_x = 1/\ddot{a}_x - d$: entonces $_kV_x = A_{x+k} - P_x\,\ddot{a}_{x+k} = 1 - d\,\ddot{a}_{x+k} - (1/\ddot{a}_x - d)\,\ddot{a}_{x+k} = 1 - \ddot{a}_{x+k}/\ddot{a}_x$. Así, la reserva puede leerse como «uno menos» el cociente entre la renta de vida restante y la renta de vida en emisión. Otras formas equivalentes son la **cociente de seguros** $_kV_x = (A_{x+k} - A_x)/(1 - A_x)$ (usando $A_x = 1 - d\,\ddot{a}_x$) y la **cociente de primas** (relación con primas a distintas edades). Para un **seguro dotal** a $n$ años por 1 u.m. con prima $P_{x:\overline{n}|}$:
+
+$$_kV_{x:\overline{n}|} = 1 - \frac{\ddot{a}_{x+k:\overline{n-k}|}}{\ddot{a}_{x:\overline{n}|}} \qquad (k < n).$$
+
+Estas fórmulas son útiles cuando se dispone de valores de rentas pero no de la prima, o para comprobar cálculos.
+
+## Reserva retrospectiva
+
+La **reserva retrospectiva** interpreta la reserva como el resultado de haber ido acumulando las primas cobradas y descontando los beneficios ya pagados. En valor presente a la edad $x+k$:
+
+$$_kV = \frac{\text{Valor acumulado de las primas pasadas} - \text{Valor acumulado de los beneficios pasados}}{\text{Probabilidad de supervivencia}}.$$
+
+Bajo las mismas hipótesis de mortalidad e interés usadas para la prima, la reserva **retrospectiva** coincide con la **prospectiva**. Es decir, el saldo «hacia adelante» (obligaciones menos primas por cobrar) es igual al saldo «hacia atrás» (primas ya cobradas menos beneficios ya pagados, llevados a valor actual). Esta equivalencia es consecuencia directa del principio de equivalencia en la emisión.
+
+En la práctica, la forma prospectiva suele usarse para el cálculo numérico porque solo requiere las obligaciones y primas futuras; la forma retrospectiva es útil para la interpretación y para demostrar relaciones entre primas y reservas.
+
+### Fórmula retrospectiva y relaciones entre primas
+Weishaus [@weishaus2013] (Lesson 35, «Retrospective Formula») desarrolla la expresión explícita de la reserva retrospectiva. Para un seguro de vida entera por 1 u.m. con prima anual $P_x$, las primas pasadas ($k$ pagos al inicio de los años $0, 1, \ldots, k-1$) acumuladas con interés al momento $k$ tienen valor actuarial; los beneficios pasados en ese período son nulos (el beneficio se paga al fallecimiento). La reserva retrospectiva a la edad $x+k$ puede escribirse como:
+
+$$_kV_x = P_x\,\ddot{a}_{x:\overline{k}|}\,\frac{(1+i)^k}{{}_kp_x} - 0 = P_x\,\frac{\ddot{s}_{x:\overline{k}|}}{{}_kp_x},$$
+
+donde $\ddot{s}_{x:\overline{k}|}$ es el valor acumulado de una renta de vida anticipada de 1 u.m. durante $k$ años (valor futuro esperado de las primas). Así, $_kV_x$ es el «fondo» constituido por las primas pasadas, capitalizadas y ponderadas por la probabilidad de haber sobrevivido. Las **fórmulas de diferencia de prima** y de **seguro saldado** (*paid-up insurance*) relacionan la prima de un contrato con la de otro (por ejemplo, prima limitada a $h$ años frente a prima vitalicia) y permiten expresar la reserva en términos de beneficios saldados; el programa (TEMA 8) trata el seguro saldado y prorrogado.
+
+## Ecuación de recurrencia de la reserva
+
+La reserva en dos años consecutivos está ligada por la **ecuación de recurrencia**. Para un seguro de vida entera por 1, con prima anual $P_x$ al inicio de cada año:
+
+$$_{k+1}V_x = (_{k}V_x + P_x)(1+i) - q_{x+k}\cdot 1.$$
+
+Interpretación: al inicio del año $k+1$, el asegurador tiene la reserva del año anterior $_kV_x$ más la prima $P_x$ que acaba de cobrar; esa cantidad capitaliza un año con el tipo de interés $i$. Al final del año, si $(x+k)$ fallece (con probabilidad $q_{x+k}$), se paga 1 y queda 0 para el siguiente año; si sobrevive (probabilidad $p_{x+k}$), el valor esperado de lo que queda es exactamente $_{k+1}V_x$. Esta relación permite calcular la reserva año a año a partir de $_0V_x = 0$ (al momento de la emisión no hay reserva si el contrato se ha valorado por equivalencia).
+
+Para seguros temporales o dotales la recurrencia es análoga, teniendo en cuenta que las primas y los beneficios pueden cesar o cambiar al vencimiento del plazo.
+
+### Fórmula recursiva general y pago de reserva en fallecimiento
+Weishaus [@weishaus2013] (Lesson 37, «Recursive Formulas») escribe la recurrencia en la forma $(_{k}V + P)(1+i) = q_{x+k}\cdot b + p_{x+k}\cdot {}_{k+1}V$, donde $b$ es el beneficio por muerte pagadero al final del año. Despejando, $_{k+1}V = \bigl((_{k}V + P)(1+i) - q_{x+k}\cdot b\bigr)/p_{x+k}$. Esta ecuación refleja que el «fondo» al inicio del año (reserva más prima) capitalizado debe bastar para el pago esperado por muerte más el valor esperado de la reserva al año siguiente. En contratos donde se paga la **reserva en el momento del fallecimiento** (además o en lugar del capital asegurado), la ecuación recursiva se modifica: el beneficio en el año $k+1$ puede ser de la forma «capital + reserva terminal»; el programa (TEMA 5) menciona «pago reserva en fallecimiento» y la variación de la reserva en esos casos.
+
+## Reserva al término del año (reserva terminal)
+
+La **reserva terminal** en el año $k$ es la reserva justo **después** de haber cobrado la prima del año $k$ y **antes** de que transcurra el año (o, según la convención, la reserva al final del año $k$ inmediatamente antes del posible pago por muerte). En la notación habitual, $_kV$ suele denotar la reserva al final del año $k$ (inicio del año $k+1$), después del pago de la prima correspondiente a ese momento. La **reserva inicial** del año $k+1$ es entonces $_kV + P$ (reserva de cierre del año $k$ más la prima de inicio del año $k+1$). La recurrencia anterior relaciona $_kV$ con $_{k+1}V$ a través de esa cantidad y del beneficio por muerte en el año.
+
+En normativa y reporting se suele exigir la reserva en determinados instantes (por ejemplo, al cierre del ejercicio). Las fórmulas prospectivas (o la recurrencia con valores terminales) permiten obtener esas cifras de forma consistente con la tabla de mortalidad y la tasa de interés técnicas.
+
+### Varianza de la pérdida futura y medidas de dispersión (Weishaus, Tema 5)
+
+La **pérdida futura** en el año $k$, condicionada a que el asegurado esté vivo, es $_k L = \text{VP}(\text{beneficios futuros}) - \text{VP}(\text{primas futuras})$ (variable aleatoria). La reserva prospectiva $_kV$ es $\mathbb{E}[_k L]$; cuando la prima se ha fijado por equivalencia en emisión, $\mathbb{E}[_0 L] = 0$, pero en años posteriores $\mathbb{E}[_k L] = {}_kV$ puede ser distinta de cero. Weishaus [@weishaus2013] (Lesson 37, «Variance of Loss») estudia la **varianza** de $_k L$. Para un seguro de vida entera discreto por 1 u.m. con prima $P_x$, $_k L = v^{K_{x+k}+1} - P_x\,\ddot{a}_{\overline{K_{x+k}+1}|}$; su varianza puede expresarse en función del segundo momento del beneficio y de la renta. La varianza de la pérdida es relevante para la gestión del riesgo y para capitales de solvencia; las fórmulas utilizan ${}^2A_{x+k}$ (seguro valorado a tipo de interés $j$ tal que $v_j^2 = v^2$) y las relaciones entre momentos. El programa (TEMA 5) incluye «medidas centralización y dispersión» en el contexto de reservas.
+
+#### Segundo momento de $Z$ y regla de momentos
+
+La variable $Z$ es el valor presente del beneficio (p. ej. $Z = v^{K_x+1}$ para vida entera por 1, pago al final del año de muerte). El **segundo momento** $\mathbb{E}[Z^2]$ se obtiene con la **regla de momentos**: valorar el mismo tipo de seguro al **doble de la fuerza de interés** $\delta$. Así, $\mathbb{E}[Z^2] = {}^2A_x$, donde ${}^2A_x$ denota el seguro de vida entera valorado con $v^2 = e^{-2\delta}$ (o tipo de interés $j$ tal que $(1+j) = (1+i)^2$). La **varianza** del valor presente del beneficio es $\operatorname{Var}(Z) = {}^2A_x - (A_x)^2$.
+
+#### Varianza de la pérdida futura $_k L$ y suficiencia de la reserva
+
+Para un seguro de vida entera por 1 u.m. con prima nivelada $P_x$, la pérdida futura en el instante $k$ (condicionada a supervivencia) puede escribirse en función de $Z_{x+k}$ (valor presente del beneficio desde $x+k$) y de la renta de primas futuras. La **varianza de la pérdida futura** en $k$ satisface:
+
+$$\operatorname{Var}(_k L) = \left(1 + \frac{P}{d}\right)^2 \left( {}^2A_{x+k} - (A_{x+k})^2 \right).$$
+
+Aquí $P$ es la prima neta anual y $d$ la tasa de descuento. Esta expresión es **puramente determinista** en su aplicación: se usan valores de tabla para $A_{x+k}$ y ${}^2A_{x+k}$ (este último valorado a tipo de interés $j$ con $(1+j)=(1+i)^2$). Proporciona una **medida cuantitativa del riesgo** de desviación del resultado real respecto a la reserva esperada y es la base del **margen de solvencia**: un regulador puede exigir capital adicional en función de la varianza de la pérdida para garantizar que la aseguradora soporte desviaciones adversas. La «suficiencia de la reserva» no solo significa que $_kV$ cubra el valor esperado de las obligaciones futuras, sino que, junto con el capital de solvencia, se haga frente a la **dispersión** de la pérdida; esa dispersión se cuantifica con $\operatorname{Var}(_k L)$.
+
+### Reservas continuas y ecuación de Thiele
+Para contratos con beneficio y primas **continuos** (pago en el momento del fallecimiento y prima pagadera de forma continua), la reserva en el instante $t$ se denota $_t\bar{V}$ (o análogo con barra) y satisface la **ecuación diferencial de Thiele** [@weishaus2013] (Lesson 41, «Other Topics»):
+
+$$\frac{d}{dt}{}_t\bar{V} = P_t + \delta_t\cdot {}_t\bar{V} - \mu_{x+t}(b_t - {}_t\bar{V}),$$
+
+donde $P_t$ (o $\bar{P}_t$) es el ingreso por primas en el instante $t$, $\delta_t$ la fuerza de interés, y $b_t$ el beneficio por muerte en $t$. **Interpretación de cada término:** (i) **$P_t$** — ingreso por primas que aumenta la reserva; (ii) **$\delta_t\cdot {}_t\bar{V}$** — rendimiento financiero sobre el saldo actual; (iii) **$-\mu_{x+t}(b_t - {}_t\bar{V})$** — liberación de fondos por mortalidad: el «costo» esperado del beneficio neto (capital en riesgo $b_t - {}_t\bar{V}$) ponderado por la fuerza de mortalidad. La ecuación de Thiele es fundamental para que el libro sea un tratado científico completo: describe la **dinámica instantánea** de la reserva y conecta con la recurrencia discreta $_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot b$. El programa (TEMA 5) menciona «reservas continuas/ecuación diferencial»; la forma discreta anual es la práctica más habitual en cursos introductorios.
+
+## Reservas negativas (Tema 5)
+
+Una **reserva negativa** significa que, en valor presente, las primas futuras esperadas superan a los beneficios futuros esperados para los supervivientes: contablemente es un **activo** para la aseguradora (el asegurado «debe» primas netas al fondo). Las causas típicas son: (i) **gastos de adquisición muy altos** en el primer año, de modo que la primera prima no basta para constituir reserva y la reserva neta al final del año 1 sería negativa si no se modificara; (ii) **esquema de primas fuertemente creciente** al inicio (por ejemplo primas naturales o primas con recargo bajo al inicio). Desde una perspectiva **prudencial**, las reservas negativas suelen valuarse como **cero** en el balance: no se contabiliza un activo por «primas futuras esperadas» que podrían no cobrarse si el asegurado rescinde. Las **reservas modificadas** (Zillmer, FPT, Ley Venezolana) amortizan los gastos iniciales y evitan que la reserva declarada sea negativa en los primeros años.
+
+## Reserva de balance y método de Fackler (Tema 5)
+
+En el material del curso se introduce la **reserva de balance**, que reconcilia la visión prospectiva con la contable: los activos constituidos para el contrato deben igualar la reserva matemática calculada con los supuestos técnicos. La reserva de beneficio aquí definida es la base de esa reserva de balance cuando no se incluyen otros componentes (gastos, márgenes, etc.).
+
+### Método de Fackler como modelo de flujo de fondos auditables
+
+El **método de Fackler** no es solo una fórmula de recurrencia: es un **modelo de flujo de fondos** que permite **auditar** la reserva año a año. La relación fundamental es:
+
+$$(_kV + P)(1+i) = q_{x+k}\cdot b_{k+1} + p_{x+k}\cdot {}_{k+1}V \quad \Rightarrow \quad {}_{k+1}V = \frac{(_kV + P)(1+i) - q_{x+k}\cdot b_{k+1}}{p_{x+k}}.$$
+
+El **capital en riesgo** en el año $k+1$ es $b_{k+1} - {}_{k+1}V$: lo que la aseguradora paga de más si hay fallecimiento respecto a la reserva ya constituida. El término $q_{x+k}\cdot b_{k+1}$ es la «liberación» esperada por muerte; el método facilita la comprensión de la **reserva de balance** como flujo auditado año a año. **Interpretación de cada término:**
+
+- **$(_kV + P)(1+i)$:** Fondo al inicio del año $k+1$ (reserva de cierre del año $k$ más prima cobrada) capitalizado un período. Representa los recursos disponibles antes de que ocurra ningún siniestro.
+- **$q_{x+k}\cdot b$:** «Liberación de reservas» por fallecimiento: con probabilidad $q_{x+k}$ se paga el beneficio $b$; ese pago sale del fondo mutuo. En el colectivo, la fracción $q_{x+k}$ de los asegurados fallece y «consume» su parte del fondo.
+- **$p_{x+k}\cdot {}_{k+1}V$:** Valor esperado de la reserva al final del año para los **supervivientes**. Los $p_{x+k}$ que sobreviven «heredan» el remanente del fondo; dividir por $p_{x+k}$ da la reserva por superviviente.
+
+Así, la recurrencia expresa que el **fondo mutuo** (reserva + prima, capitalizado) se reparte entre fallecidos (beneficio $b$) y supervivientes (reserva $_{k+1}V$). La **mutualidad del fondo** queda explícita. Para **robustecer** el tema, se recomienda construir una **tabla de evolución de fondos** (año $k$, reserva inicial $_kV$, prima $P$, fondo $(_{k}V+P)(1+i)$, beneficio esperado $q_{x+k}\cdot b$, reserva final $_{k+1}V$) que permita verificar la consistencia de las reservas terminales con el flujo de caja año a año.
+
+### Reserva de balance y cierre contable
+
+En el contexto de la EECA-UCV, la **reserva de balance** responde a la necesidad de valorar el **pasivo actuarial** en una **fecha intermedia** entre dos aniversarios de póliza, típicamente para el **cierre contable** de la empresa. No es una simple interpolación entre $_kV$ y $_{k+1}V$: es una **reconciliación contable** que incluye:
+
+- La **reserva matemática** (de beneficio) en la fecha de balance, calculada por el método prospectivo o por recurrencia (Fackler) a partir de las reservas en aniversarios.
+- La **provisión por primas no ganadas** (*unearned premium reserve*): la parte de las primas ya cobradas que corresponde a la cobertura futura (período posterior a la fecha de cierre). Esta provisión es esencial para la estabilidad financiera de la aseguradora, porque evita contabilizar como ingreso primas que aún no se han «ganado» en términos de cobertura.
+
+La reserva de balance total en una fecha dada es, pues, la suma de la reserva de beneficio (valorada en esa fecha, por ejemplo por interpolación lineal entre reservas terminales) y las demás provisiones técnicas que exija la normativa (primas no ganadas, siniestros pendientes, etc.). El método de Fackler permite construir la serie de reservas terminales de forma consistente y, a partir de ella, obtener la reserva en fechas fraccionarias para el balance.
+
+### Identidades útiles (capítulo 11)
+
+- **Prospectiva (vida entera):** $_kV_x = A_{x+k} - P_x\,\ddot{a}_{x+k}$; **cociente de anualidades:** $_kV_x = 1 - \ddot{a}_{x+k}/\ddot{a}_x$.
+- **Retrospectiva:** $_kV_x = \dfrac{P_x(N_x - N_{x+k}) - (M_x - M_{x+k})}{D_{x+k}}$ (forma típica en conmutativas).
+- **Recurrencia:** $_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot b$; bajo equivalencia, prospectivo = retrospectivo.
+- **Varianza de la pérdida:** $\operatorname{Var}(_k L) = (1 + P/d)^2\,({}^2A_{x+k} - (A_{x+k})^2)$.
+
+***
+
+## Ejercicios
+
+En las soluciones se indica el razonamiento, los pasos intermedios y el resultado final.
+
+### Ejercicio resuelto (reserva prospectiva: vida entera)
+
+**Enunciado.** Un seguro de vida entera por 1 u.m. para (50) tiene prima neta anual $P_{50} = 0{,}04$. A la edad 55, $A_{55} = 0{,}35$ y $\ddot{a}_{55} = 12$. Calcular la reserva prospectiva $_5V_{50}$ (reserva al final del año 5).
+
+**Solución.**  
+- **Paso 1.** La reserva **prospectiva** al final del año $t$ es el valor presente actuarial de los beneficios futuros menos el valor presente de las primas futuras: $_tV = \text{APV}(\text{beneficios futuros}) - P \cdot \ddot{a}_{x+t}$. Para vida entera por 1 u.m., desde la edad $x+t$ los beneficios futuros valen $A_{x+t}$ y las primas futuras $P \cdot \ddot{a}_{x+t}$. Por tanto $_tV_x = A_{x+t} - P_x \cdot \ddot{a}_{x+t}$.  
+- **Paso 2.** Con $t=5$, $x=50$: $_5V_{50} = A_{55} - P_{50} \cdot \ddot{a}_{55}$. Sustituyendo: $_5V_{50} = 0{,}35 - 0{,}04 \times 12 = 0{,}35 - 0{,}48 = -0{,}13$.  
+- **Resultado:** $_5V_{50} = -0{,}13$. *(En este ejemplo la reserva sale negativa por la elección de valores; en la práctica $P_{50}$ sería tal que la reserva sea no negativa. Con $P_{50} = 0{,}02$ sería $_5V_{50} = 0{,}35 - 0{,}24 = 0{,}11$.)*
+
+### Ejercicio resuelto 2 (Fórmula cociente de anualidades — Weishaus)
+
+**Enunciado.** Un seguro de vida entera por 1 u.m. para (40) tiene prima neta nivelada. Se conocen $\ddot{a}_{40} = 18$ y $\ddot{a}_{45} = 15$. Calcular la reserva prospectiva $_5V_{40}$ usando la fórmula cociente de anualidades $_kV_x = 1 - \ddot{a}_{x+k}/\ddot{a}_x$.
+
+**Solución.**  
+**Paso 1.** Fórmula cociente de anualidades: $_kV_x = 1 - \ddot{a}_{x+k}/\ddot{a}_x$. Con $k=5$, $x=40$: $_5V_{40} = 1 - \ddot{a}_{45}/\ddot{a}_{40}$.  
+**Paso 2.** Sustituir: $_5V_{40} = 1 - 15/18 = 1 - 5/6 = 1/6 \approx 0{,}167$.  
+**Resultado.** $_5V_{40} \approx 0{,}167$. No hace falta conocer $A_{40}$, $A_{45}$ ni $P_{40}$; la fórmula permite obtener la reserva solo con las rentas vitalicias anticipadas.
+
+***
+
+**3. Reserva dotal**  
+Reserva prospectiva para dotal 20 años (40) en el año $k$.  
+**Solución.**  
+**Paso 1.** $_kV_{40:\overline{20}|}$ = APV beneficios futuros − APV primas futuras desde $x+k$ para los $20-k$ años restantes.  
+**Paso 2.** $_kV_{40:\overline{20}|}=A_{40+k:\overline{20-k}|}-P_{40:\overline{20}|}\,\ddot{a}_{40+k:\overline{20-k}|}$ para $k<20$.  
+**Resultado.** $_kV_{40:\overline{20}|}=A_{40+k:\overline{20-k}|}-P_{40:\overline{20}|}\,\ddot{a}_{40+k:\overline{20-k}|}$.  
+
+***
+
+**4. Recurrencia primer año**  
+Recurrencia de la reserva en el primer año para vida entera por 1 u.m.  
+**Solución.**  
+**Paso 1.** ${}_0V_x=0$ (equivalencia en emisión). Recurrencia: $_{k+1}V_x=(_kV_x+P_x)(1+i)-q_{x+k}\cdot 1$.  
+**Paso 2.** Con $k=0$: $_1V_x=(0+P_x)(1+i)-q_x\cdot 1=P_x(1+i)-q_x$.  
+**Resultado.** $_1V_x=P_x(1+i)-q_x$.  
+
+***
+
+**5. Interpretación reserva**  
+Seguro temporal 10 años por 10.000 u.m.; reserva al final del año 3 es 800 u.m. Interpretar.  
+**Solución.**  
+**Paso 1.** La reserva prospectiva en $k$ es el valor actuarial de las obligaciones futuras menos el de las primas futuras.  
+**Paso 2.** 800 u.m. es el «saldo» que la aseguradora debe tener constituido para cumplir el contrato (beneficios futuros − primas futuras).  
+**Resultado.** Activo que debe tener la aseguradora en ese instante para cumplir el contrato.  
+
+***
+
+**6. $_5V_{50}$ con cociente**  
+Con $\ddot{a}_{50}=15$, $\ddot{a}_{55}=12$, calcular $_5V_{50}$ (cociente de anualidades).  
+**Solución.**  
+**Paso 1.** $_5V_{50}=1-\ddot{a}_{55}/\ddot{a}_{50}$.  
+**Paso 2.** $_5V_{50}=1-12/15=1-4/5=0{,}2$.  
+**Resultado.** $_5V_{50}=0{,}2$.  
+
+***
+
+**7. Recursiva temporal**  
+Ecuación de recurrencia para temporal a $n$ años y condición en $k=n$.  
+**Solución.**  
+**Paso 1.** $(_{k}V+P)(1+i)=q_{x+k}\,b+p_{x+k}\,{}_{k+1}V$. Al vencimiento no quedan primas ni beneficio por muerte.  
+**Paso 2.** Si $k=n-1$, entonces ${}_nV=0$ (temporal puro).  
+**Resultado.** ${}_nV=0$ para temporal a $n$ años (sin dotal).  
+
+***
+
+**8. Reserva prospectiva temporal**  
+Fórmula de la reserva prospectiva para seguro temporal a $n$ años en el año $k$.  
+**Solución.**  
+**Paso 1.** APV beneficios futuros (desde $x+k$) = $A_{x+k:\overline{n-k}|}^1$; APV primas futuras = $P_{x:\overline{n}|}^1\,\ddot{a}_{x+k:\overline{n-k}|}$.  
+**Paso 2.** $_kV_{x:\overline{n}|}^1=A_{x+k:\overline{n-k}|}^1-P_{x:\overline{n}|}^1\,\ddot{a}_{x+k:\overline{n-k}|}$, $k<n$.  
+**Resultado.** $_kV_{x:\overline{n}|}^1=A_{x+k:\overline{n-k}|}^1-P_{x:\overline{n}|}^1\,\ddot{a}_{x+k:\overline{n-k}|}$.  
+
+***
+
+**9. Reserva retrospectiva**  
+Fórmula de la reserva retrospectiva para vida entera por 1 u.m.  
+**Solución.**  
+**Paso 1.** Reserva = (valor acumulado de primas pasadas − valor acumulado de beneficios pasados) / probabilidad de supervivencia.  
+**Paso 2.** $_kV_x=P_x\,\ddot{a}_{x:\overline{k}|}(1+i)^k/{}_kp_x$ (primas capitalizadas y ponderadas por ${}_kp_x$; beneficios pasados = 0 en vida entera).  
+**Resultado.** $_kV_x=P_x\,\ddot{a}_{x:\overline{k}|}(1+i)^k/{}_kp_x$.  
+
+***
+
+**10. Tipo parcial**  
+$\ddot{a}_{55}=12$, $\ddot{a}_{60}=10$. Calcular $_5V_{55}$ (vida entera, cociente de anualidades).  
+**Solución.**  
+**Paso 1.** $_5V_{55}=1-\ddot{a}_{60}/\ddot{a}_{55}$.  
+**Paso 2.** $_5V_{55}=1-10/12=1/6\approx 0{,}167$.  
+**Resultado.** $_5V_{55}\approx 0{,}167$.  
+
+***
+
+**11. Ecuación Thiele (continuo)**  
+Escribir la ecuación diferencial de Thiele para la reserva en tiempo continuo.  
+**Solución.**  
+**Paso 1.** La variación instantánea de la reserva = interés + prima − costo por muerte.  
+**Paso 2.** $\frac{d}{dt}\,{}_t\bar{V}=\delta\,{}_t\bar{V}+\bar{P}_t-\mu_{x+t}(b_t-{}_t\bar{V})$.  
+**Resultado.** $d\,{}_t\bar{V}/dt=\delta\,{}_t\bar{V}+\bar{P}_t-\mu_{x+t}(b_t-{}_t\bar{V})$.  
+
+***
+
+**12. Varianza $_k L$**  
+Relación entre la varianza de la pérdida futura $_k L$ y el segundo momento del seguro.  
+**Solución.**  
+**Paso 1.** $_k L$ = valor presente de beneficios futuros − valor presente de primas futuras (desde $k$).  
+**Paso 2.** $\operatorname{Var}(_k L)$ se expresa con ${}^2A_{x+k}$ (segundo momento a doble interés).  
+**Resultado.** $\operatorname{Var}(_k L)=(1+P/d)^2\,\operatorname{Var}(Z_{x+k})$ con $Z_{x+k}$ valor presente del beneficio desde $x+k$.  
+
+***
+
+**13. Reserva terminal**  
+Definir reserva terminal.  
+**Solución.**  
+**Paso 1.** Reserva terminal = valor de la reserva al final del año $k$ (cierre del año).  
+**Paso 2.** Convención estándar: valor justo después de cobrar la prima del año $k+1$ o al inicio del año $k+1$.  
+**Resultado.** Valor matemático al cierre del año $k$.  
+
+***
+
+**14. $_10V_{40:\overline{20}|}$**  
+Dotal 20 años (40): reserva en $k=10$ con $A_{50:\overline{10}|}$, $\ddot{a}_{50:\overline{10}|}$, $P_{40:\overline{20}|}$.  
+**Solución.**  
+**Paso 1.** $_10V_{40:\overline{20}|}$ = APV beneficios restantes (10 años) − APV primas restantes.  
+**Paso 2.** $_10V_{40:\overline{20}|}=A_{50:\overline{10}|}-P_{40:\overline{20}|}\,\ddot{a}_{50:\overline{10}|}$.  
+**Resultado.** $_10V=A_{50:\overline{10}|}-P\,\ddot{a}_{50:\overline{10}|}$.  
+
+***
+
+**15. Relación prospectiva = retrospectiva**  
+Justificar que prospectiva = retrospectiva bajo equivalencia.  
+**Solución.**  
+**Paso 1.** En emisión, equivalencia: VP(primas) = VP(beneficios). En $k$, el mismo pasivo puede verse «hacia adelante» o «hacia atrás».  
+**Paso 2.** Bajo las mismas hipótesis, reserva prospectiva y retrospectiva coinciden.  
+**Resultado.** Ambas expresan el mismo pasivo en $k$.  
+
+***
+
+**16. Recursiva con beneficio $b$**  
+Despejar ${}_{k+1}V$ de $(_{k}V+P)(1+i)=q_{x+k}\,b+p_{x+k}\,{}_{k+1}V$.  
+**Solución.**  
+**Paso 1.** $(_{k}V+P)(1+i)-q_{x+k}\,b=p_{x+k}\,{}_{k+1}V$.  
+**Paso 2.** ${}_{k+1}V=[(_{k}V+P)(1+i)-q_{x+k}\,b]/p_{x+k}$.  
+**Resultado.** ${}_{k+1}V=[(_{k}V+P)(1+i)-q\,b]/p$.  
+
+***
+
+**17. Tipo parcial**  
+Vida entera (50), $P_{50}=0{,}04$, $A_{55}=0{,}35$, $\ddot{a}_{55}=12$. Calcular $_5V_{50}$.  
+**Solución.**  
+**Paso 1.** $_5V_{50}=A_{55}-P_{50}\,\ddot{a}_{55}$.  
+**Paso 2.** $_5V_{50}=0{,}35-0{,}04\times 12=0{,}35-0{,}48=-0{,}13$.  
+**Resultado.** $_5V_{50}=-0{,}13$ (ejemplo con reserva negativa).  
+
+***
+
+**18. Reserva inicial año $k+1$**  
+Interpretar la reserva al inicio del año $k+1$.  
+**Solución.**  
+**Paso 1.** Justo después de cobrar la prima del año $k+1$, el asegurador tiene la reserva del año anterior más la prima.  
+**Paso 2.** Reserva inicial año $k+1$ = ${}_kV+P$ (reserva terminal año $k$ + prima del año $k+1$).  
+**Resultado.** ${}_kV+P$.  
+
+***
+
+**19. Fórmula cociente seguros**  
+Fórmula de la reserva vida entera como cociente de seguros.  
+**Solución.**  
+**Paso 1.** Alternativa a cociente de anualidades: $_kV_x=(A_{x+k}-A_x)/(1-A_x)$.  
+**Paso 2.** Equivale a $1-\ddot{a}_{x+k}/\ddot{a}_x$ usando $A=1-d\,\ddot{a}$.  
+**Resultado.** $_kV_x=(A_{x+k}-A_x)/(1-A_x)$.  
+
+***
+
+**20. Síntesis tipo parcial**  
+(a) Definir reserva prospectiva. (b) $\ddot{a}_{40}=18$, $\ddot{a}_{45}=15$. Calcular $_5V_{40}$.  
+**Solución.**  
+**Paso 1.** (a) Reserva prospectiva = APV beneficios futuros − APV primas futuras. (b) Cociente de anualidades: $_5V_{40}=1-\ddot{a}_{45}/\ddot{a}_{40}$.  
+**Paso 2.** (b) $_5V_{40}=1-15/18=1/6$.  
+**Resultado.** (a) Definición prospectiva. (b) $_5V_{40}=1/6$.
+
+
+***
+
+**21. Método de Fackler (Tema 5)**  
+Para un seguro de vida entera por 1 u.m., prima $P_x$, escribir la ecuación de recurrencia entre $_kV_x$, $_{k+1}V_x$, $P_x$, $q_{x+k}$ e $i$ e interpretar cada término.  
+**Solución.**  
+**Paso 1.** $(_{k}V_x + P_x)(1+i) = q_{x+k} \cdot 1 + p_{x+k} \cdot {}_{k+1}V_x$.  
+**Paso 2.** Interpretación: (reserva final año $k$ + prima del año $k+1$) se capitaliza un año; debe igualar el valor esperado al final del año: con probabilidad $q_{x+k}$ se paga 1 u.m., con probabilidad $p_{x+k}$ queda ${}_{k+1}V_x$.  
+**Resultado.** Ecuación de Fackler; base para acumulación de reserva.
+
+
+***
+
+**22. Reserva de balance**  
+Explicar por qué la reserva matemática calculada prospectivamente coincide con el «activo» de primas pasadas capitalizadas menos beneficios pagados (visión retrospectiva).  
+**Solución.**  
+**Paso 1.** Por equivalencia en $t=0$, VP(primas) = VP(beneficios). En $k$, el pasivo prospectivo (beneficios futuros − primas futuras) es el mismo que el resultado de capitalizar primas ya cobradas y restar beneficios ya pagados.  
+**Paso 2.** Bajo los mismos supuestos, reserva prospectiva = reserva retrospectiva; la reserva de balance reconcilia ambas visiones.  
+**Resultado.** Ambas expresan el mismo pasivo neto.
+
+
+***
+
+**23. Recurrencia temporal a $n$ años**  
+Para un temporal a 10 años por 10.000 u.m., prima $P$, escribir $_9V$ en función de $_10V$, $P$, $q_{x+9}$, $i$ y el beneficio. Comprobar $_10V = 0$.  
+**Solución.**  
+**Paso 1.** $(_{9}V + P)(1+i) = q_{x+9} \cdot 10\,000 + p_{x+9} \cdot {}_{10}V$. Al vencimiento no hay primas ni beneficios futuros, luego ${}_{10}V = 0$.  
+**Paso 2.** Despejar $_9V$: $_9V = [q_{x+9} \cdot 10\,000]/(1+i) - P = 10\,000\,q_{x+9}/(1+i) - P$.  
+**Resultado.** $_10V=0$; $_9V=10\,000\,q_{x+9}/(1+i)-P$.
+
+
+***
+
+**24. Momento fraccionario (Tema 5)**  
+Relación de la reserva en $k+t$ ($0 < t < 1$) con la recurrencia y la reserva de balance.  
+**Solución.**  
+**Paso 1.** La recurrencia da reservas en enteros. Para $k+t$ se usa interpolación lineal: $_kV_t\approx (1-t)\,{}_kV+t\,{}_{k+1}V$, o la ecuación de Thiele en continuo.  
+**Paso 2.** Reserva de balance en $k+t$: activos en $k$ capitalizados $t$ años + prima (si aplica) menos beneficio pagado en $(k,k+t)$; coincide con prospectiva/retrospectiva bajo los mismos supuestos.  
+**Resultado.** Interpolación lineal o Thiele.
+
+
+***
+
+**25. Fórmula retrospectiva explícita**  
+Para vida entera por 1, prima $P_x$, escribir $_kV_x$ como valor acumulado de primas menos valor acumulado de beneficios.  
+**Solución.**  
+**Paso 1.** $_kV_x$ = (valor acumulado primas − valor acumulado beneficios) / ${}_kp_x$. En vida entera no hay beneficios pagados en los primeros $k$ años.  
+**Paso 2.** $_kV_x = P_x \, \ddot{a}_{x:\overline{k}|} \, (1+i)^k/{}_kp_x$. En conmutativas: $_kV_x = [P_x(N_x - N_{x+k}) - (M_x - M_{x+k})](1+i)^k/D_{x+k}$.  
+**Resultado.** $_kV_x = P_x\,\ddot{a}_{x:\overline{k}|}(1+i)^k/{}_kp_x$.
+
+**26.** $_5V_x=1-\ddot{a}_{x+5}/\ddot{a}_x$. Con $\ddot{a}_{50}=15$, $\ddot{a}_{55}=12$. Calcular $_5V_{50}$.  
+**Solución.**  
+**Paso 1.** $_5V_{50}=1-\ddot{a}_{55}/\ddot{a}_{50}$.  
+**Paso 2.** $_5V_{50}=1-12/15=0{,}2$.  
+**Resultado.** $_5V_{50}=0{,}2$.
+
+**27.** Recurrencia: $(_kV+P)(1+i)=q\,b+p\,{}_{k+1}V$. Despejar ${}_{k+1}V$.  
+**Solución.**  
+**Paso 1.** $(_kV+P)(1+i)-q\,b=p\,{}_{k+1}V$.  
+**Paso 2.** ${}_{k+1}V=[(_kV+P)(1+i)-q\,b]/p$.  
+**Resultado.** ${}_{k+1}V=[(_kV+P)(1+i)-q\,b]/p$.
+
+**28.** Reserva prospectiva dotal 20 años (40) en $k=10$: $_10V_{40:\overline{20}|}$.  
+**Solución.**  
+**Paso 1.** Quedan 10 años; $_10V_{40:\overline{20}|}$ = APV beneficios restantes − APV primas restantes.  
+**Paso 2.** $_10V_{40:\overline{20}|}=A_{50:\overline{10}|}-P_{40:\overline{20}|}\,\ddot{a}_{50:\overline{10}|}$ (o $=1$ si se valora al vencimiento).  
+**Resultado.** $_10V_{40:\overline{20}|}=A_{50:\overline{10}|}-P_{40:\overline{20}|}\,\ddot{a}_{50:\overline{10}|}$.
+
+**29.** Reserva terminal vs reserva de balance: diferencia.  
+**Solución.**  
+**Paso 1.** Reserva terminal: valor matemático al cierre del año $k$ (valor de la reserva de beneficio).  
+**Paso 2.** Reserva de balance: activos − pasivos en una fecha dada (puede ser fraccionaria); concepto contable.  
+**Resultado.** Terminal = valor matemático al cierre; balance = activos − pasivos (puede ser fraccionaria).
+
+**30.** $_8V_{45}$ para vida entera (45). $\ddot{a}_{45}=16$, $\ddot{a}_{53}=12{,}5$.  
+**Solución.**  
+**Paso 1.** $_8V_{45}=1-\ddot{a}_{53}/\ddot{a}_{45}$.  
+**Paso 2.** $_8V_{45}=1-12{,}5/16=0{,}21875$.  
+**Resultado.** $_8V_{45}=0{,}21875$.
+
+**31.** Ecuación de Thiele (continua): interpretar $\frac{d}{dt}\,{}_t\bar{V}$.  
+**Solución.**  
+**Paso 1.** $\frac{d}{dt}\,{}_t\bar{V}$ = variación instantánea de la reserva.  
+**Paso 2.** Thiele: = interés ($\delta\,{}_t\bar{V}$) + prima ($\bar{P}$) − costo por muerte ($\mu_{x+t}(b-{}_t\bar{V})$).  
+**Resultado.** Cambio instantáneo = interés + prima − beneficio por muerte (× $\mu$).
+
+**32.** Fackler: recurrencia de reservas de balance.  
+**Solución.**  
+**Paso 1.** La recurrencia de balance actualiza activos: lo que hay en $k$ más prima e interés, menos beneficios pagados.  
+**Paso 2.** Reserva en $k+1$ = reserva en $k$ + interés + prima − beneficios pagados (flujo de caja).  
+**Resultado.** $_{k+1}V^{\text{bal}}=(_kV+P)(1+i)-q\,b$ (flujo de caja).
+
+**33.** Temporal 10 años (48): $_3V_{48:\overline{10}|}^1$. Prospectiva.  
+**Solución.**  
+**Paso 1.** Quedan 7 años; reserva = APV beneficio temporal 7 años − APV primas 7 años.  
+**Paso 2.** $_3V_{48:\overline{10}|}^1=A_{51:\overline{7}|}^1-P_{48:\overline{10}|}^1\,\ddot{a}_{51:\overline{7}|}$.  
+**Resultado.** $_3V_{48:\overline{10}|}^1=A_{51:\overline{7}|}^1-P_{48:\overline{10}|}^1\,\ddot{a}_{51:\overline{7}|}$.
+
+**34.** $_kV_x=(A_{x+k}-A_x)/(1-A_x)$ para vida entera por 1 u.m. Verificar con $\ddot{a}$.  
+**Solución.**  
+**Paso 1.** Cociente de seguros. Usar $A=1-d\,\ddot{a}$ en numerador y denominador.  
+**Paso 2.** $(A_{x+k}-A_x)/(1-A_x)$ equivale a $1-\ddot{a}_{x+k}/\ddot{a}_x$.  
+**Resultado.** Ambas formas son equivalentes; cociente de seguros = cociente de anualidades.
+
+**35.** Dotal 15 años (42): ${}_{15}V_{42:\overline{15}|}$ al vencimiento.  
+**Solución.**  
+**Paso 1.** Al vencimiento del dotal, el asegurado sobrevive y recibe el beneficio por supervivencia.  
+**Paso 2.** La reserva justo antes del pago es el valor de ese beneficio = 1 u.m.  
+**Resultado.** ${}_{15}V_{42:\overline{15}|}=1$.
+
+**36.** Reserva retrospectiva: valor acumulado primas − valor acumulado beneficios, dividido por ${}_kp_x$.  
+**Solución.**  
+**Paso 1.** $_kV$ = (valor acumulado primas − valor acumulado beneficios) / ${}_kp_x$ (ponderado por supervivencia).  
+**Paso 2.** $_kV=[P\,\ddot{a}_{x:\overline{k}|}(1+i)^k-A_{x:\overline{k}|}^1(1+i)^k]/{}_kp_x$.  
+**Resultado.** $_kV=[P\,\ddot{a}_{x:\overline{k}|}(1+i)^k-A_{x:\overline{k}|}^1(1+i)^k]/{}_kp_x$.
+
+**37.** Recurrencia con $P=0{,}03$, $i=0{,}04$, $q=0{,}01$, $b=1$, ${}_2V=0{,}08$. Calcular $_1V$.  
+**Solución.**  
+**Paso 1.** $(_1V+P)(1+i)=q\,b+p\,{}_{2}V$; $(_1V+0{,}03)1{,}04=0{,}01\times 1+0{,}99\times 0{,}08$.  
+**Paso 2.** $_1V+0{,}03=(0{,}01+0{,}0792)/1{,}04\approx 0{,}0858$; $_1V\approx 0{,}054$.  
+**Resultado.** $_1V\approx 0{,}054$.
+
+**38.** Momento fraccionario $k+t$: interpolación lineal.  
+**Solución.**  
+**Paso 1.** La recurrencia da reservas en enteros $k$ y $k+1$.  
+**Paso 2.** Para $k+t$ ($0<t<1$): interpolación lineal $_kV_t\approx (1-t)\,{}_kV+t\,{}_{k+1}V$.  
+**Resultado.** $_kV_t\approx (1-t)\,{}_kV+t\,{}_{k+1}V$.
+
+**39.** $_7V_{50}$ con $P_{50}=0{,}025$, $A_{57}=0{,}35$, $\ddot{a}_{57}=12$.  
+**Solución.**  
+**Paso 1.** Prospectiva: $_7V_{50}=A_{57}-P_{50}\,\ddot{a}_{57}$.  
+**Paso 2.** $_7V_{50}=0{,}35-0{,}025\times 12=0{,}35-0{,}30=0{,}05$.  
+**Resultado.** $_7V_{50}=0{,}05$.
+
+**40.** Justificar que prospectiva = retrospectiva bajo equivalencia.  
+**Solución.**  
+**Paso 1.** En emisión, equivalencia: VP(primas) = VP(beneficios). En $k$, el pasivo es único.  
+**Paso 2.** Prospectiva = beneficios futuros − primas futuras; retrospectiva = primas pasadas capitalizadas − beneficios pasados capitalizados, dividido por ${}_kp_x$. Ambas coinciden.  
+**Resultado.** Ambas expresan el mismo pasivo en $k$.
+
+**41.** Reserva terminal: definición.  
+**Solución.**  
+**Paso 1.** Reserva terminal = valor de la reserva matemática al cierre del año $k$.  
+**Paso 2.** Se valora al final del año $k$ (instante $k+0$ del año siguiente), tras aplicar la recurrencia.  
+**Resultado.** Valor de la reserva al final del año $k$.
+
+**42.** Dotal 18 años (40): $_6V_{40:\overline{18}|}$.  
+**Solución.**  
+**Paso 1.** Quedan 12 años; reserva prospectiva = APV beneficio dotal 12 años − APV primas 12 años.  
+**Paso 2.** $_6V_{40:\overline{18}|}=A_{46:\overline{12}|}-P_{40:\overline{18}|}\,\ddot{a}_{46:\overline{12}|}$.  
+**Resultado.** $_6V_{40:\overline{18}|}=A_{46:\overline{12}|}-P_{40:\overline{18}|}\,\ddot{a}_{46:\overline{12}|}$.
+
+**43.** Varianza de $_k L$: relación con ${}^2A_{x+k}$.  
+**Solución.**  
+**Paso 1.** $_k L$ = VP(beneficios futuros) − $P\times$ VP(primas futuras); depende de $Z_{x+k}$ (valor presente del beneficio desde $x+k$).  
+**Paso 2.** $\operatorname{Var}(_k L)=(1+P/d)^2\,\operatorname{Var}(Z_{x+k})$; el segundo momento ${}^2A_{x+k}$ (a doble interés) interviene en $\operatorname{Var}(Z_{x+k})$.  
+**Resultado.** $\operatorname{Var}(_k L)=(1+P/d)^2\,\operatorname{Var}(Z_{x+k})$.
+
+**44.** $_4V_{52}$ para vida entera. $\ddot{a}_{52}=14$, $\ddot{a}_{56}=11{,}5$.  
+**Solución.**  
+**Paso 1.** Cociente de anualidades: $_4V_{52}=1-\ddot{a}_{56}/\ddot{a}_{52}$.  
+**Paso 2.** $_4V_{52}=1-11{,}5/14\approx 0{,}179$.  
+**Resultado.** $_4V_{52}\approx 0{,}179$.
+
+**45.** Recurrencia: condición de borde ${}_nV=0$ para temporal $n$ años (sin dotal).  
+**Solución.**  
+**Paso 1.** En un temporal puro, al vencimiento no quedan primas ni beneficio por muerte.  
+**Paso 2.** La reserva prospectiva en $k=n$ es 0; condición de borde ${}_nV=0$.  
+**Resultado.** Al vencimiento, reserva 0.
+
+**46.** Reserva de balance en $k+1$: activos en $k$ + prima en $k$ + interés − beneficio muerte.  
+**Solución.**  
+**Paso 1.** Activos al inicio de $k+1$: $_kV+P$; capitalizados un año: $(_kV+P)(1+i)$.  
+**Paso 2.** Menos beneficio esperado pagado en el año: $q\,b$; $_{k+1}V^{\text{bal}}=(_kV+P)(1+i)-q\,b$.  
+**Resultado.** $_{k+1}V^{\text{bal}}=(_kV+P)(1+i)-q\,b$.
+
+**47.** $_10V_{45}$ con $A_{55}=0{,}32$, $\ddot{a}_{55}=13$, $P_{45}=0{,}024$.  
+**Solución.**  
+**Paso 1.** Prospectiva: $_10V_{45}=A_{55}-P_{45}\,\ddot{a}_{55}$.  
+**Paso 2.** $_10V_{45}=0{,}32-0{,}024\times 13=0{,}32-0{,}312=0{,}008$.  
+**Resultado.** $_10V_{45}=0{,}008$.
+
+**48.** Thiele: $\frac{d}{dt}\,{}_t\bar{V}=\delta\,{}_t\bar{V}+\bar{P}-\mu_{x+t}(1-{}_t\bar{V})$. Interpretar $\mu_{x+t}(1-{}_t\bar{V})$.  
+**Solución.**  
+**Paso 1.** Término de «costo» por muerte: si el asegurado muere en $t$, se paga el beneficio 1 y «se pierde» la reserva ${}_t\bar{V}$.  
+**Paso 2.** El costo esperado instantáneo es $\mu_{x+t}(1-{}_t\bar{V})$ (liberación por fallecimiento).  
+**Resultado.** Costo por muerte: pago de 1 menos reserva; término $\mu_{x+t}(1-{}_t\bar{V})$.
+
+**49.** Temporal 12 años (44): ${}_{12}V_{44:\overline{12}|}^1$.  
+**Solución.**  
+**Paso 1.** En $k=12$ termina el temporal; no quedan primas ni beneficio por muerte.  
+**Paso 2.** Reserva prospectiva = 0.  
+**Resultado.** ${}_{12}V_{44:\overline{12}|}^1=0$.
+
+**50.** Síntesis: escribir $_kV_x$ prospectiva y retrospectiva para vida entera por 1 u.m.  
+**Solución.**  
+**Paso 1.** Prospectiva: $_kV_x=A_{x+k}-P_x\,\ddot{a}_{x+k}=1-\ddot{a}_{x+k}/\ddot{a}_x$.  
+**Paso 2.** Retrospectiva: $_kV_x=[P_x(N_x-N_{x+k})-(M_x-M_{x+k})](1+i)^k/D_{x+k}$ (en conmutativas).  
+**Resultado.** Prospectiva: $A_{x+k}-P_x\,\ddot{a}_{x+k}=1-\ddot{a}_{x+k}/\ddot{a}_x$. Retrospectiva: $[P_x(N_x-N_{x+k})-(M_x-M_{x+k})](1+i)^k/D_{x+k}$.
+
+
+***
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe obtener la reserva o la expresión solicitada (prospectivo, retrospectivo o recurrencia). Redactar brevemente cuando se pida interpretar. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Para un dotal a 20 años para (40), escribir $_kV_{40:\overline{20}|}$ en función de $A_{40+k:\overline{20-k}|}$, $\ddot{a}_{40+k:\overline{20-k}|}$ y $P_{40:\overline{20}|}$. Con la tabla del curso, calcular $_10V_{40:\overline{20}|}$.
+
+***
+
+2. **Se pide:** Comprobar la fórmula de recurrencia $_1V_x = ({}_0V_x + P_x)(1+i) - q_x$ para vida entera por 1 u.m., con ${}_0V_x=0$.
+
+***
+
+3. **Se pide:** Seguro temporal 10 años por 10.000 u.m. para (45); la reserva al final del año 3 es 800 u.m. Interpretar qué representa esa cifra.
+
+
+***
+
+ Usar la fórmula $_kV_x = 1 - \ddot{a}_{x+k}/\ddot{a}_x$ para vida entera. Con $\ddot{a}_{50}=15$ y $\ddot{a}_{55}=12$, calcular $_5V_{50}$.
+
+
+***
+
+ A partir de la recurrencia $(_{k}V+P)(1+i) = q\,b + p\,{}_{k+1}V$, comprobar que para un temporal a $n$ años se tiene ${}_nV=0$ (o el valor del beneficio al vencimiento si aplica).
+
+***
+
+
+***
+
+ **Se pide:** Con los valores de $A_{55}$, $\ddot{a}_{55}$ y $P_{50}$ (prima nivelada vida entera para (50)), calcular $_5V_{50}$.
+
+
+***
+
+ Escribir la fórmula de la reserva retrospectiva en función del valor acumulado de primas pasadas y de beneficios pasados (concepto de «primas acumuladas»).
+
+
+***
+
+ Definir la «reserva de balance» y explicar su uso en la contabilidad técnica (Tema 5 del programa).
+
+
+***
+
+ **Se pide:** Dados $\ddot{a}_{60}=14$ y $\ddot{a}_{65}=11$, calcular $_5V_{60}$ usando la expresión en cociente de anualidades para vida entera.
+
+
+***
+
+ Escribir la ecuación de Thiele (continua) e interpretar cada término (prima, interés, beneficio por muerte).
+
+
+***
+
+ Relacionar la varianza de la pérdida $_k L$ en el año $k+1$ con el segundo momento del seguro ${}^2A_{x+k}$.
+
+
+***
+
+ Para un seguro temporal a $n$ años, escribir la reserva terminal $_kV_{x:\overline{n}|}^1$ para $k<n$ en notación prospectiva o con conmutativas.
+
+
+***
+
+ **Se pide:** (a) Definir la reserva prospectiva. (b) Dotal 20 años para (40): calcular $_10V_{40:\overline{20}|}$ con la tabla del curso.
+
+
+***
+
+ De la ecuación de recurrencia de la reserva, despejar ${}_{k+1}V$ en función de $_kV$, $P$, $i$, $q$, $b$ y $p$.
+
+
+***
+
+ Definir «reserva terminal» y «reserva inicial» y explicar en qué instantes del año se valoran.
+
+
+***
+
+ Deducir o verificar la fórmula $_kV_x = (A_{x+k}-A_x)/(1-A_x)$ para vida entera por 1 u.m. (cociente de seguros).
+
+
+***
+
+ **Se pide:** Vida entera para (50) con $P_{50}=0{,}03$, $A_{55}=0{,}32$, $\ddot{a}_{55}=13$. Calcular $_5V_{50}$.
+
+
+***
+
+ Justificar que bajo equivalencia actuarial la reserva prospectiva y la reserva retrospectiva coinciden en cada instante.
+
+
+***
+
+ Explicar el papel de la reserva en el pago del beneficio por fallecimiento (TEMA 5: momento del pago y relación con la recurrencia).
+
+
+***
+
+ **Se pide:** (a) Escribir la fórmula de recurrencia de la reserva. (b) Con $\ddot{a}_{45}=16$ y $\ddot{a}_{50}=13$, calcular $_5V_{45}$ para vida entera.
+
+
+***
+
+ **Se pide:** Escribir la ecuación de Fackler (recurrencia) para un dotal a $n$ años por 1 u.m. y comprobar que ${}_nV=1$ al vencimiento.
+
+
+***
+
+ Definir la reserva de balance y explicar su uso en la contabilidad técnica.
+
+
+***
+
+ En la recurrencia $(_{2}V + P)(1+i) = q_{x+2}\,b + p_{x+2}\,{}_3V$, con $P=0{,}05$, $i=0{,}04$, $q_{x+2}=0{,}01$, $b=1$, ${}_3V=0{,}15$, calcular $_2V$.
+
+
+***
+
+ **Se pide:** Explicar la relación entre la reserva prospectiva en enteros y la reserva en un momento fraccionario (interpolación lineal y ecuación de Thiele).
+
+
+***
+
+ Para vida entera por 1 u.m., expresar $_5V_x$ por el método retrospectivo usando $P_x$, $\ddot{a}_{x:\overline{5}|}$ y las conmutativas $N_x$, $M_x$, $D_{x+5}$.
+
+26. **Se pide:** Con $\ddot{a}_{55}=13$ y $\ddot{a}_{60}=10{,}5$, calcular $_5V_{55}$ para vida entera (fórmula cociente de anualidades).
+
+***
+
+27. **Se pide:** Despejar ${}_{k+1}V$ de la recurrencia $(_kV+P)(1+i)=q\,b+p\,{}_{k+1}V$.  
+
+***
+
+ **Se pide:** Dotal 20 años (40). Calcular $_10V_{40:\overline{20}|}$ con la tabla (prospectivo).  
+
+***
+
+ Definir reserva de balance y su uso en contabilidad técnica (Tema 5).  
+
+***
+
+ $_6V_{52}$ para vida entera. $\ddot{a}_{52}=14{,}2$, $\ddot{a}_{58}=11{,}8$.  
+
+***
+
+ Ecuación de Thiele (continua): escribir e interpretar cada sumando.  
+
+***
+
+ Reserva prospectiva temporal 15 años (45) en $k=5$: $_5V_{45:\overline{15}|}^1$.  
+
+***
+
+ **Se pide:** Vida entera (50). $P_{50}=0{,}026$, $A_{55}=0{,}33$, $\ddot{a}_{55}=12{,}5$. $_5V_{50}$.  
+
+***
+
+ Justificar que prospectiva = retrospectiva bajo equivalencia actuarial.  
+
+***
+
+ Recurrencia: con $P=0{,}04$, $i=0{,}05$, $q=0{,}012$, $b=1\,000$, ${}_3V=200$, calcular $_2V$.  
+
+***
+
+ Reserva terminal vs reserva en momento fraccionario (interpolación).  
+
+***
+
+ **Se pide:** (a) Reserva prospectiva. (b) Dotal 18 años (42). $_9V_{42:\overline{18}|}$ con conmutativas.  
+
+***
+
+ Fórmula retrospectiva $_kV_x$ con valor acumulado de primas y de beneficios.  
+
+***
+
+ Dotal 12 años (48): ${}_{12}V_{48:\overline{12}|}$ al vencimiento.  
+
+***
+
+ $_9V_{46}$ con $A_{55}=0{,}34$, $\ddot{a}_{55}=12$, $P_{46}=0{,}027$.  
+
+***
+
+ Ecuación de Fackler para un dotal a $n$ años: recurrencia y ${}_nV=1$.  
+
+***
+
+ Momento fraccionario $k+t$: relación con Thiele e interpolación lineal.  
+
+***
+
+ **Se pide:** $\ddot{a}_{58}=11$, $\ddot{a}_{63}=9$. $_5V_{58}$ (vida entera).  
+
+***
+
+ Varianza de la pérdida $_k L$ en el año $k+1$: relación con ${}^2A_{x+k}$.  
+
+***
+
+ Reserva de balance: escribir ecuación en $k+1$ a partir de $k$.  
+
+***
+
+ Temporal 10 años (50): $_7V_{50:\overline{10}|}^1$ en notación prospectiva.  
+
+***
+
+ **Se pide:** (a) Recurrencia de la reserva. (b) $\ddot{a}_{45}=15{,}5$, $\ddot{a}_{50}=12{,}8$. $_5V_{45}$.  
+
+***
+
+ Definir reserva terminal y reserva inicial (instantes del año).  
+
+***
+
+ $_4V_{54}$ para vida entera. $A_{58}=0{,}38$, $\ddot{a}_{58}=11{,}5$, $P_{54}=0{,}028$.  
+
+***
+
+ Síntesis: escribir $_kV_x$ (vida entera por 1) en forma prospectiva y en forma retrospectiva en una línea cada una.
+
+***
+
+## Práctica para el 2° Parcial
+
+**Contenido evaluado (caps. 0–11):** PNU de beneficios combinados, primas niveladas, ecuación de equivalencia, reserva matemática (prospectivo, retrospectivo), recurrencia, reservas de balance, prima de riesgo y prima de ahorro, reservas terminales (Ordinario de Vida, temporal, mixto).
+
+A continuación se resuelven con el **mayor detalle** dos exámenes tipo basados en esos modelos: **(A)** Ordinario de Vida por 1 u.m.; **(B)** Mixto a 20 años por 10.000 u.m. En ambos: enunciado, **línea del tiempo**, notación, conmutativos y desarrollo paso a paso. Tabla: Venezolana Hombres; $i = 8\%$; $\omega = 101$.
+
+***
+
+## Examen tipo A (2° Parcial): Ordinario de Vida
+
+Basado en modelos de segundo parcial tipo Ordinario de Vida (beneficio por fallecimiento vida entera, primas niveladas).
+
+### Enunciado (Examen tipo A)
+
+- **Contrato:** Seguro de vida entera (Ordinario de Vida) por **1 u.m.** para una vida $(x)$.
+- **Beneficio:** 1 u.m. pagadera al **final del año de fallecimiento**.
+- **Primas:** niveladas, pagaderas al **inicio** de cada año mientras $(x)$ viva.
+- **Se pide:** **(i)** Prima pura única $A_x$ y prima nivelada $P_x$ en conmutativos (con ejemplo numérico $x=40$). **(ii)** Reserva terminal $_tV_x$ en notación prospectiva y retrospectiva; comprobación numérica en $t=1$. **(iii)** Fórmula de recurrencia de la reserva; comprobación para el año 1. **(iv)** Prima de riesgo y prima de ahorro (concepto y ejemplo año 1). **(v)** Reservas de balance (Fackler). **(vi)** Línea del tiempo del contrato.
+
+### Línea del tiempo (Examen tipo A)
+
+En la línea del tiempo se indica **qué paga el asegurado** (primas) y **qué beneficio** recibe en cada período. Para un Ordinario de Vida por 1 u.m.:
+
+| Año póliza $t$ | Pago del asegurado (primas) | Beneficio por fallecimiento |
+|----------------|-----------------------------|-----------------------------|
+| 0              | $P_x$ (inicio año 1)         | —                           |
+| 1              | $P_x$ (inicio año 2)         | 1 u.m. si muerte en año 1 (fin del año 1) |
+| 2              | $P_x$                       | 1 u.m. si muerte en año 2   |
+| …              | …                           | …                           |
+| $k$            | $P_x$                       | 1 u.m. si muerte en año $k$ (pagadera fin del año $k$) |
+| $\omega-x-1$   | Última prima si vive         | 1 u.m. si muerte en ese año |
+
+La prima $P_x$ es constante; el beneficio es 1 u.m. pagadero al **final del año** en que ocurre la muerte. Para que los diagramas no salgan de los márgenes, se muestran en dos figuras: (1) primas; (2) beneficio.
+
+```{mermaid}
+%%| fig-width: 3.8
+%%| fig-cap: "Línea del tiempo (1/2): primas — Ordinario de Vida"
+gantt
+    title Primas
+    dateFormat X
+    axisFormat %s
+    section Primas
+    P_x inicio cada año :p, 0, 30
+```
+
+```{mermaid}
+%%| fig-width: 3.8
+%%| fig-cap: "Línea del tiempo (2/2): beneficio — Ordinario de Vida"
+gantt
+    title Beneficio muerte
+    dateFormat X
+    axisFormat %s
+    section Beneficio
+    1 u.m. fin año muerte :b, 0, 30
+```
+
+### Solución detallada (Examen tipo A)
+
+**(i) Prima pura única y prima nivelada**
+
+- **Fórmula en conmutativos:** $A_x = M_x/D_x$.
+- **Ejemplo $x=40$ (Venezolana Hombres, 8\%):**
+  - $D_{40}=448\,735$, $M_{40}=36\,957$.
+  - Resultado: $A_{40} = 36\,957/448\,735 = 0{,}082\,359$.
+- **Prima nivelada:** $P_x\,\ddot{a}_x = A_x$ ⇒ $P_x = M_x/N_x$.
+- **Con $N_{40}=5\,558\,995$:** $P_{40} = 36\,957/5\,558\,995 = 0{,}006\,648$.
+- **Interpretación:** Por cada 1 u.m. de suma asegurada se paga 0,006648 u.m. al inicio de cada año mientras se viva.
+
+**(ii) Reservas: prospectivo y retrospectivo**
+
+- **Prospectivo:**
+  $$_tV_x = \frac{M_{x+t} - P_x\,N_{x+t}}{D_{x+t}} = \frac{1}{D_{x+t}}\left(M_{x+t} - \frac{M_x}{N_x}N_{x+t}\right).$$
+- **Retrospectivo:**
+  $$_tV_x = \frac{P_x(N_x - N_{x+t}) - (M_x - M_{x+t})}{D_{x+t}}.$$
+  (Forma terminal: $N_x = N_{x+1}+D_x$, luego $N_{40}-N_{41}=D_{40}$.)
+- **Comprobación numérica $t=1$:**
+  - Prospectivo: $_1V_{40} = (36\,114 - 0{,}006648\times 5\,110\,260)/414\,652 = 0{,}005\,161$.
+  - Retrospectivo: $P_x\,D_{40} - (M_{40}-M_{41}) = 2\,985 - 843 = 2\,142$; $_1V = 2\,142/414\,652 \approx 0{,}005\,16$.
+- **Extracto de tabla:** $t=0$: 0; $t=1$: 0,005161; $t=2$: 0,010616; $t=3$: 0,016373.
+
+**(iii) Recurrencia**
+
+- **Fórmula:** $_{k+1}V_x = (_kV_x + P_x)(1+i) - q_{x+k}\cdot 1$.
+- **Comprobación año 1:** $(0 + 0{,}006648)\times 1{,}08 - q_{40} \approx 0{,}00718 - 0{,}00203 = 0{,}00515 = {}_1V_{40}$.
+
+**(iv) Prima de riesgo y prima de ahorro**
+
+- **Concepto:** $P_x$ se descompone en prima de riesgo (costo de mortalidad del año) y prima de ahorro (incremento de reserva).
+- **Prima de riesgo año $t$:** $v\,q_{x+t-1}(1 - {}_{t-1}V_x)$.
+- **Prima de ahorro:** $P_{\text{ahorro},t} = P_x - P_{\text{riesgo},t}$.
+- **Ejemplo año 1:** $P_{\text{riesgo},1} \approx 0{,}00188$; $P_{\text{ahorro},1} = 0{,}00477$; $0{,}00477\times 1{,}08 \approx {}_1V_{40}$.
+
+**(v) Reservas de balance (Fackler)**
+
+- Bajo equivalencia, reserva de balance en $t$ = valor acumulado de primas de ahorro = $_tV_x$.
+- Se tabulan con la recurrencia o con prospectivo/retrospectivo.
+
+**(vi) Resumen de fórmulas (Examen A)**
+
+| Concepto | Fórmula |
+|----------|---------|
+| Prima pura única | $A_x = M_x/D_x$ |
+| Prima nivelada | $P_x = M_x/N_x$ |
+| Reserva prospectivo | $_tV_x = (M_{x+t}-P_x N_{x+t})/D_{x+t}$ |
+| Reserva retrospectivo | $_tV_x = (P_x(N_x-N_{x+t})-(M_x-M_{x+t}))/D_{x+t}$ |
+| Recurrencia | $_{k+1}V_x = (_kV_x+P_x)(1+i)-q_{x+k}$ |
+| Prima de riesgo año $t$ | $v\,q_{x+t-1}(1-{}_{t-1}V_x)$ |
+
+***
+
+## Examen tipo B (2° Parcial): Mixto 20 años
+
+Basado en modelos de segundo parcial tipo Mixto/Dotal: seguro mixto a 20 años con primas niveladas en 20 pagos.
+
+### Enunciado (Examen tipo B)
+
+- **Beneficio:** 10.000 u.m. al final del año de fallecimiento si la muerte ocurre dentro de 20 años; 10.000 u.m. al cumplirse 20 años si el asegurado $(x)$ sobrevive. Es decir, **mixto (dotal) a 20 años** por 10.000 u.m.
+- **Primas:** niveladas, 20 pagos anuales al inicio de cada año mientras viva (o hasta el año 19 inclusive).
+- **Se pide:** **(i)** Prima pura única (PNU) y prima nivelada $P_{x:\overline{20}|}$ en conmutativos; **(ii)** Reservas $_tV_{x:\overline{20}|}$ en $t=5$ y $t=15$ (prospectivo y retrospectivo); **(iii)** Fórmula de recurrencia y condición en $t=20$; **(iv)** Prima de riesgo y prima de ahorro en los años 1 y 15; **(v)** Reservas de balance (Fackler); **(vi)** Línea del tiempo del contrato.
+
+### Línea del tiempo: Mixto 20 años por 10.000
+
+| Año póliza $t$ | Prima | Beneficio por muerte | Beneficio por supervivencia |
+|----------------|-------|----------------------|-----------------------------|
+| 0              | $P$   | —                    | —                           |
+| 1 … 19         | $P$   | 10.000 si muerte en año $t$ (fin del año) | — |
+| 20             | —     | 10.000 si muerte en año 20 | 10.000 si vive 20 años (pago único en $t=20$) |
+
+El mixto paga 10.000 en cualquier caso: al final del año de muerte si $K_x \leq 19$, o al final del año 20 si $K_x \geq 20$. Por tanto $A_{x:\overline{20}|} = A_{x:\overline{20}|}^1 + {}_{20}E_x$.
+
+```{mermaid}
+%%| fig-width: 4
+%%| fig-cap: "Línea del tiempo — Examen B: Mixto 20 años por 10.000 u.m."
+gantt
+    title Primas y beneficio
+    dateFormat X
+    axisFormat %s
+    section Primas
+    P inicio cada año (20 pagos) :p, 0, 20
+    section Beneficio
+    10.000 fin año muerte o fin año 20 :b, 0, 21
+```
+
+***
+
+### (i) Prima pura única y prima nivelada
+
+**PNU (prima pura única)**
+
+- Valor presente actuarial del beneficio: 10.000 u.m. en cualquier caso (muerte en 20 años o supervivencia a 20).
+- **Fórmula:** $\text{PNU} = 10\,000\cdot A_{x:\overline{20}|} = 10\,000\cdot (A_{x:\overline{20}|}^1 + {}_{20}E_x) = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{D_x}$.
+- **Ejemplo numérico $x=40$ (Venezolana Hombres, 8\%):** $A_{40:\overline{20}|} = (M_{40}-M_{60}+D_{60})/D_{40}$. Sustituyendo los valores de la hoja de conmutativos se obtiene un número típico entre 0,40 y 0,60. Si, por ejemplo, resulta $A_{40:\overline{20}|}=0{,}52$, entonces PNU $= 10\,000\times 0{,}52 = 5\,200$ u.m.
+
+**Prima nivelada $P_{x:\overline{20}|}$**
+
+- Ecuación de equivalencia: $P_{x:\overline{20}|}\cdot \ddot{a}_{x:\overline{20}|} = 10\,000\cdot A_{x:\overline{20}|}$.
+- **En conmutativos:** $P_{x:\overline{20}|} = \dfrac{10\,000\cdot A_{x:\overline{20}|}}{\ddot{a}_{x:\overline{20}|}} = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{N_x - N_{x+20}}$.
+- **Por 1 u.m. de beneficio:** $P_{x:\overline{20}|} = \dfrac{M_x - M_{x+20} + D_{x+20}}{N_x - N_{x+20}}$.
+
+***
+
+### (ii) Reservas en $t=5$ y $t=15$
+
+**Método prospectivo**
+
+- $_tV_{x:\overline{20}|} = \text{APV}_{x+t}(\text{beneficio futuro}) - P_{x:\overline{20}|}\cdot \ddot{a}_{x+t:\overline{20-t}|}$ para $t < 20$.
+- **Beneficio futuro desde $t$:** 10.000 al final del año de muerte si ocurre en $(t,20]$ o al final del año 20 si sobrevive; es decir 10.000 · $A_{x+t:\overline{20-t}|}$ (mixto a $20-t$ años).
+- **Fórmula:** $_tV_{x:\overline{20}|} = 10\,000\cdot A_{x+t:\overline{20-t}|} - P_{x:\overline{20}|}\cdot \ddot{a}_{x+t:\overline{20-t}|} = \dfrac{10\,000(M_{x+t}-M_{x+20}+D_{x+20}) - P_{x:\overline{20}|}(N_{x+t}-N_{x+20})}{D_{x+t}}$.
+
+**En $t=5$:** $_5V_{x:\overline{20}|} = \dfrac{10\,000(M_{x+5}-M_{x+20}+D_{x+20}) - P_{x:\overline{20}|}(N_{x+5}-N_{x+20})}{D_{x+5}}$. Se sustituye $x=40$ y valores de tabla (ej. $D_{45}$, $M_{45}$, $N_{45}$, $M_{60}$, $N_{60}$, $D_{60}$).
+
+**En $t=15$:** $_15V_{x:\overline{20}|} = \dfrac{10\,000(M_{x+15}-M_{x+20}+D_{x+20}) - P_{x:\overline{20}|}(N_{x+15}-N_{x+20})}{D_{x+15}}$. Cerca del vencimiento la reserva se aproxima a 10.000 (o al valor del dotal puro $10\,000\cdot {}_{5}E_{x+15}$ más el temporal).
+
+**Método retrospectivo**
+
+- $_tV_{x:\overline{20}|} = \dfrac{P_{x:\overline{20}|}(N_x - N_{x+t}) - 10\,000\cdot (M_x - M_{x+t})}{D_{x+t}}\cdot (1+i)^t$ (valor acumulado de primas menos valor acumulado de beneficios de muerte en $(0,t]$, llevado a $t$ y dividido por ${}_tp_x$). En forma estándar con conmutativos: $_tV = \dfrac{P_{x:\overline{20}|}(N_x - N_{x+t}) - 10\,000(M_x - M_{x+t})}{D_{x+t}}$ (usando la relación $(1+i)^t\,D_x/D_{x+t} = 1$ en el numerador según convención). La expresión equivalente más habitual es $_tV_{x:\overline{20}|} = \dfrac{P_{x:\overline{20}|}(N_x - N_{x+t}) - (M_x - M_{x+t})}{D_{x+t}}\cdot 10\,000$ si $P$ está por 1 u.m.; para beneficio 10.000: $_tV = \dfrac{P(N_x-N_{x+t}) - 10\,000(M_x-M_{x+t})}{D_{x+t}}$ con $P$ prima total.
+- Bajo equivalencia, prospectivo = retrospectivo; se puede comprobar numéricamente en $t=5$ y $t=15$.
+
+***
+
+### (iii) Recurrencia y condición en $t=20$
+
+**Fórmula de recurrencia**
+
+- $_{k+1}V_{x:\overline{20}|} = (_kV_{x:\overline{20}|} + P_{x:\overline{20}|})(1+i) - q_{x+k}\cdot 10\,000$ para $k=0,\ldots,18$ (beneficio por muerte en año $k+1$ = 10.000).
+- En el año 20: $_{19}V + P$ no se paga (última prima en $t=18$ o 19 según convención; si las primas son en $t=0,\ldots,19$, en el año 20 no hay prima). La recurrencia para el último año es $_{20}V_{x:\overline{20}|} = (_{19}V_{x:\overline{20}|})(1+i) - q_{x+19}\cdot 10\,000$; si el asegurado sobrevive al año 20, recibe 10.000, luego **$_{20}V_{x:\overline{20}|} = 10\,000$** (reserva justo antes del pago de 10.000 al superviviente; o 0 después del pago, según definición). La convención usual es reserva **terminal** al final del año 20: después de pagar 10.000 a todos (vivos o muertos), la reserva es 0. Por tanto $_{20}V = 10\,000$ justo antes del vencimiento y 0 después.
+- **Condición de cierre:** $_{20}V_{x:\overline{20}|} = 10\,000$ (valor del dotal en $t=20$).
+
+***
+
+### (iv) Prima de riesgo y prima de ahorro (años 1 y 15)
+
+**Concepto**
+
+- **Prima de riesgo** en el año $k+1$: $v\,q_{x+k}\cdot (\text{capital en riesgo}) = v\,q_{x+k}\cdot (10\,000 - {}_kV_{x:\overline{20}|})$ (beneficio menos reserva inicial del año).
+- **Prima de ahorro:** $P_{\text{ahorro},k+1} = P_{x:\overline{20}|} - P_{\text{riesgo},k+1}$.
+
+**Año 1**
+
+- $P_{\text{riesgo},1} = v\,q_x\cdot (10\,000 - {}_0V) = v\,q_x\cdot 10\,000$ (con $_0V=0$).
+- $P_{\text{ahorro},1} = P_{x:\overline{20}|} - v\,q_x\cdot 10\,000$.
+
+**Año 15**
+
+- $P_{\text{riesgo},15} = v\,q_{x+14}\cdot (10\,000 - {}_{14}V_{x:\overline{20}|})$.
+- $P_{\text{ahorro},15} = P_{x:\overline{20}|} - P_{\text{riesgo},15}$. La reserva ${}_{14}V$ es alta (cerca del vencimiento), por tanto el capital en riesgo $10\,000 - {}_{14}V$ es pequeño y la prima de riesgo en año 15 es menor que en año 1.
+
+***
+
+### (v) Reservas de balance (Fackler)
+
+- La reserva de balance en $t$ es el valor acumulado de las **primas de ahorro** hasta $t$, con la recurrencia: activos en $t$ = (reserva en $t-1$ + prima) × $(1+i)$ menos beneficio por muerte pagado en el año.
+- Bajo equivalencia coincide con $_tV_{x:\overline{20}|}$. Se construye con la misma recurrencia del apartado (iii); la reserva de balance en $t=5$ y $t=15$ coincide con la prospectiva/retrospectiva.
+
+***
+
+### (vi) Resumen de fórmulas (Examen B — Mixto 20 años)
+
+| Concepto | Fórmula |
+|----------|---------|
+| PNU | $10\,000\cdot A_{x:\overline{20}|} = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{D_x}$ |
+| Prima nivelada | $P_{x:\overline{20}|} = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{N_x - N_{x+20}}$ |
+| Reserva prospectivo | $_tV = \dfrac{10\,000(M_{x+t}-M_{x+20}+D_{x+20}) - P(N_{x+t}-N_{x+20})}{D_{x+t}}$ |
+| Reserva retrospectivo | $_tV = \dfrac{P(N_x-N_{x+t}) - 10\,000(M_x-M_{x+t})}{D_{x+t}}$ |
+| Recurrencia | $_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot 10\,000$; $_{20}V = 10\,000$ |
+| Prima de riesgo año $t$ | $v\,q_{x+t-1}(10\,000 - {}_{t-1}V)$ |
+
+***
+
+*Referencias: Jordan [@jordan1982]; Neill [@neill1977]; Weishaus [@weishaus2013]; Redington [@redington1952]; Batten [@batten1978].*

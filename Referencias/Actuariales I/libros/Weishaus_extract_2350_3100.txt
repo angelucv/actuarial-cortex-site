@@ -1,0 +1,864 @@
+(3.5)
+
+(3.6)
+
+(3.7)
+
+The only difference between the last two expressions is the variable of integration; otherwise they are equiva­
+
+lent.
+
+What you should remember about equations (3.6) and (3.7) is if you integrate µx fmn a lower bound to an upper bound, and then exponentiate the negative of the in,egral, you get the probability of survival to the age represented by the upper bound, conditional on survival to the age represented by the lower bound. You can calculate ,qx as the complement of an exponentiated integral, but you cannot calculate fluqx directly in this fashion. Instead, you express it as Ip x - t+uP x and calculate the two survival probabilities in terms of µs,
+
+SOAMLCStudy ManuaJ-131h edition
+
+EXAMPLE3A You are given1 that µ35+1 = 1/(100+ t).
+
+Calculate 10p35.
+
+Calculate 20q 45.
+
+Calculate 10120q40.
+
+ANSWER:	1. We want the probability of survival to 45 given survival to 35, so we'll integrateµ from age 35 to age 45. µ35( O) represents age 35 and µ35(10) represents age 45.
+
+10P3s = exp (-	µ3s+s ds)
+
+( l10
+
+= exp(-(ln 110-ln 100))
+
+= expln 100 =110
+
+110	11
+
+We calculate the probability of survival to 65 given survival to 45 and then take the complement.
+
+zup45 =exp (- 1:oµ3s+s ds)
+
+30
+
+(	ds )
+
+=exp-(	J10  lO0+s
+
+= exp(-(ln 130-ln ll0))
+
+110	11
+
+=expln-=-
+
+130	13
+
+This can be evaluated as 10p40-30p40 or as 1op4020q50; either way, we need two integrals to evaluate this. We'll use the former expression. We already saw in the previous two solutions that for this force of mortality, rPx =(65+x)/(65+ X + t).
+
+1012oq10 =10P10 -30P10
+
+65+40	65+40
+
+65+50	65+70
+
+105	105 =I--- I	□
+
+=-ll5 -1-35  0.135266
+
+1This is a Parelo distribution, a poor model for human morlality, and is used only to illustrate the concept of calculating probabilities from the force of mortality.
+
+SOAMLCS!udyManual-1:1111edition Copyfighl ©2013 ASM
+
+Quiz 3-1 The force of mortality is µx =0.001./x.
+
+Calculate the probability of someone age 20 surviving 30 years and then dying in the next 10 years.
+
+By equation (3.1), the density function for 7 is
+
+(3.8)
+
+Thus, probabilities of Tx being in a given range can be computed byintegrating rP x µx+c over that range:
+
+Ic+u
+
+and in particular,
+
+(3.10)
+
+In order forµ x to be a legitimate force of mortality, the survival function must go to zero as x goes to infinity, which by equation (3.5) means that  µ1 d t must go to infinity as x goes to infinity. µx itself does not have to go to infinity, although for a realistic mortality function it would keep increasing as x increases for x greater than 30 or so.
+
+You should understand how a linear transformation ofµ affects p. Look at equation (3.6}. Sinceµ is ex­ ponentiated to get p, adding something toµ corresponds to multiplying iPx bye to negative t times that something. Multiplyingµ by a constant corresponds to raising p to that power. In other words,
+
+Suppose one person has force of mortality µx+s for Os s s t and survival probability 1p x and another one has force of mortality µ +s for Os s s t and survival probability 1p . Then a person who has force of mortality µx+s + µ +s for Os s s t has survival probability r px c p . In particular, if µ +s is constant k for alls, then the survival probability for the third person is e-kcr Px·
+
+If a force of mortality µx+s• 0 s s st,  results in survival probability rPx, then a force of mortality of kµx+s•
+
+0 s s s t will result in survival probability (1 px ]k.
+
+NotP. that the force of mortality must be multiplied or added throughout an entire range of values Os s s tin order for these results to be true.
+
+EXAMPLE 3B Sarah's force of mortality is µx, and her probability of dying at age 70, q70, is 0.01. Toby's force of mortality isµ = 0.5µ.r +0.1.
+
+Calculate Toby's probability of dying at age 70.
+
+ANSWER: As discussed above, multiplying the force of mortality by 0.5 results in raising the probability of sur­ vival to the 0.5 power. Adding 0.1 to the force of mortality for one year multiplies the survival probability by e-0-1. So the answer will be l-(l-O.Ol)0•5e-0 1 Once you get used to this, you will not have to carry out the math. But this time around, let's work it out step by step.
+
+SOA MLC Study Manual-13111edition
+
+Denoting Toby's functions with primes, we have
+
+P;o =exp (- ii  µ;0+1 dt)
+
+by equation (3.6) applied to primed func­ tions
+
+= exp (- i\o.5µ70+1 +O.l)?t)
+
+using the information given in the exam­
+
+ple to expand l
+
+=(•x+ J.'osµro.,d ')) ( •x+f O.Idt))
+
+=(exp (-o.sf µ,..,dt))r,-,,)
+
+= ( ex+	f µ,..,dtr)
+
+=(P o5) (e-0.1)
+
+= ((1 Cho)o.s)(e-0.1)
+
+=(Q,990.5)( e-O.l)
+
+=0.90030
+
+Hence, q;0 = I  0.09970 1-
+
+(,-"')
+
+by equation (3.6) applied to unprimed functions
+
+D
+
+Exam questions will expect you to go betweenµ and S, p, or q, in either direction. Table 3.1 reviews the relationships between these functions. Figure 3.1 diagrams the relationships, with the actuarial notation on top of each circle and the mathematical notation on the bottom.
+
+Exercises
+
+A person age 70 is subject to the following force of mortality:
+
+0.Ql
+
+µ?O+t ={ 0.02
+
+t 5
+
+t > 5
+
+Calculate 20p70 for this person.
+
+[CAS4-S88:15] (1 point) The force of mortality is
+
+1
+
+Calculate ioPso·
+
+Less than 0.82
+
+At least 0.82, but less than 0.84
+
+At least 0.84, but less than 0.86
+
+At least 0.86, but less than 0.88
+
+At least 0.88
+
+,,---,-,,.._,
+
+1::
+
+"t	,
+
+"d	11	'/2 ":,;..	"d
+
+I
+
+0.	"x "'
+
+::t
+
+"
+
+0. 5"	,
+
+::"t	1"::
+
+'/2	'- </
+
+"'"-	"t
+
+I	""'
+
++""-1	,;,;,,+	"	II
+
+0	1/"
+
+II	o.lP_,,-
+
+"II'
+
+""'	+,,;-	"'
+
+"	""'
+
+-0-.--
+
+-,,-
+
+Figure 3.1: Relationships between ,Px, ,qx, and µx+<
+
+SOA MLC Study Manua!-131h edition
+
+Exercises continue on the next page ...
+
+Table 3.1: Formula Summary for this lesson
+
+[CAS4A-F97:8] (I point) Given that the force of mortalityµ, = 2x, determine the cumulative distribu­ tion function for the random variable time until death, li,(x), the density function for that random variable,
+
+_fo(x), and the survival function S0(x ).
+
+[CAS4A-F99:12] (1 point) If Ix= 100(k-0.5x)'i3 and µ50 = f,j, what is the value of k?
+
+Less than 40
+
+At least 40, but less than 42
+
+At least 42, but less than 44
+
+At least 44, but less than 46
+
+At least 46
+
+The force of mortality for Kevin is µx = kx2. The force of mortality for Kira is flx = 2. Determine the k for which 5p 10 is the same for Kevin and Kira.
+
+You are given that the force of mortality is µx = 1.5(1.F), x > 0. Calculate 2p1.
+
+You are given that
+
+-x2-30x+l8000
+
+xPo =	18,000
+
+Develop an expression for µx valid for O < x < 120.
+
+05 X 5120
+
+For a standard life, 5p45 = 0.98. Since Boris, age 45, is recovering from surgery, he is subject to extra mortality. Therefore, the µx applying to Boris is increased for x between 45 and 50. The increase over the µx for a standard life is 0.002 at x = 45, decreasing in a straight line to Oat age 50.
+
+Calculate 5p45 for Boris.
+
+[4-S86:26] You are given µx = 2x/(10,000- x2) for O 5 x 5 100.
+
+Determine qx.
+
+2x+l
+
+(A)
+
+(B)
+
+(C)
+
+(D)
+
+10,000-x2
+
+4x+2
+
+10,000- x'
+
+6x+3
+
+10,000- x'
+
+2x+l 29,999-3x'-3x
+
+6x+l
+
+29,999-3x2-3x
+
+[4-S86:3l]A mortality table has a forr:e cf mortality µx+r and mortality rate qx. A second mortality table
+
+has a force ofmorta1ity µ:+t and mortality rate q.;.
+
+You are giveu µ:+t = 0.5µ.x+r for O :s; t :s; l. Calci tlate q.;.
+
+(A) 1- l-qx	(Il) Jq;	(C) 0.5qx	(D) (q_,)'	(E) qx-(qx)2
+
+SOA MLC Study Manual-13th edition
+
+Exercises continue on the next page ...
+
+[CAS4A-S93:12) (2 points) A mortality table for a subset of the population with better than average health is constructed by dividing the force of mortality in the standard table by 2. The probability of an 80- year-old dying within the next year is defined in the standard table as q80 and in the revised table it is defined
+
+as q 0• In the standard table q80 =0.30.
+
+Determine the value of q;0 in the revised table.
+
+Less than 0.150
+
+At least 0.150, but less than 0.155
+
+At least 0.155, but less than 0.160
+
+At least 0.160, but less than 0.165
+
+At least 0.165
+
+[150-S88:l]You are given:
+
+fi.x+t =µx+t-k, 0 '.> t '.> 1
+
+<ix= 0, where iix is based on the force of mortality fi.x+·t
+
+Determine k.
+
+(A) -lnpx	(BJ lnpx		(DJ lnqx	(EJ qx
+
+[I 50-F88:6] Which of the following functions can serve as a force of mortality?
+
+(A) I and II only	(BJ I and III only	(C) II and III only
+
+(E) The correct answer is not given by (A) , (BJ , (C) , or (D) .
+
+(D) I, II and JJI
+
+[CAS4A-F99:13) (2 points) Which of the following equations define valid mortality functions?
+
+µx=(l+xt3	xc:0
+
+2,  µ,. = 0.05(1.01)'	X 2 0
+
+fo(x)= rx/z	x > 0
+
+(A) 1	(B) 2	(C) 1,2	(D) 1,3	(E) 2,3
+
+3,15.  [CAS3-F04:7) Which ufthe following formulas could serve as a force of mortality?
+
+µx=BCx,	B>0,C> 1
+
+µx=a(h+xt1,	a>0,b>0
+
+µx=(l+xt3,	xc:0
+
+(A) 1 only	(BJ 2 only	(C) 3 only	(DJ 1 and 2 only	(E) 1 and 3 only
+
+You are given:
+
+!10(15) = 0.0010
+
+10P ,o = 0.96
+
+Calculate fs0(5).
+
+The probability density function for survival of a newborn is
+
+f (t)= 30t4(100- t)	0 <ts	100
+
+JO	lQOG	'
+
+Calculate µ30.
+
+[150-FBB:15) You are given Jii(x) = 1- x l for x	0. Which of the following are true?
+
+X Po= 1/(X +1)
+
+µ49= 0.02
+
+IOP.39 = 0.80
+
+(A) I and II only	(B) I and III only	(C) II and III only
+
+(E) The correct answer is not given by (A) , (B) , (C) , or (D) .
+
+(D) I, II and III
+
+(150-S90:12] You are given
+
+µx =A+ e-' for x	0
+
+o.5Po= 0.50
+
+Calculate A.
+
+(Al -0.26	(B) -0.09	(C) 0.00	(D) 0.09	CE) 0.26
+
+[3-F00:36) Given:
+
+µ(x)=F+e2x,x 0
+
+oAPo = 0.50
+
+Calculate F.
+
+(A) -0.20	CB) -0.09	(C) 0.00	(D) 0.09	(E) 0.20
+
+[150-81-94:48] You are given:
+
+(JO-x)2
+
+S (x ) =---
+
+100
+
+0:-S:x :-S: 10.
+
+Calculate the difference between the force of mortality at age l, and the probability that (1) dies before age 2.
+
+(A) 0.007	(13) 0.010	(C) 0.012	CD) 0.016	(E) 0.024
+
+SOA MLC Study Manual-13'h edition	Exercisescontinueon the next page ...
+
+[CAS4-S86:l 7] (1 point) A subgroup of lives is subject to twice the normal force of mortality. In other words,
+
+where a prime indicates the rate for the subgroup.
+
+Express q_ in terms of qx.
+
+(q..}2
+
+(qx)2-2qx
+
+2qx -(qx )2
+
+2(qxJ2-qx
+
+2qx+(qxJ2
+
+[CAS4A-S92:16] (2 points) You are given that p30 = 0.95 for a standard insured with force of mortality
+
+µ30+1, 0 s t s 1. For a preferred insured, the force of mortality is µ30+1 -  c for Os t s 1.
+
+Determine c such that the probability that (30) will die within one year is 25% lower for a preferred insnred than for a standard.
+
+Less than 0.014
+
+At least 0.014, but less than 0.015
+
+At least 0.015, but less than 0.016
+
+At least 0.016, but less than 0.017
+
+At least 0.017
+
+[CAS4A-S96:16} (2 points) A life table for severely disabled lives is created by modifying an existing life table by doubling the force of mortality at all ages.
+
+In the original table, q75 = 0.12. Calculate q75 in the modified table.
+
+Less than 0.21
+
+At least 0.21, but less than 0.23
+
+At least 0.23, but less than 0.25
+
+At least 0.25, but less than 0.27
+
+At least 0.27
+
+(CAS4A-F92:2] (1 poiut) You are given .'\i(x)= e-.t3/12 for x	O. Determineµ,..
+
+You are given that I Px = 1- !2 /100 for O < t s 10. Calculate µx+s•
+
+[150-83-96:15] You are given:
+
+µ35+1 = µ, 0	t	1.
+
+P.35 = 0.985
+
+µ 5+1 is the force of mortality for (35) subject to an additional hazard, 0	t	l.
+
+µ;S+t =µ+C, 0	t	0.5
+
+The additionaJ force of mortality decreases uniformly from c to O between age 35.5 and 36. Determine the probability that (35) subject to the additional hazard will not survive to age 36.
+
+0.015e-0•25c
+
+0.015eD.2Sc
+
+(Cl	l-0.985e-c
+
+l -0.985e-0•5c
+
+l -0.985e--0.7sc
+
+You are give!l the force of failure for a battery is 0.1x, with x measured in hours of use. Calculate the probability that the battery will last l O hours.
+
+[3-S01:28] for a population of individuals, you are given:
+
+Each individual has a constant force of mortality.
+
+The forces of mortality are uniformly distributed over the interval (0,2).
+
+Calculate the probability thaI an individual drawn at random from this population dies within one year.
+
+(A) 0.37	(B) 0.43	(C) 0.50	(D) 0.57	(E) 0.63
+
+[CAS4A-F96:8J (2 points) At birth, infants are subject to a decreasing force of mortality during the early months of life. Assume a newborn infant is subject to a force of mortality given by
+
+1
+
+µx = --	for x 2". 0, where xis expressed in months.
+
+lO+x
+
+Calculate the probability that a newborn infant will survive 5 months and die in the ensuing 15 months.
+
+Less than 0.15
+
+At least 0.15, but Jess than 0.20
+
+At least 0.20, but less than 0.25
+
+At least 0.25, but less than 0.30
+
+At least 0.30
+
+SO/\ MLC Study Manual-13'h edition
+
+Exercises continve on the next page ...
+
+[CAS4A-F97:ll] (2 points) You are given a life, age 30, subject to a force of mortality of
+
+µx = 0.02x05	for 20 <: X <:50
+
+Determine the probability that this life will survive 5 years and die during the following year.
+
+(A)	Less than 0.044
+
+(D)	At least 0.044, but less than 0.052
+
+At least 0.052, but less than 0.060
+
+Atleast0.060, but less than 0.068 (El	Atleast 0.068
+
+3,32. [150-F97:17} You are given:
+
+The force of mortality is a constant, µ.
+
+µ <: I.
+
+,1,q,, =0.0030
+
+Calculate 1000µ.
+
+(A) 0.8	(B) 0.9	(Cl 1.0	(DJ 1.1	(E) 1.2
+
+You are given that Px = 0.85 for a person whose future lifetime has force of mortalityµ x+, for s <: I. For another person, future lifetime has force of mortality µ ,+s = l.lµx+s -0.05 for s	1.
+
+Calculate Px for this other person.
+
+For a certain individual, mortality follows the Illustrative Life Table, except that the force of mortality is double the force of mortality underlying the Illustrative Life Table between ages 45 and 50.
+
+Calculate 515q42 for this individual.
+
+[3-S00:17] The future lifetimes of a certain population can be modeled as follows:
+
+Each individual's future lifetime is exponentially distributed with constant hazard rate 0.
+
+Over the population, 0 is uniformly distributed over (I, 11).
+
+Calculate the probability of surviving to time 0.5, for an individual randomly selected at time O.
+
+(A) 0.05	(B) 0.06	(Cl 0.09	(D) 0.11	(El 0.12
+
+[3-F02:l} Given: The survival function S:,(x), where
+
+I,	O<x<l
+
+S,(x)=	l-(ex/100),	 I<:x < 4.5 ( 0,	4.5<:x
+
+Calculate µ4.
+
+(A) 0.45	(B) 0.55	(C) 0.80	(D) 1.00	(E) 1.20
+
+[150-82-94:15) You are given:
+
+R = 1-  e-f.µrnd1.
+
+(ii)  =S	1- e-f.'(µ,+,-k)dl.
+
+k is a positive constant
+
+Determine an expression fork such that S = R.
+
+ln((l- Px )/(1-iqx))
+
+ln((l-iqx)/(1-Px))
+
+ln((l-ipxJ/(1-p_,J)
+
+ln((l-qx)/(1-jqx))
+
+ln((l -	qx)/(1- qx ))
+
+[3-F02:35] You are given:
+
+µx+t is the force of mortality.
+
+R = 1- e-f;l'.,"dt
+
+,,
+
+S=l-e-.lo111x+1+k)dt
+
+k is a constant such that S =0.75R
+
+Determine an expression fork.
+
+ln((l -q,)/(l -0.75qx))
+
+ln((l-0.75qx}/(l-px))
+
+ln((l-0.75px)/(l-  Px))
+
+ln((l-px)/(l-0.75qx))
+
+ln((l-0.75qx)/(l - q,J)
+
+[CAS3-F04:8] Given So(x) = (l -(x/100))1'2, for Os x	100, calculate the probability that a life age 36 will die between ages 51 and 64.
+
+Less than O.15
+
+At least 0.15, but less than 0.20
+
+At least 0.20, but less than 0.25 (DJ	At least 0.25, but less than 0.30
+
+(E)	At least 0.30
+
+[SOA3-F04:4] For a population which contains equal numbers of males 2nd females ;it birth:
+
+For males,µ'.;=: 0.10, x =?. 0
+
+For females,µ{= 0.08, x	0 Calculate q60 for this population.
+
+(AJ 0.076	(B) 0.081	(CJ 0.086	(D) 0.091	(E) 0.096
+
+SOA MLC S!udy Mannal-131h cdilion
+
+Exercises continue on the next page ...
+
+3,41,  [M-S05:33] You are given:
+
+0.05
+
+µ, ={ 0.04
+
+50'.Sx<60
+
+60 '.o X < 70
+
+Calculate ,114q50.
+
+(A) 0.38	(B) 0.39	(C) 0.41	(D) 0.43	(E) 0.44
+
+3.42, [M-F05:32] For a group oflives aged 30, containing an equal number of smokers and non-smokers, you are given:
+
+{i)  For non smokers, µ = 0.08, x	30
+
+(ii)  For smokers,µ:= 0.16, x::: 30
+
+Calculate q80for a life randomly selected form those surviving to age 80.
+
+(A) 0.078	(BJ 0.086	(C) 0.D95	(Dl 0.104	(El 0.112
+
+3.43.  [MLC-S07:l] You are given:
+
+,P,o = 0.95
+
+2Pn =0.96
+
+f75 µx dx = 0.107 Calculate 5p,0.
+
+(A) 0.85	(B) 0.86	(CJ 0.87	(DJ 0.88	(EJ 0.89
+
+Additional old CAS Exam 3/3L questions: S05:30, F05:l l,12, 506:I0,ll, S08:15, F08:12, F!O:I, Fil:!, S12:1, Fl2:2
+
+Solutions
+
+3,1.  We can use equation (3.6) to calculate 20p70. Namely,
+
+Break the integral up into two parts:
+
+('	('
+
+Joµ70+tdt= Jo 0.0ldt=0.05
+
+('o
+
+J, 1170+1dt= J, 0.02dt=0.3
+
+It follows that 20p,0 is the product of the negative exponentiated integrals, 20p,0 = e .os o.3 =I 0,704691,
+
+This wiil be easier after the next lesson. For now, we do it from first principles, using equation (3.6):
+
+i1
+
+SOA MLC Study Manual-13th edition Copyright ©2013 /\SM
+
+= exp (-110 )
+
+0  50-s
+
+=exp(in(50-10)-ln(50))
+
+= :  =I 0.81	(A)
+
+The choices are so poor that only (E) has S(x)= 1- F(x), so it is rhe only choice that could possibly be right, regardless of the mortality assumption.
+
+Anyhow, the integral of 21from Oto xis x2. We then negate and exponentiate to obtain S(x) = e-x', which after complementing and differentiating verifies all three parts of (E).
+
+3,4, I, doesn't work for x > 2k (it's negative), so the question is not totally accurate.
+
+We calculate So(x) =,Po= 1,/10 and then use equation (3.3).
+
+100(k-0.5x)'l3
+
+So(x)=	lO0k'i'
+
+lnSo(x) =  (ln(k-0.5x)-ln k)
+
+d	2	0.5
+
+µ,,=--d-x lnS,,[x)= 3-k	0.-5x-
+
+l	l
+
+µ,o=	3(k-25)=	48
+
+k=@J	(B)
+
+Since for both Kevin and Kira 5p10will be the exponential of negative an integral, it suffices to compare the integrals. For Kira, the integral of 2 from 10 to 15 is 10. For Kevin,
+
+i
+
+Sok= 10/791.6667 =I  0.012631.
+
+This is a Gompertz force of mortality, as we'll learn in the next lesson.
+
+3
+
+= exp (-	1.5(1.1')dx)
+
+=ex(	l.5(1.l'-1.1))
+
+p	In 1.1
+
+= e-'·"''' =Io.02637 I
+
+Notice that the numerator of rPo factors as
+
+-1
+
+,Po= - -(x-l20)(x+ 150)
+
+18000
+
+SOA MLC Study Manual- l31h edition
+
+Thus ln.,p0 = -In 18000 + ln(l20- x)+ 1n(x + 150). Notice that 120- xis positive in the range O < x < 120. Differentiating and negating,
+
+1	1	1	1
+
+µ =	=
+
+.r	120-x	x+l50	x-120	x+l50 If you desire to put this over one denominator, you get
+
+As indicated at the bottom of Table 3.1, if µ.,+1 = P-x+c +P.x+r• then 1p x = 1 Px I Px· So we need to multiply
+
+0.98 by the I Px based on the increase in force.
+
+The increase in force, which we'll call P.x, is a linear function with slope-0.0004 and equal to Oat 50, so it can be written as (The constant 0.02 is selected as 50(0.0004) so that P,50 = 0.)
+
+jl., =0.02-0.0004x
+
+Then
+
+l 5° P.xdx =J
+
+\0.02-0.0004x)dx = 0.02(5)--0.0004(
+
+502452
+
+-
+
+) = 0.005
+
+45	45	-	2
+
+and 5fj45 = e-0•005. So 5p15 = 0.98e-0•005 =I 0.97511.
+
+One way to do the above integral quickly is to note that since the function is linear, its average value is its median, or 0.001 (halfway between 0.002 and 0), and multiplying this average by the length of the interval from 45 to 50, we get 0.005.
+
+Using equation (3.7),
+
+qx = 1-exp(-Lx+J µ1dt)
+
+.r+I	2t	)
+
+dt
+
+X	10,000- t2
+
+10,000-(x + 1)2
+
+=]-------
+
+l0,000-x2
+
+(x+l)2-x2
+
+10,ooo-x2
+
+=	(A)
+
+3.10,  As we discussed, halvingµ means taking the square root of p.
+
+(A)
+
+3.11.  This is the same situation as the previous exercise. q 0 = l- 1-0.30=I0.16331- (D)
+
+3.12.
+
+1
+
+l=px=exp(-i
+
+(µ,-k)dt)
+
+So e1 = 1/p,, and k=l-lnp, I· (A)
+
+=p,exp(-i\-k)dt)
+
+= Px ek
+
+Note: The onlyway q, can be O is if p, is 1, which means the integral ofµ is Ofor an interval oflength I. Bar­ ring negative µ, which would be an invalid force of mortality, this can only happen ifµ is O almost everywhere (to use the language of measure theory). So this exercise represents an artificial situation.
+
+3.13.  All of these functions are nonnegative. We need f 00  µ,dx = oo.
+
+f 00 Bc'dx = _Bc_x loo =-B-f,oosi,nceO < c < I. X
+
+0	Inc  O	Inc
+
+f,00B(x	+ lt'·5dx = 2B(x +1)°51 = oo.
+
+foo	k(x + l)n+I 1=
+
+(C)
+
+k(x+I)"=	dx=oo.
+
+o	n+l	o
+
+3.14. I.
+
+The integral does not go to infinity. X
+
+I	loo
+
+2(1+x)20	2
+

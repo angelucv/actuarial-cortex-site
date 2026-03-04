@@ -1,0 +1,104 @@
+% Front matter: portada, segunda portada, créditos, autores, agradecimientos
+% Sin \clearpage inicial para no generar página en blanco antes de la portada
+
+\pagestyle{empty}
+
+% ----- Página 1: Portada (imagen a sangre completa; ligero overscale para eliminar borde blanco) -----
+\newgeometry{left=0pt,right=0pt,top=0pt,bottom=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\noindent
+\includegraphics[width=1.02\paperwidth,height=1.02\paperheight,keepaspectratio]{portada-final.png}
+\newpage
+\restoregeometry
+
+% ----- Página 2: Segunda portada (interior) -----
+\thispagestyle{empty}
+\vspace*{1.2cm}
+\begin{center}
+{\Huge\bfseries Introducción}\\[0.6em]
+{\Huge\bfseries a las Matemáticas Financieras}\\[1.5em]
+{\Large Guía Teórico-Práctica}\\[0.5em]
+{\large Material docente CVEA}\\[1.8cm]
+{\Large
+Prof. Angel Colmenares\\
+Prof. Jorge Dias\\
+Franklin Quero (Lic.)}\\[2.2cm]
+\includegraphics[width=0.85\textwidth,keepaspectratio]{Logo-CVEA-horizontal-grande-letrascolor.png}\\[2.2cm]
+{\Huge\bfseries Ediciones CVEA}
+\end{center}
+\vfill
+\begin{center}
+{\large
+Escuela de Estadística y Ciencias Actuariales (EECA)\\[0.4em]
+Universidad Central de Venezuela (UCV)}
+\end{center}
+\vspace{1.5cm}
+\newpage
+
+% ----- Página 3: Créditos / Derechos reservados -----
+\thispagestyle{empty}
+\vspace*{1.5cm}
+\begin{center}
+\textbf{Introducción a las Matemáticas Financieras}\\
+Guía Teórico-Práctica --- Material docente CVEA\\[1cm]
+Primera edición\\[2cm]
+\end{center}
+
+Prohibida la reproducción total o parcial de esta obra, por cualquier medio, sin la autorización escrita del editor.
+
+\vspace{1em}
+\textbf{DERECHOS RESERVADOS} \copyright\ \the\year, respecto de la primera edición por\\
+\textbf{Ediciones CVEA}\\
+Centro Venezolano de Estudios Actuariales (CVEA)\\
+Escuela de Estadística y Ciencias Actuariales (EECA)\\
+Universidad Central de Venezuela
+
+\vspace{0.8em}
+Av. Los Ilustres, Los Chaguaramos\\
+Caracas 1040, Venezuela
+
+\vspace{0.5em}
+\textit{Primera edición}\\
+ISBN: 978-XXX-XXX-XXX-X (por asignar)
+
+\vspace{1em}
+\small
+Impreso en Venezuela \textit{/} Printed in Venezuela
+
+\vfill
+\newpage
+
+% ----- Página 4: Sobre los autores -----
+\thispagestyle{empty}
+\vspace*{1.2cm}
+\begin{center}
+{\LARGE\bfseries Sobre los autores}
+\end{center}
+\vspace{1.2cm}
+
+{\large\textbf{Prof. Angel Colmenares.}} Profesor Asistente en la Universidad Central de Venezuela (UCV), Licenciado en Ciencias Actuariales y Magister Scientiarum en Modelos Aleatorios por la UCV, cuenta con estudios de postgrado en Estadística en la Universidad Dongbei de Finanzas y Economía (东北财经大学), Dalian, Provincia de Liaoning, China, y es candidato a Doctor en Matemáticas en la UCV.
+
+\vspace{1.2em}
+{\large\textbf{Prof. Jorge Dias.}} Profesor Asistente en la Universidad Central de Venezuela (UCV), Licenciado en Ciencias Actuariales por la UCV, con una Maestría en Estadísticas Aplicadas de la Universidad Jiaotong de Pekín y candidato a Doctor en Finanzas y Seguros en la Universidad de Economía y Negocios Internacionales de Pekín.
+
+\vspace{1.2em}
+{\large\textbf{Franklin Quero (Lic.)}} Licenciado en Estadística o en Ciencias Actuariales por la Universidad Central de Venezuela. Autor del trabajo de grado y del material docente que dio origen a esta guía en el marco del Centro Venezolano de Estudios Actuariales (CVEA) y la Escuela de Estadística y Ciencias Actuariales (EECA-UCV).
+
+\vfill
+\newpage
+
+% ----- Página 5: Agradecimientos -----
+\thispagestyle{empty}
+\vspace*{1.5cm}
+\begin{center}
+{\large\bfseries Agradecimientos}
+\end{center}
+\vspace{1.5cm}
+
+Los autores agradecen a la Escuela de Estadística y Ciencias Actuariales (EECA) de la Universidad Central de Venezuela y al Centro Venezolano de Estudios Actuariales (CVEA) por el apoyo institucional para la elaboración de este material. Destacan el esfuerzo y la dedicación de Franklin Quero en la investigación y redacción que dieron origen a esta guía, así como la constancia que los profesores Angel Colmenares y Jorge Dias han mantenido a lo largo de sus años como docentes en la UCV, impulsando la formación actuarial y el desarrollo de este proyecto. Agradecen también a los estudiantes y colegas cuyas observaciones han enriquecido el contenido de la obra.
+
+\vfill
+\newpage
+\pagestyle{plain}
+\let\cleardoublepage\savedcleardoublepage

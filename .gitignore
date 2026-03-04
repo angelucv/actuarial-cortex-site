@@ -1,0 +1,5 @@
+/.quarto/
+# Carpeta con rutas demasiado largas para Git en Windows
+/Referencias/Actuariales I/Matemáticas Actuariales I PL II-2024 (Documentos)/
+# Carpeta Financieras I (libros fuente, no se versionan)
+/Referencias/Financieras I/

@@ -1,0 +1,614 @@
+---
+number: false
+---
+
+# Seguros pagaderos al momento de la muerte y seguros variables {#cap-seguros-anualidades-continuos .unnumbered .unlisted}
+
+En el capítulo anterior se definieron los seguros de vida bajo el supuesto de que el pago del capital asegurado se realiza **al final del año de muerte**. En la práctica, las pólizas suelen liquidar el beneficio en cuanto se acredita el fallecimiento. Este capítulo presenta la **formulación continua** de los seguros: el pago se supone realizado en el **instante** de la muerte. La relación $\bar{A}_x = 1 - \delta\,\bar{a}_x$ y la ecuación diferencial que subyace a la reserva en tiempo continuo conectan con el legado de **Thiele** (véase el [contexto histórico de la Parte II](#cap-valor-presente-actuarial)); la notación con barra sobre el símbolo forma parte de la IAN consolidada en el Congreso de 1898. Se incorpora la notación y las relaciones del manual de Weishaus [@weishaus2013]: variable aleatoria $Z = v^{T_x}$ del valor presente, símbolos IAN con **barra sobre la $A$** para pago al momento de la muerte, regla de momentos para la varianza, fórmulas bajo fuerza de mortalidad constante y el hecho de que en la mayoría de las tablas (p. ej. Makeham) la integral no tiene forma cerrada, por lo que se usan aproximaciones como UDD. Se introducen las funciones $\bar{A}_x$, $\bar{A}_{x:\overline{n}|}^1$ y $\bar{A}_{x:\overline{n}|}$, las relaciones con el caso discreto y las aproximaciones usuales, los **seguros variables** (crecientes y decrecientes) y un resumen de notación. Neill [@neill1977] dedica un capítulo a las **funciones distintas de las anuales**; aquí se recogen las fórmulas continuas y las aproximaciones más usadas.
+
+## Seguros pagaderos al momento de la muerte
+
+En las lecciones de Weishaus sobre seguros **continuos** se evalúan los momentos de seguros **pagaderos al momento del fallecimiento** [@weishaus2013]. La variable aleatoria del valor presente de tales seguros es **continua** (en contraste con el caso discreto, donde el pago ocurre al final del año). En la notación actuarial internacional (IAN), los símbolos son los **mismos** que para seguros pagaderos al final del año de muerte, salvo que se coloca una **barra sobre la $A$**. Así: $\bar{A}_x$ = valor presente esperado de un seguro de vida entera de 1 pagadero en el instante de la muerte; $\bar{A}_{x:\overline{n}|}^1$ = temporal a $n$ años; ${}_{n|}\bar{A}_x$ = diferido $n$ años; $\bar{A}_{x:\overline{n}|}$ = mixto a $n$ años. Los **dotales puros** no se pagan por muerte, por lo que **nunca** llevan barra sobre la $A$ (siguen siendo ${}_nE_x$ o $A_{x:\overline{n}|}^{\,\,1}$) [@weishaus2013].
+
+### Seguro de vida entera continuo $\bar{A}_x$
+
+Si el pago de 1 unidad se realiza en el instante $t$ en que ocurre la muerte (en lugar del final del año), el valor presente actuarial es la **prima neta única** para un seguro de vida entera pagadero al momento de la muerte, denotada $\bar{A}_x$. Sea $Z$ la **variable aleatoria** valor presente del beneficio. Como el pago es $1$ en el instante $T_x$ (tiempo hasta la muerte), $Z = v^{T_x} = e^{-\delta\,T_x}$ [@weishaus2013]. La densidad de $T_x$ es $f_{T_x}(t) = {}_tp_x\,\mu_{x+t}$ (fórmula (3.8) del cap. 2); el factor de descuento es $v^t = e^{-\delta t}$. Por tanto:
+
+$$\bar{A}_x = \mathbb{E}[Z] = \int_0^{\infty} v^t\,{}_tp_x\,\mu_{x+t}\,dt. \tag{3.13}$$
+
+Equivalentemente, en términos de $l_x$ y $D_x$: $\bar{A}_x = \frac{1}{l_x}\int_0^{\infty} v^t\,l_{x+t}\,\mu_{x+t}\,dt$. Para calcular el valor presente esperado de un seguro continuo hay que **resolver esta integral**; en la mayoría de las leyes de mortalidad (p. ej. Makeham) no existe forma cerrada y se recurre a métodos numéricos o a aproximaciones como la UDD [@weishaus2013].
+
+Integrando por partes (con $y = v^t$ y $dz = l_{x+t}\,\mu_{x+t}\,dt$, de modo que $z = -l_{x+t}$ y $dy = v^t\,\log v\,dt = -\delta\,v^t\,dt$), se obtiene:
+
+$$\bar{A}_x = 1 - \delta\,\bar{a}_x. \tag{3.14}$$
+
+La analogía con $A_x = 1 - d\,\ddot{a}_x$ es clara: en el caso continuo, la tasa de descuento $d$ se reemplaza por la fuerza de interés $\delta$, y la renta anticipada $\ddot{a}_x$ por la renta continua $\bar{a}_x$.
+
+### Regla de momentos y varianza (Weishaus)
+
+Para seguros continuos con beneficio 0 o 1, el **$n$-ésimo momento** de $Z$ se obtiene calculando el **primer momento** a $n$ veces la fuerza de interés $\delta$ (regla de momentos) [@weishaus2013]. Así, $\mathbb{E}[Z^2]$ corresponde al valor de $\bar{A}_x$ calculado a fuerza de interés $2\delta$, que se denota ${}^2\bar{A}_x$. La **varianza** del valor presente es:
+
+$$\operatorname{Var}(Z) = {}^2\bar{A}_x - (\bar{A}_x)^2. \tag{11.3}$$
+
+En el caso general, si el beneficio en el instante $t$ es $b_t$ y el factor de descuento es $v_t$, al calcular el $n$-ésimo momento se elevan $b_t$ y $v_t$ a la potencia $n$, pero **no** la densidad ${}_tp_x\,\mu_{x+t}$ [@weishaus2013].
+
+### Fuerza de mortalidad constante (Weishaus)
+
+Bajo **fuerza de mortalidad constante** $\mu_{x+t} = \mu$ y fuerza de interés $\delta$, las integrales tienen **forma cerrada**. Para el seguro de vida entera, $\bar{A}_x = \int_0^{\infty} e^{-\delta t}\,e^{-\mu t}\,\mu\,dt = \mu/(\mu + \delta)$. Para el **temporal** a $n$ años, la integral es de 0 a $n$: $\bar{A}_{x:\overline{n}|}^1 = \frac{\mu}{\mu+\delta}\bigl(1 - e^{-n(\mu+\delta)}\bigr)$. El **diferido** $n$ años cumple ${}_{n|}\bar{A}_x = {}_nE_x\,\bar{A}_{x+n}$ (con ${}_nE_x = e^{-n(\delta+\mu)}$ bajo fuerza constante); el **mixto** a $n$ años es la suma del temporal y del dotal puro: $\bar{A}_{x:\overline{n}|} = \bar{A}_{x:\overline{n}|}^1 + {}_nE_x$ [@weishaus2013]. En los exámenes suelen plantearse solo leyes que permiten evaluar estas integrales en forma cerrada (fuerza constante o edad uniforme).
+
+### Seguro temporal y dotal continuos
+
+Para el **temporal** a $n$ años pagadero al momento de la muerte, $Z = v^{T_x}$ si $T_x \leq n$ y $Z = 0$ si $T_x > n$; la integral se restringe al intervalo $(0, n)$ [@weishaus2013]. Para el **mixto** a $n$ años, $Z = v^{T_x}$ si $T_x < n$ y $Z = v^n$ si $T_x \geq n$ (es la suma de un temporal y un dotal puro). Así:
+
+$$\bar{A}_{x:\overline{n}|}^1 = \int_0^{n} v^t\,{}_tp_x\,\mu_{x+t}\,dt = 1 - {}_nE_x - \delta\,\bar{a}_{x:\overline{n}|}. \tag{3.15}$$
+
+Para el dotal por $n$ años (pago por muerte antes de $n$ en el instante de muerte, o por supervivencia a $n$ al final del año $n$):
+
+$$\bar{A}_{x:\overline{n}|} = \bar{A}_{x:\overline{n}|}^1 + {}_nE_x = 1 - \delta\,\bar{a}_{x:\overline{n}|}. \tag{3.16}$$
+
+### Aproximaciones: distribución uniforme de las muertes
+
+Cuando no se dispone de la función $\mu_{x+t}$ en forma continua, es habitual aproximar $\bar{A}$ a partir de $A$ (seguro al final del año de muerte). Bajo el supuesto de **distribución uniforme de las muertes** en cada año de edad, ${}_tp_x\,\mu_{x+t} \approx q_x$ para $0 \leq t < 1$. Para un seguro temporal a 1 año:
+
+$$\bar{A}_{x:\overline{1}|}^1 \approx q_x\int_0^1 v^t\,dt = q_x\,\frac{1-v}{\delta} = \frac{i}{\delta}\,v\,q_x = \frac{i}{\delta}\,A_{x:\overline{1}|}^1.$$
+
+Así, un **factor de ajuste** constante $i/\delta$ permite pasar del valor al final del año de muerte al valor al momento de la muerte. Para el temporal de $n$ años, sumando los aportes de cada año:
+
+$$\bar{A}_{x:\overline{n}|}^1 \approx \frac{i}{\delta}\,A_{x:\overline{n}|}^1. \tag{3.17}$$
+
+Para el seguro de vida entera:
+
+$$\bar{A}_x \approx \frac{i}{\delta}\,A_x. \tag{3.18}$$
+
+Para el dotal, solo la parte de seguro (temporal) se ajusta; el dotal puro se paga al final del año $n$ si $(x)$ sobrevive:
+
+$$\bar{A}_{x:\overline{n}|} \approx \frac{i}{\delta}\,A_{x:\overline{n}|}^1 + {}_nE_x. \tag{3.19}$$
+
+Otras aproximaciones habituales consisten en suponer que el pago por muerte se concentra a **mitad de año**; entonces un pago inmediato de 1 equivale en promedio a un pago de $(1+i)^{1/2}$ al final del año de muerte, de donde $\bar{A}_{x:\overline{1}|}^1 \approx (1+i)^{1/2}\,A_{x:\overline{1}|}^1$, o bien $\bar{A}_{x:\overline{1}|}^1 \approx (1+i/2)\,A_{x:\overline{1}|}^1$. Los factores $i/\delta$, $(1+i)^{1/2}$ y $(1+i/2)$ difieren muy poco a tasas usuales (por ejemplo, para $i = 3\%$ son aproximadamente 1,0149; 1,0149; 1,015). En las fórmulas (3.17)–(3.19) puede usarse cualquiera de estos factores según la convención adoptada.
+
+### Funciones conmutativas continuas $\bar{C}_x$, $\bar{M}_x$
+
+Se definen:
+
+$$\bar{C}_x = \int_0^1 v^{x+t}\,l_{x+t}\,\mu_{x+t}\,dt = \int_0^1 D_{x+t}\,\mu_{x+t}\,dt, \qquad \bar{M}_x = \sum_{t=0}^{\infty} \bar{C}_{x+t} = \int_0^{\infty} D_{x+t}\,\mu_{x+t}\,dt.$$
+
+Entonces:
+
+$$\bar{A}_x = \frac{\bar{M}_x}{D_x}, \quad \bar{A}_{x:\overline{n}|}^1 = \frac{\bar{M}_x - \bar{M}_{x+n}}{D_x}, \quad n|\bar{A}_x = \frac{\bar{M}_{x+n}}{D_x}, \quad \bar{A}_{x:\overline{n}|} = \frac{\bar{M}_x - \bar{M}_{x+n} + D_{x+n}}{D_x}.$$
+
+En la práctica, $\bar{C}_x$ se aproxima de forma coherente con el factor elegido: $\bar{C}_x \approx (i/\delta)\,C_x$, $(1+i)^{1/2}\,C_x$ o $(1+i/2)\,C_x$.
+
+---
+
+## Seguros variables
+
+Un **seguro variable** es aquel cuyo beneficio por muerte aumenta o disminuye con el tiempo. Se definen las funciones conmutativas necesarias y los seguros crecientes y decrecientes más usuales.
+
+### Función conmutativa $R_x$
+
+$$R_x = \sum_{t=0}^{\infty} M_{x+t} = \sum_{t=0}^{\infty} (t+1)\,C_{x+t}.$$
+
+### Seguro creciente de vida entera $(IA)_x$
+
+Paga 1 si la muerte ocurre en el primer año, 2 si ocurre en el segundo, 3 en el tercero, etc. (pago al final del año de muerte). Su prima neta única es:
+
+$$(IA)_x = v\,q_x + 2\,v^2\,{}_1|q_x + 3\,v^3\,{}_2|q_x + \cdots = \frac{1}{D_x}\sum_{t=0}^{\infty}(t+1)\,C_{x+t} = \frac{R_x}{D_x}. \tag{3.20}$$
+
+### Seguro temporal creciente $(IA)_{x:\overline{n}|}^1$
+
+Beneficio 1 en el 1.º año, 2 en el 2.º, …, $n$ en el $n$-ésimo; no hay pago si la muerte ocurre después de $n$ años:
+
+$$(IA)_{x:\overline{n}|}^1 = \frac{R_x - R_{x+n} - n\,M_{x+n}}{D_x}. \tag{3.21}$$
+
+### Seguro creciente que se nivela $(I_n A)_x$
+
+El beneficio aumenta en 1 cada año durante $n$ años y luego se mantiene constante:
+
+$$(I_n A)_x = \frac{R_x - R_{x+n}}{D_x}. \tag{3.22}$$
+
+### Seguro temporal decreciente $(DA)_{x:\overline{n}|}^1$
+
+Beneficio $n$ si la muerte ocurre en el 1.º año, $n-1$ en el 2.º, …, 1 en el $n$-ésimo:
+
+$$(DA)_{x:\overline{n}|}^1 = \frac{n\,M_x - (R_{x+1} - R_{x+n+1})}{D_x}. \tag{3.23}$$
+
+### Relación con las rentas crecientes
+
+De $M_x = v\,N_x - N_{x+1}$ se deduce $R_x = v\,S_x - S_{x+1}$. Dividiendo entre $D_x$:
+
+$$(IA)_x = v\,(I\ddot{a})_x - (Ia)_x. \tag{3.24}$$
+
+Análogamente a $A_x = 1 - d\,\ddot{a}_x$, puede escribirse:
+
+$$(IA)_x = \ddot{a}_x - d\,(I\ddot{a})_x. \tag{3.25}$$
+
+### Seguro creciente pagadero al momento de la muerte $(I\bar{A})_x$
+
+$$(I\bar{A})_x = \frac{1}{D_x}\sum_{t=0}^{\infty}(t+1)\,\bar{C}_{x+t}.$$
+
+Definiendo $\bar{R}_x = \sum_{t=0}^{\infty} \bar{M}_{x+t}$:
+
+$$(I\bar{A})_x = \frac{\bar{R}_x}{D_x}. \tag{3.26}$$
+
+### Incrementos en fracciones de año $(I^{(m)}A)_x$ y $(I^{(m)}\bar{A})_x$
+
+Si el beneficio crece en $1/m$ cada $1/m$ de año (primer año: $1/m$, $2/m$, …; segundo año: $1+1/m$, …), con pago al final del año de muerte, la prima neta única $(I^{(m)}A)_x$ se aproxima, bajo distribución uniforme en el año, por:
+
+$$(I^{(m)}A)_x \approx (IA)_x - \frac{m-1}{2m}\,A_x = \frac{R_x - \frac{m-1}{2m}\,M_x}{D_x}. \tag{3.27}$$
+
+Si el pago es al momento de la muerte:
+
+$$(I^{(m)}\bar{A})_x \approx (I\bar{A})_x - \frac{m-1}{2m}\,\bar{A}_x. \tag{3.28}$$
+
+### Incremento continuo $(\bar{I}\bar{A})_x$
+
+El beneficio en el instante de muerte $t$ es $t$ (crecimiento continuo). Valor presente:
+
+$$(\bar{I}\bar{A})_x = \int_0^{\infty} t\,v^t\,{}_tp_x\,\mu_{x+t}\,dt = \frac{1}{D_x}\int_0^{\infty} t\,D_{x+t}\,\mu_{x+t}\,dt. \tag{3.29}$$
+
+Aproximación:
+
+$$(\bar{I}\bar{A})_x \approx (I\bar{A})_x - \frac{1}{2}\,\bar{A}_x = \frac{\bar{R}_x - \frac{1}{2}\,\bar{M}_x}{D_x}. \tag{3.30}$$
+
+Interpretación: en $(I\bar{A})_x$ el pago medio en el primer año es 1, en el segundo 2, etc.; en $(\bar{I}\bar{A})_x$ el pago medio en el primer año es $1/2$, en el segundo $1{,}5$, etc., por lo que $(\bar{I}\bar{A})_x$ es menor que $(I\bar{A})_x$ en aproximadamente el valor de un seguro nivelado de $1/2$ pagadero al momento de la muerte.
+
+---
+
+## Resumen de la notación de seguros
+
+- **$A$** (con sufijos apropiados): valor presente o prima neta única de un seguro de 1.
+- **$(IA)$**, **$(DA)$**: valor presente de seguros creciente y decreciente.
+- **Barra sobre $A$**: pago al **momento** de la muerte (ej. $\bar{A}_x$, $(I\bar{A})_x$).
+- **Barra sobre $I$** en seguros crecientes: incremento **continuo** (ej. $(\bar{I}\bar{A})_x$).
+- Cuando el símbolo compuesto lleva el sufijo $x:\overline{n}$ y se señala con «1» sobre el elemento que corresponde al **fallecimiento**, se indica que el pago depende de que la muerte ocurra dentro del período (seguro temporal; si no se pone «1», suele incluirse el dotal puro al término).
+
+**Funciones conmutativas:** $C_x = v^{x+1}d_x$; $M_x = \sum_{t\ge 0} C_{x+t}$; $R_x = \sum_{t\ge 0} M_{x+t} = \sum_{t\ge 0}(t+1)C_{x+t}$; $\bar{C}_x = \int_0^1 D_{x+t}\,\mu_{x+t}\,dt$; $\bar{M}_x = \int_0^{\infty} D_{x+t}\,\mu_{x+t}\,dt$; $\bar{R}_x = \sum_{t\ge 0} \bar{M}_{x+t}$.
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. Factor $i/\delta$ y temporal 1 año (Jordan)**  
+$i=0{,}04$, $\delta=\ln(1{,}04)\approx 0{,}03922$. (a) $i/\delta$. (b) Si $A_{x:\overline{1}|}^1=0{,}002$, aproximar $\bar{A}_{x:\overline{1}|}^1$ bajo UDD.  
+**Solución.** (a) $i/\delta\approx 1{,}02$. (b) $\bar{A}_{x:\overline{1}|}^1\approx 1{,}02\times 0{,}002=0{,}00204$.
+
+**2. $\bar{A}_x=1-\delta\,\bar{a}_x$**  
+Si $\delta=0{,}04$, $\bar{a}_x=18$, calcular $\bar{A}_x$.  
+**Solución.** $\bar{A}_x=1-0{,}04\times 18=1-0{,}72=0{,}28$.
+
+**3. Fuerza constante $\bar{A}_x=\mu/(\mu+\delta)$ (Weishaus)**  
+$\mu=0{,}02$, $\delta=0{,}04$. Calcular $\bar{A}_x$ y $\bar{a}_x$.  
+**Solución.** $\bar{A}_x=0{,}02/0{,}06=1/3\approx 0{,}333$; $\bar{a}_x=1/(\mu+\delta)=1/0{,}06\approx 16{,}67$.
+
+**4. Verificar $\bar{A}_x=1-\delta\,\bar{a}_x$ con fuerza constante**  
+Con $\bar{a}_x=1/(\mu+\delta)$, comprobar $\bar{A}_x=\mu/(\mu+\delta)=1-\delta\,\bar{a}_x$.  
+**Solución.** $1-\delta/(\mu+\delta)=(\mu+\delta-\delta)/(\mu+\delta)=\mu/(\mu+\delta)$.
+
+**5. Varianza $\operatorname{Var}(Z)={}^2\bar{A}_x-(\bar{A}_x)^2$**  
+$\bar{A}_x=0{,}25$, ${}^2\bar{A}_x=0{,}12$. Calcular $\operatorname{Var}(Z)$, $Z=v^{T_x}$.  
+**Solución.** $\operatorname{Var}(Z)=0{,}12-0{,}0625=0{,}0575$.
+
+**6. Variable $Z=v^{T_x}$**  
+Para seguro vida entera continuo por 1, escribir $Z$ y $\mathbb{E}[Z]$.  
+**Solución.** $Z=v^{T_x}=e^{-\delta\,T_x}$; $\mathbb{E}[Z]=\bar{A}_x$.
+
+**7. Temporal continuo $\bar{A}_{x:\overline{n}|}^1$**  
+Bajo $\mu$, $\delta$ constantes, fórmula cerrada.  
+**Solución.** $\bar{A}_{x:\overline{n}|}^1=\frac{\mu}{\mu+\delta}(1-e^{-n(\mu+\delta)})$ (Weishaus).
+
+**8. Mixto continuo $\bar{A}_{x:\overline{n}|}$**  
+$\bar{A}_{x:\overline{n}|}=\bar{A}_{x:\overline{n}|}^1+{}_nE_x$ (dotal sin barra).  
+**Solución.** Correcto: pago en muerte antes de $n$ o $v^n$ si sobrevive $n$.
+
+**9. Tipo parcial: fuerza constante**  
+$\mu=0{,}01$, $\delta=0{,}05$. Calcular $\bar{A}_x$, $\bar{a}_x$, $\bar{A}_{x:\overline{10}|}^1$.  
+**Solución.** $\bar{A}_x=0{,}01/0{,}06=1/6$; $\bar{a}_x=1/0{,}06$; $\bar{A}_{x:\overline{10}|}^1=\frac{0{,}01}{0{,}06}(1-e^{-0{,}6})$.
+
+**10. Regla de momentos**  
+Para continuo, $\mathbb{E}[Z^n]$ a fuerza de interés $n\delta$. Comentar.  
+**Solución.** $Z^n=v^{n\,T_x}$; momento $n$-ésimo = APV con $\delta\to n\delta$ (Weishaus).
+
+**11. UDD: $\bar{A}_x\approx (i/\delta)A_x$**  
+Si $A_x=0{,}30$, $i=0{,}04$, $\delta\approx 0{,}0392$, aproximar $\bar{A}_x$.  
+**Solución.** $\bar{A}_x\approx (0{,}04/0{,}0392)\times 0{,}30\approx 0{,}306$.
+
+**12. Diferido continuo ${}_{n|}\bar{A}_x$**  
+Bajo fuerza constante: ${}_{n|}\bar{A}_x={}_nE_x\,\bar{A}_{x+n}=\frac{\mu}{\mu+\delta}e^{-n(\mu+\delta)}$.
+
+**13. Tipo parcial: dos seguros**  
+$\bar{A}_{50}=0{,}35$, $\bar{A}_{50:\overline{20}|}=0{,}55$. Calcular $\bar{A}_{50:\overline{20}|}^1$ y ${}_{20}E_{50}$ (si aplica).  
+**Solución.** $\bar{A}_{50:\overline{20}|}=\bar{A}_{50:\overline{20}|}^1+{}_{20}E_{50}$; si ${}_{20}E_{50}$ conocido, $\bar{A}_{50:\overline{20}|}^1=0{,}55-{}_{20}E_{50}$.
+
+**14. Rentas continuas $\bar{a}_x$**  
+Definir $\bar{a}_x$ como valor presente de renta continua de 1 u.a. mientras $(x)$ viva.  
+**Solución.** $\bar{a}_x=\int_0^\infty v^t\,{}_tp_x\,dt=\int_0^\infty e^{-\delta t}\,{}_tp_x\,dt$.
+
+**15. Relación $\bar{a}_x=(1-\bar{A}_x)/\delta$**  
+Deducir desde valoración continua análoga a discreta.  
+**Solución.** Análogo a $\ddot{a}_x=(1-A_x)/d$; en continuo $\bar{a}_x=(1-\bar{A}_x)/\delta$.
+
+**16. Varianza: no elevar densidad**  
+¿Por qué $\operatorname{Var}(Z)={}^2\bar{A}_x-(\bar{A}_x)^2$ y no integral de $Z^2$ por densidad?  
+**Solución.** $\mathbb{E}[Z^2]={}^2\bar{A}_x$ (segundo momento a $2\delta$); $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(\mathbb{E}[Z])^2$.
+
+**17. Tipo parcial: integral sin forma cerrada**  
+Para ley de Makeham, $\bar{A}_x$ suele no tener forma cerrada. Comentar.  
+**Solución.** La integral $\int_0^\infty e^{-\delta t}\,{}_tp_x\,\mu_{x+t}\,dt$ con Makeham no es elemental (Weishaus).
+
+**18. Temporal continuo: $Z$**  
+Para $\bar{A}_{x:\overline{n}|}^1$, escribir $Z$ si $T_x\leq n$ y si $T_x>n$.  
+**Solución.** $Z=v^{T_x}$ si $T_x\leq n$; $Z=0$ si $T_x>n$.
+
+**19. Mixto continuo: $Z$**  
+Para $\bar{A}_{x:\overline{n}|}$, $Z=v^{T_x}$ si $T_x<n$, $Z=v^n$ si $T_x\geq n$.
+
+**20. Síntesis tipo parcial**  
+(a) Definir $\bar{A}_x$, $\bar{a}_x$. (b) Bajo $\mu=0{,}02$, $\delta=0{,}04$, calcular $\bar{A}_x$, $\bar{a}_x$, $\operatorname{Var}(Z)$ si ${}^2\bar{A}_x=0{,}15$ (Jordan/Neill/Weishaus).  
+**Solución.** (a) $\bar{A}_x$: PNU seguro vida entera con pago en el momento de la muerte; $\bar{a}_x$: valor presente de renta continua de 1 u.m. por año mientras (x) viva. (b) $\bar{A}_x=\mu/(\mu+\delta)=0{,}02/0{,}06=1/3$; $\bar{a}_x=1/(\mu+\delta)=1/0{,}06=50/3$; $\operatorname{Var}(Z)={}^2\bar{A}_x-(\bar{A}_x)^2=0{,}15-1/9\approx 0{,}039$.
+
+**21. Relación $\bar{A}_x=1-\delta\,\bar{a}_x$**  
+Comprobar con $\mu=0{,}02$, $\delta=0{,}04$ que $\bar{A}_x=1-\delta\,\bar{a}_x$.  
+**Solución.** $\bar{a}_x=1/0{,}06$, $\delta\,\bar{a}_x=0{,}04/0{,}06=2/3$, luego $1-\delta\,\bar{a}_x=1/3=\bar{A}_x$.
+
+**22. Temporal continuo**  
+Bajo $\mu$, $\delta$ constantes, $\bar{A}_{x:\overline{n}|}^1 = \frac{\mu}{\mu+\delta}(1-e^{-n(\mu+\delta)})$. Verificar dimensiones.  
+**Solución.** Es adimensional (valor presente de 1 u.m.). Para $n \to \infty$ se recupera $\bar{A}_x=\mu/(\mu+\delta)$.
+
+**23. Tipo parcial**  
+$\bar{A}_{55}=0{,}38$, ${}^2\bar{A}_{55}=0{,}18$. Calcular $\operatorname{Var}(Z)$ para seguro vida entera continuo por 1.  
+**Solución.** $\operatorname{Var}(Z)=0{,}18-(0{,}38)^2=0{,}18-0{,}1444=0{,}0356$.
+
+**24. UDD y $i/\delta$**  
+Si $A_x=0{,}30$, $i=0{,}04$, $\delta=\ln(1{,}04)$, aproximar $\bar{A}_x$ bajo UDD.  
+**Solución.** $\bar{A}_x \approx (i/\delta)\,A_x$. $i/\delta \approx 1{,}02$, luego $\bar{A}_x \approx 1{,}02 \times 0{,}30 = 0{,}306$.
+
+**25. Variable $Z=v^{T_x}$**  
+Para seguro vida entera continuo, $Z=e^{-\delta T_x}$. Escribir $\mathbb{E}[Z]$ y $\mathbb{E}[Z^2]$ en notación estándar.  
+**Solución.** $\mathbb{E}[Z]=\bar{A}_x$; $\mathbb{E}[Z^2]={}^2\bar{A}_x$ (valorado a fuerza de interés $2\delta$ por regla de momentos).
+
+**26.** $\bar{A}_x=0{,}28$, $\delta=0{,}05$. Calcular $\bar{a}_x$. **Solución.** $\bar{a}_x=(1-\bar{A}_x)/\delta=0{,}72/0{,}05=14{,}4$.
+
+**27.** UDD: $\bar{A}_x\approx (i/\delta)A_x$. Si $A_x=0{,}30$, $i=0{,}05$, $\delta=\ln(1{,}05)$. Aproximar $\bar{A}_x$. **Solución.** $i/\delta\approx 1{,}025$; $\bar{A}_x\approx 1{,}025\times 0{,}30=0{,}3075$.
+
+**28.** Fuerza constante $\mu=0{,}015$, $\delta=0{,}04$. $\bar{A}_x$, $\bar{a}_x$. **Solución.** $\bar{A}_x=\mu/(\mu+\delta)=0{,}015/0{,}055\approx 0{,}273$; $\bar{a}_x=(1-\bar{A}_x)/\delta\approx 18{,}18$.
+
+**29.** Varianza de $Z$ (vida entera continuo): $\operatorname{Var}(Z)={}^2\bar{A}_x-(\bar{A}_x)^2$. **Solución.** $\mathbb{E}[Z^2]-(\mathbb{E}[Z])^2$.
+
+**30.** $\bar{A}_{x:\overline{n}|}^1$ bajo $\mu$, $\delta$ constantes: integral. **Solución.** $\bar{A}_{x:\overline{n}|}^1=\int_0^n e^{-\delta t}\,{}_tp_x\,\mu_{x+t}\,dt$; con $\mu$ constante puede tener forma cerrada.
+
+**31.** Diferido ${}_{n|}\bar{A}_x={}_nE_x\,\bar{A}_{x+n}$. **Solución.** Mismo dotal que en discreto; $\bar{A}_{x+n}$ es continuo.
+
+**32.** Mixto continuo: $Z=v^{T_x}$ si $T_x\leq n$, $Z=v^n$ si $T_x>n$. **Solución.** $\bar{A}_{x:\overline{n}|}=\bar{A}_{x:\overline{n}|}^1+{}_nE_x$.
+
+**33.** $\bar{a}_x=20$, $\delta=0{,}04$. Calcular $\bar{A}_x$. **Solución.** $\bar{A}_x=1-\delta\,\bar{a}_x=1-0{,}8=0{,}2$.
+
+**34.** Segundo momento de $Z$: valorar a $2\delta$. Justificar. **Solución.** $Z^2=e^{-2\delta T_x}$; $\mathbb{E}[Z^2]={}^2\bar{A}_x$ con fuerza $2\delta$.
+
+**35.** Temporal continuo 15 años: $\bar{A}_{x:\overline{15}|}^1$. Definición integral. **Solución.** $\int_0^{15} e^{-\delta t}\,{}_tp_x\,\mu_{x+t}\,dt$.
+
+**36.** $\mu=0{,}02$, $\delta=0{,}05$. $\bar{A}_x=\mu/(\mu+\delta)$. **Solución.** $\bar{A}_x=0{,}02/0{,}07\approx 0{,}2857$.
+
+**37.** Relación $\bar{A}_x=1-\delta\,\bar{a}_x$: deducir. **Solución.** $\bar{a}_x=\int_0^\infty e^{-\delta t}\,{}_tp_x\,dt$; integrando por partes o con $\bar{A}_x+\delta\,\bar{a}_x=1$.
+
+**38.** UDD en el año: aproximación de $\bar{A}_x$ con $A_x$. **Solución.** $\bar{A}_x\approx (i/\delta)A_x$ (pago promedio en el año).
+
+**39.** Variable $Z$ para temporal continuo $n$ años: valores. **Solución.** $Z=e^{-\delta T_x}$ si $T_x\leq n$; $Z=0$ si $T_x>n$ (o según convención del beneficio).
+
+**40.** $\bar{A}_{55}=0{,}35$, ${}^2\bar{A}_{55}=0{,}18$. $\operatorname{Var}(Z)$. **Solución.** $\operatorname{Var}(Z)=0{,}18-(0{,}35)^2=0{,}0575$.
+
+**41.** Renta continua $\bar{a}_x$: definición. **Solución.** $\bar{a}_x=\int_0^\infty e^{-\delta t}\,{}_tp_x\,dt=\mathbb{E}[\bar{a}_{\overline{T_x}|}]$.
+
+**42.** Fuerza constante: $\bar{a}_x=1/(\mu+\delta)$. **Solución.** $\bar{A}_x=\mu/(\mu+\delta)$ ⇒ $\bar{a}_x=(1-\bar{A}_x)/\delta=1/(\mu+\delta)$.
+
+**43.** PNU seguro vida entera continuo 5.000 u.m. (50). $\bar{A}_{50}=0{,}32$. **Solución.** PNU $=5\,000\times 0{,}32=1\,600$ u.m.
+
+**44.** Comparar $A_x$ y $\bar{A}_x$: por qué $\bar{A}_x>A_x$ típicamente. **Solución.** En continuo el pago puede ser antes (promedio en el año); valor presente mayor.
+
+**45.** $\bar{A}_{x:\overline{10}|}^1$ con $\mu=0{,}01$, $\delta=0{,}04$ constantes. **Solución.** Integral $\int_0^{10} e^{-(\mu+\delta)t}\,\mu\,dt=\mu(1-e^{-10(\mu+\delta)})/(\mu+\delta)$.
+
+**46.** Regla de momentos: $\mathbb{E}[Z^2]$ para vida entera continuo. **Solución.** ${}^2\bar{A}_x$ valorado a fuerza $2\delta$.
+
+**47.** Diferido ${}_{5|}\bar{A}_{45}={}_5E_{45}\,\bar{A}_{50}$. Si ${}_5E_{45}=0{,}75$, $\bar{A}_{50}=0{,}38$. PNU por 4.000. **Solución.** PNU $=4\,000\times 0{,}75\times 0{,}38=1\,140$ u.m.
+
+**48.** $\bar{a}_x=(1-\bar{A}_x)/\delta$: verificar con $\bar{A}_x=1-\delta\,\bar{a}_x$. **Solución.** Equivalente.
+
+**49.** Temporal continuo 8 años: $\bar{A}_{x:\overline{8}|}^1$. Valores de $Z$. **Solución.** $Z=e^{-\delta T_x}$ si $T_x\in(0,8]$; $Z=0$ si $T_x>8$.
+
+**50.** Síntesis: escribir $\bar{A}_x$, $\bar{a}_x$ y $\operatorname{Var}(Z)$ en notación estándar (vida entera continuo). **Solución.** $\bar{A}_x=\mathbb{E}[e^{-\delta T_x}]$; $\bar{a}_x=(1-\bar{A}_x)/\delta$; $\operatorname{Var}(Z)={}^2\bar{A}_x-(\bar{A}_x)^2$.
+
+
+---
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe calcular o relacionar seguros y rentas continuos, UDD y regla de momentos. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Usar $\bar{A}_x=1-\delta\,\bar{a}_x$. Si $\delta=0{,}04$, $\bar{a}_x=18$, calcular $\bar{A}_x$.
+
+2. **Se pide:** Bajo UDD, $\bar{A}_x\approx (i/\delta)A_x$. Comparar $A_x$ y $\bar{A}_x$ con la tabla del curso.
+
+3. **Se pide:** Seguro variable creciente continuo: notación $(\bar{I}\bar{A})_x$ (Weishaus).
+
+4. **Se pide:** Fuerza constante: $\mu=0{,}02$, $\delta=0{,}04$. Calcular $\bar{A}_x$, $\bar{a}_x$, y verificar $\bar{A}_x=1-\delta\,\bar{a}_x$.
+
+5. **Se pide:** Varianza de $Z$: $\bar{A}_x=0{,}25$, ${}^2\bar{A}_x=0{,}12$. Calcular $\operatorname{Var}(Z)$ (Weishaus).
+
+6. **Se pide:** Escribir $Z$ (variable valor presente) para seguro de vida entera continuo por 1 u.m.
+
+7. **Tipo parcial.** **Se pide:** $\mu=0{,}01$, $\delta=0{,}05$. Calcular $\bar{A}_x$, $\bar{A}_{x:\overline{10}|}^1$ (fuerza constante).
+
+8. **Se pide:** Regla de momentos para el continuo: ¿a qué fuerza de interés se valora el segundo momento de $Z$?
+
+9. **Se pide:** Diferido ${}_{n|}\bar{A}_x$ bajo fuerza constante: escribir la fórmula.
+
+10. **Se pide:** $\bar{A}_{x:\overline{n}|}=\bar{A}_{x:\overline{n}|}^1+{}_nE_x$: justificar (el dotal no lleva barra).
+
+11. **Tipo parcial.** **Se pide:** Con $\bar{A}_{55}=0{,}40$, ${}^2\bar{A}_{55}=0{,}20$, calcular $\operatorname{Var}(Z)$.
+
+12. **Se pide:** Renta continua $\bar{a}_x$: dar la definición integral.
+
+13. **Se pide:** Deducir la relación $\bar{a}_x=(1-\bar{A}_x)/\delta$.
+
+14. **Se pide:** Seguro temporal continuo a $n$ años: indicar los valores de $Z$ según $T_x\leq n$ o $T_x>n$.
+
+15. **Tipo parcial.** **Se pide:** (a) ¿Por qué $\bar{A}_x$ puede no tener forma cerrada? (b) Bajo $\mu=0{,}02$, $\delta=0{,}04$, dar $\bar{A}_x$ y $\bar{a}_x$.
+
+16. **Se pide:** Mixto continuo: escribir la expresión de $Z$ en los dos casos (muerte antes o después de $n$).
+
+17. **Se pide:** Factor $i/\delta$: cuándo se usa (UDD, aproximación en el primer año).
+
+18. **Se pide:** Verificar $\bar{A}_x=\mu/(\mu+\delta)$ bajo fuerza constante (Weishaus).
+
+19. **Se pide:** Segundo momento de $Z$: ${}^2\bar{A}_x$ se valora a $2\delta$. Justificar.
+
+20. **Tipo parcial.** **Se pide:** Seguro de vida entera continuo por 1.000 u.m. para (40). $\bar{A}_{40}=0{,}30$. Calcular la PNU y $\operatorname{Var}(Z)$ si ${}^2\bar{A}_{40}=0{,}12$ (Jordan/Neill/Weishaus).
+
+21. **Se pide:** Bajo $\mu=0{,}015$, $\delta=0{,}05$, calcular $\bar{A}_x$ y $\bar{a}_x$ (fuerza constante).
+
+22. **Se pide:** Verificar $\bar{A}_x=1-\delta\,\bar{a}_x$ en general (sin suponer fuerza constante).
+
+23. **Se pide:** Temporal continuo 10 años: escribir $\bar{A}_{x:\overline{10}|}^1$ bajo $\mu$, $\delta$ constantes.
+
+24. **Tipo parcial.** **Se pide:** Comparar $A_{50}$ y $\bar{A}_{50}$ aproximado por $(i/\delta)A_{50}$ si $i=0{,}05$, $\delta=\ln(1{,}05)$, $A_{50}=0{,}35$.
+
+25. **Se pide:** Segundo momento de $Z$: explicar por qué se valora a $2\delta$ (regla de momentos).
+
+26. **Se pide:** Con $\bar{a}_x=16$, $\delta=0{,}05$, calcular $\bar{A}_x$.  
+27. **Se pide:** Bajo $\mu=0{,}018$, $\delta=0{,}045$, calcular $\bar{A}_x$ y $\bar{a}_x$ (fuerza constante).  
+28. **Tipo parcial.** **Se pide:** Seguro vida entera continuo 3.000 u.m. (55). $\bar{A}_{55}=0{,}36$. PNU y $\operatorname{Var}(Z)$ si ${}^2\bar{A}_{55}=0{,}16$.  
+29. **Se pide:** Verificar $\bar{A}_x=1-\delta\,\bar{a}_x$ sin suponer fuerza constante.  
+30. **Se pide:** Diferido ${}_{n|}\bar{A}_x$: escribir con ${}_nE_x$ y $\bar{A}_{x+n}$.  
+31. **Se pide:** Temporal continuo 12 años: definición de $\bar{A}_{x:\overline{12}|}^1$ como integral.  
+32. **Se pide:** Factor $i/\delta$: cuándo $\bar{A}_x\approx (i/\delta)A_x$ (UDD).  
+33. **Tipo parcial.** **Se pide:** $\mu=0{,}012$, $\delta=0{,}05$. Calcular $\bar{A}_x$, $\bar{A}_{x:\overline{10}|}^1$ (fuerza constante).  
+34. **Se pide:** Varianza de $Z$: $\bar{A}_x=0{,}28$, ${}^2\bar{A}_x=0{,}12$. Calcular $\operatorname{Var}(Z)$.  
+35. **Se pide:** Mixto continuo $n$ años: expresión de $Z$ si muerte antes de $n$ y si supervive $n$.  
+36. **Se pide:** $\bar{a}_x=(1-\bar{A}_x)/\delta$: deducir a partir de $\bar{A}_x=1-\delta\,\bar{a}_x$.  
+37. **Se pide:** Comparar $A_{50}$ y $\bar{A}_{50}$ aproximado por UDD si $A_{50}=0{,}33$, $i=0{,}05$, $\delta=\ln(1{,}05)$.  
+38. **Se pide:** Segundo momento de $Z$ (vida entera): a qué fuerza de interés se valora ${}^2\bar{A}_x$.  
+39. **Tipo parcial.** **Se pide:** (a) ¿Por qué $\bar{A}_x$ puede no tener forma cerrada? (b) Con $\mu=0{,}02$, $\delta=0{,}04$, dar $\bar{A}_x$ y $\bar{a}_x$.  
+40. **Se pide:** Renta continua $\bar{a}_x$: definición integral.  
+41. **Se pide:** Fuerza constante: verificar $\bar{A}_x=\mu/(\mu+\delta)$.  
+42. **Se pide:** Variable $Z=e^{-\delta T_x}$ para vida entera. Valores posibles y $\mathbb{E}[Z]$.  
+43. **Se pide:** Diferido 10 años continuo (48). ${}_{10}E_{48}=0{,}65$, $\bar{A}_{58}=0{,}40$. PNU por 6.000 u.m.  
+44. **Se pide:** Relación $\bar{A}_{x:\overline{n}|}=\bar{A}_{x:\overline{n}|}^1+{}_nE_x$ (dotal sin barra).  
+45. **Tipo parcial.** **Se pide:** Vida entera continuo 2.000 u.m. (60). $\bar{A}_{60}=0{,}34$. PNU.  
+46. **Se pide:** UDD: por qué $\bar{A}_x\approx (i/\delta)A_x$ (promedio del pago en el año).  
+47. **Se pide:** $\bar{A}_{52}=0{,}30$, $\delta=0{,}04$. Calcular $\bar{a}_{52}$.  
+48. **Se pide:** Temporal continuo 7 años: $\bar{A}_{x:\overline{7}|}^1$ bajo $\mu$, $\delta$ constantes (idea de la integral).  
+49. **Se pide:** $\operatorname{Var}(Z)$ para mixto continuo: escribir con segundos momentos.  
+50. **Se pide:** Síntesis: escribir $\bar{A}_x$, $\bar{a}_x$ y la relación entre ambos en una línea.
+
+---
+
+## Práctica para el 2° Parcial
+
+Esta sección es la **práctica general de la Parte II** según el contenido del segundo parcial: valor presente actuarial, seguros de vida, anualidades, primas niveladas y reservas terminales. Se resuelve con el **mayor detalle posible** un examen tipo de referencia (Ordinario de Vida, reservas prospectivo/retrospectivo/recurrente, prima de ahorro y de riesgo, método de Fackler). Tabla: Venezolana Hombres; $i = 8\%$; $\omega = 101$.
+
+### Enunciado tipo
+
+- **Beneficio:** 1 u.m. al final del año de fallecimiento (vida entera).
+- **Primas:** niveladas, al inicio de cada año mientras viva.
+- **Se pide:** $A_x$, $P_x$ en conmutativos; reservas $_tV_x$ (prospectivo y retrospectivo); fórmula de recurrencia; prima de riesgo y prima de ahorro; reservas de balance (Fackler).
+
+### Línea del tiempo: Ordinario de Vida
+
+En todos los parciales se pide exponer en la línea del tiempo **qué se paga** y **qué beneficios** hay en cada período. Para un Ordinario de Vida por 1 u.m.:
+
+| Año póliza $t$ | Pago del asegurado (primas) | Beneficio por fallecimiento |
+|----------------|-----------------------------|-----------------------------|
+| 0              | $P_x$ (inicio año 1)         | —                           |
+| 1              | $P_x$ (inicio año 2)         | 1 u.m. si muerte en año 1 (fin del año 1) |
+| 2              | $P_x$                       | 1 u.m. si muerte en año 2   |
+| …              | …                           | …                           |
+| $k$            | $P_x$                       | 1 u.m. si muerte en año $k$ (pagadera fin del año $k$) |
+| $\omega-x-1$   | Última prima si vive         | 1 u.m. si muerte en ese año |
+
+La prima $P_x$ es constante; el beneficio es 1 u.m. pagadero al **final del año** en que ocurre la muerte. Para que los diagramas no salgan de los márgenes, se muestran en dos figuras: (1) primas; (2) beneficio.
+
+```{mermaid}
+%%| fig-width: 3.8
+%%| fig-cap: "Línea del tiempo (1/2): primas — Ordinario de Vida"
+gantt
+    title Primas
+    dateFormat X
+    axisFormat %s
+    section Primas
+    P_x inicio cada año :p, 0, 30
+```
+
+```{mermaid}
+%%| fig-width: 3.8
+%%| fig-cap: "Línea del tiempo (2/2): beneficio — Ordinario de Vida"
+gantt
+    title Beneficio muerte
+    dateFormat X
+    axisFormat %s
+    section Beneficio
+    1 u.m. fin año muerte :b, 0, 30
+```
+
+### Solución detallada
+
+**1. Prima pura única y prima nivelada**
+
+- **Fórmula en conmutativos:** $A_x = M_x/D_x$.
+- **Ejemplo $x=40$ (Venezolana Hombres, 8\%):**
+  - $D_{40}=448\,735$, $M_{40}=36\,957$.
+  - Resultado: $A_{40} = 36\,957/448\,735 = 0{,}082\,359$.
+- **Prima nivelada:** $P_x\,\ddot{a}_x = A_x$ ⇒ $P_x = M_x/N_x$.
+- **Con $N_{40}=5\,558\,995$:** $P_{40} = 36\,957/5\,558\,995 = 0{,}006\,648$.
+- **Interpretación:** Por cada 1 u.m. de suma asegurada se paga 0,006648 u.m. al inicio de cada año mientras se viva.
+
+**2. Reservas: prospectivo y retrospectivo**
+
+- **Prospectivo:**
+  $$_tV_x = \frac{M_{x+t} - P_x\,N_{x+t}}{D_{x+t}} = \frac{1}{D_{x+t}}\left(M_{x+t} - \frac{M_x}{N_x}N_{x+t}\right).$$
+- **Retrospectivo:**
+  $$_tV_x = \frac{P_x(N_x - N_{x+t}) - (M_x - M_{x+t})}{D_{x+t}}.$$
+  (Forma terminal: $N_x = N_{x+1}+D_x$, luego $N_{40}-N_{41}=D_{40}$.)
+- **Comprobación numérica $t=1$:**
+  - Prospectivo: $_1V_{40} = (36\,114 - 0{,}006648\times 5\,110\,260)/414\,652 = 0{,}005\,161$.
+  - Retrospectivo: $P_x\,D_{40} - (M_{40}-M_{41}) = 2\,985 - 843 = 2\,142$; $_1V = 2\,142/414\,652 \approx 0{,}005\,16$.
+- **Extracto de tabla:** $t=0$: 0; $t=1$: 0,005161; $t=2$: 0,010616; $t=3$: 0,016373.
+
+**3. Recurrencia**
+
+- **Fórmula:** $_{k+1}V_x = (_kV_x + P_x)(1+i) - q_{x+k}\cdot 1$.
+- **Comprobación año 1:** $(0 + 0{,}006648)\times 1{,}08 - q_{40} \approx 0{,}00718 - 0{,}00203 = 0{,}00515 = {}_1V_{40}$.
+
+**4. Prima de riesgo y prima de ahorro**
+
+- **Concepto:** $P_x$ se descompone en prima de riesgo (costo de mortalidad del año) y prima de ahorro (incremento de reserva).
+- **Prima de riesgo año $t$:** $v\,q_{x+t-1}(1 - {}_{t-1}V_x)$.
+- **Prima de ahorro:** $P_{\text{ahorro},t} = P_x - P_{\text{riesgo},t}$.
+- **Ejemplo año 1:** $P_{\text{riesgo},1} \approx 0{,}00188$; $P_{\text{ahorro},1} = 0{,}00477$; $0{,}00477\times 1{,}08 \approx {}_1V_{40}$.
+
+**5. Reservas de balance (Fackler)**
+
+- Bajo equivalencia, reserva de balance en $t$ = valor acumulado de primas de ahorro = $_tV_x$.
+- Se tabulan con la recurrencia o con prospectivo/retrospectivo.
+
+**Resumen de fórmulas**
+
+| Concepto | Fórmula |
+|----------|---------|
+| Prima pura única | $A_x = M_x/D_x$ |
+| Prima nivelada | $P_x = M_x/N_x$ |
+| Reserva prospectivo | $_tV_x = (M_{x+t}-P_x N_{x+t})/D_{x+t}$ |
+| Reserva retrospectivo | $_tV_x = (P_x(N_x-N_{x+t})-(M_x-M_{x+t}))/D_{x+t}$ |
+| Recurrencia | $_{k+1}V_x = (_kV_x+P_x)(1+i)-q_{x+k}$ |
+| Prima de riesgo año $t$ | $v\,q_{x+t-1}(1-{}_{t-1}V_x)$ |
+
+---
+
+## Segundo parcial de práctica — 2° Parcial (Examen tipo B: Mixto 20 años)
+
+Se diseña y resuelve un **segundo examen tipo** para el segundo parcial: **seguro mixto (dotal) a 20 años** por 10.000 u.m., con primas niveladas en 20 pagos. Se mantiene o aumenta la complejidad respecto al ordinario de vida del examen de referencia. Tabla: Venezolana Hombres; $i = 8\%$; $\omega = 101$.
+
+### Enunciado (Examen tipo B)
+
+- **Beneficio:** 10.000 u.m. al final del año de fallecimiento si la muerte ocurre dentro de 20 años; 10.000 u.m. al cumplirse 20 años si el asegurado $(x)$ sobrevive. Es decir, **mixto (dotal) a 20 años** por 10.000 u.m.
+- **Primas:** niveladas, 20 pagos anuales al inicio de cada año mientras viva (o hasta el año 19 inclusive).
+- **Se pide:** **(i)** Prima pura única (PNU) y prima nivelada $P_{x:\overline{20}|}$ en conmutativos; **(ii)** Reservas $_tV_{x:\overline{20}|}$ en $t=5$ y $t=15$ (prospectivo y retrospectivo); **(iii)** Fórmula de recurrencia y condición en $t=20$; **(iv)** Prima de riesgo y prima de ahorro en los años 1 y 15; **(v)** Reservas de balance (Fackler); **(vi)** Línea del tiempo del contrato.
+
+### Línea del tiempo: Mixto 20 años por 10.000
+
+| Año póliza $t$ | Prima | Beneficio por muerte | Beneficio por supervivencia |
+|----------------|-------|----------------------|-----------------------------|
+| 0              | $P$   | —                    | —                           |
+| 1 … 19         | $P$   | 10.000 si muerte en año $t$ (fin del año) | — |
+| 20             | —     | 10.000 si muerte en año 20 | 10.000 si vive 20 años (pago único en $t=20$) |
+
+El mixto paga 10.000 en cualquier caso: al final del año de muerte si $K_x \leq 19$, o al final del año 20 si $K_x \geq 20$. Por tanto $A_{x:\overline{20}|} = A_{x:\overline{20}|}^1 + {}_{20}E_x$.
+
+---
+
+### (i) Prima pura única y prima nivelada
+
+**PNU (prima pura única)**
+
+- Valor presente actuarial del beneficio: 10.000 u.m. en cualquier caso (muerte en 20 años o supervivencia a 20).
+- **Fórmula:** $\text{PNU} = 10\,000\cdot A_{x:\overline{20}|} = 10\,000\cdot (A_{x:\overline{20}|}^1 + {}_{20}E_x) = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{D_x}$.
+- **Ejemplo numérico $x=40$:** Con $D_{40}=448\,735$, $M_{40}=36\,957$, $M_{60}$, $D_{60}$ de la tabla Venezolana Hombres al 8\%:
+  - $A_{40:\overline{20}|} = (M_{40}-M_{60}+D_{60})/D_{40}$. Sustituyendo valores de tabla se obtiene un valor típico entre 0,45 y 0,65 según la tabla; por ejemplo si $A_{40:\overline{20}|}=0{,}55$, entonces PNU $= 10\,000\times 0{,}55 = 5\,500$ u.m.
+
+**Prima nivelada $P_{x:\overline{20}|}$**
+
+- Ecuación de equivalencia: $P_{x:\overline{20}|}\cdot \ddot{a}_{x:\overline{20}|} = 10\,000\cdot A_{x:\overline{20}|}$.
+- **En conmutativos:** $P_{x:\overline{20}|} = \dfrac{10\,000\cdot A_{x:\overline{20}|}}{\ddot{a}_{x:\overline{20}|}} = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{N_x - N_{x+20}}$.
+- **Por 1 u.m. de beneficio:** $P_{x:\overline{20}|} = \dfrac{M_x - M_{x+20} + D_{x+20}}{N_x - N_{x+20}}$.
+
+---
+
+### (ii) Reservas en $t=5$ y $t=15$
+
+**Método prospectivo**
+
+- $_tV_{x:\overline{20}|} = \text{APV}_{x+t}(\text{beneficio futuro}) - P_{x:\overline{20}|}\cdot \ddot{a}_{x+t:\overline{20-t}|}$ para $t < 20$.
+- **Beneficio futuro desde $t$:** 10.000 al final del año de muerte si ocurre en $(t,20]$ o al final del año 20 si sobrevive; es decir 10.000 · $A_{x+t:\overline{20-t}|}$ (mixto a $20-t$ años).
+- **Fórmula:** $_tV_{x:\overline{20}|} = 10\,000\cdot A_{x+t:\overline{20-t}|} - P_{x:\overline{20}|}\cdot \ddot{a}_{x+t:\overline{20-t}|} = \dfrac{10\,000(M_{x+t}-M_{x+20}+D_{x+20}) - P_{x:\overline{20}|}(N_{x+t}-N_{x+20})}{D_{x+t}}$.
+
+**En $t=5$:** $_5V_{x:\overline{20}|} = \dfrac{10\,000(M_{x+5}-M_{x+20}+D_{x+20}) - P_{x:\overline{20}|}(N_{x+5}-N_{x+20})}{D_{x+5}}$. Se sustituye $x=40$ y valores de tabla (ej. $D_{45}$, $M_{45}$, $N_{45}$, $M_{60}$, $N_{60}$, $D_{60}$).
+
+**En $t=15$:** $_15V_{x:\overline{20}|} = \dfrac{10\,000(M_{x+15}-M_{x+20}+D_{x+20}) - P_{x:\overline{20}|}(N_{x+15}-N_{x+20})}{D_{x+15}}$. Cerca del vencimiento la reserva se aproxima a 10.000 (o al valor del dotal puro $10\,000\cdot {}_{5}E_{x+15}$ más el temporal).
+
+**Método retrospectivo**
+
+- $_tV_{x:\overline{20}|} = \dfrac{P_{x:\overline{20}|}(N_x - N_{x+t}) - 10\,000\cdot (M_x - M_{x+t})}{D_{x+t}}\cdot (1+i)^t$ (valor acumulado de primas menos valor acumulado de beneficios de muerte en $(0,t]$, llevado a $t$ y dividido por ${}_tp_x$). En forma estándar con conmutativos: $_tV = \dfrac{P_{x:\overline{20}|}(N_x - N_{x+t}) - 10\,000(M_x - M_{x+t})}{D_{x+t}}$ (usando la relación $(1+i)^t\,D_x/D_{x+t} = 1$ en el numerador según convención). La expresión equivalente más habitual es $_tV_{x:\overline{20}|} = \dfrac{P_{x:\overline{20}|}(N_x - N_{x+t}) - (M_x - M_{x+t})}{D_{x+t}}\cdot 10\,000$ si $P$ está por 1 u.m.; para beneficio 10.000: $_tV = \dfrac{P(N_x-N_{x+t}) - 10\,000(M_x-M_{x+t})}{D_{x+t}}$ con $P$ prima total.
+- Bajo equivalencia, prospectivo = retrospectivo; se puede comprobar numéricamente en $t=5$ y $t=15$.
+
+---
+
+### (iii) Recurrencia y condición en $t=20$
+
+**Fórmula de recurrencia**
+
+- $_{k+1}V_{x:\overline{20}|} = (_kV_{x:\overline{20}|} + P_{x:\overline{20}|})(1+i) - q_{x+k}\cdot 10\,000$ para $k=0,\ldots,18$ (beneficio por muerte en año $k+1$ = 10.000).
+- En el año 20: $_{19}V + P$ no se paga (última prima en $t=18$ o 19 según convención; si las primas son en $t=0,\ldots,19$, en el año 20 no hay prima). La recurrencia para el último año es $_{20}V_{x:\overline{20}|} = (_{19}V_{x:\overline{20}|})(1+i) - q_{x+19}\cdot 10\,000$; si el asegurado sobrevive al año 20, recibe 10.000, luego **$_{20}V_{x:\overline{20}|} = 10\,000$** (reserva justo antes del pago de 10.000 al superviviente; o 0 después del pago, según definición). La convención usual es reserva **terminal** al final del año 20: después de pagar 10.000 a todos (vivos o muertos), la reserva es 0. Por tanto $_{20}V = 10\,000$ justo antes del vencimiento y 0 después.
+- **Condición de cierre:** $_{20}V_{x:\overline{20}|} = 10\,000$ (valor del dotal en $t=20$).
+
+---
+
+### (iv) Prima de riesgo y prima de ahorro (años 1 y 15)
+
+**Concepto**
+
+- **Prima de riesgo** en el año $k+1$: $v\,q_{x+k}\cdot (\text{capital en riesgo}) = v\,q_{x+k}\cdot (10\,000 - {}_kV_{x:\overline{20}|})$ (beneficio menos reserva inicial del año).
+- **Prima de ahorro:** $P_{\text{ahorro},k+1} = P_{x:\overline{20}|} - P_{\text{riesgo},k+1}$.
+
+**Año 1**
+
+- $P_{\text{riesgo},1} = v\,q_x\cdot (10\,000 - {}_0V) = v\,q_x\cdot 10\,000$ (con $_0V=0$).
+- $P_{\text{ahorro},1} = P_{x:\overline{20}|} - v\,q_x\cdot 10\,000$.
+
+**Año 15**
+
+- $P_{\text{riesgo},15} = v\,q_{x+14}\cdot (10\,000 - {}_{14}V_{x:\overline{20}|})$.
+- $P_{\text{ahorro},15} = P_{x:\overline{20}|} - P_{\text{riesgo},15}$. La reserva ${}_{14}V$ es alta (cerca del vencimiento), por tanto el capital en riesgo $10\,000 - {}_{14}V$ es pequeño y la prima de riesgo en año 15 es menor que en año 1.
+
+---
+
+### (v) Reservas de balance (Fackler)
+
+- La reserva de balance en $t$ es el valor acumulado de las **primas de ahorro** hasta $t$, con la recurrencia: activos en $t$ = (reserva en $t-1$ + prima) × $(1+i)$ menos beneficio por muerte pagado en el año.
+- Bajo equivalencia coincide con $_tV_{x:\overline{20}|}$. Se construye con la misma recurrencia del apartado (iii); la reserva de balance en $t=5$ y $t=15$ coincide con la prospectiva/retrospectiva.
+
+---
+
+### (vi) Resumen de fórmulas (Examen B — Mixto 20 años)
+
+| Concepto | Fórmula |
+|----------|---------|
+| PNU | $10\,000\cdot A_{x:\overline{20}|} = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{D_x}$ |
+| Prima nivelada | $P_{x:\overline{20}|} = 10\,000\cdot \dfrac{M_x - M_{x+20} + D_{x+20}}{N_x - N_{x+20}}$ |
+| Reserva prospectivo | $_tV = \dfrac{10\,000(M_{x+t}-M_{x+20}+D_{x+20}) - P(N_{x+t}-N_{x+20})}{D_{x+t}}$ |
+| Reserva retrospectivo | $_tV = \dfrac{P(N_x-N_{x+t}) - 10\,000(M_x-M_{x+t})}{D_{x+t}}$ |
+| Recurrencia | $_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot 10\,000$; $_{20}V = 10\,000$ |
+| Prima de riesgo año $t$ | $v\,q_{x+t-1}(10\,000 - {}_{t-1}V)$ |
+
+---
+
+*Referencias: Jordan [@jordan1982]; Neill [@neill1977]; Weishaus [@weishaus2013]. Con los capítulos de rentas de vida y seguros (discretos y continuos) se dispone de los elementos para definir las **primas netas** (única y periódicas) y las **reservas matemáticas**, que se desarrollan en la Parte III: [prima neta única](#cap-prima-neta-unica), [primas periódicas](#cap-primas-periodicas), [reserva de beneficio](#cap-reservas) y [reservas fraccionarias](#cap-reservas-fraccionarias).*

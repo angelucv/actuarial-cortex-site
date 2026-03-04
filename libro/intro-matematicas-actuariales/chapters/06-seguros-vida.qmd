@@ -1,0 +1,871 @@
+---
+number: false
+---
+
+# Seguros de vida {#cap-seguros-vida .unnumbered .unlisted}
+
+En el capítulo anterior se estudiaron el **valor presente actuarial** y el **dotal puro**. En este capítulo se consideran los **seguros de vida** (life insurance): contratos que pagan un beneficio contingente a la **muerte** del asegurado. El contexto histórico de la Parte II —De Witt, Halley, principio de equivalencia, funciones conmutativas y notación IAN— se presenta al inicio del [capítulo 5](#cap-valor-presente-actuarial); la relación $A_x = 1 - d\,\ddot{a}_x$ y la valoración prospectiva tienen sus raíces en la tradición de Morgan y en el sistema de columnas de Davies. El valor presente esperado de ese beneficio es el valor presente actuarial (o prima neta única) del seguro. Se incorpora la notación estándar y las relaciones del manual de Weishaus [@weishaus2013]: variable aleatoria $Z$ del valor presente del pago, símbolos en notación actuarial internacional (IAN) para cada tipo de seguro, relaciones entre vida entera, temporal, diferido y mixto, y varianza mediante la regla de momentos.
+
+En la práctica, las aseguradoras suelen liquidar el capital asegurado lo antes posible tras el fallecimiento. No obstante, los valores se calculan tradicionalmente bajo el supuesto de que el pago se realiza **al final del año de muerte** (seguros discretos). Esta hipótesis permite usar la tabla de mortalidad de forma directa. Los ajustes para pago en el momento de la muerte se verán en el capítulo siguiente. El adjetivo **«neto»** o **puro** en prima neta (*net single premium*) indica que no se incluye provisión para gastos [@neill1977; @weishaus2013].
+
+## Seguros estándar y variable $Z$
+Para cada tipo de seguro con beneficio 1 existe un **símbolo estándar** en la notación actuarial internacional para su valor presente esperado. La **variable aleatoria** $Z$ representa el valor presente del pago del beneficio. La siguiente lista resume los seguros estándar pagaderos al final del año de fallecimiento [@weishaus2013]:
+
+- **Vida entera** (whole life): paga 1 cuando ocurra la muerte. Símbolo $A_x$. $Z = v^{K_x+1}$ (pago al final del año $K_x+1$).
+- **Temporal** (term) a $n$ años: paga 1 si la muerte ocurre dentro de $n$ años, 0 en caso contrario. Símbolo $A_{x:\overline{n}|}^1$; el 1 sobre la $x$ indica que el pago se hace solo si $(x)$ fallece antes de que termine el período cierto de $n$ años. $Z = v^{K_x+1}$ si $K_x < n$, $Z = 0$ si $K_x \geq n$.
+- **Diferido** $n$ años (deferred whole life): paga 0 si la muerte ocurre en los primeros $n$ años, 1 al final del año de muerte en caso contrario. Símbolo ${}_{n|}A_x$. $Z = v^{K_x+1}$ si $K_x \geq n$, $Z = 0$ si $K_x < n$.
+- **Temporal diferido** ${}_{n|m}A_x$: paga 1 solo si la muerte ocurre entre los instantes $n$ y $n+m$ (entre las edades $x+n$ y $x+n+m$). $Z = v^{K_x+1}$ si $n \leq K_x < n+m$, $Z = 0$ en caso contrario.
+- **Dotal puro** $n$ años: paga 1 al final de $n$ años si $(x)$ sobrevive; símbolos ${}_nE_x$ o $A_{x:\overline{n}|}^{\,\,1}$. $Z = v^n$ si $K_x \geq n$, $Z = 0$ si no.
+- **Mixto** (endowment) a $n$ años: paga 1 en el momento que ocurra primero entre la muerte de $(x)$ y el fin del año $n$. Es la **suma** de un seguro temporal a $n$ años y un dotal puro a $n$ años. Símbolo $A_{x:\overline{n}|}$. $Z = v^{K_x+1}$ si $K_x < n$, $Z = v^n$ si $K_x \geq n$.
+
+Se cumple que **temporal a $n$ años + diferido $n$ años = vida entera**: $A_{x:\overline{n}|}^1 + {}_{n|}A_x = A_x$ [@weishaus2013].
+
+## Seguros pagables al final del año de la muerte
+
+### Seguro temporal
+
+Un **seguro temporal** de $n$ años paga una suma asegurada (por ejemplo 1 unidad monetaria) **solo si** la muerte ocurre dentro de ese período. El pago se efectúa al final del año en que ocurre el fallecimiento. El valor presente o **prima neta pura** a la edad $x$ para ese seguro, con duración $n$ años y monto 1, se denota $A_{x:\overline{n}|}^1$ (en la literatura anglosajona suele denominarse *term insurance*).
+
+Cada año posible de muerte contribuye con el valor presente de 1 unidad pagada al final de ese año, multiplicado por la probabilidad de que la muerte ocurra en ese año. Así:
+
+$$A_{x:\overline{n}|}^1 = v\,q_x + v^2\,{}_1|q_x + v^3\,{}_2|q_x + \cdots + v^n\,{}_{n-1}|q_x.$$
+
+En forma compacta, usando $d_{x+t} = l_{x+t} - l_{x+t+1}$:
+
+$$A_{x:\overline{n}|}^1 = \sum_{t=0}^{n-1} v^{t+1}\,{}_t|q_x = \frac{1}{l_x}\sum_{t=0}^{n-1} v^{t+1}\,d_{x+t}. \tag{3.1}$$
+
+### Seguro de vida entera
+
+Si el período del seguro se extiende hasta el final de la tabla de mortalidad, de modo que el pago se realiza siempre que ocurra la muerte, se tiene un **seguro de vida entera**. Su valor presente se denota $A_x$:
+
+$$A_x = \sum_{t=0}^{\infty} v^{t+1}\,{}_t|q_x = \frac{1}{l_x}\sum_{t=0}^{\infty} v^{t+1}\,d_{x+t}. \tag{3.2}$$
+
+El símbolo $\infty$ en el límite superior representa en la práctica $w-x-1$, donde $w$ es la edad límite de la tabla.
+
+### Seguro diferido
+
+Un **seguro diferido** $n$ años paga la suma asegurada solo si la muerte ocurre **después** de cumplidos $n$ años. Su valor presente es $n|A_x$:
+
+$$n|A_x = \sum_{t=n}^{\infty} v^{t+1}\,{}_t|q_x = \frac{1}{l_x}\sum_{t=n}^{\infty} v^{t+1}\,d_{x+t}. \tag{3.3}$$
+
+Se cumple $A_x = A_{x:\overline{n}|}^1 + n|A_x$. En la práctica el seguro diferido suele aparecer combinado con otros beneficios (por ejemplo, con rentas u otros seguros), más que como producto aislado.
+
+### Funciones conmutativas para seguros
+
+Las expresiones anteriores se simplifican introduciendo las **funciones conmutativas** asociadas a la muerte:
+
+$$C_x = v^{x+1}\,d_x, \qquad M_x = \sum_{t=0}^{\infty} C_{x+t}.$$
+
+Observando que $\sum_{t=0}^{n-1} v^{t+1}d_{x+t} = \sum_{t=0}^{n-1} C_{x+t} = M_x - M_{x+n}$ (y que $v^{x+1}d_{x+t} = C_{x+t}$ al expresar todo en términos de $D_x = v^x l_x$), se obtiene:
+
+$$A_{x:\overline{n}|}^1 = \frac{M_x - M_{x+n}}{D_x}, \tag{3.4}$$
+
+$$A_x = \frac{M_x}{D_x}, \tag{3.5}$$
+
+$$n|A_x = \frac{M_{x+n}}{D_x}. \tag{3.6}$$
+
+Así, una vez tabuladas $C_x$ y $M_x$ (junto con $D_x$ y $N_x$ ya usadas en rentas), el cálculo de las primas netas de seguros se reduce a cocientes de conmutativas.
+
+### Seguro dotal
+
+Un **seguro dotal** (o **dotal mixto**) de $n$ años y monto 1 paga:
+
+- 1 al final del año de muerte si el asegurado fallece dentro de los $n$ años, o  
+- 1 al final del año $n$ si el asegurado está vivo entonces.
+
+Es decir, combina un seguro temporal de $n$ años con un **dotal puro** de $n$ años (${}_nE_x = D_{x+n}/D_x$). Por tanto:
+
+$$A_{x:\overline{n}|} = A_{x:\overline{n}|}^1 + {}_nE_x = \frac{M_x - M_{x+n} + D_{x+n}}{D_x}. \tag{3.7}$$
+
+La notación $A_{x:\overline{n}|}$ (sin el superíndice 1) indica que hay pago tanto por muerte como por supervivencia al término del período.
+
+### Relaciones entre seguros estándar
+El cálculo de primas únicas de seguros **temporal**, **diferido** y **mixto** se reduce a vida entera y dotal puro usando [@weishaus2013]:
+
+- **Diferido $n$ años:** un seguro diferido $n$ años sobre $(x)$ equivale a un dotal puro de $n$ años que «entrega» un seguro de vida entera sobre $(x+n)$. En símbolos: ${}_{n|}A_x = {}_nE_x \, A_{x+n}$.
+- **Temporal a $n$ años:** es vida entera sobre $(x)$ menos seguro diferido $n$ años: $A_{x:\overline{n}|}^1 = A_x - {}_nE_x \, A_{x+n}$.
+- **Mixto a $n$ años:** es temporal a $n$ años más dotal puro a $n$ años: $A_{x:\overline{n}|} = A_{x:\overline{n}|}^1 + {}_nE_x = A_x - {}_nE_x \, A_{x+n} + {}_nE_x$.
+
+Con tablas que incluyan columnas de $A_x$ y de ${}_nE_x$ (por ejemplo para $n = 5$, 10, 20), no hace falta sumar año a año; para $n = 15$ se usa ${}_{15}E_x = {}_5E_x \cdot {}_{10}E_{x+5}$ o ${}_{10}E_x \cdot {}_5E_{x+10}$. Estas mismas relaciones valen para los **segundos momentos** sustituyendo beneficios por sus cuadrados y usando el doble de la fuerza de interés (regla de momentos); la varianza se obtiene entonces como $\operatorname{Var}(Z) = {}^2A - (A)^2$ para el símbolo correspondiente [@weishaus2013].
+
+### Varianza del valor presente y regla de momentos
+Para seguros estándar con beneficio 0 o 1 en cada año, el **$k$-ésimo momento** de $Z$ coincide con el primer momento calculado a $k$ veces la fuerza de interés $\delta$. Por tanto $\mathbb{E}[Z^2] = {}^2A$ (donde ${}^2A$ denota el mismo tipo de seguro valorado al doble de $\delta$) y:
+
+$$\operatorname{Var}(Z) = {}^2A - (A)^2.$$
+
+Para un **seguro mixto** a $n$ años, $Z = Z_1 + Z_2$ con $Z_1$ del temporal y $Z_2$ del dotal puro; los dos pagos son **excluyentes** (o se paga por muerte o por supervivencia), así que $\mathbb{E}[Z_1 Z_2] = 0$ y $\operatorname{Var}(Z) = \operatorname{Var}(Z_1) + \operatorname{Var}(Z_2)$ [@weishaus2013]. Para seguros con **beneficios variables** $b_k$ en el año $k$, al calcular el segundo momento hay que elevar al cuadrado tanto el beneficio como el factor de descuento: $\mathbb{E}[Z^2] = \sum b_k^2\,v^{2(k+1)}\,{}_kp_x\,q_{x+k}$.
+
+### Seguros compuestos y uso de tablas ilustrativas
+
+Un seguro con beneficios distintos en distintos períodos puede descomponerse en suma o diferencia de seguros estándar. *Ejemplo:* un seguro sobre (65) paga 1000 al final del año de muerte si la muerte ocurre entre 70 y 80, y 600 si ocurre después de 80. Su valor presente esperado es el de un seguro diferido 5 años de 1000 (vida entera sobre 70) menos un seguro diferido 15 años de 400: $1000 \cdot {}_5E_{65}\,A_{70} - 400 \cdot {}_{15}E_{65}\,A_{80}$. Para ${}_{15}E_{65}$ se usa ${}_5E_{65} \cdot {}_{10}E_{70}$ (o ${}_{10}E_{65} \cdot {}_5E_{75}$) si la tabla solo ofrece $nE_x$ para $n = 5$, 10 y 20 [@weishaus2013]. En tablas ilustrativas (p. ej. Illustrative Life Table al 6%) suelen darse columnas como $1000\,A_x$, $1000\cdot {}^2A_x$ y $1000\cdot {}_nE_x$ para $n = 5$, 10, 20, lo que permite obtener primas únicas y varianzas sin sumar términos año a año.
+
+***
+
+## Beneficios por fallecimiento de capital variable
+
+Los exámenes parciales de la EECA-UCV suelen proponer **leyes de formación** de la suma asegurada más complejas que los seguros estándar: incrementos trimestrales o anuales, progresiones aritméticas o geométricas, o indemnizaciones que incluyen devolución de primas o de la reserva. La robustez técnica exige que el libro enseñe a **(1)** segmentar la **línea del tiempo** en **tramos discretos** (por ejemplo: suma inicial que crece trimestralmente en 250 u.m., luego se estabiliza, luego crece anualmente, luego queda constante); **(2)** asignar a cada año $k$ el capital $b_k$ correspondiente según el tramo; **(3)** formular la PNU no solo con símbolos actuariales sino mediante **sumatorias explícitas** $\sum_{k=0}^{n-1} b_k\, v^{k+1}\, {}_k|q_x$ para beneficios con progresiones aritméticas o geométricas. Esta sección proporciona ese **manual metodológico**: descomponer cualquier línea de tiempo compleja en una suma de seguros temporales de un año con capitales $b_k$ en el año $k$, y escribir la **prima neta única (PNU)** en forma explícita.
+
+### Sumatorias para capital variable
+
+Si el beneficio por muerte en el año $k$ (pago al final del año $k+1$) es $b_k$ (constante o variable con $k$), el valor presente esperado del beneficio es:
+
+$$\text{PNU} = \sum_{k=0}^{n-1} b_k\, v^{k+1}\, {}_k|q_x = \sum_{k=0}^{n-1} b_k\, v^{k+1}\, {}_kp_x\, q_{x+k}.$$
+
+Cada término corresponde a un **seguro temporal de un año** diferido $k$ años con capital $b_k$. En conmutativas, si $b_k$ es constante por tramos o se expresa como combinación de $M_x$, $D_x$, etc., la PNU se escribe como suma de expresiones del tipo $(M_{x+a}-M_{x+b})/D_x$ o múltiplos de $C_{x+k}/D_x$.
+
+**Ejemplo (capital creciente por trimestres).** Una póliza paga $100 + 1$ por cada trimestre transcurrido (hasta un tope) al final del año de muerte. Si el fallecimiento ocurre en el año $k$ (entre las edades $x+k$ y $x+k+1$), el número de trimestres completados es $4k$ más la fracción del año $k$; en un modelo simplificado donde el pago se valora al final del año de muerte, puede tomarse el capital en el año $k$ como $b_k = 100 + 4k$ (por ejemplo). Entonces:
+
+$$\text{PNU} = \sum_{k=0}^{n-1} (100 + 4k)\, v^{k+1}\, {}_k|q_x.$$
+
+Con $n$ el plazo máximo del beneficio. Esta expresión se calcula año a año o se reescribe usando seguros temporales con capital nivelado y seguros con capital creciente $(IA)_{x:\overline{n}|}^1$ cuando la ley de formación sea aritmética [@weishaus2013].
+
+### Notación estándar para creciente y decreciente
+
+- **Seguro temporal creciente** $(IA)_{x:\overline{n}|}^1$: paga 1 si muerte en año 1, 2 si muerte en año 2, …, $n$ si muerte en año $n$ (pago al final del año de muerte). PNU $= \sum_{k=0}^{n-1} (k+1)\, v^{k+1}\, {}_k|q_x$.
+- **Seguro temporal decreciente** $(DA)_{x:\overline{n}|}^1$: paga $n$ si muerte en año 1, $n-1$ si muerte en año 2, …, 1 si muerte en año $n$. PNU $= \sum_{k=0}^{n-1} (n-k)\, v^{k+1}\, {}_k|q_x$.
+
+Cualquier ley de formación $b_k$ se puede escribir como suma de estos bloques o evaluar directamente con la sumatoria $\sum_{k=0}^{n-1} b_k\, v^{k+1}\, {}_k|q_x$.
+
+### Seguro de desgravamen hipotecario (capital decreciente)
+
+El **desgravamen hipotecario** (Tema 3 del programa) es un seguro de **capital variable** donde la suma asegurada en el año $t$ coincide con el **saldo deudor** del préstamo en ese momento. La curva de capital en riesgo determina directamente el costo actuarial.
+
+**Sistema francés (cuotas constantes).** El saldo vivo del préstamo al inicio del año $k+1$ (o al final del año $k$) es una función decreciente del tiempo. Si el préstamo es a $n$ años con cuota constante $C$ y tipo de interés $i$, el saldo después de $k$ pagos es $B_k = C\, a_{\overline{n-k}|}$ (o la expresión equivalente con el capital inicial). El beneficio por muerte en el año $k$ (pago al final del año $k$) es $b_{k-1} = B_{k-1}$ (saldo al inicio del año $k$). La PNU del desgravamen es:
+
+$$\text{PNU} = \sum_{k=1}^{n} B_{k-1}\, v^{k}\, {}_{k-1}|q_x = \sum_{k=0}^{n-1} B_k\, v^{k+1}\, {}_k|q_x.$$
+
+Cada $B_k$ se obtiene del cuadro de amortización del préstamo.
+
+**Sistema alemán (amortización constante).** La amortización de capital es constante: $A = C_0/n$ por período. El saldo después de $k$ períodos es $B_k = C_0 - k\,A = C_0\,(n-k)/n$. El capital en riesgo en el año $k+1$ es $B_k$, por tanto la PNU vuelve a ser $\sum_{k=0}^{n-1} B_k\, v^{k+1}\, {}_k|q_x$, con $B_k$ dado por la ley del sistema alemán. La forma decreciente lineal facilita a veces el uso de $(DA)_{x:\overline{n}|}^1$ multiplicado por el factor adecuado.
+
+En ambos casos, el estudiante debe (1) construir o identificar la secuencia de saldos $B_0, B_1, \ldots, B_{n-1}$; (2) escribir la PNU como sumatoria; (3) si se pide prima nivelada, dividir la PNU entre la renta de vida temporal $\ddot{a}_{x:\overline{n}|}$ (o la que corresponda al pago de primas).
+
+***
+
+## Relación entre seguros y rentas de vida
+
+Las funciones conmutativas de seguros y rentas están ligadas. Como $d_x = l_x - l_{x+1}$, se tiene $C_x = v^{x+1}d_x = v\,D_x - D_{x+1}$. Sumando sobre $t \geq 0$ se obtiene $M_x = v\,N_x - N_{x+1}$. Dividiendo entre $D_x$:
+
+$$\frac{M_x}{D_x} = v\,\frac{N_x}{D_x} - \frac{N_{x+1}}{D_x},$$
+
+es decir:
+
+$$A_x = v\,\ddot{a}_x - a_x. \tag{3.8}$$
+
+Esta igualdad admite una interpretación intuitiva: $v\,\ddot{a}_x$ es el valor actual de una renta anticipada de $v$ por año para $(x)$, equivalente a una renta de 1 pagadera al **final** de cada año que $(x)$ **comience**; $a_x$ es el valor actual de una renta de 1 pagadera al final de cada año que $(x)$ **complete**. La diferencia entre ambas es exactamente un pago único de 1 al final del año en que $(x)$ muera (el último año que comienza pero no completa). Así se reencuentra el seguro de vida entera.
+
+Para el seguro temporal y el dotal se obtienen las relaciones:
+
+$$A_{x:\overline{n}|}^1 = v\,\ddot{a}_{x:\overline{n}|} - a_{x:\overline{n}|}, \tag{3.9}$$
+
+$$A_{x:\overline{n}|} = v\,\ddot{a}_{x:\overline{n}|} - a_{x:\overline{n-1}|}. \tag{3.10}$$
+
+Otra forma muy útil de (3.8) se obtiene escribiendo $v\,\ddot{a}_x - a_x = v\,\ddot{a}_x - (\ddot{a}_x - 1) = 1 - (1-v)\,\ddot{a}_x$. Como $d = 1 - v$ es la tasa de descuento anual:
+
+$$A_x = 1 - d\,\ddot{a}_x. \tag{3.11}$$
+
+Interpretación: $A_x$ es el valor actual de 1 unidad pagadera al final del año de muerte. Si el pago se hiciera hoy, valdría 1; al estar diferido, debe descontarse el valor del interés que se devengaría entre hoy y el fin del año de muerte. El valor actual del interés sobre 1 al inicio de cada año que $(x)$ comience es $d\,\ddot{a}_x$, de ahí la fórmula. Para el dotal: $A_{x:\overline{n}|} = 1 - d\,\ddot{a}_{x:\overline{n}|}$. No existen fórmulas análogas para el seguro temporal puro ni para el diferido solos, porque en esos casos no está garantizado que haya pago.
+
+Multiplicando (3.11) por $(1+i)$ y usando $(1+i)\,d = i$ y $\ddot{a}_x = 1 + a_x$:
+
+$$1 = i\,a_x + (1+i)\,A_x. \tag{3.12}$$
+
+Esto expresa que una unidad monetaria hoy es equivalente al valor actual de los intereses $i$ al final de cada año que $(x)$ complete ($i\,a_x$) más el valor actual de 1 unidad al final del año de muerte ($(1+i)\,A_x$). Esta identidad es la base de muchas definiciones legales y fiscales que separan el componente «estado de vivo» (intereses sobre la renta) del «remanente» o residuo (valor del seguro).
+
+### Identidades útiles (capítulo 6)
+
+- **Identidad de King:** $A_x = 1 - d\,\ddot{a}_x$; $\ddot{a}_x = (1 - A_x)/d$. Para mixto: $A_{x:\overline{n}|} = 1 - d\,\ddot{a}_{x:\overline{n}|}$.
+- **Relación seguros–rentas:** $A_x = v\,\ddot{a}_x - a_x$; $A_{x:\overline{n}|}^1 = v\,\ddot{a}_{x:\overline{n}|} - a_{x:\overline{n}|}$.
+- **Temporal = vida entera − diferido:** $A_{x:\overline{n}|}^1 = A_x - {}_nE_x\,A_{x+n}$; **Diferido:** ${}_{n|}A_x = {}_nE_x\,A_{x+n}$; **Mixto:** $A_{x:\overline{n}|} = A_{x:\overline{n}|}^1 + {}_nE_x$.
+- **Regla de momentos:** $\operatorname{Var}(Z) = {}^2A - (A)^2$ (${}^2A$ valorado a doble fuerza de interés).
+- **Conmutativas:** $A_x = M_x/D_x$; $A_{x:\overline{n}|}^1 = (M_x - M_{x+n})/D_x$; ${}_{n|}A_x = M_{x+n}/D_x$.
+
+***
+
+## Ejercicios
+
+En las soluciones se indica el razonamiento, los pasos intermedios y el resultado final.
+
+### Ejercicios resueltos
+
+**1. PNU temporal y dotal**  
+Temporal 10 años por 1 u.m. para (35). $D_{35}=10\,000$, $D_{45}=7\,200$, $M_{35}=1\,800$, $M_{45}=1\,100$. (a) PNU temporal. (b) PNU dotal 10 años.  
+
+**Solución.**  
+- **(a)** La PNU del seguro **temporal** a 10 años por 1 u.m. es $A_{35:\overline{10}|}^1$. En conmutativos $A_{35:\overline{10}|}^1 = (M_{35}-M_{45})/D_{35}$ (valor presente de 1 u.m. pagadero al final del año de muerte si esta ocurre entre 35 y 45). Sustituyendo: $A_{35:\overline{10}|}^1 = (1\,800-1\,100)/10\,000 = 700/10\,000 = 0{,}07$.  
+- **(b)** El **mixto** (dotal) a 10 años paga 1 u.m. si muerte antes de 10 años o si supervive 10 años; su PNU es $A_{35:\overline{10}|} = A_{35:\overline{10}|}^1 + {}_{10}E_{35} = (M_{35}-M_{45})/D_{35} + D_{45}/D_{35} = (M_{35}-M_{45}+D_{45})/D_{35}$. Sustituyendo: $(1\,800-1\,100+7\,200)/10\,000 = 7\,900/10\,000 = 0{,}79$.  
+- **Resultado:** (a) PNU temporal $=0{,}07$ u.m.; (b) PNU mixto $=0{,}79$ u.m.
+
+***
+
+**2. Vida entera y diferido**  
+$M_{40}=1\,500$, $D_{40}=2\,000$, $M_{55}=1\,100$, $D_{55}=1\,200$. Calcular $A_{40}$ y ${}_{15|}A_{40}$.  
+
+**Solución.**  
+- **Paso 1.** $A_{40}=M_{40}/D_{40}$ (vida entera); ${}_{15|}A_{40}=M_{55}/D_{40}$ (diferido 15 años: pago si muerte después de 55).  
+- **Paso 2.** $A_{40}=1\,500/2\,000=0{,}75$; ${}_{15|}A_{40}=1\,100/2\,000=0{,}55$.  
+- **Resultado:** $A_{40}=0{,}75$; ${}_{15|}A_{40}=0{,}55$.
+
+***
+
+**3. Relación $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+nE_x$**  
+Probar con $M_x$, $D_x$, $D_{x+n}$.  
+
+**Solución.**  
+- **Paso 1.** $A_{x:\overline{n}|}^1=(M_x-M_{x+n})/D_x$ (temporal); $nE_x=D_{x+n}/D_x$ (dotal).  
+- **Paso 2.** Suma $=(M_x-M_{x+n}+D_{x+n})/D_x = A_{x:\overline{n}|}$ (mixto).  
+- **Resultado:** $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+nE_x$ probado.
+
+***
+
+**4. Variable $Z$ vida entera**  
+Para seguro vida entera por 1, pago al final del año de muerte, escribir $Z$ en función de $K_x$.  
+
+**Solución.**  
+- **Paso 1.** Si la muerte ocurre en el año $k+1$ ($K_x=k$), el pago es 1 u.m. al final de ese año: valor presente $v^{k+1}$.  
+- **Paso 2.** $Z=v^{K_x+1}$; $\mathbb{E}[Z]=A_x$.  
+- **Resultado:** $Z=v^{K_x+1}$; $\mathbb{E}[Z]=A_x$.
+
+***
+
+**5. Varianza $\operatorname{Var}(Z)={}^2A_x-(A_x)^2$**  
+Si $A_x=0{,}25$, ${}^2A_x=0{,}10$, calcular $\operatorname{Var}(Z)$.  
+
+**Solución.**  
+- **Paso 1.** $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(\mathbb{E}[Z])^2={}^2A_x-(A_x)^2$.  
+- **Paso 2.** $\operatorname{Var}(Z)=0{,}10-0{,}25^2=0{,}10-0{,}0625=0{,}0375$.  
+- **Resultado:** $\operatorname{Var}(Z)=0{,}0375$.
+
+***
+
+**6. Temporal: PNU por 10.000**  
+$A_{30:\overline{20}|}^1=0{,}045$. PNU por 10.000 u.m.  
+
+**Solución.**  
+- **Paso 1.** PNU = beneficio × PNU por 1 u.m. = $10\,000 \cdot A_{30:\overline{20}|}^1$.  
+- **Paso 2.** PNU $= 10\,000 \times 0{,}045 = 450$ u.m.  
+- **Resultado:** PNU $= 450$ u.m.
+
+***
+
+**7. Diferido ${}_{n|}A_x={}_nE_x\,A_{x+n}$**  
+Verificar con conmutativas: ${}_{10|}A_{40}=D_{50}A_{50}/D_{40}$ y $M_{50}/D_{50}=A_{50}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{10|}A_{40}=M_{50}/D_{40}$ (pago si muerte después de 10 años).  
+- **Paso 2.** $M_{50}/D_{40}=(D_{50}/D_{40})(M_{50}/D_{50})={}_{10}E_{40}\,A_{50}$.  
+- **Resultado:** ${}_{n|}A_x={}_nE_x\,A_{x+n}$ verificado.
+
+***
+
+**8. Tipo parcial: tres seguros**  
+Calcular PNU vida entera 5.000, diferido 10 años 5.000, temporal 10 años 5.000 para (45). $D_{45}=1\,800$, $M_{45}=270$, $D_{55}=1\,200$, $M_{55}=180$.  
+
+**Solución.**  
+- **Paso 1.** Vida entera: $5\,000\cdot A_{45}=5\,000\cdot M_{45}/D_{45}$. Diferido: $5\,000\cdot M_{55}/D_{45}$. Temporal: $5\,000\cdot (M_{45}-M_{55})/D_{45}$.  
+- **Paso 2.** Vida: $5\,000\times 270/1\,800=750$; Diferido: $5\,000\times 180/1\,800=500$; Temporal: $5\,000\times 90/1\,800=250$.  
+- **Resultado:** 750; 500; 250 u.m.
+
+***
+
+**9. Seguro compuesto**  
+(60) paga 2.000 entre 65-75 y 1.000 después de 75. Expresar PNU con ${}_5E_{60}$, ${}_{15}E_{60}$, $A_{65}$, $A_{75}$.  
+
+**Solución.**  
+- **Paso 1.** Entre 65-75: diferido 5 años, temporal 10 años desde 65, beneficio 2.000. Después de 75: diferido 15 años, beneficio 1.000.  
+- **Paso 2.** PNU $= 2\,000\cdot {}_5E_{60}(A_{65}-{}_{10}E_{65}A_{75})+1\,000\cdot {}_{15}E_{60}A_{75}$.  
+- **Resultado:** Expresión anterior (o equivalente con diferidos).
+
+***
+
+**10. Relación $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$**  
+Deducir desde vida entera = temporal + diferido.  
+
+**Solución.**  
+- **Paso 1.** Vida entera = pago si muerte en años 1–$n$ (temporal) + pago si muerte después de $n$ (diferido).  
+- **Paso 2.** $A_x=A_{x:\overline{n}|}^1+{}_nE_x\,A_{x+n}$ ⇒ $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$.  
+- **Resultado:** $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$.
+
+***
+
+**11. Mixto: suma temporal + dotal**  
+Para (40), $n=15$: $A_{40:\overline{15}|}=A_{40:\overline{15}|}^1+{}_{15}E_{40}$. Con $D_{40}=2\,000$, $D_{55}=1\,000$, $M_{40}=300$, $M_{55}=180$, calcular.  
+
+**Solución.**  
+- **Paso 1.** $A_{40:\overline{15}|}^1=(M_{40}-M_{55})/D_{40}$; ${}_{15}E_{40}=D_{55}/D_{40}$.  
+- **Paso 2.** $A_{40:\overline{15}|}^1=(300-180)/2\,000=0{,}06$; ${}_{15}E_{40}=1\,000/2\,000=0{,}5$; $A_{40:\overline{15}|}=0{,}06+0{,}5=0{,}56$.  
+- **Resultado:** $A_{40:\overline{15}|}=0{,}56$.
+
+***
+
+**12. Segundo momento**  
+Para seguro vida entera, $\mathbb{E}[Z^2]$ se calcula con tipo $j$ tal que $v_j^2=v^2$. Justificar.  
+
+**Solución.**  
+- **Paso 1.** $Z=v^{K_x+1}$ ⇒ $Z^2=v^{2(K_x+1)}$; $\mathbb{E}[Z^2]$ es el APV con factor $v^2$ por año.  
+- **Paso 2.** Equivale a valorar con fuerza de interés $2\delta$ (regla de momentos): ${}^2A_x$.  
+- **Resultado:** $\mathbb{E}[Z^2]={}^2A_x$ (a tipo $2\delta$).
+
+***
+
+**13. Tipo parcial: PNU total**  
+Seguro paga 3.000 si muerte en años 1-10 y 5.000 si muerte después. (40). Expresar PNU.  
+
+**Solución.**  
+- **Paso 1.** PNU = 3.000 × (temporal 10 años) + 5.000 × (diferido 10 años) $= 3\,000\,A_{40:\overline{10}|}^1+5\,000\,{}_{10|}A_{40}$.  
+- **Paso 2.** En conmutativas: $3\,000(M_{40}-M_{50})/D_{40}+5\,000\,M_{50}/D_{40}$ (con $D_{50}$, $M_{50}$).  
+- **Resultado:** PNU $= 3\,000\,A_{40:\overline{10}|}^1+5\,000\,{}_{10|}A_{40}$.
+
+***
+
+**14. $Z$ temporal**  
+Para temporal $n$ años por 1, escribir $Z$ si muerte en año $k+1$ ($k<n$) y si $k\geq n$.  
+
+**Solución.**  
+- **Paso 1.** Si muerte en año $k+1$ con $k<n$: pago 1 u.m. al final del año $k+1$ → $Z=v^{k+1}$.  
+- **Paso 2.** Si $K_x \geq n$ no hay pago: $Z=0$. Por tanto $Z=v^{K_x+1}$ si $K_x<n$; $Z=0$ si $K_x\geq n$.  
+- **Resultado:** $Z=v^{k+1}$ si $K_x=k$, $k=0,\ldots,n-1$; $Z=0$ si $K_x\geq n$.
+
+***
+
+**15. Descomposición para $n=15$**  
+Si tabla da ${}_5E_x$, ${}_{10}E_x$, ${}_{20}E_x$, obtener ${}_{15}E_x$ para (40).  
+
+**Solución.**  
+- **Paso 1.** ${}_{15}E_{40}$ = sobrevivir 15 años = 5 + 10 desde 40, o 10 + 5 desde 40.  
+- **Paso 2.** ${}_{15}E_{40}={}_5E_{40}\cdot {}_{10}E_{45}$ o ${}_{10}E_{40}\cdot {}_5E_{50}$ (producto de dotales).  
+- **Resultado:** ${}_{15}E_{40}={}_5E_{40}\cdot {}_{10}E_{45}$ (o la otra descomposición).
+
+***
+
+**16. Varianza mixto**  
+Mixto = temporal + dotal (beneficios mutuamente excluyentes). $\operatorname{Var}(Z_{\text{mixto}})$ en función de varianzas.  
+
+**Solución.**  
+- **Paso 1.** $Z$ mixto = $Z^1$ (temporal) o $Z_{\text{dotal}}$ (dotal); los sucesos son excluyentes.  
+- **Paso 2.** $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(A_{x:\overline{n}|})^2$; puede expresarse con ${}^2A_{x:\overline{n}|}^1$ y ${}^2(nE_x)$.  
+- **Resultado:** $\operatorname{Var}(Z)=\operatorname{Var}(Z^1)+\operatorname{Var}(Z_{\text{dotal}})$ al ser excluyentes (suma de varianzas).
+
+***
+
+**17. Tipo parcial: conmutativas**  
+$D_{50}=2\,500$, $M_{50}=400$, $M_{60}=280$, $D_{60}=1\,500$. Calcular $A_{50}$, $A_{50:\overline{10}|}^1$, ${}_{10}E_{50}$.  
+
+**Solución.**  
+- **Paso 1.** $A_{50}=M_{50}/D_{50}$; $A_{50:\overline{10}|}^1=(M_{50}-M_{60})/D_{50}$; ${}_{10}E_{50}=D_{60}/D_{50}$.  
+- **Paso 2.** $A_{50}=400/2\,500=0{,}16$; $A_{50:\overline{10}|}^1=120/2\,500=0{,}048$; ${}_{10}E_{50}=1\,500/2\,500=0{,}6$.  
+- **Resultado:** $A_{50}=0{,}16$; $A_{50:\overline{10}|}^1=0{,}048$; ${}_{10}E_{50}=0{,}6$.
+
+***
+
+**18. Beneficio variable**  
+Seguro paga $b_k$ al final del año $k+1$ si muerte en ese año. APV $=\sum_{k=0}^{\infty} b_k\,v^{k+1}\,{}_kp_x\,q_{x+k}$.  
+
+**Solución.**  
+- **Paso 1.** Cada año $k+1$ contribuye con $b_k \cdot v^{k+1} \cdot \mathbb{P}(\text{muerte en año } k+1) = b_k\,v^{k+1}\,{}_kp_x\,q_{x+k}$.  
+- **Paso 2.** APV $= \sum_{k=0}^{\infty} b_k\,v^{k+1}\,{}_kp_x\,q_{x+k}$.  
+- **Resultado:** Fórmula anterior.
+
+***
+
+**19. Relación $A_x=A_{x:\overline{n}|}^1+{}_nE_x\,A_{x+n}$**  
+Interpretar: vida entera = temporal $n$ + beneficio diferido $n$ años.  
+
+**Solución.**  
+- **Paso 1.** Vida entera paga 1 u.m. al final del año de muerte. Ese pago ocurre o en años 1–$n$ (temporal) o después del año $n$ (diferido).  
+- **Paso 2.** $A_x=A_{x:\overline{n}|}^1+{}_nE_x\,A_{x+n}$.  
+- **Resultado:** Interpretación y relación verificadas.
+
+***
+
+**20. Síntesis tipo parcial**  
+(a) Definir $A_x$, $A_{x:\overline{n}|}^1$, $A_{x:\overline{n}|}$. (b) Con $D_{35}=10\,000$, $M_{35}=1\,800$, $D_{45}=7\,200$, $M_{45}=1\,100$, calcular PNU temporal 10 años y dotal 10 años por 1 u.m.  
+
+**Solución.**  
+- **Paso 1 (a).** $A_x$: PNU seguro vida entera por 1 u.m. $A_{x:\overline{n}|}^1$: temporal $n$ años por 1. $A_{x:\overline{n}|}$: mixto (dotal) $n$ años por 1.  
+- **Paso 2 (b).** Temporal: $A_{35:\overline{10}|}^1=(1\,800-1\,100)/10\,000=0{,}07$. Dotal: $A_{35:\overline{10}|}=(M_{35}-M_{45}+D_{45})/D_{35}=7\,900/10\,000=0{,}79$.  
+- **Resultado:** (a) Definiciones anteriores. (b) Temporal 0,07; dotal 0,79 u.m.
+
+***
+
+**21. Beneficio variable (Tema 3)**  
+Seguro paga 2.000 u.m. si muerte en años 1-10 y 3.000 u.m. si muerte después. (40). Escribir PNU con $A_{40:\overline{10}|}^1$ y ${}_{10|}A_{40}$.  
+
+**Solución.**  
+- **Paso 1.** PNU = 2.000 × (temporal 10 años) + 3.000 × (diferido 10 años).  
+- **Paso 2.** PNU $= 2\,000\,A_{40:\overline{10}|}^1 + 3\,000\,{}_{10|}A_{40} = 2\,000(M_{40}-M_{50})/D_{40} + 3\,000\,M_{50}/D_{40}$.  
+- **Resultado:** PNU $= 2\,000\,A_{40:\overline{10}|}^1 + 3\,000\,{}_{10|}A_{40}$.
+
+***
+
+**22. Desgravamen (Tema 3)**  
+Indicar cómo se valora un seguro de saldo deudor (capital decreciente) con seguros temporales de 1 año.  
+
+**Solución.**  
+- **Paso 1.** En cada año $t$ el capital asegurado es el saldo $C_t$; el beneficio por muerte en ese año es $C_t$.  
+- **Paso 2.** APV $= \sum_t C_t \, v^{t+1} \, {}_tp_x \, q_{x+t} = \sum_t C_t \cdot A_{x+t:\overline{1}|}^1$; si el saldo sigue progresión, se usa notación $(DA)_{x:\overline{n}|}$.  
+- **Resultado:** Suma de temporales de 1 año con beneficio $C_t$.
+
+***
+
+**23. Tipo parcial: tres PNU**  
+Vida entera 5.000, temporal 15 años 3.000, dotal 15 años 2.000 para (45). $D_{45}=1\,800$, $M_{45}=270$, $D_{60}=1\,200$, $M_{60}=180$. Calcular cada PNU y el total.  
+
+**Solución.**  
+- **Paso 1.** Vida: $5\,000\cdot M_{45}/D_{45}$. Temporal: $3\,000\cdot (M_{45}-M_{60})/D_{45}$. Dotal: $2\,000\cdot (M_{45}-M_{60}+D_{60})/D_{45}$.  
+- **Paso 2.** Vida: 750; Temporal: $3\,000\times 90/1\,800=150$; Dotal: $2\,000\times 1\,290/1\,800\approx 1\,433{,}33$; Total $\approx 2\,333$ u.m.  
+- **Resultado:** 750; 150; $\approx 1\,433{,}33$; total $\approx 2\,333$ u.m.
+
+***
+
+**24. Varianza de $Z$**  
+Para vida entera por 1, $\operatorname{Var}(Z)={}^2A_x-(A_x)^2$. Si $A_x=0{,}25$, ${}^2A_x=0{,}10$, calcular $\operatorname{Var}(Z)$.  
+
+**Solución.**  
+- **Paso 1.** $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(\mathbb{E}[Z])^2={}^2A_x-(A_x)^2$ (regla de momentos: ${}^2A_x$ a fuerza $2\delta$).  
+- **Paso 2.** $\operatorname{Var}(Z)=0{,}10-0{,}25^2=0{,}0375$.  
+- **Resultado:** $\operatorname{Var}(Z)=0{,}0375$.
+
+***
+
+**25. Relación $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$**  
+Deducir a partir de «mixto = pago si muerte en $n$ años + pago si supervivencia $n$ años».  
+
+**Solución.**  
+- **Paso 1.** El mixto paga 1 u.m. si muerte antes de $n$ (temporal) o 1 u.m. si vive $n$ años (dotal); sucesos excluyentes.  
+- **Paso 2.** APV(mixto) = APV(temporal) + APV(dotal) $= A_{x:\overline{n}|}^1 + {}_nE_x$.  
+- **Resultado:** $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$.
+
+***
+
+**26.** $M_{40}=300$, $D_{40}=2\,000$, $M_{55}=180$, $D_{55}=1\,200$. Calcular $A_{40}$, $A_{40:\overline{15}|}^1$.  
+
+**Solución.**  
+- **Paso 1.** $A_{40}=M_{40}/D_{40}$; $A_{40:\overline{15}|}^1=(M_{40}-M_{55})/D_{40}$.  
+- **Paso 2.** $A_{40}=300/2\,000=0{,}15$; $A_{40:\overline{15}|}^1=(300-180)/2\,000=0{,}06$.  
+- **Resultado:** $A_{40}=0{,}15$; $A_{40:\overline{15}|}^1=0{,}06$.
+
+***
+
+**27.** Diferido 10 años: ${}_{10|}A_{50}={}_{10}E_{50}\,A_{60}$. Con $D_{50}=1\,500$, $D_{60}=900$, $M_{60}=150$, PNU por 5.000.  
+
+**Solución.**  
+- **Paso 1.** PNU $= 5\,000 \cdot {}_{10|}A_{50} = 5\,000 \cdot {}_{10}E_{50}\,A_{60}$; ${}_{10}E_{50}=D_{60}/D_{50}$, $A_{60}=M_{60}/D_{60}$.  
+- **Paso 2.** ${}_{10}E_{50}=900/1\,500=0{,}6$; $A_{60}=150/900=1/6$; PNU $= 5\,000 \times 0{,}6 \times (1/6) = 500$ u.m.  
+- **Resultado:** PNU $= 500$ u.m.
+
+***
+
+**28.** Variable $Z$ vida entera: valores posibles.  
+
+**Solución.**  
+- **Paso 1.** Si muerte en el año $k+1$ ($K_x=k$), el pago es al final de ese año: $Z=v^{k+1}$.  
+- **Paso 2.** Valores posibles: $v, v^2, v^3, \ldots$ ($k=0,1,2,\ldots$).  
+- **Resultado:** $Z=v^{K_x+1}$; valores $v^{k+1}$, $k=0,1,\ldots$.
+
+***
+
+**29.** Relación $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$. Verificar con conmutativas.  
+
+**Solución.**  
+- **Paso 1.** $A_{x:\overline{n}|}^1=(M_x-M_{x+n})/D_x$; $A_x-{}_nE_x\,A_{x+n}=M_x/D_x-(D_{x+n}/D_x)(M_{x+n}/D_{x+n})$.  
+- **Paso 2.** $= (M_x-M_{x+n})/D_x$. Coinciden.  
+- **Resultado:** Relación verificada con conmutativas.
+
+***
+
+**30.** Temporal 20 años por 10.000 (35). $M_{35}-M_{55}=220$, $D_{35}=2\,500$. PNU.  
+
+**Solución.**  
+- **Paso 1.** PNU $= 10\,000 \cdot A_{35:\overline{20}|}^1 = 10\,000 \cdot (M_{35}-M_{55})/D_{35}$.  
+- **Paso 2.** PNU $= 10\,000 \times 220/2\,500 = 880$ u.m.  
+- **Resultado:** PNU $= 880$ u.m.
+
+***
+
+**31.** Varianza de $Z$ (vida entera): ${}^2A_x-(A_x)^2$. Deducir.  
+
+**Solución.**  
+- **Paso 1.** $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(\mathbb{E}[Z])^2$; $\mathbb{E}[Z]=A_x$, $\mathbb{E}[Z^2]={}^2A_x$ (regla de momentos).  
+- **Paso 2.** $\operatorname{Var}(Z)={}^2A_x-(A_x)^2$.  
+- **Resultado:** $\operatorname{Var}(Z)={}^2A_x-(A_x)^2$.
+
+***
+
+**32.** Mixto 15 años: expresar PNU con $M_x$, $M_{x+15}$, $D_x$, $D_{x+15}$.  
+
+**Solución.**  
+- **Paso 1.** $A_{x:\overline{15}|}=A_{x:\overline{15}|}^1+{}_{15}E_x$; $A_{x:\overline{15}|}^1=(M_x-M_{x+15})/D_x$, ${}_{15}E_x=D_{x+15}/D_x$.  
+- **Paso 2.** PNU por 1 u.m. $= (M_x-M_{x+15}+D_{x+15})/D_x$.  
+- **Resultado:** $A_{x:\overline{15}|}=(M_x-M_{x+15}+D_{x+15})/D_x$.
+
+***
+
+**33.** Seguro paga 2.000 u.m. si muerte en 1–10 años y 4.000 si muerte después de 10. (45).  
+
+**Solución.**  
+- **Paso 1.** PNU = 2.000 × (temporal 10 años) + 4.000 × (diferido 10 años).  
+- **Paso 2.** PNU $= 2\,000\,A_{45:\overline{10}|}^1+4\,000\,{}_{10|}A_{45}$.  
+- **Resultado:** PNU $= 2\,000\,A_{45:\overline{10}|}^1+4\,000\,{}_{10|}A_{45}$.
+
+***
+
+**34.** $A_{50}=0{,}35$, ${}_{20}E_{50}=0{,}4$, $A_{70}=0{,}55$. Calcular $A_{50:\overline{20}|}^1$.  
+
+**Solución.**  
+- **Paso 1.** Temporal = vida entera − diferido: $A_{50:\overline{20}|}^1=A_{50}-{}_{20}E_{50}\,A_{70}$.  
+- **Paso 2.** $A_{50:\overline{20}|}^1=0{,}35-0{,}4\times 0{,}55=0{,}35-0{,}22=0{,}13$.  
+- **Resultado:** $A_{50:\overline{20}|}^1=0{,}13$.
+
+***
+
+**35.** Segundo momento vida entera: valorar a fuerza $2\delta$.  
+
+**Solución.**  
+- **Paso 1.** $Z^2=v^{2(K_x+1)}$; $\mathbb{E}[Z^2]$ es el APV con factor $v^2$ por año.  
+- **Paso 2.** Equivale a valorar con fuerza $2\delta$: $\mathbb{E}[Z^2]={}^2A_x$.  
+- **Resultado:** $\mathbb{E}[Z^2]={}^2A_x$ (a fuerza $2\delta$).
+
+***
+
+**36.** Diferido ${}_{n|}A_x={}_nE_x\,A_{x+n}$: interpretar.  
+
+**Solución.**  
+- **Paso 1.** ${}_{n|}A_x$ = PNU del seguro que paga 1 u.m. al final del año de muerte si esta ocurre **después** de $n$ años.  
+- **Paso 2.** Equivale a sobrevivir $n$ años (${}_nE_x$) y luego tener un seguro de vida entera desde $x+n$ ($A_{x+n}$).  
+- **Resultado:** APV de pago al final del año de muerte si ocurre después de $n$ años.
+
+***
+
+**37.** Temporal 12 años (48). $M_{48}-M_{60}=180$, $D_{48}=1\,600$. PNU por 8.000.  
+
+**Solución.**  
+- **Paso 1.** PNU $= 8\,000 \cdot A_{48:\overline{12}|}^1 = 8\,000 \cdot (M_{48}-M_{60})/D_{48}$.  
+- **Paso 2.** PNU $= 8\,000 \times 180/1\,600 = 900$ u.m.  
+- **Resultado:** PNU $= 900$ u.m.
+
+***
+
+**38.** Vida entera 3.000 u.m. (55). $M_{55}=240$, $D_{55}=1\,200$. PNU.  
+
+**Solución.**  
+- **Paso 1.** PNU $= 3\,000 \cdot A_{55} = 3\,000 \cdot M_{55}/D_{55}$.  
+- **Paso 2.** $A_{55}=240/1\,200=0{,}2$; PNU $= 3\,000 \times 0{,}2 = 600$ u.m.  
+- **Resultado:** PNU $= 600$ u.m.
+
+***
+
+**39.** Relación temporal = vida entera − diferido.  
+
+**Solución.**  
+- **Paso 1.** Vida entera = pago si muerte en 1–$n$ + pago si muerte después de $n$; luego temporal = vida entera − diferido.  
+- **Paso 2.** $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$.  
+- **Resultado:** $A_{x:\overline{n}|}^1=A_x-{}_{n|}A_x$.
+
+***
+
+**40.** $Z$ para temporal $n$ años: $\mathbb{E}[Z]$.  
+
+**Solución.**  
+- **Paso 1.** $Z$ toma valor $v^{k+1}$ si muerte en año $k+1$ ($k<n$) y $0$ si $k\geq n$.  
+- **Paso 2.** $\mathbb{E}[Z]=A_{x:\overline{n}|}^1$ (PNU del temporal por 1 u.m.).  
+- **Resultado:** $\mathbb{E}[Z]=A_{x:\overline{n}|}^1$.
+
+***
+
+**41.** Mixto 10 años por 6.000 (40). $A_{40:\overline{10}|}^1=0{,}05$, ${}_{10}E_{40}=0{,}65$. PNU.  
+
+**Solución.**  
+- **Paso 1.** PNU mixto por 6.000 $= 6\,000 \cdot A_{40:\overline{10}|} = 6\,000 \cdot (A_{40:\overline{10}|}^1+{}_{10}E_{40})$.  
+- **Paso 2.** PNU $= 6\,000 \times (0{,}05+0{,}65) = 4\,200$ u.m.  
+- **Resultado:** PNU $= 4\,200$ u.m.
+
+***
+
+**42.** Desgravamen: seguro que paga saldo de deuda al fallecimiento. Idea de PNU.  
+
+**Solución.**  
+- **Paso 1.** En cada año $k$ el capital asegurado es el saldo vivo $C_k$; si la muerte ocurre en ese año se paga $C_k$.  
+- **Paso 2.** PNU = suma de APV de seguros temporales de 1 año con beneficio $C_k$: $\sum_k C_k \cdot v^{k+1} \cdot {}_kp_x \cdot q_{x+k}$.  
+- **Resultado:** Suma de temporales con beneficio decreciente (saldo).
+
+***
+
+**43.** Comprobar $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$ con definición.  
+
+**Solución.**  
+- **Paso 1.** El mixto paga 1 u.m. si muerte antes de $n$ (temporal) o 1 u.m. si supervive $n$ años (dotal).  
+- **Paso 2.** Los sucesos son excluyentes → APV(mixto) = APV(temporal) + APV(dotal) $= A_{x:\overline{n}|}^1+{}_nE_x$.  
+- **Resultado:** $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$.
+
+***
+
+**44.** Varianza del temporal: no es suma de varianzas (temporal y dotal son dependientes).  
+
+**Solución.**  
+- **Paso 1.** Para el **mixto**, $Z$ = temporal o dotal (excluyentes); la varianza del mixto sí puede descomponerse si se usa $\mathbb{E}[Z^2]-(A_{x:\overline{n}|})^2$.  
+- **Paso 2.** Para el temporal solo, $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(A_{x:\overline{n}|}^1)^2$; no es suma de varianzas de dos seguros independientes.  
+- **Resultado:** El temporal tiene su propia varianza; temporal y dotal son excluyentes en el mixto.
+
+***
+
+**45.** $M_{60}=200$, $D_{60}=1\,000$, $M_{70}=120$, $D_{70}=550$. $A_{60}$, $A_{60:\overline{10}|}^1$, ${}_{10}E_{60}$.  
+
+**Solución.**  
+- **Paso 1.** $A_{60}=M_{60}/D_{60}$; $A_{60:\overline{10}|}^1=(M_{60}-M_{70})/D_{60}$; ${}_{10}E_{60}=D_{70}/D_{60}$.  
+- **Paso 2.** $A_{60}=200/1\,000=0{,}2$; $A_{60:\overline{10}|}^1=80/1\,000=0{,}08$; ${}_{10}E_{60}=550/1\,000=0{,}55$.  
+- **Resultado:** $A_{60}=0{,}2$; $A_{60:\overline{10}|}^1=0{,}08$; ${}_{10}E_{60}=0{,}55$.
+
+***
+
+**46.** Beneficio creciente $(IA)_{x:\overline{n}|}^1$: idea.  
+
+**Solución.**  
+- **Paso 1.** Seguro temporal que paga $k$ u.m. si la muerte ocurre en el año $k$ ($k=1,\ldots,n$).  
+- **Paso 2.** APV $= \sum_{k=1}^n k \, v^k \, {}_{k-1}p_x \, q_{x+k-1}$; notación $(IA)_{x:\overline{n}|}^1$.  
+- **Resultado:** APV de beneficios 1, 2, …, $n$ u.m. según el año de muerte.
+
+***
+
+**47.** Diferido 5 años por 4.000 (50). ${}_5E_{50}=0{,}85$, $A_{55}=0{,}32$. PNU.  
+
+**Solución.**  
+- **Paso 1.** PNU $= 4\,000 \cdot {}_{5|}A_{50} = 4\,000 \cdot {}_5E_{50}\,A_{55}$.  
+- **Paso 2.** PNU $= 4\,000 \times 0{,}85 \times 0{,}32 = 1\,088$ u.m.  
+- **Resultado:** PNU $= 1\,088$ u.m.
+
+***
+
+**48.** Vida entera + temporal 25 años: relación con mixto 25 años.  
+
+**Solución.**  
+- **Paso 1.** Vida entera = temporal 25 + diferido 25: $A_x = A_{x:\overline{25}|}^1 + {}_{25}E_x\,A_{x+25}$.  
+- **Paso 2.** Mixto 25 = temporal 25 + dotal 25: $A_{x:\overline{25}|} = A_{x:\overline{25}|}^1 + {}_{25}E_x$.  
+- **Resultado:** Vida entera = temporal + diferido; mixto = temporal + dotal.
+
+***
+
+**49.** $\operatorname{Var}(Z)$ para mixto: escribir con segundos momentos.  
+
+**Solución.**  
+- **Paso 1.** $Z$ toma $v^{k+1}$ si muerte en año $k+1$ ($k<n$) o $v^n$ si supervive $n$ años.  
+- **Paso 2.** $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(A_{x:\overline{n}|})^2$; $\mathbb{E}[Z^2]$ con regla de momentos (${}^2A_{x:\overline{n}|}^1$ y ${}^2(nE_x)$).  
+- **Resultado:** $\operatorname{Var}(Z)=\mathbb{E}[Z^2]-(A_{x:\overline{n}|})^2$.
+
+***
+
+**50.** Síntesis: escribir PNU total para seguro que paga 1.000 si muerte antes de 20 y 2.000 si muerte después (40).  
+
+**Solución.**  
+- **Paso 1.** PNU = 1.000 × (temporal 20 años) + 2.000 × (diferido 20 años).  
+- **Paso 2.** PNU $= 1\,000\,A_{40:\overline{20}|}^1+2\,000\,{}_{20|}A_{40} = 1\,000\,A_{40:\overline{20}|}^1+2\,000\,{}_{20}E_{40}\,A_{60}$.  
+- **Resultado:** PNU $= 1\,000\,A_{40:\overline{20}|}^1+2\,000\,{}_{20}E_{40}\,A_{60}$.
+
+
+***
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe calcular la PNU, expresar con conmutativas o demostrar la relación indicada para seguros de vida. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Calcular la PNU de un seguro de vida entera por 5.000 u.m. y de un diferido 15 años por 5.000 u.m. para (40) con la tabla del curso (Neill/Jordan).
+
+***
+
+2. **Se pide:** Probar $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$ con $M_x$, $D_x$, $D_{x+n}$.
+
+***
+
+3. **Se pide:** Temporal 20 años por 10.000 u.m. para (30) tiene PNU 450 u.m. Hallar $A_{30:\overline{20}|}^1$ por 1 u.m.
+
+***
+
+4. **Se pide:** Seguro compuesto para (60): 2.000 u.m. si muerte entre 65 y 75, 1.000 u.m. si muerte después de 75. Escribir la PNU con diferidos.
+
+***
+
+5. **Se pide:** Varianza de $Z$: $A_x=0{,}25$, ${}^2A_x=0{,}10$. Calcular $\operatorname{Var}(Z)$.
+
+***
+
+6. **Se pide:** Escribir $Z$ (variable valor presente) para seguro de vida entera por 1 u.m. (pago al final del año de muerte).
+
+***
+
+7. **Se pide:** Diferido: verificar ${}_{n|}A_x={}_nE_x\,A_{x+n}$ con conmutativas.
+
+***
+
+8. **Tipo parcial.** **Se pide:** Calcular $A_{45}$, ${}_{10|}A_{45}$, $A_{45:\overline{10}|}^1$ con $D_{45}$, $M_{45}$, $D_{55}$, $M_{55}$.
+
+***
+
+9. **Se pide:** Deducir la relación «temporal = vida entera − diferido» en notación.
+
+***
+
+10. **Se pide:** Segundo momento de $Z$ para vida entera: ¿a qué tipo de interés se valora?.
+
+***
+
+11. **Se pide:** Mixto 15 años: expresar con temporal 15 años y dotal 15 años.
+
+***
+
+12. **Tipo parcial.** **Se pide:** Seguro paga 4.000 u.m. si muerte antes de 65 y 6.000 u.m. si muerte después. (50). Escribir la PNU.
+
+***
+
+13. **Se pide:** $A_x=0{,}30$, ${}_{10}E_{40}=0{,}6$, $A_{50}=0{,}35$. Calcular $A_{40:\overline{10}|}^1$.
+
+***
+
+14. **Se pide:** Varianza del temporal: ¿coincide con la suma de varianzas del temporal puro y del dotal? Explicar.
+
+***
+
+15. **Se pide:** Descomposición ${}_{15}E_{40}$ con ${}_5E_{40}$, ${}_{10}E_{45}$ (tabla ilustrativa).
+
+***
+
+16. **Se pide:** Beneficio creciente $(IA)_x$: idea del valor presente.
+
+***
+
+17. **Tipo parcial.** **Se pide:** (a) Definir seguro temporal y mixto. (b) Calcular PNU temporal 10 años y mixto 10 años por 2.000 u.m. para (35) con $D_{35}=10\,000$, $M_{35}=1\,800$, $D_{45}=7\,200$, $M_{45}=1\,100$.
+
+***
+
+18. **Se pide:** $Z$ para temporal $n$ años: indicar los valores posibles.
+
+***
+
+19. **Se pide:** Probar $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$.
+
+***
+
+20. **Tipo parcial.** **Se pide:** Vida entera 1.000 u.m., temporal 20 años 2.000 u.m. para (40). $D_{40}=2\,000$, $M_{40}=320$, $M_{60}=200$, $D_{60}=1\,000$. Calcular la PNU total (Jordan/Neill/Weishaus).
+
+***
+
+21. **Tema 3.** **Se pide:** Seguro que paga 1.000 u.m. si muerte en 1-5 años y 2.000 u.m. si muerte en 5-20 años. (50). Escribir la PNU con diferidos.
+
+***
+
+22. **Se pide:** Variable $Z$ para temporal $n$ años: valores posibles y $\mathbb{E}[Z]$.
+
+***
+
+23. **Se pide:** Comprobar $A_{x:\overline{n}|}^1 = A_x - {}_nE_x\,A_{x+n}$ con conmutativas.
+
+***
+
+24. **Se pide:** Segundo momento de $Z$ (vida entera): relación con ${}^2A_x$ y tipo de interés.
+
+***
+
+25. **Tipo parcial.** **Se pide:** Diferido 10 años por 4.000 u.m. para (40). $D_{40}=2\,000$, $M_{50}=240$, $D_{50}=1\,200$. Calcular la PNU.
+
+***
+
+26. **Se pide:** Calcular $A_{55}$, $A_{55:\overline{10}|}^1$ y ${}_{10}E_{55}$ con $M_{55}$, $M_{65}$, $D_{55}$, $D_{65}$.  
+
+***
+
+27. **Se pide:** Probar $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$ desarrollando el miembro derecho.  
+
+***
+
+28. **Tipo parcial.** **Se pide:** Temporal 15 años por 6.000 u.m. (42). $M_{42}-M_{57}=250$, $D_{42}=2\,200$. PNU.  
+
+***
+
+29. **Se pide:** Variable $Z$ para mixto $n$ años: valores posibles (muerte antes de $n$ vs. supervivencia $n$).  
+
+***
+
+30. **Se pide:** Diferido 8 años por 5.000 (48). ${}_8E_{48}=0{,}7$, $A_{56}=0{,}38$. Calcular PNU.  
+
+***
+
+31. **Se pide:** Vida entera 4.000 u.m. (60). $A_{60}=0{,}28$. PNU.  
+
+***
+
+32. **Se pide:** Relación entre $A_x$, $A_{x:\overline{n}|}^1$ y ${}_{n|}A_x$ en una ecuación.  
+
+***
+
+33. **Tipo parcial.** **Se pide:** Seguro compuesto: 3.000 si muerte en 0–10 años, 2.000 si en 10–20, 1.000 después. (45). Escribir PNU.  
+
+***
+
+34. **Se pide:** Varianza de $Z$ (temporal $n$ años): fórmula con ${}^2A_{x:\overline{n}|}^1$ y $(A_{x:\overline{n}|}^1)^2$.  
+
+***
+
+35. **Se pide:** Mixto 20 años por 10.000 (35). $A_{35:\overline{20}|}=0{,}5$. PNU.  
+
+***
+
+36. **Se pide:** Descomposición del diferido ${}_{n|}A_x$ usando $A_{x+n}$ y ${}_nE_x$.  
+
+***
+
+37. **Se pide:** $A_{52}=0{,}30$, ${}_{8}E_{52}=0{,}62$, $A_{60}=0{,}40$. Calcular $A_{52:\overline{8}|}^1$.  
+
+***
+
+38. **Tipo parcial.** **Se pide:** (a) Definir seguro temporal y diferido. (b) PNU temporal 12 años 3.000 u.m. (50) con $M_{50}-M_{62}=200$, $D_{50}=1\,500$.  
+
+***
+
+39. **Se pide:** Segundo momento de $Z$ (vida entera) a fuerza de interés doble.  
+
+***
+
+40. **Se pide:** Beneficio 1.000 u.m. si muerte en años 1–5 y 2.000 si en 5–15. (55). Escribir PNU con diferidos.  
+
+***
+
+41. **Se pide:** Comprobar $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$ con $M_x$, $M_{x+n}$, $D_x$, $D_{x+n}$.  
+
+***
+
+42. **Se pide:** Temporal 18 años (40). PNU 720 u.m. por 8.000 u.m. de beneficio. Hallar $A_{40:\overline{18}|}^1$ por 1 u.m.  
+
+***
+
+43. **Tipo parcial.** **Se pide:** Vida entera 2.000 + temporal 10 años 3.000 para (48). $A_{48}=0{,}26$, $A_{48:\overline{10}|}^1=0{,}04$. PNU total.  
+
+***
+
+44. **Se pide:** $Z$ para diferido ${}_{n|}A_x$: valores posibles (0 si muerte antes de $n$).  
+
+***
+
+45. **Se pide:** Relación $A_{x:\overline{n}|}^1+A_{x:\overline{n}|}$ (temporal + mixto): no es vida entera; explicar.  
+
+***
+
+46. **Se pide:** Diferido 15 años por 6.000 (38). ${}_{15}E_{38}=0{,}55$, $A_{53}=0{,}42$. PNU.  
+
+***
+
+47. **Tipo parcial.** **Se pide:** Mixto 10 años por 5.000 (45). $A_{45:\overline{10}|}^1=0{,}06$, ${}_{10}E_{45}=0{,}60$. PNU.  
+
+***
+
+48. **Se pide:** Varianza del diferido: $Z=0$ o $Z=v^{K+1}$ con $K\geq n$.  
+
+***
+
+49. **Se pide:** Con $M_{58}=190$, $D_{58}=1\,100$, $M_{68}=110$, $D_{68}=600$, calcular $A_{58}$, $A_{58:\overline{10}|}^1$, ${}_{10}E_{58}$.  
+
+***
+
+50. **Se pide:** Síntesis: escribir en una línea la PNU de «vida entera 1.000 + temporal 20 años 2.000» para (40) con conmutativas.
+
+***
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013]. En el siguiente capítulo se extienden estos conceptos al caso en que el pago del seguro se realiza en el **momento** de la muerte (formulación continua) y se introducen los seguros con beneficio variable (creciente o decreciente).*

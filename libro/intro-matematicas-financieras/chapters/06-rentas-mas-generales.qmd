@@ -1,0 +1,424 @@
+---
+number: false
+---
+
+# Capítulo 4: Rentas más generales {#cap-rentas-generales .unnumbered}
+
+Este capítulo amplía el estudio de las rentas en dos direcciones: **anualidades diferidas** (inicio de pagos pospuesto) y el caso en que el **período de pago** no coincide con el **período de conversión del interés**, además de rentas con pagos variables y rentas continuas. La presentación sigue la línea de @kellison2008, @broverman2017 y textos clásicos (Villalobos, Vidaurri, Díaz Mata, Sampayo), e integra el manejo de plazos no enteros (pago residual y balloon) y la sensibilidad ante la estructura de plazos (duración de Macaulay).
+
+## Introducción
+
+En el Capítulo 3 se consideraron rentas simples, ciertas, vencidas e inmediatas (ASCVI) y anticipadas (ASCAI), con período de pago igual al de conversión. En este capítulo se abordan **anualidades diferidas** (primer bloque), rentas en que los pagos se realizan con **mayor o menor frecuencia** que la conversión de intereses (anualidades generales y armonización de frecuencias), **pagos variables** (gradientes aritméticos y geométricos, modelo de Gordon), **plazos no enteros** (drop payment y balloon), valoración de **arrendamientos** como anualidades a valor presente, **TIE y costo amortizado** en rentas, rentas con **tasas variables y estructura de plazos**, y **duración de Macaulay** para ALM.
+
+## Anualidades diferidas
+
+Las **anualidades diferidas** son aquellas en que el inicio de los cobros o depósitos se pospone a un periodo posterior al de la formalización de la operación (criterio de clasificación por **iniciación**). No se requieren fórmulas nuevas: se utilizan las de las anualidades simples, ciertas, vencidas e inmediatas (ASCVI), trasladando el valor actual o el monto según el plazo de diferimiento. En lo que sigue se restringe al caso **simple y cierto** (los casos general y contingente se tratan en otros capítulos).
+
+### Monto y valor actual
+
+**Valor actual:** se calcula el valor actual de la renta vencida e inmediata correspondiente en la fecha **un periodo antes del primer pago**, y luego se descuenta esa cantidad hacia atrás hasta la fecha de valoración (hoy). Así, con $m$ periodos de diferimiento y $n$ pagos de cuantía $R$, $C = R\,a_{\overline{n}|}\,(1+i)^{-m} = R\,v^m\,a_{\overline{n}|}$ (en notación actuarial: ${}_{m|}a_{\overline{n}|} = v^m a_{\overline{n}|}$).
+
+**Monto:** el monto al vencimiento de la última renta es el mismo que si la anualidad fuera inmediata: $M = R\,s_{\overline{n}|}$, ya que la posposición no afecta el valor acumulado al final del último pago.
+
+**Ejemplo (valor al contado con pagos diferidos).** Escritorio: se recibe el 1 de noviembre y se pagan 12 mensualidades de \$180 a partir del 1 de enero siguiente; 36% anual convertible mensualmente ($i = 0{,}03$). Valor actual de los 12 pagos al 1 de diciembre: $C' = 180\,\frac{1-(1{,}03)^{-12}}{0{,}03} = 180 \times 9{,}95400 = 1\,791{,}72$. Valor al contado (1 de noviembre): $C = 1\,791{,}72 \times (1{,}03)^{-1} = 1\,739{,}54$ (un periodo de diferimiento).
+
+**Ejemplo (renta semestral diferida).** Renta semestral de \$6\,000 durante 7 años (14 pagos), primer pago dentro de 3 años; 17% semestral. Los 14 pagos van del final del periodo 6 al final del periodo 19. Valor actual en 0: $C = 6\,000\,a_{\overline{14}|0{,}17}\,(1{,}17)^{-5} = 6\,000 \times 5{,}22930 \times 0{,}45611 \approx 14\,310{,}85$. El monto al final del periodo 19 es $M = 6\,000\,s_{\overline{14}|0{,}17} = 6\,000 \times 47{,}10267 \approx 282\,616{,}03$ (o bien $M = C\,(1{,}17)^{19} \approx 282\,616{,}03$).
+
+**Ejemplo (pago único para saldar tras faltas).** Deuda: 8 mensualidades de \$3\,500 desde el 12 de julio; después del quinto pago se dejan de hacer dos. ¿Qué monto único al vencimiento del octavo periodo salda la deuda? Interés 21,60% capitalizable mensualmente ($i = 0{,}018$). Deuda al 12 de febrero: $M_{\text{deuda}} = 3\,500\,s_{\overline{8}|0{,}018} = 29\,828{,}95$. Lo pagado hasta esa fecha: valor de 5 pagos capitalizados 3 periodos $= 3\,500\,s_{\overline{5}|0{,}018}\,(1{,}018)^3 \approx 19\,138{,}82$. Pago único requerido: $29\,828{,}95 - 19\,138{,}82 = 10\,690{,}13$.
+
+### Renta, plazo, interés y tasa de interés
+
+Cuando la incógnita es la renta $R$, el número de pagos $n$ o la tasa $i$, se plantea la ecuación de equivalencia en una fecha focal adecuada (por lo general la fecha del primer pago o la de la operación) y se despeja.
+
+**Ejemplo (renta a retirar).** Depósito de \$100\,000 el 14 de mayo del año 1; retiros mensuales a partir del 14 de febrero del año 3 (10 mensualidades). 17,52% capitalizable mensualmente ($i = 0{,}0146$). Fecha focal 14 de mayo año 1: $100\,000 = X\,a_{\overline{10}|0{,}0146}\,(1{,}0146)^{-20}$. Equivalentemente, $100\,000\,(1{,}0146)^{20} = X\,a_{\overline{10}|0{,}0146}$, luego $X = \frac{100\,000 \times 1{,}33628}{9{,}24176} \approx 14\,459{,}19$.
+
+**Ejemplo (pagos bimestrales diferidos).** Mesa de billar \$22\,000 al contado; 6 pagos bimestrales, el primero 6 meses (2 bimestres) después; 4% bimestral. Ecuación en el bimestre 2: $22\,000\,(1{,}04)^2 = X\,a_{\overline{6}|0{,}04}$, luego $X = \frac{22\,000 \times 1{,}0816}{5{,}24214} \approx 4\,539{,}22$. Alternativa: $22\,000 = X\,a_{\overline{6}|0{,}04}\,(1{,}04)^{-2}$.
+
+**Ejemplo (número de retiros).** Depósito \$8\,000 hoy; retiros mensuales de \$500 a partir del mes 6; 6% capitalizable mensualmente. Valor del depósito al final del mes 5: $8\,000\,(1{,}005)^5 = 8\,202{,}01$. Ecuación: $8\,202{,}01 = 500\,a_{\overline{n}|0{,}005}$ $\Rightarrow$ $a_{\overline{n}|0{,}005} \approx 16{,}404$ $\Rightarrow$ $n \approx 17{,}16$. En la práctica: 17 retiros de \$500 más un decimoctavo de $x = \bigl(8\,202{,}01\,(1{,}005)^{17} - 500\,s_{\overline{17}|0{,}005}\bigr)(1{,}005) \approx 79{,}53$; o 16 retiros de \$500 y un decimoséptimo de \$576{,}24.
+
+**Ejemplo (deuda con abono inicial y mensualidades diferidas).** Deuda \$10\,075; abono de \$3\,000 en 3 meses; después, mensualidades de \$725 desde el mes 6. 37,68% capitalizable mensualmente ($i = 0{,}0314$). Saldo tras el abono: $10\,075\,(1{,}0314)^3 - 3\,000 = 8\,054{,}18$. Valor de ese saldo al mes 5 (un periodo antes del primer pago de 725): $8\,054{,}18\,(1{,}0314)^2 = 8\,567{,}92 = 725\,a_{\overline{n}|0{,}0314}$ $\Rightarrow$ $n = 15$ pagos.
+
+**Ejemplo (tasa de interés).** Deuda \$25\,000; 5 pagos mensuales de \$7\,000 a partir del mes 8. Ecuación: $25\,000\,(1+i)^7 = 7\,000\,a_{\overline{5}|i}$, es decir $\frac{1-(1+i)^{-5}}{i\,(1+i)^7} = \frac{25\,000}{7\,000} \approx 3{,}57143$. Por interpolación entre $i=0{,}034$ y $i=0{,}035$ se obtiene $i \approx 0{,}03434$ (3,43% mensual).
+
+**Ejemplo (condominio).** Enganche \$450\,000; se pagan \$150\,000 en la entrega y 3 mensualidades de \$110\,000 a partir del 3 de junio. Saldo a financiar \$300\,000. Ecuación: $300\,000\,(1+i)^2 = 110\,000\,a_{\overline{3}|i}$, luego $\frac{1-(1+i)^{-3}}{i\,(1+i)^2} = \frac{300\,000}{110\,000} \approx 2{,}72727$. Interpolando: $i \approx 2{,}416\%$ mensual (aprox. 29% anual capitalizable mensualmente).
+
+### Ejercicios recomendados (anualidades diferidas)
+
+3. Persona de 33 años deposita en inversión al 6% capitalizable mensualmente para recibir \$10\,000 mensuales durante 20 años a partir de los 40 años; ¿cuánto debe depositar? 4. ¿A qué cantidad anual pagada por anticipado equivalen 3 pagos bimestrales de \$2\,000 al inicio de cada uno de los últimos 3 bimestres del año al 14,4% anual capitalizable bimestralmente? 5. Depósito \$15\,000 el 2 de mayo año 1; desde el 2 de noviembre año 3 hasta el 2 de mayo año 5 se depositan \$8\,000 cada 6 meses al 8% semestral; ¿cuánto se acumula al 2 de noviembre año 10? 6. ¿Qué cantidad pagada cada uno de 5 trimestres es equivalente a \$5\,000 pagados 21 meses antes del primer pago trimestral al 16,9% capitalizable trimestralmente? 7. ¿Qué cantidad pagada durante 5 trimestres es equivalente a \$5\,000 pagados 21 meses después del primer pago trimestral (mismo interés)? 8. Relación entre las respuestas de 6 y 7. 9. Inversión \$100\,000 el 21 de abril; venta el 21 de diciembre con 3 pagos bimestrales iguales, el primero el día de la venta; ganancia 2,5% bimestral; ¿cuánto cada pago? 10. Valor de la utilidad del comerciante (ej. 9) en el momento de la venta. 11. Automóvil \$139\,500; 50% de enganche y abonos mensuales de \$3\,751 desde 6 meses después; 18% capitalizable mensualmente; ¿cuántos abonos? Solución matemática y práctica. 12. ¿Cuántos depósitos de \$2\,500 al inicio de cada semestre equivalen a un monto de \$34\,725,42 retirado 3 semestres después del último depósito al 10% semestral? 13. Deuda \$11\,000 en 6 meses; ¿cuántos pagos bimestrales de \$2\,187,63 para liquidar al 19,76% convertible bimestralmente si el primer pago es en 12 meses? 14. Para pagar \$6\,000 que vencían el 14 de julio se abonan 5 mensualidades de \$1\,349,43, la última el 14 de enero del año siguiente; ¿tasa de interés mensual? 15. Deuda \$3\,500 hoy: (a) 15 mensualidades de \$295 desde el mes 6; (b) 8 bimestrales de \$540 desde el mes 6; ¿cuál tiene mayor tasa efectiva anual? 16. Préstamo refaccionario \$5 millones, 3 años de plazo, 6 meses de gracia; 23,29% capitalizable mensualmente; ¿importe de cada pago mensual? 17. Préstamo \$3 millones, 2 años, 6 meses de gracia; 26,4% anual capitalizable mensualmente; ¿monto de cada uno de los 18 pagos mensuales? 18. ¿Pago mensual del problema 17 si la tasa es TIE + 8 puntos? 19. La empresa del ejercicio 17 efectúa tres depósitos mensuales a partir del cuarto mes para preparar el primer pago; [continuar según enunciado completo]. (Véase también el capítulo de práctica.)
+
+## Diferencia entre período de pago y de conversión de interés
+
+En el Capítulo 3 el período de pago y el período de conversión de intereses coinciden. A continuación se consideran rentas en que los pagos se realizan con **mayor o menor frecuencia** que la conversión de intereses.
+
+Hay dos enfoques para manejar rentas en que el período de pago y el período de conversión difieren (con pagos constantes). La forma más sencilla de resolver **anualidades generales** es convertirlas en **anualidades simples** (mismo período de pago y de capitalización) y usar las fórmulas del Capítulo 3. Dos maneras de hacerlo: (1) **tasa de interés equivalente** por período de pago; (2) **renta equivalente** por período de capitalización. Hay dos casos: (A) período de pago **más largo** que el de capitalización (p. ej. pagos trimestrales, interés mensual); (B) período de pago **más corto** que el de capitalización (p. ej. pagos mensuales, interés semestral). Los casos diferido y anticipado de anualidades generales se resuelven combinando estos métodos con los de los capítulos anteriores.
+
+**Metodología de la tasa equivalente (Vidaurri, Díaz Mata).** Si la operación estipula una tasa nominal $j$ capitalizable $m$ veces al año y los pagos se realizan $p$ veces al año, la tasa periódica equivalente $i_p$ por período de pago debe satisfacer la identidad de acumulación anual:
+
+$$(1 + j/m)^m = (1 + i_p)^p.$$
+
+De aquí se obtiene la **tasa por período de pago**:
+
+$$i_p = (1 + j/m)^{p/m} - 1.$$
+
+Con $i_p$, la renta general se trata como renta simple y se aplican las fórmulas estándar de valor actual y monto acumulado. Este enfoque mantiene el monto de la renta original y ajusta solo el costo del dinero al intervalo relevante.
+
+**Enfoque de la renta equivalente y notación actuarial (Kellison, Broverman).** Alternativamente se calcula una renta teórica pagada al final de cada período de capitalización que sea financieramente equivalente a la serie original. El valor presente de una anualidad vencida de 1 unidad anual pagada en $p$ cuotas de $1/p$ cada una, con tasa efectiva anual $i$, se denota $a_{\overline{n}|}^{(p)}$ y cumple:
+
+$$a_{\overline{n}|}^{(p)} = \frac{1 - v^n}{i^{(p)}}, \qquad i^{(p)} = p\bigl[(1+i)^{1/p} - 1\bigr].$$
+
+La relación con la anualidad simple es $a_{\overline{n}|}^{(p)} = \frac{i}{i^{(p)}}\,a_{\overline{n}|}$. Cuando $p \to \infty$ (pagos continuos) se utiliza la integración de flujos (Kellison, Chan & Tse). En la banca comercial de América Latina suele preferirse la tasa equivalente por su claridad; en seguros e ingeniería financiera avanzada las rentas pagaderas $p$-ésimamente permiten una integración fluida con modelos de fuerza de interés.
+
+| Frecuencia de pago ($p$) vs capitalización ($m$) | Método recomendado | Referencia |
+|--------------------------------------------------|--------------------|------------|
+| $p < m$ (pago menos frecuente) | Tasa equivalente | Vidaurri / Díaz Mata |
+| $p > m$ (pago más frecuente) | Renta equivalente | Kellison / Broverman |
+| $p \to \infty$ (continuo) | Integración de flujos | Kellison / Chan & Tse |
+
+En la práctica, la fórmula $a_{\overline{n}|}^{(p)}$ es esencial para valorar pensiones mensuales en un entorno de tasas de rendimiento anuales (Garrett y McCutcheon).
+
+**Enfoque 1 (numérico).** Si el objetivo es calcular el valor numérico:
+
+1. Encontrar la tasa de interés convertible con la **misma frecuencia** que los pagos, equivalente a la tasa dada.
+2. Con esa nueva tasa, valorar la renta con las técnicas del Capítulo 3.
+
+Este enfoque es general (pagos con mayor o menor frecuencia que la conversión) y permite tratar tiempo desconocido y tasa desconocida. Se ilustra en los ejemplos siguientes.
+
+**Enfoque 2 (algebraico).** Desarrollar expresiones algebraicas en términos de símbolos del Capítulo 3, con factores de ajuste. En la literatura, rentas pagaderas con menor frecuencia y con mayor frecuencia suelen presentarse con fórmulas de aspecto distinto; el análisis algebraico es valioso para rentas en general y para rentas contingentes (p. ej. renta mensual vitalicia valorada a tasa efectiva anual).
+
+**Ejemplo (deuda con pagos bimestrales e interés mensual).** Deuda \$10\,000; 6 pagos bimestrales vencidos, el primero en 2 meses; 15% anual capitalizable mensualmente. Periodo de pago (2 meses) ≠ periodo de capitalización (1 mes): anualidad general. Se halla la tasa bimestral equivalente: $i' = (1{,}0125)^2 - 1$ y se plantea $C = R\,a_{\overline{6}|i'}$ con $C$ valor actual en la fecha del primer pago, o se lleva todo a la fecha de la operación.
+
+**Ejemplo.** Valor acumulado al final de 4 años de un fondo: depósitos de \$100 al inicio de cada trimestre los primeros 2 años y \$200 al inicio de cada trimestre los siguientes 2 años; tasa 12% convertible mensualmente.
+
+Tasa mensual 1%. Sea $j$ la tasa equivalente por trimestre: $j = (1{,}01)^3 - 1 = 0{,}030301$. El valor es $100\,\ddot{s}_{\overline{16}|j} + 200\,\ddot{s}_{\overline{8}|j}$. Numéricamente: $100(20{,}81704) + 200(9{,}17157) = 2.998{,}86$ dólares.
+
+**Ejemplo.** Préstamo de \$3.000 reembolsable con cuotas trimestrales al final de cada trimestre durante 5 años; tasa 10% convertible semestralmente.
+
+Tasa por semestre 5%. Tasa equivalente por trimestre: $j = (1{,}05)^{1/2} - 1 = 0{,}024695$. Sea $R$ el pago trimestral. Ecuación de valor: $R\,a_{\overline{20}|j} = 3.000$, luego $R = 3.000/a_{\overline{20}|j} \approx 3.000/15{,}63417 \approx 191{,}89$ dólares.
+
+### Monto y valor actual: ejemplos por ambos métodos
+
+**Caso 1: período de pago más largo que el de capitalización.** Cuatro pagos trimestrales de \$5\,000; 36% anual convertible mensualmente ($i = 0{,}03$ mensual). (a) **Tasa equivalente trimestral:** $i' = (1{,}03)^3 - 1 = 0{,}092727$; $M = 5\,000\,\frac{(1{,}092727)^4-1}{0{,}092727} \approx 22\,957{,}76$. (b) **Renta mensual equivalente:** $5\,000 = R'\,\frac{(1{,}03)^3-1}{0{,}03}$ $\Rightarrow$ $R' \approx 1\,617{,}65$; $M = R'\,\frac{(1{,}03)^{12}-1}{0{,}03} \approx 22\,957{,}74$. Valor actual: $C = 5\,000\,\frac{1-(1{,}092727)^{-4}}{0{,}092727} \approx 16\,102{,}12$ (o $C = R'\,a_{\overline{12}|0{,}03}$).
+
+**Caso 2: período de pago más corto que el de capitalización.** Diez depósitos mensuales de \$2\,500; 30% convertible semestralmente ($i = 0{,}15$ semestral). (a) **Tasa mensual equivalente:** $i' = 1{,}15^{1/6} - 1 \approx 0{,}023567$; $M = 2\,500\,\frac{(1{,}023567)^{10}-1}{0{,}023567} \approx 27\,824{,}97$. (b) **Renta semestral equivalente:** $R' = 2\,500\,s_{\overline{6}|i'} \approx 15\,912{,}03$; plazo $10/6$ semestres: $M = R'\,\frac{(1{,}15)^{10/6}-1}{0{,}15} \approx 27\,824{,}98$.
+
+**Ejemplo.** Veinticuatro pagos bimestrales de \$4\,500; 5% trimestral efectivo. Tasa bimestral equivalente: $(1+i')^{3/2} = 1{,}05$ $\Rightarrow$ $i' = 1{,}05^{2/3}-1 \approx 0{,}033062$. $M = 4\,500\,\frac{(1{,}033062)^{24}-1}{0{,}033062} \approx 161\,001{,}68$; $C = M(1{,}033062)^{-24} \approx 73\,755{,}96$. **Pago quincenal equivalente a \$2\,250 trimestrales** (22% cap. semestral): tasa quincenal $i' = 1{,}11^{1/12}-1 \approx 0{,}008735$; $2\,250 = R\,\frac{(1{,}008735)^6-1}{0{,}008735}$ $\Rightarrow$ $R \approx 366{,}89$.
+
+### Renta, tasa de interés y plazo
+
+**Renta.** Seguro \$5\,750 al contado; pagos quincenales por nómina; 18% cap. mensualmente. Tasa quincenal $i' = 1{,}015^{1/2}-1 \approx 0{,}007472$; $5\,750 = R\,a_{\overline{24}|i'}$ $\Rightarrow$ $R \approx 262{,}60$. Ahorrar \$115\,000 en 2 años con depósitos semanales; 0,25% mensual efectivo: tasa semanal $i' = 1{,}0025^{1/4}-1$; $115\,000 = R\,s_{\overline{96}|i'}$ $\Rightarrow$ $R \approx 1\,162{,}76$. Automóvil \$237\,250; 40% enganche, 36 mensualidades; 4,65% trimestral efectivo: tasa mensual $i' = 1{,}0465^{1/3}-1$; saldo 142\,350 $= R\,a_{\overline{36}|i'}$ $\Rightarrow$ $R \approx 5\,169{,}12$. Sustituir 10 pagos bimestrales de \$5\,650 (primer pago en 2 meses) por 15 mensuales desde el próximo mes al 12% efectivo: valor actual del plan bimestral con tasa bimestral equivalente; luego renta mensual con tasa mensual equivalente $\Rightarrow$ $R \approx 3\,663{,}79$.
+
+**Tasa y plazo.** Quince depósitos bimestrales de \$600 para monto \$11\,600: $\frac{(1+i')^{15}-1}{i'} = 11\,600/600$; por interpolación $i' \approx 0{,}03526$ (bimestral), tasa efectiva anual $(1{,}03526)^6-1 \approx 23{,}11\%$. Depósito \$32\,000 y 24 retiros trimestrales de \$2\,000: $32\,000 = 2\,000\,a_{\overline{24}|i'}$ $\Rightarrow$ $i' \approx 3{,}53\%$ trimestral; tasa anual cap. semestral $\approx 14{,}39\%$. Acumular \$8\,500 con depósitos semestrales de \$595{,}74 al 2,5% bimestral: tasa semestral $i' = (1{,}025)^3-1$; $8\,500 = 595{,}74\,s_{\overline{n}|i'}$ $\Rightarrow$ $n = 10$ depósitos. Préstamo \$1\,875\,000 con mensualidades de \$125\,000 al 25% efectivo anual: tasa mensual equivalente; $n \approx 17{,}78$ $\Rightarrow$ 17 pagos completos más un pago final $x = 1\,875\,000(1{,}018769)^{18} - 125\,000\,s_{\overline{17}|}(1{,}018769) \approx 97\,823$. Anualidad \$58\,000 en 9 meses con depósitos de \$7\,500 mensuales al 10% efectivo: $n \approx 7{,}53$ $\Rightarrow$ comenzar dentro de 3 meses con 6 depósitos completos y uno final mayor; último depósito $\approx 11\,727{,}27$.
+
+### Anualidades generales anticipadas y diferidas
+
+**Anticipadas.** Valor actual de 25 pagos semestrales anticipados de \$2\,500 al 25% capitalizable cada 4 meses: tasa efectiva semestral $i' = (1{,}0625)^{3/2}-1 \approx 0{,}0952$; $C = 2\,500 + 2\,500\,a_{\overline{24}|i'} \approx 25\,799{,}36$. Depósito anticipado quincenal para acumular \$3\,900 quince días después del último (5 bimestres, 24% cap. mensual): tasa quincenal $i' = 1{,}02^{1/2}-1$; $3\,900 = R\,\ddot{s}_{\overline{20}|i'}$ $\Rightarrow$ $R \approx 175{,}46$. Artículo \$999 con 9 pagos mensuales de \$129 desde la compra: $999 = 129\,\ddot{a}_{\overline{9}|i'}$; por interpolación $i' \approx 3{,}96\%$ mensual (efectiva anual $\approx 59{,}34\%$).
+
+**Diferidas (general + diferida).** A los 21 años se depositan \$21\,000; retiros trimestrales de \$1\,500 desde los 25 años; 13,5% cap. mensualmente. Tasa trimestral equivalente; valor del depósito un trimestre antes de cumplir 25: $21\,000(1{,}034131)^{15}$; ecuación $34\,741{,}88 = 1\,500\,a_{\overline{n}|0{,}034131}$ $\Rightarrow$ $n \approx 46{,}58$ (46 retiros completos y uno menor; edad al último retiro menor $\approx 36{,}5$ años). Deuda \$1\,700\,000 al 2 de junio año 2; refinanciar con 5 pagos mensuales desde el 2 de octubre; 11,25% efectivo anual: valor del adeudo al 2 de septiembre; $R\,a_{\overline{5}|i'} =$ ese valor $\Rightarrow$ $R \approx 358\,587{,}67$.
+
+### Aplicaciones: tiempos compartidos y anualidades variables geométricas
+
+**Tiempos compartidos.** Oferta: enganche \$12\,000 + 48 mensualidades de \$1\,000 + mantenimiento anual \$4\,340 (crece 5% anual) por 20 años. Con tasa de mercado 6% efectivo, valor actual de la inversión = enganche + VP(48 mensualidades a tasa mensual equivalente) $\approx 54\,708{,}78$. VP de mantenimientos con crecimiento $q=1{,}05$ y descuento $i=0{,}06$: $A(R;q)_{n|i} = R\,\frac{1 - q^n(1+i)^{-n}}{(1+i)-q}$ $\approx 74\,947{,}13$. Total $\approx 129\,655{,}91$; costo por noche (20 años, 7 noches/año) $\approx 926{,}11$. Comparación: comprar 20 noches/año en hotel a \$1\,000/noche con inflación 5% y descuento 6% $\Rightarrow$ VP $\approx 17\,268{,}92$ por año, noche $\approx 863{,}44$. En este ejemplo el tiempo compartido resulta más costoso (7,3% más por noche).
+
+**Anualidades variables geométricas.** Valor actual de $n$ pagos con primer pago $R$ y razón $q$ (cada pago = anterior $\times q$): si $q \neq 1+i$, $A_{v(R;q)n|i} = R\,\frac{1 - q^n(1+i)^{-n}}{(1+i)-q}$ (coincide con (6.37) con $1+k = q$). Si $q = 1+i$, $A_{v} = n\,R/(1+i)$. Arrendamiento 5 años, renta inicial \$120\,000 anual vencida, incremento 5% anual; tasa 7%: $A_v \approx 540\,173{,}31$; monto al vencimiento $540\,173{,}31(1{,}07)^5 \approx 757\,621$. Si $q = 1+i$ (inflación = tasa): $A_v = 5\times 120\,000/1{,}05 \approx 571\,428{,}57$. Versión **anticipada:** primer pago en 0, resto como variable vencida: $AA = R + R\,\frac{1-q^{n-1}(1+i)^{-(n-1)}}{(1+i)-q}$. **Diferida:** valor actual en inicio del periodo 3, luego descontar 3 periodos; monto al vencimiento = $A(1+i)^n$.
+
+### Ejercicios recomendados (anualidades generales)
+
+7. ¿Qué inversión acumula más a 2 años: \$1\,880 quincenales vencidos al 27% cap. bimestral o \$9\,500 bimestrales al 1,125% efectivo quincenal? 8. Renta mensual para monto \$97\,500 en 4 años al 1,1% bimestral. 9. Renta bimestral con VA \$182\,500 en 5 años al 1,89% mensual. 10. Abonos quincenales vencidos para préstamo \$40\,000 en 2 años al 24% cap. semestral. 11. Enganche 20% con 6 mensualidades para casa \$3\,800\,000 al 18% cap. semestral. 12. Beca-crédito \$7\,000/mes por 2 años; pagar con 24 mensualidades desde un mes después de la última beca al 10% efectivo. 13. Renta bimestral equivalente a 10 trimestrales de \$4\,500 al 21% cap. semestral. 14–16. Tasa: 20 depósitos trimestrales \$5\,400 → M \$150\,000 (cap. mensual); deuda \$13\,700 con 6 trimestrales \$2\,818,18 (efectiva anual); fondo paga \$12\,310/millón/mes (tasa efectiva). 17. Mejor alternativa para \$50\,000: 12 trimestrales \$5\,107,43 o 18 bimestrales \$3\,408,86. 18–20. Plazo: quincenales \$1\,331,43 para amortizar \$14\,990 al 2% mensual; liquidación \$95\,000 vs \$4\,000/mes vencidos al 16% cap. semestral (n y pago final); acumular \$15\,000 al 2% bimestral: \$5\,000 hoy vs \$260/trimestre. 27–38. Anticipadas y diferidas generales: valor contado 12 bimestrales anticipados \$335 al 28% cap. trimestral; renta mensual anticipada equivalente a anualidad \$17\,500 en 1 año al 8,2% efectivo; plazo renta anticipada \$882,79 quincenal → M \$14\,000 al 2,8% bimestral; deuda \$37\,500 con semestrales \$7\,750 al 19% cap. mensual (n y pago final); automóvil \$226\,950 con 18 bimestrales anticipados \$17\,287,46 (tasa); 25 mensuales \$175 → M \$5\,200 (tasa efectiva); monto y VA depósitos trimestrales \$10\,215 desde mes 4 durante 2 años al 17,5% efectivo; 3 pagos \$8\,680 (oct–dic) desde 30 abril al 9,6% cap. semestral; lavadora “compre ahora y pague después” 12 quincenales \$410,83 desde 15 enero, 23% efectivo; fondo con mensuales \$724\,686 desde mes 7 hasta mes 18 al 12% cap. semestral; rentas 1 jun–1 sep equivalentes a \$3\,720 el 1 feb al 20,5% efectivo semestral; bimestrales \$32\,300 desde año 1 para amortizar \$200\,000 que vence en 6 meses al 22% efectivo. (Véase capítulo de práctica.)
+
+## Rentas pagaderas con menor frecuencia que la conversión de intereses
+
+Se analizan algebraicamente las rentas cuyos pagos se realizan con **menor** frecuencia que la conversión de intereses.
+
+### Renta inmediata
+
+Sea $k$ el número de períodos de conversión contenidos en un período de pago; $n$ el plazo en períodos de conversión; $i$ la tasa por período de conversión. Cada período de pago contiene un número entero de períodos de conversión, así $k$ y $n$ son enteros positivos. El número de pagos es $n/k$.
+
+El valor presente de una renta que paga 1 al **final** de cada $k$ períodos de conversión durante $n$ períodos es la suma de una progresión geométrica:
+
+$$v^k + v^{2k} + \cdots + v^n = v^k\,\frac{1 - v^n}{1 - v^k} = \frac{1 - v^n}{(1+i)^k - 1}.$$
+
+En símbolos actuariales:
+
+$$\frac{a_{\overline{n}|}(i)}{s_{\overline{k}|}(i)}. \tag{6.1}$$
+
+El valor acumulado inmediatamente después del último pago es
+
+$$\frac{a_{\overline{n}|}(i)}{s_{\overline{k}|}(i)}\,(1+i)^n = \frac{s_{\overline{n}|}(i)}{s_{\overline{k}|}(i)}. \tag{6.2}$$
+
+**Derivación alternativa:** Existe $R$ tal que la serie de pagos de 1 al final de cada $k$ períodos pueda sustituirse por pagos de $R$ al final de cada período de conversión, con el mismo valor presente. Ese valor presente es $R\,a_{\overline{n}|}(i)$ (6.3). En un período de pago (con $k$ períodos de conversión), el valor acumulado de los $k$ pagos $R$ debe igualar 1; así $R\,s_{\overline{k}|}(i) = 1$ $\Rightarrow$ $R = 1/s_{\overline{k}|}(i)$ (6.4). Sustituyendo en (6.3) se obtiene (6.1).
+
+### Renta anticipada
+
+El valor presente de una renta que paga 1 al **inicio** de cada $k$ períodos de conversión durante $n$ períodos es:
+
+$$1 + v^k + v^{2k} + \cdots + v^{n-k} = \frac{1 - v^n}{1 - v^k} = \frac{a_{\overline{n}|}}{a_{\overline{k}|}}. \tag{6.5}$$
+
+El valor acumulado $k$ períodos de conversión **después** del último pago es:
+
+$$\frac{a_{\overline{n}|}}{a_{\overline{k}|}}\,(1+i)^n = \frac{s_{\overline{n}|}}{a_{\overline{k}|}}. \tag{6.6}$$
+
+En las fórmulas anteriores: para rentas **inmediatas** el denominador es $s_{\overline{k}|}$; para **anticipadas** es $a_{\overline{k}|}$.
+
+### Otras consideraciones
+
+**Perpetuidad.** Valor presente de una perpetuidad inmediata pagadera cada $k$ períodos:
+
+$$v^k + v^{2k} + \cdots = \frac{v^k}{1 - v^k} = \frac{1}{(1+i)^k - 1} = \frac{1}{i\,s_{\overline{k}|}}. \tag{6.7}$$
+
+Perpetuidad anticipada: $\frac{1}{i\,\ddot{a}_{\overline{\infty}|}}$ (6.8), límite de (6.5) cuando $n \to \infty$.
+
+**Fuerza de interés constante.** Si los pagos ocurren bajo fuerza de interés constante $\delta$, con $n$ y $k$ en cierto sentido “infinitos”, se suman los valores presentes o acumulados de cada pago, reemplazando $v^{tk}$ por $e^{-\delta tk}$ y $(1+i)^{tk}$ por $e^{\delta tk}$, obteniendo una progresión geométrica.
+
+**Período de pago sin entero de períodos de conversión.** Caso poco común ($k > 1$ pero no entero). Estrategia: escribir la suma de valores presentes (o acumulados) de cada pago y reconocer la progresión geométrica.
+
+**Ejemplo.** Valor acumulado al final de 12 años de un fondo: \$100 al inicio de cada trimestre los primeros 6 años y \$200 al inicio de cada trimestre los siguientes 6 años. Tasa 1% mensual; plazo 48 períodos de conversión; cada período de pago tiene 3 períodos de conversión. Renta anticipada:
+
+$$100\cdot\frac{s_{\overline{48}|0{,}01}}{a_{\overline{3}|0{,}01}} + 200\cdot\frac{s_{\overline{24}|0{,}01}}{a_{\overline{3}|0{,}01}}.$$
+
+Evaluando: $100\cdot\frac{61{,}22261 + 26{,}97346}{2{,}94099} \approx 2.998{,}86$ dólares.
+
+**Ejemplo (tiempo desconocido).** Inversión de \$1.000 para pagos de \$100 al final de cada año el mayor tiempo posible, con pago final menor; tasa 7% convertible semestralmente.
+
+Ecuación: $100\,\frac{a_{\overline{n}|0{,}035}}{s_{\overline{2}|0{,}035}} = 1.000$, es decir $a_{\overline{n}|0{,}035} = 10\cdot s_{\overline{2}|0{,}035} = 20{,}35$. Con el método de tiempos desconocidos: $36 < n < 37$ (semestres). Por tanto 18 pagos regulares y un pago final menor. Sea $R$ el monto adicional en el último pago regular. Ecuación de valor al final de 18 años: $R + 100\,\frac{s_{\overline{36}|0{,}035}}{s_{\overline{2}|0{,}035}} = 1.000(1{,}035)^{36}$. Despejando $R \approx 10{,}09$. El pago final total es \$110,09.
+
+## Rentas pagaderas con mayor frecuencia que la conversión de intereses
+
+Aquí los pagos son **más frecuentes** que la conversión de intereses; en la práctica son más comunes que el caso anterior.
+
+### Renta inmediata
+
+Sea $m$ el número de períodos de pago en un período de conversión; $n$ el plazo en períodos de conversión; $i$ la tasa por período de conversión. $m$ y $n$ son enteros positivos. El número total de pagos es $mn$.
+
+El valor actual de una renta que paga $1/m$ al final de cada $m$-ésimo de un período de conversión, durante $n$ períodos de conversión, se denota $a_{\overline{n}|}^{(m)}$. Sumando la progresión geométrica:
+
+$$a_{\overline{n}|}^{(m)} = \frac{1}{m}\Bigl(v^{1/m} + v^{2/m} + \cdots + v^{n}\Bigr) = \frac{1 - v^n}{m\bigl((1+i)^{1/m} - 1\bigr)} = \frac{1 - v^n}{i^{(m)}}. \tag{6.9}$$
+
+El valor acumulado inmediatamente después del último pago se denota $s_{\overline{n}|}^{(m)}$:
+
+$$s_{\overline{n}|}^{(m)} = a_{\overline{n}|}^{(m)}\,(1+i)^n = \frac{(1+i)^n - 1}{i^{(m)}}. \tag{6.10}$$
+
+### Renta anticipada
+
+Valor actual de una renta que paga $1/m$ al **inicio** de cada $m$-ésimo de un período de conversión, durante $n$ períodos: $\ddot{a}_{\overline{n}|}^{(m)}$,
+
+$$\ddot{a}_{\overline{n}|}^{(m)} = \frac{1 - v^n}{d^{(m)}}. \tag{6.11}$$
+
+Valor acumulado un $1/m$-ésimo de período después del último pago: $\ddot{s}_{\overline{n}|}^{(m)}$,
+
+$$\ddot{s}_{\overline{n}|}^{(m)} = \ddot{a}_{\overline{n}|}^{(m)}\,(1+i)^n = \frac{(1+i)^n - 1}{d^{(m)}}. \tag{6.12}$$
+
+### Otras consideraciones
+
+**Perpetuidades:**
+
+$$a_{\overline{\infty}|}^{(m)} = \frac{1}{i^{(m)}} \tag{6.13}$$
+
+$$\ddot{a}_{\overline{\infty}|}^{(m)} = \frac{1}{d^{(m)}}. \tag{6.14}$$
+
+**Período de conversión sin entero de períodos de pago.** Caso raro ($m > 1$ pero $m$ no entero). Recurrir a principios básicos: suma de valores presentes (o acumulados) de cada pago y sumar como progresión geométrica.
+
+**Uso correcto de coeficientes.** Cada pago es de monto $1/m$; el coeficiente del símbolo es 1. El coeficiente correcto en aplicaciones es el **monto total pagado durante un período de conversión** (a menudo llamado *renta anual* de la renta; si el período de conversión no es un año, puede usarse *renta periódica*).
+
+**Ejemplo.** ¿A qué tasa efectiva anual corresponde un valor presente de una serie de pagos de \$1 cada seis meses para siempre, con el primer pago inmediato, igual a \$10?
+
+Ecuación: $10 = 1 + v^{1/2} + v + v^{3/2} + \cdots = \frac{1}{1 - v^{1/2}}$. Así $v^{1/2} = 0{,}9$, $(1+i)^{1/2} = 1/0{,}9$, $(1+i) = (1/0{,}9)^2$, $i = (1/0{,}9)^2 - 1 \approx 0{,}2346$ (23,46%).
+
+## Rentas continuas
+
+Caso límite cuando la frecuencia de pagos tiende a infinito: pagos realizados de forma continua. Tiene importancia teórica y como aproximación a rentas muy frecuentes (p. ej. diarias). El tránsito del interés discreto al continuo que culmina en la fórmula de la renta continua $\bar{a}_{\overline{n}|}$ tiene su punto de ignición en el problema bancario planteado por **Jacob Bernoulli** en 1683 (véase preliminares): al evaluar el límite de $(1+1/n)^n$ cuando $n \to \infty$, Bernoulli descubrió la constante $e \approx 2{,}71828$. La **fuerza de interés** $\delta = \ln(1+i)$ que se utiliza aquí para valorar flujos continuos es la formalización de ese proceso de límite. Entender $e$ como número de origen financiero otorga una perspectiva axiomática superior para abordar el cálculo estocástico y los modelos de valoración de opciones (Perspectivas 2026).
+
+Se denota $\bar{a}_{\overline{n}|}$ el valor actual de una anualidad continua durante $n$ períodos de conversión de intereses, con importe total pagado por período igual a 1. Entonces
+
+$$\bar{a}_{\overline{n}|} = \int_0^n v^t\,dt \tag{6.15}$$
+
+(puesto que $v^t\,dt$ es el valor actual del pago $dt$ en el instante $t$). Integrando:
+
+$$\bar{a}_{\overline{n}|} = \int_0^n v^t\,dt = \frac{v^t}{\ln v}\Big|_0^n = \frac{1 - v^n}{\delta}. \tag{6.16}$$
+
+Alternativamente, $\bar{a}_{\overline{n}|} = \lim_{m\to\infty} a_{\overline{n}|}^{(m)} = \lim_{m\to\infty} \frac{1-v^n}{i^{(m)}} = \frac{1-v^n}{\delta}$ (6.17); o $\bar{a}_{\overline{n}|} = \lim_{m\to\infty} \ddot{a}_{\overline{n}|}^{(m)} = \frac{1-v^n}{\delta}$ (6.18). La anualidad continua es el límite cuando $m \to \infty$.
+
+El valor acumulado al final del plazo se denota $\bar{s}_{\overline{n}|}$:
+
+$$\bar{s}_{\overline{n}|} = \int_0^n (1+i)^{n-t}\,dt = \frac{(1+i)^n - 1}{\delta}. \tag{6.19}$$
+
+Se cumple $\bar{s}_{\overline{n}|} = \bar{a}_{\overline{n}|}(1+i)^n$ y $\bar{s}_{\overline{n}|} = \lim_{m\to\infty} s_{\overline{n}|}^{(m)}$ (6.21). Derivando $\bar{s}_{\overline{t}|}$ respecto a $t$ y sustituyendo $n$ por $t$: $\frac{d}{dt}\bar{s}_{\overline{t}|} = (1+i)^t = 1 + \delta\,\bar{s}_{\overline{t}|}$ (6.22): el saldo cambia por nuevos depósitos al ritmo 1 y por interés a fuerza $\delta$. Análogamente, $\frac{d}{dt}\bar{a}_{\overline{t}|} = v^t = 1 - \delta\,\bar{a}_{\overline{t}|}$ (6.23). En términos de $\delta$:
+
+$$\bar{a}_{\overline{n}|} = \frac{1 - e^{-n\delta}}{\delta}, \qquad \bar{s}_{\overline{n}|} = \frac{e^{n\delta} - 1}{\delta}. \tag{6.24-6.25}$$
+
+**Ejemplo.** Dada una fuerza de interés $\delta$ tal que $\frac{e^{20\delta}-1}{\delta} = 3\,\frac{e^{10\delta}-1}{\delta}$, es decir $e^{20\delta} - 1 = 3(e^{10\delta}-1)$, o $e^{20\delta} - 3e^{10\delta} + 2 = 0$. Factorizando $(e^{10\delta}-2)(e^{10\delta}-1)=0$. La raíz $e^{10\delta}=1$ implica $\delta=0$ (extraña). Así $e^{10\delta} = 2$, $\delta = \frac{\ln 2}{10} \approx 0{,}0693$ (6,93%).
+
+## Rentas ciertas variables en tiempo continuo (Tema 12)
+
+La intersección de **rentas continuas** (flujo en el tiempo continuo) y **rentas variables** (cuantía que cambia en el tiempo) exige un acápite específico que satisfaga el Tema 12 del programa oficial. En esta sección se evalúan flujos de caja que **no se pagan de forma discreta** ni mantienen una **cuantía estática**, sino que varían de forma ininterrumpida a lo largo del horizonte temporal.
+
+**Función de intensidad o densidad de pago.** Se introduce la función $\rho(t) \geq 0$, que representa la **intensidad de pago** (o densidad de flujo) en el instante $t$: el pago en el intervalo infinitesimal $[t, t+dt]$ es $\rho(t)\,dt$. Así, los pagos totales en $[0,n]$ son $\int_0^n \rho(t)\,dt$. Si $\rho(t) = 1$ constante, se recupera la anualidad continua unitaria del apartado anterior.
+
+**Valor presente con fuerza de interés variable.** Descontando cada flujo $\rho(t)\,dt$ al tiempo $0$ con una **fuerza de interés** $\delta(r)$ (constante o variable), el factor de descuento desde $0$ hasta $t$ es $e^{-\int_0^t \delta(r)\,dr}$. El **valor presente absoluto** de la renta cierta variable en tiempo continuo queda cristalizado en la expresión integral general:
+
+$$\mathrm{VP} = \int_0^n \rho(t)\,e^{-\int_0^t \delta(r)\,dr}\,dt. \tag{6.VC}$$
+
+Cuando $\delta(r) = \delta$ es constante, $\int_0^t \delta\,dr = \delta\,t$, luego $\mathrm{VP} = \int_0^n \rho(t)\,e^{-\delta t}\,dt$.
+
+**Ejemplo aplicado (fondo de pensiones).** Un fondo de pensiones recibe **aportes de forma continua** a lo largo del año, pero el monto anual de contribuciones **aumenta de forma exponencial** debido a una tasa proyectada de inflación o crecimiento salarial $\gamma$ (por ejemplo, $\rho(t) = \rho_0\,e^{\gamma t}$ en unidades monetarias por año, con $t$ en años). Con fuerza de interés constante $\delta$, el valor presente en $t=0$ de los aportes entre $0$ y $n$ años es
+
+$$\mathrm{VP} = \int_0^n \rho_0\,e^{\gamma t}\,e^{-\delta t}\,dt = \rho_0\int_0^n e^{(\gamma - \delta)t}\,dt.$$
+
+Si $\gamma \neq \delta$: $\mathrm{VP} = \rho_0\,\frac{e^{(\gamma-\delta)n} - 1}{\gamma - \delta}$. Si $\gamma = \delta$, el integrando es 1 y $\mathrm{VP} = \rho_0\,n$. Esta modelización conecta la matemática pura con la práctica demográfica y de seguros, donde los flujos continuos y crecientes son habituales en proyecciones de largo plazo.
+
+## Anualidades con pagos en progresión aritmética
+
+Se supone período de pago igual al período de conversión. Cualquier anualidad variable puede evaluarse sumando el valor actual (o acumulado) de cada pago; para progresión aritmética y geométrica hay expresiones cerradas.
+
+**Renta inmediata general (gradiente aritmético):** plazo $n$, pagos $R_t = R_1 + (t-1)d$ con $R_1$ primer pago y $d$ variación constante (Villalobos). El valor actual $C$ se descompone en una anualidad nivelada de monto $R_1$ y un gradiente puro de base cero:
+
+$$C = R_1\,\frac{1-(1+i)^{-n}}{i} \pm \frac{d}{i}\left[\frac{1-(1+i)^{-n}}{i} - n(1+i)^{-n}\right].$$
+
+En forma compacta, con factores auxiliares $T = a_{\overline{n}|}$ (factor de anualidad simple) y $V$ (factor de gradiente): $C = T\cdot R_1 \pm V\cdot d$. El signo de $d$ es positivo para cuotas crecientes y negativo para decrecientes; un gradiente negativo prolongado puede llevar la cuota a valores negativos, lo que exige ajustar el plazo. Para $P$ y $Q$ genéricos (primer pago $P$, incremento $Q$ por período), valor actual $A$:
+
+$$A = Pv + (P+Q)v^2 + (P+2Q)v^3 + \cdots + \bigl(P+(n-1)Q\bigr)v^n. \tag{6.26}$$
+
+Multiplicando por $(1+i)$: $(1+i)A = P + (P+Q)v + \cdots + (P+(n-1)Q)v^{n-1}$ (6.27). Restando (6.26) de (6.27):
+
+$$i\,A = P(1-v^n) + Q(v+v^2+\cdots+v^n) - n\,Q\,v^n.$$
+
+De donde
+
+$$A = P\,\frac{1-v^n}{i} + Q\,\frac{a_{\overline{n}|} - n\,v^n}{i} = P\,a_{\overline{n}|} + Q\,\frac{a_{\overline{n}|} - n\,v^n}{i}. \tag{6.28}$$
+
+Valor acumulado:
+
+$$P\,s_{\overline{n}|} + Q\,\frac{s_{\overline{n}|} - n}{i}. \tag{6.29}$$
+
+**Anualidad creciente:** $P=1$, $Q=1$. Valor actual $(Ia)_{\overline{n}|}$:
+
+$$(Ia)_{\overline{n}|} = a_{\overline{n}|} + \frac{a_{\overline{n}|} - n\,v^n}{i} = \frac{\ddot{a}_{\overline{n}|} - n\,v^n}{i}. \tag{6.30}$$
+
+Valor acumulado $(Is)_{\overline{n}|} = (Ia)_{\overline{n}|}(1+i)^n = \frac{\ddot{s}_{\overline{n}|} - n}{i}$ (6.31). Enfoque alternativo (suma de rentas diferidas niveladas): $(Ia)_{\overline{n}|} = \sum_{t=0}^{n-1} v^t\,a_{\overline{n-t}|} = \frac{\ddot{a}_{\overline{n}|} - n\,v^n}{i}$ (6.32).
+
+**Anualidad decreciente:** $P=n$, $Q=-1$. Valor actual $(Da)_{\overline{n}|}$:
+
+$$(Da)_{\overline{n}|} = n\,a_{\overline{n}|} - \frac{a_{\overline{n}|} - n\,v^n}{i} = \frac{n - a_{\overline{n}|}}{i}. \tag{6.33}$$
+
+Valor acumulado $(Ds)_{\overline{n}|} = (Da)_{\overline{n}|}(1+i)^n = \frac{n(1+i)^n - s_{\overline{n}|}}{i}$ (6.34). Alternativa: $(Da)_{\overline{n}|} = \sum_{t=1}^{n} a_{\overline{t}|} = \frac{n - a_{\overline{n}|}}{i}$ (6.35).
+
+**Ejemplo.** Valor actual de una anualidad inmediata cuyos pagos comienzan en 1, aumentan en 1 hasta $n$, y luego disminuyen en 1 hasta un pago final de 1: $(Ia)_{\overline{n}|} + v^n\,(Da)_{\overline{n-1}|}$. Puede simplificarse a $\frac{1}{i}\,a_{\overline{n-1}|}(1-v^n) + \frac{1}{i}(1-v^n)$.
+
+**Ejemplo.** Pagos que comienzan en 1, aumentan en 1 hasta 10, y luego se mantienen en 10 hasta completar 25 pagos. Notación $(I_{10}a)_{\overline{25}|}$. Expresiones equivalentes: $(Ia)_{\overline{10}|} + 10\,v^{10}\,a_{\overline{15}|}$; $(Ia)_{\overline{25}|} - v^{10}(Ia)_{\overline{15}|}$; $10\,a_{\overline{25}|} - (Da)_{\overline{9}|}$; $\sum_{t=0}^{9} v^t\,a_{\overline{25-t}|}$.
+
+## Anualidades con pagos en progresión geométrica
+
+Los pagos siguen una tasa compuesta de aumento o disminución. Tienen aplicaciones prácticas importantes.
+
+**Renta inmediata:** primer pago 1, sucesivos multiplicados por $(1+k)$. Valor actual:
+
+$$v + v^2(1+k) + \cdots + v^n(1+k)^{n-1}. \tag{6.36}$$
+
+Progresión geométrica de razón $v(1+k)$. Si $i \neq k$:
+
+$$\frac{v\,\Bigl(1 - \bigl(\frac{1+k}{1+i}\bigr)^n\Bigr)}{1 - \frac{1+k}{1+i}} = \frac{1 - \bigl(\frac{1+k}{1+i}\bigr)^n}{i - k}. \tag{6.37}$$
+
+Si $k = i$, el valor actual es $n\,v$ (límite cuando la tasa de crecimiento $f$ iguala la tasa de descuento $i$: $C = n\,R_1\,(1+i)^{-1}$). Este caso es común en valoración de empresas cuando la tasa de crecimiento esperada de dividendos se aproxima al costo del capital. Renta anticipada: $1 + v(1+k) + \cdots + v^{n-1}(1+k)^{n-1}$ (6.38). Definamos tasa $i^*$ tal que $1+i^* = \frac{1+i}{1+k}$ (6.39), es decir $i^* = \frac{i-k}{1+k}$ (6.40). Entonces el valor actual (para $k < i$) puede escribirse como el valor actual de una anualidad nivelada de $n$ períodos calculada a la tasa $i^*$ (6.41).
+
+**Valor acumulado** al final de $n$ períodos (inmediata con razón $1+k$):
+
+$$(1+i)^n v + (1+i)^{n-1}(1+k) + \cdots + (1+k)^{n-1} = \frac{(1+i)^n - (1+k)^n}{i - k}. \tag{6.42-6.45}$$
+
+**Perpetuidad y modelo de Gordon (valor de continuidad).** Si $k < i$, la progresión geométrica infinita converge. Valor presente perpetuidad inmediata: $\frac{1}{i-k}$ (6.46). Perpetuidad anticipada: $\frac{1+i}{i-k}$ (6.47). Si $k > i$, el valor presente no existe (serie diverge). La **perpetuidad creciente** (modelo de Gordon), con primer pago $R_1$ y crecimiento $g$, tiene valor presente $\mathrm{PV} = R_1/(r-g)$ donde $r$ es la tasa de descuento. Este cálculo es la base del **Valor en Uso** de las Unidades Generadoras de Efectivo (UGE). El **Valor de Continuidad** (terminal value) representa la capacidad de generar flujos más allá del periodo de proyección explícita y suele contribuir con más del 70% del valor total en modelos de flujo de caja descontado (Sampayo).
+
+**Ejemplo.** Anualidad con 20 pagos anuales; primer pago \$1.000 dentro de un año; cada pago 4% mayor que el anterior. Tasa efectiva anual 7%. Valor actual:
+
+$$1.000\,\frac{1 - (1{,}04/1{,}07)^{20}}{0{,}07 - 0{,}04} = 1.000\,\frac{1 - (1{,}04/1{,}07)^{20}}{0{,}03} \approx 14\,459.$$
+
+**Ejemplo.** Perpetuidad anticipada: pagos anuales que comienzan en \$100, aumentan 6% anual hasta el décimo pago, y permanecen constantes después. Tasa efectiva 8%. Valor actual de los primeros 10 pagos (crecimiento geométrico): $100\,\frac{1 - (1{,}06/1{,}08)^{10}}{1{,}08 - 1{,}06} \approx 920{,}65$. El décimo pago se realiza en $t=9$. Valor actual del resto (nivel 100$(1{,}06)^9$ en perpetuidad desde $t=10$): $100(1{,}06)^9\cdot v^{10}\cdot\frac{1}{0{,}08} \approx 1\,056{,}45$. Total $\approx 920{,}65 + 1\,056{,}45 = 1\,977{,}10$. En notación: $PV = 100\,\ddot{a}_{\overline{10}|}(i,k) + 100(1+k)^9\,v^{10}\,\ddot{a}_{\overline{\infty}|}$.
+
+## Plazos no enteros: pago residual (drop) y pago global (balloon)
+
+Cuando al despejar el número de pagos $n$ de una ecuación de valor se obtiene $n = k + f$ ($k$ entero, $f \in (0,1)$), los contratos suelen exigir un ajuste para saldar la deuda de forma exacta. Dos metodologías estándar:
+
+**Pago residual (drop payment).** Se realizan $k$ pagos íntegros de cuantía $R$ y un último pago $X < R$ un periodo después del último pago completo. El pago $X$ en el tiempo $k+1$ se obtiene capitalizando el valor presente original hasta $k+1$ y restando el valor futuro de los $k$ pagos ya realizados:
+
+$$X = \mathrm{PV}\,(1+i)^{k+1} - R\cdot s_{\overline{k}|i}\,(1+i).$$
+
+Es el estándar en préstamos de amortización gradual (sistema francés), pues permite al acreedor devengar intereses sobre el remanente un periodo completo adicional.
+
+**Pago global (balloon payment).** El ajuste $Y$ se suma al último pago entero (en el tiempo $k$) para liquidar la deuda en ese instante, sin extender el plazo. El pago total en $k$ es $Y = R + \mathrm{SI}_k$ (saldo insoluto en $k$), o equivalentemente:
+
+$$Y = \mathrm{PV}\,(1+i)^k - R\cdot s_{\overline{k-1}|i}\,(1+i).$$
+
+Es frecuente en arrendamiento de vehículos y equipos, donde se pacta un "valor residual" elevado que el cliente paga al final para adquirir la propiedad. La correcta identificación de estos pagos en los cronogramas es esencial para los perfiles de vencimiento y el análisis de liquidez.
+
+| Criterio | Drop payment (residual) | Balloon payment (global) |
+|----------|--------------------------|---------------------------|
+| Periodicidad del pago final | Tiempo $k+1$ | Tiempo $k$ |
+| Magnitud | $X < R$ | $Y > R$ |
+| Efecto en intereses totales | Mayor carga | Menor carga |
+| Uso preferente | Créditos de consumo y personales | Créditos comerciales y leasing |
+| Impacto en flujo de caja | Suave al final | Exigente al final |
+
+## Sinking fund y depreciación industrial
+
+Una de las aplicaciones más potentes de las anualidades acumuladas en el siglo XIX fue el **sinking fund** (fondo de amortización o caja de amortización). Aunque sus raíces se remontan a tradiciones italianas, su renacimiento ocurrió en Gran Bretaña para gestionar la deuda nacional acumulada durante las guerras del siglo XVIII. Sir **Robert Walpole** estableció uno en 1720; **William Pitt el Joven**, bajo la influencia de las ideas del Dr. **Richard Price** sobre el interés compuesto como "fuerza mágica", formalizó el fondo en **1786**. El fundamento matemático del sinking fund es la acumulación de una anualidad a una tasa de reinversión $j$ para igualar un principal en el futuro. Durante la Revolución Industrial, este esquema fue adoptado por empresas para financiar la reposición de maquinaria pesada. **Ewing Matheson**, en su obra *The Depreciation of Factories* (1884), abogó por el reconocimiento sistemático de la depreciación como gasto anual acumulado en un fondo de amortización para asegurar la continuidad operativa. Este vínculo entre ingeniería y contabilidad financiera muestra que la anualidad es el motor que permite la renovación del capital físico en una economía industrial.
+
+| Sistema de pago | Mecanismo de repago | Ventaja financiera | Contexto histórico |
+|-----------------|---------------------|--------------------|---------------------|
+| Amortización gradual | Cuota nivelada (capital + interés) | Previsibilidad para el deudor | Créditos hipotecarios modernos |
+| Sinking fund | Pago único al final; depósitos a un fondo | Captura de interés sobre interés | Gestión de deuda nacional británica |
+| Amortización constante | Capital igual; cuota decreciente | Menor carga de intereses total | Préstamos industriales del siglo XIX |
+
+## Arrendamientos como anualidades a valor presente
+
+Desde la óptica de las matemáticas financieras, un contrato de arrendamiento es una anualidad valorada a su valor presente: el pasivo se mide como el VP de los pagos de arrendamiento pendientes, descontados a la tasa implícita del contrato o a la tasa incremental de endeudamiento. Incluyen pagos fijos, variables ligados a un índice (p. ej. IPC) y garantías de valor residual.
+
+**Contexto legal y financiero en Venezuela: rentas y arrendamiento.** La aplicación de la matemática de las rentas en el entorno venezolano ilustra cómo la normativa captura principios actuariales. A principios del siglo XX, las reformas impulsadas por **Román Cárdenas** (Ministro de Hacienda entre 1913 y 1922) introdujeron contabilidad financiera rigurosa y centralización de fondos nacionales, permitiendo duplicar la renta interna y establecer superávit con el cual se pagaron deudas onerosas; décadas después, esa solvencia permitió desarrollar un sistema bancario capaz de emitir cédulas hipotecarias, instrumentos de renta fija que funcionan como anualidades ciertas para el ahorrador. El **arrendamiento** está históricamente influenciado por el Derecho Romano (*locatio conductio rei* y *operis*). En Venezuela, la Ley de Regulación de Alquileres (1960) estableció porcentajes de rentabilidad anual máxima para contener la inflación de cánones; la Ley para la Regularización y Control de los Arrendamientos de Vivienda (2011) declara la actividad de interés público estratégico. El cálculo del **canon de arrendamiento** que realiza la Superintendencia Nacional de Arrendamiento de Vivienda (SUNAVI) es una ecuación de valor: el regulador determina el valor justo del inmueble, aplica una tasa de rentabilidad anual y la divide en doce cuotas mensuales niveladas. El **arrendamiento financiero (leasing)** se formalizó mediante las Normas sobre Arrendamiento Financiero de **1975**, que calificaron a estas empresas como institutos de crédito sometidos a la vigilancia de la Superintendencia de Bancos; el contrato de leasing es una anualidad donde el arrendatario paga cuotas que cubren precio del bien más intereses, con "opción de compra" al final, lo que matemáticamente equivale a una anualidad vencida con un pago balloon en el último periodo. **Ejemplo (renta variable geométrica):** arrendamiento por 10 años, cuota anual \$50\,000 que crece 3% anual; tasa 6%. Valor inicial:
+
+$$\mathrm{PV} = \frac{50\,000}{0{,}03 - 0{,}06}\left[\left(\frac{1{,}06}{1{,}03}\right)^{10} - 1\right] \approx 398\,967{,}97.$$
+
+La tabla de costo amortizado segrega cada cuota entre interés y reducción del pasivo (valoración recursiva con TIE).
+
+## TIE y costo amortizado en rentas
+
+La **Tasa de Interés Efectiva (TIE)** es la tasa que iguala los flujos de efectivo futuros con el valor en libros inicial; incluye comisiones y costos de transacción. En un préstamo con valor nominal $V_{\mathrm{nom}}$ y costos $C_{\mathrm{trans}}$: $V_{\mathrm{nom}} - C_{\mathrm{trans}} = \sum_{t=1}^n R_t\,(1 + i_e)^{-t}$. La dinámica del saldo es $CA_t = CA_{t-1}(1+i_e) - R_t$. El deterioro se modela como ajuste en los flujos esperados y recálculo del valor presente con la TIE original.
+
+## Rentas con tasas variables y estructura de plazos
+
+Cuando la tasa de interés no es constante, cada flujo futuro debe descontarse con el costo de oportunidad correspondiente a su vencimiento (**curva de rendimientos**). Con **tasas spot** $s_t$ (rendimiento anualizado de una inversión que comienza hoy y termina en $t$), el valor presente de una renta nivelada $R$ es:
+
+$$\mathrm{PV} = R\,\sum_{t=1}^n (1+s_t)^{-t}.$$
+
+Las **tasas forward** son las tasas implícitas para periodos futuros y son cruciales para la valoración de swaps de tasa de interés (Kellison, Chan & Tse). Con **fuerza de interés variable** $\delta(r)$, el valor presente de una anualidad continua $\bar{a}_{\overline{n}|}$ se obtiene por integración:
+
+$$\mathrm{PV} = \int_0^n e^{-\int_0^t \delta(r)\,dr}\,dt.$$
+
+Si $\delta(t) = a + b\,t$, la valoración requiere integración numérica o desarrollos de Taylor. Estos modelos son la base de sistemas estocásticos (Vasicek, Cox-Ingersoll-Ross) usados en valoración de pasivos contingentes.
+
+## Duración de Macaulay y sensibilidad en anualidades
+
+En gestión de activos y pasivos (ALM) interesa la **sensibilidad** del valor de una renta ante cambios en la tasa. Como se desarrolló en el Capítulo 2, **Frederick Macaulay** (1938) demostró que el vencimiento nominal era insuficiente para medir el riesgo de una renta fija: un bono con cupones altos recupera su valor más rápido que uno con cupones bajos. Macaulay propuso la **Duración** como tiempo promedio ponderado para recibir los flujos, con pesos iguales al valor presente de cada pago; **Frank Redington** (1952) elevó la teoría a la estrategia de **inmunización** (igualdad de valores presentes, duraciones y convexidad de activos mayor que la de pasivos). Para una anualidad, la **Duración de Macaulay** $D$ es el centro de gravedad temporal:
+
+$$D = \frac{\sum_{t=1}^n t\cdot \mathrm{PV}(CF_t)}{\sum_{t=1}^n \mathrm{PV}(CF_t)}.$$
+
+Para una anualidad nivelada de $n$ periodos a tasa $i$: $D = \frac{i}{1+i} - \frac{n}{(1+i)^n - 1}$. La **duración modificada** es $D_{\mathrm{mod}} = D/(1+i)$ (variación porcentual aproximada del precio ante un cambio de un punto en la tasa). La **convexidad** mide la curvatura de la relación precio–tasa y corrige el error de la duración ante movimientos mayores. Para un pasivo por arrendamiento, la tesorería debe buscar activos cuya duración de Macaulay sea equivalente; una mayor convexidad es deseable: el valor sube más cuando las tasas bajan de lo que baja cuando suben.
+
+| Medida de sensibilidad | Definición conceptual | Utilidad para el actuario |
+|------------------------|------------------------|----------------------------|
+| Duración de Macaulay | Tiempo promedio de recuperación del capital | Alineación de plazos de activos y pasivos (ALM) |
+| Duración modificada | % de cambio en valor ante 1% de cambio en $i$ | Medición de la volatilidad del portafolio |
+| Convexidad | Curvatura de la relación precio–tasa | Margen de seguridad ante grandes shocks de mercado |
+
+## Resumen y aplicaciones actuariales
+
+| Tipo | Comentario |
+|------|------------|
+| Pago menos frecuente que conversión | VP inmediata: $a_{\overline{n}|}/s_{\overline{k}|}$; anticipada: $a_{\overline{n}|}/a_{\overline{k}|}$. |
+| Pago más frecuente que conversión | Símbolos $a_{\overline{n}|}^{(m)}$, $\ddot{a}_{\overline{n}|}^{(m)}$ con $i^{(m)}$, $d^{(m)}$; relación $a_{\overline{n}|}^{(p)} = (1-v^n)/i^{(p)}$. |
+| Continua | $\bar{a}_{\overline{n}|} = (1-v^n)/\delta$, $\bar{s}_{\overline{n}|} = (e^{n\delta}-1)/\delta$. |
+| Progresión aritmética | Gradiente Villalobos $C = T\cdot R_1 \pm V\cdot d$; $(Ia)_{\overline{n}|}$, $(Da)_{\overline{n}|}$. |
+| Progresión geométrica | Fórmula (6.37); Gordon $\mathrm{PV}=R_1/(r-g)$; valor en uso. |
+| Plazos no enteros | Drop payment $X$ en $k+1$; balloon $Y$ en $k$; perfiles de vencimiento. |
+| Arrendamientos | Pasivo = VP pagos; tabla de costo amortizado; valoración recursiva. |
+| Tasas variables | PV con tasas spot; fuerza $\delta(t)$; integral $\int e^{-\int \delta}$. |
+| Duración y ALM | Macaulay $D$, modificada $D/(1+i)$; inmunización Redington. |
+
+En seguros y pensiones, estas rentas son el bloque básico para beneficios garantizados, reservas matemáticas y, combinadas con probabilidades de supervivencia, para rentas vitalicias [@kellison2008]. El método del costo amortizado y la TIE permiten valorar y comunicar el desempeño financiero de forma consistente.
+
+**Síntesis.** La integración de los contextos históricos (census, prestiti, De Moivre, Consols, sinking fund, SUNAVI) permite reconocer que las fórmulas de los Capítulos 3 y 4 son el resultado de siglos de refinamiento: el factor $v$ representa la solución ética al lucro cesante; la constante $e$ en las rentas continuas tiene origen financiero (Bernoulli); las leyes de arrendamiento reflejan la tensión entre rentabilidad del capital y protección social. Cada variable en la ecuación de una anualidad tiene un peso histórico. Al finalizar el recorrido por estos capítulos, el lector no solo domina el álgebra de las rentas, sino que dispone de la capacidad crítica para modelar proyecciones, auditar sistemas complejos y contribuir a la estabilidad socioeconómica de su entorno.

@@ -1,0 +1,488 @@
+---
+number: false
+---
+
+# Capítulo 1: Medición del interés {#cap-medicion-interes .unnumbered}
+
+En el desarrollo del presente capítulo se han utilizado como referencia los textos de @broverman2017, @kellison2008 y @vaaler2009. Sin embargo, es importante destacar que, en esta sección en particular, se han adoptado predominantemente los enfoques propuestos por @kellison2008 y @broverman2017. Ambos autores aportan perspectivas valiosas que enriquecen el análisis y la comprensión del tema tratado, ofreciendo herramientas conceptuales fundamentales para el desarrollo del contenido presentado. Se han incorporado además ejemplos y aplicaciones de @diazmata2013, @deniz2016 y @vidaurri2017.
+
+Agradecemos a los autores mencionados por sus contribuciones al campo, las cuales han sido esenciales para la elaboración de esta guía teórico-práctica.
+
+## Objetivos
+
+- Comprender la fundamentación axiomática de las funciones de acumulación $a(t)$ y monto $A(t)$, y los regímenes de capitalización (simple, compuesto, continua).
+- Calcular tasas de interés y descuento; conocer la jerarquía entre fuerza de interés $\delta$, tasa efectiva $i$ y tasa de descuento $d$.
+- Diferenciar entre interés simple y compuesto; entender el argumento de reinversión y la consistencia temporal.
+- Utilizar la fuerza de interés (constante y variable) para valorar flujos y conectar con la estructura temporal de tasas (spot y forward).
+- Conocer convenciones de mercado (conteo de días, instrumentos a descuento), valoración por costo amortizado y uso de calculadora financiera y hojas de cálculo.
+
+## Contexto macrofinanciero contemporáneo: la era fiduciaria y el imperativo regulatorio
+
+Si bien los cimientos axiomáticos del valor del dinero en el tiempo se erigieron durante la Revolución Científica, la aplicación de la matemática financiera contemporánea se ejecuta sobre una infraestructura macroeconómica radicalmente distinta. Hasta bien entrado el siglo XX, la teoría de acumulación operaba en un entorno anclado por el **patrón oro** o los esquemas de convertibilidad fija de Bretton Woods. En aquellos regímenes, la estabilidad secular de los precios permitía concebir la tasa de interés casi exclusivamente como compensación por la renuncia a la liquidez y el riesgo crediticio.
+
+El colapso definitivo de ese orden ocurrió en **1971** con el abandono de la convertibilidad del dólar en oro (Nixon Shock), que inauguró la era global del **dinero fiduciario** o fiat: una moneda sostenida por la fe institucional y la exigibilidad tributaria, sin respaldo en metales. Al desvincular la emisión monetaria de un ancla física, la economía mundial enfrentó los choques inflacionarios estructurales de la década de 1970. En consecuencia, la **Ecuación de Fisher** —que descompone la tasa nominal en tasa real y componente inflacionario— dejó de ser una exquisitez teórica para erigirse como el núcleo de supervivencia en el diseño de cualquier modelo de valoración. Hoy, el cálculo exacto del interés compuesto representa la principal defensa matemática contra la erosión sistemática del poder adquisitivo.
+
+| Elemento estructural | Era del patrón oro / Bretton Woods | Era del dinero fiduciario (post-1971) | Implicación en matemáticas financieras |
+|---------------------|-------------------------------------|---------------------------------------|----------------------------------------|
+| Respaldo del valor | Conversión garantizada a metales | Confianza en la autoridad fiscal y monetaria | El dinero pierde estabilidad intrínseca; obliga a modelar riesgo cambiario e inflación. |
+| Dinámica de precios | Estabilidad a largo plazo; inflación con reversión | Inflación estructural y acumulativa | La ecuación de Fisher se vuelve obligatoria para separar rendimientos nominales de reales. |
+| Naturaleza de la tasa | Compensación por riesgo de impago y liquidez | Mecanismo de defensa contra pérdida de poder de compra | Desarrollo de instrumentos indexados (UDI, UVR) para proteger el capital. |
+
+**La ecuación de Fisher en escenarios de crisis: experiencia venezolana.** El estudio de la medición del interés requiere un anclaje en el comportamiento histórico de las tasas reales. Durante el periodo **1951-1973**, Venezuela mantuvo una de las economías más estables del mundo, con una inflación promedio de 1,6% anual y un crecimiento del PIB del 5,7%; en ese entorno, la tasa nominal era un reflejo fiel de la ganancia real por el uso del capital. El **quiebre de la estabilidad cambiaria el 18 de febrero de 1983 (Viernes Negro)** introdujo la necesidad de aplicar rigurosamente la Ecuación de Fisher. En contextos de inflación persistente o hiperinflación, el uso de la aproximación $r \approx i - f$ es técnicamente incorrecto y puede generar pérdidas actuariales masivas; debe usarse la forma exacta $r = (i - f)/(1 + f)$. Durante la **hiperinflación venezolana (2017-2020)**, la pérdida del poder adquisitivo del bolívar fue de tal magnitud que la tasa real de interés se volvió profundamente negativa a pesar de tasas nominales elevadas, erosionando reservas técnicas no indexadas.
+
+| Periodo económico (Venezuela) | Inflación promedio ($f$) | Tasa real de interés (efecto Fisher) | Implicación actuarial |
+|------------------------------|--------------------------|--------------------------------------|------------------------|
+| Estabilidad (1951-1973) | 1,6% | Positiva y estable | Valoración determinística robusta. |
+| Ajuste (1983-1989) | 16% – 80% | Volátil | Exige incorporación de primas por inflación. |
+| Hiperinflación (2017-2020) | > 1.000% | Profundamente negativa | Erosión total de reservas técnicas no indexadas. |
+
+**La institucionalización del interés: banca central.** La tasa de interés ha sido capturada e institucionalizada por el Estado. El **Banco de Inglaterra**, fundado a finales del siglo XVII como entidad privada, fue nacionalizado en 1947 y más tarde recuperó independencia operacional para enfocarse en la estabilidad de precios. La **Reserva Federal** de Estados Unidos nació en el siglo XX para proveer liquidez de última instancia y evitar pánicos bancarios. Los bancos centrales abandonaron el control rígido de los agregados monetarios y adoptaron la **tasa de interés a corto plazo** como variable operativa de la política monetaria. Cuando el banco central desea estimular la economía, compra títulos e inyecta liquidez, presionando las tasas a la baja; para contener la inflación, vende activos y eleva el costo del crédito. La **estructura temporal de las tasas** (spot y forward) no es solo una construcción algebraica: es el mecanismo de transmisión mediante el cual las decisiones del banco central se transmiten al resto de la economía. Modelar la curva de tipos para valorar un bono a treinta años equivale a cuantificar las expectativas del mercado respecto a las futuras intervenciones monetarias.
+
+## Economía conductual: el conflicto entre el axioma y la psicología
+
+El andamiaje lógico que se despliega en este capítulo se apoya en el **axioma de consistencia intertemporal**, representado por el modelo de descuento exponencial y la utilidad marginal decreciente. La ley del interés compuesto dicta que la penalización del tiempo es constante. No obstante, las investigaciones empíricas de la **economía conductual** y la neuroeconomía han demostrado que la psique humana no opera exponencialmente, sino mediante un **descuento hiperbólico**. El cerebro exhibe un pronunciado "sesgo del presente", aplicando tasas de descuento muy altas frente a demoras cortas, lo que genera inconsistencia temporal que sabotea las decisiones a largo plazo. La evaluación de recompensas inmediatas activa desproporcionadamente el sistema límbico, mientras que la deliberación sobre recompensas diferidas requiere la corteza prefrontal.
+
+| Perspectiva de descuento | Supuesto cognitivo | Comportamiento en el tiempo | Implicación en productos actuariales |
+|--------------------------|--------------------|----------------------------|--------------------------------------|
+| Modelo exponencial (clásico) | Agente racional; valor presente sistemático | Consistencia temporal perfecta | Los mercados se equilibran mediante ecuaciones de valor estables. |
+| Modelo hiperbólico (conductual) | Conflicto límbico vs. prefrontal | Inconsistencia temporal; sesgo del presente | Productos con barreras de salida (penalizaciones, pre-compromiso) para evitar que el inversor sabotee su patrimonio. |
+
+Al asimilar este contraste, el actuario comprende que las ecuaciones de valor equivalente y los esquemas de amortización no describen la naturaleza humana, sino que conforman una **arquitectura normativa**. Instrumentos como fondos de hundimiento, anualidades cerradas y seguros de vida son estructuras de pre-compromiso matemático concebidas para blindar el patrimonio frente a la irracionalidad cognitiva a corto plazo.
+
+## El descuento como obligación legal: estándares contables y supervisión
+
+El dominio de estas técnicas ha trascendido la búsqueda de rentabilidad para instaurarse como **mandato de derecho financiero internacional**. La crisis sistémica de 2008 evidenció los riesgos de emplear modelos de valoración deficientes y desestimar el riesgo de liquidez. Como respuesta, los **Acuerdos de Basilea III** impusieron coeficientes como el **Coeficiente de Cobertura de Liquidez (LCR)**, que exigen validar el sostenimiento del valor de los activos en escenarios de estrés mediante umbrales sobre las tasas de descuento. La relación entre el factor de descuento $v$ y la tasa $d$ formalizada en este capítulo determina en la práctica si un banco cumple o incumple la normativa.
+
+En paralelo, el marco contable global experimentó una metamorfosis liderada por el Consejo de Normas Internacionales de Contabilidad. Bajo estándares anteriores, los bancos operaban con un modelo de "pérdida incurrida", que retrasaba las provisiones hasta la evidencia de incumplimiento. El nuevo paradigma de **Pérdida Crediticia Esperada (ECL)** exige que las provisiones se calculen desde la originación del crédito, con proyecciones macroeconómicas y descuento de flujos al presente utilizando la **Tasa de Interés Efectiva (TIE)** original del activo. El concepto de **costo amortizado** y la iteración para hallar la TIE, introducidos en los Capítulos 1 y 2, son los motores algorítmicos de ese marco. La pericia para despejar incógnitas de rendimiento, formular ecuaciones de valor y estructurar el costo amortizado ya no es opcional; es el lenguaje auditable con el que el actuario contemporáneo asegura la solvencia y transparencia del ecosistema de capitales.
+
+**El imperativo regulatorio en Venezuela: de la regla aritmética al pasivo matemático.** El dominio de la tasa efectiva $i$ y del factor de descuento $v = (1+i)^{-1}$ no responde únicamente a un deseo de optimizar la rentabilidad, sino a un **mandato legal** cuyo origen en Venezuela se remonta a la década de 1930. Hasta 1935 el sector asegurador operaba bajo el Código de Comercio, que no contemplaba las complejidades del riesgo a largo plazo. La promulgación de la **Ley de Inspección y Vigilancia de las Empresas de Seguros en julio de 1935** (final del gobierno del general Juan Vicente Gómez) ordenó la creación de la primera entidad reguladora: la **Fiscalía de Empresas de Seguros**, adscrita al Ministerio de Fomento. La **reforma de 1938** fue trascendental: impuso por primera vez el uso de **métodos matemáticos formales** para la constitución de las reservas técnicas legales y la demostración de solvencia. La obligación jurídica de calcular el valor presente de las obligaciones contingentes futuras exigió a las compañías abandonar las aproximaciones lineales en favor del interés compuesto, el factor de actualización $v^n$ y las **ecuaciones de valores equivalentes** (conceptos centrales del Capítulo 2). En **1951** se fundó la **Cámara de Aseguradores de Venezuela (CAV)** en Caracas, impulsando la estandarización de convenciones de conteo de días (Actual/360, 30/360) necesarias para el descuento de letras y la valoración de bonos. En **1958** la Fiscalía fue elevada a **Superintendencia de Seguros** (hoy SUDEASEG), y en **1965** la Ley de Empresas de Seguros y Reaseguros estableció garantías mínimas, margen de solvencia y reglas estrictas para la inversión de las reservas matemáticas. Para el estudiante de actuaría, comprender la función de acumulación $a(t)$ es comprender la misma herramienta con la cual el regulador audita la viabilidad sistémica del sector frente al riesgo de liquidez e insolvencia.
+
+| Hito normativo / institucional (Venezuela) | Año | Impacto directo en la matemática financiera y actuarial |
+|-------------------------------------------|-----|--------------------------------------------------------|
+| Ley de Inspección y Vigilancia | 1935 | Primera exigencia de fiscalización estatal de las carteras de seguros. |
+| Reforma de la Ley de Seguros | 1938 | Formalización del cálculo de reservas técnicas mediante descuento compuesto. |
+| Cámara de Aseguradores (CAV) | 1951 | Estandarización de prácticas comerciales, convenciones de días y suscripción de riesgos. |
+| Superintendencia de Seguros | 1958 | Auditoría formal de las ecuaciones de valor y pasivos contingentes de la industria. |
+| Ley de Seguros y Reaseguros | 1965 | Definición paramétrica del margen de solvencia y calce de activos/pasivos. |
+
+## Contenido teórico
+
+### Función de acumulación y función de monto acumulado
+
+Una transacción financiera común es la inversión de una cantidad de dinero a interés. Por ejemplo, una persona puede invertir en una cuenta de ahorros en un banco. El monto inicial de dinero invertido se denomina **capital** ($K$), y el monto total recibido después de un período de tiempo se llama **valor acumulado**. La diferencia entre el valor acumulado y el capital es el monto del interés, o simplemente **interés**, ganado durante el período de inversión. Por el momento, asumiremos que dado el capital original invertido, el valor acumulado en cualquier momento del tiempo puede determinarse. Supondremos que no se añade ni retira capital durante el período de inversión; es decir, que cualquier cambio en el fondo se debe únicamente al efecto del interés [@kellison2008, cap. 1].
+
+Las **matemáticas financieras** estudian el valor del dinero en el tiempo y las operaciones de tipo financiero; constituyen una estructura lógica y axiomática que fundamenta la valoración de flujos en entornos de incertidumbre y transcurso temporal [@kellison2008; @broverman2017]. En su núcleo reside el **axioma de la preferencia temporal**: los agentes económicos valoran más una unidad monetaria presente que una futura, debido al riesgo de consumo postergado, la inflación y la utilidad marginal decreciente. El **interés** es la "renta" por el uso del capital —una compensación por la renuncia a la liquidez inmediata— y se manifiesta a través de la función de acumulación $a(t)$. La robustez de un sistema financiero depende de la consistencia temporal de esta función; bajo interés compuesto se cumple $a(t+s) = a(t) \cdot a(s)$, lo que implica que el mercado es eficiente y no admite arbitraje simple por el mero fraccionamiento de los periodos de inversión. Las **finanzas** se definen como el conjunto de actividades relacionadas con el dinero; sus ramas incluyen finanzas corporativas, internacionales, públicas y personales [@vidaurri2017, §5.1]. El **dinero** es todo aquello aceptado como medio de intercambio de bienes o servicios; puede ser mercancía (con valor intrínseco, p. ej. metales) o fiduciario (valor por confianza, como billetes y monedas actuales). Cumple las funciones de medio de pago, unidad de cuenta y depósito de valor.
+
+En la práctica, las tasas de interés de muchas operaciones se fijan sumando **puntos porcentuales** a una **tasa de referencia**. Un punto porcentual es 1%; así, “tasa igual a TIIE más 38 puntos” significa $i = \text{TIIE} + 38\%$ (p. ej. si TIIE = 3{,}29\%, entonces $i = 41{,}29\%$ anual). Un **punto base** es la centésima parte de un punto porcentual (100 puntos base = 1%). Las instituciones eligen la tasa de referencia (TIIE, CPP, CETES, etc.) y los puntos según su política de crédito y percepción de riesgo [@vidaurri2017, §5.2].
+
+**Ilustración (adaptada de Díaz Mata).** Un prestatario obtiene un préstamo de \$20.000 y acuerda devolverlo a los dos meses entregando \$20.400. El capital es $C = 20.000$, el plazo $t = 2$ meses, el interés $I = 400$ y el monto $M = 20.400$. La tasa refleja la relación entre intereses y capital: $I/C = 400/20.000 = 0{,}02$ en dos meses; expresada en base anual (2 meses = 1/6 de año), $i = 0{,}02 \times 6 = 0{,}12$ (12\% anual). Desde el punto de vista del banco, los intereses son la ganancia por invertir; desde el punto de vista del prestatario, el costo por usar el dinero durante el plazo.
+
+Sea $t$ el tiempo transcurrido desde la fecha de inversión. La unidad en la que se mide el tiempo se llama **período de medición**, o simplemente **período**. El período de medición más común es un año, y este será asumido a menos que se indique lo contrario. En aplicaciones se usan también meses, trimestres o semestres; es fundamental que la tasa de interés y el plazo estén expresados en la misma unidad (por ejemplo, tasa mensual y tiempo en meses) para aplicar correctamente las fórmulas [@diazmata2013].
+
+**Función de acumulación.** La transición de una comprensión operativa a una analítica comienza con la definición formal del crecimiento del capital. La función de acumulación $a(t)$ representa el monto acumulado de **una unidad monetaria** invertida en el tiempo $0$ y valorada en el tiempo $t \geq 0$. No es arbitraria: debe cumplir axiomas que garantizan la consistencia de los modelos financieros [@kellison2008; @broverman2017].
+
+**Axiomas y propiedades analíticas de $a(t)$:**
+
+1. **Normalización:** $a(0) = 1$. En el momento inicial no se ha generado rendimiento; una unidad hoy vale una unidad hoy.
+2. **Monotonía:** $a(t)$ es no decreciente para $t \geq 0$. En un entorno determinista, sin retiros y con tasas no negativas, el capital crece o se mantiene constante.
+3. **Continuidad:** $a(t)$ es continua (o al menos continua por la derecha) en $t \geq 0$, lo que permite aplicar el análisis diferencial y definir tasas instantáneas.
+
+La función de monto $A(t) = K \cdot a(t)$ separa la **escala** de la inversión ($K$) de la **ley intrínseca de crecimiento** $a(t)$. El **monto de interés devengado** en un periodo $[t_1, t_2]$ se define como $A(t_2) - A(t_1)$. La naturaleza de $a(t)$ define el régimen de capitalización.
+
+**Función de monto acumulado.** Para un capital inicial $K$, el monto acumulado a tiempo $t$ viene dado por
+
+$$A(t) = K \, a(t). \tag{1.1}$$
+
+En particular, en $t = 0$ se cumple $A(0) = K$. Como $K > 0$, las propiedades de monotonía y continuidad de $a(t)$ se transmiten a $A(t)$ [@kellison2008]. En la literatura de referencia (p. ej. [@kellison2008]) se encuentran gráficas de cuatro funciones ilustrativas del monto $A(t)$ (crecimiento lineal, exponencial, etc.). Denotaremos la cantidad de interés ganada durante el $n$-ésimo período desde la fecha de inversión por $I_n$. Entonces
+
+$$I_n = A(n) - A(n-1), \qquad n = 1, 2, 3, \ldots \tag{1.2}$$
+
+*Nota.* $I_n$ incorpora el efecto del interés a lo largo de un **intervalo** de tiempo (el $n$-ésimo período), mientras que $A(n)$ es un monto en un **instante** específico (el final del $n$-ésimo período) [@kellison2008, §1].
+
+En términos de capital $C$, interés $I$ y monto $M$ en una operación a plazo $t$, se tiene siempre $M = C + I$. La forma explícita de $I$ y $M$ depende de la ley de interés (simple o compuesto), que veremos a continuación.
+
+**Tasa efectiva por período.** Las tasas efectivas pueden definirse para cualquier período. Si $i_n$ denota la tasa efectiva en el $n$-ésimo período desde la fecha de inversión:
+
+$$i_n = \frac{A(n)-A(n-1)}{A(n-1)} = \frac{I_n}{A(n-1)}.$$
+
+Así, $i_n$ es el rendimiento por unidad de capital invertido al inicio del período $n$.
+
+### Tasa efectiva de interés
+
+La **tasa efectiva de interés** $i$ es la cantidad de dinero que gana durante el período una unidad invertida al comienzo del período, cuando el interés se paga al final del mismo [@kellison2008, cap. 1]. En términos de la función de acumulación:
+
+$$i = a(1) - a(0), \quad \text{o equivalentemente} \quad a(1) = 1 + i. \tag{1.3}$$
+
+Algunas observaciones útiles:
+
+1. "Efectiva" indica que el interés se paga una vez por período de medición.
+2. Suele expresarse como porcentaje (por ejemplo, $i = 8\%$).
+3. El capital permanece constante a lo largo del período (no hay aportes ni retiros).
+4. El interés se paga al final del período.
+
+Usando $A(t) = K\,a(t)$, la tasa efectiva también puede escribirse como
+
+$$i = a(1) - a(0) = \frac{A(1) - A(0)}{A(0)} = \frac{I_1}{A(0)}. \tag{1.4a}$$
+
+Definición alternativa: $i$ es la razón entre el interés ganado durante el período y el monto al inicio del período [@kellison2008]. Las tasas efectivas pueden definirse para cualquier período: si $i_n$ denota la tasa efectiva en el $n$-ésimo período desde la fecha de inversión,
+
+$$i_n = \frac{A(n) - A(n-1)}{A(n-1)} = \frac{I_n}{A(n-1)}, \qquad n = 1, 2, 3, \ldots \tag{1.4b}$$
+
+**Ejemplo.** Con los siguientes montos anuales:
+
+| Año $n$ | $A(n)$ (dólares) |
+|---------|-------------------|
+| 0       | 10\,000,00        |
+| 1       | 10\,600,00        |
+| 2       | 11\,130,00        |
+| 3       | 11\,575,20        |
+| 4       | 12\,153,96        |
+
+las tasas efectivas son $i_1 = (10\,600 - 10\,000)/10\,000 = 0{,}06$ (6\%); $i_2 = (11\,130 - 10\,600)/10\,600 = 0{,}05$ (5\%); $i_3 = (11\,575{,}20 - 11\,130)/11\,130 = 0{,}04$ (4\%); $i_4 = (12\,153{,}96 - 11\,575{,}20)/11\,575{,}20 = 0{,}05$ (5\%).
+
+### Interés simple
+
+El **interés simple** asume que el interés ganado es **proporcional** al capital, a la tasa pactada y al tiempo; no se reinvierte el interés, por lo que el capital base permanece constante. Es la ley más elemental y se usa en operaciones a corto plazo o por convención en ciertos mercados [@diazmata2013, cap. 2].
+
+**Demostración formal.** Si el interés ganado por periodo es constante e igual a $i$ sobre el capital original, después de $t$ periodos el interés acumulado es $i\,t$. Por tanto la función de acumulación es $a(t) = 1 + i\,t$. Este modelo genera una tasa efectiva de interés **decreciente** en el período $n$: $i_n = \frac{a(n)-a(n-1)}{a(n-1)} = \frac{i}{1+(n-1)i}$. Por esta inconsistencia (el dinero rinde menos en términos efectivos cuanto más tiempo pasa), el interés simple se reserva para operaciones de corto plazo y descuento comercial.
+
+**Relaciones fundamentales.** Con capital $C$, tasa $i$ (en la misma unidad que el tiempo) y plazo $t$:
+
+$$I = C \cdot i \cdot t, \qquad M = C + I = C + C\,i\,t. \tag{1.5a}$$
+
+Factorizando, se obtiene la función de acumulación y el monto:
+
+$$M = C(1 + i\,t), \qquad a(t) = 1 + i\,t, \qquad t \geq 0. \tag{1.5}$$
+
+Al factor $(1 + i\,t)$ se le conoce como **factor de acumulación con interés simple**. Para un capital inicial $K$:
+
+$$A(t) = K\,a(t) = K(1 + i\,t), \tag{1.7}$$
+
+$$I(t) = A(t) - K = K\,i\,t. \tag{1.8}$$
+
+**Unidades.** Es esencial expresar $t$ e $i$ en la misma base (años con tasa anual, meses con tasa mensual, etc.). Por ejemplo, si la tasa es 12\% anual y el plazo 2 meses, $t = 2/12 = 1/6$ años e $i = 0{,}12$; o bien $t = 2$ meses y $i = 0{,}12/12 = 0{,}01$ mensual.
+
+**Tasa efectiva por período bajo interés simple.** Bajo $a(t) = 1 + i\,t$, se tiene $a(n) - a(n-1) = i$ y $a(n-1) = 1 + i(n-1)$, por tanto
+
+$$i_n = \frac{a(n) - a(n-1)}{a(n-1)} = \frac{i}{1 + i(n-1)}, \qquad n = 1, 2, 3, \ldots \tag{1.6}$$
+
+Por tanto **la tasa efectiva disminuye** a medida que avanza el tiempo: el mismo interés absoluto se reparte sobre un capital (acumulado) cada vez mayor.
+
+**Ejemplo (Kellison).** Si $i = 10\%$ anual simple: $i_1 = 0{,}10$, $i_2 = 0{,}10/1{,}10 \approx 0{,}0909$, $i_3 \approx 0{,}0833$ (8,33\%).
+
+**Ejemplo (monto).** Hallar el valor acumulado de \$3.000 invertidos durante cinco años al 6\% simple anual. $A(5) = 3.000\,(1 + 0{,}06 \cdot 5) = 3.900$; $I(5) = 900$. La tasa efectiva del quinto año es $i_5 = 0{,}06/(1 + 0{,}06 \cdot 4) \approx 4{,}84\%$.
+
+**Ejemplo (Díaz Mata 2.2.1).** Un comerciante debe liquidar un lote de \$3.500 con un pago inmediato de \$1.500 y un pago final a 4 meses. Acepta 10\% de interés anual simple sobre el saldo. Saldo a financiar: $C = 3.500 - 1.500 = 2.000$; $t = 4/12 = 1/3$ años; $M = 2.000[1 + 0{,}10 \cdot (1/3)] = 2.000 \times 1{,}03333\ldots = 2.066{,}67$. Debe pagar \$2.066,67 (\$2.000 capital + \$66,67 intereses).
+
+**Ejemplo (Díaz Mata 2.2.2).** Depósito de \$150.000 en un fondo que rinde 0,8\% mensual. Retiro a 24 días. Con tiempo y tasa en meses: $t = 24/30$, $M = 150.000[1 + 0{,}008 \cdot (24/30)] = 150.960$.
+
+### Interés compuesto
+
+El interés simple no reinvierte los intereses generados. El **interés compuesto** supone que los intereses ganados se reinvierten automáticamente (se capitalizan), lo que genera crecimiento exponencial.
+
+**Demostración formal.** Si el crecimiento entre $t$ y $t+1$ es proporcional al monto en $t$ con tasa $i$, entonces $a(t+1) = a(t)(1+i)$. Aplicando esta relación de forma recursiva desde $a(0)=1$: $a(1)=1(1+i)$, $a(2)=(1+i)^2$, …, $a(t)=(1+i)^t$. Este modelo es **consistente temporalmente**: un inversor puede retirar y reinvertir su capital en cualquier momento sin alterar el resultado final, propiedad fundamental para la valoración de activos.
+
+**Función de acumulación bajo interés compuesto:**
+
+$$a(t) = (1 + i)^t, \tag{1.9}$$
+
+donde $i$ es la tasa de interés efectiva por período y $t$ el número de períodos (entero o fraccional).
+
+Bajo interés compuesto, la tasa efectiva en el período $n$ es constante: $i_n = i$. Comparación resumida:
+
+| Característica        | Interés simple | Interés compuesto |
+|-----------------------|----------------|-------------------|
+| Reinversión del interés | No             | Sí                |
+| Fórmula de acumulación  | $1 + i\,t$     | $(1+i)^t$         |
+| Crecimiento             | Lineal         | Exponencial        |
+| Tasa efectiva           | Disminuye con el tiempo | Constante   |
+
+**Régimen de capitalización, función $a(t)$ y tasa efectiva por período.** Bajo interés simple, la tasa efectiva $i_n = \frac{a(n)-a(n-1)}{a(n-1)} = \frac{i}{1+i(n-1)}$ es **decreciente** en $n$: el mismo interés absoluto se reparte sobre un capital acumulado cada vez mayor. Esta demostración es crucial para entender por qué el interés simple es limitado en contextos de inversión a largo plazo y se reserva principalmente para instrumentos de mercado de dinero a corto plazo. Resumen:
+
+| Régimen de capitalización | Función $a(t)$ | Tasa efectiva $i_n$ | Comportamiento de la tasa |
+|---------------------------|----------------|---------------------|---------------------------|
+| Interés simple            | $1 + i\,t$     | $\frac{i}{1+i(n-1)}$ | Decreciente               |
+| Interés compuesto          | $(1+i)^t$      | $i$                 | Constante                 |
+| Capitalización continua    | $e^{\delta t}$ | $e^\delta - 1$      | Constante                 |
+
+**Argumento de la reinversión y consistencia temporal.** Si se asumiera solo interés simple, un inversor podría cerrar su cuenta al final de cada año y reinvertir el monto total en una nueva cuenta; ese comportamiento transformaría de hecho un régimen lineal en uno geométrico. Por tanto, el **interés compuesto** es el único modelo consistente con la libertad de flujo de capitales en un mercado eficiente. La **consistencia temporal** bajo interés compuesto se expresa con la ecuación funcional $a(t+s) = a(t) \cdot a(s)$ (el crecimiento en $t+s$ es el producto del crecimiento en $t$ y del crecimiento en $s$). Esta relación **no se cumple** en el interés simple ($(1+it)(1+is) \neq 1 + i(t+s)$ salvo casos triviales) y fundamenta la validez de las ecuaciones de valor en cualquier fecha focal.
+
+**Períodos fraccionales.** Para $t > 0$, $a(t) = (1+i)^t$. Si se usa interés simple en la fracción final $k \in (0,1)$ tras $n$ períodos completos: $a(n+k) = (1+i)^n(1 + ki)$. (1.9)
+
+**Ejemplo 1.** Inversión de \$4.000 al 7\% compuesto anual durante 2,5 años: $A = 4.000\,(1 + 0{,}07)^{2{,}5} \approx 4.737{,}17$.
+
+**Ejemplo 2.** Compuesto por 2 años y simple por 0,5 año: $A = 4.000\,(1{,}07)^2(1 + 0{,}5 \cdot 0{,}07) \approx 4.739{,}88$ (ligeramente mayor que el compuesto puro en la fracción).
+
+**Ejemplo 3.** Un inversionista de 35 años deposita \$10.000 al 7\% anual compuesto hasta los 65. Interés ganado: entre 35 y 45 años $A(10)-A(0) = 10.000\bigl((1{,}07)^{10}-1\bigr) = 9.671{,}51$; entre 45 y 55, $19.025{,}33$; entre 55 y 65, $37.425{,}71$. Total 30 años: $66.122{,}55$, consistente con $A(30) = 76.122{,}55$ menos el capital. El interés de los últimos 10 años es casi cuatro veces el de los primeros 10.
+
+**Ejemplo 4.** Valor acumulado de \$5.000 al final de 5 años y 4 meses ($5 + 1/3$ años) al 9\% anual. (1) Compuesto en todo el período: $A = 5.000\,(1 + 0{,}09)^{5+1/3} \approx 7\,917{,}32$. (2) Compuesto 5 años y simple 4 meses: $A = 5.000\,(1{,}09)^5\bigl(1 + \frac{1}{3}\cdot 0{,}09\bigr) \approx 7\,923{,}91$. La parte (2) es ligeramente mayor: el interés simple en la fracción final puede superar al compuesto fraccional.
+
+*Características del interés compuesto:* reinvierte automáticamente los intereses; crecimiento exponencial; se aplica para cualquier $t > 0$; la tasa efectiva permanece constante; es el modelo más usado en la práctica financiera. Un desarrollo ampliado (períodos de capitalización, tasas nominal y efectiva, ecuaciones de valor, capitalización continua e inflación) se encuentra en el capítulo [Interés compuesto e inflación](#cap-interes-compuesto-inflacion).
+
+### Valor presente
+
+En muchas transacciones financieras es necesario saber cuánto invertir hoy para alcanzar un monto futuro deseado. Esta noción se denomina **valor presente** y es el concepto inverso a la acumulación (valor futuro). Para recibir 1 al final de $t$ períodos, el valor presente es el inverso de la función de acumulación:
+
+$$v(t) = \frac{1}{a(t)} = a^{-1}(t). \tag{1.11}$$
+
+En particular: bajo interés simple $a^{-1}(t) = 1/(1+it)$ (1.12); bajo interés compuesto $a^{-1}(t) = v^t = (1+i)^{-t}$ (1.13), donde $v$ es el factor de descuento por período. El valor presente "retrocede" en el tiempo lo que la acumulación "avanza": si $a(t) = (1+i)^t$, entonces $v(t) = 1/(1+i)^t = v^t$.
+
+El **factor de descuento** (un período) es
+
+$$v = \frac{1}{1+i}. \tag{1.10}$$
+
+Se recomienda usar de forma consistente la **notación actuarial estándar** $v = (1+i)^{-1}$ en todo el texto; cada fórmula técnica debe acompañarse de una interpretación verbal que facilite la asimilación (puente pedagógico). Para recibir 1 al final de $t$ períodos, el valor presente es $v(t) = 1/a(t) = a^{-1}(t)$. Bajo interés simple: $a^{-1}(t) = 1/(1+it)$ (1.12). Bajo interés compuesto: $a^{-1}(t) = v^t = (1+i)^{-t}$ (1.13). El valor presente “retrocede” en el tiempo lo que la acumulación “avanza”.
+
+De $M = C(1+it)$ o $M = C(1+i)^t$ se obtiene $C = M/(1+it)$ y $C = M(1+i)^{-t}$; esa $C$ es el valor actual de $M$ [@diazmata2013, §2.3].
+
+**Ejemplo.** ¿Cuánto invertir al 9\% anual para acumular \$1.000 al final de tres años? Interés simple: $\mathrm{PV} = 1.000/(1 + 0{,}09 \cdot 3) = 787{,}40$. Interés compuesto: $\mathrm{PV} = 1.000/(1{,}09)^3 \approx 772{,}18$. El valor presente con interés compuesto es menor (reinversión de intereses exige menor capital inicial).
+
+**Ejemplo (Díaz Mata 2.3.1).** Cobro de \$30.000 en 18 meses; interés simple 20\% anual. $t = 18/12 = 1{,}5$, $C = 30.000/(1 + 0{,}20 \cdot 1{,}5) = 23.076{,}92$.
+
+**Ejemplo (Díaz Mata 2.3.2).** Terreno: compra \$195.000, venta 17 meses después \$256.000. Valor actual de \$256.000 al 11\% anual simple: $C = 256.000/(1 + (17/12)(0{,}11)) \approx 221.485$; ganancia respecto al precio pagado $\approx 26.485$.
+
+*Resumen:* el valor presente es el capital a invertir hoy para un monto futuro dado; es el inverso de la función de acumulación; bajo interés compuesto decrece exponencialmente con $t$, bajo interés simple linealmente.
+
+### La tasa efectiva de descuento
+
+La **tasa efectiva de descuento** $d$ mide el rendimiento al comienzo del período (a diferencia de $i$, que se mide al final). Ilustración: préstamo de \$100 al 6\% interés efectivo → se paga \$106 al final; al 6\% descuento efectivo → se recibe \$94 y se paga \$100 al final.
+
+**Definición.** La tasa efectiva de descuento en el período $n$ es $d_n = \frac{A(n)-A(n-1)}{A(n)} = \frac{I_n}{A(n)}$ (1.14). **Relaciones** entre $i$, $d$ y $v = 1/(1+i)$:
+
+$$i = \frac{d}{1-d}, \qquad d = \frac{i}{1+i}, \qquad d = 1 - v. \tag{1.15--1.17}$$
+
+El descuento representa la deducción por anticipado del valor nominal: si se recibirá 1 al final del período y se descuenta a tasa $d$, el valor presente es $v = 1 - d$.
+
+**Capitalización compuesta (descuento compuesto):** con tasa $d$ constante, $a^{-1}(t) = (1-d)^t$ (1.18). **Descuento simple:** $a^{-1}(t) = 1 - d\,t$ para $t < 1/d$ (1.19). Bajo descuento compuesto el valor presente decrece exponencialmente; bajo descuento simple, linealmente. En un solo período ambos coinciden; al aumentar el tiempo, el interés simple da tasa efectiva decreciente y el descuento simple tasa efectiva creciente.
+
+### La teoría del descuento financiero compuesto
+
+Para dotar al descuento del peso dogmático y teórico que exige el programa (Tema 6), se articula aquí el contraste entre **interés** (pagadero vencido: se recibe el capital y se devuelve capital más intereses al final) y **descuento** (pagadero por anticipado: se descuenta el interés del nominal y se recibe el valor efectivo al inicio). La **tasa efectiva de descuento** $d$ y el **factor de descuento** $v = 1/(1+i)$ satisfacen la formalización
+
+$$d = 1 - v, \qquad v = 1 - d.$$
+
+De la equivalencia de un mismo flujo valorado con $i$ o con $d$ se deducen las **equivalencias críticas**:
+
+$$i = \frac{d}{1-d}, \qquad d = \frac{i}{1+i}.$$
+
+Una **identidad fundamental** de la teoría del interés que conecta la geometría de ambas tasas es
+
+$$\frac{1}{d} - \frac{1}{i} = 1.$$
+
+*Demostración:* $\frac{1}{d} - \frac{1}{i} = \frac{i-d}{id}$. Como $d = i/(1+i)$, se tiene $i - d = i - i/(1+i) = i^2/(1+i)$ y $id = i^2/(1+i)$, luego $\frac{i-d}{id} = 1$.
+
+**Tasas nominales de descuento $d^{(m)}$.** El tratamiento analítico de las tasas nominales de descuento debe presentarse en paralelo estricto con las tasas nominales de interés $i^{(m)}$. Si el descuento se aplica $m$ veces al año de forma compuesta, el valor presente de 1 UM a un año es $\bigl(1 - \frac{d^{(m)}}{m}\bigr)^m$; para que sea equivalente al valor presente bajo tasa efectiva $i$ (donde $v = 1/(1+i)$), debe cumplirse $\bigl(1 - \frac{d^{(m)}}{m}\bigr)^m = v = \frac{1}{1+i}$, es decir
+
+$$\left(1 - \frac{d^{(m)}}{m}\right)^{-m} = 1 + i.$$
+
+Así, la misma estructura $(1+i)$ que se obtiene con capitalización de interés $m$ veces al año se obtiene con descuento nominal convertible $m$ veces al año mediante la relación anterior.
+
+**Ejemplo.** Valor presente de \$1.000 dentro de tres años. Descuento simple (9\%): $\mathrm{PV} = 1.000(1 - 0{,}09 \cdot 3) = 730$. Descuento compuesto (9\%): $\mathrm{PV} = 1.000(1-0{,}09)^3 = 753{,}57$ (mayor por el efecto acumulado).
+
+**Ejemplo 2.** Inversión \$10.000 al 5\% compuesto anual; montos al cierre: $A(0)=10.000$, $A(1)=10.500$, $A(2)=11.025$, $A(3)=11.576{,}25$, $A(4)=12.153{,}96$. Tasa efectiva de descuento del año 4: $d_4 = 0{,}05/(1+0{,}05) = 0{,}0476$ (4,76\%).
+
+**Valor presente con fracción de período.** Con descuento compuesto, $v^t = (1-d)^t$. Interpolando linealmente entre $v^n$ y $v^{n+1}$ se obtiene $v^{n+k} \approx v^n(1 - k\,d)$ (1.20). **Ejemplo 3.** VP de \$500 a recibir en 3,25 años al 6\% descuento compuesto: $v^{3{,}25} = (0{,}94)^3(1 - 0{,}25 \cdot 0{,}06) \approx 0{,}8300$, $\mathrm{PV} = 415$. **Ejemplo 4.** \$2.000 en 4 años: interés compuesto 8\% → $\mathrm{PV} = 2.000/(1{,}08)^4 \approx 1.470{,}58$; descuento compuesto 8\% → $\mathrm{PV} = 2.000(0{,}92)^4 \approx 1.432{,}88$. Con descuento compuesto se requiere menor capital inicial.
+
+### Tasas nominales de interés y descuento
+
+Una **tasa nominal** es aquella en la que los pagos se realizan más de una vez por período de medición (por ejemplo, 8\% convertible trimestralmente indica que el interés se paga cada tres meses). Notación:
+
+- $i^{(m)}$: tasa nominal de interés convertible $m$ veces al año.
+- $d^{(m)}$: tasa nominal de descuento convertible $m$ veces al año.
+
+Tasa nominal de interés: $1 + i = \bigl(1 + i^{(m)}/m\bigr)^m$ (1.21a), $i = \bigl(1 + i^{(m)}/m\bigr)^m - 1$ (1.21b), $i^{(m)} = m\bigl((1+i)^{1/m}-1\bigr)$ (1.21c). Tasa nominal de descuento: $1-d = \bigl(1 - d^{(m)}/m\bigr)^m$ (1.22a-b), $d^{(m)} = m\bigl(1-(1-d)^{1/m}\bigr)$ (1.22c). Relación entre nominales: $\bigl(1 + i^{(m)}/m\bigr)^m = \bigl(1 - d^{(p)}/p\bigr)^{-p}$ (1.23). Relaciones $i = d/(1-d)$, $d = i\,v$ con $v = 1/(1+i)$ (1.24).
+
+**Equivalencia de tasas.** Dos tasas son **equivalentes** si, aplicadas al mismo capital inicial durante el mismo tiempo, producen el mismo monto final. La relación $(1+i) = (1 + i^{(m)}/m)^m$ demuestra que, a mayor frecuencia de capitalización $m$, el monto final aumenta aunque la tasa nominal permanezca constante; este fenómeno se debe al efecto de los intereses sobre intereses (concepto que Vidaurri describe como **anatocismo**), el cual, aunque históricamente regulado en algunos contextos, es la base técnica de las finanzas modernas [@vidaurri2017].
+
+*Interpretaciones:* las tasas nominales no tienen relevancia bajo interés simple; a mayor frecuencia de conversión $m$, mayor acumulación para un mismo $i$ efectivo anual; verificar siempre que la tasa corresponda al patrón de capitalización; al comparar ofertas hay que expresar todo en la misma base (p. ej. efectivo anual) [@diazmata2013, §3.4].
+
+**Ejemplo 1.** Valor acumulado de \$500 en cinco años al 8\% anual convertible trimestralmente: $i^{(4)} = 0{,}08$, 20 trimestres, tasa por trimestre $0{,}08/4 = 0{,}02$; $A = 500(1{,}02)^{20} \approx 742{,}97$.
+
+**Ejemplo 2.** Valor presente de \$1.000 al final de seis años al 6\% anual pagadero por adelantado convertible semestralmente: $d^{(2)} = 0{,}06$, factor por semestre $(1 - 0{,}06/2) = 0{,}97$; $\mathrm{PV} = 1.000(0{,}97)^{12} \approx 693{,}84$.
+
+**Ejemplo 3.** Tasa nominal de interés convertible trimestralmente equivalente a una tasa nominal de descuento del 6\% anual convertible mensualmente: $\bigl(1 + i^{(4)}/4\bigr)^4 = \bigl(1 - 0{,}06/12\bigr)^{-12}$, luego $\bigl(1 + i^{(4)}/4\bigr) = (0{,}995)^{-3}$, $i^{(4)} = 4\bigl((0{,}995)^{-3} - 1\bigr) \approx 0{,}0606$ (6,06\%).
+
+**Ejemplo 4.** Tasa nominal de descuento convertible bimestralmente equivalente a 8\% nominal convertible trimestralmente: $(1{,}02)^4 = \bigl(1 - d^{(6)}/6\bigr)^{-6}$ $\Rightarrow$ $1 - d^{(6)}/6 = (1{,}02)^{-4/6}$ $\Rightarrow$ $d^{(6)} \approx 0{,}0792$ (7,92\%).
+
+**Ejemplo 5.** Valor presente de \$2.000 a pagar en 10 años al 10\% nominal convertible mensualmente: $i = (1 + 0{,}10/12)^{12} - 1 \approx 0{,}1047$; $\mathrm{PV} = 2.000/(1{,}1047)^{10} \approx 739{,}06$.
+
+**Ejemplo (Déniz: tantos equivalentes).** Operación al 24\% bienal convertible cuatrimestralmente. Tanto del subperíodo: $i^{(m)} = 0{,}24/6 = 0{,}04$ cuatrimestral. Para 30 meses (7,5 cuatrimestres) el monto de 100.000 u.m. es $100.000(1{,}04)^{7{,}5} \approx 134.199$ (capitalización compuesta). Para expresar un tanto nominal en otra frecuencia (p. ej. trienal convertible cada 18 meses) se halla primero el efectivo del subperíodo y luego el efectivo del nuevo período; $(1+i^{(m)})^{4{,}5} = (1+i^{(k)})$ da el tanto cada 18 meses, y el nominal trienal es $2 \cdot i^{(k)}$ [@deniz2016, cap. 2].
+
+### Capitalización en tiempo continuo y fuerza de interés
+
+El Tema 5 del programa (Interés continuo) exige consolidar el paso del álgebra discreta al cálculo infinitesimal. Esta subsección dedica un apartado exclusivo a la **capitalización en tiempo continuo** y a la **fuerza de interés**, que es el concepto que unifica el crecimiento instantáneo del capital y prepara para modelos estocásticos superiores (Vasicek, Cox-Ingersoll-Ross) citados en la Parte III del libro.
+
+**Límite de la capitalización fraccionada.** La fuerza de interés $\delta$ surge del **límite matemático** cuando la frecuencia de capitalización $m$ tiende a infinito: $\lim_{m \to \infty} i^{(m)} = \delta$. Con la equivalencia $(1+i) = \bigl(1 + \frac{i^{(m)}}{m}\bigr)^m$, se tiene $\ln(1+i) = m\,\ln\bigl(1 + \frac{i^{(m)}}{m}\bigr)$; en el límite $m \to \infty$, $\frac{i^{(m)}}{m} \to 0$ y $m\cdot \frac{i^{(m)}}{m} \to \delta$, por tanto
+
+$$\delta = \ln(1+i), \qquad e^\delta = 1+i. \tag{1.28}$$
+
+**Ecuación diferencial del crecimiento del capital.** En tiempo continuo, el crecimiento del capital $A(t)$ por unidad de tiempo es proporcional al capital existente, con constante de proporcionalidad $\delta$. La **ecuación diferencial ordinaria** que modela este crecimiento es
+
+$$\frac{dA(t)}{dt} = \delta\,A(t).$$
+
+Su **solución** (con condición inicial $A(0) = K$) se obtiene por integración: $\frac{d}{dt}\ln A(t) = \delta$, luego $\ln A(t) - \ln A(0) = \int_0^t \delta\,ds$. Si $\delta$ es constante, $\ln A(t) = \ln K + \delta\,t$, es decir $A(t) = K\,e^{\delta t}$. Si $\delta$ varía con el tiempo, $\delta = \delta(s)$,
+
+$$A(t) = A(0)\,\exp\left(\int_0^t \delta(s)\,ds\right). \tag{1.26-cont}$$
+
+Este andamiaje dota al alumno de la madurez analítica para comprender después los modelos de tasas de interés en tiempo continuo mencionados en las Perspectivas 2026.
+
+### Fuerza de interés (definición y propiedades)
+
+El concepto de **fuerza de interés** (force of interest) cuantifica la intensidad instantánea con que crece el capital, a diferencia de las tasas efectivas o nominales medidas en intervalos discretos. Sea $A(t)$ el valor acumulado de un capital $K$ (con $A(0)=K$). La fuerza de interés en $t$, denotada $\delta(t)$, se define como
+
+$$\delta(t) = \frac{1}{A(t)}\,\frac{dA(t)}{dt} = \frac{d}{dt}\ln A(t). \tag{1.25}$$
+
+Mide la tasa de cambio relativa (por unidad de capital) en un instante. Integrando entre 0 y $t$ se obtiene
+
+$$A(t) = K \exp\left(\int_0^t \delta(s)\,ds\right), \qquad a(t) = \frac{A(t)}{K} = \exp\left(\int_0^t \delta(s)\,ds\right). \tag{1.26}$$
+
+**Caso de fuerza constante.** Si $\delta(t) = \delta$ es constante:
+
+$$a(t) = e^{\delta t}, \qquad A(t) = K e^{\delta t}. \tag{1.27}$$
+
+**Interpretación:** $\delta(t)$ es la tasa instantánea de crecimiento por unidad de capital. Para $\Delta t$ pequeño: $A(t+\Delta t) \approx A(t)[1 + \delta(t)\Delta t]$. Si la fuerza es constante, $a(t) = e^{\delta t}$ se obtiene integrando $\frac{d}{dt}\ln a(t) = \delta$.
+
+**Equivalencia nominal–efectiva.** Una tasa nominal $i^{(m)}$ capitalizable $m$ veces al año produce el mismo monto en un año que la tasa efectiva $i$. Igualando: $(1 + i^{(m)}/m)^m = (1+i)$, de donde $i = (1 + i^{(m)}/m)^m - 1$ y $i^{(m)} = m\bigl[(1+i)^{1/m} - 1\bigr]$. Esta relación es la base del Costo Anual Total (CAT) y de la Tasa de Interés Efectiva (TIE) en transparencia financiera.
+
+**Relación con tasas nominales:** $\bigl(1 + i^{(m)}/m\bigr)^m = e^\delta$, es decir $\delta = m\,\ln\bigl(1 + i^{(m)}/m\bigr)$ (1.29). Además $\delta = \lim_{m\to\infty} i^{(m)}$: la fuerza de interés es el **límite natural** de la frecuencia de capitalización cuando $m \to \infty$, lo que elimina el misterio detrás de la constante $e$ en finanzas (1.30).
+
+**Jerarquía de magnitudes.** Para una tasa efectiva de interés $i$ constante puede demostrarse analíticamente que la fuerza de interés $\delta = \ln(1+i)$ satisface $\delta < i$ (desarrollo en serie: $\ln(1+i) = i - i^2/2 + \cdots$) y que $\delta > d$, donde $d$ es la tasa efectiva de descuento. La relación exacta $\delta = \ln(1+i)$ vincula el mundo discreto con el continuo y sirve de base para la capitalización compuesta en derivados financieros.
+
+**Resumen por tipo de tasa.** En la práctica actuarial y en valoración de derivados conviene distinguir:
+
+| Tipo de tasa | Símbolo | Naturaleza | Aplicación normativa |
+|--------------|--------|------------|----------------------|
+| Nominal | $i^{(m)}$ | Convencional/contractual | Contratos de préstamo y tarjetas |
+| Efectiva | $i$ | Rendimiento real anualizado | Costo amortizado, TIE |
+| Descuento | $d$ | Interés pagado por anticipado | Valuación de T-Bills y pagarés |
+| Fuerza de interés | $\delta$ | Instantánea/continua | Modelos de valuación de opciones y crecimiento continuo |
+
+**Fuerza de interés variable y modelado.** Cuando la intensidad del mercado cambia en el tiempo, $\delta_t$ permite modelar situaciones donde la tasa depende del momento. Dada $\delta_r$, la función de acumulación se recupera por integración: $a(t) = \exp\bigl(\int_0^t \delta_r\,dr\bigr)$. Ejemplo: si $\delta_t = \frac{k}{1+kt}$ para $t \geq 0$, entonces $\int_0^t \frac{k}{1+kr}\,dr = \ln(1+kt)$, luego $a(t) = 1 + k\,t$ (interés simple). Esta herramienta es indispensable para valorar activos en periodos de alta volatilidad o cuando los contratos estipulan tasas que dependen del tiempo.
+
+**Aplicaciones de la fuerza de interés.** (1) **Valuación de flujos continuos:** cuando los pagos no se realizan en puntos discretos sino que fluyen como una tasa continua (p. ej. modelado de primas de seguros o flujos de caja continuos). (2) **Límite de tasas nominales:** $\delta = \lim_{m\to\infty} i^{(m)}$ muestra la fuerza de interés como el límite natural de la frecuencia de capitalización. (3) **Estructura temporal:** $\delta_t$ se relaciona con la tasa instantánea forward, permitiendo la transición hacia temas avanzados de gestión de activos y pasivos (ALM).
+
+**Fuerza de descuento.** Si $v(t) = 1/a(t)$ es el factor de descuento continuo, entonces $-\frac{d}{dt}\ln v(t) = \frac{d}{dt}\ln a(t) = \delta(t)$; la fuerza de interés y la fuerza de descuento coinciden en este marco.
+
+**Conexión con interés y descuento simples.** Bajo interés simple $a(t) = 1 + it$ se tiene $\delta(t) = i/(1+it)$ (decreciente en $t$). Bajo descuento simple $v(t) = 1 - dt$ se tiene $\delta(t) = d/(1-dt)$ (creciente en $t$).
+
+**Ejemplo 1.** Monto con fuerza constante $\delta = 0{,}05$. Para \$1.000 durante 10 años: $A(10) = 1.000\,e^{0{,}05 \cdot 10} = 1.000\,e^{0{,}5} \approx 1.648{,}72$.
+
+**Ejemplo 2.** Si $\delta_t = 1/(1+t)$, entonces $a(n) = \exp\bigl(\int_0^n \frac{ds}{1+s}\bigr) = \exp\bigl(\ln(1+n) - \ln 1\bigr) = 1 + n$.
+
+**Ejemplo 3.** Valor presente con $\delta_t = 0{,}05 + 0{,}01\,t$ en $0 \leq t \leq 4$. PV en $t=0$ de dos pagos de \$100 en $t=2$ y $t=4$: $\int_0^T (0{,}05 + 0{,}01\,s)\,ds = 0{,}05\,T + 0{,}005\,T^2$. Pago en $t=2$: $\mathrm{PV} = 100\,e^{-(0{,}05\cdot 2 + 0{,}005\cdot 4)} = 100\,e^{-0{,}12} \approx 88{,}69$. Pago en $t=4$: $\mathrm{PV} = 100\,e^{-(0{,}05\cdot 4 + 0{,}005\cdot 16)} = 100\,e^{-0{,}28} \approx 75{,}58$. Total $\approx 164{,}27$.
+
+### Estructura temporal de las tasas: spot y forward
+
+En los mercados financieros modernos la tasa de interés para un préstamo a un año no tiene por qué coincidir con la de un préstamo a diez años. Este salto cualitativo se modela con la **estructura temporal de tipos de interés**.
+
+**Tasa spot.** La **tasa spot** o al contado $s_t$ es la tasa de interés anualizada aplicable a una transacción que se liquida hoy y tiene plazo $t$ períodos. El **factor de descuento** $v(t) = (1 + s_t)^{-t}$ es el valor actual de una unidad monetaria a recibir en el tiempo $t$. La representación de $s_t$ frente a $t$ es la **curva de rendimientos**, cuya forma (ascendente, plana o invertida) aporta información sobre las expectativas del mercado.
+
+**Tasa forward.** La **tasa forward** $f_{t_1,t_2}$ es la tasa implícita hoy para una inversión entre dos fechas futuras $t_1$ y $t_2$. Por **no arbitraje**, un inversor no debe poder obtener ganancia garantizada sin riesgo combinando inversiones a distintos plazos. La ecuación fundamental es
+
+$$(1 + s_{t_2})^{t_2} = (1 + s_{t_1})^{t_1} \cdot (1 + f_{t_1,t_2})^{t_2 - t_1}.$$
+
+Así, la medición del interés no es solo una observación estática sino una red de relaciones dinámicas que garantizan el equilibrio del mercado. Este marco prepara para instrumentos como los swaps de tasas de interés y los contratos forward de tipos de cambio.
+
+| Teoría de la curva | Explicación | Indicador macroeconómico |
+|--------------------|-------------|---------------------------|
+| Expectativas puras | Las tasas a largo son el promedio de las tasas cortas esperadas | Expectativa de estabilidad o cambio de tasas |
+| Preferencia por la liquidez | Los inversores exigen prima por inmovilizar capital | Incertidumbre sobre el futuro a largo plazo |
+| Segmentación de mercado | Las tasas de distintos plazos se determinan de forma independiente | Desequilibrios en oferta/demanda por plazos |
+
+**Fuerza de interés variable.** Si $\delta_s$ varía con el tiempo, $a(t) = \exp\bigl(\int_0^t \delta_s\,ds\bigr)$. Por ejemplo, $\delta_s = \alpha + \beta s$ da $a(t) = \exp(\alpha t + \beta t^2/2)$. El valor presente de un pago $P$ en $t$ es $P/a(t)$.
+
+### Plazo o tiempo (tiempo desconocido)
+
+Cuando la incógnita es el **plazo** $t$, a partir de $M = C(1+it)$ (interés simple) o $M = C(1+i)^t$ (interés compuesto) se despeja $t$. En **interés simple**: $t = (M/C - 1)/i$. En **interés compuesto**: $t = \ln(M/C)/\ln(1+i)$. Para resolver problemas de “tiempo para duplicar” el capital puede suponerse $M = 2$ y $C = 1$, de modo que $t = 1/i$ (simple) o $t = \ln 2/\ln(1+i)$ (compuesto) [@diazmata2013, §2.6].
+
+**Ejemplo (Díaz Mata 2.6.1).** ¿En cuánto tiempo se duplica un capital al 19\% anual simple? De $M = C(1+it)$ con $M = 2$, $C = 1$: $2 = 1 + 0{,}19\,t$, luego $t = 1/0{,}19 \approx 5{,}26$ años; $0{,}26$ años $\approx 95$ días, es decir aproximadamente 5 años y 95 días. El mismo razonamiento aplica si se usan cantidades concretas (p. ej. $M = 30$, $C = 15$): la relación $M/C = 2$ determina $t$.
+
+**Ejemplo (Díaz Mata 2.6.2).** ¿En cuánto tiempo se acumulan \$5.000 depositando hoy \$3.000 al 1,2\% simple mensual? $5.000 = 3.000(1 + 0{,}012\,t)$ $\Rightarrow$ $t = (5.000/3.000 - 1)/0{,}012 \approx 55{,}56$ meses; $0{,}56$ meses $\approx 17$ días, es decir 55 meses y 17 días aproximadamente.
+
+### Tasa de interés (tasa desconocida)
+
+Cuando la incógnita es la **tasa** $i$, se despeja a partir de la relación entre $C$, $M$ y $t$. Con **interés simple**: $I = C\,i\,t$ $\Rightarrow$ $i = I/(Ct)$; o bien $M = C(1+it)$ $\Rightarrow$ $i = (M/C - 1)/t$. Con **interés compuesto**: $i = (M/C)^{1/t} - 1$. Es fundamental que $t$ e $i$ correspondan a la misma unidad (años, meses, etc.) [@diazmata2013, §2.5].
+
+**Ejemplo (Díaz Mata 2.5.1).** Compra a crédito: \$1.500 de contado, enganche \$800, pago de \$750 a 3 meses. ¿Qué tasa de interés simple pagó? Capital financiado $C = 700$; interés $I = 750 - 700 = 50$; $50 = 700 \cdot i \cdot 0{,}25$ $\Rightarrow$ $i = 50/175 \approx 0{,}2857$ (28,57\% anual).
+
+**Ejemplo (Díaz Mata 2.5.2).** Terreno: compra \$195.000, venta 17 meses después \$256.000. Tasa de interés simple anual: $256.000 = 195.000[1 + i(17/12)]$ $\Rightarrow$ $i = (256.000/195.000 - 1)\cdot 12/17 \approx 0{,}2208$ (22,08\% anual).
+
+### Convenciones de mercado, estándares y herramientas
+
+**Convenciones de conteo de días.** El cálculo del tiempo no siempre sigue el calendario civil. La determinación del número de días entre dos fechas influye de forma significativa en el monto del interés. Principales convenciones:
+
+| Convención | Numerador (días) | Denominador (año) | Implicación financiera |
+|------------|------------------|-------------------|-------------------------|
+| Exacto/365 | Días reales calendario | 365 (o 366) | Estándar para deuda pública |
+| Regla del Banquero (Exacto/360) | Días reales calendario | 360 | Común en transacciones comerciales; maximiza intereses para el prestamista (factor $\approx 365/360 \approx 1{,}0139$ respecto a Exacto/365) |
+| Ordinario (30/360) | Meses de 30 días | 360 | Simplifica cálculos en bonos corporativos y municipales |
+
+Estándares adicionales en mercado de dinero y bonos: **Actual/Actual** (bonos gubernamentales de largo plazo); **30/360** europea o americana; **Actual/360** en T-Bills (EE.UU.) y CETES (México). En el **mercado de dinero venezolano**, el uso de la base **Actual/360** (Regla del Banquero) ha sido el estándar histórico para la liquidación de préstamos de corto plazo y el cálculo de intereses de mora. Contrastar esta práctica con la convención Actual/Actual usada en bonos de deuda pública permite comprender que el factor temporal $t$ en $I = C \cdot i \cdot t$ no es neutral, sino que está sujeto a normativas contractuales que afectan el flujo de caja final.
+
+**Valoración de instrumentos a descuento (CETES).** En instrumentos como CETES el precio se cotiza a descuento. Fórmula típica de precio $P$ con tasa de descuento $d$ y plazo $t$ en días: $P = 10\bigl(1 - \frac{t \cdot d}{360}\bigr)$ (valor nominal 10). La conversión de esta tasa de descuento a **tasa de rendimiento equivalente** (interés simple) permite comparar con otros activos.
+
+**Costo amortizado e interés efectivo.** En valoración de instrumentos de deuda se utiliza el **costo amortizado** y una **tasa de interés efectiva** (TIR constante) que distribuye costos de transacción y primas o descuentos a lo largo de la vida del activo. El estudiante debe comprender cómo esa tasa se aplica al saldo para obtener el interés efectivo del período.
+
+**Herramientas de cálculo.** Para cerrar la brecha entre la teoría y la práctica se recomienda el uso de:
+
+- **Calculadora financiera:** registros de Valor del Dinero en el Tiempo (TVM): N, I/Y, PV, PMT, FV; configuración de periodos por año y capitalizaciones para distintas frecuencias.
+- **Hojas de cálculo:** funciones de tasa, valor actual, valor futuro, número de periodos y pago. Convención de signos: salidas de efectivo (pagos, inversión inicial) en negativo; entradas (cobros, valor futuro recibido) en positivo.
+- **Tasas desconocidas:** cuando la incógnita es la tasa en una ecuación de valor compleja, pueden usarse técnicas de aproximación numérica (interpolación lineal o método de Newton-Raphson) además de la función TASA() o la calculadora.
+
+### Tiempo real y tiempo aproximado
+
+En muchas operaciones el plazo se especifica **por fechas** (inicio y vencimiento) en lugar de un número de períodos. Dos criterios habituales [@diazmata2013, §2.7]:
+
+- **Tiempo real (exacto):** se cuentan los días calendario entre las dos fechas (año civil 365 días). Ejemplo: del 15 de mayo al 24 de diciembre del mismo año: 16+30+31+31+30+31+30+24 = 223 días, luego $t = 223/365$ años.
+- **Tiempo aproximado (comercial):** se usan meses de 30 días y año de 360 días. Entre las mismas fechas: 7 meses y 9 días = $7(30)+9 = 219$ días, $t = 219/360$ años.
+
+El monto resultante puede variar ligeramente según el criterio. En transacciones comerciales y en muchos contratos se utiliza el cálculo aproximado por su simplicidad. En el libro se usará el que indique el enunciado o, en su defecto, tiempo en la misma unidad que la tasa (meses con tasa mensual, etc.).
+
+### Descuento (interés simple)
+
+El **descuento** es una operación en la que una institución (p. ej. un banco) adquiere un documento (pagaré, letra) descontando del **valor nominal** o **valor de vencimiento** $F$ una cantidad equivalente a los intereses que devengaría el documento entre la fecha de descuento y la de vencimiento. La cantidad que recibe el cedente se llama **valor efectivo** (VE) o valor líquido [@diazmata2013, §2.8; @vidaurri2017, §5.4].
+
+**Descuento simple bancario (comercial).** La cantidad descontada $D$ se calcula sobre el valor de vencimiento $F$:
+
+$$D = F\,d\,t, \qquad \mathrm{VE} = F - D = F(1 - d\,t). \tag{1.D}$$
+
+Aquí $d$ es la **tasa de descuento** (en la misma unidad que $t$). La tasa se aplica sobre el monto por pagar $F$; el valor efectivo es menor que $F$ y el prestatario recibe VE. En la práctica bancaria es el más usado [@vidaurri2017].
+
+**Descuento racional (real o justo).** El descuento se calcula sobre el valor que se anticipa (valor actual): si $P$ es lo que se recibe, se cumple $F = P(1+it)$ con una tasa de interés $i$; entonces $P = F/(1+it)$ y el descuento justo es $D = F - P = F\,i\,t/(1+it)$. Equivale a aplicar interés simple sobre el valor actual; para las mismas $F$, $t$ y tasas equivalentes, el valor efectivo con descuento racional es **mayor** que con descuento bancario (el cedente recibe más con descuento racional) [@vidaurri2017].
+
+**Regímenes de descuento: racional vs. comercial.** Dos filosofías matemáticas: (1) **Racional (matemático):** $D = M - M/(1+it)$, basado en el valor actual; es teóricamente "justo" porque se calcula sobre el capital que realmente se adelanta. (2) **Comercial (bancario):** $D = M \cdot d \cdot t$ sobre el valor nominal $M$; es la práctica estándar para el descuento de letras, pero tiene una inconsistencia teórica: para plazos muy largos ($t > 1/d$) el valor descontado podría volverse negativo, lo cual carece de sentido económico. La **tasa de descuento efectiva** $d$ se relaciona con la tasa de interés $i$ mediante $d = i/(1+i)$, lo que implica $d < i$. Por tanto, cobrar una tasa de descuento del 10\% es financieramente **más costoso** para el deudor que pagar una tasa de interés del 10\%.
+
+**Relación entre $d$ e $i$.** En descuento bancario, $\mathrm{VE} = F(1-dt)$. Si se quiere que el valor efectivo coincida con el valor presente a tasa $i$, $F/(1+it) = F(1-dt)$ implica $d = i/(1+it)$. En la práctica suele usarse el descuento comercial; al comparar ofertas conviene expresar todo en la misma base (tasa de interés efectiva o tasa de descuento).
+
+### Notas prácticas y errores frecuentes
+
+- **Unidades:** La causa más común de error es mezclar tasa anual con tiempo en meses sin convertir. Siempre expresar $i$ y $t$ en la misma unidad (año, mes, trimestre) o usar la tasa del subperíodo [@diazmata2013].
+- **Simple vs compuesto:** En un solo período de liquidación, interés simple y compuesto dan el mismo resultado; a varios períodos, el compuesto produce mayor monto (y menor valor presente) que el simple para la misma tasa nominal.
+- **Tasa efectiva vs nominal:** Una tasa "12\% nominal mensual" significa normalmente $i^{(12)} = 0{,}12$, es decir 1\% efectivo mensual; la efectiva anual es $(1{,}01)^{12} - 1 \approx 12{,}68\%$. No confundir con "12\% anual" que suele ser efectiva anual.
+- **Valor actual en contexto:** En préstamos, el "capital" es lo que recibe el deudor; el "monto" es lo que devuelve. El valor actual de los pagos futuros, descontado a la tasa del préstamo, debe igualar el capital (ecuación de valor, cap. 2).
+
+## Resumen de completitud técnica
+
+La siguiente tabla vincula los temas del capítulo con los objetivos de rigor y las referencias de autoridad, de acuerdo con estándares tipo Kellison, Broverman y SOA (Society of Actuaries).
+
+| Sección / concepto | Concepto clave | Referencia principal | Objetivo de rigor |
+|-------------------|----------------|----------------------|-------------------|
+| 1. Axiomatización | Función $a(t)$ y $A(t)$, axiomas | Kellison / Broverman | Establecer base lógica y funcional |
+| 2. Fuerza de interés | Tasa instantánea $\delta_t$, integración | Kellison / Vaaler | Habilitar el uso del cálculo integral |
+| 3. Fisher e inflación | Rendimiento real vs nominal | Broverman / cap. Inflación | Incorporar variables macroeconómicas |
+| 4. Estructura temporal | Tasas spot $s_t$ y forward $f_{t_1,t_2}$ | SOA FM / literatura de mercados | Modelar mercados de tasas variables |
+| 5. Estándares profesionales | CETES, convenciones, calculadora y hojas de cálculo, costo amortizado | Sampayo / Villalobos / práctica | Práctica bursátil y valoración |
+
+Con esto el texto no solo enseña *cómo* calcular, sino *por qué* se utilizan determinados modelos, elevando el pensamiento crítico y la adaptación a un entorno financiero globalizado.
+
+## Resumen de fórmulas (Capítulo 1)
+
+Para referencia rápida en ejercicios y prácticas (notación estándar $v = (1+i)^{-1}$):
+
+- **Acumulación:** $A(t)=K\,a(t)$; interés compuesto $a(t)=(1+i)^t$; interés simple $a(t)=1+it$.
+- **Valor presente:** $v = 1/(1+i)$; bajo compuesto $\mathrm{PV} = M\,v^t$.
+- **Tasas:** $d = i/(1+i) = 1-v$; $i = d/(1-d)$; $i^{(m)} = m\bigl((1+i)^{1/m}-1\bigr)$; $d^{(m)} = m\bigl(1-(1-d)^{1/m}\bigr)$.
+- **Fuerza de interés:** $\delta(t) = \frac{d}{dt}\ln A(t)$; constante $\delta = \ln(1+i)$; $a(t) = \exp\bigl(\int_0^t \delta(s)\,ds\bigr)$.
+- **Estructura temporal:** factor de descuento $v(t)=(1+s_t)^{-t}$; no arbitraje $(1+s_{t_2})^{t_2} = (1+s_{t_1})^{t_1}(1+f_{t_1,t_2})^{t_2-t_1}$.
+
+Estas relaciones son la base para el Capítulo 2 (ecuación de valor) y para la valoración de rentas en los capítulos siguientes.

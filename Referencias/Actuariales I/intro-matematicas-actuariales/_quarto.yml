@@ -1,0 +1,111 @@
+# Libro: Introducción a las Matemáticas Actuariales
+# Plantilla basada en intro-matematicas-financieras (misma maqueta PDF).
+# Contenido base: programa oficial de Matemáticas Actuariales I.
+
+project:
+  type: book
+  post-render: remove_first_pdf_page.py
+
+book:
+  title: "Introducción a las Matemáticas Actuariales"
+  author:
+    - "CVEA / EECA-UCV"
+  subtitle: "Material docente — Matemáticas Actuariales I"
+  downloads: [pdf]
+  sidebar:
+    style: "floating"
+    collapse-level: 1
+    search: true
+  page-footer:
+    left: "© CVEA — EECA-UCV"
+    center: "Introducción a las Matemáticas Actuariales"
+    right: "Built with Quarto"
+
+  chapters:
+    - index.qmd
+    - part: "Parte I — Supervivencia y tablas de mortalidad"
+      chapters:
+        - chapters/00-preliminares.qmd
+        - chapters/01-modelo-supervivencia.qmd
+        - chapters/02-fuerza-mortalidad.qmd
+        - chapters/03-tablas-mortalidad.qmd
+        - chapters/04-probabilidades-expectativas.qmd
+    - part: "Parte II — Seguros y anualidades contingentes"
+      chapters:
+        - chapters/05-valor-presente-actuarial.qmd
+        - chapters/06-seguros-vida.qmd
+        - chapters/07-anualidades-contingentes.qmd
+        - chapters/08-seguros-anualidades-continuos.qmd
+    - part: "Parte III — Primas y reservas"
+      chapters:
+        - chapters/09-prima-neta-unica.qmd
+        - chapters/10-primas-periodicas.qmd
+        - chapters/11-reservas.qmd
+        - chapters/12-reservas-fraccionarias.qmd
+    - part: "Parte IV — Fundamentos históricos, ética y práctica profesional"
+      chapters:
+        - chapters/13-extensiones.qmd
+        - chapters/14-resumen-perspectivas.qmd
+    - chapters/references.qmd
+  appendices:
+    - chapters/apendice-glosario-notaciones.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc-depth: 3
+    code-block-bg: true
+    embed-resources: true
+  pdf:
+    documentclass: style/krantz
+    classoption: [krantz2, a4paper]
+    papersize: a4
+    toc: true
+    toc-depth: 2
+    lof: false
+    lot: false
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    urlcolor: "blue"
+    linkcolor: "black"
+    biblio-style: apalike
+    code-block-bg: "#f2f2f2"
+    code-block-border-left: "#f2f2f2"
+    code-overflow: wrap
+    include-in-header:
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+        \addtolength{\parskip}{0.4em}
+        \usepackage{xcolor}
+        \usepackage{graphicx}
+        \usepackage{geometry}
+        \usepackage{tikz}
+        \usetikzlibrary{positioning,arrows.meta,calc}
+        \graphicspath{{./}{../}{../assets/logos/}{assets/logos/}{../../assets/logos/}{../../_site/assets/logos/}{../../Referencias/Logos/}}
+        \let\savedcleardoublepage\cleardoublepage
+        \let\savedfrontmatter\frontmatter
+        \renewcommand{\frontmatter}{\clearpage\@mainmatterfalse\pagenumbering{roman}}
+        \AtBeginDocument{%
+          \let\cleardoublepage\clearpage
+          \IfFileExists{frontmatter.tex}{\input{frontmatter.tex}}{\input{../frontmatter.tex}}%
+          \let\maketitle\relax
+          \let\cleardoublepage\savedcleardoublepage
+        }
+        \renewcommand{\maketitle}{}
+    include-after-body:
+      text: |
+        \printindex
+        \newpage
+        \thispagestyle{empty}
+        \vspace*{\fill}
+        \begin{center}
+        \textbf{Ediciones CVEA}\\
+        Centro Venezolano de Estudios Actuariales\\
+        EECA-UCV
+        \end{center}
+        \vspace*{\fill}
+
+lang: es

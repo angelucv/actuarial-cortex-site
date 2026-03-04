@@ -1,0 +1,28 @@
+---
+title: "Prefacio e introducción"
+subtitle: "Introducción a las Matemáticas Actuariales — Material docente CVEA"
+author: "CVEA / EECA-UCV"
+---
+
+# Prefacio {.unnumbered}
+
+Este libro es la **Introducción a las Matemáticas Actuariales** (Matemáticas Actuariales I), desarrollada en el marco del Centro Venezolano de Estudios Actuariales (CVEA) y la Escuela de Estadística y Ciencias Actuariales (EECA) de la Universidad Central de Venezuela. El contenido sigue el **programa oficial** de la asignatura: modelo de supervivencia, tablas de mortalidad, valor presente actuarial, seguros y rentas de vida, primas netas y reservas matemáticas, con la extensión hacia primas comerciales, valor de rescate y fundamentos históricos y éticos de la profesión.
+
+**Prerrequisito:** Se asume que el lector ha cursado o tiene a mano *Introducción a las Matemáticas Financieras* (interés compuesto, rentas ciertas, ecuaciones de valor, notación $v$, $a_{\overline{n}|}$, etc.).
+
+# Agradecimientos {.unnumbered}
+
+El **Centro Venezolano de Estudios Actuariales (CVEA)** desea expresar su más sincero agradecimiento al **Prof. Felipe Moreno**.
+
+A lo largo de tantos años al frente del curso de **Matemáticas Actuariales I** en la Escuela de Estadística y Ciencias Actuariales de la Universidad Central de Venezuela, el Prof. Moreno ha desplegado una **ardua labor** docente que ha marcado a varias generaciones de estudiantes. Su **disciplina** en el aula, su **dedicación** al detalle técnico y su empeño en que cada concepto —desde el modelo de supervivencia hasta las reservas modificadas y el valor de rescate— quedara bien fundamentado han sido decisivos en la **formación de tantas generaciones de actuarios venezolanos**. Quienes hoy ejercen la profesión en compañías de seguro, superintendencias y consultoría reconocen en su enseñanza el origen de una base sólida en contingencias de vida.
+
+Este libro es un reconocimiento a su trayectoria y un intento de preservar el espíritu de su enseñanza para quienes lo sucedan. Gracias, Profesor Felipe Moreno, por tantos años de entrega a la actuaría y a la EECA-UCV.
+
+# Estructura del libro {.unnumbered}
+
+- **Parte I — Supervivencia y tablas de mortalidad:** modelo de supervivencia (tiempo futuro de vida $T_x$, $K_x$, función de supervivencia), fuerza de mortalidad $\mu_x$, tablas de mortalidad ($l_x$, $d_x$, $q_x$, $p_x$, $L_x$, $T_x$, $e_x$), probabilidades en varios años e interpolación. Base: Jordan y Bowers (véase bibliografía).
+- **Parte II — Seguros y anualidades contingentes:** valor presente actuarial, seguros de vida (temporal, vitalicio, dotal), anualidades contingentes, formulación continua.
+- **Parte III — Primas y reservas:** prima neta única, primas periódicas, reserva de beneficio (prospectiva y retrospectiva), reservas en momentos fraccionarios.
+- **Parte IV — Fundamentos históricos, ética y práctica profesional:** extensiones (primas comerciales, valor de rescate, normativa), semblanzas de figuras clave (Price, Morgan, Sprague, King, Wright), contexto venezolano y memoria de la EECA-UCV, guía de textos sugeridos, resumen de las cuatro partes y perspectivas hacia Matemáticas Actuariales II.
+
+El **índice general** al inicio del volumen y el **apéndice de notaciones** al final facilitan la navegación y la consulta rápida de símbolos y fórmulas.

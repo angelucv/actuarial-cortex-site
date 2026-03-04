@@ -1,0 +1,342 @@
+SOA MLCS!Udy Manual-13'h edition Copyrigllt ©2013 ASM
+
+Lesson 2
+
+Survival Distributions: Probability Functions
+
+Reading: Actuarial Mathematics for Life Contingent Risks 2nd edition 2.1, 2.2, 2.4, 3.1, 3.11
+
+We will study the probability distribution of future lifetime. Once we have specified the probability distribu­ tion, we will be able to answer questions like
+
+What is the probability that someone age 30 will survive to age 80?
+
+What is the probability that someone age 40 will die between ages 75 and 85?
+
+With regard to the second question, in this course, whenever we say"between ages x and y", we mean between the xth birthday and the yth birthday. To say someone dies between ages 75 and 85 means that the person dies after reaching the 75th birthday, but before reaching the 85th birthday. If the person dies one month after his 85th birthday, he has not died between ages 75 and 85.
+
+For our survival models, we will use two styles of notation: probability (the type you use in probability courses, which writes arguments of functions with parentheses after the function symbol, like f(x )) and act:.i­ arial (which, as you will see, writes arguments as subscripts). We will use actuarial notation most of the time, bnt since you are probably already familiar with probability notation, we will start bydiscussing that, and then we'll define actuarial notation in terms of probability notation.
+
+Probability notation
+
+We first define Tx as the random variable for time to death for someone age x. Thus, for someone age 50, Tso is the amount of time until he dies, and to say 1'50 =32.4 means that the person who was originally age 50 died when he was age 82.4, so that he lived exactly 32.4 years. We will use the symbol (x) to mean "someone age x ",
+
+so (50) means "someone age 50". It is very common in this course to use the letter x to mean age.
+
+In prcbability notation, Fr( t) is the cumulative distribution function of T, or Pr(T  t ). Usually, the cumu­ lative distribution function is called the distribution function, dropping the word "cumulative". As an example of a cumulative distribution function, F,; (30) is the probability that (50) does not sumve 30 years. Rather than using a double subscript, we will abbreviate the notation for the cumulative distribution function of Tx as F.,( t ), or }t0(30) in our example. The complement cf the distribution function is called the survival function and is denoted by Sr(t). In other words, Sr(t)= Pr(T > t). Thus S7s (30)is the probability that (50) survives 30
+
+years. In general, Sr(t) = 1-Fr(t). Or1ce again, we'll abbreviate the notation as Sx(t), or S50(30) in our example.
+
+Ifwe wanted to express the probability that (40) will die between ages 75 and 85 in terms of distribution functions, we would write it as
+
+Pr(35 < 1:io 45) = Rio(45)- Ei0(35)
+
+and if we wanted to express it in terms of survival functions, we'd write
+
+In the probability expressions, you may wonder why I made the inequality strict on one side and not on the other. I did this to be consistent with the definitions of F and S. However, we will always assume that 'J is a continuous random variable, so it doesn't matter whether the inequalities are strict or not.
+
+SOA MLCSludy Manual-J31h edition	19
+
+Copyright ©20 l 3 ASM
+
+Since we mentioned continuity as a desirable property of a survival function, let's discuss required and desirable characteristics of a survival function. A survival function must have the following properties:
+
+Sx(0) = 1. Negative survival times are impossible.
+
+Sx( t)	Sx( u) for u > t. The function is monotonically nonincreasing. The probability of surviving a longer amount oftime is never greater than the probability of surviving a shorter amount of time.
+
+limc ,00 Sx( t) = 0. Eventually everyone dies; T.. is never infinite.
+
+Those are the required properties of a survival function. Examples of valid survival functions (although they may not represent human mortality) are
+
+(i) Sx(t)= e-0.0lt
+
+(1.1.) Sx(	x+ 1
+
+x+ l + t
+
+...	{1-0.0lt	t:::; 100
+
+(m) Sx(t)=		• 0
+
+t > 100
+
+Examples of invalid survival functions are
+
+50-t	t < 50
+
+(i) S:,;( t) = { 0
+
+-	.	Violates first property.
+
+t > 50
+
+(ii} S:,;( t) = I cost 1-  Violates second and third properties.
+
+We wilJ also assnme the following properties for our survival functions:
+
+S.-( t) is differentiable for t	0, with at most only a finite number of exceptions. Differentiability will allow us to define the probability density function (except at a finite number of points).
+
+lim,  ,00  tSx(t)= 0. This will assure that mean survival time exists.
+
+Jim 1,00 t2S...( t) = 0. This will assure that the variance of survival time exists.
+
+In the three examples of valid survival functions given above, you may verify that the fin;t and third ones satisfy all of these properties but the second one does not satisfy tbe second and third properties.
+
+We would now like to relate the various T, variables (one variable for each x} to each other. To do this, note that each Tx is a conditional random variable: it is the distribution of survival time, given that someone survived to age x. We can relate them using conditional probability:
+
+Probability (x) survives t + u yea!'s:::: Probability (x) survives t years x Probability (x + t) survivef u years or
+
+(2.1)
+
+In English: If you're given the survival function for (x), and you want to know the probability that someone t years older than x survives another u years, calculate the probability of(x) surviving t + u years, and divide by the probability that (x) survives t years.
+
+A special case is x = 0, for which (changing variables: the new xis the old t, the new t is the old u)
+
+S()=So(x+t)
+
+X f	So(x)
+
+(2.2)
+
+SOA MLC Study Manual-131h edition Copyright @2013 ASM
+
+The corresponding relationship for distribution functions is
+
+Pr T < t
+
+Pr(10:Sx+t)-Pr(10<;x)
+
+(	) = -'-'----'-- -...:.
+
+Pr(10>x)
+
+F ( t=)	ll,(x + t )- ll,(x)
+
+X	1-ll,(X)
+
+(2.3)
+
+EXAMPLE 2A The survival function for newborns is
+
+6/JOH
+
+t $100
+
+Calculate
+
+So(t)={	wo
+
+t > 100
+
+I. The probability that a newborn survives to age 75 but does not survive to age 84.
+
+The probability that (20) survives to age 75 but not to age 84.
+
+Jiio(20).
+
+ANSWER: Write each of the items we want to calculate in terms of survival functions.
+
+We want S.,(75)-S.,(84).
+
+We want S.,0(55)-S.,0(64). We'll use equation (2.1) to calculate the needed survival functions.
+
+S.,(75) = 0.5
+
+Jii0(20) = I-S60(20), and
+
+S.,(20)  y  80/100
+
+4
+
+S.,,(64)= So(B )) =			=0.447214 S.,(20	80/100
+
+Pr(55 < 1;0 $ 64) = 0.559017-0.447214 =I 0,111803 I
+
+s	S.,(80)	152
+
+60(20)= -(  - =	= Jo.s
+
+So 601 JOA
+
+Jii,(20) = I - Jo.s= I 0.292893 I	D
+
+(,i'\ Quiz 2-1 (40) is subject to the survival function
+
+\!_)	{1-0.005/	t<20
+
+5'°(t=)	1.3-0.021  20 $ t $ 65
+
+Calculate the probability that (50) survives at least 30 years.
+
+SOA MLC Study Manual-13thedition
+
+Actuarial notation
+
+Actuarial notation puts arguments of functions in subscripts and sometimes superscripts before and after the base function symbol instead of using parenthesized arguments. We are going to learn two actuarial functions: p and q right now. Later on in this lesson, we'll also learn two other functions, d and I.
+
+The first function we work with is S,(t) = Pr(Tx > t). The actuarial symbol for this is ,Px· The letter p
+
+denotes the concept of probability of survival. The x subscript is the age; the t presubscript is the duration.
+
+The complement of the survival function is Fx(t) = Pr(T, <: t). The actuarial symbol for this is ,qx. The
+
+letter q denotes the concept of probability of death. A further refinement to this symbol is the probability of delayed death: the probability that Tx is between u and u+ t, which is denoted by ,,11q x·' For all three symbols, the t (but not the u) is usually omitted ifit is 1.
+
+To summarize the notation:
+
+rPx=Sx(t)
+
+,qx = F,(t)
+
+,,iiq x = l',(t + u)- F,(u)= Sx(u)-Sx(t + u)
+
+The following relationships are clear. For each one, an English translation is provided on the right. In these English translations, and indeed throughout this manual, the word "survives n years,, means that the person does not die within n years. It does not mean that the person dies immediately at the end of n years.
+
+Px = 1- qx	The probability that a person age x survives one year is I minus the probability that the same person dies within a year.
+
+, px = 1- 1q :t	The probability that a person age x survives t years is 1 minus the prob­ ability that the sam person dies within t years.
+
+rPx uPx+c = r+uPx  The probability that a person age x survives t years and then survives for another u years is the probability that the same person survives t + u years.
+
+,111q x = iP x uq_Ht  The probability that a person age x dies at least t years from now but sooner than t + u years from now is the probability that the same person survives t years and then dies within the next u years.
+
+There are two additional useful formulas for ,iuq x· The probability that (x) dies in the period from t to
+
+t + u is the probability that(x) survives t years and does not survive t + u years, or
+
+(2.4)
+
+The probability that (x) dies in the period from t to t + u is the probability that (x) dies within t + u years minus the probability that (x) dies within t years, or
+
+EXAMPLE 2B You are given the following mortality table:
+
+(2.5)
+
+1 Actuarial Mathematics for Life Comingent Risks uses a large line on the baseline for this symbol, like ul, qx. I think this is ugly, and older textbooks do not write it this way. Nor do recent exams.
+
+SOA MLCStudy Manual-13th edilion Copyright ©2013ASM
+
+Calculate the probability that a person age 60 will die sometime between 2 and 5 years from now.
+
+ANSWER: The actuarial notation for what we are calculating is 213q60. One way to calculate this is as the prob­ ability of living 2 years minus the probability of living 5 years, or 2p60 - 5p60. We calculate:
+
+2P60 =p60 P61
+
+=(l-q6o)(l-q61) =(1-0.001)(1-0.002) = 0.997002
+
+sP6o = 2P60 P62 P63 Ps4
+
+= 0.997002(1-q52l(l-qs3)(1-q64)
+
+= 0.997002(1-0.003)(1-0.004)(1-0.005) = 0.985085
+
+213q60=0.997002-0.985085=l 0.011917 l	D
+
+In the following example, we'll relate actuarial and probability notation.
+
+EXAMPLE 2C You are given that
+
+2
+
+So(t) =(	100  )
+
+ANSWER: First express the desired probability in terms of survival functions, using equation (2.4).
+
+Then express these in terms of So, using equation (2.2).
+
+So(45)	(100/145)2
+
+S40(5)= So(40) = (l00/l40)2 = 0.932224
+
+So(46)	(100/146)2
+
+S40(6)= ·	=  (l00/l40)2 =0.919497
+
+The answer2 is 51q40 = 0.932224-0.919497 =I0.0127271	□
+
+Life tables
+
+Alife table is a concrete way to look at the survivorship random variable. A life table specifies a certain number oflives at a starting integer age x0. Usually x0 = 0. This number oflives at age x0 is called the radix. Then for each integer x > x0, the expected number of survivors is listed. The notation for the number of lives listed in the table for age x is Ix.  •
+
+Assuming for simplicity that Xo = 0, the random variable for the number of lives at each age, [x), is a
+
+binomial random variable with parameters 10 and xPo, so the expected number oflives is lx = 10 xPo• Similarly,
+
+lx+t = Ix 1p x· More importantly, 1p x can be calculated from the table using ,Px = lx+1/lx,
+
+A life table also lists the expected number of deaths at each age; dx is the notation for this concept. Thus
+
+dx = lx - Ix+l = lx qx. Therefore, qx = dxf lx. The life table also makes it easy to compute ultqx = Ux+u -
+
+lx+t+u)flx,
+
+Here's an example of a life table:
+
+2Without intermediate rounding, the answer would be 0.012726. We will often show rounded val1Jcs but use unroundcd values in our calculations.
+
+SOA MLC Study Manual-I31h edition
+
+Notice that on each line, dx = lx - lr+I · We can deduce that 175 = l74 -  d74 = 40- 18 = 22.
+
+EXAMPLE 2D Using the life table above, calculate 3p71.
+
+ANSWER:
+
+D
+
+The notation ndx is the number of deaths occurring within n years after age x; dx = 1dx, and ndx =
+
+°"n-1
+
+,L,j=D dx+j·
+
+On exams, they base questions on the lllustrative Life Table, an abridged version of a table in the Bowers textbook from the previous syllabus. In this table, the column for dx is omitted, and must be deduced from Ix if needed. However, a column of mortality rates, lO0Oqx, is given, even though mortality rates could also be computed from the Ix 's.
+
+Since life tables are so convenient, it is sometimes easier to build a life table to solve a probability question than to work the question out directly.
+
+Continuation of Example 2B. Redo Example 28 using life tables.
+
+ANSWER: We will arbitrarily use a radix of 1,000,000 at age 60. Then we recursively calculate I.,., x = 61,...,65 using lx+l = lx(I-qxJ-
+
+The answer is (997,002-985,085)/1,000,000=j 0.011917 J.	D
+
+An exam question may ask you to fill in the blanks in a life table using !)fObabilities. However, this type of question is probably too simple for SOA exams.
+
+EXAMPLE 2E You are given the following life table:
+
+Calculate 2p0.
+
+SOI\ MLC Study Manual-lJ'h edition Copyright ©2013 /\SM
+
+ANSWER: We back out /0:
+
+l = -890 = 908.16
+
+0.98
+
+10= 908.16 + 50 = 953.16
+
+Hence 2p0 = 890/958.2 = j 0.9288 I.	□
+
+Quiz2-2 You are given:
+
+d49 = 80
+
+150 = 450
+
+312 q45 =1 / 6
+
+3p45 = 2/3
+
+Determine d49.
+
+Mortality trends
+
+Mortality has been improving in recent years. One may want to assume mortality continues to improve. Thus one may assume the base mortality table applies to a baseline year Y, and set the mortality rate for (x) in year Y + s to q(x, s). If we assume a mortality improvement of a fixed percentage per year, then we can express q(x,s)as
+
+q(x, s)= q(x,0)r;
+
+where ,; , the complement of the mortality improvement rate, is called a Reduction Factor in the textbook. In the U.S. this would be called a projection factor, certainly a better name since the factor does not necessarily reduce mortality.
+
+When calculating 1p(x, 0) in this situation, one must be careful to multiply by the appropriate reduction factors for the attained ages; since the attained age varies by year, the reduction factor may vary by year.
+

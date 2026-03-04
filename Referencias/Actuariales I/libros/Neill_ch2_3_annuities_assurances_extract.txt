@@ -1,0 +1,1917 @@
+Given that p 0 = ¾p30, c = l •l and loge g =  - ·001, find r.
+
+CHAPTER TWO
+
+ANNUITIES, ASSURANCES, PREMIUMS
+
+Pure endowments
+
+This chapter will be concerned with formulae for the values of payments which depend on the survival or the death of a person normally referred to as a life. The functions introduced will involve both mortality and interest and are known as monetary functions.
+
+The first formula to be considered is that for a pure endowment, that is a payment made on a certain date in the future, if a life is then alive. The symbol for the present value of a pure endowment of 1 payable if (x) survives n years is nE,, or A,,, -the first being simpler but the second being consistent with the general notation used in life contingencies.
+
+The value of A,., will be the value on the assumption that 1 will certainly be payable (that is discounting at compound interest for n years) multiplied by the probability that it will be paid (that is the probability that (x) lives n years) so
+
+Jt:ii!-	V •nPx - V -1-,
+
+or multiplying both numerator and denominator by v",
+
+vx+n1
+
+Jt+n
+
+v"l,,
+
+This gives symmetry in the numerator and denominator, and if we define a new function
+
+A,,,1n_ 1D-xT+n·
+
+(2.1.1)
+
+(2.1.2)
+
+The function D,. is the first commutation functic:m we meet-that is a function introduced to reduce the computation in calculations and which involves both interest and mortality functions. Commutation functions are calculated and tabulated in columns (called commuta­ tion columns) at the main rates of interest, and were invaluable in
+
+life contingency calculations especially before the advent of com­ puters.
+
+A.r,k may also be called the net single premium at age x for an
+
+n-year pure endowment of I. It represents the single premium an insurer will require in return for the promise to pay the sum of I at the end of n years if he is then alive. The word 'net' indicates that no provision is made for the life insurance company's expenses.
+
+As an example the net single premium for a 20-year pure endow­ ment of £100 for a life aged 50 will be found on the basis of the A1967-70 mortality table ultimate and 4% interest. Referring to the table in Appendix III (but reducing the number of significant figures)
+
+Premium= 100D70 = 100 _l,5l7·00 = 33·00,
+
+D50	4,597·06
+
+so the premium required is £33·00.
+
+It is interesting to check the result by accumulating the premiums that would be paid by a large number of persons each of age 50. If we take the large number to be /50, i.e. 32,670 the total premiums will be
+
+32,670 X £33•00 = £1,078,110
+
+which accumulated over 20 years at 4% interest (i.e. multiplying by (1·04)20 = 2·19112) gives £2,362,268. Dividing this total amount available after 20 years among the /70 = 23,622 assumed to survive gives £100 to each of the persons, as expected.
+
+This calculation illustrates what is meant by accumulating a fund with the benefit of both interest and survivorship. The share of each individual who survives to age 70 includes a portion of the premiums paid by those who forfeit benefit by not surviving.
+
+If therefore Ax, k is the present value of a sum of I payable at the
+
+end of n years to a life aged x:-1- will be the accumulated value of
+
+Ax,k
+
+a payment of 1 made by a life aged x, rz years previously, allowing for
+
+both interest and mortality. It is the equivalent of _!_ or (1 + i?
+
+where interest only is involved.
+
+Exercise 2.1
+
+Find the present value at 4% interest of a sum of £1,000 due to a life aged 30 payable on the survival of 25 years, assuming Al967-70 ultimate mortality.
+
+Exercise 2.2
+
+What does £500 at age 25 accumulate to after 30 years with interest at 4% and with the benefit of survivance on the basis of the A1967-70 ultimate mortality table?
+
+Annuities
+
+A life annuity, or annuity, is a series of payments made at equal intervals (yearly if not otherwise stated) during the lifetime of a given life. It may be temporary, that is limited to a certain number of years, or payable throughout life, and will be assumed to be the latter if not otherwise stated. It may be deferred, that is commencing some years in the future, or immediate, that is the first payment is made one year (in a yearly annuity) after commencement.
+
+The present value of an immediate yearly annuity of 1 per annum to (x) is denoted by ax and can be considered as the sum of a series of pure endowments of I,
+
+i.e.
+
+a;,c =
+
+1	1	1	1
+
+A;,c:t7+A;,c:2l+A;,c:Jl+•••+A;,c,m-x-1I
+
+D..,	D.., •	D..,	D..,
+
+1	m-x-1
+
+D;,c 1=1
+
+We now define a new commutation function N.., as follows:
+
+m-.%-1
+
+Nx=	D..,+,
+
+1=0
+
+so	a
+
+Nx+l
+
+(2.2.1)
+
+The commutation columns of Nx are easily obtained by summing the Dx values from the oldest age back to the youngest age, the process being based on
+
+Nx = Nx+l +Dx.
+
+As Dx = 0 for x ::!' w, Nx can also be defined as
+
+(2.2.2)
+
+If the annuity has payments limited to a specified maximum period, say n years (the term of the annuity) it is given the symbol a,,,ni and may be expressed as
+
+n	I	n	Dx+t
+
+0x,ni =	A,,,rJ =
+
+t=l	t=l	D,,
+
+As L Dx+t is the difference between N,,+1 and Nx+n+i,
+
+r=l
+
+(2.2.3)
+
+If an annuity is deferred for m years the payments for the first m years are omitted. Thus a life annuity to (x) deferred m years has the first payment at age x+m+ 1. Its value mla,, can be found either by subtracting the first m payments from the life annuity, that is
+
+Nx+m+l	(2.2.4)
+
+or directly as
+
+rr:,	1	1	rr:,	N
+
+,,,lax=	L	Ax,il = -	L Dx+r =	x+m+1
+
+t=m+l	D,,r=m+l	D,,
+
+A third method is to find the value at age x + m and discount to age x using both interest and mortality, that is
+
+If the deferred annuity has limited payment, say for a maximum of r years, it is given either the symbol mla,, ,;j or
+
+1	m+r
+
+,,,l,a,, = D-	Dx+t
+
+,,t=m+l
+
+Nx+m+l -Nx+m+r+l
+
+D,,
+
+(2.2.5)
+
+The annuities discussed so far have the first payment at the end of the payment period, and are called immediate annuities. If the first of the series of payments commences at the beginning of the period the annuity is called an annuity-due and the symbol used is ii, the
+
+double dot (or trema or diaeresis) above distinguishing it from a. The terminology is slightly confusing as the first payment under an immediate annuity is not made immediately, the annuity commencing immediately being called an annuity-due, but the word 'immediate' was originally used to distinguish it from deferred. If the word 'annuity' is used by itself an immediate annuity is assumed unless the context otherwise requires. The reader will already have met the notation and terminology in the study of compound interest.
+
+While the technical terms are immediate annuity and annuity-due, in dealing with the general public an insurance company may refer to 'annuity in arrears' or 'annuity in advance' respectively.
+
+It will be seen that there will be annuity-dues corresponding to each of the above immediate annuities, as follows, each payment being one year earlier than the immediate annuity;
+
+(2.2.6)
+
+n-l
+
+••	_ ,	.x+t _	x-	.'l'+n
+
+0.x:iii-	-------
+
+(2.2.7)
+
+1 D0X	DX
+
+1·· _ Nx+m
+
+In •Q X-
+
+(2.2.8)
+
+(2.2.9)
+
+The difference between ii" and ax is the payment made immediately
+
+(2.2.10)
+
+For	the temporary annuity
+
+(2.2.11)
+
+and it should be noted that the term of the annuity is 'n-1' not'n' as the first payment of 1 is given separately.
+
+Another relationship bet\veen a,, and ii" can be found-
+
+a = N
+
+"	DJC
+
+D,,
+
+Nx+I
+
+Dx+l
+
+rr+l.fx+l	••
+
+v"lx
+
+:. a"= vp". iix+t·
+
+It can be shown similarly that
+
+(2.2.12)
+
+(2.2.13)
+
+Other relations can be proved either by using the commutation functions or by general reasoning, for example
+
+Oz:i'il-a..
+
+DDx+n --A	1
+
+(2.2.14)
+
+(2.2.15)
+
+(2.2.16)
+
+,n-11-
+
+x:iil•
+
+This last is a useful relationship if the value of A": is required but is not tabulated, when temporary annuities are tabulated.
+
+If values of pure endowments or annuities are required on select tables then the only difference will be that the commutation functions (which are tabulated in much the same way as are the mortality functions) are calculated using the select mortality functions:
+
+DrxJ = v"lcxJ DcxJ+t = v"+'lcxJ+t
+
+Ncx]	Dcx]+t•
+
+r=O
+
+where DcxJ+t = Dz+, when tis equal to or greater than the select period of the table.
+
+Most published mortality tables tabulate values of annuities as well as commutation functions. Almost all tables give values of life annuities and some give values of temporary annuities. Care must be taken in referring to tables as sometimes ii and sometimes a is tabulated.
+
+Example 2.1
+
+Calculate the value of the following, using the commutation columns of the Al 967-70 table at 4 % interest:
+
+Solution
+
+ii40=	N40=	132,002=	18·894.
+
+D40	6,986·50
+
+_  N41 _  125,015 _ 17.894
+
+G40 -	D	6,986-50 -	•
+
+as expected one less than ii40•
+
+ii	=	Nc40=1
+
+401
+
+131,995=	18·906
+
+c	Dc401	6,981·60	'
+
+slightly greater than ii40 as the mortality in the first year is lighter.
+
+a£40J =
+
+Nr401+1
+
+Dc4oJ
+
+Dr401
+
+(as N1401+ I is not tabulated; and the select period is two years)
+
+131,995-6,981-60
+
+6,981·60
+
+as expected one less than ii1401•
+
+N41-N11
+
+U40- JOI=
+
+•	D40
+
+(the first N suffix being one year more than the starting age as it is an immediate annuity, and the difference between the suffixes being the term)
+
+125,015-12,070·9
+
+6,986·50
+
+..	Nrso1-N60
+
+acso1 : Toi	----=---
+
+Dr0s1
+
+(the first N suffix being the starting age as it is an annuity-due, and the difference between the suffixes being the term)
+
+73,544·8-35,841·3
+
+4,581·32
+
+.	Ns1
+
+sla4s = -
+
+D4s
+
+(the N suffix being the deferred term plus one year (as it is an immediate annuity) more than the entry age)
+
+5,689·18
+
+10 1sapo1 =	D
+
+[30)
+
+(the first N suffix being the deferred term added to the entry age as it is an annuity-due, and the difference between the suffixes is the term)
+
+132,002-52,502·8
+
+10,430·0
+
+Exercise 2.3
+
+Calculate the following on the AI 967-70 table of mortality and 4 % interest:
+
+060, ac,01, a6s: IT1, ii6s: Tsl, 2olsa3s, 10I 1s0c4oJ·
+
+Exercise 2.4
+
+A father wishes to provide an annuity of £100 per annum to his son, now aged exactly IO, the first payment being on his 21st birth­ day. What sum would an insurance company require as a premium assuming AI967-70 select mortality and 4 % interest?
+
+Exercise 2.5
+
+Prove that d.,:;;i-a,.:n1 = 1-A.,, .
+
+Exercise 2.6
+
+Prove, and explain by general reasoning
+
+a"=	LCl'.)
+
+Exercise 2.7
+
+t=l
+
+rlqx.a,,.
+
+Prove ..ax.llx.+. 1 •",c..+2···ax.+. n
+
+llx+ 1 • 0,c+ 2 • llx+ 3· • .O,c+n
+
+Exercise 2.8
+
+n a".
+
+The select rate of mortality in a mortality table with a select period of one year is 60% of the ultimate rate. If at 4¼ % per annum interest a45 = 15·719 and a46 = 15·509, calculate ac451.
+
+Accumulations
+
+If each member of a large group of lives aged x makes a payment of 1 into a fund at the end of each year, and these payments are accumulated in the fund for n years, the share of each survivor at the end of then years is given the symbol sx,n1• in an obvious extension at the compound interest notation; the accumulation being with the benefit both of interest and survivorship.
+
+Each of the payments can be accumulated separately, the first made
+
+at age x+ 1 accumulating to
+
+1	, the second to	1
+
+Ax+l:n-11	Ax+2:n-21
+
+and the last to 1. Thus the total will be
+
+ff	1
+
+L	1
+
+t= i  A,.+t :"ii'=rl
+
+t=l  D,c+n
+
+Dx+n
+
+Alternatively sx,ni can be considered as the accumulated value at age x+n of the series of payments for which a",n1 represents the value of age x, that is
+
+5x:iil = llx:iil .--1
+
+A",n1
+
+Dx	Dx+n
+
+i.e.	S	=	Nx+I -Nx+n+I
+
+x:nl
+
+(2.3.1)
+
+x+n
+
+Similarly, the function s..,n1 being the accumulation of the annuity­ due can be evaluated
+
+(2.3.2)
+
+It will be noted that the formulae in section 2.2 and this section are of the form
+
+Ny-Ny+,.
+
+where y is the age at which the first payment is due
+
+11. is the number of payments, and
+
+(2.3.3)
+
+x is the age at which the value of the payments is desired.
+
+Individual formulae should therefore not be memorised.
+
+Example 2.2
+
+A group of lives aged 30 pay £10 at the beginning of each year for 20 years into a fund. Find the share of each surviving member of the group at the end of the 20 years if the group experience A1967-70
+
+ultimate mortality and the fund earns 4% per annum interest.
+
+Solution
+
+The accumulation will be
+
+-	_	N30-Nso
+
+30:20] -
+
+Dso
+
+4,597·06
+
+That is the share is £317·96 which can be compared to the amount when the accumulaJion is only at interest, l0.i'201 = 309·69.
+
+Exercise 2.9
+
+A group of lives aged 50 pay £5 at the beginning of each year for 5 years into a fund. Find the share of each surviving member of the group at the end of 15 years if they experience A1967-70 ultimate
+
+mortality and the fund earns 4% interest.
+
+Exercise 2.10
+
+Show by calculating numerical values using Al967-70 mortality and 4% interest that
+
+Siof<ScsoJ: 101 <sso:101 <s60:101 <s6o:101•
+
+Assurances
+
+The functions considered so far in this chapter have been depen­ dent on the survival of a life; we now consider functions relating to payment contingent on death rather than on survivance. These are referred to as assurances, or, particularly in the USA, as insurances. The distinction is normally made in the United Kingdom between the assurance of life, whereas fire, marine, accident, aviation, etc., are insurance.
+
+An assurance provides a payment of a specified amount (called the sum assured or insured) upon the death of the life assured. Although the actual practice is to pay a death benefit as soon as the death claim is made, or as soon as the legal formalities are completed, it is simpler initially to consider benefits which are paid at the end of the policy year of death, that is, on the first anniversary of effecting the policy, after the death.	•
+
+The value of a benefit of I payable at the end of the year of death of a life aged x, no matter when the death occurs (called a whole life assurance) is given the symbol Ax. Then
+
+Ax=	L. V r+l
+
+.,lqx = -1
+
+La,
+
+t+l
+
+.dx+t>
+
+r=O	lx r=O
+
+the summation being stated to continue to oo although values after
+
+t = w-x-1 will be zero.
+
+This expression is simplified by the introduction of the commuta­ tion functions
+
+(2.4.1)
+
+and
+
+a:,
+
+Mx =	Cx+r•
+
+t=O
+
+(2.4.2)
+
+Then
+
+_  I
+
+-x-
+
+x+t+I  d
+
+x+t
+
+L. Cx+t
+
+(2.4.3)
+
+V lx t=O	Dx r=O	D,,
+
+Note that in Cx the power of vis one greater than the suffix of dx
+
+as the benefit is paid at the end of the year of death.
+
+An assurance which provides a payment only if death occurs
+
+within a limited period is known as a term or temporary assurance (or often as insurance) and the symbol for such a benefit for a life
+
+aged x with a term of n years is A;,iii• or alternatively as ,.Ax, this
+
+being the symbol used in the tabulation of Al967-70.
+
+The summation above will then be limited and
+
+i.e.		(2.4.4)
+
+It will be seen that the symbol is very similar to that for a pure endowment, Ax, - The 1 above the x in one case signifies that the life x must die before the expiry of the term for the benefit to be paid, and in the other the 1 above the nj signifies that the term certain must expire before the death of x for the benefit to be paid.
+
+When the two benefits A;, iii and Ax, are added together, the benefit is paid at the end of the policy year of death of x before the expiry of n years, that is before age x +n, or at age x +n if the life has not previously died. This contract is called an n-year endowment assurance and is given the symbol A.x,;,1• It will be obvious that
+
+Ax:iil = A1,ni+Ax, ,
+
+i.e.
+
+-	M,,-M,,+,.+Dx+n
+
+x,ni-	D	•
+
+(2.4.5)
+
+If a death benefit is paid only if death occurs after a certain period, say m years, it is referred to as a deferred assurance, and given the symbQl mlAx. It should be obvious that
+
+(2.4.6)
+
+Where the mortality table is select, if the duration t is less than the select period, symbols of the form Cc,,1+ ,, Mc,,1+ 1 will be used.
+
+Some published tables give values of assurance functions though
+
+normally much less extensively than annuity values.
+
+Example 2.3
+
+Calculate by means of commutation functions on the basis of the Al 967-70 table at 4% interest the values of
+
+A30, Aio: 20], Ac4sJ: iil, slAso·
+
+Solution
+
+10,433·3
+
+6,986·50
+
+Mc4s1-M6o+D60
+
+--''----'=-----
+
+Dc4sJ
+
+5,680·37
+
+Mss slAso = --
+
+Dso
+
+4,597·06
+
+Exercise 2.11
+
+Calculate by means of commutation functions on the basis of the
+
+Al967-70 mortality table at 4% interest the values of:
+
+A[43J• Als,141, Ac311,s1, 3IAs1•
+
+Exercise 2.12
+
+If/,. = 100- x find the value of Alo,TIT at 2 % interest given that
+
+v15 at 2% = ·74301.
+
+Net premiums
+
+The premium or premiums for an assurance are the sum or sums paid, normally by the life assured, for the right to the sum assured in the event of death-or survivance in the case of an endowment assurance. Normally premiums are level, that is each is of the same amount, and payable throughout the whole duration of the assurance. The notation for the premium is similar to that for assurance benefits, P being used instead of A. Thus
+
+P"  is the annual premium for a whole life assurance effected on a life aged x;
+
+P1!1: n1 is the annual premium for an n-year term assurance on a select life aged x;
+
+P,,,n1 is the annual premium for an n-year endowment assurance on a life aged x.
+
+If the premium is paid for a shorter period than the whole term of the contract, a prefix is added to the symbol, thus
+
+,PcxJ is the annual premium limited to t years for a whole life assurance on a select life aged x.
+
+Sometimes, especially with more complicated benefits, for example those involving several lives, the symbol P is used with the relative assurance symbol in brackets, thus
+
+P(Ax:nl) = Px,nl·
+
+When the assurance is purchased by a single premium the A symbol is normally used, for example,
+
+1Px:iil = Ax:iil•
+
+The normal method of finding formulae for premiums is to equate the present value of the benefits and the premiums, the value of the premiums being the premium multiplied by the relevant annuity value, using the same technique the student will have met in the study of compound interest.
+
+For example:
+
+. 52	CHAPTER  TWO
+
+No attempt should be made to remember any formulae for premiums as they are easily obtained from first principles as required.
+
+When the premiums are not level they will normally be found by equating present values using the same technique.
+
+Examplel.4
+
+Find the annual premium halving after ten years for a whole life assurance for a select life aged 30 on the basis of the A1967-70 table of mortality and 4% interest.
+
+Solution
+
+If the premium is P reducing to ½P, equating the present values of premium and benefits gives
+
+P .17l3oJ, ToT+½P. 10117[3oJ = A[3oJ
+
+:.  p NpoJ-N4o +½P N40=	M[3
+
+Dpo1	DCJ01	Dpo1
+
+. p =	MC30l	=	1,978·85
+
+• •	NC301-½N40	219,731-½(132,002)
+
+So the premium per unit sum assured is ·0129 reducing to ·0065 after ten years.
+
+Exercise 2.13
+
+Calculate using the commutation columns of the Al967-70 mortality table at 4% interest:
+
+1	1
+
+P30, Pc4oJ, Pso,To], Pc4s1,TI!, P3S:10l, 10Pcso1•
+
+Exercise 2.14
+
+Find the annual premium payable for IO years for a 20-year term assurance of £100 on the basis of the Al967-70 table of mortality and 4% interest for a select life aged 25.
+
+Exercise 2.15
+
+An insurance company offers an endowment assurance contract under which the annual premium for the first ten years is less than the annual premium in the subsequent years. If two alternative contracts for a certain life have a premium of 2·73 increasing to 7·45 and l·36 increasing to 8·46, find the uniform annual premium.
+
+qmce premiums
+
+The premiums considered in the previous section were net premiums, that is they take account only of interest and mortality, no allowance being made for the administrative expenses of the life assurance company. Office premiums include loadings for expenses and may also include margins to cover contingencies and profits.
+
+Expenses are normally divided into:
+
+initial expenses-incurred when the policy is issued, and
+
+renewal expenses-incurred each year during the term of the policy.
+
+An expense of either type may be:
+
+in direct proportion to the premium (e.g. renewal commission to an agent)
+
+in direct proportion to the sum assured
+
+independent of the premium or sum assured (e.g. cost of administration, medical fees).
+
+At one time it was usual for initial commission to an agent to be of type (ii), in proportion to the sum assured, but this was changed more recently to type (i), in proportion to the premium (at a higher rate than the renewal commission).
+
+Premium rates are normally quoted in the form of a premium per
+
+£100 or £1,000 sum assured, called per cent or per mil, symbolised by % or %0, and can directly allow for expenses of types (i) and (ii). Expenses of type (iii) are normally now allowed for by making a
+
+fixed ·addition to the premium, called a policy fee or charge, not dependent on the sum assured or premium-the amount added to each premium being perhaps £2 or £3. At one time a system of sliding scales was used where the premium rate per cent was lower the higher the sum assured, for example the rate in the band £2,000
+
+to £3,000 might be IOp % lower than in the band £1,000 to £2,000.
+
+In this section we will be mainly concerned with expenses of types
+
+(i) and (ii) and while some formulae will be developed it is better not to attempt to memorise them, but to obtain any required expression from first principles using the equation of payments:
+
+Present value o=f	Present value of+ Present value of
+
+office premiums	benefits	expenses.
+
+Often expenses will be a proportion of the office premium in which case the right-hand side will include the office premium. For example, if the expenses are k per unit of each office premium, c per unit sum assured each year, and additional initial expense of/, we obtain the following for the relationship between P the net premium and P" the office premium (where ii is the annuity-due for the premium term and A is the value of the benefit)
+
+P"ii = A+kP"ii+cii+l, and as A= Pii (1-k)P"ii = (P+c)ii+l
+
+:. P" = -1-(P+ !_ +c).
+
+1-k	ii
+
+(2.6.1)
+
+The difference between the office and net premiums (i.e. P" - P) is called the loading.
+
+In practical examples it is important to be clear whether renewal expenses are considered as occurring in the first year or only in subsequent years, in the first case an ii. annuity will be used and in the second an a will be applicable.
+
+Example2.5
+
+Calculate on the basis of the Al 967-70 select table of mortality at 4% interest the annual premium per cent for a 25-year endowment assurance on a life aged 40, allowing for initial expenses of £2 % of the sum insured, renewal expenses including renewal commission of 5 % of each premium including the first and 30p each year per £100 sum assured, and initial commission of 50% of the first year's gross premium.
+
+Solution
+
+Let £P" be the required premium per cent. Then
+
+P"ii1401,251 = 100A1401:m+  ·05P" ii1401, 251 +·3ii1401,251 +2+	·5P"
+
+:. p="	100A1401,251+·3ii14o1,251+2
+
+·95ii[40]: iii - ·5
+
+(·95)(15·609)-·5
+
+So premium required is £3·26%.
+
+Example 2.6
+
+Find the single premium for 11 1O-year term insurance with sum insured £500 for a life aged 30 on the A1967-7O select table at 4 % interest. The premium paid is to be returned with the sum insured in the event of a claim. Expenses are £3 % of the sum insured with a continuing administration cost of £1 each year.
+
+Solution
+
+If £P" is, the required single premium,
+
+then	P" = (5OO+P")Ado1: Tol +3(5)+ 1. a[30]: Tol
+
+p="	5OOAclo1: ror+15 + a[30]:Io]
+
+Ap\1, IoJ
+
+Now
+
+A 3101
+
+and
+
+ii	_ =	NC301-N40=	219,731-132,002=  8_411
+
+poJ' 101	D [30]
+
+10,430·0
+
+so	P"=	500(·00665)+ 15+8·411 1-·00665
+
+So premium required is £26·91.
+
+Example 2.7
+
+A yearly annuity to a male aged 60 under which the first payment will be made one year hence has been purchased with £1,000. Assuming the a(55) select male table of mortality and 4 % interest is used with-initial expenses of 2% of the purchase price and subsequent expenses of £1·50 each year, find the annual payment under the
+
+contract.
+
+Solution
+
+If £A is the annuity
+
+1,000 = Aac601+1·5ac601+ 20,
+
+A= 98O-·l5ac601
+
+ac6oJ
+
+a[60J
+
+11·691
+
+So the annuity payment is £82·33 each year.
+
+Exercise 2.16
+
+Find the annual premium for a 20-year endowment assurance with sum assured £1,500 for a life aged 40 on the Al967-70 select table at 4% interest. Expenses to be allowed for are initial expenses of
+
+£2·50 % of the sum assured and 40 % of the gross premium, renewal
+
+expenses of 3% of each premium excluding the first and expenses
+
+of paying'the claim of £5.
+
+Exercise 2.17
+
+A yearly annuity to a male aged 65 under which the first payment is to be made immediately has been purchased to provide a pension of £200 per annum. The mortality table assumed is the a(55) select male table with 4% interest. Expenses are I½% of the purchase price, and payment expenses of £1 at each payment. Find the purchase price.
+
+Exercise 2.18
+
+A deferred annuity is purchased by 20 annual premiums payable by a life aged 40 for a yearly annuity-due of £250 to commence at age 60. Find the premium on the basis of the A1967-70 select mortality table and 4% interest with expenses of 5% of each premium and 50p at each annuity payment.
+
+Exercise 2.19
+
+A single premium is paid for a 20-ycar temporary assurance with sum assured £2,000 for a life aged 40. Expenses are £2 % of the sum assured, with a fixed addition of £I 5. Find the premium, half of which is returned with the sum assured in the event of a claim, on the A1967-70 select table at 4 % interest.
+
+Varying annuities and assurances
+
+When an annuity or assurance varies in amount it will obviously be possible to evaluate it using suitable multiples of Dx or Cx. In cases where the annuity or assurance increases or decreases by an equal amount each year further commutation functions are useful. Consider an annuity-due, given the symbol (Jii)x, commencing at I
+
+immediately, increasing to 2 at the next payment one year hence, to 3 at duration 2, and so on indefinitely. Then
+
+(Iii),c = _!_ (D,c+2Dx+1 +3Dx+2+ ... )
+
+1=	Dx+Dx+l +Dx+2+ ...
+
++ Dx+ 1 + Dx+2 + .. .
+
++Dx+2+ .. .
+
++...)
+
+i.e.
+
+where
+
+(Iii) = S"
+
+"	D'
+
+Sx=LNx+t
+
+t=O
+
+(2.7.1)
+
+(2.7.2)
+
+and S" can be obtained by the successive summation of the N"
+
+column from the highest age in the same way as N" is obtained from
+
+D". As can be seen, S" also equals
+
+L (t+ l)Dx+t·
+
+t=O
+
+If the annuity is an immediate annuity commencing one year hence and increasing similarly it has the symbol
+
+(Ia)"= -(Dx+t +2Dx+2+3D.,+3+ ... ) D.,
+
+i.e.
+
+(Ia)x= S;+t.
+
+(2.7.3)
+
+The value of a temporary increasing annuity-due can also be obtained,
+
+(Jii)x: nl =	(Dx+2D,c+1 +3Dx+2 + ... +nDx+n-1)
+
+i.e. (/li)x:nl
+
+It is important to note the subtraction of the N commutation function at the end of the term, multiplied by the difference between the suffices of the S factors. The need for this factor can also be demonstrated graphically, as shown in Figure 2.1.
+
+X	X+l	x+2 JH-3	Age	x+n-1 .x+n x+n+I . .x+n+2 .x+n+3 FIGURE 2.1. Pictorial representation of the function
+
+•·)	= S,,-S,,+.-nN,.+•
+
+a "'iii	D,,	•
+
+The columns indicate the values that would be paid if S" were to
+
+be the benefit, the amount deducted by 5.1:+n being indicated by the
+
+stippling in the top right showing clearly that nNx+n must also be
+
+deducted.
+
+A similar expression can be obtained for a decreasing annuity, commencing with n at age x and decreasing by 1 each year till zero,
+
+(Dii),,: n1  =	(nDx +(n -1)D,,+ 1 +... +Dx+n- 1)
+
+(2.7.5)
+
+Again this can be demonstrated graphically as in Figure 2.2. The annuity commences at n giving the term nN,, and from this the annuity of I commencing one year hence, increasing by I each year must be deducted i.e. - S,,+ 1 (indicated by the stippling). After age x+n the annuity would then become negative so S.x+..+i must be added, indicated by the shading.
+
+::, •
+
+C C
+
+2l	3
+
+FIGURE 2.2. Pictorial representation of the function
+
+-)	=  nN,.-S,.+t+S,.+■+t
+
+a,,,iil	D,.
+
+The rules for checking an expression involving S functions to evaluate temporary annuities are:
+
+the coefficients of the two S terms must be equal but opposite in sign,
+
+the coefficient of the N term (or sometimes when there is more than one N term-the sum of the coefficients of the N terms) must equal the coefficient of the S term at the older age multi­ plied by the difference between the suffices of the S terms.
+
+Considering now assurances, similar methods will be applicable, the commutation function corresponding to S being R,
+
+(7J	a:,
+
+R:c =	M:c+t =	(t+ l)C:c+t
+
+r=O	t=O
+
+(2.7.6)
+
+and similar formulae will result, for example, the value of an in­ creasing whole-life assurance on the life of x under which the sum assured payable on death during the tth year is t, paid at end of the year of death, will be
+
+1  00	R
+
+(IA);c	(t+l)C:c+t = ;	(2.7.7)
+
+Dxt=O	Dx
+
+and similarly for the temporary increasing assurance
+
+x:iil	D	.
+
+(2.7.8)
+
+Graphical methods can also be used, and similar rules to those used for annuities will be used to check expressions.
+
+Select values of the R and S commutation factors will be tabulated in a similar way to C, D, M and N.
+
+Example 2.8
+
+The sum assured under a whole-life policy commences at £1,000 in the first year and increases each year by £50. Find the level annual premium for a life aged 50 on the basis of the Al967-70 select table
+
+of mortality and 4% interest, with expenses of 8 % of each premium.
+
+Solution
+
+If P" is the premium,
+
+acso1 =	cso1+ ---	+·08P ac501,
+
+DcsoJ
+
+the right-hand side being written this way rather than as
+
+1,000AcsoJ + -50Rcso1-+1 +..,a.s RcsoJ+1 is not tabulated, Dcso1
+
+950(·38257)+50 39,142•9
+
+4,58 I·32
+
+(·92)(16·053)
+
+So premium required is £53·53.
+
+Example 2.9
+
+A yearly annuity to a life aged 40 commences at £100 and decreases each year by £4 till £20 at which it remains level until it ceases at the age of 80. Find the present value of the annuity on the A1967-70 ultimate table of mortality at 4% interest if the first payment is made immediately.
+
+Solution
+
+This example will be used to demonstrate a tabular technique similar to the pictorial representation previously described.
+
+The annuity can be set out as follows:
+
+Duration	0	I	2	3 ..	18  19  20	21	22 ..	39	40	41	42
+
+Age	40 41  42  43 ..	58  59	60  61	62 ..	79	80	81	82
+
+Required annuity	100 96  92  88 ..	28	24	20  20  20 ..	20
+
+IOON•o gives  100 100 100 100 ..	100 100 100  100 100 ..	100  100  100  100
+
+Subtract 4S41	-4  -8  -12  ..	-72 -76 -80  -84 -88 ..	-156 -160 -164 -168
+
+gives  100 96 92  88 ..	28  24	20  16  12 ..	-56	-60  -64	-68
+
+Add 4Sot	4	8 ..	76	80	84	88
+
+gives	100  96 92  88 ..	28  24  20  20	20 ..	20	20	20	20
+
+Subtract 20_N,o	-20	-20	-20
+
+111ves	100 96 92  88 ..	28  24  20  20  20 ..	20
+
+as required.
+
+So the-value is
+
+- 1
+
+D40
+
+(lOON40-4S41 +4S61-20Nso),
+
+which satisfies the rules for checking given previously-the coeffi­ cients of the S terms are equal and opposite in sign, and the sum of the coefficients of the Nterms is 80 which equals the coefficient of the S term at the older age (4) multipled by the difference between the suffices of the S terms (20).
+
+The value is then
+
+l	(100 X 132,002-4 X 1,799,542+4 X 307,272-20 X 3,151•3J) 6986·50		•
+
+i.e. value is £1,026.
+
+Example 2.10
+
+A 10-year term insurance provides a benefit of £1,000 at the end of the year of death together with the return without interest of the. premiums paid. Allowing for expenses of 10% of each premium, find the annual premium for a life aged 50 on the basis of the Al967-70 ultimate table of mortality and 4 % interest.
+
+Solution
+
+Let the gross premium be P", then
+
+P" Nso-N6o=  l,0OO Mso M6o +P" Rso-R6o-10M6o
+
+Dso	Dso	Dso
+
++O·lP" !!_so-N6o,
+
+Dso
+
+:. P"(·9 73,567·1-35,841·3 _ 39,164·1 -22,644·6-10 x 1,477·08) 4,597·06	4,597·06
+
+:. P" (7·3859-·3804) = 63·1882
+
+:. P" =9·02.
+
+So the annual premium is £9·02.
+
+It will be noted that in the arithmetic of this question D50 was not cancelled throughout as it could have been. This was done so that a scrutiny could be put on the order of magnitude of the figures. (Some arithmetic could also have been saved by taking the tabulated values of ii50,IoJ and 10A50).
+
+Exercise 2.20
+
+Show that
+
+Exercise 2.21
+
+Calculate the annual premium for an assurance on a life aged 30 with sum assured £2,000 in the first year increasing by £200 each year, the benefit on survival to age 50 being £4,000. The mortality assumed is the A1967-70 ultimate table at 4% interest, with total expenses of £3% of the initial sum insured in the first year, and renewal expenses of £2 each year after the first.
+
+Exercise 2.22
+
+An annuity-due of £200 per annum is payable to a life aged 60. If
+
+the annuitant wishes to alter the annuity to one commencing at £100 and increasing by a level amount each year, find, on the basis of the Al967-70 ultimate table of mortality and 4% interest, the amount of the annual increase.
+
+Exercise 2.23
+
+A 20 year temporary assurance provides a benefit of £2,000 at the end of the year of death together with the return without interest of the premiums paid. Allowing for expenses of 12% of each premium, find the annual premium for a life aged 60 on the basis of the Al967-70 ultimate table and 4% interest.
+
+Relations among the mortality functions
+
+c, = v1+1d,
+
+i.e.  C, = vD,- Di+1
+
+and summing from t = x to oo
+
+Mx=Dx-dNx,
+
+and dividing by D,.
+
+(2.8.1)
+
+(2.8.2)
+
+(2.8.3)
+
+This is a most important equation; similar to the equivalent relation­ ship in compound interest.
+
+When the summation is from t = x to x+n-1, instead of to oo,
+
+Mx-Mx+n = Dx-Dx+n-d(Nx;-Nx+n)
+
+and dividing by D" gives
+
+A!,ii! = 1-Ax, -dtix,ii!
+
+.". Ax:iil = 1-dOx:iil•
+
+Summing equation (2.8.I) from t = x to t = x +n-1 gives
+
+Mx-Mx+n = v(Nx-Nx+n)-(Nx+1-Nx+n+1)
+
+and dividing by Dx gives
+
+(2.8.4)
+
+(2.8.5)
+
+Adding A,.:	to each side gives
+
+A.,,,fil = vii.,,,n1-ax,n-1I,
+
+(2.8.6)
+
+as	ax:iil = ax:n-11+A,.,k,
+
+If n is taken as oo, the equation (2.8.6) becomes
+
+Ax=  vii"-a,..	(2.8.7)
+
+Some of the above equations can be interpreted by general reasoning. For example, A" = 1-dii,. can be interpreted as follows: A" is the present value of a payment of I at the end of the year of death of{x); if the payment were now due its value would be I, but as the payment is deferred, the value of the interest which it earns up to the time of death must be deducted-the value at the beginning of each year of this interest is d and the present value of this interest for each year that (x) enters upon is dii"; hence A,. = l -dii,..
+
+Dividing both sides of equation (2.8.3) by ii,, gives
+
+A"=_!_ -d
+
+iix	iix
+
+i.e.
+
+P =-
+
+1	1
+
+-d=-- -d.
+
+(2.8.8)
+
+" ii,.	l+a..,
+
+This relation was used in the calculation of premiums before the advent of calculating machines, and special tables (known as annual premium conversion tables) were prepared so that at a given rate of interest the entry of a.,, in the table enabled P.,. to be found. Similar tables (known as single premium conversion tables) were also used for the single premium using the expression A.., = l -d(l +a.,,).
+
+The same tables are also used for endowment assurances as
+
+P:,c:n1=	d
+
+l+a:,c,n-11
+
+and
+
+A:,c:iil = 1-d(l+a":n-11)-
+
+The relations are therefore often written without suffices as
+
+P = --1
+
+l+a
+
+-d	or
+
+(2.8.9)
+
+and	A=l-d(l+a)   or	=1-da.	(2.8.10)
+
+Similar relationships that are sometimes useful which may easily be derived are:
+
+ii=1--A-
+
+ii=--
+
+P+d
+
+A= -
+
+P+d
+
+(2.8.11)
+
+(2.8.12)
+
+(2.8.13)
+
+P=dA 	(2.8.14)
+
+1-A
+
+It should be noted that these relationships apply to whole life and endowment assurances with level sum assured, and not to temporary or deferred assurances where the sum assured is not certainly pay­ able, nor to limited premium assurances where the sum assured is not payable one year after the last premium payment.
+
+Example 2.11
+
+Demonstrate verbally the formula A:c,nl = viix,iii-a:c,n=Ti·
+
+Solution
+
+viix ,;;i represents a payment of v at the beginning of each year while
+
+(x) lives to a maximum of n, i.e. a payment of I at the end of each year that (x) enters upon; if ax,n-il• a payment of 1 at the end of each year that (x) survives to, to a maximum of n-1 payments, is deducted the difference will be the payment of I at the end of the year which (x) enters but does not survive, i.e. the year of death, or at the end of n years if (x) survives, i.e. an endowment assurance.
+
+Therefore viix,n1-ax,,,- i 1 = Ax,n1 as tequired.
+
+Example 2.12
+
+Prove and vtdfy by general reasoning that (IA)x = ii,,-d(lii),,.
+
+Solution
+
+Summing formula (2.8.2) for t = x to oo gives
+
+Rx= Nx-dSx, and dividing by D. gives
+
+(IA)..,= lix-d(Iii),_.
+
+If (x) is entitled to an annuity-due of I i:iayable yearly and he invests each payment the present value of the mterest p yable yearly in advance will be d(lii)x and the present value of the mvested pay­ ments on death will be (IA)x, hence iix = d(lii)x + (IA)x-
+
+Exercise 2.24
+
+Explain the formula Ax,m = l -diix,n1 by general reasoning.
+
+Exercise 2.25
+
+Find the rate of interest if ax = 12·36 and Ax = ·738.
+
+Exercise·2.26
+
+Given that
+
+ax+t:9i = 7·5, ax,91 = 1·6, Px = ·99, v = ·91,
+
+calculate the annual premium for a to-year temporary assurance to
+
+(x).
+
+EXAMPLES AND EXERCISES ON CHAPTER 2
+
+This chapter has introduced the six commutation functions, D, N, S, for annuities, and C, M, R, for assurances, together with the functions of A, a, ii, P, which have similar meanings to the compound interest functions. The basis of the notation where prefixes and suffices are added to the symbol has been explained.
+
+Example 2.13
+
+Calculate the annual premium for a 20-year endowment assurance on a life aged 40, the sum assured of £800 at the end of the year of death being increased to £1,000 on survivance of the term. Mortality is assumed to follow the Al967-70 ultimate table during the first 10 years and the same table rated up five years subsequently. Interest
+
+is 4% per annum and expenses are initially 3% of the maturity sum assured and 5 % of the premiums throughout.
+
+Solution
+
+Let P" be the required premium, and mortality functions with one dash represent that experienced after age 50, undashed function represent Al967-70 mortality.
+
+In a question of this type where either the mortality table or the rate of interest changes it is important to keep the commutation functions for the different age spans separate. The general principle
+
+is to use functions of the following type-where a death benefit after two changes of mortality table or interest rate is being evaluated:
+
+D top age of first span	D top age of second span
+
+D bottom age of first span  D bottom age of second span
+
+M - M for range considered
+
+D bottom age of range considered° The equation of value in this problem is then
+
+.95p"(N40-Nso+ Dso N;0-N o)
+
+-D40	D40•	D;o
+
+D40	D40	D;o	D40 D;o
+
+As N; = Ni+s, v; = D,+s, etc.,
+
+.95p"(N40-Nso+ Dso. Nss-N6s)
+
+D40	D40	Dss
+
+. ,gsp" (132,002- 73,567·1+ 4,597·0.6 52,502·8-23,021·4)
+
+'	6,986-50	6,986·50	3,664·57
+
++1 0004,597·06. 2,144·17 +30
+
+,	'	6,986·50 3,664·57	'
+
+:. ·95P" (8·364+5·294) = 800 (·0203+·0694)+ 1,000 (·3850)+30
+
+:. P" = 31·51.
+
+So premium required is £37·51.
+
+Example 2.14
+
+Twenty years ago an assurance company issued a large number of annual premium 20-year pure endowment policies with sum assured
+
+£1,000 to lives then aged 40, assuming mortality according to the Al967-70 ultimate table at 4% per annum interest with expenses of 2% of each premium. If the assumption on interest was correct but
+
+expenses were 3% of each premium and the mortality experienced was Al967-70 rated down 10 years, find the average loss to the assurance company on each policy.
+
+Solution
+
+If P' is the premium paid,
+
+·98P' N40-N60= 1,000 D6o
+
+D40	D40
+
+:. P='
+
+1,000 x2,855·59
+
+·98(132,002-35,841·3)
+
+The actual accumulated amount will be (two dashes representing the experienced mortality)
+
+·91P's;0, 201
+
+Dso
+
+4,597·06
+
+So the loss on each policy is 1,000-934·5, i.e. £65·5.
+
+Example 2.15
+
+A yearly immediate annuity of £100 is purchased for a life aged 60. On death, if the payments of the annuity have not amounted to the purchase price, the difference is paid at the end of the year of death. Find the purchase price if mortality is Al967-70 ultimate with 4% interest and expenses are 5% of the purchase price.
+
+Solution
+
+The first step in a problem of this type is to.find an approximate answer by ignoring the death benefit; if this premium is P"
+
+·95P" = 100a60
+
+:. P"-  100x11·551=	1,216_
+
+·95
+
+The actual purchase price will be greater than this, and if it is assumed that it is between 1,400 and 1,500 the equation of payment is (P' being the premium)
+
+·95P' = 100a60+P'C60 +(P'-100)	+(P'-200)C62 +...
+
+D6o	D6o	D6o
+
++(P'-1400)C74
+
+'	D60 '
+
+i.e. ·95P='
+
+100a
+
++P' M60-M1s -lO0(R61-R1s-14M75)_
+
+D6o	D6o
+
+Similar expressions could also have been obtained by the pictorial or schedule methods.
+
+Then	·95P='
+
+1155-l+P' 1,477·08-703·04 '	2,855·59
+
+-lQO 21,167·5-5,501·0-14 X 703•04
+
+2,855·59
+
+:.  P'(·95-·2711) = 1,155·1-203·9
+
+:. P' = 1,401.
+
+So the purchase price is £1,401.
+
+If the answer had not been found to be within the range originally assumed. i.e. 1,400 to 1,500, then the calculation would require to be done again although the answer obtained would be very close to the correct answer, thus indicating the range, and only one further calculation should be necessary.
+
+Example 2.16
+
+Find the present value at rate of interest i of an annuity-due of 1 per annum accumulating during the life of (x) and until the end of the year of his death at rate of interest j.
+
+Solution
+
+Although an annuity is being considered, the benefit is not available until death. If death occurs between ages of x+t and x+t+ I, the
+
+present value of the accumulation would be v'+ 1;s_j   where v is at
+
+1 1
+
+rate of interest i and s  is at rate of interest j. So multiplying by the probability of death occurring in the year and summing, the total present value will be
+
+f	1+1 ..1	dx+t
+
+t=O	t+ll  f..,
+
+t=O	dJ	Ix
+
+where di is the rate of discount for rate of interest j
+
+v1+1d	)
+
+x+t
+
+where v' = v(1 + j)
+
+d1 r=O	Ix	Ix
+
+where A' is calculated at a rate of interest J such that -1-  = )	tj,
+
+l+J	l+i
+
+i.e. J = i- j  so that J may in fact be negative depending on the
+
+t+j
+
+values bf i and j, and is unlikely to be a rate of interest at which functions are tabulated.
+
+Exercise 2.27
+
+An assurance on a man aged 45 has a death benefit of £2,000 reducing by £50 each year to an endowment benefit of £1,000 on survivance to age 65. Find the annual premium, assuming interest at 4%, if the premium for the first ten years is half the subsequent premium, expenses are 5 % of each premium and the life is con­ sidered to be subject to the Al967-70 ultimate table of mortality except that during the first ten years he is subject to extra mortality equivalent to the life being treated as five years older on that table.
+
+Exercise 2.28
+
+Find an expression for the present value at the rate of interest i per annum of an increasing annuity-due, commencing at I and in­ creasing by I each year, which accumulates during the lifetime of a person aged x at the rate of interest of j per annum, the accumulation being paid at the end of the year of death of (x).
+
+Exercise 2.29
+
+Thirty years ago an assurance company issued a large number of annual premium 30-year pure endowment policies with sum assured
+
+£2,000 to lives then aged 30, assuming mortality according to the Al967-70 ultimate table at 4% per annum interest, with expenses of 3% of each premium. If the assumption on interest was correct, but expenses were 20 % of the first premium and 2% of each subsequent premium, and the mortality experienced was the A1967-70 ultimate table rated up five years, find the average profit or loss to the assur­ ance company on each policy.
+
+Exercise 2.30
+
+A yearly immediate annuity of £200 per annum is purchased for a life aged 65. On the death of the annuitant if the payments of the annuity have not amounted to the purchase price, the difference is paid at the end of the year of death. Find the purchase price if
+
+mortality is Al 967-70 ultimate with 4 % per annum interest and expenses are 2 % of the purchase price.
+
+CHAPTER THREE
+
+FUNCTIONS OTHER THAN YEARLY
+
+Annuities payable more frequently than once a year
+
+In the previous chapter yearly annuities were considered. In this section we will find expressions for annuities payable at different frequencies, normally the resulting formulae being expressed as adjustrhents of the yearly formula.
+
+The present value of an immediate life annuity of 1 payable m times a year to a life aged x is denoted by aim>, and consists of payments, • each of1-, atage x+ -1, x+ -2, x+ -3 .... The present value may
+
+m	m	m	m
+
+be written
+
+The corresponding annuity-due is denoted atm>, and
+
+·•(m_)
+
+1 00  Dx+!-
+
+a	--	"L, --.	m
+
+m1=0  Dx
+
+The only difference between alm> and atm> 1s the extra payment immediately of.!.
+
+Unless the mathematical formula for Ix is known, approximations will be required to evaluate these expressions. The approximation normally used is based on Woolhouse's formula which will be proved in the demonstration in the form most suitable for this purpose.
+
+Let A denote differencing with interval I.
+
+<> denote differencing with interval L
+
+D denote differentiation
+
+denote summation at intervals of l within the range a to b,
+
+so that
+
+b-1
+
+LU,,+,=  L  U,:+t
+
+t=a
+
+and _1;(m) denote summation at intervals of_!_ within the range a to b,
+
+each term being multiplied by!, so that
+
+'L\'.(.ni) U x+=I
+
+Then in symbol notation
+
+b-1/m 1
+
+'\"(m) -  U
+
+L,	x+t·
+
+t=a
+
+1 +a = (l +c5)"' = e0
+
+and
+
+L=  e0 - l=
+
+D2	D3
+
+D+ -	+ -- +...
+
+2!	3!
+
+4	4	4
+
++ (!!. +!!_ +DJ +D  + ...)-(DJ+ !)  +···) + (D  +···)}
+
+4	36	6	24	8	8	16
+
+D	• 2,	12	720	'
+
+i.e.	L =D - 2	+ 12 D-	120D ••••
+
+Similarly,	'\'(m) = _!•_ ! = _!•_ +­
+
+L,	m  I,	m  e--1
+
+D	2m	12m2	720m4
+
+2	4
+
+Subtracting '\'(ml_'\'= m-1_m -l D+m -lD3 ••.•
+
+L,	L.	2m	12m2	?20m4
+
+Inserting the function Dx+t and summing within the limit O and oo we
+
+obtain
+
+I,<'") Dx+t= f Dx+t+ m-1  [Dx+t]00	_ m2- 1[.E._  Dx+tlex>  ....
+
+t=O	Dx	t=O Dx	2m	Dx  t=O	l2m2	dt  Dx	=O
+
+Now
+
+i.e.
+
+dDx=	.!! (vxlx)
+
+dx	dx
+
+dDx = -Dx;(µ"+;;)
+
+(3.1.1)
+
+dDx+t	D	(
+
+,c+t
+
+µ,.,+,+ui:)
+
+and as all the functions and derivatives will be zero at t = oo, and if third and higher differential coefficients which are likely to be small
+
+are ignored, we obtain
+
+•=•(m)	.. _ m-1	 _  m2-1 (µ+ i:)
+
+(3.1.2)
+
+0:,c	• aX
+
+2m	12m2	X  U
+
+or subtracting _!_ from each side
+
+a"<"'>:·::Sa"+ -m--1
+
+- --2	(µx+;;).
+
+12m
+
+(3.1.3)
+
+In most work the last term in each of these expressions is omitted giving
+
+oo(,n).	_
+
+m-1
+
+--2m
+
+(3.1.4)
+
+and
+
+a()"'=a+m--1-
+
+" •	"	2m•
+
+m-1
+
+(3.1.5)
+
+The commonly used values of --	will be ·250 for half-yearly,
+
+·375 for quarterly and ·458 for monthly.
+
+Formulae for deferred and temporary annuities can be obtained from these expressions, for example
+
+nla(m=)	Dx+n • a<ml
+
+:,:	D
+
+x+n
+
+•  Dx+•(	m-1)
+
+"" 2m	Dx '
+
+i.e.
+
+2m	2m	Dx
+
+a(xm,) n1'- -.ax,iii+ m2-m1 (-i Dx+n)•	(3.1.6)
+
+Note the last term includes D
+
+in this expression-it is often in­
+
+correctly omitted by students in practical work.
+
+Obviously similar formulae apply for annuities-due, for example
+
+·;(m) '- ••	m-1	Dx+n)
+
+ax,iii-. ax,iii-  2m	-	D,, •
+
+(3.1.7)
+
+A simple diagrammatic method of obtaining formulae (3.1.4) or (3.1.5) in a particular case will be demonstrated for the expression
+
+af> =; ax-¼•
+
+The value of af > 'may be demonstrated as shown in Figure 3.1. If the paymenti of½ paid half-way through the year are considered as
+
+1	I	1	1	1	1	1	1	,
+
+2	2	2	2	2	2	2	2	2
+
+Time	0	2	3	4
+
+FIGURE 3.1
+
+split into two payments of¼, one six months earlier and one six months later, the payment will be represented as shown in Figure 3.2. This process has not changed the value of the annuity by much, and the value is now ax-¼-
+
+While this method can by no means be considered as a proof of a formula it can be useful as a check on other methods.
+
+l; ¼ Payment 1
+
+Time	o
+
+¾·½.l
+
+,  1	,.
+
+4 +2-+- 4	4•,•1
+
+2	3	4
+
+FIGURE 3.2
+
+Example 3.1
+
+Describe and find the values of a 1J, a . afJn a 1J,101 on the
+
+a(55) .Males mortality table with 4 % interest.
+
+Solution
+
+a 1;{. is a half-yearly immediate annuity, and using the normal' approximation of formula (3.1.5), equals
+
+a60+·25 = 11·625+·25 = 11·875.
+
+d 4Jis a quarterly annuity-due and similarly using formula (3. l.4) equals
+
+d60-·375 = 12·625-·375 = 12·250.
+
+a1 is a monthly immediate annuity to a select life and equals ac651+·458 = 9·883+·458 = 10·341.
+
+am, Iol is a temporary half-yearly immediate annuity, and using formula (3.1.6) equals
+
+N71-Na1+·25(1-  Dao)
+
+D10	D10
+
+43,852	43,852
+
+Example 3.2
+
+Find the quarterly premium payable for 20 years by a man aged 40 for a deferred annuity of £500 per annum payable monthly in advance from his 60th birthday on the A1967-70 ultimate table of mortality
+
+at 4%- Expenses are 20p on each annuity payment and 5% of each
+
+premium.
+
+Solution
+
+Equating the present values of premiums, and benefit and expenses (where P' is the gross premium per annum) gives
+
+·95P' iii't\ 201 = (500+ 12 x·2h0liiWl,
+
+1.e.	·95P' { ii40: 201- •375 ( 1-  ::)}
+
+D40
+
+i.e.	•  ·95P' {13·764- ·375 (·1- 2•855"59)}
+
+6,986·50
+
+:. P' = 193·02.
+
+Each quarterly premium is thus £48·26.
+
+Exercise 3.1
+
+Find the values of a b2\ 10lii 4Jand am1: 151 on the basis of a(55)
+
+Female mortality at 4% interest.
+
+Exercise 3.2
+
+Demonstrate and verify by general reasoning the formulae,
+
+<ml  ,_ m+l	m-1	..
+
+a,,,n1-: --	a,,:n1+ --	a,,,n1
+
+2m	2,n
+
+--(m)  ,_  m + 1 ..	m - 1
+
+a,,,n1-:	a,,,n1+ax,n1·
+
+Exercise 3.3
+
+Find the percentage error involved in using formula (3.1.5) rather than (3.1.3) to evaluate a 12>and a 12>on the a(55) Male mortality table and 4% interest.
+
+Exercise 3.4
+
+Find the purchase price of a quarterly annuity of £100 each pay­ ment payable in arrears to a man aged 65, assumed to be subject to
+
+the a(55) Male mortality table and 4 % interest. Expenses are 4 % of the gross premium.
+
+Continuous aoo11ities
+
+When the frequency of payment of an mthly annuity becomes infinite the resulting annuity is called a continuous annuity, payable momently throughout the year in such a way that the total annual payment is I. This admittedly artificial concept has considerable importance in theoretical work and is useful as an approximation to payments made weekly, for example social insurance benefits. The symbol for a continuous annuity to a life aged x is iix. Making m tend to infinity in the formulae (3.1.3) or (3.1.5) gives the following approximations
+
+and
+
+the second normally being used.
+
+An accurate formula will be expressed in integral form
+
+ax =1''vttPxdt
+
+Jo	Dx
+
+Defining the continuous commutation functions
+
+jjx = J:Dx+tdt
+
+and
+
+we obtain
+
+If it is assumed that
+
+is an approximation to	Dx+t·dt,
+
+(3.2.1)
+
+(3.2.2)
+
+(3.2.3)
+
+(3.2.4)
+
+(3.2.5)
+
+(3.2.6)
+
+(3.2.7)
+
+then	Nx = ½Dx+Nx+t = Nx-½Dx,	(3.2.8) which obviously gives values of ii" consistent with formula (3.2.2).
+
+Temporary and deferred annuities can be expressed m either integral or commutation function form:
+
+and
+
+-a.. ,n1=
+
+nIa- x=
+
+f"vt .,px.dtN=x-N--x-+-n
+
+o	Dx
+
+f"'vt,,Px· d t=N-x+-n.
+
+n	Dx
+
+(3.2.9)
+
+Note that in these formulae while continuous functions appear in the numerator, the denominator remains D ...
+
+It is no usual for the functions 15.. or N" to be tabulated and normally if they are required the approximate formulae (3.2.7) or (3.2.8) are used, but population tables such as the English Life Tables will often have Nx calculated as they are used as a basis for Industrial Insurance premiums, that is life assurance where the
+
+premiums are collected at weekly intervals, and the continuous annuity is used as an approximation.
+
+Example 3.3
+
+An annuity is payable weekly to a widow aged 40 at the rate of
+
+£10 per week with a child's allowance of £5 per week till her child reaches age 18 five years hence. Find the present value of the benefit at 4% interest, assuming that the rate of mortality experienced by the widow will be the English Life Table No. 12- Males and that the mortality experienced by the child is small enough to be ignored.
+
+Solution
+
+Because of the frequency of pension payments it is reasonable to assume that payments are continuous. In such a question it is usual to assume that there are 52·18 weeks in the year. The value of the benefit is then
+
+(52·18)(10)il40 +(52'.18)(5)il40: 51
+
+D40	D40
+
+19,535	19,535
+
+The present value of the benefit is therefore £10,226.
+
+Example 3.4
+
+Show that
+
+directly and using integration by parts.
+
+Solution
+
+As Jt--+0 the probability that (x) will die in the short interval of time (x+t) to (x+t+Jt) tends to ,pxµx+10t, and the value of the annuity paid until that time till be ail.
+
+Hence	a" = 0"' ,pxµx+,iir1dt.
+
+Alternatively  ii" = L"' v',pxdt
+
+and as this
+
+fo"' ,pxµx+,dt = ,.,q" = 1,
+
+Exercise 3.5
+
+A formula commonly used in practice is
+
+iix,nJ =; ½(ax,n1+iix,n1),
+
+Prove this formula.
+
+Exercise 3.6
+
+A pension is payable at the rate of £25 a week to a man aged 60, reducing to £20 at age 65 when the National Insurance Pension
+
+becomes payable. Find the value of the pension at 4% interest on the basis of
+
+English Life Table No. 12-Males
+
+a(55)-Males, ultimate.
+
+Assurances payable at the moment of death
+
+So far we have considered assurances under which the sum assured is paid at the end of the year of death. In practice this would be unusual as the sum assured will be paid immediately death has been intimated and satisfactory evidence, such as a death certificate, produced. The symbol for the assurance payable at the moment of death is Ax.
+
+The probability of (x) dying between ages x + t and x + t+ c5t
+
+tends to ,Pxµx+ ,c5t as c5t-O, and discounting by the interest function
+
+v' we obtain
+
+Ax=
+
+0  v'tP:x:flx+idt.
+
+(3.3.1)
+
+The continuous commutation functions are
+
+Cx =  o1 Dx+,µx+,dt	(3.3.2)
+
+and	.Mx =	Cx+t·	(3.3.3)
+
+t=O
+
+Hence	A=	Mx	(3.3.4)
+
+with similar expressions for temporary and deferred assurances,
+
+If it is assumed that there is a uniform distribution of deaths over the year of age, ,Pxl'x+, is constant and equals qx
+
+and as
+
+A!,11 = vqx
+
+-1	.  j	1
+
+A_.,17 =;	Ax: il
+
+a convenient approximation as the continuous functions can be obtained easily from the normally tabulated 'end of year' functions.
+
+Another approximation is based on the assumption that the assurance payment is made half a year earlier on average, so that
+
+A!,i7 =a(l+i)½A!,u
+
+or	A-1x, ii• =; (1+ i2)Al x, ti·
+
+It is convenient that the constant factor is independent of the age x
+
+and as
+
+it follows that
+
+or	(3.3.5)
+
+the last being the most often used, although the whole life form
+
+Ax =a	A_. may be used, and when the function ex is tabulated it is
+
+often obtained from ex = vx+tdx. In practice there is very little difference between the approximations, for example when
+
+i = 4%, ! = l·019869, (1 + i)t = l·0.19804, 1 + ! = 1·02.
+
+J	2
+
+The adjustment to the year end functions is called claim accelera­ tion and it will be noted that it only applies to the death benefit, for example with the endowment assurance no claim acceleration is applied to the maturity benefit so that
+
+A_.,;;i * (1+ DAx,m
+
+and the formula will be
+
+A	=	Mx-/vfx+n+Dx+n
+
+x:nl	D

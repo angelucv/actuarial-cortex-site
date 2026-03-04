@@ -1,0 +1,72 @@
+UNIVERSIDAD CENTRAL DE VENEZUELA
+FACULTAD DE CIENCIAS ECONÓMICAS Y SOCIALES
+ESCUELA DE ESTADÍSTICA Y CIENCIAS ACTUARIALES
+
+
+Departamento:	Actuariado
+Cátedra:		Matemáticas Actuariales
+Asignatura:		Matemáticas Actuariales I
+Código:		4605
+
+PROGRAMA
+
+TEMA 1.- 
+
+Introducción a los procesos actuariales, concepto de la teoría de la utilidad, elementos económicos de seguro.
+(1 Semana)
+
+TEMA 2.- 
+
+Evaluación actuarial, sus principios, fundamentos, modelos aplicados a diversos tipos de seguros de vida. La prima pura como el valor esperado de un conjunto de prestaciones aleatorias. Valor actuarial de un conjunto de prestaciones aleatorias. Concepto de prima en los seguros de vida. Primas únicas de los seguros de rentas:
+Anticipadas y vencidas, constantes y variables, temporales y vitalicias.
+Rentas con pago fraccionado, anticipadas y vencidas. Rentas continuas. Seguro de capital diferido, seguro a término fijo. Análisis del efecto del valor actual de una renta. Análisis de las derivadas con respecto a la edad, el plazo y la tasa de interés. Medidas de centralización y dispersión y sus aplicaciones.
+
+(2 Semanas)
+
+TEMA 3.- 
+
+Primas únicas de los seguros de muerte: Temporal, vitalicio, mixto, seguro de renta post-mortem, seguros de capital variable, seguro de desgravamen hipotecario, seguros pagaderos en el momento de ocurrir el fallecimiento, relaciones entre los seguros de muerte y de vida. Combinaciones aplicadas a los seguros educacionales. Medidas de centralización y dispersión y sus aplicaciones.
+
+(3 Semanas)
+
+TEMA 4.- 
+
+Concepto de prima natural y prima nivelada. Primas puras anuales en los seguros: ordinarios de vida, con pago vitalicio y limitados. Mixto, capital diferido, término fijo, desgravamen hipotecario, relaciones y fórmulas simplificadas para el cálculo de las primas. Primas variables. Primas con pago fraccionado. Análisis de la prima pura de un seguro mixto. Primas pagaderas continuamente. Medidas de centralización y dispersión y sus aplicaciones
+
+(2 Semanas)
+
+TEMA 5.- 
+
+Concepto de reserva matemática. Métodos de cálculo: prospectivo, retrospectivo, fórmula de recurrencia de Fakler. Reserva Negativa. Desarrollo de las fórmulas para el cálculo de la reserva para los seguros básicos de vida, muerte y combinaciones. Prima de riesgo y ahorro. Reservas matemáticas para períodos fraccionarios. Reservas de balance, fórmulas aproximación. Reservas continuas, ecuación de diferencial de la reserva. Métodos para evaluar la reserva de un conjunto de pólizas. Seguros que contemplan el pago adicional de la reserva matemática en caso de fallecimiento del asegurado. Variación de la reserva. 
+
+(1 Semana)
+
+TEMA 7.- 
+
+Rentas completas, garantizadas y rentas con términos ciertos, cálculo de planes donde la  reserva matemática supera a la suma asegurada en caso de fallecimiento. Seguros de renta con devolución en caso de fallecimiento del asegurado.
+
+(2 Semanas)
+
+TEMA 8.- 
+
+Introducción al cálculo de las primas comerciales, recargo comercial. Cálculo de valores de rescate, seguro saldado y prorrogado. Reservas modificadas por el método de Zillmer, y el de los comisionados. 
+
+(2 Semanas)
+
+
+PLAN DE EVALUACIÓN
+
+Se realizarán cuatro (4) evaluaciones cuyos contenidos y ponderaciones son  las siguientes:
+
+
+
+BIBLIOGRAFÍA
+
+BOWERS, N.L. Actuarial Mathematics. Society of Actuaries.
+JORDAN, CHESTER W. Life Contingencies. Society of Actuaries.
+NEILL, ALISTAIR. Life Contingencies.
+
+
+
+
+

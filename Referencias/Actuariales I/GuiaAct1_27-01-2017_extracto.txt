@@ -1,0 +1,2174 @@
+--- Pagina 1 ---
+
+Universidad Central de Venezuela
+Facultad de Ciencias Econ´ omicas y Sociales
+Escuela de Estad´ ıstica y Ciencias Actuariales
+Departamento de Actuariado
+C´ atedra de Matem´ aticas Actuariales
+Matem´ aticas Actuariales I
+C´ odigo de Asignatura: 4605
+Notas Docentes
+Licenciatura en Ciencias Actuariales
+Autores:
+Prof. Felipe Moreno Colmenares
+Prof. G´ enesis Brice˜ no
+Prof. Angel Colmenares
+Caracas, 2017
+
+--- Pagina 2 ---
+
+1 Introducci´ on
+Si bien los primeros indicios del pensamiento actuarial los encontramos en la
+ley romana en cuanto al sistema de justicia de las legiones, con las cuales se
+formaron asociaciones para cubrir los gastos de entierro, cremaci´ on y mon-
+umentos, fundamentadas en las tabla de vida del jurista romano de origen
+fenicio Domicio Ulpiano, la cual es una antigua tabla de anualidades romana
+que parece proporcionar una descripci´ on aproximada de la esperanza de vida
+a principios del siglo III dc. La historia de las ciencias actuariales comienza
+formalmente en el siglo XVII. Algunos tipos de seguros se conoc´ ıan con an-
+terioridad pero las bases t´ ecnicas de dichos contratos eran normalmente ar-
+bitrarias.
+En el siglo XVII el seguro de vida era contemplado como un juego de
+azar en muchos casos; los contratos sol´ ıan ser a corto plazo, generalmente
+de duraci´ on menor a un a˜ no. El problema de contratos de larga duraci´ on y
+el establecimiento de las reservas apropiadas requer´ ıa algo m´ as que el juicio
+intuitivo y comercial de los aseguradores primitivos.
+Surge entonces la necesidad de establecer una teor´ ıa de la probabilidad,
+una estad´ ıstica de la mortalidad y un instrumento matem´ atico adecuado para
+ir conformando, de esta forma, una nueva ciencia: la Ciencia Actuarial.
+Uno de los principales pilares de la ciencia actuarial es la teor´ ıa de la
+probabilidad. Las bases del an´ alisis estad´ ıstico en el seguro fueron estableci-
+dos en 1654 por el ﬁl´ osofo, f´ ısico y matem´ atico franc´ esBlaise o Blas Pasca l
+(Clermont-Ferrand, Francia, 1623 - Par´ ıs, 1662), en colaboraci´ on con el
+tambi´ en matem´ atico franc´ es Pierre de Fermat (Beaumont, Francia, 1601 -
+Castres, id., 1665). Fue, sin embargo el matem´ atico, estad´ ıstico y dem´ ografo
+ingl´ esJohn Graunt (Londres, 1620 - id, 1674), el autor de las primeras tablas
+de mortalidad publicada en su obra”Natural and Political Observations Made
+upon the Bills of Mortality” (1662), con lo que surgen ya entonces ideas
+b´ asicas como, por ejemplo, el concepto de vida media y duraci´ on probable
+de vida por el matem´ atico, astr´ onomo y f´ ısico holand´ esChristiaan Huygens
+(La Haya, 1629 - id., 1695).
+Por su parte el astr´ onomo ingl´ esEdmund o Edmond Halley (Londres,
+1656 - Greenwich, Gran Breta˜ na, 1742), elabora el primer trabajo conocido
+de tablas de mortalidad completas a partir de la hip´ otesis de estacionariedad
+de la poblaci´ on. Las tablas de Halley se utilizaron por la mayor´ ıa de las
+compa˜ n´ ıas inglesas creadas durante el siglo XVIII.
+1
+
+--- Pagina 3 ---
+
+Al aparecer el c´ alculo de probabilidades en el siglo XVII, se logra fun-
+damentar matem´ aticamente el seguro. La existencia y estabilidad de las
+compa˜ n´ ıas de seguro durante dos siglos estuvo garantizadas por el modelo
+del matem´ atico brit´ anico James Dodson (Londres, 1705 - id., 1757), el cual
+fue alumno de Abraham de Moivre (1667 - 1754), en dicho modelo Dodson
+se basa en los siguientes principios:
+ La prima era en funci´ on de la edad. Es decir, dos asegurados de la
+misma edad en estado de salud normal, ten´ ıan la misma primas a igual-
+dad de capitales asegurados.
+ En los contratos de duraci´ on plurianual se introduc´ ıa el concepto de
+prima nivelada, es decir, el asegurador deb´ ıa constituir reservas matem´ aticas
+en funci´ on de la edad, capital asegurado y tiempo transcurrido de la
+contrataci´ on del seguro.
+ En caso de rescisi´ on, el asegurado tenia derecho a la reserva matem´ atica
+del contrato.
+ El c´ alculo de primas y reservas se basa en una tasa de inter´ es t´ ecnica.
+En las aplicaciones pr´ acticas, Dodson hizo uso de las tablas de moratl-
+idad de Halley, utiliz´ andolas en laEquitable Life Assurance Society la cual
+fue fundada en 1762 por un grupo de matem´ aticos e inversionistas sobre los
+principios actuariales que Dodson hab´ ıa desarrollado en la pr´ actica durante
+la d´ ecada anterior. Tras la muerte de James Dodson, el anticuario y escolar-
+ista ingles Edward Rowe Mores ( Tunstall, 1731 - id., 1778), pas´ o a dirigir
+el grupo que ﬁnalmente nombrar´ ıa como The Society for Equitable Assur-
+ances on Lives and Survivorships en 1762. en ese entonces especiﬁc´ o que el
+oﬁcial jefe se tendr´ ıa que denominar actuario, la cual ser´ ıa la primera ref-
+erencia conocida a este cargo en el mundo empresarial, por lo tanto Mores
+est´ a acreditado como la primera persona en utilizar el t´ ıtulo profesional de
+actuario en relaci´ on a los seguros.
+Respecto a la notaci´ on utilizada en los c´ alculos actuariales referentes a
+los seguros de vida, fue a mediados del siglo XIX que tres autores brit´ anicos;
+Baily, Milne y Gompertz se ﬁjaron la meta de simpliﬁcar y sistematizar la
+notaci´ on.
+El astr´ onomo brit´ anicoFrancis Baily (Newbury, 1774 - Londres, 1844)
+gracias al ´ exito de sus publicaciones econ´ omicasTablas de Adquisici´ on y Ren-
+ovaci´ on de Alquileres(1802), La Doctrina de Intereses y Anualidades (1808),
+2
+
+--- Pagina 4 ---
+
+y La Doctrina de Anualidades de Seguros de Vida (1810) , le hicieron ganar
+una gran reputaci´ on como experto en tasas de mortalidad; amasando una
+considerable fortuna que le permiti´ o retirarse de los negocios en 1825, y dedi-
+carse a tiempo completo a su verdadera pasi´ on, la astronom´ ıa. Baily junto
+con el actuario Ingl´ esJoshua Milne (Londres, 1776 - id., 1851) siguieron la
+pr´ actica de los primeros autores usando las letrasA,B,C, ... para referirse a
+las primeras funciones que resum´ ıan los c´ alculos actuariales, dichas letras se
+utilizaban con diferentes tipos de tipeo para denotar varias funciones en una
+vida dada.
+Luego el matem´ atico y actuario ingles Benjamin Gompertz (Londres,
+1779 - id., 1865) propuso el germen de la notaci´ on moderna al usar Lx para
+denotar los vivos a la edad x, us´ andose por primera vez el suﬁjo ”x” para
+denotar la edad.
+Posteriormente el actuario gal´ es Griﬃth Davies (Carnarvon, 1788 - id.,
+1855) fue el que origin´ o el uso de las letras D,N y S para las funciones
+conmutativas, se presume que utiliz´ o las letras por las palabras Denomi-
+nador, Numerador y Suma. Sin embargo fue su compatriota William Morgan
+(Glamorganshire, 1750 - Stamford Hill, 1833), m´ edico, f´ ısico y estad´ ıstico,
+considerado el padre de la ciencia actuarial moderna, el que introdujo el su-
+ﬁjo ”x” en los simbolos propuestos por Davies, produciendo de esta manera
+la notaci´ on moderna de lasFunciones Conmutativas.
+Finalmente en 1843 el actuario ingl´ esDavid Jones publica On the Value of
+Annuities and Reversionary Payments with Numerous Tables , donde adopta
+la letra ”p” para la probabilidad de sobrevivencia, ” a” para las rentas y ”A”
+para la prima de un seguro simple, adapt´ andose r´ apidamente dichos simbo-
+los por la mayor´ ıa de los colegios, gremios y sociedades de actuarios a nivel
+mundial para ﬁnales del siglo XIX e inicios del siglo XX.
+Es en el siglo pasado cuando la matem´ atica actuarial se enriquece con las
+aportaciones de la matem´ atica de los seguros generales o no-vida, la teor´ ıa
+estad´ ıstico-matem´ atica de la estabilidad, la teor´ ıa de la decisi´ on, el enfoque
+sist´ emico del seguro (sistema de soporte de decisiones), por lo cual la ciencia
+actuarial pasa a estudiar de forma m´ as general las operaciones ﬁnancieras
+no s´ olo en el ´ ambito de seguro, si no que aplica m´ etodos matem´ aticos y es-
+tad´ ısticos para evaluar el riesgo en otras industrias y profesiones a ﬁn de
+optimizar las decisiones sobre las magnitudes que intervienen en ellas.
+El potencial de la teor´ ıa de la econom´ ıa ﬁnanciera moderna complementa
+3
+
+--- Pagina 5 ---
+
+la ciencia actuarial, dichas relaciones fueron reconocidas por los actuarios a
+mediados del siglo XX, uno de los m´ as destacados es el actuario suizo Hans
+B¨ uhlmann(Chur, 1930). Una contribuci´ on importante del Prof. B¨ uhlmann
+ha sido su trabajo cient´ ıﬁco sobre la ”teor´ ıa de la credibilidad”. Los de-
+nominados modelos B¨ uhlmann o B¨ uhlmann-Straub son ahora herramientas
+est´ andar para cualquier actuario no-vida en el mundo.
+A ﬁnales de la d´ ecada de 1980 y principios de la de 1990, hubo distintos
+esfuerzos por parte de los actuarios para combinar la teor´ ıa ﬁnanciera y los
+m´ etodos estoc´ asticos en los modelos establecidos. Las ideas de la econom´ ıa
+ﬁnanciera se volvieron cada vez m´ as inﬂuyentes en el pensamiento actu-
+arial, y la ciencia actuarial comenz´ o a adoptar modelos matem´ aticos m´ as
+soﬁsticados de ﬁnanzas. Hoy en d´ ıa, la profesi´ on, tanto en la pr´ actica como
+en los programas educativos de muchas organizaciones actuariales, es con-
+sciente de la necesidad de reﬂejar el enfoque combinado de tablas, modelos de
+p´ erdidas, m´ etodos estoc´ asticos y teor´ ıa ﬁnanciera. Sin embargo, el modelo
+b´ asico propuesto por James Dodson sigue siendo el acercamiento inicial ideal
+a las matem´ aticas actuariales para los estudiantes, en el cual se enfocar´ a el
+presente documento.
+El presente art´ ıculo es una gu´ ıa basada en el libro texto para estudiantes
+de contingencias de vida, preparado por la Sociedad de Actuarios (SOA) y el
+Profesor Chester Wallace Jordan, Jr , siendo pr´ acticamente una traducci´ on
+de la segunda edici´ on publicada en 1982, con la resoluci´ on de la mayor´ ıa de
+los ejercicios al ﬁnal de cada secci´ on
+Todos los t´ opicos descritos en el libro del Prof. Jordan se enmarcan en
+lo que los autores modernos S. David Promislow (2015) llaman los modelos
+determin´ ısticos de contingencias de vida, es importante dicha aclaratoria ya
+que existen otras formas de c´ alculos con los llamados modelos estoc´ asticos,
+por medio del uso de las Cadenas de Markov, el proceso de Poisson, los pro-
+cesos estoc´ asticos de tipo Martingalas y los Movimientos Brownianos. Dichos
+modelos son formas m´ as modernas de c´ alculos de los seguros referidos a las
+contingencias de vida, modelos que a pesar de no ser vistos por los estudi-
+antes de Ciencias Actuariales en Venezuela, es necesario tener conciencia que
+existen y que lo que a continuaci´ on se ver´ a es la forma b´ asica y tradicional
+de los c´ alculos en los seguros sobre las contingencias de vida.
+Todos los errores del presente documento pueden ser atribuidos al Pro-
+fesor Instructor Angel Colmenares, se tuvo el gran aporte de los Profesor
+Felipe Moreno y la Profesora G´ enesis Brice˜ no que colaboraron en la revisi´ on
+4
+
+--- Pagina 6 ---
+
+del material, con esto realizamos un peque˜ no aporte en la construcci´ on de
+materiales gu´ ıas para la materia de Matem´ aticas Actuariales I, de la Escuela
+de Estad´ ıstica y Ciencias Actuariales perteneciente a la Universidad Central
+de Venezuela, esperamos sea de utilidad.
+”No saber lo que ha sucedido antes de nosotros es como ser incesante-
+mente ni˜ nos”.Cicer´ on
+5
+
+--- Pagina 7 ---
+
+2 Rentas de Vida
+2.1 Dotales Puros
+El estudiante recordar´ a de sus estudios de probabilidad que sipes la proba-
+bilidad que una persona reciba cierto pago de valor K, el producto de Kp es
+conocido como su esperanza. Si el pago es diferido n a˜ nos, el valor presente
+de la esperanza es Kpvn donde vn es el factor de descuento calculado con
+una tasa de inter´ es apropiada.
+Suponga ahora que dicha persona de edadxes quien recibir´ a el pago deK
+al ﬁnal de n a˜ nos si est´ a vivo en ese entonces. Esta parece ser una situaci´ on
+similar a la descrita anteriormente, sin embargo en este caso la probabilidad
+requerida es la que x sobreviva n a˜ nos, es decirnpx , por lo que el valor
+presente es Knpxvn. Este tipo de pago diferido es llamado un Dotal Puro de
+n a˜ nos por un monto deK.
+El valor presente a la edad x de un dotal puro de n a˜ nos porK = 1
+es denotado por nEx o A
+x:
+1
+n
+, para efectos de manejar ambas notaciones se
+utilizar´ an de forma indiferente, y es dado por:
+nEx = A
+x:
+1
+n
+=n pxvn = vnlx+n
+lx
+El valor puede ser calculado directamente de las tablas de mortalidad y
+las tasa de inter´ es, sin embargo el c´ alculo puede ser simpliﬁcado y reducido al
+usar las llamadas Funciones Conmutativas, para construir este tipo de fun-
+ciones primero debemos reescribir la expresi´ on anterior de la siguiente forma:
+nEx = vnlx+n
+lx
+∗vx
+vx = vn+xlx+n
+vxlx
+El valor puede ser calculado directamente de las tablas de mortalidad y
+las tasas de inter´ es, sin embargo, el c´ alculo puede ser simpliﬁcado y reducido
+al usar las Funciones Conmutativas, para construir este tipo de funciones
+primero debemos reescribir:
+Dx = vxlx,
+6
+
+--- Pagina 8 ---
+
+por lo que se puede escribir:
+nEx = Dx+n
+Dx
+(2.1)
+Note que el c´ alculo denEx de una data b´ asica de mortalidad involucra una
+multiplicaci´ on y una divisi´ onvnlx+n/lx , y esto se reduce con el uso de funciones
+conmutativas a una simple divisi´ on Dx+n/Dx . Luego se descubrir´ a que las
+funciones conmutativas producen simpliﬁcaciones a´ un mayores cuando son
+usadas para funciones mas complejas que la forma de nEx. Los valores de
+Dx, y otras funciones conmutativas son tabuladas para todos los valores de
+x y para las distintas tablas de mortalidad.
+La importancia de las funciones es el ahorro de trabajo, por medio de
+estos dispositivos se disminuyen el tiempo de c´ alculo, y sobre todo al utilizar
+computadoras, donde se pueden realizar de forma autom´ atica una gran can-
+tidad de operaciones, pero se pueden producir una gran cantidad de errores
+al realizar mayor n´ umero de operaciones. Adicional a las ventajas com-
+putacionales, las funciones conmutativas son muy ´ utiles para simpliﬁcar la
+construcci´ on y manipulaci´ on de las f´ ormulas actuariales.
+nEx puede ser llamada la Prima Pura ´Unica a la edad x para un Dotal
+Puro de n a˜ nos por 1 unidad monetaria. Esto representa el pago ´ unico
+que x debe hacer para comprar un seguro que le pague la suma de 1 unidad
+monetaria al ﬁnal de na˜ nos si se encuentra vivo en ese momento. La palabra
+”pura” o ”neta” indica que no se ha realizado ninguna provisi´ on para los
+gastos envueltos en la transacci´ on.
+Ejemplo: Cu´ al es la Prima Pura´Unica a los 35 a˜ nos de una Dotal Puro
+de duraci´ on por 20 a˜ nos y un monto asegurado de$ 1.000, esto de acuerdo
+a la tabla de mortalidad Commissioners Standar Ordinary 1958 o tambi´ en
+referida como (CSO58) con un 3 % de tasa de inter´ es anual.
+Reﬁri´ endonos a la columna deDx se consigue que:
+$1.000 ∗20 E35 = $1.000 ∗D55
+D35
+= $1.000 ∗1.639.329,7
+3.331.295,4 = $492,10
+Es interesante analizar el resultado para adecuarse a los principios b´ asicos.
+Al revisar la tabla de mortalidad (CSO58), se tiene que l35 es 9.373.807, es
+decir si suponemos que cada una de las 9.373.807 personas vivas a los 35
+a˜ nos contribuyen cada uno con$ 492,10 a un fondo el cual rinde al 3 % de
+inter´ es anual, al ﬁnal de 20 a˜ nos, si la acumulaci´ on resultante es dividida en
+forma equitativa entre los sobrevivientes a la edad 55, en el caso de todas las
+7
+
+--- Pagina 9 ---
+
+premisas en los c´ alculos sean acertadas, el procedimiento puede ser suﬁciente
+para pagarle $ 1.000 a cada una de las personas que lleguen con vida a los 55
+a˜ nos.
+Vivos originales a la edad 55 9.373.807
+Contribuci´ on de cada miembro original $ 492,10
+Monto total del fondo original $ 4.612.850.455
+Factor de actualizaci´ on (1 ,03)20
+Total acumulado despu´ es de 20 a˜ nos $ 8.331.319.894
+Sobrevivientes a la edad 55 8.331.317
+Monto a compartir entre cada sobreviviente $ 1.000
+Este c´ alculo ilustra qu´ e signiﬁca acumular fondos parabeneﬁcios de so-
+brevivencia. Lo que se comparte entre cada individuo que sobrevive a los 55
+a˜ nos, incluye una porci´ on de lo que comparten o dejan aquellos que murieron
+antes de alcanzar la edad de 55 a˜ nos, es decir, lo compartido por los sobre-
+vivientes se traduce en un incremento mayor que lo que se hubiera recibido
+s´ olo por concepto de intereses. Al 3 % de inter´ es, una suma de$ 492,10 acu-
+mulados por 20 a˜ nos se convierten en$ 888,79. Con el beneﬁcio de inter´ es y
+sobrevivencia, $ 492,10 a la edad 35 acumulados por 20 a˜ nos se traducen en
+$ 1.000, usando la tabla de mortalidad (CSO58) y una tasa de inter´ es de 3 %
+anual.
+Generalizando, podemos decir que una suma de nEx, expresa el monto
+necesario para que alguien a la edad x acumule en n a˜ nos un beneﬁcio de
+inter´ es y sobrevivencia para un monto de 1 unidad monetaria, Esto puede
+interpretarse alternativamente al decir que nEx es el valor presente a la edad
+xde un pago de 1 unidad monetaria al ﬁnal de n a˜ nos descontando con inter´ es
+y sobrevivencia. As´ ı que podemos usar a nEx como un factor de descuento
+para el inter´ es y la sobrevivencia, de manera similar a como se utiliza a vn
+para el inter´ es solamente. Por otra parte, tambi´ en podemos utilizar a1/nEx
+como un factor acumulador para inter´ es y sobrevevivencia, correspondiente
+al (1 + i)n para acumular intereses solamente.
+2.2 Rentas de Vida con pagos anuales
+Una renta vitalicia que pague 1 anualmente a xes una serie de pagos anuales
+de 1 comenzando al ﬁnal del a˜ no uno sixse encuentra con vida, y se contin´ ua
+pagando por el resto de su vida. Su valor presente es denotado por ax, el
+cual puede ser expresado como la suma de una serie de dotales puros:
+8
+
+--- Pagina 10 ---
+
+ax =1 Ex +2 Ex +3 Ex + ...+w−x−1 Ex =
+w−x−1∑
+t=1
+tEx
+La sumatoria tambi´ en puede ser escrita de otras dos formas:
+ax =
+w−x−1∑
+t=1
+tEx =
+w−x−1∑
+t=1
+vt
+tpx =
+w−x−1∑
+t=1
+Dx+t
+Dx
+Lo que nos induce a deﬁnir una nueva funci´ on conmutativa:
+Nx =
+w−x−1∑
+t=0
+Dx+t
+Por lo tanto la formula se transformar´ ıa en:
+ax = Nx+1
+Dx
+(2.2)
+Las funciones conmutativas aqu´ ı conﬁeren una clara ventaja, ya que sin
+su uso hubiera sido necesario computar el valor de ax con la expresi´ on mas
+pesada de ax = ∑w−x−1
+t=1 vt
+tpx. En la f´ ormula 2.1 , por el uso de funciones
+conmutativas, el c´ alculo es reducido a una simple divisi´ on, con esto se puede
+completar la columna de los Nx para todos los valores de x por medio de
+la suma de los valores de Dx . Este proceso puede ser hecho de forma m´ as
+eﬁciente por medio de la relaci´ onNx = Nx+1 + Dx. Una vez realizada esta
+tabulaci´ on, el valor deax puede ser determinado f´ acilmente para cualquier
+edad deseada. Otra forma de renta de vida es aquella que tiene pagos limi-
+tados a un per´ ıodo m´ aximo especiﬁcado. Esta es unarenta temporal de vida
+por n a˜ nos, la cual provee pagos al ﬁnal de cada a˜ no durante n a˜ nos six
+sobrevive. Si el pago anual es de 1, su valor presente, denotado por ax:n, (o
+por nax), puede expresarse como sigue:
+ax:n =
+n∑
+t=1
+tEx =
+n∑
+t=1
+Dx+t
+Dx
+9
+
+--- Pagina 11 ---
+
+Dado que ∑n
+t=1 Dx+t es la diferencia entre Nx+1 y Nx+n+1, se tiene que:
+ax:n = Nx+1 −Nx+n+1
+Dx
+(2.3)
+Un tercer tipo es la renta vitalicia diferida . Esta es una renta anual con
+los primeros n pagos omitidos, es decir, una renta vitalicia diferida para x
+que le provee pagos anuales comenzando en la edad x+ n+ 1. Este valor
+presente, denotado por n|ax, puede ser expresado como sigue:
+n|ax =
+w−x−1∑
+t=n+1
+tEx = 1
+Dx
+w−x−1∑
+t=n+1
+Dx+t = Nx+n+1
+Dx
+(2.4)
+La f´ ormula 2.4 puede ser obtenida de otras formas, la serie de pagos
+provistos por la renta diferida es equivalente a la diferencia entre una renta
+vitalicia y una renta temporal por n a˜ nos, es decir:
+n|ax = ax −ax:n = Nx+1
+Dx
+−Nx+1 −Nx+n+1
+Dx
+= Nx+n+1
+Dx
+Una tercera forma de 2.4 depende del uso de nEx como un factor de
+descuento. a la edad x+n, la serie de pagos luego de los n a˜ nos de diferimiento
+es el valor presente de una renta vitalicia ax+n. Descontando tanto intereses
+como sobrevivencia a la edad x, tenemos:
+n|ax =n Exax+n = Dx+n
+Dx
+.Nx+n+1
+Dx+n
+= Nx+n+1
+Dx
+Una serie de pagos anuales a xcomenzando a la edad x+ n+ 1 y contin-
+uando por m a˜ nos six sobrevive, es llamada una renta de vida diferida por
+n a˜ nos y temporal porm a˜ nos. Su valor presente es denotado por n|ax:m o
+n|max (utilizaremos la primera forma), y su forma de c´ alculo ser´ ıa:
+n|ax:m =
+n+m∑
+t=n+1
+tEx = 1
+Dx
+n+m∑
+t=n+1
+Dx+t = Nx+n+1 −Nx+n+m+1
+Dx
+(2.5)
+Las rentas deﬁnidas hasta ahora proporcionan el primer pago al ﬁnal
+del per´ ıodo de pago. Cualquier renta de este tipo es llamada renta vencida.
+Cuando la serie de pagos comienzan al principio del per´ ıodo de pago, la renta
+10
+
+--- Pagina 12 ---
+
+es llamada anticipada, y su valor actual es distinguido por una di´ eresis sobre
+la a, por ejemplo ¨ax.
+Si los pagos son hechos anualmente, los pagos de la renta anticipada
+comienzan un a˜ no antes que los de la renta vencida, las siguientes f´ ormulas
+pueden veriﬁcarse f´ acilmente:
+¨ax = Nx
+Dx
+(2.6)
+¨ax:n = Nx −Nx+n
+Dx
+(2.7)
+n|¨ax = Nx+n
+Dx
+(2.8)
+n|¨ax:m = Nx+n −Nx+n+m
+Dx
+(2.9)
+A continuaci´ on las relaciones entre las rentas anticipadas y vencidas:
+¨ax = 1 + ax (2.10)
+¨ax:n = 1 + ax:n−1 (2.11)
+n|¨ax = 1 +n−1|ax = A
+x:
+1
+n
++n|ax (2.12)
+n|¨ax:m = 1 +n|ax:m = A
+x:
+1
+n
++n−1|ax:m−1 (2.13)
+Las rentas de vida ocasionalmente son pagadas inicialmente al ﬁnal de
+la fracci´ on de a˜ no1/k y luego de forma anual. Esto puede ser visto como
+una renta de vida diferida por 1/k a˜ nos, el valor presente de1
+k /¨ax puede ser
+aproximado por la interpolaci´ on lineal entre el valor presente de la renta
+anticipada ¨ax (con primer pago diferido 0 a˜ nos) y el valor presente de la
+renta vencida ax (con primer pago diferido 1 a˜ no), esto es:
+11
+
+--- Pagina 13 ---
+
+1
+k |¨ax ≈
+(
+1 −1
+k
+)
+¨ax + 1
+kax,
+y dado que:
+ax = ¨ax −1,
+1
+k |¨ax ≈¨ax −1
+k
+Otro tipo de rentas similares pueden ser obtenidas utilizando una inter-
+polaci´ on como la vista.
+Aveces es necesario usar una funci´ on la cual sea obtenida al examinar una
+renta temporal desde un punto de vista distinto, suponga que cada miembro
+del grupo de vivos con edad x acuerdan hacer un pago de 1 en un fondo a
+ﬁnal de cada a˜ no. Si esos pagos son acumulados en el fondo por n a˜ nos, la
+participaci´ on de cada sobreviviente en el total del fondo al ﬁnal de ese tiempo
+es conocida como una renta de vida contenida, reprimida o acumulada por n
+a˜ nos, y es denotada porSx:n.
+Una f´ ormula paraSx:n se puede derivar sumando los montos de cada indi-
+viduo acumulados al ﬁn de n a˜ nos con beneﬁcios de inter´ es y supervivencia.
+El primer pago de 1 es hecho a la edad x+ 1 y se acumular´ a:1/A
+x+1:
+1
+n−1
+; el
+segundo pago es a la edad x+2 y se acumular´ a1/A
+x+2:
+1
+n−2
+y as´ ı sucesivamente.
+Entonces, la acumulaci´ on total para una vida sobreviviente a la edadx+n
+es:
+Sx:n =
+n∑
+t=1
+1
+A
+x+t:
+1
+n−t
+=
+n∑
+t=1
+Dx+t
+Dx+n
+= Nx+1 −Nx+n+1
+Dx+n
+(2.14)
+Observamos que Sx:n representa el valor acumulado al ﬁnal de na˜ nos de
+la serie de pagos para los cuales ax:n denota el valor actual a la edad x, y si
+este valor actual es acumulado por n a˜ nos, se obtiene el valor deSx:n.
+Sx:n = ax:n
+1
+A
+x:
+1
+n
+= Nx+1 −Nx+n+1
+Dx
+Dx
+Dx+n
+= Nx+1 −Nx+n+1
+Dx+n
+El valor acumulado de una renta anticipada de n pagos se puede obtener
+en forma similar:
+¨Sx:n = Nx −Nx+n
+Dx+n
+(2.15)
+12
+
+--- Pagina 14 ---
+
+Antiguamente se usaba el s´ ımbolonUx en lugar de ¨Sx:n. se puede observas
+que todas las f´ ormulas de rentas derivadas de esta secci´ on son de manera
+general de la forma:
+Ny −Ny+n
+Dx
+(2.16)
+donde y es la edad en la cual el primer pago se realiza, nes el n´ umero de
+pagos y x es la edad de contrataci´ on.
+As´ ı que es innecesario memorizar las f´ ormulas individuales para cada
+tipo,por ejemplo, el valor actual a prima ´ unica para una renta de vida diferida
+vencida de 10 a˜ nos y temporal por 15 a˜ nos para una persona de 36 a˜ nos, puede
+ser escrita directamente al utilizar la f´ ormula 2.16, de tal forma de identiﬁcar
+que el primer pago de la renta ser´ a a la edad 47, es decir y = 47, adem´ as se
+sabe que n = 15 y x = 36, por lo tanto se tendr´ a que el valor actual de la
+renta es:
+10|a36:15 = N47 −N62
+D36
+Si se quiere el valor acumulado de la renta a la edad 62, escribimos:
+N47 −N62
+D62
+Al calcular rentas de vida de tablas selectas, es conveniente usar funciones
+conmutativas selectas, los valores de D pueden ser calculados de la manera
+usual. Si el per´ ıodo selecto es deK a˜ nos, las f´ ormulas ser´ ıan:
+D[x]+t = vx+tl[x]+t, para 0 ≤t≤x
+y Dx+t = vx+tlx+t, para t≥k
+Los valores de N se obtienen de la siguiente forma:
+N[x]+t = ∑k−1
+r=t D[x]+r + ∑w−x−1
+r=k Dx+r, para 0 ≤t≤x
+y N[x]+t = ∑w−x−1
+r=k Dx+r, para t≥k
+13
+
+--- Pagina 15 ---
+
+De esta forma las f´ ormulas para valores de rentas selectas pueden ser
+convenientemente expresadas en s´ ımbolos conmutativos. Por ejemplo, con-
+siderando una renta vitalicia diferida por n a˜ nos parax ser´ ıa:
+n|a[x] = N[x]+n+1
+D[x]
+, para n<k −1
+y n|a[x] = Nx+n+1
+D[x]
+, para n≥k−1
+En adelante la palabra renta se referir´ a a una renta de vida, cuando no
+est´ e envuelta una contingencia de vida, se usar´ a el t´ erminorenta cierta
+2.3 Rentas de Vida con pagos mas de una vez al a˜ no
+En la pr´ actica, las rentas de vida son frecuentemente pagadas con una fre-
+cuencia menor a un a˜ no, bien sea semestral, trimestral, mensual u otra pe-
+riodicidad. El valor actual de una renta de vida vencida de 1, pagadera m
+veces al a˜ no a una vida de edadxes denotada por a(m)
+x . Esta serie de pagos,
+contingentes a la supervivencia de x, consisten en un primer pago de 1/m a la
+edad x+ 1/m seguida por pagos similares a intervalos de 1/m de a˜ no. El valor
+actual puede ser escrito de la siguiente forma:
+a(m)
+x = 1
+m
+∞∑
+t=1
+A
+x:
+1
+t/m
+= 1
+mDx
+∞∑
+t=1
+Dx+t/m
+El l´ ımite superiorm(w−x), ha sido escrito como ∞. Esto es un notaci´ on
+conveniente para indicar que la sumatoria se extiende m´ as all´ a del l´ ımite del
+per´ ıodo de vida. El valor de la sumatoria no es afectado ya que Dx+t/m = 0
+para t≥m(w−x).
+Si es necesario evaluar a(m)
+x en t´ erminos de datos de la tabla de mortali-
+dad para la cual la forma matem´ atica de lx es desconocida , como es usual
+en los casos pr´ acticos, surge una diﬁcultad en que Dx+t/m no est´ a deﬁnida
+cuando x+t/m es una fracci´ on. De cualquier forma, la expresi´ on∑∞
+t=1 Dx+t/m,
+puede ser aproximada de muchas formas. Usando un caso particular de la
+f´ ormula de Euler-Maclaurin, la cual relaciona a integrales con series. Esta
+f´ ormula puede ser usada para aproximar integrales por sumas ﬁnitas o, de
+forma inversa, para evaluar series (ﬁnitas o inﬁnitas) resolviendo integrales.
+La f´ ormula fue descubierta independientemente por Leonhard Euler y Colin
+Maclaurin en 1735 y tiene una la forma general:
+14
+
+--- Pagina 16 ---
+
+∫ ∞
+0
+g(t)dt= h
+∞∑
+K=0
+g(kh) −h
+2 g(0) + h2
+12g
+′
+(0) − h4
+720g
+′′
+(0) + ...
+Para alguna constante positiva h, si esta formula es aplicada para g(t) =
+vt
+tpx, nos lleva a:
+g
+′
+(t) = −vt
+tpx(δ−µx)
+Podemos obtener la f´ ormula de aproximaci´ on de Woolhouse
+1
+mDx
+∞∑
+t=1
+Dx+t/m = 1
+Dx
+[∞∑
+t=1
+Dx+t −m−1
+2m Dx + m2 −1
+12m2 .dDx
+dx −...
+]
+Para simpliﬁcar la expresi´ on, debemos hallar la derivadaDx:
+dDx
+dx = vx lx
+dx + lx
+dvx
+dx
+Ya que la derivada de lx es −lxµx, y la derivada de vx es vxlogv = −vxδ,
+tenemos que:
+dDx
+dx = −vxlxµx −vxlxδ= −vxlx(µx + δ) = −Dx(µx + δ) (2.17)
+Con esta sustituci´ on, los primeros tres t´ erminos de la expresi´ on de Wool-
+house para a(m)
+x se reducen a:
+a(m)
+x ≈ax + m−1
+2m −m2 −1
+12m2 (µx + δ) (2.18)
+En la pr´ actica, la aproximaci´ on dada por los primeros dos t´ erminos de
+2.18 es usualmente considerada como suﬁcientemente precisa, y la simple
+f´ ormula resultante:
+a(m)
+x ≈ax + m−1
+2m (2.19)
+Es casi universalmente usada, la f´ ormula 2.19 tambi´ en puede ser derivada
+bajo el simple supuesto que Dx+t es una funci´ on lineal para 0
+15
+
+--- Pagina 17 ---
+
+Al derivar f´ ormulas para rentas diferidas y temporales pagaderasmveces
+al a˜ no, consideramos s´ olo la aproximaci´ on pr´ actica de la f´ ormula 2.19 para
+a(m)
+x
+En el caso de las rentas diferidas y pagaderas m veces al a˜ no tenemos:
+n|a(m)
+x = A
+x:
+1
+n
+a(m)
+x ≈A
+x:
+1
+n
+(
+ax+n + m−1
+2m
+)
+O escrito de otra forma:
+n|a(m)
+x ≈n|ax + m−1
+2m A
+x:
+1
+n
+(2.20)
+Para las rentas temporales pagables m veces al a˜ no se tiene:
+a(m)
+x:n = a(m)
+x −n|a(m)
+x ≈
+(
+ax + m−1
+2m
+)
+−
+(
+n|ax + m−1
+2m A
+x:
+1
+n
+)
+O escrito de otra forma:
+a(m)
+x:n ≈ax:n + m−1
+2m
+(
+1 −A
+x:
+1
+n
+)
+(2.21)
+Las f´ ormulas correspondientes para las rentas anticipadas pueden ser
+ahora f´ acilmente derivadas. La renta anticipada pagadera m veces al a˜ no
+diﬁere de la renta vencida n|a(m)
+x s´ olo en el monto del pago inicial de1/m, de
+tal forma que ¨a(m)
+x = a(m)
+x + 1
+m ≈ax + m+1
+2m y ya que ax = ¨ax −1:
+¨a(m)
+x ≈¨a(m)
+x −m−1
+2m (2.22)
+Para la renta diferida anticipada pagable m veces al a˜ no se tiene:
+n|¨a(m)
+x = A
+x:
+1
+n
+¨a(m)
+x+n ≈A
+x:
+1
+n
+(
+¨ax+n −m−1
+2m
+)
+(2.23)
+En el caso de la renta temporal anticipada pagable m veces al a˜ no:
+¨a(m)
+x:n = ¨a(m)
+x −n|¨a(m)
+x ≈
+(
+¨ax −m−1
+2m
+)
+−
+(
+n|¨ax −m−1
+2m A
+x:
+1
+n
+)
+16
+
+--- Pagina 18 ---
+
+O escrito de otra forma:
+¨a(m)
+x:n ≈¨ax:n −m−1
+2m
+(
+1 −A
+x:
+1
+n
+)
+(2.24)
+En t´ erminos de funciones conmutativas las f´ ormulas vistas pueden ser
+expresadas, para las rentas vencidas, de las siguientes formas:
+ a(m)
+x ≈Nx+1 + m−1
+2m Dx
+Dx
+, a partir de la f´ ormula 2.19
+ n|a(m)
+x ≈Nx+n+1 + m−1
+2m Dx+n
+Dx
+, a partir de la f´ ormula 2.20
+ a(m)
+x:n ≈Nx+1 −Nx+n+1 + m−1
+2m (Dx −Dx+n)
+Dx
+, a partir de la f´ ormula 2.21
+Para las rentas anticipadas:
+ ¨a(m)
+x ≈Nx + m−1
+2m Dx
+Dx
+, a partir de la f´ ormula 2.22
+ n|¨a(m)
+x ≈Nx+n + m−1
+2m Dx+n
+Dx
+, a partir de la f´ ormula 2.23
+ ¨a(m)
+x:n ≈Nx −Nx+n + m−1
+2m (Dx −Dx+n)
+Dx
+, a partir de la f´ ormula 2.24
+2.4 Rentas Continuas
+Cuando la frecuencia de pago m tiende a inﬁnito, es decir, se paga con
+una frecuencia muy elevada, la renta resultante es llamada continuas. Si
+deﬁnimos:
+¯a= lim
+m→∞
+a(m)
+x ,
+Y llamamos ¯ael valor actual de una renta de vida continua de 1 para una
+personas de edad x. Podemos considerar la renta continua como pagadera in-
+stant´ aneamente y a trav´ es del a˜ no, de tal forma que el pago anual es 1. Esto
+no es m´ as que un concepto artiﬁcial, sin embargo, tiene un considerable in-
+ter´ es te´ orico y es ´ util para ofrecer una aproximaci´ on a las rentas pagaderas de
+17
+
+--- Pagina 19 ---
+
+forma muy frecuente como las semanales o diarias. Ya que ¯a= limm→∞a(m)
+x ,
+podemos escribir:
+¯a= lim
+m→∞
+1
+m
+∞∑
+t=1
+A
+x:
+1
+t/m
+Dado que el lado derecho de la igualdad es equivalente a una integral
+deﬁnida, tenemos:
+¯a=
+∫ ∞
+0
+A
+x:
+1
+t
+dt (2.25)
+Y esto puede ser reescrito de formas alternativas
+¯a= 1
+Dx
+∫ ∞
+0
+Dx+tdt=
+∫ ∞
+0
+vt
+tpxdt
+Debemos recordar que usamos ∞como l´ ımite superior para indicar que
+la sumatoria se extiende hasta el ﬁnal del per´ ıodo de vida. Por lo tanto,
+el s´ ımbolo∞se usa como una abreviatura para una expresi´ on ﬁnita m´ as
+complicada, y las integrales en f´ ormulas como la 2.25 no necesitan ser con-
+sideradas como integrales impropias.
+Los valores de ¯ano pueden ser calculados directamente por las f´ ormulas,
+a menos que tengamos la funci´ on de supervivencia, la cual es suﬁciente para
+usar las f´ ormulas alternativas. Este caso no es usual y se debe usar un m´ etodo
+de aproximaci´ on. La f´ ormula m´ as simple es hacer quemtienda a inﬁnito en
+las f´ ormulas ya derivadas para ¨a(m)
+x . Con lo cual a partir de 2.18 y 2.19, se
+obtiene:
+¯a= ax + 1
+2 − 1
+12(µx + δ) (2.26)
+¯a= ax + 1
+2, (2.27)
+La f´ ormula 2.7 es la aproximaci´ on usada m´ as en la pr´ actica.
+El calculo de rentas continuas se facilita prepar´ ando conmutativos espe-
+ciales:
+¯Dx =
+∫ 1
+0
+Dx+tdt (2.28)
+¯Nx =
+∞∑
+t=0
+¯Dx+t =
+∫ ∞
+0
+Dx+tdt (2.29)
+18
+
+--- Pagina 20 ---
+
+As´ ı que podemos escribir:
+¯a=
+¯Nx
+Dx
+. (2.30)
+Al calcular los valores de ¯Dx y de ¯Nx, es necesario adoptar una aproxi-
+maci´ on para la f´ ormula 2.28. Si suponemos queDx+t es lineal para 0 ≤t≤1,
+tenemos que:
+∫ 1
+0
+Dx+tdt≈Dx+1/2 ≈1
+2(Dx + Dx+1),
+y
+¯Dx ≈1
+2(Dx + Dx+1).
+Entonces ¯Nx ≈1/2(Nx + Nx+1) = Nx −1/2Dx = Nx+1 + 1/2Dx, lo cual
+produce valores de ¯a los cuales son consistentes con la f´ ormula 2.27.
+Los diferentes tipos de rentas continuas pueden ahora ser expresadas en
+integrales y en funciones conmutativas:
+¯ax =
+∫ ∞
+0
+vt
+tpxdt; (2.31)
+¯ax:n =
+∫ n
+0
+vt
+tpxdt=
+¯Nx − ¯Nx+n
+Dx
+; (2.32)
+n|¯ax =
+∫ ∞
+n
+vt
+tpxdt=
+¯Nx+n
+Dx
+. (2.33)
+Frecuentemente necesitaremos las derivadas de funciones actuariales que
+son expresadas como integrales, por lo cual es ´ util recordar algunos principios
+de c´ alculo:
+Si F (x) =
+∫ b
+x
+f(y)dy, entonces dF(x)
+dx = −f(x) (2.34)
+Una aplicaci´ on de esto puede hacerse a la funci´ on¯Nx, ya que 2.29 puede
+ser escrita como:
+¯Nx =
+∫ ∞
+x
+Dydy, (2.35)
+Usando 2.34 se puede encontrar:
+19
+
+--- Pagina 21 ---
+
+d¯Nx
+dx = −Dx. (2.36)
+Con lo cual podemos ahora hallar la derivada de ¯ax:
+d¯ax
+dx = d
+dx
+(¯Nx
+Dx
+)
+= 1
+Dx
+2
+(
+Dx.d¯Nx
+dx − ¯Nx
+dDx
+dx
+)
+Sustituyendo de 2.17 y 2.36 y simpliﬁcando, tenemos:
+d¯ax
+dx = ¯ax(µx + δ) −1 (2.37)
+2.5 Rentas Variables
+Frecuentemente encontramos rentas bajo las cuales la tasa de pagos var´ ıa en
+el tiempo, estas son conocidas como rentas variables.
+El valor actual de una renta variable puede ser expresada usualmente
+como una combinaci´ on del valor actual de ciertas rentas niveladas. Considere
+por ejemplo, una renta variable para (x) la cual proporciona pagos anuales
+de 1 por n a˜ nos, seguidos por pagos de 2 por el resto de la vida de (x). Su
+valor actual es obviamente igual a la suma del valor de una renta de vida
+de 1 y una renta diferida por n a˜ nos de 1, es decir, ax +n|ax ; o puede ser
+expresada como la suma de una renta temporal por n a˜ nos de 1 m´ as una
+renta diferida por n a˜ nos de 2, es decir,ax:n + 2n|ax.
+Como un segundo ejemplo, supongamos que una renta variable anticipada
+proporciona pagos anuales de 1 por los primeros n a˜ nos, pagos de 2 por los
+pr´ oximos m a˜ nos, y pagos de 1 nuevamente por el resto de vida de (x). Esta
+serie de pagos es evidentemente lo mismo que los proporcionados por una
+renta de vida anticipada de 1, m´ as una renta diferida por n a˜ nos y temporal
+por m a˜ nos, anticipada y de 1, es decir,ax +n/m ax
+Se pueden crear s´ ımbolos especiales para ciertas formas comunes de rentas
+variables en las cuales los pagos siguen un modelo regular. El caso en el cual
+los pagos anuales crecen en progresi´ on geom´ etrica es de particular importan-
+cia.
+Rentas Crecientes:
+El s´ ımbolo (Ia)x, denota el valor actual a la edad x de una renta de vida
+creciente, la cual proporciona pagos de 1 a la edad x+1, 2 a la edad x+2, 3
+a la edad x+3, increment´ andose en 1 para cada a˜ no que (x) sobrevive. As´ ı:
+20
+
+--- Pagina 22 ---
+
+(Ia)x =
+∞∑
+t=1
+tvt
+tpx. (2.38)
+Este modelo es claramente equivalente a la siguiente serie de rentas nive-
+ladas: una renta de 1 ( ax), una renta de 1 diferida por 1 a˜ no1/ax, una renta
+de 1 diferida por 2 a˜ nos2/ax, y as´ ı sucesivamente. Desde este punto de vista
+se tendr´ ıa:
+(Ia)x =
+∞∑
+t=0
+t|ax =
+∞∑
+t=0
+Nx+t+1
+Dx
+.
+Si ahora deﬁnimos una nueva funci´ on conmutativa Sx, deﬁnida de la
+siguiente forma:
+Sx =
+∞∑
+t=0
+Nx+t
+,
+La f´ ormula puede ser escrita:
+(Ia)x = Sx+1
+Dx
+. (2.39)
+Para la renta de vida creciente temporal por n a˜ nos bajo la cual el in-
+cremento cesa con el n-´ esimo pago, el valor puede ser expresado en forma
+similar como la suma de n rentas diferidas, cada una cesando su pago a la
+edad x+n:
+(Ia)x:n =
+n−1∑
+t=0
+t|ax:n−t =
+n−1∑
+t=0
+Nx+t+1 −Nx+n+1
+Dx
+= Sx+1 −Sx+n+1 −nNx+n+1
+Dx
+.
+(2.40)
+Otro tipo de renta creciente proporciona incremento de 1 cada a˜ no, hasta
+el n-´ esimo a˜ no, permaneciendo luego los pagos constantes por el resto de vida
+de (x). El valor actual puede ser expresado como la suma de valores de n
+rentas diferidas:
+(Ina)x =
+n−1∑
+t=0
+t|ax =
+n−1∑
+t=0
+Nx+t+1
+Dx
+= Sx+1 −Sx+n+1
+Dx
+. (2.41)
+Rentas Decrecientes:
+21
+
+--- Pagina 23 ---
+
+Una renta de vida temporal decreciente que proporciona un pago de n a
+la edad x+1, decreciendo en 1 cada a˜ no y que cesa con el n-´ esimo pago de 1,
+puede ser expresada como una suma de n rentas temporales niveladas:
+(Da)x:t =
+n∑
+t=1
+ax:n =
+n∑
+t=1
+Nx+1 −Nx+t+1
+Dx
+= nNx+1 −(Sx+2 −Sx+n+2)
+Dx
+.
+(2.42)
+Las formulas para las correspondientes rentas variables anticipadas se
+obtienen f´ acilmente tomando las f´ ormulas de las rentas inmediatas reﬁriendo
+el numerador a una edad un a˜ no m´ as joven. Los dos siguientes ejemplos
+pueden ser veriﬁcados r´ apidamente:
+(I¨a)x = Sx
+Dx
+(D¨a)x:n = nNx −(Sx+1 −Sx+n+1)
+Dx
+.
+Aunque las f´ ormulas son ´ utiles en ciertos casos especiales, es de hacer
+notar que la f´ ormula para cualquier renta variable, con variaciones regulares
+o irregulares, pueden ser desarrolladas de los principios dados, expresando
+los beneﬁcios como una suma de dotales puros.
+Cuando las rentas variables son pagaderas m´ as de una vez al a˜ no, parecen
+dos casos diferentes dependiendo de si la raz´ on de pago es constante o var´ ıa
+durante cada a˜ no de edad. Si la raz´ on de pago durante el a˜ no es constante, el
+pago anual total es hecho enm plazos iguales con incremento o decrecimiento
+ocurriendo solo al comienzo o ﬁnal del a˜ no. Una renta variable de este tipo
+puede ser expresada como una suma de una serie de rentas niveladas, en
+consecuencia es posible obtener f´ ormulas aproximadas para rentas variables
+pagaderas m veces al a˜ no por extensi´ on del proceso usado en la aproximaci´ on
+de valores de las rentas niveladas pagaderas m veces al a˜ no. Por ejemplo,
+una renta creciente pagadera m veces al a˜ no es equivalente a una serie de
+rentas niveladas diferidas sucesivamente pagadera m veces al a˜ no, es decir:
+(Ia)(m)
+x =
+∞∑
+t=0
+t|a(m)
+x ≈
+∞∑
+t=0
+Nx+t+1 + m−1
+2m Dx+t
+Dx
+= Sx+1 + m−1
+2m Nx
+Dx
+. (2.43)
+El segundo tipo de renta variable con m pagos al a˜ no, proporciona una
+tasa o raz´ on de pago que se incrementa o decrecem veces al a˜ no. Supongamos
+que una renta creciente es pagadera a raz´ on de1/m por a˜ no al ﬁn de primer
+22
+
+--- Pagina 24 ---
+
+1/m de a˜ no,2/m por a˜ no al ﬁnal del segundo1/m de a˜ no, y as´ ı sucesivamente.
+Si esta renta es emitida a la edad x, el primer pago a la edad x+1/m ser´ a
+entonces 1/m2 , ya que este pago cubre un periodo de 1/m de a˜ no y la raz´ on de
+pago durante ese primer per´ ıodo es1/m por a˜ no. El segundo pago entonces a
+la edad x+2/m ser´ a2/m2, y as´ ı en adelante, denotando al valor actual de dicha
+renta por (I(m)a)(m)
+x tendremos:
+(I(m)a)(m)
+x = 1
+Dx
+∞∑
+t=1
+t
+m2 Dx+t/m
+Expandiendo esta sumatoria por medio de la formula de Woolhouse,
+obtenemos:
+(I(m)a)(m)
+x = 1
+Dx
+{∞∑
+t=1
+tDx+t + m−1
+2m [tDx+t]t=0 + m2 −1
+12m2
+[d
+dt(tDx+t)
+]
+t=0
+−...
+}
+Y dado que:
+[d
+dt(tDx+t)
+]
+t=0
+= [Dx+t −tDx+t(µx+t + δ)]t=0
+esto se simpliﬁca a:
+(I(m)a)(m)
+x ≈(Ia)x + m2 −1
+12m2 (2.44)
+Cuando la frecuencia de pago m se vuelve inﬁnita obtenemos f´ ormulas
+para rentas variables continuas, en el caso de un incremento anual bajo una
+tasa de pago constante durante cada a˜ no de edad, tendremos una renta con-
+tinua con crecimiento anual, representada por ( I¯a)x, la cual provee pagos a
+la raz´ on de 1 por a˜ no en cada momento de tiempo durante el primer a˜ no a la
+edad x+1, a raz´ on de 2 por a˜ no durante el segundo a˜ no, y as´ ı sucesivamente.
+(I¯a)x = lim
+m→∞
+(Ia)(m)
+x
+Esta funci´ on puede ser considerada como una suma sucesiva de rentas
+niveladas diferidas continuas:
+(I¯a)x =
+∞∑
+t=0
+t/¯ax =
+∞∑
+t=0
+¯Nx+t
+Dx
+,
+23
+
+--- Pagina 25 ---
+
+Y dado que
+∞∑
+t=0
+¯Nx+t = ¯Sx
+Se tiene:
+(I¯a)x =
+¯Sx
+Dx
+(2.45)
+Una f´ ormula aproximada para (I¯a)x se puede obtener haciendo tender a
+m hacia inﬁnito en la f´ ormula 2.43 para (Ia)(m)
+x , as´ ı obtenemos:
+(I¯a)x ≈Sx+1 + 1
+2 Nx
+Dx
+= (Ia)x + 1
+2¨ax
+o visto de otra forma:
+(I¯a)x ≈Sx −1
+2 Nx
+Dx
+= (I¨a)x −1
+2¨ax
+Este resultado indica que los valores aproximados de ¯Sx pueden ser cal-
+culados desde:
+¯Sx ≈Sx −1
+2Nx
+Lo cual corresponde a un tipo de renta creciente bajo la cual la raz´ on
+de pagos se incrementa cada a˜ no de edad, tenemos la renta de incremento
+continuo, con valor presente ( ¯I¯a)x, la cual proporciona para pagos a raz´ on
+(o tasa) de t por a˜ no al momento de alcanzar la edadx+ t. El valor actual
+puede ser expresado:
+(¯I¯a)x = lim
+m→∞
+(I(m)a)(m)
+x =
+∫ ∞
+0
+tvt
+tpxdt= 1
+Dx
+∫ ∞
+0
+tDx+tdt (2.46)
+Llevando a mhacia inﬁnito en la f´ ormula 2.44 para (I(m)a)(m)
+x , se obtiene
+la siguiente relaci´ on:
+(¯I¯a)x ≈(Ia)x + 1
+12 (2.47)
+24
+
+--- Pagina 26 ---
+
+2.6 Efectos de la variaci´ on en el inter´ es y la mortalidad
+Normalmente vemos a ax como una funci´ on dex deﬁnida para una tabla de
+mortalidad y tasa de inter´ es particular. Supongamos que cambiamos nuestro
+punto de vista y pensamos en los diferentes valores de ax producidos por un
+x dado cuando ocurran cambios en la mortalidad e inter´ es. Es importante
+poder estimar los efectos de tales variaciones.
+El efecto de un cambio en el inter´ es puede ser estimado considerando la
+derivada de ax con respecto a i:
+Se sabe que ax = ∑∞
+t=1 vt
+tpx, por lo tanto:
+d
+diax = d
+di
+[∞∑
+t=1
+vt
+tpx
+]
+= d
+dx
+[∞∑
+t=1
+(1 + i)−t
+tpx
+]
+=
+∞∑
+t=1
+−t(1 + i)−t−1
+tpx
+es decir:
+d
+diax = −v
+∞∑
+t=1
+tvt
+tpx = −v(Ia)x (2.48)
+El signo negativo, reﬂeja el hecho que ax decrece mientras i crece. La
+f´ ormula 2.48 puede ser expresada en forma diferencial como:
+dax = −v(Ia)xdi,
+y, ya que la diferencial de una funci´ on es una aproximaci´ on al cambio
+de la funci´ on correspondiente a un cambio dado en la variable dependiente,
+tenemos:
+∆ax ≈−v(Ia)x∆i.
+Debe recordarse que el diferencial proporciona una estimaci´ on satisfac-
+toria s´ olo cuando el cambio de una variable independiente (∆i) es peque˜ no.
+Esto produce la siguiente f´ ormula aproximada para valores de ax. A una
+nueva tasa de inter´ esj cuando las funciones son tabuladas a una tasa muy
+cercana i
+aj
+x ≈ai
+x −j−i
+1 + i(Ia)i
+x (2.49)
+Hay otras formas pr´ acticas para aproximar rentas. Si los valores son
+tabulados a muchas tasas de inter´ es, una interpretaci´ on puede producir una
+estimaci´ on satisfactoria del valor a una tasa intermedia.
+Los cambios en la mortalidad suponen muchas formas diferentes y pode-
+mos solo notar unos pocos resultados simples.
+25
+
+--- Pagina 27 ---
+
+El efecto sobre ax de un cambio sobre la tasa de mortalidad a una edad,
+digamos x+ n, es f´ acilmente determinada por:
+ax = ax:n + vn
+npxax+n
+o, dado que ax+n = vpx+n¨ax+n+1 y px+n = 1 −qx+n, se tiene:
+ax = ax:n + vn+1
+npx(1 −qx+n)¨ax+n+1
+Si ahora qx+n es reemplazado por qx+n+ c, podemos ver que el cambio en
+ax ser´ a−cvn+1npx¨ax+n+1
+Examinemos ahora los efectos de un cambio constante en la fuerza de la
+mortalidad. Ya que el valor de la renta ax puede ser expresado como la suma
+de valores de dotales puros, ser´ a suﬁciente estudiar el efecto de este cambio
+sobre A
+x:
+1
+n
+.
+Si se sabe que A
+x:
+1
+n
+= vnnpx, y substituimos vn = e−δn = e−
+∫ n
+0 δdt y
+npx = e−
+∫ n
+0 µx+tdt, tenemos:
+A
+x:
+1
+n
+= e−
+∫ n
+0 µx+t+δdt (2.50)
+Si ahora se hace un cambio de constante de c en µx, de tal modo que la
+nueva fuerza de la mortalidad, µ
+′
+x, es µ
+′
+x = µx + c, el correspondiente dotal
+puro A
+′
+x:
+1
+n
+, puede ser expresado:
+A
+′
+x:
+1
+n
+= e−
+∫ n
+0 (µ
+′
+x+t+δ)dt = e−
+∫ n
+0 (µx+t+c+δ)dt = e−
+∫ n
+0 (µx+t+δ
+′
+)dt,
+donde δ
+′
+= δ+ c
+Comparando este resultado con 2.50 notamos que A
+′
+x:
+1
+n
+puede ser calcu-
+lado usando los valores de µ sobre las bases de la mortalidad original si la
+fuerza de inter´ es est´ a ajustada por la constante de adici´ onc. Para el dotal
+puro, entonces un cambio en la fuerza de la mortalidad es equivalente al
+mismo cambio en la fuerza del inter´ es y esto indica que ser´ a tambi´ en ver-
+dadero para los valores de renta.
+Cuando la mortalidad sigue una ley matem´ atica los efectos de cambios
+en los varios par´ ametros pueden frecuentemente ser f´ acilmente expresados.
+Por ejemplo, con la ley de Makeham:
+µx = A+ Bcx
+Un cambio en la constante A, que produce un cambio constante en la
+fuerza de mortalidad, es equivalente en sus efectos sobre los valores de renta
+26
+
+--- Pagina 28 ---
+
+a un cambio en la tasa de inter´ es. Un cambio en B puede ser visto equiva-
+lentemente a un cambio constante en la edad x. Si B asume el valor de Bch,
+entonces la nueva fuerza de la mortalidad µ
+′
+x es igual a A+ Bcx+h, que es la
+misma que µx+h. Si ccambia a c
+′
+= ck, tenemos µ
+′
+x = A+Bckx, un resultado
+que puede ser visualizado en t´ erminos de una expansi´ on o contracci´ on en la
+edad.
+2.7 Resumen de la Notaci´ on
+Principios b´ asicos de la notaci´ on:
+A. Las funciones actuariales son representadas por un s´ ımbolo principal
+con preﬁjos y suﬁjos asociados, los cuales pueden sersuscritos o suprae-
+scritos. El s´ ımbolo principal expresa la naturaleza general de la funci´ on,
+y los preﬁjos o suﬁjos los l´ ımites de alguna generalizaci´ on, de tal forma
+que el s´ ımbolo completo constituye una deﬁnici´ on precisa de la funci´ on.
+B. Un suﬁjo suscrito (aparece en la esquina inferior derecha del s´ ımbolo
+principal) indica la condici´ on relativa a la edad y el orden de ocurrencia
+del evento.
+C. Un preﬁjo suscrito (aparece en la esquina inferior izquierda del s´ ımbolo
+principal) indica la condici´ on relativa a la duraci´ on y el orden de ocur-
+rencia del evento y su posici´ on con respecto al tiempo.
+D. Una barra preﬁja suscrita indica un per´ ıodo de diferimiento.
+E. Un suﬁjo suscrito tambi´ en puede consistir en un s´ ımbolo compuesto
+de la forma x : n. Esto indica que la funci´ on depende de la duraci´ on
+conjunta de una vida de edad x y un t´ ermino cierto den a˜ nos.
+F. Un suﬁjo supraescrito (aparece en la esquina superior derecha del s´ ımbolo
+principal) indica la periodicidad indica la periodicidad de los eventos,
+siempre estar´ a encerrado entre par´ entesis o llaves.
+G. Cuando la periodicidad de los eventos se vuelve inﬁnita, se remplaza el
+suﬁjo supraescrito por una barra horizontal sobre el s´ ımbolo principal.
+H. La di´ eresis sobre el s´ ımbolo principal es usada para distinguir una renta
+anticipada de una renta vencida.
+Aplicaciones de los dotales puros y beneﬁcios de rentas:
+27
+
+--- Pagina 29 ---
+
+ Los siguientes son los s´ ımbolos usados principalmente:
+E y A, son los valores presentes de un dotal puro de 1;
+a, es el valor presente de una renta de 1;
+s, es el monto acumulado de un a renta de 1:
+(Ia), es el valor presente de una renta creciente;
+(Da), el valor presente de una renta decreciente.
+ La barra horizontal sobre el s´ ımbolo de la renta signiﬁca que el pago
+se realiza de forma instant´ anea (principio G). Cuando la barra es us-
+ada sobre el s´ ımboloI o D de las rentas variables, eso indica que el
+incremento ocurre de forma instant´ anea.
+Comentarios: Ocasionalmente se pueden encontrar dos s´ ımbolos difer-
+entes que especiﬁcan la misma funci´ on, por ejemplo, la renta temporal es
+expresada por el principio E como ax:n, sin embargo, usando el principio C
+puede ser igual a utilizar el s´ ımbolonax
+El s´ ımbolo (I(m)a)x no est´ a deﬁnido en los c´ odigos internacionales, tam-
+poco la notaci´ on correspondiente para el beneﬁcio continuo.
+Funciones Conmutativas:
+ Dx = vxlx
+ Nx = ∑∞
+t=0 Dx+t
+ Sx = ∑∞
+t=0 Nx+t = ∑∞
+t=0 (t+ 1)Dx+t
+ ¯Dx =
+∫1
+0 vx+tlx+tdt=
+∫1
+0 Dx+tdt
+ ¯Nx = ∑∞
+t=0
+¯Dx+t =
+∫∞
+0 Dx+tdt
+ ¯Sx = ∑∞
+t=0
+¯Nx+t
+∑∞
+t=0 (t+ 1) ¯Dx+t
+28
+
+--- Pagina 30 ---
+
+3 Seguros de Vida
+3.1 Introducci´ on
+Las funciones descritas en el capitulo anterior se reﬁeren a pagos contingentes
+sobre la superviviencia de una vida. Las funciones a ser consideradas ahora
+se relacionan con pagos que son contingentes sobre la muerte mas que la
+superviviencia; tales pagos son proporcionados por los seguros.
+Un seguro proporciona un pago de un monto espec´ ıﬁco sobre la muerte
+de una vida dada, conocido como asegurado. Los valores de los seguros han
+sido calculados tradicionalmente sobre el supuesto de que el pago es hecho
+al ﬁn del a˜ no de muerte, aunque la pr´ actica usual de los aseguradores es
+hacer el pago tan pronto como sea posible, despu´ es de la ocurrencia de la
+muerte. Este supuesto es conveniente ya que las probabilidades de muerte
+y supervivencia al ﬁnal de un a˜ no pueden ser calculadas de manera exacta
+por medio de una tabla de mortalidad. Como veremos luego, existen varios
+m´ etodos para ajustar los valores basados en esta hip´ otesis y tomar en cuenta
+el hecho que en la pr´ actica los pagos son hechos de manera inmediata; ya
+algunos aseguradores toman directamente dichos ajustes de las f´ ormulas y
+as´ ı evitar los c´ alculos previos basados en las hip´ otesis tradicionales.
+3.2 Seguros pagables al ﬁnal del a˜ no de la muerte
+Un seguro que proporciona un pago ´ unicamente si la muerte ocurre dentro
+de un per´ ıodo de tiempo limitado es conocido como un seguro temporal. El
+valor presente o prima neta pura a la edad x para tal seguro con un per´ ıodo
+temporal de n a˜ nos y monto 1 es denotado porA1
+x:n y puede escribirse:
+A1
+x:n = vqx + v2
+1|qx + v3
+2|qx + ...+ vn
+n−1|qx
+Cada t´ ermino en esta expresi´ on representa la probabilidad de que la
+muerte ocurra en un a˜ no en particular multiplicado por el valor actual de un
+pago de 1 al ﬁn de ese a˜ no. La expresi´ on puede ser escrita:
+A1
+x:n =
+n−1∑
+t=0
+vt+1
+t|qx = 1
+lx
+n−1∑
+t=0
+vt+1dx+t (3.1)
+Si el per´ ıodo de un seguro temporal es extendido al ﬁn de la tabla de
+mortalidad, de tal forma que es seguro es pagadero en cualquier momento en
+que la muerte ocurra, el valor de n se vuelve w-x y estar´ ıamos en presencia
+de lo que se denomina un seguro de vida entera, con valor presente Ax:
+29
+
+--- Pagina 31 ---
+
+Ax =
+∞∑
+t=0
+vt+1
+t|qx = 1
+lx
+∞∑
+t=0
+vt+1dx+t (3.2)
+El s´ ımbolo∞es usado en este caso por w−x−1.
+Si el pago es hecho solo si la muerte ocurre luego de espirar un per´ ıodo
+de n a˜ nos, tenemos un segurodiferido con un valor actual:
+n|Ax =
+∞∑
+t=n
+vt+1
+t|qx = 1
+lx
+∞∑
+t=n
+vt+1dx+t (3.3)
+Es obvio que Ax = A1
+x:n +n|Ax, en la pr´ actica el seguro diferido no es
+encontrado solo, sino que n|Ax aparece algunas veces en combinaci´ on con
+otras funciones de seguros.
+La expresiones citadas hasta ahora en este capitulo se simpliﬁcan con la
+introducci´ on de nuevas funciones conmutativas
+Cx = vx+1dx,
+y
+Mx =
+∞∑
+t=0
+Cx+t.
+Entonces: A1
+x:n = 1
+lx
+∑n−1
+t=0 vt+1dx+t = 1
+vxlx
+∑n−1
+t=0 vx+t+1dx+t, es decir:
+A1
+x:n = 1
+Dx
+n−1∑
+t=0
+Cx+t = Mx −Mx+n
+Dx
+(3.4)
+Por lo tanto tambi´ en se tendr´ a que:
+Ax = Mx
+Dx
+(3.5)
+n|Ax = Mx+n
+Dx
+(3.6)
+Un seguro dotal por na˜ nos de 1 proporciona un pago de 1 al ﬁn del a˜ no de
+muerte si el asegurado muere dentro de los na˜ nos ´ o un pago de 1 al ﬁn den
+a˜ nos si el asegurado est´ a vivo entonces. Esto claramente es una combinaci´ on
+de un seguro temporal de n con un dotal puro de n a˜ nos. Su valor presente
+es representado por Ax:n y puede ser expresado como:
+Ax:n = A1
+x:n + A
+x:
+1
+n
+= Mx −Mx+n + Dx+n
+Dx
+(3.7)
+30
+
+--- Pagina 32 ---
+
+3.3 Relaci´ on entre los seguros y las rentas
+Dado que Cx = vx+1dx = vx+1(lx −lx+1) = vDx −Dx+1, por otra parte se
+sabe que Mx = vNx −Nx+1 , ahora dividiendo entre Dx,
+Mx
+Dx
+= vNx
+Dx
+−Nx+1
+Dx
+,
+es decir:
+Ax = v¨ax −ax (3.8)
+Es interesante veriﬁcar esta relaci´ on entre las rentas de vida y el seguro de
+vida entera por razonamiento general. La expresi´ on v¨ax representa el valor
+actual de una renta anticipada de v por a˜ no parax, tal renta tiene el mismo
+valor que una renta de 1 pagadera al ﬁn de cada a˜ no que x comience. La
+expresi´ onax representa el valor de una renta de 1 pagadera al ﬁn de cada
+a˜ no quexcomplete. La diferencia entre estas dos rentas es un pago ´ unico de
+1 al ﬁn del a˜ no quex comience pero no complete.
+Para el seguro por n a˜ nos, la relaci´ on es:
+A1
+x:n = v¨ax:n −ax:n (3.9)
+Para el dotal por n a˜ nos:
+Ax:n = A1
+x:n+A
+x:
+1
+n
+= v¨ax:n−ax:n+A
+x:
+1
+n
+, y dado que A1
+x:n = ax:n−ax:n−1
+Se tiene que:
+Ax:n = v¨ax:n −ax:n−1 (3.10)
+La f´ ormula 3.8 puede ser escrita de otra forma la cual es a menudo ´ util,
+dado que:
+v¨ax −ax = v¨ax −(¨ax −1) = 1 −(1 −v)¨ax = 1 −d¨ax
+,
+se tiene:
+Ax = 1 −d¨ax (3.11)
+Esta ecuaci´ on puede ser interpretada como sigue: Ax es el valor actual
+de un pago de 1 al ﬁn del a˜ no de muerte de x. Si este pago fuese hecho
+ahora, su valor ser´ ıa 1; pero como el pago es diferido, debemos deducir el
+valor del inter´ es devengado entre ahora y el ﬁn del a˜ no de muerte. El valor
+31
+
+--- Pagina 33 ---
+
+al comienzo del a˜ no del inter´ es sobre 1 esd = (1 −v), y el valor actual del
+inter´ es por cada a˜ no quex comience es d¨ax.
+Una relaci´ on similar para el seguro dotal es Ax:n = 1 −d¨ax:n. No hay
+f´ ormulas correspondientes para los seguros temporales ´ o diferidos, ya que en
+estos casos no es cierto que se realice un pago.
+Multiplicando por (1 + i) en la f´ ormula 3.11, se tiene: (1 + i)Ax = (1 +
+i) −i¨ax, dado que (1 + i)d= i, o ya que ¨ax = 1 + ax, se tiene:
+1 = iax + (1 +i)Ax. (3.12)
+Esto reﬂeja el hecho de que una unidad ahora es equivalente al valor actual
+de una unidad al ﬁn del a˜ no de muerte,Ax, m´ as el valor de los intereses sobre
+una unidad al ﬁn de cada a˜ no (incluyendo el ﬁn del a˜ no de muerte),iax+iAx.
+La f´ ormula .3.12 es la base usual del estado y el estatuto de impuesto sobre
+herencias, la cual deﬁne iax como el estado de vivo y (1 + i)Ax como el
+remanente o residuo, (1 −iax)
+3.4 Seguros pagaderos al momento de la muerte
+En la pr´ actica, el pago del monto de un seguro no es diferido al ﬁn del a˜ no
+de muerte.
+Si el pago bajo un seguro de vida fuese anticipado al ﬁn de la 1/m-´ esima
+parte del a˜ no en la cual x muera, la expresi´ on para la primera neta ´ unica
+tomar´ ıa la forma:
+A(m)
+x = 1
+lx
+[
+v
+1/m
+(lx −lx+1/m) + v
+2/m
+(lx+1/m −lx+2/m) + ...=
+]
+= −1
+lx
+∞∑
+t=1
+v
+t/m
+∆lx+(t −1)/m,
+donde el intervalo de diferimiento es 1/m. Si m se hace inﬁnitamente
+grande, esta expresi´ on se acerca (o aproxima) a la prima neta ´ unica para un
+seguro vida entera pagadero al momento de la muerte en vez de al ﬁn del
+a˜ no de muerte. Denotando este valor por ¯Ax, tenemos:
+¯Ax = lim
+m→∞
+A(m)
+x = lim
+m→∞
+[
+−1
+lx
+∞∑
+t=1
+v
+t/m
+∆lx+(t −1)/m
+]
+= −1
+lx
+∫ ∞
+0
+vtdlx+t
+o dado que dlx+t = −lx+tµx+tdt, entonces:
+32
+
+--- Pagina 34 ---
+
+¯Ax = 1
+lx
+∫ ∞
+0
+vtlx+tµx+tdt=
+∫ ∞
+0
+vt
+tpxµx+tdt (3.13)
+La formula puede ser analizada por razonamiento general, dado quetpxµx+t
+puede ser visto como la probabilidad que xmuera al momento de de alcanzar
+la edad de x+ t, y vt es el valor descontado del monto de 1 que ser´ a pagado.
+La integral en 3.13 puede ser evaluada usando la t´ ecnica de integraci´ on
+por partes:
+∫
+ydz = yz−
+∫
+zdy
+En 3.13, se toma vt como y y lx+tµx+t como dz.Entonces dy es vtlog(v) =
+−vtδ y z es −lx+t, por lo tanto:
+¯Ax = 1
+lx
+(
+[−vtlx+t]∞
+0 −δ
+∫ ∞
+0
+vtlx+tdt
+)
+,
+lo cual se reduce a:
+¯Ax = 1 −δ¯a (3.14)
+La analog´ ıa con¯Ax = 1 −d¨a es evidente.
+la relaci´ on correspondiente para un temporal por n a˜ nos pagadero al
+momento de muertes es:
+¯A1
+x:n =
+∫ n
+0
+vt
+tpxµx+tdt= 1 −A
+x:
+1
+n
+−δ¯ax:n (3.15)
+Para el dotal por n a˜ nos:
+¯Ax:n = ¯A1
+x:n + Ax:n = 1 −δax:n (3.16)
+Cuando suponemos una distribuci´ on uniforme de las muertes, hay una
+relaci´ on particularmente simple entre el seguro pagadero al momento de
+muerte y el pagadero al ﬁn del a˜ no de la muerte. Esto se puede ver m´ as
+f´ acilmente en el caso de un seguro temporal por 1 a˜ no.
+¯A1
+x:1 =
+∫ n
+0
+vt
+tpxµx+tdt
+Haciendo el supuesto de una distribuci´ on uniforme de las muertes, si sabe-
+mos que tpxµx+t ≈qx por lo tanto en la integral anterior se puede sustituir
+y quedar´ ıa:
+¯A1
+x:n =
+∫ 1
+0
+vtqxdt= qx
+∫ 1
+0
+vtdt
+33
+
+--- Pagina 35 ---
+
+La integral
+∫1
+0 vtdt la reconocemos como una renta cierta continua.
+¯a1 = 1 −v
+δ = iv
+δ .
+Por tanto:
+¯A1
+x:1 ≈i
+δvqx = i
+δA1
+x:1 dt
+Desde un punto de vista pr´ actico es altamente conveniente que un factor
+constante i
+δ pueda ser usado en todas las edades como el ajuste aproximado
+para cambiar el valor de un seguro pagadero al ﬁn del a˜ no de la muerte a un
+seguro pagadero al momento de la muerte.
+Otra aproximaci´ on se puede derivar por razonamiento general. Si en vez
+de suponer distribuci´ on uniforme a trav´ es de cada a˜ no, consideramos que
+el seguro de muerte se concentra a mitad de a˜ no, encontramos que el pago
+se seguro es hecho medio a˜ no antes sobre el promedio de cuando se paga al
+momento de la muerte y cuando se paga al ﬁnal del a˜ no de la muerte. En
+otras palabras un pago inmediato de 1 es equivalente al promedio de un pago
+de (1 + i)1/2 al ﬁnal del a˜ no de muerte. es decir:
+¯A1
+x:1 ≈(1 + i)
+1/2
+A1
+x:1
+O introduciendo una nueva aproximaci´ on:
+¯A1
+x:1 ≈(1 + i
+2)A1
+x:1
+El valor de los tres factores i
+δ, (1 +i)
+1/2 y (1 + i
+2) diﬁeren muy poco entre
+s´ ı a tasas de inter´ es usuales. Por ejemplo cuandoi= 3%, i
+δ = 1,0149261,(1+
+i)
+1/2 = 1,0148892, y (1 + i
+2) = 1,015.
+Estas aproximaciones no son restringidas a un seguro seguro temporal a
+un a˜ nos. Dado que ¯A1
+x:n = ∑n−1
+t=0 vt
+tpx ¯A 1
+¯x+t:1
+, y ¯A 1
+¯x+t:1
+≈ i
+δA 1
+¯x+t:1
+, se tiene
+que:
+¯A1
+x:n ≈i
+δA1
+x:n (3.17)
+Un caso especial, importante es:
+¯Ax ≈i
+δAx (3.18)
+34
+
+--- Pagina 36 ---
+
+Para un seguro dotal , s´ olo el valor de la parte del seguro temporal es ajus-
+tado, ya que el dotal puro es pagadero al ﬁn del n-´ esimo a˜ no six sobrevive.
+Esto es:
+¯Ax:n ≈i
+δA1
+x:n + A
+x:
+1
+n
+(3.19)
+los factores (1 + i)
+1/2 y (1 + i
+2) pueden usados en lugar de i
+δ en todas las
+f´ ormulas.
+Se pueden deﬁnir funciones conmutativas especiales para usar con seguros
+pagaderos al momento de la muerte. La formula:
+¯Ax =
+∫ ∞
+0
+vt
+tpxµx+tdt= 1
+lx
+∫ ∞
+0
+vtlx+tµx+tdt= 1
+vxlx
+∫ ∞
+0
+vx+tlx+tµx+tdt
+Sugiere la siguiente deﬁnici´ on:
+¯Cx =
+∫ 1
+0
+vx+tlx+tµx+tdt=
+∫ 1
+0
+Dx+tµx+tdt,
+¯Mx =
+∞∑
+t=0
+¯Cx+t =
+∫ ∞
+0
+Dx+tµx+tdt
+Por lo que podemos escribir:
+ ¯Ax =
+¯Mx
+Dx
+ ¯A1
+x:n =
+¯Mx − ¯Mx+n
+Dx
+ n|¯Ax = Mx+n
+Dx
+ ¯Ax:n =
+¯Mx − ¯Mx+n + Dx+n
+Dx
+En la practica, ¯Cx es calculado por una f´ ormula consistente con la aprox-
+imaci´ on usual, es decir,¯Cx ≈i
+δCx, (1 + i)
+1/2Cx o (1 + i
+2)Cx
+35
+
+--- Pagina 37 ---
+
+3.5 Seguros Variables
+Un seguro que proporciona un crecimiento o un decrecimiento del beneﬁcio de
+muerte es llamado seguro variable. Hay muchos tipos usuales de seguros para
+los cuales se pueden desarrollar f´ ormulas simples. El s´ ımbolo conmutativo
+Rx es usado:
+Rx =
+∞∑
+t=0
+Mx+t =
+∞∑
+t=0
+(t+ 1)Cx+t.
+Un seguro creciente de vida entera proporciona un beneﬁcio de muerte
+de 1 en el 1er a˜ no, 2 en el 2do a˜ no y as´ ı en adelante, increment´ andose en 1
+cada a˜ no hasta el ﬁn de la vida. Su valor es dado por la expresi´ on:
+(IA)x = vqx + 2v2
+1|qx + 3v3
+2|qx + ...= 1
+lx
+∞∑
+t=0
+(t+ 1)vt+1dx+t
+(IA)x = 1
+Dx
+∞∑
+t=0
+(t+ 1)Cx+t = Rx
+Dx
+(3.20)
+El seguro temporal creciente proporciona un beneﬁcio de muerte de 1 en
+el 1er a˜ no, incrementandose cada a˜ no en 1, pero sin pago si ocurre despu´ es
+de n a˜ nos:
+(IA)1
+x:n = Rx −Rx+n −nMx+n
+Dx
+(3.21)
+Un seguro vida entera que proporciona un beneﬁcio de muerte que se
+incrementa por n a˜ nos solamente y luego permanece constante, tiene como
+prima neta ´ unica:
+(InA)x = Rx −Rx+n
+Dx
+(3.22)
+El seguro temporal decreciente proporciona un beneﬁcio inicial de muerte
+de ndecreciendo en 1 cada a˜ no, sin pago si la muerte ocurre luego dena˜ nos:
+(DA)1
+x:n = nMx −(Rx+1 −Rx+n+1)
+Dx
+(3.23)
+La relaci´ on que existe entre la renta creciente y el seguro creciente se
+deriva pariendo de que Mx = vNx −Nx+1, por lo tanto Rx = vSx −Sx+1, si
+dividimos entre Dx, entonces obtenemos:
+Rx
+Dx
+= vSx
+Dx
+−Sx+1
+Dx
+,
+36
+
+--- Pagina 38 ---
+
+(IA)x = v(I¨a)x −(Ia)x (3.24)
+Dado que (Ia) = (I¨a)x −¨ax, la relaci´ on puede ser transformada a:
+(IA)x = ¨ax −d(I¨a)x (3.25)
+Las f´ ormulas 3.24 y 3.25 son an´ alogas a las f´ ormulas 3.8 y 3.11 para los
+seguros nivelados.
+Si el pago bajo el seguro creciente es hecho al momento de la muerte, la
+prima neta ´ unica (I ¯A)x, puede ser expresado:
+(I ¯A)x = 1
+Dx
+∞∑
+t=0
+(t+ 1) ¯Cx+t = 1
+Dx
+∞∑
+t=0
+¯Mx+t
+Deﬁniendo el conmutativo ¯Rx como:
+¯Rx =
+∞∑
+t=0
+¯Mx+t,
+Tenemos:
+(I ¯A)x =
+¯Rx
+Dx
+(3.26)
+Hay otro tipo de seguro creciente que aparece ocasionalmente en com-
+binaci´ on con rentas u otros seguros. Este proporciona incrementos sobre el
+beneﬁcio de muerte a intervalos que son fracciones de un a˜ no. Sea el beneﬁcio
+de muerte de 1/m durante el primer 1/m de a˜ no,2/m durante el segundo 1/m de
+a˜ no, y as´ ı sucesivamente, increment´ andose por1/m cada fracci´ on de1/m de
+a˜ no. Aunque los incrementos ocurren en fracciones del a˜ no, vamos a consid-
+erar primero el caso donde el pago del reclamo es diferido al ﬁnal del a˜ no de
+la muerte. La prima neta ´ unica a la edadxes denotada por (I(m)A)x, donde
+el sujifo supraescrito ( m) indica que los incrementos ocurren a intervalos de
+1/m de a˜ no. Una aproximaci´ on para la prima puede derivarse al notar que el
+promedio de pagos en el a˜ no el a˜ no de edadx+ t a x+ t+ 1 es t+ m+ 1
+2m ,
+por consiguiente se tiene:
+(I(m)A)x ≈ 1
+Dx
+∞∑
+t=0
+(
+t+ m+ 1
+2m
+)
+Cx+t =
+Rx+1 + m+ 1
+2m Mx
+Dx
+,
+es decir:
+37
+
+--- Pagina 39 ---
+
+(I(m)A)x ≈
+Rx −m−1
+2m Mx
+Dx
+= (IA)x −m−1
+2m Ax (3.27)
+El razonamiento aqu´ ı es equivalente al supuesto de la distribuci´ on uni-
+forme de los muertos y la f´ ormula es exacta bajo ese supuesto. En la apli-
+caci´ on de la f´ ormula, se debe recordar que se asume como pago inicial el
+monto de 1/m. Para un seguro en el cual el pago inicial es de 1 y se incre-
+menta cada fracci´ on de1/m de a˜ no, la prima neta ´ unica esm(I(m)A)x.
+Consideremos ahora el caso cuando el pago es hecho al momento de la
+muerte. La prima neta ´ unica a la edad x es denotada por ( I(m) ¯A)x y se
+calcula a partir de la f´ ormula 3.27
+(I(m) ¯A)x ≈
+¯Rx −m−1
+2m
+¯Mx
+Dx
+≈(I ¯A)x −m−1
+2m
+¯Ax. (3.28)
+Si el incremento en el seguro ocurre instant´ aneamente en vez de al ﬁn del
+1/m fracci´ on del a˜ no, de tal forma que el beneﬁcio de muerte estal momento
+de alcanzar la edad x+ t, el valor presente, denotado por ( ¯I ¯A)x, puede ser
+expresado como:
+(¯I ¯A)x =
+∫ ∞
+0
+tvt
+tpxµx+tdt= 1
+Dx
+∫ ∞
+0
+tDx+tµx+tdt (3.29)
+Esto puede ser aproximado haciendo tender m al inﬁnito en 3.28
+(¯I ¯A)x ≈
+¯Rx −1/2 ¯Mx
+Dx
+= (I ¯A)x −1/2 ¯Ax (3.30)
+Es importante analizar el resultado de la aproximaci´ on anterior, durante
+el primer a˜ no, el pago bajo el seguro (¯I ¯A)x incrementa desde 0 a 1 y puede
+ser considerado como tener un valor promedio durante el a˜ no de 1/2. Sim-
+ilarmente, el promedio de pago durante el segundo a˜ no es de 1 ,5; y as´ ı
+sucesivamente. Comparando con ( I ¯A)x, con el cual se realiza un pago de
+1 durante el primer a˜ no, 2 durante el segundo a˜ no, y as´ ı sucesivamente, es
+evidente entonces que ( ¯I ¯A)x es menor que ( I ¯A)x por aproximadamente el
+valor del nivel del seguro de 1/2 pagable al momento de la muerte.
+3.6 Resumen de la Notaci´ on
+Principios b´ asicos de la notaci´ on:
+38
+
+--- Pagina 40 ---
+
+I. Cuando un s´ ımbolo compuesto es usado con un suﬁjo suscrito, como
+x : n , y se se˜ nala sobre alguno de los elementos el n´ umero 1, se est´ a
+indicando que el evento se determina cuando el fallo (o expiraci´ on) de
+ese elemento ocurre.
+Aplicaciones de los seguros:
+ Los siguientes son los s´ ımbolos usados principalmente:
+A, es el valor presente (o prima neta ´ unica) de un seguro de 1;
+(IA), es el valor presente de un seguro creciente;
+(DA), el valor presente de un seguro decreciente.
+ Una barra horizontal sobre A del s´ ımbolo principal de un seguro sig-
+niﬁca que el pago es hecho al momento de la muerte (Principio G); por
+ejemplo ¯Ax, (I ¯A)x.
+ Una barra horizontal sobre I del s´ ımbolo de un seguro creciente sig-
+niﬁca que el incremento ocurre de manera inmediata (Principio G); por
+ejemplo ( ¯I ¯A).
+Comentarios: El s´ ımbolo usado aqu´ ı para los crecimientos continuos no
+est´ an en la notaci´ on internacional.
+Funciones Conmutativas:
+ Cx = vx+1dx
+ Mx = ∑∞
+t=0 Cx+t
+ Rx = ∑∞
+t=0 Mx+t = ∑∞
+t=0 (t+ 1)Cx+t
+ ¯Cx =
+∫1
+0 vx+tlx+tµx+tdt=
+∫1
+0 Dx+tµx+tdt
+ ¯Mx = ∑∞
+t=0
+¯Cx+t =
+∫∞
+0 Dx+tµx+tdt
+ ¯Rx = ∑∞
+t=0
+¯Mx+t = ∑∞
+t=0 (t+ 1) ¯Cx+t
+39
+

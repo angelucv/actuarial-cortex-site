@@ -1,0 +1,438 @@
+---
+number: false
+---
+
+# Prima neta única {#cap-prima-neta-unica .unnumbered .unlisted}
+
+En los capítulos anteriores se han obtenido el **valor presente actuarial** (APV) de diversos beneficios contingentes: dotales puros, rentas de vida y seguros de vida. Cuando el contrato se financia con un **único pago** realizado al inicio, ese pago debe ser exactamente igual al valor presente actuarial de los beneficios futuros. Ese pago único recibe el nombre de **prima neta única** (PNU), **prima pura única** (PPU) o, en la terminología de Weishaus [@weishaus2013], **net single premium** (NSP): la prima neta única es el valor presente esperado de los beneficios. Este capítulo sintetiza el concepto, la **pérdida futura** ($L$) y el **principio de equivalencia** en el caso de prima única, y recapitula las fórmulas estándar para los contratos ya estudiados. La exposición sigue el enfoque clásico de Jordan [@jordan1982], el material docente de la asignatura y el manual de Weishaus para primas netas. Neill [@neill1977] subraya que las fórmulas de prima no deben memorizarse: se obtienen por primeros principios igualando el valor presente de los beneficios al valor presente del(los) pago(s) del asegurado.
+
+## Contexto histórico de la Parte III: arquitectura y memoria del valor
+
+El estudio de la **Parte III** —cálculo de primas y constitución de reservas— representa la transición de la disciplina desde una curiosidad aritmética hacia una infraestructura de seguridad social y financiera indispensable. En estas páginas se aborda ese desarrollo como resultado de siglos de refinamiento intelectual, debates éticos y mandatos legales. La comprensión del modelo determinístico clásico exige no solo el dominio de la ecuación de equivalencia, sino una apreciación del linaje intelectual que permitió transformar la incertidumbre del destino humano en una estructura de pasivos auditables y solventes.
+
+### Los albores del compromiso intertemporal: del lucro cesante a la equivalencia actuarial
+
+La fundamentación ética y filosófica del **valor del dinero en el tiempo** constituye la base sobre la cual se erigieron los conceptos de prima y reserva. Durante la Alta Edad Media, la aplicación de intereses y el descuento de valores futuros fueron condenados con frecuencia bajo la premisa de la esterilidad del dinero. A medida que el comercio transnacional se expandía, juristas y moralistas introdujeron excepciones canónicas que sentaron las bases lógicas del costo de oportunidad y la prima de riesgo moderna. Conceptos como el **lucrum cessans** (la ganancia legítima que se pierde al inmovilizar capital) y el **damnum emergens** (el riesgo de pérdida del capital asumido al extender crédito) permitieron que la ecualización proporcional en el tiempo fuera aceptada como una norma de justicia distributiva.
+
+Esta noción de equilibrio evolucionó hacia el **principio de equivalencia actuarial**: en el momento de la emisión del contrato, el valor presente actuarial de las obligaciones del asegurador debe igualar el valor presente actuarial de las primas pagadas por el asegurado. En el marco determinístico, la esperanza matemática de la pérdida futura debe ser nula en el instante cero. Históricamente, antes de que este principio fuera codificado, las compañías operaban con bases técnicas arbitrarias, tratando el seguro de vida como un juego de azar con contratos de corta duración (menores a un año). La necesidad de gestionar contratos de larga duración impulsó la creación de un instrumental matemático capaz de proyectar flujos a décadas de distancia. La ontología de la **prima neta única** (PNU) y la **prima nivelada** ($P$) se cristalizó mediante la fusión de la biometría y el interés compuesto.
+
+| Hito histórico en la valoración | Actor principal | Relevancia en el modelo clásico |
+|---------------------------------|-----------------|----------------------------------|
+| Siglo III d.C. | Domicio Ulpiano | Primera tabla de vida para el cálculo de anualidades |
+| 1671 | Johan de Witt | Demostración del valor actual de rentas vitalicias mediante probabilidades |
+| 1693 | Edmond Halley | Integración de datos demográficos reales con interés compuesto |
+| 1756 | James Dodson | Propuesta de primas graduadas por edad y primas niveladas |
+
+### La revolución de la suficiencia: Richard Price y el legado de la Equitable Life
+
+La figura de **Richard Price** (1723–1791) se alza como el pilar ético y técnico de la ciencia actuarial. Matemático, filósofo moral y amigo de Benjamin Franklin, Price transformó la *Equitable Life Assurance Society* de Londres en la primera institución en operar bajo principios estrictamente científicos. Antes de su intervención, la práctica común (por ejemplo en la Amicable) era cobrar primas uniformes para todos los miembros, ignorando que el riesgo de muerte aumenta con la edad.
+
+En **1771**, Price publicó *Observations on Reversionary Payments*, considerada la «biblia» del cálculo actuarial hasta bien entrado el siglo XIX. En este texto defendió la necesidad de la **prima nivelada**: si el seguro cobrara el costo real del riesgo año tras año (prima natural), el producto se volvería inalcanzable para las personas mayores. La solución de Price fue cobrar una prima constante superior al costo del riesgo en los primeros años, acumulando un excedente que compensaría el déficit en los años finales. Ese excedente es, en esencia, el origen conceptual de la **reserva matemática**.
+
+El aporte biométrico más famoso de Price fue la **Tabla de Mortalidad de Northampton**. Aunque hoy se sabe que sobreestimaba la mortalidad, en su momento proporcionó un margen de seguridad que garantizó la solvencia de las aseguradoras nacientes. La prudencia de Price enseñó a la profesión que la precisión matemática debe estar al servicio de la **suficiencia financiera**: la insolvencia de una aseguradora representa una catástrofe social para quienes dependen de ella.
+
+| Contribución de Richard Price | Mecanismo técnico | Impacto en la práctica |
+|-------------------------------|-------------------|-------------------------|
+| Prima nivelada | Ecualización de pagos a lo largo del tiempo | Accesibilidad del seguro en la vejez |
+| Tabla de Northampton | Estimación conservadora de la mortalidad | Acumulación de excedentes y seguridad |
+| Ética de la suficiencia | Transparencia en el registro de pasivos | Nacimiento de la auditoría actuarial |
+
+### William Morgan y el nacimiento de la valoración prospectiva de reservas
+
+Si Richard Price proporcionó la infraestructura ética, su sobrino **William Morgan** (1750–1833) fue el arquitecto de la práctica profesional. Morgan ocupó el cargo de Actuario en la Equitable Life durante cincuenta y seis años; su título se convirtió en el nombre mismo de la profesión. Ganó la Medalla Copley de la Royal Society en 1789 por sus trabajos sobre reversiones y supervivencias.
+
+El **1 de enero de 1776**, Morgan realizó un hito sin precedentes: la **primera valoración prospectiva** de los pasivos de una aseguradora. Hasta entonces las empresas se conformaban con observar sus activos líquidos; Morgan demostró que la solvencia real dependía de comparar esos activos con el **valor presente de todos los beneficios futuros menos el valor presente de las primas futuras por cobrar**. Ese cálculo, realizado a mano para aproximadamente mil pólizas (mortalidad de Londres, interés 3%), reveló un superávit de 25.000 libras.
+
+Morgan estableció que la **reserva no era un beneficio de la empresa, sino una obligación sagrada**. Insistió en que cualquier distribución de excedentes debía hacerse mediante aumentos en la suma asegurada (bonos reversionales) y no en efectivo, para proteger la solvencia a largo plazo. Su obra *The Doctrine of Annuities and Assurances* (1779) consolidó el **método prospectivo** como el estándar regulatorio para la medición de la salud corporativa, un principio que el capítulo 11 de este libro preserva.
+
+### Evolución de la Notación Actuarial Internacional: el lenguaje de la solvencia
+
+La simbología que hoy utilizamos (letras $P$ para primas, $V$ para reservas) es el resultado de un largo proceso de estandarización. Un hito fundamental fue la publicación de *On the Value of Annuities and Reversionary Payments* (**1843**) por **David Jones**, quien adoptó de forma sistemática la letra $p$ para la probabilidad de sobrevivencia, $a$ para las rentas y $A$ para la prima de un seguro. Su sistema fue adoptado por el Institute of Actuaries para sus exámenes iniciales.
+
+La verdadera unificación ocurrió en el **Segundo Congreso Internacional de Actuarios** (Londres, **mayo de 1898**). Un comité integrado por Amédée Begault, Johannes Karup, **George King**, Léon Marie y T.B. Sprague propuso la **Notación Actuarial Internacional (IAN)**, basada en el libro de King de 1887. El sistema estableció una lógica posicional estricta: subíndices derechos para la edad, prefijos izquierdos para la duración del término, marcas superiores para la frecuencia y el momento del pago. La adopción de $V$ para el valor de la póliza (reserva) y $P$ para la prima anual nivelada permitió que la ciencia actuarial se convirtiera en un lenguaje universal.
+
+| Símbolo IAN | Definición técnica | Evolución histórica |
+|-------------|--------------------|----------------------|
+| $P_x$ | Prima neta anual nivelada para vida entera | Sistematizada por King y adoptada en 1898 |
+| $_tV_x$ | Reserva de beneficio después de $t$ años | Evolución de la «policy value» de Morgan |
+| $A_x$ | Prima neta única para seguro de vida entera | Propuesta por David Jones en 1843 |
+| $\ddot{a}_x$ | Valor presente de renta vitalicia anticipada | Introducida por Sprague para denotar «aceleración» |
+
+### August Fackler y la dinámica recursiva de la reserva matemática
+
+En **1870**, el actuario **August Fackler** introdujo una innovación que vinculó la contabilidad con la actuaría: la **fórmula de acumulación de la reserva**, conocida hoy como el **método de Fackler**. Fackler conceptualizó la reserva no como un valor presente estático, sino como un fondo que «respira» año tras año a través de la reinversión y el consumo de riesgo.
+
+La lógica de Fackler se basa en el principio **retrospectivo**: la reserva al final de un año es igual a la reserva inicial más la prima neta, capitalizadas al tipo de interés técnico, menos el costo esperado del beneficio por muerte en ese año. En el modelo determinístico clásico:
+
+$$(_kV + P)(1+i) = q_{x+k}\cdot b + p_{x+k}\cdot {}_{k+1}V,$$
+
+donde $b$ es el capital asegurado. Esta ecuación revela que los fondos disponibles al inicio del año, una vez devengado el interés, deben ser suficientes para pagar las reclamaciones de quienes fallecen ($q_{x+k}\cdot b$) y financiar la reserva futura de quienes sobreviven ($p_{x+k}\cdot {}_{k+1}V$). El método de Fackler es fundamental para la auditoría de saldos y el reporte anual de solvencia exigido por las legislaciones modernas.
+
+### Thorvald Thiele y la ecuación diferencial de los pasivos actuariales
+
+El actuario y astrónomo danés **Thorvald Nicolai Thiele** (1838–1910) exploró el comportamiento **instantáneo** de las reservas. En **1875** derivó la ecuación diferencial que rige la evolución de la reserva en tiempo continuo (publicada póstumamente por J.P. Gram en 1910).
+
+La **ecuación de Thiele** establece que la tasa de cambio de la reserva respecto al tiempo es igual al flujo de ingresos por prima más el rendimiento financiero de la reserva existente, ajustado por la intensidad del riesgo. En el modelo determinístico:
+
+$$\frac{d}{dt}\,{}_tV = \pi + \delta\cdot {}_tV - \mu_{x+t}\,(b_t - {}_tV),$$
+
+donde $\delta$ es la fuerza de interés y $\mu_{x+t}$ la fuerza de mortalidad. El término $(b_t - {}_tV)$ es el **capital bajo riesgo neto**. La reserva crece no solo por el interés, sino por la «liberación» de fondos de quienes fallecen. Esta visión dinámica es el puente hacia la ingeniería financiera avanzada.
+
+| Componente de la ecuación de Thiele | Significado económico | Implicación actuarial |
+|-------------------------------------|------------------------|------------------------|
+| $\pi$ | Tasa de prima por unidad de tiempo | Fuente de financiamiento inmediata |
+| $\delta\cdot {}_tV$ | Crecimiento financiero por interés | Valor del dinero en el tiempo |
+| $\mu_{x+t}\cdot {}_tV$ | Ganancia por mortalidad (quienes fallecen) | Reducción del pasivo por supervivencia |
+| $-\mu_{x+t}\cdot b_t$ | Costo de los beneficios por pagar | Gasto por siniestralidad esperada |
+
+### Elizur Wright y la institucionalización de la reserva como pasivo legal
+
+La transición de la teoría matemática a la normativa regulatoria tiene su origen en **Elizur Wright** (1804–1885) en Estados Unidos. Tras ser nombrado Comisionado de Seguros de Massachusetts en **1858**, Wright impulsó la **primera ley de reserva legal** en América, exigiendo que las aseguradoras demostraran su solvencia mediante tablas de valoración neta. En **1861** logró la aprobación de la ley de **no-caducidad** (*non-forfeiture*), estipulando que la reserva acumulada pertenece al asegurado y debe utilizarse para proporcionar un seguro saldado o un valor de rescate en caso de cancelación.
+
+Gracias a Wright, el concepto de **reserva matemática** ($V$) dejó de ser una estimación voluntaria para convertirse en un **pasivo legal garantizado**. Mientras varias aseguradoras de Nueva York colapsaron en las crisis de la década de 1870, casi todas las compañías bajo la regulación de Massachusetts sobrevivieron.
+
+### Los textos clásicos y la transmisión del conocimiento actuarial
+
+| Texto clásico | Autor | Contribución pedagógica clave |
+|---------------|-------|-------------------------------|
+| *Institute of Actuaries Text-Book* (1887) | George King | Sistematización universal y base de la IAN |
+| *Life Contingencies* (1922) | E.F. Spurgeon | Rigor estadístico y estandarización del siglo XX |
+| *Life Contingencies* (1952) | C.W. Jordan | Claridad en la transición a modelos americanos (SOA) |
+| *Actuarial Mathematics* (1997) | Bowers et al. | Fundamentación axiomática y teoría de la utilidad |
+
+### El desarrollo actuarial en Venezuela: de la colonia a la era de Michalup
+
+En el siglo XIX, la cuantificación del riesgo comercial dio sus primeros pasos con instituciones como C.A. Seguros Marítimo en Maracaibo (1886) y La Venezolana de Seguros en Caracas (1893). El sector carecía de tablas de mortalidad locales y operaba con supuestos foráneos. Figuras como el ingeniero **Luis Márquez Muñoz-Tébar** (1847–1909), precursor de los estudios estadísticos gubernamentales, y el economista **José Antonio Vandellós** en la década de 1930, construyeron el puente hacia el rigor científico.
+
+El padre indiscutible de la actuaría nacional fue el **Dr. Erich Michalup**. Llegado a Venezuela en **1938** desde Viena, Michalup había defendido una tesis sobre la dependencia del riesgo relativo respecto a la tasa de interés, antecedente de la inmunización de carteras. Su aporte más duradero fue la publicación de la **Primera Tabla Venezolana de Mortalidad** (1941–1942), eliminando la dependencia de datos extranjeros. Michalup asesoró a los ministerios en la estructuración de pensiones militares y deuda pública con rentas ciertas y diferidas.
+
+La institucionalización definitiva ocurrió en **1953** con la creación del **Departamento de Ciencias Estadísticas y Actuariales** en la Universidad Central de Venezuela, impulsado por el Dr. Jesús María Rísquez. En **1956** egresó la primera cohorte de Licenciados en Ciencias Actuariales.
+
+### Marco regulatorio venezolano y supervisión de reservas técnicas
+
+| Institución / Ley venezolana | Año | Impacto técnico actuarial |
+|------------------------------|-----|----------------------------|
+| Ley de Inspección y Vigilancia | 1935 | Inicio de la fiscalización estatal del riesgo |
+| Reforma de la Ley de Seguros | 1938 | Obligatoriedad del cálculo de reservas matemáticas |
+| Cámara de Aseguradores (CAV) | 1951 | Estandarización de convenciones de conteo de días |
+| Superintendencia (SUDEASEG) | 1958 | Autonomía regulatoria y auditoría de pasivos |
+| Reforma Ley Actividad Aseguradora | 2023 | Inclusión de reservas IBNR y seguros inclusivos |
+
+La Reforma de 2023 mantiene la obligatoriedad de certificaciones actuariales anuales para las reservas, preservando la lógica de equivalencia que Price y Morgan establecieron hace dos siglos.
+
+### Síntesis: el compromiso del actuario con la solvencia
+
+La ciencia actuarial es, en su esencia, una disciplina de **pre-compromiso**. El modelo determinístico clásico, con su andamiaje de funciones conmutativas y ecuaciones de recurrencia, proporciona la infraestructura lógica para que las sociedades gestionen la incertidumbre temporal. Cada variable en la ecuación de una prima o de una reserva tiene una carga histórica: el factor $v$ representa la solución ética al lucro cesante; la constante $e$ en las rentas continuas tiene un origen financiero en los problemas de capitalización de Bernoulli; la notación de Sprague y King es la victoria de la claridad sobre el caos terminológico. Esta obra, al enfocarse en el canon clásico, asegura que las futuras generaciones de actuarios venezolanos sigan paradas sobre los hombros de gigantes como Richard Price y Erich Michalup, protegiendo con rigor axiomático el bienestar de la sociedad frente al implacable paso del tiempo.
+
+---
+
+## Principio de equivalencia con prima única
+
+En un contrato de seguro o renta contingente, el asegurador se compromete a pagar ciertos beneficios (capitales o rentas) en el futuro, condicionados a la supervivencia o al fallecimiento del asegurado. Si el asegurado paga **una sola vez** al momento de la contratación, la equidad actuarial exige que el valor de ese pago sea igual al valor presente de los beneficios que recibirá en promedio. Así se define la **prima neta única**:
+
+> **Prima neta única (PNU):** cantidad única que, pagada al momento de la contratación, equilibra en valor presente actuarial las obligaciones futuras del asegurador respecto del asegurado.
+
+En otras palabras, si $B$ denota el valor presente actuarial de todos los beneficios del contrato, la prima neta única es exactamente $B$. No se incluyen en esta prima los gastos de adquisición, administración ni otros cargos; por eso se habla de prima *neta* o *pura*.
+
+Este equilibrio se conoce como **principio de equivalencia** (o principio de equidad): bajo las hipótesis de mortalidad e interés adoptadas, las obligaciones de ambas partes tienen el mismo valor actuarial en el momento de la emisión del contrato.
+
+### Pérdida futura y principio de equivalencia (Weishaus)
+
+Weishaus [@weishaus2013] introduce el concepto de **pérdida futura** (*future loss*) como base para fijar primas. La **pérdida futura neta** es el valor presente de los beneficios menos el valor presente de las primas, sin incluir gastos. Si se denota por $L$ esta variable aleatoria (el valor depende del momento de fallecimiento o de supervivencia del asegurado), entonces, en el caso de **prima única** $P$ pagada al inicio:
+
+$$_0 L = Z - P,$$
+
+donde $Z$ es el valor presente (aleatorio) del beneficio. El **principio de equivalencia** exige que la esperanza de la pérdida futura en el momento de emisión sea nula: $\mathbb{E}[_0 L] = 0$. Por tanto $\mathbb{E}[Z] = P$, es decir, la prima neta única debe ser igual al valor presente actuarial de los beneficios: $P = \mathrm{APV}(\text{beneficios})$. Así, la PNU no es solo una definición conveniente, sino la única prima que iguala en promedio el valor de lo que paga el asegurado y lo que recibirá del asegurador.
+
+La letra $L$ para la pérdida futura **no forma parte de la notación actuarial internacional** (IAN); por eso no hay una notación estándar con subíndices para $L$, y se suele escribir $_0 L$ para la pérdida en el momento de emisión cuando se quiere enfatizar el instante de valoración.
+
+Para un contrato con **prima única**, una vez fijada $P = \mathrm{APV}(\text{beneficios})$, la realización de $_0 L$ para un asegurado concreto puede ser positiva o negativa según el momento en que fallezca o cese el beneficio: si fallece pronto, el asegurador puede «perder» (beneficio alto, prima ya cobrada); si sobrevive mucho, el valor actual de los beneficios puede ser menor que la prima. El principio de equivalencia garantiza que *en promedio* la pérdida sea cero.
+
+### Notación de la prima neta única (Weishaus)
+
+Para contratos con **pago único al inicio**, la prima neta única coincide con el APV del beneficio, por lo que se utiliza la **misma notación** que para el valor presente actuarial: $A_x$, ${}_nE_x$, $\ddot{a}_x$, $\bar{A}_x$, etc. No suele usarse un símbolo adicional tipo «$P$» para la prima única; el contexto indica que se trata del pago único que financia el beneficio. Cuando el contrato se paga con **primas niveladas periódicas** (anuales o continuas), la prima anual se denota con la letra $P$ y subíndices que identifican el tipo de seguro o renta (por ejemplo $P(\bar{A}_x)$ para un seguro de vida entera continuo); ese caso se trata en el capítulo siguiente.
+
+## Prima neta única para los contratos estándar
+
+A continuación se recapitulan las fórmulas de prima neta única (por unidad de beneficio) para los contratos ya estudiados en la Parte II. En todos los casos se supone que los beneficios están valorados con una tabla de mortalidad y una tasa de interés técnicas, y que las funciones conmutativas $D_x$, $N_x$, $C_x$, $M_x$ (y sus variantes continuas o fraccionadas cuando aplique) están disponibles.
+
+### Dotal puro
+
+Para un dotal puro de $n$ años por 1 unidad monetaria, pagadero a la edad $x+n$ si $(x)$ sobrevive:
+
+$$nE_x = \frac{D_{x+n}}{D_x}.$$
+
+La PNU por un monto $C$ es $C \cdot nE_x$.
+
+### Rentas de vida
+
+- **Renta vitalicia vencida:** $a_x = N_{x+1}/D_x$. PNU por renta de 1 al final de cada año: $a_x$.
+- **Renta vitalicia anticipada:** $\ddot{a}_x = N_x/D_x$.
+- **Renta temporal $n$ años vencida:** $a_{x:\overline{n}|} = (N_{x+1}-N_{x+n+1})/D_x$.
+- **Renta temporal $n$ años anticipada:** $\ddot{a}_{x:\overline{n}|} = (N_x - N_{x+n})/D_x$.
+- **Renta vitalicia diferida $n$ años:** $n|a_x = N_{x+n+1}/D_x$, $n|\ddot{a}_x = N_{x+n}/D_x$.
+
+Para rentas pagaderas $m$ veces al año o de forma continua, las fórmulas correspondientes (con $a_x^{(m)}$, $\bar{a}_x$, etc.) dan la PNU de esas variantes.
+
+### Seguros de vida (pago al final del año de muerte)
+
+- **Seguro temporal $n$ años:** $A_{x:\overline{n}|}^1 = (M_x - M_{x+n})/D_x$. PNU por capital 1: $A_{x:\overline{n}|}^1$.
+- **Seguro de vida entera:** $A_x = M_x/D_x$.
+- **Seguro diferido $n$ años:** $n|A_x = M_{x+n}/D_x$.
+- **Seguro dotal $n$ años:** $A_{x:\overline{n}|} = (M_x - M_{x+n} + D_{x+n})/D_x$.
+
+Para seguros con pago en el momento de la muerte (continuos) o con montos variables, las expresiones $\bar{A}_x$, $\bar{A}_{x:\overline{n}|}^1$, $(IA)_x$, etc., proporcionan la PNU correspondiente.
+
+### Cálculo de la PNU a partir de tablas y de fórmulas (Weishaus)
+
+**Desde tablas de mortalidad.** Cuando se dispone de una tabla de mortalidad y de las funciones conmutativas ($D_x$, $N_x$, $C_x$, $M_x$, etc.), la PNU de cualquier contrato estándar se obtiene sustituyendo en las expresiones del APV: por ejemplo, $A_x = M_x/D_x$, ${}_nE_x = D_{x+n}/D_x$, $\ddot{a}_x = N_x/D_x$. No hace falta memorizar fórmulas cerradas; basta con identificar el beneficio (seguro temporal, dotal, renta vitalicia, etc.) y usar la relación correspondiente entre conmutativas. Weishaus [@weishaus2013] enfatiza este enfoque en la lección «Net Premiums from Life Tables»: la prima se calcula como el cociente o combinación adecuada de valores tabulados.
+
+**Desde fórmulas analíticas.** Bajo hipótesis particulares de mortalidad e interés (por ejemplo fuerza de mortalidad constante $\mu$ y fuerza de interés $\delta$), la PNU puede expresarse con **fórmulas cerradas** sin usar tablas. Es el contenido de «Net Premiums from Formulas» en Weishaus. Por ejemplo, para un seguro de vida entera continuo, $\bar{A}_x = \mu/(\mu+\delta)$; para una renta vitalicia continua, $\bar{a}_x = 1/(\mu+\delta)$. La PNU de un dotal puro a $n$ años con fuerza constante es ${}_nE_x = e^{-n(\mu+\delta)}$. Estas expresiones son útiles en ejercicios teóricos y cuando no se dispone de tabla.
+
+**Seguros y rentas totalmente continuos.** Si el beneficio es continuo (pago en el momento del fallecimiento o renta pagadera de forma continua), la PNU es el APV continuo correspondiente: $\bar{A}_x$, $\bar{A}_{x:\overline{n}|}$, $\bar{a}_x$, $\bar{a}_{x:\overline{n}|}$, etc. El principio de equivalencia es el mismo: la prima única es igual al valor presente actuarial del beneficio.
+
+## Resumen
+
+La **prima neta única** de un contrato es el valor presente actuarial de sus beneficios. El **principio de equivalencia** establece que, si el asegurado paga esa cantidad única al inicio, no hay transferencia neta de valor entre las partes en valor esperado. En la práctica, muchos contratos se pagan mediante **primas periódicas** (por ejemplo anuales o mensuales). Esas primas se obtienen igualando el valor presente de las primas al valor presente de los beneficios; ese caso se trata en el capítulo siguiente.
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. PNU por equivalencia (Jordan)**  
+Contrato paga 10.000 u.m. si muerte en 20 años, 5.000 u.m. si (40) sobrevive 20 años. PNU en notación y conmutativas.  
+**Solución.** PNU $=10\,000\,A_{40:\overline{20}|}^1+5\,000\,{}_{20}E_{40}=\frac{1}{D_{40}}(10\,000(M_{40}-M_{60})+5\,000\,D_{60})$.
+
+**2. Pérdida futura $_0 L=Z-P$ (Weishaus)**  
+Seguro vida entera continuo 1.000 u.m., prima única 400, $i=5\%$. Pérdida futura si fallece a 25,8 años.  
+**Solución.** $Z=1000\,v^{25{,}8}\approx 284$; $_0 L=284-400=-116$.
+
+**3. Dotal: PNU por 1**  
+Dotal 15 años 8.000 u.m. para (35), PNU 3.200. Hallar $A_{35:\overline{15}|}$ por 1 u.m.  
+**Solución.** $3\,200=8\,000\cdot A_{35:\overline{15}|}$ ⇒ $A_{35:\overline{15}|}=0{,}4$.
+
+**4. Renta vitalicia: PNU**  
+PNU renta vitalicia anticipada 500 u.m. para (50): $500\,\ddot{a}_{50}=500\,N_{50}/D_{50}$.
+
+**5. Equivalencia $\mathbb{E}[_0 L]=0$**  
+Condición para que la prima única sea PNU.  
+**Solución.** $\mathbb{E}[Z]=P$ (esperanza de pérdida futura nula).
+
+**6. PNU temporal + dotal**  
+Expresar PNU de: temporal $n$ por $b_1$, dotal $n$ por $b_2$ (mismo $n$).  
+**Solución.** $b_1\,A_{x:\overline{n}|}^1+b_2\,{}_nE_x$.
+
+**7. Tipo parcial: tres beneficios**  
+Contrato: 3.000 si muerte años 1-10, 5.000 si muerte después, 2.000 si vive 15 años. (45). PNU.  
+**Solución.** $3\,000\,A_{45:\overline{10}|}^1+5\,000\,{}_{10|}A_{45}+2\,000\,{}_{15}E_{45}$ (con posibles ajustes según redacción).
+
+**8. Net single premium = APV**  
+Justificar: PNU = valor presente actuarial de beneficios (Weishaus).  
+**Solución.** Por definición y principio de equivalencia.
+
+**9. PNU seguro vida entera**  
+Vida entera 10.000 u.m. para (50). $A_{50}=0{,}35$. PNU.  
+**Solución.** $10\,000\times 0{,}35=3\,500$ u.m.
+
+**10. PNU renta temporal**  
+Renta 200 u.m. al inicio de cada año durante 20 años para (40). $\ddot{a}_{40:\overline{20}|}=12$. PNU.  
+**Solución.** $200\times 12=2\,400$ u.m.
+
+**11. $_0 L$ discreto**  
+Para seguro vida entera discreto por 1, prima $P$. Escribir $_0 L$ en función de $K_x$, $v$, $P$.  
+**Solución.** $_0 L=v^{K_x+1}-P$ (una realización; valor esperado 0 si $P=A_x$).
+
+**12. Tipo parcial: conmutativas**  
+$D_{40}=2\,000$, $M_{40}=320$, $D_{60}=1\,000$, $M_{60}=200$. PNU temporal 20 años 5.000 y dotal 20 años 5.000 para (40).  
+**Solución.** Temporal: $5\,000(M_{40}-M_{60})/D_{40}=300$; Dotal: $5\,000(M_{40}-M_{60}+D_{60})/D_{40}=2\,800$.
+
+**13. Verificar $A_x=1-d\,\ddot{a}_x$**  
+Si $A_x=0{,}25$, $\ddot{a}_x=15$, hallar $d$.  
+**Solución.** $d=(1-A_x)/\ddot{a}_x=0{,}75/15=0{,}05$.
+
+**14. PNU continuo $\bar{A}_x$**  
+Principio equivalencia: $P=\bar{A}_x$ para vida entera continuo por 1.  
+**Solución.** $\mathbb{E}[_0 L]=0$ ⇒ $\mathbb{E}[Z]=P$ ⇒ $P=\bar{A}_x$ (Weishaus).
+
+**15. Fuerza constante: PNU**  
+$\mu=0{,}02$, $\delta=0{,}04$. PNU seguro vida entera continuo por 1.  
+**Solución.** $\bar{A}_x=\mu/(\mu+\delta)=1/3$; PNU $=1/3$ u.m.
+
+**16. PNU mixto**  
+Mixto 20 años 1 u.m. para (40). $A_{40:\overline{20}|}=0{,}5$. PNU por 4.000 u.m.  
+**Solución.** $4\,000\times 0{,}5=2\,000$ u.m.
+
+**17. Tipo parcial: combinación**  
+Contrato: renta vitalicia anticipada 100 u.m. + seguro vida entera 2.000 u.m. (50). $\ddot{a}_{50}=14$, $A_{50}=0{,}30$. PNU.  
+**Solución.** $100\times 14+2\,000\times 0{,}30=1\,400+600=2\,000$ u.m.
+
+**18. Notación IAN PNU**  
+Para prima única no se usa símbolo $P$ adicional; se usa el del APV. Comentar (Weishaus).  
+**Solución.** PNU = $A_x$, $nE_x$, $\ddot{a}_x$, etc., según el beneficio.
+
+**19. Dotal + temporal**  
+PNU de: temporal 10 años 1.000 + dotal 10 años 2.000 para (35).  
+**Solución.** $1\,000\,A_{35:\overline{10}|}^1+2\,000\,{}_{10}E_{35}$.
+
+**20. Síntesis tipo parcial**  
+(a) Definir PNU y principio de equivalencia. (b) Contrato paga 6.000 si muerte en 15 años, 4.000 si (40) sobrevive 15 años. Escribir PNU en notación (Jordan/Neill/Weishaus).  
+**Solución.** (a) La **PNU** es el valor presente actuarial de los beneficios del contrato; el **principio de equivalencia** establece que la prima única que no transfiere valor esperado entre partes satisface $\mathbb{E}[_0 L]=0$, es decir PNU = APV(beneficios). (b) Beneficio = 6.000 si muerte en 15 años + 4.000 si supervivencia 15 años; PNU $= 6\,000\,A_{40:\overline{15}|}^1+4\,000\,{}_{15}E_{40}$.
+
+**21. Beneficio dinámico (programa)**  
+Un contrato paga al fallecimiento $b_{k+1}=1\,000\,(1{,}05)^k$ si la muerte ocurre en el año $k+1$ ($k=0,1,\ldots$). Escribir la PNU en notación con $A_x$ y tipo de interés modificado.  
+**Solución.** El APV es $\sum_{k \geq 0} 1\,000\,(1{,}05)^k\,v^{k+1}\,{}_kp_x\,q_{x+k}$. Si se define un factor de descuento que incorpore el crecimiento, puede expresarse como 1.000 veces un seguro con tipo de interés efectivo $j$ tal que $v_j = v/1{,}05$; o bien sumar año a año (programa: beneficios con leyes de formación).
+
+**22. Tipo parcial: PNU combinado**  
+Vida entera 2.000 u.m. + temporal 20 años 3.000 u.m. para (45). $A_{45}=0{,}35$, $A_{45:\overline{20}|}^1=0{,}08$. Calcular PNU total.  
+**Solución.** PNU $= 2\,000\,A_{45} + 3\,000\,A_{45:\overline{20}|}^1 = 2\,000\times 0{,}35 + 3\,000\times 0{,}08 = 700 + 240 = 940$ u.m.
+
+**23. $_0 L$ realización**  
+Si la prima única pagada es 500 u.m. y el beneficio es 1.000 u.m. al momento de muerte, escribir la realización de $_0 L$ cuando el fallecimiento ocurre en $t=7{,}3$ años ($i=5\%$).  
+**Solución.** $Z = 1\,000\,v^{7{,}3}$; $_0 L = Z - 500 = 1\,000/(1{,}05)^{7{,}3} - 500$. Con $v^{7{,}3}\approx 0{,}70$: $_0 L \approx 700 - 500 = 200$ u.m. (pérdida para el asegurador en esa realización).
+
+**24. Equivalencia en renta**  
+Para una renta vitalicia anticipada de 1 u.m./año, la PNU es $\ddot{a}_x$. Verificar que $\mathbb{E}[_0 L]=0$ cuando se paga $\ddot{a}_x$ (no hay prima periódica; prima única = PNU).  
+**Solución.** $_0 L = \ddot{a}_{\overline{K_x+1}|} - \ddot{a}_x$ (valor presente aleatorio de la renta menos prima única). $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}] = \ddot{a}_x$, luego $\mathbb{E}[_0 L]=0$.
+
+**25. Tema 2 y 3**  
+Indicar cómo se obtiene la PNU de un seguro temporal a partir de $M_x$, $M_{x+n}$, $D_x$ y del dotal ${}_nE_x$.  
+**Solución.** $A_{x:\overline{n}|}^1 = (M_x - M_{x+n})/D_x$; la PNU por beneficio $b$ es $b\,(M_x - M_{x+n})/D_x$. El mixto es PNU(temporal) + PNU(dotal) = $b\,[(M_x - M_{x+n}) + D_{x+n}]/D_x$.
+
+**26.** Renta vitalicia 400 u.m. (55). $\ddot{a}_{55}=12$. PNU. **Solución.** PNU $=400\times 12=4\,800$ u.m.
+
+**27.** Principio de equivalencia: $\mathbb{E}[_0 L]=0$ cuando $P$ es PNU. **Solución.** Por definición de PNU; $_0 L=Z-P$ y $\mathbb{E}[Z]=P$.
+
+**28.** Dotal 12 años por 5.000 (42). ${}_{12}E_{42}=0{,}58$. PNU. **Solución.** PNU $=5\,000\times 0{,}58=2\,900$ u.m.
+
+**29.** Seguro vida entera 2.000 u.m. (58). $A_{58}=0{,}36$. PNU. **Solución.** PNU $=2\,000\times 0{,}36=720$ u.m.
+
+**30.** Pérdida $_0 L$ para prima única $P$ y beneficio con VP $Z$. **Solución.** $_0 L=Z-P$; $\mathbb{E}[_0 L]=0$ si $P=\mathbb{E}[Z]$.
+
+**31.** Temporal 18 años por 7.000 (38). $A_{38:\overline{18}|}^1=0{,}045$. PNU. **Solución.** PNU $=7\,000\times 0{,}045=315$ u.m.
+
+**32.** Mixto 10 años por 6.000 (45). $A_{45:\overline{10}|}=0{,}55$. PNU. **Solución.** PNU $=6\,000\times 0{,}55=3\,300$ u.m.
+
+**33.** Diferido 15 años por 4.000 (40). ${}_{15|}A_{40}=0{,}18$. PNU. **Solución.** PNU $=4\,000\times 0{,}18=720$ u.m.
+
+**34.** PNU = APV del beneficio. Justificar. **Solución.** Equivalencia: prima única debe igualar el valor esperado del beneficio descontado.
+
+**35.** Renta temporal 8 años 250 u.m. (52). $\ddot{a}_{52:\overline{8}|}=6{,}5$. PNU. **Solución.** PNU $=250\times 6{,}5=1\,625$ u.m.
+
+**36.** Vida entera continuo: $P=\bar{A}_x$. **Solución.** Prima única = valor esperado de $Z=e^{-\delta T_x}$.
+
+**37.** Contrato: 1.500 si muerte antes de 8 años, 3.000 si después. (48). **Solución.** PNU $=1\,500\,A_{48:\overline{8}|}^1+3\,000\,{}_8E_{48}\,A_{56}$.
+
+**38.** Dotal 20 años (30). PNU 4.000 u.m. por 10.000 u.m. de beneficio. Hallar ${}_{20}E_{30}$. **Solución.** ${}_{20}E_{30}=4\,000/10\,000=0{,}4$.
+
+**39.** $\mathbb{E}[_0 L]=0$ cuando $P$ es PNU del dotal. **Solución.** $_0 L=v^n\,\mathbf{1}_{T_x>n}-P$; $\mathbb{E}[_0 L]={}_nE_x-P=0$ ⇒ $P={}_nE_x$.
+
+**40.** PNU combinación: renta 100 u.m./año + seguro vida entera 5.000. **Solución.** PNU $=100\,\ddot{a}_x+5\,000\,A_x$.
+
+**41.** Seguro continuo $\mu=0{,}02$, $\delta=0{,}04$. $\bar{A}_x=\mu/(\mu+\delta)$. PNU por 1 u.m. **Solución.** PNU $=0{,}02/0{,}06=1/3$.
+
+**42.** Temporal 14 años 6.000 u.m. (44). $A_{44:\overline{14}|}^1=0{,}05$. PNU. **Solución.** PNU $=6\,000\times 0{,}05=300$ u.m.
+
+**43.** Pérdida si $T=7$: $Z=1\,000\,v^7$, $P=400$. $_0 L$ (realización). **Solución.** $_0 L=1\,000\,v^7-400$ (valor numérico con $v^7$).
+
+**44.** PNU desde conmutativas: vida entera $b\,M_x/D_x$. **Solución.** $A_x=M_x/D_x$; PNU $=b\,M_x/D_x$.
+
+**45.** Renta cierto-y-vitalicia: 10 años ciertos + vitalicia (45). **Solución.** PNU $=\ddot{a}_{\overline{10}|}+{}_{10}E_{45}\,\ddot{a}_{55}$ (por 1 u.m./año).
+
+**46.** Dotal + temporal mismo $n$: PNU total. **Solución.** PNU $=b_1\,A_{x:\overline{n}|}^1+b_2\,{}_nE_x$ (o con un solo beneficio mixto).
+
+**47.** Diferido 10 años 5.000 (50). ${}_{10|}A_{50}=0{,}22$. PNU. **Solución.** PNU $=5\,000\times 0{,}22=1\,100$ u.m.
+
+**48.** Verificar $A_x=1-d\,\ddot{a}_x$ con $A_x=0{,}28$, $\ddot{a}_x=18$, $d=0{,}04$. **Solución.** $1-d\,\ddot{a}_x=1-0{,}72=0{,}28=A_x$.
+
+**49.** Beneficio variable: pago $b_k$ si muerte en año $k$. PNU como suma. **Solución.** PNU $=\sum_{k=0}^{\omega-x-1} b_k\,v^{k+1}\,{}_kp_x\,q_{x+k}$.
+
+**50.** Síntesis: escribir PNU de «temporal 15 años 4.000 + dotal 15 años 6.000» (40). **Solución.** PNU $=4\,000\,A_{40:\overline{15}|}^1+6\,000\,{}_{15}E_{40}$.
+
+
+---
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe calcular la PNU, verificar una relación o expresar $_0 L$ con el principio de equivalencia. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Dotal 15 años por 8.000 u.m. para (35); la PNU es 3.200 u.m. Hallar $A_{35:\overline{15}|}$ por 1 u.m. (Jordan).
+
+2. **Se pide:** Calcular la PNU de una renta vitalicia anticipada de 500 u.m. para (50) con $\ddot{a}_{50}=N_{50}/D_{50}$ (Neill).
+
+3. **Se pide:** Comprobar $A_x=1-d\,\ddot{a}_x$ si $A_x=0{,}25$, $\ddot{a}_x=15$ (Weishaus).
+
+4. **Se pide:** Seguro de vida entera continuo por 1 u.m., $_0 L=Z-P$, $Z=v^{T_x}$. Deducir $P=\bar{A}_x$ (Weishaus).
+
+5. **Se pide:** $\mu=0{,}02$, $\delta=0{,}04$. Calcular la PNU del seguro de vida entera continuo por 1 u.m. y comprobar $1-\delta\,\bar{a}_x$ (Weishaus).
+
+6. **Tipo parcial.** **Se pide:** Calcular la PNU de un temporal 15 años por 6.000 u.m. y un dotal 15 años por 4.000 u.m. para (45). Conmutativas dadas.
+
+7. **Se pide:** Escribir $_0 L$ (pérdida futura) para un contrato con prima única $P$ y beneficio con valor presente (variable) $Z$.
+
+8. **Se pide:** PNU de renta temporal 10 años de 300 u.m. para (55). $\ddot{a}_{55:\overline{10}|}=8$. Calcular.
+
+9. **Tipo parcial.** **Se pide:** Contrato: 2.000 u.m. si muerte antes de 10 años, 3.000 u.m. si muerte después, 1.000 u.m. si vive 10 años. (50). Calcular la PNU.
+
+10. **Se pide:** Explicar la relación PNU = APV (principio de equivalencia).
+
+11. **Se pide:** PNU de un seguro diferido 20 años por 5.000 u.m. para (40). ${}_{20|}A_{40}=0{,}20$. Calcular.
+
+12. **Se pide:** Verificar que $\mathbb{E}[_0 L]=0$ cuando $P$ es la PNU.
+
+13. **Tipo parcial.** **Se pide:** (a) Definir PNU. (b) Vida entera 1.000 u.m. para (60), $A_{60}=0{,}40$. Calcular la PNU.
+
+14. **Se pide:** PNU de una combinación renta + seguro: escribir la fórmula general.
+
+15. **Se pide:** Dotal puro: notación $nE_x$ y relación con $A_{x:\overline{n}|}^{\,\,1}$ (Weishaus).
+
+16. **Se pide:** PNU desde tablas vs desde fórmulas analíticas (Weishaus).
+
+17. **Tipo parcial.** **Se pide:** Pérdida futura: prima 500, beneficio 1.000 u.m. al momento de muerte, $Z=1000\,v^T$. Calcular la realización $_0 L$ si $T=10$ y $v^{10}=0{,}61$.
+
+18. **Se pide:** PNU del mixto a $n$ años por $b$: fórmula con $A_{x:\overline{n}|}$.
+
+19. **Se pide:** Cálculo de la PNU con $\mu$, $\delta$ constantes (fórmulas cerradas).
+
+20. **Tipo parcial.** **Se pide:** Contrato paga 5.000 u.m. si (35) fallece en 25 años, 8.000 u.m. si sobrevive 25 años. Escribir la PNU en notación y con conmutativas (Jordan/Neill/Weishaus).
+
+21. **Se pide:** Beneficio con ley de formación: pago $b_t$ si muerte en el año $t$. Escribir la PNU como suma (programa).
+
+22. **Se pide:** Comprobar $\mathbb{E}[_0 L]=0$ cuando la prima única es la PNU del seguro de vida entera.
+
+23. **Tipo parcial.** **Se pide:** PNU de renta vitalicia 300 u.m./año (50) y seguro de vida entera 5.000 u.m. (50). $\ddot{a}_{50}=14$, $A_{50}=0{,}32$. Calcular la PNU total.
+
+24. **Se pide:** Relación entre PNU y APV para varios beneficios (aditividad).
+
+25. **Se pide:** Segundo momento de $_0 L$ para seguro de vida entera: relación con $\operatorname{Var}(Z)$.
+
+26. **Se pide:** PNU renta vitalicia 350 u.m. (52). $\ddot{a}_{52}=13{,}5$. Calcular.  
+27. **Se pide:** Comprobar $\mathbb{E}[_0 L]=0$ cuando la prima es la PNU del seguro temporal.  
+28. **Tipo parcial.** **Se pide:** Dotal 18 años por 7.000 u.m. (40). ${}_{18}E_{40}=0{,}52$. PNU.  
+29. **Se pide:** Escribir $_0 L$ para contrato con prima única $P$ y beneficio con valor presente aleatorio $Z$.  
+30. **Se pide:** Vida entera 3.000 u.m. (62). $A_{62}=0{,}42$. PNU.  
+31. **Se pide:** PNU de renta temporal 12 años 200 u.m. (48). $\ddot{a}_{48:\overline{12}|}=9{,}2$.  
+32. **Se pide:** Mixto 15 años por 8.000 (42). $A_{42:\overline{15}|}=0{,}48$. Calcular PNU.  
+33. **Tipo parcial.** **Se pide:** (a) Definir PNU. (b) Diferido 12 años por 6.000 (45). ${}_{12|}A_{45}=0{,}15$. PNU.  
+34. **Se pide:** Relación PNU = APV (principio de equivalencia) en una frase.  
+35. **Se pide:** Temporal 20 años 5.000 u.m. (35). $A_{35:\overline{20}|}^1=0{,}06$. PNU.  
+36. **Se pide:** Contrato compuesto: 2.000 si muerte en 0–10, 4.000 si en 10–20, 3.000 si vive 20. (45). Escribir PNU.  
+37. **Se pide:** Verificar $\mathbb{E}[_0 L]=0$ para dotal con $P={}_nE_x$.  
+38. **Tipo parcial.** **Se pide:** Renta vitalicia anticipada 450 u.m. (58). $\ddot{a}_{58}=10{,}5$. PNU.  
+39. **Se pide:** PNU seguro continuo vida entera por 1 u.m. con $\bar{A}_x=0{,}30$.  
+40. **Se pide:** Dotal 10 años (50). PNU 2.800 por 5.000 u.m. Hallar ${}_{10}E_{50}$.  
+41. **Se pide:** Pérdida $_0 L$ si $T=12$, $Z=2\,000\,v^{12}$, $P=600$. Expresión.  
+42. **Se pide:** PNU desde conmutativas: temporal $n$ años $b\,(M_x-M_{x+n})/D_x$.  
+43. **Tipo parcial.** **Se pide:** Vida entera 4.000 u.m. (55). $A_{55}=0{,}38$. PNU.  
+44. **Se pide:** Combinación: renta 120 u.m./año + seguro vida entera 6.000. Fórmula PNU.  
+45. **Se pide:** Diferido 8 años por 4.000 (52). ${}_{8|}A_{52}=0{,}19$. PNU.  
+46. **Se pide:** Renta cierto-y-vitalicia 15 años (38). Escribir PNU con $\ddot{a}_{\overline{15}|}$, ${}_{15}E_{38}$, $\ddot{a}_{53}$.  
+47. **Tipo parcial.** **Se pide:** Mixto 12 años por 10.000 (48). $A_{48:\overline{12}|}=0{,}50$. PNU.  
+48. **Se pide:** Beneficio $b_t$ si muerte en año $t$: PNU como suma sobre $t$.  
+49. **Se pide:** Comprobar $A_x=1-d\,\ddot{a}_x$ algebraicamente.  
+50. **Se pide:** Síntesis: PNU de «temporal 10 años 3.000 + dotal 10 años 5.000» para (45) en notación.
+
+---
+
+*Referencias: Jordan [@jordan1982]; Neill [@neill1977]; Weishaus [@weishaus2013]; Broverman [@broverman2010] (matemáticas financieras).*

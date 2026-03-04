@@ -1,0 +1,12 @@
+name: TarificacionTelematica2
+title: TarificacionTelematica2
+username: angelucv
+account: angelucv
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14934831
+bundleId: 10455383
+url: https://angelucv.shinyapps.io/TarificacionTelematica2/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

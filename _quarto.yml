@@ -1,0 +1,30 @@
+# Orquestador global — modelo HCC (https://github.com/jurjoroa/hcc-website)
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - assets/articulos
+    - Referencias/Recursos_HTML
+    - apps/cvea-suite-demos
+    - logo-AC
+  render:
+    - index.qmd
+    - sobre-cortex.qmd
+    - miembros.qmd
+    - cortex-suite.qmd
+    - observatorio.qmd
+    - actualidad.qmd
+    - contacto.qmd
+    - investigacion
+    - resources
+    - docencia
+    - servicios
+
+format:
+  html:
+    embed-resources: false
+
+metadata-files:
+  - _website.yml
+  - _format.yml
+  - _brand.yml

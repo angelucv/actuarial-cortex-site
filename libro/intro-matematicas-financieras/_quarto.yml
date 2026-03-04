@@ -1,0 +1,104 @@
+# Libro: Introducción a las Matemáticas Financieras
+# Basado en TFPG Franklin Quero (2025) — Guía Teórico-Práctica (Anexo A).
+# Fuente: Referencias/TFPG/TFPG-FRANKLIN-QUERO-05-10-2025.docx
+
+project:
+  type: book
+  post-render: remove_first_pdf_page.py
+
+book:
+  title: "Introducción a las Matemáticas Financieras"
+  author:
+    - "Prof. Angel Colmenares"
+    - "Prof. Jorge Dias"
+    - "Franklin Quero (Lic.)"
+  subtitle: "Guía Teórico-Práctica — Material docente Actuarial Cortex"
+  downloads: [pdf]
+  sidebar:
+    style: "floating"
+    collapse-level: 1
+    search: true
+  page-footer:
+    left: "© Colmenares, Dias, Quero — Actuarial Cortex / EECA-UCV"
+    center: "Introducción a las Matemáticas Financieras"
+    right: "Built with Quarto"
+
+  chapters:
+    - index.qmd
+    - part: "Fundamentos"
+      chapters:
+        - chapters/00-preliminares-vidaurri.qmd
+        - chapters/00b-albores-contabilidad-descuento.qmd
+        - chapters/01-medicion-interes.qmd
+        - chapters/01b-interes-simple-descuento.qmd
+        - chapters/01a-interes-compuesto-inflacion.qmd
+        - chapters/02-practica-cap1.qmd
+        - chapters/03-resolucion-problemas-interes.qmd
+        - chapters/04-practica-cap2.qmd
+    - part: "Rentas (anualidades)"
+      chapters:
+        - chapters/05-rentas-anualidades-ciertas.qmd
+        - chapters/06-rentas-mas-generales.qmd
+        - chapters/07-practica-cap3-cap4.qmd
+    - part: "Perspectivas"
+      chapters:
+        - chapters/08-perspectivas-2026.qmd
+    - chapters/references.qmd
+  appendices:
+    - chapters/apendice-glosario-notaciones.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc-depth: 3
+    code-block-bg: true
+    embed-resources: true
+  pdf:
+    documentclass: style/krantz
+    classoption: [krantz2, a4paper]
+    papersize: a4
+    toc: true
+    toc-depth: 2
+    lof: false
+    lot: false
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    urlcolor: "blue"
+    linkcolor: "black"
+    biblio-style: apalike
+    code-block-bg: "#f2f2f2"
+    code-block-border-left: "#f2f2f2"
+    code-overflow: wrap
+    include-in-header:
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+        \usepackage{graphicx}
+        \usepackage{geometry}
+        \graphicspath{{./}{../}{../assets/logos/}{assets/logos/}{../../assets/logos/}{../../_site/assets/logos/}}
+        \let\savedcleardoublepage\cleardoublepage
+        \let\savedfrontmatter\frontmatter
+        \renewcommand{\frontmatter}{\clearpage\@mainmatterfalse\pagenumbering{roman}}
+        \AtBeginDocument{%
+          \let\cleardoublepage\clearpage
+          \IfFileExists{frontmatter.tex}{\input{frontmatter.tex}}{\input{../frontmatter.tex}}%
+          \let\maketitle\relax
+          \let\cleardoublepage\savedcleardoublepage
+        }
+        \renewcommand{\maketitle}{}
+    include-after-body:
+      text: |
+        \printindex
+        \newpage
+        \thispagestyle{empty}
+        \vspace*{\fill}
+        \begin{center}
+        \textbf{Actuarial Cortex}\\
+        Centro Venezolano de Estudios Actuariales\\
+        EECA-UCV
+        \end{center}
+        \vspace*{\fill}
+
+lang: es

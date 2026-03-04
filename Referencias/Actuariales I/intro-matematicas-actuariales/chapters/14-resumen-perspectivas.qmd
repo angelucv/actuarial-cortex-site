@@ -1,0 +1,215 @@
+---
+number: false
+---
+
+# Resumen y perspectivas {#cap-resumen-perspectivas .unnumbered .unlisted}
+
+Este capítulo cierra el libro con los **fundamentos históricos y éticos** de la profesión actuarial, una **guía de textos** y el **resumen** de las cuatro partes, además de las **aplicaciones** y **perspectivas** hacia Matemáticas Actuariales II. La Parte IV se concibe como «Fundamentos Históricos, Ética y Práctica Profesional Actuarial»: aquí se presentan las semblanzas de las figuras que definieron los pilares de la solvencia y la equidad actuarial, el contexto venezolano y la vinculación con la normativa.
+
+---
+
+## Los pilares del cálculo actuarial: semblanzas
+
+A diferencia de un enfoque centrado solo en fórmulas, esta sección sitúa al estudiante en la **génesis de los conceptos** que hoy utiliza: prima nivelada, valoración prospectiva, tablas selectas, valores de rescate y regulación. Las figuras que se reseñan son los arquitectos del modelo determinista clásico.
+
+### Richard Price y la génesis de la suficiencia
+
+**Richard Price (1723-1791)** no fue solo un matemático, sino un filósofo moral que entendió que el seguro de vida era una promesa de protección social que no podía ser traicionada por una mala gestión financiera. Su obra *Observations on Reversionary Payments* (1771) [@price1771] es considerada la «biblia» de la actuaría clásica. Price defendió ferozmente la necesidad de la **prima nivelada**: si las compañías cobraran solo el costo real del riesgo en cada año (la prima natural), el seguro sería inasequible para los ancianos. La solución de Price fue cobrar una prima constante que fuera superior al riesgo en los primeros años, creando un excedente que se acumularía como **reserva matemática** para los años finales. Este concepto de «ahorro forzoso» dentro del seguro es el fundamento ético de la industria moderna. La tabla de Northampton que impulsó [@northamptontable] sentó las bases demográficas para esos cálculos.
+
+### William Morgan y la invención de la valoración prospectiva
+
+Si Price fue el filósofo, su sobrino **William Morgan (1750-1833)** fue el arquitecto práctico de la profesión [@morgan1779]. Morgan ocupó el cargo de actuario en la Equitable Life durante cincuenta y seis años, dotando al título de un prestigio sin precedentes [@ogborn1962]. El **1 de enero de 1776** realizó un hito histórico: la **primera valoración prospectiva** de los pasivos de una aseguradora. Antes de él, las empresas medían su éxito por la caja disponible; Morgan demostró que la solvencia real solo podía determinarse calculando el valor presente de todos los beneficios futuros prometidos y restándole el valor presente de las primas futuras que se esperaban recibir. Su insistencia en que cualquier excedente debía distribuirse como aumentos en la suma asegurada («bonos reversionales») y no como efectivo salvó a la Equitable de la insolvencia durante las crisis económicas del siglo XVIII.
+
+### Thomas Bond Sprague y la dimensión de la selección
+
+**T.B. Sprague (1830-1920)** fue el actuario más influyente de la era victoriana tardía [@sprague1879]. Su mayor contribución teórica fue la creación de las **tablas de mortalidad selectas** en 1879. Sprague observó que la mortalidad de una persona recién asegurada, tras pasar un examen médico, era significativamente menor que la de una persona de la misma edad que ya llevaba años en el fondo. Sus tablas introdujeron la «duración del seguro» como una variable adicional, permitiendo que la tarificación fuera más precisa y competitiva. Además, Sprague fue un pionero en la transparencia corporativa, defendiendo el principio de **«Libertad con Publicidad»**, donde los documentos actuariales debían ser de acceso público para garantizar la confianza de los consumidores. La Ley de Seguros de 1870 en el Reino Unido reflejó parte de ese espíritu.
+
+### George King y el canon pedagógico
+
+**George King (1846-1909)** realizó una labor de **síntesis** que permitió que la actuaría se enseñara como una disciplina académica rigurosa [@king1887]. Su libro de texto para el Instituto de Actuarios (1887) consolidó los conocimientos dispersos sobre interés y contingencias de vida en un solo volumen sistemático. King eliminó las «fantasías actuariales» y se ancló en los hechos comprobables, proporcionando las fórmulas de valoración de pólizas que aún se utilizan en las certificaciones actuales. Su trabajo fue fundamental para que la **notación actuarial internacional (IAN)** fuera aceptada unánimemente [@ian1954], ya que demostró que un lenguaje común era el único camino para el avance de la ciencia actuarial.
+
+### Elizur Wright y la moralización del seguro de vida en América
+
+**Elizur Wright (1804-1885)** es a menudo llamado el «padre de la regulación de seguros» [@wright1852]. Matemático formado en Yale y destacado líder abolicionista, aplicó el mismo celo moral con el que combatía la esclavitud a la reforma de la industria aseguradora. En **1844**, durante una visita al Royal Exchange de Londres, presenció la subasta de pólizas de vida de hombres ancianos que no podían seguir pagando las primas: las pólizas caducaban y la compañía se quedaba con las reservas acumuladas, mientras especuladores compraban esas pólizas por una fracción de su valor. Wright calificó aquello de «robo institucionalizado» y, al regresar a Estados Unidos, impulsó tres hitos legislativos en Massachusetts: la **Ley de Reservas de 1858** (obligación de suficiencia de activos frente a reservas netas niveladas), la **Ley de No-Caducidad de 1861** (la reserva acumulada pertenece al asegurado y debe usarse para extender la cobertura o seguro saldado) y la **Ley de Valor de Rescate de 1880** (derecho a recibir el valor en efectivo de las pólizas caducadas). Wright también inventó y patentó el **Arithmeter**, una máquina de cálculo cilíndrica basada en logaritmos para valoraciones masivas. Su legado enseña que la matemática actuarial es una herramienta de **justicia económica**.
+
+### Resumen: figuras y aporte al modelo determinista
+
+| Figura actuarial | Período de influencia | Contribución clave al modelo determinista | Impacto en la práctica moderna |
+|------------------|------------------------|-------------------------------------------|---------------------------------|
+| Richard Price | Siglo XVIII | Prima nivelada y Tabla de Northampton | Fundamentación ética de las reservas |
+| William Morgan | Fines del s. XVIII | Primera valoración prospectiva de pasivos | Estándar de auditoría de solvencia |
+| Thomas Sprague | Siglo XIX | Tablas selectas y Ley de Seguros de 1870 | Incorporación del efecto de selección médica |
+| George King | Siglo XIX / XX | Texto unificado de contingencias y IAN | Estandarización de la formación global |
+| Elizur Wright | Siglo XIX | Valores de rescate y regulación estatal | Protección de los derechos del asegurado |
+
+---
+
+## Crónica de la notación y los congresos internacionales
+
+En lugar de un glosario estático, conviene entender **por qué** se usa el símbolo tal como se usa. La **diéresis** en $\ddot{a}_x$ (renta anticipada) se consideró originalmente una «marca de aceleración» de los pagos de renta. El debate sobre el uso de la letra $W$ para la póliza saldada (*paid-up policy*) se resolvió en el **Congreso de 1898** [@congress1898] de forma unánime para evitar confusiones con otros símbolos de descuento. La **IAN** (notación actuarial internacional) aprobada en 1954 [@ian1954] tiene sus raíces en esas convenciones; su consistencia es lo que permite que Jordan, Bowers, Weishaus y los programas docentes compartan el mismo lenguaje.
+
+---
+
+## Los pilares del cálculo de reservas: Thiele y Fackler
+
+La teoría de primas se conecta con la **dinámica** de los fondos a través de dos pilares.
+
+- **Ecuación diferencial de Thiele (1875)** [@thiele1875]: Describe cómo «respira» una reserva matemática: crece con el interés y la prima cobrada, y se libera con el fallecimiento de los asegurados. No es un tema puramente avanzado; es la descripción física de la reserva continua $_t\bar{V}$ en el tiempo.
+
+- **Método de Fackler (1870):** Herramienta de **auditoría** por excelencia que vincula la contabilidad anual con la teoría actuarial: las reservas terminales y las de balance se reconcilian mediante el flujo de primas, beneficios e interés. En el programa (Tema 5) se usan variantes para reservas en momentos fraccionarios y reservas modificadas (Ley Venezolana, Zillmer, Comisionados).
+
+---
+
+## Valores de rescate y el imperativo social
+
+Retomando la labor de Elizur Wright, esta sección subraya que el asegurado que cancela su contrato tiene **derecho** a una parte de la reserva. Matemáticamente, el **valor de rescate** suele definirse como un porcentaje de la reserva (neta o modificada) en la fecha de rescate; la reserva en momento no entero se aproxima por interpolación lineal entre reservas terminales. Un ejercicio clásico es el de **suma asegurada saldada**: determinar cuánta cobertura vitalicia puede «comprar» un asegurado con la reserva acumulada tras diez años de pagos. Ese tipo de problema vincula la técnica con la protección del ahorro popular y con la Ley de No-Caducidad que Wright impulsó.
+
+---
+
+## La actuaría en Venezuela: memoria de la EECA-UCV
+
+El contexto histórico de la Parte IV debe estar anclado en la evolución nacional para que el estudiante de la EECA-UCV reconozca su entorno.
+
+### Precursores y el puente hacia el rigor científico
+
+A finales del siglo XIX la industria de seguros en Venezuela operaba con una infraestructura estadística mínima. Instituciones como **La Venezolana de Seguros (1893)** dependían de tablas de mortalidad extranjeras. El ingeniero **Luis Márquez Muñoz-Tébar** sistematizó los registros de rentas y defunciones, sentando las bases para que el Estado pudiera auditar sus obligaciones. En la década de 1930, el economista **José Antonio Vandellós** introdujo el rigor analítico para aplicar la ecuación de Fisher en Venezuela y cuantificar el costo de vida y la inflación en Caracas, lo que permitió distinguir entre rendimiento nominal y crecimiento real del poder adquisitivo de los beneficiarios.
+
+### El Dr. Erich Michalup y la autonomía actuarial
+
+La llegada del **Dr. Erich Michalup** a Venezuela en **1938** representa el «punto de ignición» de la actuaría nacional. Michalup aportó una visión analítica sobre la dependencia del riesgo respecto a las tasas de interés (inmunización). Su mayor contribución fue la publicación de la **Primera Tabla Venezolana de Mortalidad (1941-1942)**, que permitió que la tarificación de seguros de vida y pensiones militares dejara de basarse en conjeturas. Michalup fue también el motor académico detrás de la creación del **Departamento de Ciencias Estadísticas y Actuariales** en la UCV en **1953**, para que Venezuela no dependiera de talento extranjero. La primera cohorte de actuarios egresó en 1956; las promociones que llevan su nombre consolidaron una escuela de pensamiento que prioriza el rigor matemático. Las reformas de **Román Cárdenas en 1913** permitieron al Estado pasar de la insolvencia al superávit, creando el entorno económico para que naciera la industria de seguros moderna. La semblanza del **Prof. Felipe Moreno** (en los preliminares y en «Sobre esta obra») sirve de puente emocional: el rigor de sus aulas es la continuación del legado de Michalup y Price.
+
+### Hitos de la regulación nacional
+
+| Hito normativo en Venezuela | Año | Impacto técnico actuarial |
+|----------------------------|-----|----------------------------|
+| Ley de Inspección y Vigilancia | 1935 | Creación de la Fiscalía de Seguros para supervisar el mercado |
+| Reforma de la Ley de Seguros | 1938 | Obligatoriedad del cálculo de reservas mediante métodos actuariales |
+| Reglamento de la Ley | 1939 | Definición de los estándares de inversión para las reservas técnicas |
+| Ley de Empresas de Seguros | 1965 | Establecimiento del margen de solvencia y reglas de capital mínimo |
+| Decreto Ley Actividad Aseguradora | 2023 | Inclusión de seguros paramétricos y certificación IBNR |
+
+Las fórmulas de reserva no se presentan en el vacío: están vinculadas a los artículos correspondientes de la **Ley de la Actividad Aseguradora** de Venezuela (2023), mostrando que la matemática es el sustento de la ley.
+
+---
+
+## Guía de textos sugeridos y mapeo por capítulos
+
+Para expandir el estudio sin redundancia con el libro de matemáticas financieras (donde se enfatizaron figuras como Richard Witt y Simon Stevin), se recomienda:
+
+1. **Jordan, *Life Contingencies* (1982):** Referencia primordial para el modelo determinista clásico. Integrar su tratamiento de la **ecuación de equivalencia** en el capítulo de Primas Periódicas: la prima anual nivelada equilibra la pérdida futura en la emisión.
+
+2. **Neill, *Life Contingencies* (1977):** Sus secciones sobre *Office Premiums* (primas comerciales) y *Surrender Values* (valores de rescate) son útiles para el capítulo de Extensiones; descompone el recargo por gastos en componentes fijos y variables.
+
+3. **Bowers et al., *Actuarial Mathematics* (1997):** Su explicación de la **reserva de beneficio** (prospectiva vs. retrospectiva) para el capítulo de Reservas enfatiza la consistencia financiera.
+
+4. **Weishaus, *Manual para el Examen SOA MLC* (2013):** Lecciones sobre la **variable aleatoria $Z$** y la **regla de momentos** preparan al estudiante para la varianza del riesgo sin entrar en modelos estocásticos complejos.
+
+5. **King, *Institute of Actuaries Text-Book*, Part II (1887)** [@king1887]: El Capítulo XVIII sobre *Policy Values* permite leer la lógica original de los padres de la profesión sobre la valoración de pasivos en balance.
+
+Para profundizar en modelos estocásticos de contingencias de vida y en teoría del riesgo, se recomienda Dickson et al. [@dickson2009; @dickson2019], Gerber [@gerber1997], Promislow [@promislow2015] y Cunningham et al. [@cunningham2006]; para fundamentos de interés compuesto y rentas ciertas, Kellison [@kellison2009] y Broverman [@broverman2010]; para teoría de la probabilidad y ley de los grandes números, Feller [@feller1968] y Ross [@ross2010]; para tablas de mortalidad y demografía, Chiang [@chiang1984], Preston et al. [@preston2001] y Lee y Carter [@lee1992]; para historia de la profesión, Haberman y Sibbett [@haberman1995]; para modelos de pérdidas y riesgo cuantitativo, Klugman et al. [@klugman2012]. La segunda edición de Neill [@neill1993] amplía el tratamiento de primas comerciales y valores de rescate.
+
+**Recomendaciones para la edición:** Inserción de recuadros «Nota histórica» en cada parte (origen del concepto que se trata); consistencia con la IAN (1954) explicando sus raíces en 1898; vinculación explícita de las fórmulas de reserva con los artículos de la Ley de la Actividad Aseguradora de Venezuela (2023).
+
+---
+
+## Resumen de la Parte I: Supervivencia y tablas de mortalidad
+
+La **Parte I** estableció los fundamentos probabilísticos y demográficos sobre los que se construye toda la valoración de beneficios contingentes.
+
+- **Modelo de supervivencia (cap. 1):** Se modeló el tiempo futuro de vida de una persona de edad $x$ como variable aleatoria $T_x$ (o su parte entera $K_x$). La función de supervivencia $S(x)$ y las probabilidades ${}_tp_x$, ${}_tq_x$ permiten cuantificar la probabilidad de vivir o fallecer en un horizonte dado.
+
+- **Fuerza de mortalidad (cap. 2):** La fuerza de mortalidad $\mu_x$ mide la intensidad instantánea de fallecimiento a la edad $x$. Relaciona la función de supervivencia con las probabilidades $p_x$, $q_x$ y con leyes analíticas (De Moivre, exponencial, Gompertz-Makeham) que en algunos contextos se usan para interpolación o para modelos paramétricos.
+
+- **Tablas de mortalidad (cap. 3):** Las tablas de vida ($l_x$, $d_x$, $q_x$, $p_x$, $L_x$, $T_x$, $e_x$, $\mathring{e}_x$) resumen la experiencia de mortalidad por edad entera. Son la base para el cálculo de primas y reservas en la práctica; se hizo referencia a tablas estándar (CSO) y a tablas nacionales.
+
+- **Probabilidades y expectativas (cap. 4):** Se recopilaron las probabilidades en varios años (${}_np_x$, ${}_nq_x$, ${}_{n|m}q_x$) y las expectativas de vida curta y completa, así como métodos de interpolación (UDD, CFM) para edades o plazos no enteros, necesarios cuando los pagos son fraccionados o continuos.
+
+Sin esta base, los capítulos de rentas, seguros, primas y reservas carecerían de los ingredientes probabilísticos que permiten valorar beneficios contingentes a la supervivencia o a la muerte.
+
+---
+
+## Resumen de la Parte II: Seguros y anualidades contingentes
+
+La **Parte II** introdujo el **valor presente actuarial** (APV) y lo aplicó a los contratos típicos de una sola vida.
+
+- **Valor presente actuarial y dotales puros (cap. 5):** Se definió el valor presente de un pago contingente a la supervivencia ($K \cdot {}_np_x \cdot v^n$) y el **dotal puro** $nE_x = D_{x+n}/D_x$. Las **funciones conmutativas** $D_x$ y $N_x$ simplifican todos los cálculos posteriores.
+
+- **Seguros de vida (cap. 6):** Seguros con pago al **final del año de muerte**: temporal ($A_{x:\overline{n}|}^1$), vida entera ($A_x$), diferido ($n|A_x$), dotal ($A_{x:\overline{n}|}$). Las funciones $C_x$ y $M_x$ permiten expresar estos valores como cocientes de conmutativas. Se establecieron las **relaciones fundamentales** entre seguros y rentas ($A_x = 1 - d\,\ddot{a}_x$, $1 = i\,a_x + (1+i)A_x$).
+
+- **Anualidades contingentes (cap. 7):** Rentas de vida vencidas y anticipadas ($a_x$, $\ddot{a}_x$, temporales, diferidas), rentas pagaderas $m$ veces al año (aproximaciones de Woolhouse), rentas continuas ($\bar{a}_x$) y rentas variables ($(Ia)_x$, $(Da)_x$). Efectos de la variación en interés y mortalidad.
+
+- **Seguros y anualidades continuos (cap. 8):** Seguros con pago en el **momento de la muerte** ($\bar{A}_x$, $\bar{A}_{x:\overline{n}|}^1$, etc.), aproximaciones (UDD, factores $i/\delta$), seguros variables en monto ($(IA)_x$, $(DA)_x$) y sus versiones continuas o $m$ veces al año.
+
+Con la Parte II el estudiante dispone de las fórmulas de valor presente para los beneficios más habituales en seguros de vida individuales y en rentas vitalicias.
+
+---
+
+## Resumen de la Parte III: Primas y reservas
+
+La **Parte III** incorporó la **financiación** del contrato mediante primas y la **constitución de reservas** a lo largo del tiempo.
+
+- **Prima neta única (cap. 9):** La PNU es el valor presente actuarial de los beneficios cuando el contrato se paga con un único desembolso al inicio. Se enunció el **principio de equivalencia** y se recapitularon las fórmulas de PNU para dotales, rentas y seguros.
+
+- **Primas periódicas netas (cap. 10):** Cuando el asegurado paga una **renta de primas** (por ejemplo anual, anticipada), la **ecuación de equivalencia** iguala el valor presente de las primas al valor presente de los beneficios. Se obtuvieron las primas niveladas para vida entera ($P_x$), temporal ($P_{x:\overline{n}|}^1$) y dotal ($P_{x:\overline{n}|}$), y las primas limitadas a $h$ pagos ($_hP_x$, $_hP_{x:\overline{n}|}$). Se mencionó la descomposición en prima de ahorro y prima de riesgo.
+
+- **Reserva de beneficio (cap. 11):** La **reserva prospectiva** $_kV$ es el valor presente de los beneficios futuros menos el valor presente de las primas futuras; la **reserva retrospectiva** interpreta $_kV$ como el saldo acumulado de primas menos beneficios pasados. Ambas coinciden bajo equivalencia. La **ecuación de recurrencia** de la reserva permite el cálculo año a año; se definió la reserva terminal y la reserva de balance.
+
+- **Reservas fraccionarias (cap. 12):** Para fechas no enteras (cierre de ejercicio, valor de rescate) se usa la **reserva en el instante $k+t$**, aproximada por **interpolación lineal** entre $_kV$ y $_{k+1}V$, o por métodos más refinados bajo UDD u otras hipótesis.
+
+La Parte III es el núcleo de la **gestión técnica** del contrato: tarificación (primas) y constitución de pasivos (reservas).
+
+---
+
+## Resumen de la Parte IV: Fundamentos históricos, ética y práctica profesional
+
+La **Parte IV** amplió el marco hacia la práctica, los fundamentos históricos y éticos y los temas avanzados.
+
+- **Extensiones (cap. 13):** **Primas comerciales**: prima bruta $G$, carga por gastos, ecuación de equivalencia con gastos. **Valor de rescate**: definición, relación con la reserva, modificaciones de reservas terminales y normativa. **Normativa regulatoria**: marco legal, Gaceta, provisiones (bonos, comisiones), certificación actuarial. **Aplicaciones**: desgravamen hipotecario (seguro de saldo de deuda), tópicos especiales. **Tablas selectas** y tablas definitivas. **Panorama teórico**: múltiples vidas (status conjunto y último superviviente), múltiple decremento, y el paso de los modelos determinísticos a los modelos estocásticos (Markov, Poisson, martingalas) como perspectiva hacia cursos superiores.
+
+- **Resumen y perspectivas (cap. 14):** Este capítulo, que el lector tiene en mano.
+
+---
+
+## Aplicaciones en seguros de vida, pensiones y normativa
+
+### Seguros de vida individuales
+
+Los seguros de vida **individuales** (temporales, vida entera, dotales, con o sin ahorro) se tarifican y se reservan con las fórmulas de este libro: valor presente de beneficios, ecuación de equivalencia para primas netas o brutas, y reserva prospectiva (o recurrencia). La normativa exige que las compañías constituyan reservas matemáticas con métodos y supuestos técnicos aprobados; el actuario certifica que los cálculos son correctos y que las provisiones son suficientes.
+
+### Pensiones y rentas vitalicias
+
+Las **pensiones de jubilación** y las **rentas vitalicias** (inmediatas o diferidas) son beneficios contingentes a la supervivencia. Su valor presente se obtiene con las rentas de vida $\ddot{a}_x$, $a_x$, temporales o diferidas; cuando hay varias vidas (pensión de supervivencia), entran en juego las extensiones de múltiples vidas (último superviviente). Los regímenes de reparto o de capitalización utilizan las mismas herramientas para proyectar flujos y verificar la suficiencia de los fondos.
+
+### Normativa y solvencia
+
+La **normativa** (leyes, reglamentos, resoluciones del supervisor) fija requisitos de **solvencia**, **provisiones técnicas** y **certificación actuarial**. El actuario debe conocer la legislación vigente (incluidas las publicaciones en Gaceta) y aplicar los métodos que ella exige para reservas, valor de rescate y, en su caso, pruebas de estrés o márgenes de solvencia. La formación en Matemáticas Actuariales I proporciona la base técnica; la actualización en normativa es parte de la práctica profesional continua.
+
+---
+
+## Perspectivas hacia Matemáticas Actuariales II y más allá
+
+### Temas de un segundo curso
+
+En **Matemáticas Actuariales II** (o cursos equivalentes) se profundiza en:
+
+- **Múltiples vidas:** Funciones conmutativas para dos vidas ($D_{xy}$, $N_{xy}$, $C_{xy}$, $M_{xy}$), rentas y seguros sobre status conjunto y último superviviente, aplicaciones a pensiones de viudedad y contratos conjuntos.
+
+- **Múltiple decremento:** Tablas de múltiple decremento (muerte, invalidez, jubilación, rescate), valor presente de beneficios que dependen de la causa de salida, reservas en modelos multiestado.
+
+- **Seguros vinculados a fondos y productos modernos:** Unidades de cuenta, garantías mínimas, opciones embebidas, y su valoración con herramientas de matemáticas financieras y, en su caso, modelos estocásticos.
+
+- **Ajuste por experiencia:** Revisión de tablas de mortalidad a partir de la experiencia de la cartera, tests de significación, y uso de tablas actualizadas en reservas y tarificación.
+
+### Modelos estocásticos y formación continua
+
+Como se recordó en los preliminares y en el capítulo de extensiones, el contenido de este libro pertenece a los **modelos determinísticos** de contingencias de vida: tablas y tasas fijas, valor presente como esperanza con esas tablas. Los **modelos estocásticos** (cadenas de Markov, procesos de Poisson, martingalas, movimientos brownianos) permiten modelar la incertidumbre en mortalidad e interés y se estudian en cursos avanzados y en la literatura reciente (Dickson et al., Promislow, y otros). La profesión actuarial exige una formación continua que combine la solidez en los fundamentos (como los aquí expuestos) con el conocimiento de las extensiones estocásticas y de la normativa actualizada.
+
+### El Centro Venezolano de Estudios Actuariales y la EECA-UCV
+
+Este texto forma parte del esfuerzo del **Centro Venezolano de Estudios Actuariales (CVEA)** y de la **Escuela de Estadística y Ciencias Actuariales (EECA)** de la Universidad Central de Venezuela por dotar a estudiantes y profesionales de materiales de referencia en matemáticas actuariales. Se espera que el libro sea de utilidad tanto en el aula como en la preparación de exámenes y en la consulta profesional. La base común —Jordan, Bowers y la guía docente de la asignatura— pretende asegurar la coherencia con el programa oficial y con la práctica actuarial en Venezuela y en la región.
+
+---
+
+> *«No saber lo que ha sucedido antes de nosotros es como ser incesantemente niños.»* — Cicerón
+
+Con esta cita con la que se cerró la introducción, se cierra también el libro: el estudio de las matemáticas actuariales es parte de una tradición centenaria (Dodson, Halley, Gompertz, Jordan) y a la vez un punto de partida para los desarrollos modernos. Se invita al lector a seguir profundizando en los temas aquí resumidos y a explorar las extensiones que la disciplina ofrece en Matemáticas Actuariales II y en la práctica profesional. Los autores desean a los estudiantes y profesionales que utilizan este material mucho éxito en el curso y en su trayectoria como actuarios.

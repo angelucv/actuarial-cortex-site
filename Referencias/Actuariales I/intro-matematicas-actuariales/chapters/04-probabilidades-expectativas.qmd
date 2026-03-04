@@ -1,0 +1,728 @@
+---
+number: false
+---
+
+# Probabilidades y expectativas de vida {#cap-probabilidades-expectativas .unnumbered .unlisted}
+
+Este capítulo recopila y amplía las **probabilidades** de supervivencia y de muerte en varios años (${}_np_x$, ${}_nq_x$, ${}_{n|m}q_x$) y las **expectativas de vida** (curta y completa), y presenta métodos de **interpolación** para edades o plazos no enteros, necesarios cuando se trabaja con rentas o seguros pagaderos con frecuencia mayor que anual o al momento de la muerte. Se incorpora la notación y las relaciones de Weishaus [@weishaus2013] entre funciones de distribución y supervivencia, la interpretación precisa de «entre edades» y las fórmulas alternativas para probabilidades diferidas. La notación y los resultados son la base de los capítulos de valor presente actuarial, rentas y seguros [@jordan1982; @bowers1997; @neill1977].
+
+## Interpretación de «entre edades» y notación probabilística (Weishaus)
+
+En este curso, **«entre las edades $x$ e $y$»** significa estrictamente: después de cumplir la edad $x$ y antes de cumplir la edad $y$; es decir, entre el $x$-ésimo y el $y$-ésimo cumpleaños [@weishaus2013]. Por tanto, «(40) fallece entre 75 y 85» indica que la persona cumple 75 años y fallece antes de cumplir 85. Si fallece un mes después del cumpleaños 85, no se considera dentro de ese intervalo.
+
+La variable aleatoria **tiempo futuro de vida** $T_x$ es el tiempo hasta el fallecimiento de una persona de edad $x$. Así, $T_{50} = 32{,}4$ significa que quien tenía 50 años falleció a los 82,4 años, tras vivir 32,4 años más. Se usa el símbolo $(x)$ para «una persona de edad $x$». En notación probabilística: $F_x(t) = \mathbb{P}(T_x \leq t)$ es la función de distribución de $T_x$ y $S_x(t) = \mathbb{P}(T_x > t) = 1 - F_x(t)$ es la **función de supervivencia**. La probabilidad de que $(x)$ fallezca entre los instantes $u$ y $u+t$ (medidos desde la edad $x$) es $\mathbb{P}(u < T_x \leq u+t) = F_x(u+t) - F_x(u) = S_x(u) - S_x(u+t)$.
+
+## Probabilidades en varios años
+
+Para una vida de edad $x$:
+
+- **Supervivencia $n$ años:** ${}_np_x = l_{x+n}/l_x = p_x\,p_{x+1}\cdots p_{x+n-1}$.
+- **Fallecimiento antes de $n$ años:** ${}_nq_x = 1 - {}_np_x = (l_x - l_{x+n})/l_x$.
+- **Fallecimiento entre $x+n$ y $x+n+m$ (diferido $n$, temporal $m$):** ${}_{n|m}q_x = {}_np_x \cdot {}_mq_{x+n} = (l_{x+n} - l_{x+n+m})/l_x = {}_np_x - {}_{n+m}p_x$.
+
+Se verifican ${}_0p_x = 1$, ${}_0q_x = 0$ y ${}_1p_x = p_x$, ${}_1q_x = q_x$. En la notación actuarial, el presubíndice $t$ se omite cuando es 1: ${}_1p_x = p_x$, ${}_1q_x = q_x$.
+
+### Fórmulas alternativas para la probabilidad diferida (Weishaus)
+
+La probabilidad ${}_{u|t}q_x$ de que $(x)$ sobreviva $u$ años y fallezca en los $t$ años siguientes puede escribirse de tres formas equivalentes [@weishaus2013]:
+
+1. **Supervivencia hasta $u$ y no hasta $u+t$:** ${}_{u|t}q_x = {}_up_x - {}_{u+t}p_x = S_x(u) - S_x(u+t)$.
+2. **Diferencia de probabilidades de fallecimiento:** ${}_{u|t}q_x = {}_{u+t}q_x - {}_uq_x$.
+3. **Producto «sobrevivir $u$ y luego morir en $t$»:** ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$.
+
+Estas igualdades permiten calcular ${}_{u|t}q_x$ a partir de la tabla ($l_{x+u}$, $l_{x+u+t}$) o a partir de las $q_x$ cuando se conoce la tabla recursivamente: ${}_up_x = p_x\,p_{x+1}\cdots p_{x+u-1}$ y ${}_tq_{x+u} = 1 - {}_tp_{x+u}$.
+
+## Expectativa de vida curta y completa
+
+La **esperanza de vida curta** es el número esperado de **años completos** vividos después de $x$:
+
+$$e_x = \mathbb{E}[K_x] = \sum_{k=1}^{\omega-x-1} {}_kp_x = \frac{\sum_{k=1}^{\omega-x-1} l_{x+k}}{l_x}.$$
+
+(En parte de la literatura se denota $e_x^{(c)}$ para distinguirla de la esperanza completa.) La **esperanza de vida completa** (años completos más fracción) es $\mathring{e}_x = \mathbb{E}[T_x] = T_x/l_x$. Bajo distribución uniforme de las muertes en cada año, $\mathring{e}_x \approx e_x + 1/2$. La esperanza temporal a $n$ años (años completos vividos si hubiera un tope $n$) es $e_{x:\overline{n}|} = \sum_{k=1}^{n} {}_kp_x$.
+
+**Número de supervivientes como variable aleatoria.** Si de $l_x$ vidas de edad $x$ se observa cuántas llegan a la edad $x+n$, ese número es una variable aleatoria binomial con parámetros $l_x$ y ${}_np_x$ (suponiendo independencia). Su esperanza es $l_x \cdot {}_np_x = l_{x+n}$ y su varianza $l_x \cdot {}_np_x \cdot {}_nq_x$ [@weishaus2013]. Este hecho se usa al cuantificar el riesgo de desviación del número real de supervivientes respecto al esperado.
+
+## Interpolación
+
+Cuando se necesitan probabilidades o funciones a **edades o plazos fraccionarios** (por ejemplo ${}_{1/2}p_x$, $l_{x+0{,}7}$), se usan hipótesis de interpolación.
+
+### Interpolación lineal de $l_x$ (hipótesis lineal)
+
+Si se supone que $l_{x+t}$ es lineal en $t \in [0,1]$:
+
+$$l_{x+t} = (1-t)\,l_x + t\,l_{x+1}, \quad 0 \leq t \leq 1.$$
+
+Entonces ${}_tp_x = l_{x+t}/l_x = 1 - t\,q_x$. Esta hipótesis equivale a una **distribución uniforme de las muertes** (UDD) en cada año de edad: ${}_tq_x = t\,q_x$ para $0 \leq t \leq 1$.
+
+### Interpolación exponencial (fuerza de mortalidad constante en el año)
+
+Si $\mu_{x+s} = \mu$ (constante) para $0 \leq s < 1$, entonces ${}_tp_x = e^{-\mu t}$ y $p_x = e^{-\mu}$, de donde ${}_tp_x = (p_x)^t$. Así, ${}_tq_x = 1 - (p_x)^t$. Esta hipótesis (constant force of mortality, CFM) suele dar probabilidades ligeramente distintas a la UDD, sobre todo cuando $q_x$ no es pequeño.
+
+### Uso en el libro
+
+En los capítulos de rentas pagaderas $m$ veces al año y de seguros pagaderos al momento de la muerte se utilizarán aproximaciones basadas en UDD (o en factores como $i/\delta$) que son coherentes con la interpolación lineal de $l_x$ o con la hipótesis de muertes uniformes en el año.
+
+## Análisis de sensibilidad paramétrica (Tema 2)
+
+El programa exige analizar el impacto de cambios en los parámetros del modelo (edad $x$, plazo $n$, tasa de interés $i$) sobre las magnitudes actuariales. Esta sección formaliza las **derivadas** relevantes y el concepto de **duración actuarial**, preparando al estudiante para la gestión de activos y pasivos (ALM) en cursos posteriores.
+
+### Relación fuerza de mortalidad y función de supervivencia
+
+La fuerza de mortalidad $\mu_x$ se relaciona con la función de supervivencia $S(x)$ (desde el nacimiento) mediante:
+
+$$\mu_x = -\frac{1}{S(x)}\,\frac{d}{dx}S(x) = -\frac{d}{dx}\ln S(x).$$
+
+Equivalentemente, $S(x) = \exp\bigl(-\int_0^x \mu_s\,ds\bigr)$. Para la supervivencia desde la edad $x$ durante $t$ años, ${}_tp_x = S(x+t)/S(x)$, de modo que la derivada de ${}_tp_x$ respecto a la edad $x$ o al plazo $t$ involucra $\mu_{x+t}$ y las expresiones ya vistas en el capítulo 2.
+
+### Sensibilidad de la esperanza de vida completa
+
+La **esperanza de vida completa** $\mathring{e}_x = \mathbb{E}[T_x]$ depende de la tabla $l_x$ (o de $S$ y $\mu$). Un incremento en la fuerza de mortalidad $\mu$ en un rango de edades reduce $\mathring{e}_x$; la derivada formal $\partial\mathring{e}_x/\partial\mu$ (o la variación ante un cambio en $q_x$) se obtiene derivando la expresión $\mathring{e}_x = T_x/l_x$ (o la integral de ${}_tp_x$) respecto al parámetro. En la práctica, se estudia la sensibilidad mediante **tablas alternativas** o **perturbaciones** de $q_x$ para ver el impacto en $\mathring{e}_x$ y en el APV de rentas y seguros.
+
+### Sensibilidad del valor presente actuarial al interés y a la edad
+
+El **valor presente actuarial** (APV) de rentas y seguros depende de la tasa de interés técnica $i$ (o fuerza $\delta$) y de la edad $x$. De forma cualitativa:
+
+- **Respecto a la tasa de interés $i$:** un aumento de $i$ reduce el factor de descuento $v$ y, por tanto, reduce el APV de beneficios futuros (seguros y rentas). Es decir, $\partial A_x/\partial i < 0$ y $\partial \ddot{a}_x/\partial i < 0$.
+- **Respecto a la edad $x$:** en seguros de vida (beneficio por muerte), el APV suele aumentar con la edad ($\partial A_x/\partial x > 0$); en rentas de vida, el APV disminuye con la edad porque quedan menos pagos esperados ($\partial \ddot{a}_x/\partial x < 0$).
+- **Respecto al plazo $n$:** en seguros temporales y rentas temporales, $\partial A_{x:\overline{n}|}^1/\partial n$ y $\partial \ddot{a}_{x:\overline{n}|}/\partial n$ son positivos (más cobertura o más pagos).
+
+| Parámetro | Impacto en APV seguros | Impacto en APV rentas | Derivada relevante |
+|-----------|------------------------|------------------------|---------------------|
+| Edad ($x$) | Aumenta (más riesgo) | Disminuye (menos pagos esperados) | $\partial A_x/\partial x > 0$, $\partial \ddot{a}_x/\partial x < 0$ |
+| Tasa de interés ($i$) | Disminuye | Disminuye | $\partial A_x/\partial i < 0$, $\partial \ddot{a}_x/\partial i < 0$ |
+| Plazo ($n$) | Aumenta (temporal) | Aumenta (temporal) | $\partial \ddot{a}_{x:\overline{n}|}/\partial n > 0$ |
+
+Estas relaciones se demuestran formalmente derivando las expresiones en conmutativas ($D_x$, $N_x$, $M_x$) respecto a $i$ o usando la cadena con $x$; en los cursos de ALM se cuantifican con la **duración** y la **convexidad** actuariales.
+
+### Duración actuarial (sensibilidad al tipo de interés)
+
+La **duración actuarial** (o *duration*) de una renta vitalicia (o de un seguro) mide la sensibilidad del valor presente ante variaciones en la tasa de interés técnica $i$. Se define de forma análoga a la duración financiera de un bono: si $\ddot{a}_x(i)$ es el valor de la renta anticipada vitalicia en función de $i$, la duración modificada es $-\frac{1}{\ddot{a}_x}\,\frac{d\ddot{a}_x}{di}$. Un valor alto indica que el APV es muy sensible a cambios en $i$, lo que es relevante para el matching de activos y pasivos: los pasivos de rentas de vida deben financiarse con activos cuya duración sea coherente con la de las obligaciones. El programa (Tema 2) menciona el uso de derivadas respecto a la edad, el plazo y la tasa de interés; esta sección proporciona el marco para su desarrollo explícito en los capítulos de rentas y seguros.
+
+### Relación con la notación probabilística
+
+Las funciones $S_x(t)$ y $F_x(t)$ se identifican con la notación actuarial así: $S_x(t) = {}_tp_x$, $F_x(t) = {}_tq_x$, y ${}_{u|t}q_x = S_x(u) - S_x(u+t)$. La propiedad $S_x(t)\,S_{x+t}(u) = S_x(t+u)$ se escribe ${}_tp_x \cdot {}_up_{x+t} = {}_{t+u}p_x$: la probabilidad de sobrevivir $t+u$ años es la de sobrevivir $t$ años multiplicada por la de sobrevivir $u$ años más dado que se llegó a $x+t$ [@weishaus2013].
+
+## Resumen de notación (Parte I)
+
+| Símbolo | Significado |
+|--------|-------------|
+| $T_x$, $K_x$ | Tiempo futuro de vida (completo, curta) |
+| $S(x)$ | Función de supervivencia (desde nacimiento) |
+| ${}_tp_x$, ${}_tq_x$ | Probabilidad de supervivir / morir en $t$ años desde $x$ |
+| ${}_{n\|m}q_x$ | Probabilidad de morir entre $x+n$ y $x+n+m$ |
+| $\mu_x$ | Fuerza de mortalidad |
+| $l_x$, $d_x$ | Supervivientes y fallecimientos en la tabla |
+| $q_x$, $p_x$ | Probabilidad de muerte / supervivencia en un año |
+| $L_x$, $T_x$ | Años-persona (en el año, total desde $x$) |
+| $e_x$, $\mathring{e}_x$ | Esperanza de vida curta y completa |
+
+Con estos elementos queda cerrada la Parte I. En la Parte II se introducen las funciones conmutativas $D_x$, $N_x$, $C_x$, $M_x$ y el valor presente actuarial de dotales puros, rentas de vida y seguros de vida.
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. Probabilidades a partir de $l_x$ (Jordan)**  
+$l_{40}=95\,000$, $l_{41}=94\,200$, $l_{45}=91\,000$, $l_{50}=87\,000$. Calcular $q_{40}$, ${}_5p_{40}$, probabilidad de que (40) fallezca entre 45 y 50.  
+**Solución.** $q_{40}=800/95\,000=0{,}00842$; ${}_5p_{40}=91\,000/95\,000=0{,}9579$; ${}_{5|5}q_{40}={}_5p_{40}(1-l_{50}/l_{45})=0{,}9579\times(4\,000/91\,000)\approx 0{,}0421$.
+
+**2. Probabilidad diferida con $q_x$ (Weishaus)**  
+$q_{60}=0{,}001$, $q_{61}=0{,}002$, $q_{62}=0{,}003$, $q_{63}=0{,}004$, $q_{64}=0{,}005$. Calcular ${}_{2|3}q_{60}$.  
+**Solución.** ${}_{2|3}q_{60}={}_2p_{60}-{}_5p_{60}$. ${}_2p_{60}=0{,}999\times 0{,}998=0{,}997002$; ${}_5p_{60}=0{,}997002\times 0{,}997\times 0{,}996\times 0{,}995\approx 0{,}9851$; ${}_{2|3}q_{60}\approx 0{,}0119$.
+
+**3. ${}_{u|t}q_x = {}_{u+t}q_x - {}_uq_x$**  
+Verificar la fórmula con ${}_nq_x=1-{}_np_x$ y ${}_{n|m}q_x={}_np_x-{}_{n+m}p_x$.  
+**Solución.** ${}_{u|t}q_x={}_up_x-{}_{u+t}p_x=(1-{}_uq_x)-(1-{}_{u+t}q_x)={}_{u+t}q_x-{}_uq_x$.
+
+**4. Esperanza curta $e_x$**  
+Interpretar $e_{50}=28{,}2$. Con $\mathring{e}_x \approx e_x+1/2$, estimar $\mathring{e}_{50}$.  
+**Solución.** $e_{50}$ es el número esperado de años completos futuros de (50). $\mathring{e}_{50}\approx 28{,}2+0{,}5=28{,}7$ años.
+
+**5. Tipo parcial: ${}_{3|2}q_{55}$**  
+Con $l_{55}=84\,000$, $l_{56}=83\,160$, $l_{57}=82\,307$, $l_{58}=81\,430$, $l_{59}=80\,530$, $l_{60}=79\,600$, calcular ${}_{3|2}q_{55}$.  
+**Solución.** ${}_{3|2}q_{55}={}_3p_{55}-{}_5p_{55}=l_{58}/l_{55}-l_{60}/l_{55}=(81\,430-79\,600)/84\,000\approx 0{,}0218$.
+
+**6. $\mathbb{P}(K_x=k)$**  
+Expresar $\mathbb{P}(K_x=1)$ con $p_x$ y $q_{x+1}$.  
+**Solución.** $\mathbb{P}(K_x=1)={}_1p_x\,q_{x+1}=p_x\,q_{x+1}$.
+
+**7. Número de supervivientes: binomial (Weishaus)**  
+Si de $l_{40}$ vivos a 40, cada uno tiene probabilidad ${}_5p_{40}$ de llegar a 45, ¿cuál es la esperanza del número que llega a 45?  
+**Solución.** Esperanza $= l_{40}\cdot {}_5p_{40} = l_{45}$ (determinístico en tabla).
+
+**8. ${}_{10}p_{40}$ y ${}_{10}q_{40}$**  
+Con $l_{40}=95\,000$, $l_{50}=87\,000$, calcular ${}_{10}p_{40}$ y ${}_{10}q_{40}$.  
+**Solución.** ${}_{10}p_{40}=87\,000/95\,000\approx 0{,}9158$; ${}_{10}q_{40}=1-0{,}9158=0{,}0842$.
+
+**9. Fórmula ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$**  
+Comprobar con $u=2$, $t=3$: ${}_{2|3}q_x = {}_2p_x \cdot {}_3q_{x+2}$.  
+**Solución.** ${}_2p_x\cdot {}_3q_{x+2}={}_2p_x(1-{}_3p_{x+2})={}_2p_x-{}_2p_x\cdot {}_3p_{x+2}={}_2p_x-{}_5p_x={}_{2|3}q_x$.
+
+**10. Esperanza completa bajo De Moivre**  
+Bajo De Moivre con $\omega=100$, dar $\mathring{e}_{50}$ (fórmula $(\omega-x)/2$).  
+**Solución.** $\mathring{e}_{50}=(100-50)/2=25$ años.
+
+**11. Tipo parcial: tres probabilidades**  
+$l_{60}=80\,000$, $l_{61}=78\,400$, $l_{65}=74\,000$, $l_{70}=68\,000$. Calcular $q_{60}$, ${}_5p_{60}$, ${}_{5|5}q_{60}$.  
+**Solución.** $q_{60}=0{,}02$; ${}_5p_{60}=74\,000/80\,000=0{,}925$; ${}_{5|5}q_{60}={}_5p_{60}-{}_{10}p_{60}=0{,}925-68\,000/80\,000=0{,}925-0{,}85=0{,}075$.
+
+**12. Producto ${}_np_x = p_x\cdots p_{x+n-1}$**  
+Si $p_{70}=0{,}98$, $p_{71}=0{,}97$, $p_{72}=0{,}96$, calcular ${}_3p_{70}$.  
+**Solución.** ${}_3p_{70}=0{,}98\times 0{,}97\times 0{,}96\approx 0{,}9126$.
+
+**13. Relación $F_x(t)$ y ${}_tq_x$**  
+Escribir la función de distribución de $T_x$ en notación actuarial.  
+**Solución.** $F_x(t)=F_{T_x}(t)={}_tq_x$ (Weishaus: $S_x(t)={}_tp_x$).
+
+**14. Probabilidad de fallecer en el año $k+1$**  
+Expresar $\mathbb{P}(K_x=k)$ en notación estándar.  
+**Solución.** $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}={}_{k+1}q_x-{}_kq_x$.
+
+**15. Tipo parcial: esperanza**  
+Si $e_{65}=18{,}5$ (curta), estimar $\mathring{e}_{65}$ con $\mathring{e}_x\approx e_x+1/2$.  
+**Solución.** $\mathring{e}_{65}\approx 19$ años.
+
+**16. ${}_{1|1}q_x$**  
+Simplificar ${}_{1|1}q_x$ en función de $p_x$ y $p_{x+1}$.  
+**Solución.** ${}_{1|1}q_x={}_1p_x-{}_2p_x=p_x-p_x\,p_{x+1}=p_x(1-p_{x+1})=p_x\,q_{x+1}$.
+
+**17. Verificación ${}_{n|m}q_x = {}_np_x - {}_{n+m}p_x$**  
+Comprobar con $n=4$, $m=3$.  
+**Solución.** ${}_{4|3}q_x={}_4p_x\cdot {}_3q_{x+4}={}_4p_x(1-{}_3p_{x+4})={}_4p_x-{}_7p_x$.
+
+**18. Tabla: ${}_2p_{71}$**  
+$l_{71}=980$, $l_{72}=958$, $l_{73}=934$. Calcular ${}_2p_{71}$.  
+**Solución.** ${}_2p_{71}=l_{73}/l_{71}=934/980\approx 0{,}953$.
+
+**19. Interpretación «entre edades» (Weishaus)**  
+¿Qué significa «(40) fallece entre 45 y 50» en notación?  
+**Solución.** ${}_{5|5}q_{40}$: sobrevive 5 años y fallece en los 5 siguientes (entre edades 45 y 50).
+
+**20. Síntesis tipo parcial**  
+(a) Definir $e_x$ y $\mathring{e}_x$. (b) Con $l_{55}=84\,000$, $l_{60}=79\,500$, $l_{65}=74\,000$, calcular ${}_5p_{55}$, ${}_{5|5}q_{55}$, ${}_{10}p_{55}$.  
+**Solución.** (a) $e_x$ es la **esperanza curta** de vida: número esperado de años completos futuros de (x), es decir $e_x = \sum_{k \geq 1} {}_kp_x$. $\mathring{e}_x$ es la **esperanza completa** (incluye la fracción del año de fallecimiento): $\mathring{e}_x = \mathbb{E}[T_x] = \int_0^{\omega-x} {}_tp_x\,dt$; se aproxima por $\mathring{e}_x \approx e_x + 1/2$ bajo hipótesis de distribución de muertes en el año. (b) ${}_5p_{55} = l_{60}/l_{55} = 79\,500/84\,000 \approx 0{,}946$. ${}_{5|5}q_{55} = {}_5p_{55} - {}_10p_{55} = 79\,500/84\,000 - 74\,000/84\,000 = (79\,500-74\,000)/84\,000 \approx 0{,}0655$. ${}_{10}p_{55} = l_{65}/l_{55} = 74\,000/84\,000 \approx 0{,}881$.
+
+**21. Evaluación actuarial (Tema 2)**  
+Indicar cómo se usan ${}_np_x$, ${}_{n|m}q_x$ y $\mathbb{P}(K_x=k)$ en el valor presente actuarial de rentas y seguros.  
+**Solución.** El APV de un beneficio es una suma o integral de «cantidad × factor de descuento × probabilidad». Las probabilidades que aparecen son precisamente ${}_kp_x$, $q_{x+k}$, ${}_{n|m}q_x$ o $\mathbb{P}(K_x=k)$, según el tipo de pago (supervivencia, fallecimiento en un período, etc.). Por tanto el capítulo 4 es la base probabilística de los temas 2 y 3 (Jordan, Weishaus).
+
+**22. Cadena de probabilidades**  
+Si ${}_2p_{50}=0{,}98$ y ${}_3p_{50}=0{,}965$, hallar $p_{52}$ y comprobar con ${}_3p_{50}={}_2p_{50}\cdot p_{52}$.  
+**Solución.** ${}_3p_{50} = {}_2p_{50} \cdot p_{52}$, luego $p_{52} = {}_3p_{50}/{}_2p_{50} = 0{,}965/0{,}98 \approx 0{,}9847$. Comprobación: $0{,}98 \times 0{,}9847 \approx 0{,}965$.
+
+**23. Tipo parcial: ${}_{3|2}q_{60}$**  
+Con $l_{60}=80\,000$, $l_{61}=78\,400$, $l_{62}=76\,850$, $l_{63}=75\,313$, $l_{65}=72\,300$, calcular ${}_{3|2}q_{60}$.  
+**Solución.** ${}_{3|2}q_{60} = {}_3p_{60} - {}_5p_{60} = l_{63}/l_{60} - l_{65}/l_{60} = (75\,313 - 72\,300)/80\,000 = 3\,013/80\,000 \approx 0{,}0377$.
+
+**24. Esperanza curta con tabla**  
+Escribir $e_x$ en función de $l_x$ (suma de proporciones de supervivientes).  
+**Solución.** $e_x = \sum_{k=1}^{\omega-x-1} {}_kp_x = \sum_{k=1}^{\omega-x-1} l_{x+k}/l_x = (l_{x+1}+l_{x+2}+\cdots)/l_x - 0$ (o según convención $(L_x+L_{x+1}+\cdots)/l_x - 1/2$ con $L_x = (l_x+l_{x+1})/2$ en la definición de tabla).
+
+**25. Relación ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$**  
+Deducir a partir de ${}_up_x = S(x+u)/S(x)$ y ${}_tq_{x+u} = 1 - S(x+u+t)/S(x+u)$.  
+**Solución.** ${}_up_x \cdot {}_tq_{x+u} = [S(x+u)/S(x)] \cdot [1 - S(x+u+t)/S(x+u)] = S(x+u)/S(x) - S(x+u+t)/S(x) = {}_up_x - {}_{u+t}p_x = {}_{u|t}q_x$.
+
+**26.** $l_{58}=78\,000$, $l_{60}=75\,500$, $l_{63}=72\,000$. Calcular ${}_2p_{58}$, ${}_5p_{58}$, ${}_{2|3}q_{58}$. **Solución.** ${}_2p_{58}=75\,500/78\,000\approx 0{,}968$; ${}_5p_{58}=72\,000/78\,000\approx 0{,}923$; ${}_{2|3}q_{58}=0{,}968-0{,}923=0{,}045$.
+
+**27.** $\mathbb{P}(K_x=0)=q_x$. Verificar con ${}_1q_x$. **Solución.** $K_x=0$ significa fallecer en el primer año: $\mathbb{P}(K_x=0)={}_0p_x\,q_x=q_x={}_1q_x$.
+
+**28.** Con $e_{62}=20{,}5$, estimar $\mathring{e}_{62}$. **Solución.** $\mathring{e}_{62}\approx 20{,}5+0{,}5=21$ años.
+
+**29.** ${}_{2|4}q_{50}$ en función de $l_{50}$, $l_{52}$, $l_{56}$. **Solución.** ${}_{2|4}q_{50}={}_2p_{50}-{}_6p_{50}=l_{52}/l_{50}-l_{56}/l_{50}$.
+
+**30.** Cadena: ${}_4p_{55}={}_2p_{55}\cdot {}_2p_{57}$. Verificar. **Solución.** ${}_2p_{55}\cdot {}_2p_{57}=(l_{57}/l_{55})(l_{59}/l_{57})=l_{59}/l_{55}={}_4p_{55}$ (si se usa $l_{59}$).
+
+**31.** (45): probabilidad de fallecer entre 50 y 55. **Solución.** ${}_{5|5}q_{45}={}_5p_{45}-{}_{10}p_{45}$.
+
+**32.** Escribir $e_x$ como $\sum_{k \geq 1} {}_kp_x$. **Solución.** Definición estándar de esperanza curta.
+
+**33.** $l_{64}=72\,000$, $l_{65}=70\,500$, $l_{68}=67\,000$. Calcular $q_{64}$, ${}_4p_{64}$, ${}_{1|3}q_{64}$. **Solución.** $q_{64}=1\,500/72\,000\approx 0{,}0208$; ${}_4p_{64}=67\,000/72\,000\approx 0{,}9306$; ${}_{1|3}q_{64}={}_1p_{64}-{}_4p_{64}$.
+
+**34.** Verificar ${}_{n|1}q_x={}_np_x\,q_{x+n}$. **Solución.** ${}_{n|1}q_x={}_np_x-{}_{n+1}p_x={}_np_x(1-p_{x+n})={}_np_x\,q_{x+n}$.
+
+**35.** Tipo parcial: $l_{52}=86\,000$, $l_{55}=83\,000$, $l_{60}=78\,000$. Calcular ${}_5p_{52}$, ${}_8p_{52}$, ${}_{5|3}q_{52}$. **Solución.** ${}_5p_{52}=83\,000/86\,000\approx 0{,}965$; ${}_8p_{52}=78\,000/86\,000\approx 0{,}907$; ${}_{5|3}q_{52}\approx 0{,}058$.
+
+**36.** $\mathbb{P}(K_x \geq 5)$ en notación. **Solución.** $\mathbb{P}(K_x \geq 5)={}_5p_x$.
+
+**37.** Relación $F_{T_x}(t)={}_tq_x$. **Solución.** $F_{T_x}(t)=\mathbb{P}(T_x \leq t)={}_tq_x$.
+
+**38.** $l_{61}=78\,000$, $l_{63}=75\,500$, $l_{66}=72\,000$. Calcular ${}_2p_{61}$, ${}_5p_{61}$, ${}_{2|3}q_{61}$. **Solución.** ${}_2p_{61}=75\,500/78\,000\approx 0{,}968$; ${}_5p_{61}=72\,000/78\,000\approx 0{,}923$; ${}_{2|3}q_{61}\approx 0{,}045$.
+
+**39.** (60): fallecer entre el año 3 y el 5 desde ahora. **Solución.** ${}_{3|2}q_{60}={}_3p_{60}-{}_5p_{60}$.
+
+**40.** Esperanza completa bajo De Moivre: $\mathring{e}_{80}$ con $\omega=100$. **Solución.** $\mathring{e}_{80}=(100-80)/2=10$ años.
+
+**41.** ${}_1p_x \cdot {}_1q_{x+1}$ en notación simplificada. **Solución.** ${}_1p_x\,q_{x+1}=p_x\,q_{x+1}=\mathbb{P}(K_x=1)$.
+
+**42.** $l_{49}=87\,000$, $l_{50}=86\,000$, $l_{54}=82\,500$. Calcular ${}_5p_{49}$, ${}_{4|1}q_{49}$ (necesita $l_{53}$). **Solución.** ${}_5p_{49}=82\,500/87\,000\approx 0{,}948$; ${}_{4|1}q_{49}={}_4p_{49}-{}_5p_{49}$ si se tiene $l_{53}$, $l_{54}$.
+
+**43.** Verificar $\sum_{k=0}^{n-1} \mathbb{P}(K_x=k)={}_nq_x$. **Solución.** $\mathbb{P}(K_x \leq n-1)={}_{n}q_x$ (fallecer antes de $n$ años).
+
+**44.** Con $e_{58}=24$ (curta), estimar $\mathring{e}_{58}$. **Solución.** $\mathring{e}_{58}\approx 24{,}5$ años.
+
+**45.** (70): probabilidad de alcanzar 75 y fallecer antes de 80. **Solución.** ${}_{5|5}q_{70}={}_5p_{70}-{}_{10}p_{70}$.
+
+**46.** ${}_2q_x$ en función de $p_x$, $p_{x+1}$. **Solución.** ${}_2q_x=1-{}_2p_x=1-p_x\,p_{x+1}$.
+
+**47.** $l_{56}=84\,000$, $l_{58}=81\,500$, $l_{62}=76\,500$. Calcular ${}_6p_{56}$, ${}_{2|4}q_{56}$. **Solución.** ${}_6p_{56}=l_{62}/l_{56}=76\,500/84\,000\approx 0{,}9107$; ${}_{2|4}q_{56}={}_2p_{56}-{}_6p_{56}$.
+
+**48.** Definir $\mathring{e}_x$ con integral. **Solución.** $\mathring{e}_x=\mathbb{E}[T_x]=\int_0^{\omega-x} {}_tp_x\,dt$.
+
+**49.** Tipo parcial: $l_{59}=79\,000$, $l_{62}=76\,000$, $l_{65}=72\,500$. Calcular $q_{59}$ (con $l_{60}$), ${}_6p_{59}$, ${}_{3|3}q_{59}$. **Solución.** ${}_6p_{59}=72\,500/79\,000\approx 0{,}918$; ${}_{3|3}q_{59}={}_3p_{59}-{}_6p_{59}$.
+
+**50.** Síntesis: (a) $e_x$ vs $\mathring{e}_x$. (b) $l_{54}=85\,000$, $l_{58}=82\,000$, $l_{62}=78\,500$. Calcular ${}_4p_{54}$, ${}_8p_{54}$, ${}_{4|4}q_{54}$. **Solución.** (a) Curta: años completos; completa: incluye fracción. (b) ${}_4p_{54}=82\,000/85\,000\approx 0{,}965$; ${}_8p_{54}=78\,500/85\,000\approx 0{,}924$; ${}_{4|4}q_{54}\approx 0{,}041$.
+
+
+---
+
+### Ejercicios resueltos tipo parcial (20)
+
+Ejercicios de nivel examen sobre ${}_tp_x$, ${}_{n|m}q_x$, $e_x$, $\mathring{e}_x$ y tabla $l_x$. Soluciones por pasos.
+
+**1.** Con $l_{40}=95\,000$, $l_{41}=94\,200$, $l_{45}=91\,000$, $l_{50}=87\,000$, obtener $p_{40}$, ${}_{10}p_{40}$, ${}_{5|3}q_{40}$. **Solución.** $p_{40}=l_{41}/l_{40}=0{,}9915$; ${}_{10}p_{40}=l_{50}/l_{40}=87\,000/95\,000 \approx 0{,}9158$; ${}_{5|3}q_{40}={}_5p_{40}-{}_8p_{40}=l_{45}/l_{40}-l_{48}/l_{40}$ (con $l_{48}$ si se tiene; o ${}_{5|3}q_{40}={}_5p_{40}\cdot {}_3q_{45}$).
+
+**2.** Interpretar $e_{50}=28{,}2$ y estimar $\mathring{e}_{50}$. **Solución.** $e_{50}$: esperanza curta (años completos). $\mathring{e}_{50} \approx e_{50}+1/2 \approx 28{,}7$ años.
+
+**3.** Verificar ${}_{u|t}q_x={}_{u+t}q_x-{}_uq_x$. **Solución.** ${}_{u|t}q_x={}_up_x-{}_{u+t}p_x = (1-{}_{u+t}q_x)-(1-{}_uq_x)={}_uq_x-{}_{u+t}q_x$; con ${}_uq_x-{}_{u+t}q_x$ = probabilidad de fallecer entre $u$ y $u+t$ = ${}_{u|t}q_x$. Correcto.
+
+**4.** $l_{60}=80\,000$, $l_{62}=77\,600$, $l_{65}=74\,000$. Calcular ${}_2p_{60}$, ${}_5p_{60}$, ${}_{2|3}q_{60}$. **Solución.** ${}_2p_{60}=77\,600/80\,000=0{,}97$; ${}_5p_{60}=74\,000/80\,000=0{,}925$; ${}_{2|3}q_{60}={}_2p_{60}-{}_5p_{60}=0{,}97-0{,}925=0{,}045$.
+
+**5.** Dar $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}$ y comprobar que suma 1. **Solución.** Los sucesos $\{K_x=k\}$ son disjuntos y exhaustivos → $\sum_k {}_kp_x\,q_{x+k}=1$.
+
+**6.** Definir esperanza curta y completa. **Solución.** Curta: $e_x=\sum_{k \geq 1} {}_kp_x$ (años completos). Completa: $\mathring{e}_x=\mathbb{E}[T_x]$ (incluye fracción de año); $\mathring{e}_x \approx e_x+1/2$.
+
+**7.** Con $e_{60}=22$, estimar $\mathring{e}_{60}$. **Solución.** $\mathring{e}_{60} \approx 22 + 0{,}5 = 22{,}5$ años.
+
+**8.** Expresar $e_x$ con sumatoria de ${}_kp_x$. **Solución.** $e_x = \sum_{k=1}^{\omega-x-1} {}_kp_x$.
+
+**9.** $l_{55}$, $l_{56}$, $l_{57}$, $l_{60}$ dados. Calcular $q_{55}$, ${}_2p_{55}$, ${}_{2|2}q_{55}$. **Solución.** $q_{55}=1-l_{56}/l_{55}$; ${}_2p_{55}=l_{57}/l_{55}$; ${}_{2|2}q_{55}={}_2p_{55}-{}_4p_{55}=l_{57}/l_{55}-l_{60}/l_{55}$.
+
+**10.** (40): probabilidad de fallecer entre los años 10 y 15 en tres notaciones. **Solución.** ${}_{10|5}q_{40}={}_{10}p_{40}-{}_{15}p_{40}={}_{10}p_{40}\cdot {}_5q_{50}$ (diferida 10, luego 5 años).
+
+**11.** $l_{48}=88\,000$, $l_{50}=86\,000$, $l_{55}=82\,000$. Calcular ${}_5p_{48}$, ${}_{7}p_{48}$ (con $l_{55}$), ${}_{2|3}q_{48}$. **Solución.** ${}_5p_{48}=86\,000/88\,000\approx 0{,}9773$; ${}_7p_{48}=l_{55}/l_{48}$ si se tiene; ${}_{2|3}q_{48}={}_2p_{48}-{}_5p_{48}$.
+
+**12.** $\mathbb{P}(K_x \leq 2)$ en notación. **Solución.** $\mathbb{P}(K_x \leq 2) = {}_3q_x = 1 - {}_3p_x$.
+
+**13.** Con $e_{70}=12{,}5$, estimar $\mathring{e}_{70}$. **Solución.** $\mathring{e}_{70} \approx 12{,}5 + 0{,}5 = 13$ años.
+
+**14.** Verificar ${}_{1|2}q_x = {}_1p_x - {}_3p_x$. **Solución.** ${}_{1|2}q_x = {}_1p_x \cdot {}_2q_{x+1} = {}_1p_x(1-{}_2p_{x+1}) = {}_1p_x - {}_3p_x$.
+
+**15.** $l_{52}=86\,000$, $l_{55}=83\,500$, $l_{60}=79\,000$. Calcular ${}_3p_{52}$, ${}_8p_{52}$, ${}_{3|5}q_{52}$. **Solución.** ${}_3p_{52}=83\,500/86\,000\approx 0{,}971$; ${}_8p_{52}=79\,000/86\,000\approx 0{,}9186$; ${}_{3|5}q_{52}={}_3p_{52}-{}_8p_{52}$.
+
+**16.** Definir $e_x$ con sumatoria. **Solución.** $e_x = \sum_{k=1}^{\omega-x-1} {}_kp_x$ (esperanza curta).
+
+**17.** (55): probabilidad de fallecer entre 60 y 62. **Solución.** ${}_{5|2}q_{55} = {}_5p_{55} - {}_7p_{55}$.
+
+**18.** $\mathbb{P}(K_x \geq 2)$ en notación. **Solución.** $\mathbb{P}(K_x \geq 2) = {}_2p_x$.
+
+**19.** Tipo parcial: $l_{63}=75\,000$, $l_{65}=72\,500$, $l_{68}=69\,000$. Calcular $q_{63}$ (necesita $l_{64}$), ${}_5p_{63}$, ${}_{2|3}q_{63}$. **Solución.** ${}_5p_{63}=69\,000/75\,000=0{,}92$; ${}_{2|3}q_{63}={}_2p_{63}-{}_5p_{63}$.
+
+**20.** Síntesis: (a) ${}_{n|m}q_x$ en palabras. (b) $l_{58}=78\,000$, $l_{60}=75\,500$, $l_{63}=72\,000$. Calcular ${}_2p_{58}$, ${}_5p_{58}$, ${}_{2|3}q_{58}$. **Solución.** (a) Prob. sobrevivir $n$ años y fallecer en los $m$ siguientes. (b) ${}_2p_{58}=0{,}968$; ${}_5p_{58}=72\,000/78\,000\approx 0{,}923$; ${}_{2|3}q_{58}={}_2p_{58}-{}_5p_{58}$.
+
+
+---
+
+### Ejercicios propuestos (40)
+
+En cada ejercicio se debe calcular, expresar o demostrar lo indicado usando ${}_tp_x$, ${}_{n|m}q_x$, $e_x$, $\mathring{e}_x$, $l_x$. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Con $l_{40}=95\,000$, $l_{41}=94\,200$, $l_{45}=91\,000$, $l_{50}=87\,000$, obtener $p_{40}$, ${}_{10}p_{40}$, ${}_{5|3}q_{40}$ (Jordan).
+
+2. **Se pide:** Interpretar $e_{50}=28{,}2$ y estimar $\mathring{e}_{50}$ con $\mathring{e}_x\approx e_x+1/2$ (Neill).
+
+3. **Se pide:** Verificar ${}_{u|t}q_x={}_{u+t}q_x-{}_uq_x$ (Weishaus).
+
+4. **Se pide:** Expresar ${}_{2|4}q_x$ como diferencia de supervivencias.
+
+5. **Tipo parcial.** **Se pide:** $l_{60}=80\,000$, $l_{62}=77\,600$, $l_{65}=74\,000$. Calcular ${}_2p_{60}$, ${}_5p_{60}$, ${}_{2|3}q_{60}$.
+
+6. **Se pide:** Dar la fórmula $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}$ y comprobar que suma 1 en $k$.
+
+7. **Se pide:** Si ${}_5p_{40}=0{,}9$ y ${}_5p_{45}=0{,}85$, calcular ${}_{10}p_{40}$ (cadena).
+
+8. **Se pide:** Definir esperanza curta y esperanza completa de vida (Jordan).
+
+9. **Tipo parcial.** **Se pide:** Con $q_{50},\ldots,q_{54}$ dadas, escribir ${}_5p_{50}$ como producto.
+
+10. **Se pide:** Deducir la relación ${}_{n|m}q_x={}_np_x\cdot {}_mq_{x+n}$ (Weishaus).
+
+11. **Se pide:** Con $l_{70}=1\,000$, $l_{71}=980$, $l_{75}=900$, calcular ${}_4p_{71}$ y ${}_{1|4}q_{70}$.
+
+12. **Se pide:** Verificar que ${}_tp_x\cdot {}_up_{x+t}={}_{t+u}p_x$.
+
+13. **Se pide:** Número de supervivientes: si $l_x$ es esperado, ¿qué distribución tiene el número que llega a $x+n$? (Weishaus).
+
+14. **Se pide:** Calcular ${}_{3|2}q_{60}$ con $l_{60}$, $l_{63}$, $l_{65}$.
+
+15. **Tipo parcial.** **Se pide:** (a) Definir ${}_{n|m}q_x$. (b) Con $l_{40}=95\,000$, $l_{45}=91\,000$, $l_{50}=87\,000$, calcular ${}_{5|5}q_{40}$.
+
+16. **Se pide:** Expresar $e_x$ con sumatoria de ${}_kp_x$ (Jordan).
+
+17. **Se pide:** Si $p_x=0{,}99$ para $x=55,\ldots,59$, calcular ${}_5p_{55}$.
+
+18. **Se pide:** Fórmula alternativa ${}_{u|t}q_x={}_up_x\cdot {}_tq_{x+u}$: deducir desde ${}_up_x-{}_{u+t}p_x$.
+
+19. **Se pide:** Con $e_{60}=22$, estimar $\mathring{e}_{60}$.
+
+20. **Tipo parcial.** **Se pide:** Tabla con $l_{55}$, $l_{56}$, $l_{57}$, $l_{60}$. Calcular $q_{55}$, ${}_2p_{55}$, ${}_{2|2}q_{55}$, ${}_5p_{55}$ (Jordan/Neill/Weishaus).
+
+21. **Se pide:** Con $l_{45}=92\,000$, $l_{50}=88\,000$, $l_{55}=83\,000$, calcular ${}_5p_{45}$, ${}_{10}p_{45}$, ${}_{5|5}q_{45}$.  
+22. **Se pide:** Demostrar ${}_{n|m}q_x = {}_np_x - {}_{n+m}p_x$ usando $S$ o $l_x$.  
+23. **Tipo parcial.** **Se pide:** $e_{60}=22$ (curta). Estimar $\mathring{e}_{60}$ y explicar la aproximación $e_x+1/2$.  
+24. **Se pide:** Expresar $\mathbb{P}(K_x \leq n)$ en notación actuarial (diferencia de supervivencias).  
+25. **Se pide:** Para (40), escribir la probabilidad de fallecer entre los años 10 y 15 en tres notaciones equivalentes.  
+26. **Se pide:** $l_{57}=76\,000$, $l_{60}=73\,500$, $l_{65}=69\,000$. Calcular ${}_3p_{57}$, ${}_8p_{57}$, ${}_{3|5}q_{57}$.  
+27. **Se pide:** Verificar $\mathbb{P}(K_x=k)+\mathbb{P}(K_x>k)={}_kp_x$ (relación con ${}_{k+1}p_x$).  
+28. **Tipo parcial.** **Se pide:** (50): probabilidad de sobrevivir 15 años y fallecer antes de 20; notación y expresión con $l$.  
+29. **Se pide:** Si $e_{55}=26$ y $e_{56}=25{,}2$, estimar $q_{55}$ (aproximación $e_x \approx p_x(1+e_{x+1})$).  
+30. **Se pide:** Expresar ${}_{4|2}q_x$ como diferencia de dos ${}_jp_x$.  
+31. **Se pide:** Con $l_{62}=77\,000$, $l_{65}=74\,000$, $l_{68}=70\,500$, calcular ${}_3p_{62}$, ${}_6p_{62}$, ${}_{3|3}q_{62}$.  
+32. **Tipo parcial.** **Se pide:** Definir esperanza curta y completa; relación aproximada $\mathring{e}_x \approx e_x+1/2$.  
+33. **Se pide:** Comprobar $\sum_{k=0}^{\omega-x-1} \mathbb{P}(K_x=k)=1$ usando ${}_jp_x$ y $q_{x+j}$.  
+34. **Se pide:** (35): probabilidad de fallecer exactamente en el año que va de 42 a 43; notación.  
+35. **Se pide:** $l_{59}=79\,000$, $l_{60}=77\,800$, $l_{64}=74\,000$. Calcular $q_{59}$, ${}_5p_{59}$, ${}_{1|4}q_{59}$.  
+36. **Tipo parcial.** **Se pide:** $e_{68}=14$. Estimar $\mathring{e}_{68}$; interpretar ambos números.  
+37. **Se pide:** Demostrar ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$ a partir de la definición con $S$.  
+38. **Se pide:** Escribir $\mathbb{P}(K_x = n)$ como ${}_np_x - {}_{n+1}p_x$.  
+39. **Se pide:** Con $l_{50}=90\,000$, $l_{55}=85\,000$, $l_{60}=79\,000$, calcular ${}_{10}p_{50}$, ${}_{5|5}q_{50}$.  
+40. **Tipo parcial.** **Se pide:** (a) ¿Qué es ${}_{n|m}q_x$? (b) $l_{48}=88\,000$, $l_{50}=86\,000$, $l_{53}=83\,000$. Calcular ${}_2p_{48}$, ${}_5p_{48}$, ${}_{2|3}q_{48}$.
+
+---
+
+## Práctica para el 1er Parcial
+
+Esta sección corresponde al **primer parcial** de la asignatura (EECA-UCV): se resuelve con el mayor detalle posible un examen tipo de referencia, exponiendo la **línea del tiempo** (evolución de pagos y beneficios), las fórmulas en notación actuarial y en conmutativos, y todos los conceptos solicitados.
+
+### Enunciado (resumen)
+
+Póliza disponible para edades 20 a 40 años.
+
+**a) Por fallecimiento:** S.A. inicial 10.000 u.m.; se incrementa 250 u.m. al trimestre hasta 20.000 u.m.; constante 5 años (hasta año-póliza 15); luego +1.000 u.m./año hasta año 25 (30.000 u.m.) y constante de por vida. Forma de pago:
+
+- **i.** Primeros 10 años: al final del semestre de la muerte.
+- **ii.** Años 10–15: al momento de la muerte.
+- **iii.** Años 15–25: pagos trimestrales iguales desde fin del trimestre de muerte hasta el 25.º aniversario.
+- **iv.** Después del año 25: al final del año de la muerte.
+
+**b) Por supervivencia:** 500 u.m. al comienzo de cada semestre desde que el asegurado cumpla 70 años.
+
+**c) Primas:** anuales durante 25 años; progresión aritmética de razón 10\% de la prima inicial hasta doblar el monto, luego constantes.
+
+Se pide: **(i)** Prima pura única y valor actual de primas puras (sumatorias y símbolos/conmutativos); **(ii)** Reservas terminales prospectivo y retrospectivo; **(iii)** Reservas por recurrencia (fórmula genérica); **(iv)** Reservas de balance; **(v)** Reservas exactas en 73,1−$x$ (prospectivo) y en 7,65 (retrospectivo); **(vi)** Prima de riesgo todos los años y concepto; **(vii)** Valor actual primas comerciales y equivalencia con PNU y recargos; **(viii)** Reservas modificadas Ley Venezolana 20 años (comparación OV 10.000); **(ix)** Prorrogar seguro en $t=22$. **Pregunta 2:** Valor de rescate y fórmula Ley venezolana (elementos y enfoque implícito).
+
+### Línea del tiempo: evolución de beneficios y pagos
+
+La línea del tiempo muestra en qué períodos se paga cada tipo de beneficio y cómo evolucionan las primas. Es un elemento solicitado en todos los parciales para visualizar tanto lo que se paga como los beneficios.
+
+**Tabla — Línea del tiempo (años-póliza):**
+
+| Años póliza $t$ | S.A. por fallecimiento | Forma de pago (muerte) | Supervivencia (desde 70) | Primas anuales |
+|-----------------|------------------------|------------------------|---------------------------|-----------------|
+| 0–10            | 10.000 → 20.000 (250/trim.) | Fin del semestre de muerte | — | $P_0$ a $P_{10}$ (progr. aritmética) |
+| 10–15           | 20.000 (constante)     | Momento de la muerte   | — | $P_{11}$ … $P_{14}$ |
+| 15–25           | 20.000 → 30.000 (1.000/año) | Renta trimestral hasta $t=25$ | — | $P_{15}$ … $P_{24}$ (constante $2P_0$) |
+| $\geq 25$       | 30.000 (constante)     | Fin del año de muerte  | 500 u.m. semestral (inicio) | — |
+| Desde edad 70   | —                      | —                      | 500 u.m. al inicio de cada semestre | — |
+
+**Diagrama — Línea del tiempo (evolución en el tiempo):** Para que el detalle se visualice dentro de los márgenes, la línea del tiempo se presenta en dos figuras: (1) beneficios por fallecimiento y por supervivencia; (2) primas.
+
+```{mermaid}
+%%| fig-width: 3.8
+%%| fig-cap: "Línea del tiempo (1/2): beneficios"
+gantt
+    title Beneficios
+    dateFormat X
+    axisFormat %s
+    section Fallecimiento
+    S.A. 10k→20k fin sem :a1, 0, 10
+    S.A. 20k momento muerte :a2, 10, 5
+    S.A. 20k→30k trim :a3, 15, 10
+    S.A. 30k fin año :a4, 25, 15
+    section Supervivencia
+    Renta 500 semestral 70 :b1, 30, 20
+```
+
+```{mermaid}
+%%| fig-width: 3.8
+%%| fig-cap: "Línea del tiempo (2/2): primas"
+gantt
+    title Primas (25 años)
+    dateFormat X
+    axisFormat %s
+    section Primas
+    Progr. aritm. :p1, 0, 11
+    Constante 2P0 :p2, 11, 14
+```
+
+La edad 70 se alcanza en el año-póliza $70-x$; desde ese momento corre la renta de supervivencia. Las primas se pagan en $t=0,1,\ldots,24$ (25 pagos).
+
+### Notación y convenciones
+
+- **Edad de entrada:** $x$ (20 a 40). **Año-póliza** $t$: $t=0$ en emisión.
+- **S.A. por fallecimiento** $b^{(D)}$: según tramo (trimestral hasta 20.000, constante 20.000 en 10–15, luego 1.000/año hasta 30.000 en $t=25$, constante 30.000 para $t \geq 25$).
+- **Primas puras:** $P_t = P_0(1+0{,}1\,t)$ para $t=0,\ldots,10$; $P_t = 2P_0$ para $t=11,\ldots,24$.
+- Tabla de mortalidad e interés $i$ (y $v$, $\delta$) dados; conmutativos $D_x$, $N_x$, $C_x$, $M_x$ tabulados.
+
+### (i) Prima pura única y valor actual de las primas puras
+
+**Prima pura única (PNU)**  
+Es el valor presente actuarial de todos los beneficios (fallecimiento + supervivencia) en $t=0$.
+
+**Beneficios por fallecimiento — por tramos:**
+
+- **Tramo 1 (años 0–10):** Pago al final del semestre de muerte.  
+  - Sumatoria: $\sum_{k=0}^{9} b_k^{(D)}\,v^{k+1/2}\,{}_{k|1/2}q_x$.  
+  - En conmutativos: tablas semestrales $D^{(2)}$, $C^{(2)}$ o aproximación.
+
+- **Tramo 2 (años 10–15):** Pago al momento de la muerte.  
+  - APV: $\sum_{k=10}^{14} \int_0^1 v^{k+s}\,{}_kp_x\,\mu_{x+k+s}\,b^{(D)}\,ds$.  
+  - Bajo UDD: $\bar{A}_{x+10:\overline{5}|}^1$ con S.A. 20.000; aproximación $(i/\delta)A$.
+
+- **Tramo 3 (años 15–25):** Pagos trimestrales hasta $t=25$.  
+  - Expresión: $\sum_{k=15}^{24} b_k^{(D)}\cdot \ddot{a}_{\overline{25-(k+1/4)|}}^{(4)}\cdot v^{k+1/4}\,{}_{k|1}q_x$.
+
+- **Tramo 4 ($t \geq 25$):** Pago al final del año de muerte.  
+  - $30\,000\cdot {}_{25|}A_x$. En conmutativos: $30\,000\cdot M_{x+25}/D_x$ (con ${}_{25}E_x$).
+
+**Beneficios por supervivencia**
+
+- Renta 500 u.m. al inicio de cada semestre desde edad 70.  
+- Valor en $t=0$: $500\cdot 2\cdot \ddot{a}_{70}^{(2)}\cdot {}_{70-x}E_x$.  
+- En conmutativos: $1000\cdot N_{70}^{(2)}/D_x$ (según convención de la tabla).
+
+**Resultado PNU y primas**
+
+- PNU total: $\text{PNU} = \text{APV}(\text{fallec.}) + \text{APV}(\text{superv.})$.
+- Valor actual de las primas puras:
+  $$\text{APV}(\text{primas}) = \frac{P_0}{D_x}\left(\sum_{t=0}^{10}(1+0{,}1\,t)D_{x+t} + 2(N_{x+11}-N_{x+25})\right).$$
+- Ecuación de equivalencia: $\text{APV}(\text{primas}) = \text{PNU}$ → se despeja $P_0$.
+
+---
+
+### (ii) Reservas terminales: prospectivo y retrospectivo
+
+**Método prospectivo**
+
+- $_kV = \text{APV}_{x+k}(\text{beneficios futuros desde } k) - \text{APV}_{x+k}(\text{primas futuras desde } k)$.
+- Beneficios futuros: mismas reglas por tramos valoradas a edad $x+k$.
+- Primas futuras: $P_k,\ldots,P_{24}$ con renta $\ddot{a}_{x+k:\overline{25-k}|}^{\text{var}}$.
+
+**Método retrospectivo**
+
+- $_kV = \dfrac{\text{Valor acumulado en } k \text{ de primas pasadas} - \text{Valor acumulado de beneficios pasados}}{{}_kp_x}$.
+- En conmutativos: $\ddot{a}_{x:\overline{k}|}$, $A_{x:\overline{k}|}^1$, ${}_kE_x$.
+- Para $k=0,\ldots,25$: $_0V=0$; prospectivo = retrospectivo bajo equivalencia.
+
+---
+
+### (iii) Recurrencia; (iv) Reservas de balance; (v) Reservas fraccionarias
+
+**Recurrencia**
+
+- Fórmula: $_{k+1}V = (_kV + P_k)(1+i) - q_{x+k}\cdot (\text{beneficio esperado año } k+1)$.
+- Con $_0V=0$ y las $P_t$ se obtienen $_1V$, $_2V$, … recursivamente.
+
+**Reservas de balance**
+
+- Acumulación de primas de ahorro (método Fackler); bajo equivalencia = $_kV$.
+
+**Reservas fraccionarias (73,1−$x$ y 7,65)**
+
+- Interpolación lineal: $_kV_{k+s} \approx (1-s)\,{}_kV + s\,{}_{k+1}V$.
+- En 73,1−$x$: $k = \lfloor 73{,}1-x \rfloor$, $s = (73{,}1-x)-k$.
+- En 7,65: $k=7$, $s=0{,}65$ → reserva $\approx 0{,}35\,{}_7V + 0{,}65\,{}_8V$.
+
+---
+
+### (vi) Prima de riesgo; (vii) Primas comerciales; (viii) Ley Venezolana; (ix) Prorroga
+
+**Prima de riesgo**
+
+- Concepto: parte de la prima que cubre el costo esperado de mortalidad del año.
+- $P_{\text{riesgo},k+1} = v\,q_{x+k}\cdot (\text{capital en riesgo})$; capital en riesgo = beneficio − $_kV$.
+- Se tabulan $P_{\text{riesgo},t}$ y $P_{\text{ahorro},t} = P_{t-1} - P_{\text{riesgo},t}$.
+
+**Primas comerciales**
+
+- $\text{APV}(\text{primas brutas}) = \text{PNU} + \text{APV}(\text{gastos}) + \text{APV}(\text{utilidad})$.
+- Se despeja $G$ con la misma progresión que las puras.
+
+**Ley Venezolana (20 años)**
+
+- $_tV^{\text{LV}} = {}_tV - \alpha\,(20-t)/20$ para $t=0,\ldots,20$; para $t>20$, $_tV^{\text{LV}} = {}_tV$.
+- Comparación OV 10.000: $_tV^{\text{OV}} = 10\,000\cdot {}_tV_x$.
+
+**Prorroga en $t=22$**
+
+- $B^{(S)}\cdot A_{x+22} = {}_22V$ → $B^{(S)} = {}_22V/A_{x+22}$.
+
+---
+
+### Pregunta 2: Valor de rescate y fórmula Ley venezolana
+
+**Valor de rescate**
+
+- Cantidad que la aseguradora paga al asegurado al rescindir. La Ley fija un mínimo.
+
+**Fórmula Ley venezolana**
+
+- $\text{VR}_t = \max\bigl(0,\; \theta_t\cdot {}_tV^{\text{LV}} - \text{deducciones}\bigr)$.
+
+**Elementos**
+
+1. Reserva técnica ($_tV^{\text{LV}}$) en la fecha de rescate.  
+2. Porcentaje legal $\theta_t$ según años de vigencia.  
+3. Deducción por gastos de adquisición no recuperados (Zillmer).  
+4. Posible mínimo en función de primas pagadas.
+
+**Enfoque implícito**
+
+- El asegurado tiene derecho a una parte del fondo; la aseguradora deduce costos no recuperados; la Ley limita el porcentaje para equilibrar protección y estabilidad.
+
+---
+
+## Segundo parcial de práctica — 1er Parcial (Examen tipo B)
+
+Se diseña y resuelve un **segundo examen tipo** para el primer parcial, manteniendo o aumentando la complejidad del de referencia. Incluye línea del tiempo, notación, y desarrollo ordenado de cada ítem.
+
+### Enunciado (Examen tipo B)
+
+Póliza disponible para edades 30 a 45 años.
+
+**a) Por fallecimiento:** Suma asegurada 12.000 u.m. constante los primeros 10 años (pago al final del año de muerte). Del año 10 al 20: beneficio 15.000 u.m. (pago al final del año de muerte). A partir del año 20: 18.000 u.m. de por vida (fin del año de muerte).
+
+**b) Por supervivencia:** Renta de 600 u.m. al inicio de cada año desde que el asegurado cumpla 65 años.
+
+**c) Primas:** niveladas anuales durante 25 años, pagaderas al inicio de cada año mientras viva.
+
+**Se pide:** **(i)** Prima pura única (PNU) y valor actual de las primas puras en notación y conmutativos; **(ii)** Reservas terminales prospectivo y retrospectivo en $t=5$ y $t=15$; **(iii)** Fórmula de recurrencia de las reservas; **(iv)** Reservas de balance (Fackler); **(v)** Reserva en instante fraccionario $t=7{,}35$ (prospectivo); **(vi)** Prima de riesgo en los años 1 y 10 y concepto; **(vii)** Prima bruta $G$ con gastos (ecuación y despeje); **(viii)** Reservas modificadas Ley Venezolana a 20 años; **(ix)** Póliza prorrogada (suma asegurada saldada) en $t=20$. **(x)** Valor de rescate en $t=12$: fórmula y elementos según Ley venezolana.
+
+### Línea del tiempo (Examen B)
+
+| Años póliza $t$ | S.A. por fallecimiento | Pago muerte | Supervivencia (desde 65) | Primas |
+|-----------------|------------------------|-------------|---------------------------|--------|
+| 0–10            | 12.000                 | Fin del año | —                         | $P$ nivelada |
+| 10–20           | 15.000                 | Fin del año | —                         | $P$ |
+| $\geq 20$       | 18.000                 | Fin del año | —                         | — |
+| Desde edad 65   | —                      | —           | 600 u.m./año (inicio)     | — |
+
+Primas: 25 pagos $P$ en $t=0,1,\ldots,24$. La edad 65 se alcanza en el año-póliza $65-x$.
+
+### Notación
+
+- **Edad de entrada:** $x$ (30 a 45). Año-póliza $t$.
+- **Beneficio muerte:** $b_1=12\,000$ ($t=0,\ldots,9$), $b_2=15\,000$ ($t=10,\ldots,19$), $b_3=18\,000$ ($t\geq 20$).
+- **Conmutativos:** tabla de mortalidad e interés $i$; $D_x$, $N_x$, $M_x$, $C_x$ (y $N_{x+n}$, $M_{x+n}$, etc.).
+
+---
+
+### (i) Prima pura única y valor actual de las primas puras
+
+**PNU — Beneficios por fallecimiento**
+
+- **Tramo 1 (años 0–9):** $12\,000\cdot A_{x:\overline{10}|}^1 = 12\,000\cdot (M_x-M_{x+10})/D_x$.
+- **Tramo 2 (años 10–19):** $15\,000\cdot {}_{10|}A_{x:\overline{10}|}^1 = 15\,000\cdot (M_{x+10}-M_{x+20})/D_x$ (diferido 10, temporal 10).
+- **Tramo 3 ($t\geq 20$):** $18\,000\cdot {}_{20|}A_x = 18\,000\cdot M_{x+20}/D_x$.
+
+**PNU — Beneficios por supervivencia**
+
+- Renta 600 u.m. anual anticipada desde edad 65: valor en $t=0$ = $600\cdot {}_{65-x}|\ddot{a}_x = 600\cdot {}_{65-x}E_x\cdot \ddot{a}_{65} = 600\cdot (D_{65}/D_x)\cdot (N_{65}/D_{65}) = 600\cdot N_{65}/D_x$ (si la convención es $N_{65}$ para renta anticipada desde 65; en algunas tablas $\ddot{a}_{65}=N_{65}/D_{65}$).
+
+**PNU total**
+
+$$\text{PNU} = \frac{12\,000(M_x-M_{x+10}) + 15\,000(M_{x+10}-M_{x+20}) + 18\,000\,M_{x+20}}{D_x} + \frac{600\,N_{65}}{D_x}.$$
+
+**Valor actual de las primas puras**
+
+- 25 primas $P$ al inicio de cada año: $\text{APV(primas)} = P\cdot \ddot{a}_{x:\overline{25}|} = P\cdot (N_x-N_{x+25})/D_x$.
+- **Ecuación de equivalencia:** $P\cdot \ddot{a}_{x:\overline{25}|} = \text{PNU}$ ⇒ $P = \text{PNU}\,/\,\ddot{a}_{x:\overline{25}|}$.
+
+---
+
+### (ii) Reservas terminales en $t=5$ y $t=15$
+
+**Método prospectivo**
+
+- $_tV = \text{APV}_{x+t}(\text{beneficios futuros}) - \text{APV}_{x+t}(\text{primas futuras})$.
+- **En $t=5$:** Beneficios futuros = 12.000 por muerte en años 5–9 (temporal 5 años desde $x+5$) + 15.000 diferido 5, temporal 10 + 18.000 diferido 15 + renta desde 65. Primas futuras = $P\cdot \ddot{a}_{x+5:\overline{20}|}$ (20 pagos).
+  - $_5V = 12\,000\,A_{x+5:\overline{5}|}^1 + 15\,000\,{}_{5|}A_{x+5:\overline{10}|}^1 + 18\,000\,{}_{15|}A_{x+5} + 600\cdot {}_{60-x}|\ddot{a}_{x+5} - P\,\ddot{a}_{x+5:\overline{20}|}$ (con $60-x$ si $x+5+60-x=65$; correcto: renta desde edad 65, luego ${}_{(65-(x+5))}|\ddot{a}_{x+5} = {}_{60-x}|\ddot{a}_{x+5}$ solo si $65\ge x+5$).
+- **En $t=15$:** Beneficios futuros desde $x+15$: 15.000 en años 15–19 (temporal 5) + 18.000 diferido 5 + renta desde 65. Primas futuras = $P\cdot \ddot{a}_{x+15:\overline{10}|}$ (10 pagos).
+  - $_15V = 15\,000\,A_{x+15:\overline{5}|}^1 + 18\,000\,{}_{5|}A_{x+15} + 600\cdot {}_{50-x}|\ddot{a}_{x+15} - P\,\ddot{a}_{x+15:\overline{10}|}$ (renta desde 65: años hasta 65 son $65-(x+15)=50-x$; válido si $x\le 50$).
+
+**Método retrospectivo**
+
+- $_tV = \dfrac{\text{Valor acumulado en }t\text{ de primas} - \text{Valor acumulado de beneficios}}{{}_tp_x}$.
+- En conmutativos: valor acumulado primas = $P\cdot (N_x-N_{x+t})\cdot (1+i)^t/D_{x+t}$ (o forma equivalente con $\ddot{s}_{x:\overline{t}|}$); beneficios = sumas aseguradas pagadas por muertes en $(0,t]$; dividido por ${}_tp_x = D_{x+t}/D_x\cdot v^t$ (o $l_{x+t}/l_x$). La expresión cerrada en conmutativos es $_tV = \bigl[ P(N_x-N_{x+t}) - (M_x-M_{x+t})\cdot \bar{b} \bigr](1+i)^t/D_{x+t}$ con $\bar{b}$ adecuado por tramos; para un solo beneficio nivelado sería $P(N_x-N_{x+t}) - (M_x-M_{x+t})$ en el numerador con factor $(1+i)^t/D_{x+t}$. Para este contrato con tres tramos, la forma prospectiva es más directa; la retrospectiva se escribe análogamente al ejemplo del primer parcial.
+- **Resumen:** Bajo equivalencia, prospectivo = retrospectivo en cada $t$. Para $t=5$ y $t=15$ se sustituyen $x$ (ej. $x=40$) y los valores de tabla (Venezolana Hombres, 8%) para obtener valores numéricos.
+
+---
+
+### (iii) Recurrencia de las reservas
+
+- **Fórmula genérica:** $_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot (\text{beneficio esperado en el año } k+1)$.
+- En el año $k+1$ el beneficio por muerte es $b_{k+1}$ según el tramo (12.000, 15.000 o 18.000). Así:
+  - $_{k+1}V = (_kV + P)(1+i) - q_{x+k}\cdot b_{k+1}$.
+- Con $_0V=0$ y $P$ conocida se obtienen $_1V$, $_2V$, … en forma recursiva.
+
+---
+
+### (iv) Reservas de balance (Fackler)
+
+- La reserva de balance en $t$ es el valor acumulado de las **primas de ahorro** hasta $t$.
+- Bajo equivalencia actuarial coincide con la reserva terminal $_tV$ (prospectiva o retrospectiva).
+- Se construye con la misma recurrencia: activos en $t$ = reserva en $t-1$ + prima, capitalizados; menos beneficio esperado por muerte = reserva en $t$.
+
+---
+
+### (v) Reserva en instante fraccionario $t=7{,}35$
+
+- **Interpolación lineal:** $_kV_{k+s} \approx (1-s)\,{}_kV + s\cdot {}_{k+1}V$ con $k=7$, $s=0{,}35$.
+- **Reserva en 7,35:** $_7V_{7{,}35} \approx 0{,}65\cdot {}_7V + 0{,}35\cdot {}_8V$.
+- Se sustituyen $_7V$ y $_8V$ calculadas por prospectivo o recurrencia.
+
+---
+
+### (vi) Prima de riesgo en los años 1 y 10
+
+- **Concepto:** Parte de la prima que cubre el costo esperado de mortalidad del año (beneficio esperado × $v\,q$).
+- **Año 1:** $P_{\text{riesgo},1} = v\,q_x\cdot (b_1 - {}_0V) = v\,q_x\cdot 12\,000$ (con $_0V=0$).
+- **Año 10:** $P_{\text{riesgo},10} = v\,q_{x+9}\cdot (b_1 - {}_9V)$ (beneficio en año 10 = 12.000; reserva $_9V$).
+- **Prima de ahorro:** $P_{\text{ahorro},t} = P - P_{\text{riesgo},t}$.
+
+---
+
+### (vii) Prima bruta $G$
+
+- **Ecuación:** $G\,\ddot{a}_{x:\overline{25}|} = \text{PNU} + \text{APV(gastos)}$.
+- Con gastos: inicial $I$, por póliza/año $c$, proporcional a prima $k\,G$: $\text{APV(gastos)} = I + c\,\ddot{a}_{x:\overline{25}|} + k\,G\,\ddot{a}_{x:\overline{25}|}$.
+- $(1-k)\,G\,\ddot{a}_{x:\overline{25}|} = \text{PNU} + I + c\,\ddot{a}_{x:\overline{25}|}$ ⇒ $G = \dfrac{\text{PNU} + I + c\,\ddot{a}_{x:\overline{25}|}}{(1-k)\,\ddot{a}_{x:\overline{25}|}}$.
+
+---
+
+### (viii) Reservas modificadas Ley Venezolana (20 años)
+
+- **Expresión:** $_tV^{\text{LV}} = {}_tV - \alpha\,\dfrac{20-t}{20}$ para $t=0,\ldots,20$; $_tV^{\text{LV}} = {}_tV$ para $t>20$.
+- $\alpha$ = gasto de adquisición por unidad de S.A. (tope legal). Amortización lineal en 20 años.
+- **Ejemplo $t=1$:** $_1V^{\text{LV}} = {}_1V - \alpha\cdot 19/20$. **$t=15$:** $_15V^{\text{LV}} = {}_15V - \alpha\cdot 5/20$.
+
+---
+
+### (ix) Póliza prorrogada (suma asegurada saldada) en $t=20$
+
+- **Concepto:** El asegurado deja de pagar primas; la reserva $_20V$ financia una cobertura de vida entera con suma asegurada reducida $B^{(S)}$.
+- **Ecuación:** $B^{(S)}\cdot A_{x+20} = {}_20V$ ⇒ $B^{(S)} = {}_20V\,/\,A_{x+20}$.
+- En conmutativos: $B^{(S)} = {}_20V\cdot D_{x+20}/M_{x+20}$.
+
+---
+
+### (x) Valor de rescate en $t=12$ — fórmula y elementos (Ley venezolana)
+
+- **Fórmula:** $\text{VR}_{12} = \theta_{12}\cdot {}_12V^{\text{LV}}$, con $_12V^{\text{LV}} = {}_12V - \alpha\cdot (20-12)/20 = {}_12V - \alpha\cdot 8/20$.
+- **Elementos:** (1) Reserva técnica modificada $_12V^{\text{LV}}$ en la fecha de rescate; (2) Porcentaje legal $\theta_{12}$ según años de vigencia (tabla legal); (3) Deducción por gastos de adquisición no recuperados ($\alpha\cdot 8/20$); (4) Posible mínimo en función de primas pagadas (normativa).
+- **Enfoque:** El asegurado tiene derecho a una parte del fondo acumulado; la aseguradora deduce costos no recuperados; la Ley fija el porcentaje para equilibrar protección y solvencia.
+
+---
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013]; Ross [@ross2010]; Batten [@batten1978].*

@@ -1,0 +1,475 @@
+---
+number: false
+---
+
+# Fuerza de mortalidad {#cap-fuerza-mortalidad .unnumbered .unlisted}
+
+La **fuerza de mortalidad** (o *force of mortality*, *hazard rate*) $\mu_x$ cuantifica la intensidad instantánea de fallecimiento a la edad $x$. Es el concepto que une la función de supervivencia, las probabilidades $p_x$ y $q_x$ y, más adelante, las tablas de mortalidad. Este capítulo define $\mu_x$, sus relaciones con $S(x)$ y con las probabilidades de supervivencia y de muerte, la expresión en términos de la tabla $l_x$, el efecto de transformaciones de $\mu$, las leyes analíticas de mortalidad y las hipótesis de edades fraccionarias (UDD y fuerza constante), siguiendo a Jordan [@jordan1982], Bowers et al. [@bowers1997], Neill [@neill1977] y Weishaus [@weishaus2013].
+
+## Definición de la fuerza de mortalidad
+
+Se define la **fuerza de mortalidad** a la edad $x$ como:
+
+$$\mu_x = \lim_{h \to 0^+} \frac{\mathbb{P}(T_x \leq h)}{h} = \lim_{h \to 0^+} \frac{{}_hq_x}{h},$$
+
+suponiendo que el límite existe. Intuitivamente, $\mu_x$ es la «tasa instantánea» de fallecimiento a la edad $x$: la probabilidad de morir en un intervalo muy corto $(0,h)$ a partir de $x$ es aproximadamente $\mu_x \cdot h$. Weishaus [@weishaus2013] la presenta como *hazard rate*: mide la tasa de mortalidad a la edad $x$ dado que se ha sobrevivido hasta $x$, es decir $\mu_x = \lim_{dx \to 0^+} \frac{1}{dx}\,\mathbb{P}(T_x \leq x+dx \mid T_x > x)$.
+
+En términos de la función de supervivencia $S_0(x)$ desde el nacimiento (probabilidad de sobrevivir hasta la edad $x$), se tiene $\mu_x = -\frac{S_0'(x)}{S_0(x)} = -\frac{d}{dx}\ln S_0(x)$. Por tanto $S_0(x) = \exp\bigl(-\int_0^x \mu_s\,ds\bigr)$. Para la supervivencia desde la edad $x$ durante $t$ años, $S_x(t) = {}_tp_x = S_0(x+t)/S_0(x)$, de donde:
+
+$${}_tp_x = \exp\left(-\int_0^t \mu_{x+s}\,ds\right). \tag{3.6}$$
+
+La **densidad** del tiempo futuro de vida $T_x$ en el instante $t$ es $f_{T_x}(t) = \frac{d}{dt}\,{}_tq_x = -\frac{d}{dt}\,{}_tp_x$. Se cumple:
+
+$$f_{T_x}(t) = {}_tp_x\,\mu_{x+t}; \tag{3.8}$$
+
+por tanto $\mu_{x+t} = f_{T_x}(t)/{}_tp_x$: la fuerza de mortalidad en $x+t$ es la densidad de $T_x$ en $t$ condicionada a la supervivencia hasta $t$ [@weishaus2013]. Equivalentemente, $\mu_{x+t} = \frac{(d/dt)\,{}_tq_x}{{}_tp_x}$. El valor $\mu_{x+t}$ depende solo de la edad alcanzada $x+t$, no de $x$ y $t$ por separado; en la notación actuarial a veces se escribe $\mu_x(t)$ para indicar que $x$ se fija y $t$ varía (Weishaus).
+
+::: {.callout-note}
+## Nota histórica: De la tabla a la ley analítica
+
+La fuerza de mortalidad $\mu_x$ como «tasa instantánea» de fallecimiento fue explotada de forma sistemática a partir del siglo XIX. **Benjamin Gompertz** (1825) [@gompertz1825] propuso la ley que lleva su nombre, $\mu_x = B\,c^x$, para representar el crecimiento exponencial del riesgo con la edad en adultos. **William Makeham** (1860) [@makeham1860] añadió un término constante, $\mu_x = A + B\,c^x$, mejorando el ajuste. Estas leyes permiten interpolar y extrapolar la mortalidad de forma coherente con la definición $\mu_x = -(d/dx)\ln l_x$ y siguen usándose en modelos de mortalidad avanzados y en el estudio de edades fraccionarias (capítulo 12).
+:::
+
+## Relación con $p_x$ y $q_x$ e integrales
+
+Bajo hipótesis de continuidad, $p_x = \exp\bigl(-\int_0^1 \mu_{x+s}\,ds\bigr)$ y $q_x = 1 - p_x$. La probabilidad de fallecer **antes** de $t$ años desde $x$ puede expresarse integrando la densidad o la «tasa instantánea» de muerte condicionada a la supervivencia:
+
+$${}_tq_x = \int_0^t {}_sp_x\,\mu_{x+s}\,ds. \tag{1.6.10}$$
+
+Para $t=1$, $q_x = \int_0^1 {}_sp_x\,\mu_{x+s}\,ds$ [@neill1977]. Esta expresión se interpreta como: «mantener con vida a $(x)$ hasta el instante $s$; la probabilidad de fallecer en $s$ es ${}_sp_x\,\mu_{x+s}\,ds$; integrar sobre el rango deseado». La probabilidad de fallecer entre $x+n$ y $x+n+m$ (diferida $n$, temporal $m$) es:
+
+$${}_{n|m}q_x = \int_n^{n+m} {}_sp_x\,\mu_{x+s}\,ds = {}_np_x - {}_{n+m}p_x = {}_np_x \cdot {}_mq_{x+n}.$$
+
+No se puede obtener ${}_{u|t}q_x$ como complemento de una sola integral exponencial de $\mu$; se expresa como ${}_up_x - {}_{u+t}p_x$ y se calculan las dos probabilidades de supervivencia mediante $\exp\bigl(-\int \mu\bigr)$ [@weishaus2013].
+
+## Fuerza de mortalidad y tabla $l_x$ (Neill)
+
+Si la mortalidad se expresa mediante la tabla de supervivencia $l_x$ (continua y diferenciable), la **fuerza de mortalidad** en la edad $x$ es el cociente entre la tasa de disminución de $l_x$ y el valor de $l_x$:
+
+$$\mu_x = -\frac{1}{l_x}\,\frac{dl_x}{dx} = -\frac{d}{dx}\ln l_x. \tag{1.6.1}$$
+
+El signo negativo hace que $\mu_x$ sea positivo al ser $l_x$ decreciente. Dividir por $l_x$ hace que $\mu_x$ no dependa del radix de la tabla. Integrando entre $x$ y el límite de la tabla $\omega$ (o $\infty$), $l_x = \int_x^{\omega} l_{x+t}\,\mu_{x+t}\,dt$; en particular, $d_x = l_x - l_{x+1} = \int_0^1 l_{x+t}\,\mu_{x+t}\,dt$ [@neill1977]. La curva $l_x\,\mu_x$ en función de $x$ se denomina **curva de fallecimientos** (*curve of deaths*); sus máximos y mínimos coinciden con los puntos de inflexión de $l_x$.
+
+**Comparación entre $q_x$ y $\mu_x$:** $q_x$ es una probabilidad y no puede superar 1; $\mu_x$ es una **tasa instantánea** y puede ser mayor que 1, y de hecho suele serlo al inicio y al final de la tabla (p. ej. en la primera hora de vida la tasa anual equivalente puede ser muy alta). Cuando la curva de $l_x$ es cóncava hacia el eje de las abscisas, $q_x > \mu_x$; cuando es convexa, $q_x < \mu_x$; $q_x$ y $\mu_x$ se aproximan cuando $l_x$ es casi lineal (cerca del punto de inflexión) [@neill1977].
+
+**Analogía con la fuerza de interés:** La relación ${}_np_x = \exp\bigl(-\int_0^n \mu_{x+t}\,dt\bigr)$ es análoga al valor actual en interés continuo: valor actual de 1 en $n$ años $= e^{-\int_0^n \delta_s\,ds}$, con $\delta$ la fuerza de interés; la fuerza de mortalidad juega un papel análogo a la fuerza de interés [@neill1977].
+
+## Transformaciones de la fuerza de mortalidad (Weishaus)
+
+Supóngase que entre las edades $x$ y $x+t$ una vida tiene fuerza de mortalidad $\mu_{x+s}$ y probabilidad de supervivencia ${}_tp_x$. Otra vida tiene $\mu_{x+s}'$ y ${}_tp_x'$.
+
+- **Sumar una constante:** Si $\mu_{x+s}' = \mu_{x+s} + k$ para $0 \leq s \leq t$ (con $k$ constante), entonces ${}_tp_x' = e^{-kt}\,{}_tp_x$. En particular, sumar $k$ a la fuerza de mortalidad durante un año equivale a multiplicar $p_x$ por $e^{-k}$.
+- **Multiplicar por una constante:** Si $\mu_{x+s}' = k\,\mu_{x+s}$ para $0 \leq s \leq t$, entonces ${}_tp_x' = ({}_tp_x)^k$. Por tanto, si la fuerza de mortalidad se multiplica por $k$ en un intervalo, la probabilidad de supervivencia queda elevada a la potencia $k$ [@weishaus2013].
+
+Estas relaciones son útiles para comparar tablas (p. ej. una tabla «reducida» con $\mu' = 0{,}5\,\mu$ da $q_x' = 1 - (1-q_x)^{0{,}5}$) o para modelar mortalidad adicional (sumando un término constante a $\mu$).
+
+## Leyes analíticas de mortalidad
+
+En la historia de la ciencia actuarial y en aplicaciones teóricas aparecen **leyes de mortalidad** que expresan $\mu_x$ (o $S(x)$) mediante fórmulas cerradas [@jordan1982; @bowers1997].
+
+- **Ley de De Moivre (mortalidad uniforme):** tiempo futuro de vida máximo $\omega - x$, con $\omega$ fijo, y $T_x$ uniforme en $(0, \omega - x)$. Entonces $S(x+t)/S(x) = (\omega - x - t)/(\omega - x)$ para $0 \leq t \leq \omega - x$, y $\mu_{x+t} = 1/(\omega - x - t)$.
+- **Ley exponencial (fuerza constante):** $\mu_x = \mu$ para todo $x$. Entonces ${}_tp_x = e^{-\mu t}$ y la esperanza de vida restante es $1/\mu$. Modelo muy simple, útil solo en rangos de edad limitados.
+- **Ley de Gompertz:** $\mu_x = B\,c^x$ con $B>0$, $c>1$. **Gompertz-Makeham:** $\mu_x = A + B\,c^x$. Capturan el crecimiento aproximadamente exponencial de la mortalidad con la edad en adultos y se usan en demografía y ajustes de tablas.
+
+Para que $\mu_x$ defina una supervivencia válida (con $\lim_{t \to \infty} S_x(t) = 0$), debe cumplirse $\int_0^{\infty} \mu_{x+s}\,ds = +\infty$; $\mu_x$ no tiene por qué tender a infinito, aunque en tablas realistas suele crecer para edades altas [@weishaus2013].
+
+## Edades fraccionarias: UDD y fuerza constante
+
+Cuando se necesitan probabilidades o funciones a **edades o duraciones no enteras** (p. ej. ${}_{1/2}p_x$, ${}_{0{,}3}q_x$), se usan hipótesis de interpolación. Las dos más usadas en el programa son [@jordan1982; @weishaus2013]:
+
+- **Distribución uniforme de las muertes (UDD):** en cada año de edad $[x, x+1)$ se supone que las muertes se distribuyen uniformemente. Entonces ${}_tq_x = t\,q_x$ para $0 \leq t \leq 1$, y ${}_tp_x = 1 - t\,q_x$. La fuerza de mortalidad en el año resulta $\mu_{x+t} = q_x/(1 - t\,q_x)$ para $0 \leq t < 1$.
+- **Fuerza de mortalidad constante en el año (CFM):** en $[x, x+1)$ se supone $\mu_{x+t} = \mu$ constante. Entonces ${}_tp_x = (p_x)^t$ y ${}_tq_x = 1 - (p_x)^t$ para $0 \leq t \leq 1$.
+
+En el capítulo de probabilidades y expectativas (cap. 4) se desarrollan estas hipótesis y su uso en rentas y seguros con pagos fraccionarios o continuos. La fuerza de mortalidad $\mu_x$ es la referencia teórica que une el modelo de supervivencia con las tablas $l_x$, $d_x$, $q_x$, $p_x$ usadas en los capítulos siguientes.
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. Ley de De Moivre (Jordan)**  
+Bajo De Moivre con $\omega = 100$, hallar (a) ${}_{10}p_{50}$ y (b) $\mu_{60}$.  
+**Solución.** En la ley de De Moivre la supervivencia es lineal: $S(x+t)/S(x) = (\omega - x - t)/(\omega - x)$ para $0 \leq t \leq \omega - x$.  
+(a) ${}_{10}p_{50} = (100 - 50 - 10)/(100 - 50) = 40/50 = 0{,}8$ (80\%).  
+(b) La fuerza de mortalidad es $\mu_{x+t} = 1/(\omega - x - t)$. Para edad 60, tomando $x=50$ y $t=10$: $\mu_{60} = 1/(100 - 60) = 1/40 = 0{,}025$ por año.
+
+**2. Fuerza constante (Weishaus)**  
+Si $\mu = 0{,}01$ constante, calcular ${}_5p_x$.  
+**Solución.** Bajo fuerza de mortalidad constante $\mu$, ${}_tp_x = \exp\bigl(-\int_0^t \mu\,ds\bigr) = e^{-\mu t}$. Sustituyendo $\mu = 0{,}01$ y $t = 5$: ${}_5p_x = e^{-0{,}01 \times 5} = e^{-0{,}05} \approx 0{,}9512$ (95,12\%). No depende de $x$ porque $\mu$ es constante.
+
+**3. Integral de $\mu$ y ${}_tp_x$**  
+Si $\mu_{x+s} = 0{,}02$ para $s \in [0,10]$, hallar ${}_{10}p_x$.  
+**Solución.** Por la fórmula fundamental ${}_tp_x = \exp\bigl(-\int_0^t \mu_{x+s}\,ds\bigr)$. Aquí $\int_0^{10} \mu_{x+s}\,ds = \int_0^{10} 0{,}02\,ds = 0{,}02 \times 10 = 0{,}2$. Por tanto ${}_{10}p_x = e^{-0{,}2} \approx 0{,}8187$ (81,87\%).
+
+**4. De Moivre: $q_x$**  
+Bajo De Moivre con $\omega = 100$, verificar $q_{70} = 1/30$.  
+**Solución.** Por definición $q_{70} = 1 - {}_1p_{70}$. En De Moivre, ${}_1p_{70} = (\omega - 70 - 1)/(\omega - 70) = (100 - 71)/(100 - 70) = 29/30$. Por tanto $q_{70} = 1 - 29/30 = 1/30 \approx 0{,}0333$.
+
+**5. UDD y ${}_tq_x$ (Weishaus)**  
+Bajo UDD, si $q_{40} = 0{,}02$, calcular ${}_{0{,}5}q_{40}$.  
+**Solución.** Bajo la hipótesis de *uniform distribution of deaths* (UDD) en el año $(x, x+1)$, las muertes se distribuyen uniformemente, por tanto ${}_tq_x = t \cdot q_x$ para $0 \leq t \leq 1$. Con $t = 0{,}5$ y $q_{40} = 0{,}02$: ${}_{0{,}5}q_{40} = 0{,}5 \times 0{,}02 = 0{,}01$ (1\% de probabilidad de fallecer en el primer medio año) [@weishaus2013].
+
+**6. Fuerza constante: ${}_tp_x$**  
+Si $\mu = 0{,}03$ y $\delta = 0{,}05$, calcular ${}_{4}p_x$.  
+**Solución.** ${}_{4}p_x = e^{-0{,}03 \cdot 4} = e^{-0{,}12} \approx 0{,}8869$.
+
+**7. Relación $\mu_{x+t}$ y densidad**  
+Escribir $\mu_{x+t}$ en función de $f_{T_x}(t)$ y ${}_tp_x$.  
+**Solución.** $\mu_{x+t} = f_{T_x}(t)/{}_tp_x$ (Weishaus: hazard rate).
+
+**8. De Moivre: ${}_{20}p_{70}$**  
+Con $\omega = 100$, calcular ${}_{20}p_{70}$.  
+**Solución.** ${}_{20}p_{70} = (100-70-20)/(100-70) = 10/30 = 1/3$.
+
+**9. $\mu$ y derivada de $\ln {}_tp_x$**  
+Demostrar que $\mu_{x+t} = -\frac{d}{dt}\ln {}_tp_x$.  
+**Solución.** $\frac{d}{dt}\ln {}_tp_x = \frac{1}{{}_tp_x}(-\mu_{x+t}\,{}_tp_x) = -\mu_{x+t}$.
+
+**10. Fuerza constante entre enteros**  
+Si $q_x = 0{,}01$, bajo fuerza constante en $(x,x+1)$ hallar ${}_{0{,}25}p_x$.  
+**Solución.** ${}_tp_x = (p_x)^t$; $p_x = 0{,}99$, ${}_{0{,}25}p_x = 0{,}99^{0{,}25} \approx 0{,}9975$.
+
+**11. Integral $\int_0^t \mu_{x+s}\,ds$**  
+Si $\mu_{x+s} = 1/(50-s)$ para $0 \leq s < 50$, calcular ${}_{10}p_x$.  
+**Solución.** $\int_0^{10} 1/(50-s)\,ds = \ln(50/40)$; ${}_{10}p_x = 40/50 = 0{,}8$.
+
+**12. Tipo parcial: De Moivre**  
+Para $\omega = 120$, calcular ${}_{15}p_{50}$ y $\mu_{65}$.  
+**Solución.** ${}_{15}p_{50} = (120-50-15)/(120-50) = 55/70 = 11/14$; $\mu_{65} = 1/(120-65) = 1/55$.
+
+**13. UDD: ${}_tp_x$ en función de $q_x$**  
+Bajo UDD, expresar ${}_tp_x$ para $t \in (0,1)$ en función de $p_x$.  
+**Solución.** ${}_tp_x = 1 - t\,q_x = 1 - t(1-p_x)$; equivalentemente ${}_tp_x = (p_x)^t$ bajo CFM en el año.
+
+**14. Transformación $\mu' = c\,\mu$ (Weishaus)**  
+Si $p_x = 0{,}98$ bajo $\mu$ y $\mu' = 2\mu$ en $(x,x+1)$, hallar $p_x'$.  
+**Solución.** $p_x = e^{-\int \mu}$; $p_x' = e^{-2\int \mu} = (p_x)^2 = 0{,}98^2 = 0{,}9604$.
+
+**15. ${}_tq_x$ como integral**  
+Expresar ${}_tq_x$ como integral de ${}_sp_x\,\mu_{x+s}$.  
+**Solución.** ${}_tq_x = \int_0^t {}_sp_x\,\mu_{x+s}\,ds$ (Neill/Weishaus).
+
+**16. Tipo parcial: dos leyes**  
+Comparar ${}_{10}p_{40}$ bajo De Moivre ($\omega=100$) y bajo fuerza constante $\mu=0{,}02$.  
+**Solución.** De Moivre: $(100-40-10)/(100-40) = 5/6 \approx 0{,}833$. Constante: $e^{-0{,}2} \approx 0{,}8187$.
+
+**17. $\mu$ puede ser $>1$**  
+¿Puede $\mu_{x+t} > 1$? Justificar brevemente.  
+**Solución.** Sí: es una tasa instantánea (por año); no es una probabilidad. Ej.: alta mortalidad infantil.
+
+**18. Fuerza y esperanza**  
+Bajo $\mu$ constante $\mu$, la esperanza completa de vida es $1/\mu$. Verificar para $\mu = 0{,}02$.  
+**Solución.** $\mathring{e}_x = \int_0^\infty {}_tp_x\,dt = \int_0^\infty e^{-\mu t}\,dt = 1/\mu = 50$ años.
+
+**19. Weishaus Example 3A estilo**  
+Si $\mu_{35+t} = 1/(100+t)$, calcular ${}_{10}p_{35}$.  
+**Solución.** $\int_0^{10} 1/(100+s)\,ds = \ln(110/100)$; ${}_{10}p_{35} = 100/110 = 10/11 \approx 0{,}909$.
+
+**20. Síntesis tipo parcial**  
+(a) Definir fuerza de mortalidad $\mu_{x+t}$. (b) Bajo De Moivre $\omega=100$, calcular $q_{80}$ y ${}_5p_{80}$.  
+**Solución.** (a) La fuerza de mortalidad $\mu_{x+t}$ es la tasa instantánea de fallecimiento a la edad $x+t$; se define como $\mu_{x+t} = f_{T_x}(t)/{}_tp_x$ o equivalentemente $\mu_{x+t} = -\frac{d}{dt}\ln {}_tp_x$. (b) En De Moivre: $q_{80} = 1/(\omega-80) = 1/20 = 0{,}05$; ${}_5p_{80} = (100-80-5)/(100-80) = 15/20 = 0{,}75$.
+
+**21. Deducción de ${}_tp_x = e^{-\int_0^t \mu_{x+s}\,ds}$**  
+A partir de $\mu_{x+t} = -\frac{d}{dt}\ln {}_tp_x$, obtener la fórmula integral de ${}_tp_x$.  
+**Solución.** Integrando $-\frac{d}{ds}\ln {}_sp_x = \mu_{x+s}$ entre 0 y $t$: $-\ln {}_tp_x + \ln 1 = \int_0^t \mu_{x+s}\,ds$, luego $\ln {}_tp_x = -\int_0^t \mu_{x+s}\,ds$ y ${}_tp_x = \exp\bigl(-\int_0^t \mu_{x+s}\,ds\bigr)$.
+
+**22. UDD vs CFM en el año**  
+Bajo UDD, ${}_tq_x = t\,q_x$. Bajo fuerza constante en $(x,x+1)$, ${}_tp_x = (p_x)^t$. ¿Coinciden para $t=1$?  
+**Solución.** Para $t=1$, UDD da ${}_1q_x = q_x$ y ${}_1p_x = p_x$. Bajo CFM ${}_1p_x = (p_x)^1 = p_x$. Sí coinciden en $t=1$; para $t \in (0,1)$ las dos hipótesis dan valores distintos (UDD lineal en $t$, CFM exponencial).
+
+**23. Tipo parcial: integral con $\mu$ variable**  
+Si $\mu_{50+s} = 0{,}01 + 0{,}001s$ para $s \in [0, 10]$, calcular ${}_{10}p_{50}$.  
+**Solución.** $\int_0^{10} (0{,}01 + 0{,}001s)\,ds = 0{,}01(10) + 0{,}001(10^2/2) = 0{,}1 + 0{,}05 = 0{,}15$. Por tanto ${}_{10}p_{50} = e^{-0{,}15} \approx 0{,}8607$.
+
+**24. De Moivre: esperanza de vida**  
+Bajo De Moivre con $\omega = 100$, la esperanza completa de vida a la edad $x$ es $(\omega-x)/2$. Verificar para $x=80$.  
+**Solución.** $\mathring{e}_{80} = (\omega - 80)/2 = 20/2 = 10$ años. Se puede comprobar con $\mathring{e}_x = \int_0^{\omega-x} {}_tp_x\,dt$ y ${}_tp_x = (\omega-x-t)/(\omega-x)$ en De Moivre; la integral da $(\omega-x)/2$.
+
+**25. Fuerza de mortalidad y evaluación actuarial**  
+Indicar por qué $\mu_{x+t}$ es central en el cálculo de primas y reservas en formulación continua (Tema 2 y temas posteriores).  
+**Solución.** En seguros y rentas continuos (pago en el momento de la muerte o rentas pagaderas continuamente), los valores presentes se expresan como integrales que involucran ${}_tp_x$ y $\mu_{x+t}$. La relación ${}_tp_x = \exp(-\int_0^t \mu_{x+s}\,ds)$ y $\mu_{x+t} = f_{T_x}(t)/{}_tp_x$ permiten escribir todas las fórmulas en términos de $\mu$ (Jordan, Weishaus), lo que es necesario para Thiele, reservas continuas y beneficios variables en el tiempo.
+
+**26. De Moivre $\mu_{80}$**  
+Con $\omega=100$, calcular $\mu_{80}$. **Solución.** $\mu_{80} = 1/(\omega-80) = 1/20 = 0{,}05$.
+
+**27. Fuerza constante y $t$ mediano**  
+Si $\mu=0{,}04$ constante, hallar $t$ tal que ${}_tp_x = 0{,}5$. **Solución.** $e^{-\mu t}=0{,}5$ → $t = \ln(2)/0{,}04 \approx 17{,}33$ años.
+
+**28. UDD ${}_{0{,}75}q_x$**  
+Bajo UDD con $q_x=0{,}02$, calcular ${}_{0{,}75}q_x$. **Solución.** ${}_{0{,}75}q_x = 0{,}75 \times 0{,}02 = 0{,}015$.
+
+**29. $\mu$ y $f_{T_x}$**  
+Escribir $f_{T_x}(t)$ en función de ${}_tp_x$ y $\mu_{x+t}$. **Solución.** $f_{T_x}(t) = {}_tp_x \,\mu_{x+t}$.
+
+**30. De Moivre ${}_{10}p_{75}$**  
+$\omega=90$. Calcular ${}_{10}p_{75}$. **Solución.** ${}_{10}p_{75} = (90-75-10)/(90-75) = 5/15 = 1/3$.
+
+**31. Integral $\mu$ lineal**  
+Si $\mu_{x+s}=0{,}01+0{,}002s$ en $[0,5]$, hallar ${}_5p_x$. **Solución.** $\int_0^5 (0{,}01+0{,}002s)\,ds = 0{,}05+0{,}025=0{,}075$; ${}_5p_x = e^{-0{,}075} \approx 0{,}9277$.
+
+**32. $q_x$ bajo fuerza constante**  
+Si $\mu$ constante en $(x,x+1)$, dar $q_x$ en función de $\mu$. **Solución.** $q_x = 1 - p_x = 1 - e^{-\mu}$.
+
+**33. De Moivre $q_{85}$**  
+$\omega=100$. Calcular $q_{85}$. **Solución.** $q_{85} = 1/(\omega-85) = 1/15 \approx 0{,}0667$.
+
+**34. ${}_tp_x$ y $\mu$**  
+Si ${}_{10}p_x = 0{,}8$ y $\mu$ constante en $[0,10]$, hallar $\mu$. **Solución.** $e^{-10\mu}=0{,}8$ → $\mu = -\ln(0{,}8)/10 \approx 0{,}0223$.
+
+**35. UDD ${}_{0{,}5}p_{50}$**  
+$q_{50}=0{,}015$. Bajo UDD, calcular ${}_{0{,}5}p_{50}$. **Solución.** ${}_{0{,}5}p_{50} = 1 - 0{,}5 \times 0{,}015 = 0{,}9925$.
+
+**36. $\mathring{e}_x$ De Moivre**  
+Verificar $\mathring{e}_x = (\omega-x)/2$ bajo De Moivre para $x=70$, $\omega=100$. **Solución.** $\mathring{e}_{70} = 30/2 = 15$ años.
+
+**37. $\mu_{x+t}$ y derivada**  
+Demostrar $\mu_{x+t} = -\frac{d}{dt}\ln {}_tp_x$. **Solución.** $\frac{d}{dt}\ln {}_tp_x = \frac{1}{{}_tp_x}(-{}_tp_x\,\mu_{x+t}) = -\mu_{x+t}$.
+
+**38. Fuerza doble**  
+Si $\mu'=2\mu$ en $(x,x+1)$ y $p_x=0{,}99$, hallar $p_x'$. **Solución.** $p_x' = e^{-2\int\mu} = (p_x)^2 = 0{,}99^2 = 0{,}9801$.
+
+**39. De Moivre ${}_{5}p_{90}$**  
+$\omega=100$. ${}_{5}p_{90}$. **Solución.** ${}_{5}p_{90} = (100-90-5)/(100-90) = 5/10 = 0{,}5$.
+
+**40. ${}_tq_x$ integral**  
+Escribir ${}_tq_x = \int_0^t {}_sp_x\,\mu_{x+s}\,ds$ y justificar. **Solución.** Probabilidad de fallecer antes de $t$ = integral de (supervivir hasta $s$) × (fuerza en $s$).
+
+**41. $\mu$ variable $1/(c-s)$**  
+$\mu_{x+s}=1/(40-s)$, $0 \leq s < 40$. Calcular ${}_{5}p_x$. **Solución.** $\int_0^5 1/(40-s)\,ds = \ln(40/35)$; ${}_5p_x = 35/40 = 0{,}875$.
+
+**42. UDD y CFM**  
+Bajo UDD, ${}_tq_x = t\,q_x$. Bajo CFM en el año, ${}_tp_x = (p_x)^t$. ¿Cuándo coinciden? **Solución.** Solo en $t=0$ y $t=1$; para $t \in (0,1)$ difieren.
+
+**43. $\mu_{65}$ De Moivre**  
+$\omega=90$. Calcular $\mu_{65}$. **Solución.** $\mu_{65} = 1/(90-65) = 1/25 = 0{,}04$.
+
+**44. Esperanza y $\mu$ constante**  
+Si $\mu=0{,}02$ constante, dar $\mathring{e}_x$. **Solución.** $\mathring{e}_x = 1/\mu = 50$ años.
+
+**45. ${}_{0{,}25}q_x$ UDD**  
+$q_x=0{,}012$. Bajo UDD, ${}_{0{,}25}q_x$. **Solución.** ${}_{0{,}25}q_x = 0{,}25 \times 0{,}012 = 0{,}003$.
+
+**46. De Moivre dos edades**  
+$\omega=100$. Calcular ${}_{10}p_{50}$ y ${}_{10}p_{60}$. **Solución.** ${}_{10}p_{50} = 40/50 = 0{,}8$; ${}_{10}p_{60} = 30/40 = 0{,}75$.
+
+**47. $\mu$ y $q_x$**  
+Relacionar $q_x$ con la fuerza media en $(x,x+1)$ bajo suavidad. **Solución.** $q_x \approx 1 - e^{-\bar{\mu}}$ con $\bar{\mu}$ fuerza media; o $q_x \approx \mu_{x+1/2}$ en aproximación.
+
+**48. Integral exponencial**  
+Si $\mu_{x+s}=0{,}03$ en $[0,8]$, calcular ${}_8p_x$. **Solución.** ${}_8p_x = e^{-0{,}03 \times 8} = e^{-0{,}24} \approx 0{,}7866$.
+
+**49. Tipo parcial estilo**  
+De Moivre $\omega=95$. Calcular $q_{80}$, ${}_{5}p_{80}$, $\mu_{82}$. **Solución.** $q_{80}=1/15$; ${}_5p_{80}=(95-85)/(95-80)=10/15=2/3$; $\mu_{82}=1/13$.
+
+**50. Síntesis**  
+(a) Definir UDD. (b) Si $q_{60}=0{,}02$, bajo UDD calcular ${}_{0{,}3}p_{60}$. **Solución.** (a) Muertes uniformes en $(x,x+1)$; ${}_tq_x=t\,q_x$. (b) ${}_{0{,}3}p_{60}=1-0{,}3\times 0{,}02=0{,}994$.
+
+
+---
+
+### Ejercicios resueltos tipo parcial (20)
+
+Ejercicios de nivel examen sobre fuerza de mortalidad $\mu_{x+t}$, UDD, De Moivre y fuerza constante. Las soluciones se presentan por pasos.
+
+**1. Tipo parcial — Fuerza constante**  
+Si $\mu = 0{,}01$ constante, calcular ${}_5p_x$ y la esperanza completa $\mathring{e}_x$.
+
+**Solución.**
+
+- ${}_5p_x = e^{-\mu \cdot 5} = e^{-0{,}05} \approx 0{,}9512$.
+- $\mathring{e}_x = 1/\mu = 1/0{,}01 = 100$ años.
+
+**2. Tipo parcial — De Moivre**  
+Verificar bajo De Moivre $\omega=100$ que $q_{70}=1/30$ y ${}_{20}p_{70}=1/3$.
+
+**Solución.**
+
+- Bajo De Moivre: ${}_tp_x = (\omega - x - t)/(\omega - x)$. Con $x=70$, $\omega-x=30$.
+- $q_{70} = {}_1q_{70} = 1 - {}_1p_{70} = 1 - 29/30 = 1/30$.
+- ${}_{20}p_{70} = (30-20)/30 = 10/30 = 1/3$.
+
+**3. Tipo parcial — UDD**  
+Bajo UDD con $q_x = 0{,}015$, calcular ${}_{0{,}3}q_x$ y ${}_{0{,}7}p_x$.
+
+**Solución.**
+
+- UDD: ${}_tq_x = t \cdot q_x$ para $t \in (0,1)$ → ${}_{0{,}3}q_x = 0{,}3 \times 0{,}015 = 0{,}0045$.
+- ${}_{0{,}7}p_x = 1 - {}_{0{,}7}q_x = 1 - 0{,}7 \times 0{,}015 = 0{,}9895$.
+
+**4. Tipo parcial — De Moivre: $p$, $\mu$, $q$**  
+De Moivre $\omega=90$. Calcular ${}_{10}p_{60}$, $\mu_{70}$ y $q_{60}$.
+
+**Solución.**
+
+- ${}_{10}p_{60} = (\omega-60-10)/(\omega-60) = 20/30 = 2/3$.
+- $\mu_{70} = 1/(\omega-70) = 1/20 = 0{,}05$.
+- $q_{60} = 1/(\omega-60) = 1/30$.
+
+**5. Tipo parcial — Definición UDD y medio año**  
+(a) Definir UDD. (b) Si $q_{45}=0{,}01$, calcular ${}_{0{,}5}p_{45}$ bajo UDD.
+
+**Solución.**
+
+- **(a)** UDD: las muertes se distribuyen uniformemente en $(x,x+1)$; ${}_tq_x = t \cdot q_x$ para $t \in (0,1)$.
+- **(b)** ${}_{0{,}5}p_{45} = 1 - {}_{0{,}5}q_{45} = 1 - 0{,}5 \times 0{,}01 = 0{,}995$.
+
+**6. Tipo parcial — Fuerza y probabilidad**  
+Explicar la diferencia entre $\mu_{x+t}$ y $q_x$ (interpretación y unidades).
+
+**Solución.**
+
+- $\mu_{x+t}$: tasa instantánea de fallecimiento (por año); puede ser $>1$.
+- $q_x$: probabilidad de fallecer en $(x,x+1)$; adimensional, en $[0,1]$. Relación: $q_x \approx \mu_{x+1/2}$ bajo suavidad, o con UDD $q_x = 1 - e^{-\bar{\mu}}$ con $\bar{\mu}$ fuerza media en el año.
+
+**7. Tipo parcial — Fuerza constante y tiempo mediano**  
+Si $\mu = 0{,}02$ constante, hallar $t$ tal que ${}_tp_x = 0{,}5$.
+
+**Solución.**
+
+- ${}_tp_x = e^{-\mu t} = 0{,}5$ → $-\mu t = \ln(0{,}5)$ → $t = \ln(2)/0{,}02 \approx 34{,}66$ años.
+
+**8. Tipo parcial — Integral de la fuerza**  
+Demostrar que ${}_tp_x = \exp(-\int_0^t \mu_{x+s}\,ds)$.
+
+**Solución.**
+
+- Densidad de $T_x$: $f_{T_x}(t) = {}_tp_x \,\mu_{x+t}$. De $f/({}_tp_x) = \mu_{x+t}$ se integra: $\ln {}_tp_x = -\int_0^t \mu_{x+s}\,ds$ → ${}_tp_x = \exp(-\int_0^t \mu_{x+s}\,ds)$.
+
+**9. Tipo parcial — Comparar De Moivre y fuerza constante**  
+Comparar ${}_1p_{50}$ bajo De Moivre ($\omega=100$) y bajo $\mu=0{,}02$ constante.
+
+**Solución.**
+
+- De Moivre: ${}_1p_{50} = (50-1)/50 = 49/50 = 0{,}98$.
+- Fuerza constante: ${}_1p_{50} = e^{-0{,}02} \approx 0{,}9802$. Valores muy próximos.
+
+**10. Tipo parcial — Integrador**  
+Dado $\mu_{50+t} = 1/(60-t)$ para $0 \leq t < 60$, calcular ${}_{10}p_{50}$ y expresar $\mu_{55}$.
+
+**Solución.**
+
+- ${}_{10}p_{50} = \exp(-\int_0^{10} 1/(60-s)\,ds) = \exp(-\ln(60/50)) = 50/60 = 5/6$.
+- $\mu_{55}$ corresponde a $t=5$: $\mu_{55} = 1/(60-5) = 1/55$.
+
+**11. Tipo parcial — $\mu$ y $q_x$**  
+Si $q_x=0{,}015$ bajo fuerza constante en el año, hallar $\mu$ aproximado. **Solución.** $q_x=1-e^{-\mu}$ → $\mu \approx -\ln(0{,}985) \approx 0{,}0151$.
+
+**12. Tipo parcial — De Moivre esperanza**  
+Bajo De Moivre $\omega=100$, verificar $\mathring{e}_{80}=10$. **Solución.** $\mathring{e}_{80} = (\omega-80)/2 = 20/2 = 10$.
+
+**13. Tipo parcial — UDD cuarto de año**  
+$q_{55}=0{,}01$. Bajo UDD, ${}_{0{,}25}p_{55}$. **Solución.** ${}_{0{,}25}p_{55} = 1 - 0{,}25 \times 0{,}01 = 0{,}9975$.
+
+**14. Tipo parcial — Fuerza en edad**  
+Si $\mu_{50+t}=1/(60-t)$ para $0 \leq t < 60$, dar $\mu_{55}$. **Solución.** $t=5$ → $\mu_{55}=1/(60-5)=1/55$.
+
+**15. Tipo parcial — Comparar leyes**  
+Comparar ${}_1p_{70}$ bajo De Moivre $\omega=100$ y bajo $\mu=0{,}03$ constante. **Solución.** De Moivre: 29/30; Constante: $e^{-0{,}03} \approx 0{,}9704$.
+
+**16. Tipo parcial — Tiempo mediano**  
+$\mu=0{,}025$ constante. Hallar $t$ con ${}_tp_x=0{,}5$. **Solución.** $t = \ln(2)/0{,}025 \approx 27{,}73$ años.
+
+**17. Tipo parcial — Integral**  
+Demostrar ${}_tp_x = \exp(-\int_0^t \mu_{x+s}\,ds)$ a partir de $\mu_{x+t}=f_{T_x}(t)/{}_tp_x$. **Solución.** Integrar $d\ln {}_tp_x/dt = -\mu_{x+t}$ entre 0 y $t$.
+
+**18. Tipo parcial — UDD definición**  
+Explicar por qué bajo UDD ${}_tq_x = t\,q_x$ para $t \in (0,1)$. **Solución.** Muertes distribuidas uniformemente en el año → probabilidad proporcional a $t$.
+
+**19. Tipo parcial — De Moivre y lineal**  
+Bajo De Moivre, ${}_tp_x$ es lineal en $t$. Verificar para $x=60$, $\omega=100$, $t=5$. **Solución.** ${}_5p_{60} = (40-5)/40 = 35/40 = 0{,}875$.
+
+**20. Tipo parcial — Integrador**  
+Dado $\mu_{40+s}=0{,}02$ en $[0,15]$, calcular ${}_{15}p_{40}$ y la esperanza si fuera constante en todo el horizonte. **Solución.** ${}_{15}p_{40}=e^{-0{,}3}\approx 0{,}7408$; si $\mu$ constante, $\mathring{e}=1/0{,}02=50$.
+
+
+---
+
+### Ejercicios propuestos (40)
+
+En cada ejercicio se debe calcular o demostrar lo indicado usando $\mu_{x+t}$, UDD, De Moivre o fuerza constante. Indicar brevemente qué se pide. Hay espacio entre ítems (el doble de ejercicios para mayor práctica).
+
+1. **Se pide:** Si $\mu = 0{,}01$ constante, calcular ${}_5p_x$ y la esperanza completa de vida (Jordan).
+
+2. **Se pide:** Verificar bajo De Moivre con $\omega=100$ que $q_{70}=1/30$ y ${}_{20}p_{70}=1/3$ (Neill).
+
+3. **Transformación $\mu$ (Weishaus).** **Se pide:** $\mu_x' = 0{,}5\mu_x + 0{,}1$ entre 70 y 71, $q_{70}=0{,}01$. Hallar $q_{70}'$ [@weishaus2013].
+
+4. **Se pide:** Si $\mu_{35+t} = 1/(100+t)$ para $t \geq 0$, calcular ${}_{10}p_{35}$ (Weishaus Example 3A).
+
+5. **Se pide:** Bajo UDD con $q_x = 0{,}015$, calcular ${}_{0{,}3}q_x$ y ${}_{0{,}7}p_x$.
+
+6. **Se pide:** Expresar $q_x$ en función de $\mu$ bajo fuerza constante en $(x,x+1)$.
+
+7. **Tipo parcial.** **Se pide:** De Moivre con $\omega=90$. Calcular ${}_{10}p_{60}$, $\mu_{70}$ y $q_{60}$.
+
+8. **Se pide:** Demostrar que ${}_tp_x = \exp(-\int_0^t \mu_{x+s}\,ds)$.
+
+9. **Se pide:** Si ${}_2p_x = 0{,}96$ y la fuerza es constante en $(x,x+2)$, hallar $\mu$.
+
+10. **Se pide:** Bajo UDD, dar la fórmula de ${}_tq_x$ para $t \in (0,1)$.
+
+11. **Tipo parcial.** **Se pide:** Comparar ${}_1p_{50}$ bajo De Moivre ($\omega=100$) y bajo $\mu=0{,}02$ constante.
+
+12. **Se pide:** Relacionar la densidad $f_{T_x}(t)$ con $\mu_{x+t}$ y ${}_tp_x$.
+
+13. **Se pide:** Si $\mu_{x+t} = 0{,}01 + 0{,}001t$ en $[0,10]$, calcular ${}_{10}p_x$.
+
+14. **Se pide:** Verificar que bajo De Moivre $\mu_{x+t} = 1/(\omega - x - t)$.
+
+15. **Tipo parcial.** **Se pide:** (a) Definir UDD. (b) Si $q_{45}=0{,}01$, calcular ${}_{0{,}5}p_{45}$ bajo UDD.
+
+16. **Se pide:** Fuerza constante $\mu = 0{,}04$: hallar $t$ tal que ${}_tp_x = 0{,}5$.
+
+17. **Se pide:** Escribir ${}_tq_x$ como $\int_0^t {}_sp_x\,\mu_{x+s}\,ds$ y justificar.
+
+18. **Se pide:** Si $p_x = 0{,}99$ y se asume CFM en el año, calcular ${}_{0{,}25}p_x$.
+
+19. **Se pide:** De Moivre $\omega=110$: calcular la probabilidad de que (100) sobreviva 5 años.
+
+20. **Tipo parcial.** **Se pide:** Dado $\mu_{50+t} = 1/(60-t)$ para $0 \leq t < 60$, calcular ${}_{10}p_{50}$ y expresar $\mu_{55}$ (Jordan/Neill/Weishaus).
+
+
+21. **Se pide:** Deducir $\mu_{x+t} = -\frac{d}{dt}\ln {}_tp_x$ a partir de $f_{T_x}(t) = -\frac{d}{dt}\,{}_tp_x$.
+
+22. **Se pide:** Bajo UDD con $q_x = 0{,}015$, calcular ${}_{0{,}25}p_x$ y ${}_{0{,}75}q_x$.
+
+23. **Tipo parcial.** **Se pide:** De Moivre $\omega=90$. Calcular ${}_{10}p_{60}$, $\mu_{70}$ y la esperanza completa $\mathring{e}_{60}$.
+
+24. **Se pide:** Explicar la diferencia entre fuerza de mortalidad y probabilidad $q_x$ (interpretación y unidades).
+
+25. **Se pide:** Si $\mu$ es constante e igual a 0,02, hallar $t$ tal que ${}_tp_x = 0{,}5$ (tiempo mediano de vida).
+
+26. **Se pide:** Si $\mu_{x+t}=0{,}015$ en $[0,20]$, calcular ${}_{20}p_x$.
+
+27. **Se pide:** De Moivre $\omega=110$: calcular la probabilidad de que (100) sobreviva 5 años.
+
+28. **Tipo parcial.** **Se pide:** (a) Definir fuerza de mortalidad. (b) Bajo UDD con $q_{50}=0{,}02$, calcular ${}_{0{,}5}p_{50}$.
+
+29. **Se pide:** Expresar $q_x$ en función de $\mu$ bajo fuerza constante en $(x,x+1)$.
+
+30. **Se pide:** Si ${}_2p_x = 0{,}96$ y la fuerza es constante en $(x,x+2)$, hallar $\mu$.
+
+31. **Se pide:** Demostrar que ${}_tp_x = \exp(-\int_0^t \mu_{x+s}\,ds)$.
+
+32. **Se pide:** Fuerza constante $\mu = 0{,}04$: hallar $t$ tal que ${}_tp_x = 0{,}5$.
+
+33. **Se pide:** Escribir ${}_tq_x$ como $\int_0^t {}_sp_x\,\mu_{x+s}\,ds$ y justificar.
+
+34. **Se pide:** Si $p_x = 0{,}99$ y se asume CFM en el año, calcular ${}_{0{,}25}p_x$.
+
+35. **Tipo parcial.** **Se pide:** Comparar ${}_5p_{50}$ bajo De Moivre $\omega=100$ y bajo $\mu=0{,}02$ constante.
+
+36. **Se pide:** Relacionar la densidad $f_{T_x}(t)$ con $\mu_{x+t}$ y ${}_tp_x$.
+
+37. **Se pide:** Si $\mu_{x+t} = 0{,}01 + 0{,}001t$ en $[0,10]$, calcular ${}_{10}p_x$.
+
+38. **Se pide:** Verificar que bajo De Moivre $\mu_{x+t} = 1/(\omega - x - t)$.
+
+39. **Se pide:** Bajo UDD, dar la fórmula de ${}_tq_x$ para $t \in (0,1)$.
+
+40. **Tipo parcial.** **Se pide:** Dado $\mu_{45+t}=1/(70-t)$ para $0 \leq t < 70$, calcular ${}_{10}p_{45}$ y $\mu_{50}$.
+
+---
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013]; Elandt-Johnson y Johnson [@elandt-johnson1980]; Bellhouse [@bellhouse1988].*

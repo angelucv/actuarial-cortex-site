@@ -1,0 +1,175 @@
+---
+number: false
+---
+
+# Interés simple y descuento {#cap-interes-simple-descuento .unnumbered}
+
+Este capítulo desarrolla el interés simple, el valor actual, la tasa y el plazo, el tiempo real y aproximado, el descuento comercial y real, las ecuaciones de valores equivalentes y aplicaciones (ventas a plazo, tarjetas de crédito, empeño, pagos anticipados). Se integra contenido de referencia sobre operaciones a corto plazo donde el interés no se capitaliza.
+
+## Introducción y conceptos básicos
+
+Suponga la siguiente situación: el señor López obtiene un préstamo por \$20\,000 que solicitó a un banco y acuerda pagarlo después de dos meses, entregando al banco \$20\,400. Este caso ejemplifica una operación en la que interviene el **interés simple**. El supuesto fundamental es que el dinero aumenta su valor con el tiempo: el señor López obtuvo inicialmente \$20\,000 y pagó, dos meses después, \$20\,400; es decir, los \$20\,000 que le prestaron más \$400 de interés, que de acuerdo con el supuesto básico es la cantidad en que aumentó el valor del préstamo original en dos meses. Desde el punto de vista del banco, esos intereses son su ganancia por haber invertido su dinero; desde el punto de vista del señor López, son el costo de haber utilizado los \$20\,000 durante dos meses.
+
+Los elementos que intervienen en una operación de interés son, en el mismo ejemplo:
+
+- $C$ = capital que se invierte = \$20\,000  
+- $t$ = tiempo o plazo = dos meses  
+- $I$ = interés simple = \$400  
+- $M$ = monto = capital más intereses = \$20\,400  
+- $i$ = tasa de interés  
+
+La **tasa de interés** refleja la relación entre los intereses y el capital; en el ejemplo:
+
+$$i = \frac{400}{20\,000} = 0{,}02.$$
+
+Si se multiplica por 100, este cociente indica que el capital ganó 2\% de interés en dos meses (pues \$400 es 2\% de \$20\,000). Para expresar todo en la misma base, se acostumbra dar tanto la tasa $i$ como el tiempo $t$ en unidades de año; así, $t = 2/12 = 1/6$ de año, y si la tasa es 0,02 por bimestre, en 6 bimestres será $i = 0{,}02 \times 6 = 0{,}12$, es decir **12\% anual**. La tasa puede expresarse en decimales (0,12) o en porcentaje (12\%).
+
+En resumen: $C = 20\,000$, $I = 400$, $t = 1/6$, $i = 0{,}12$, $M = 20\,400$. En general, el monto es igual al capital más los intereses:
+
+$$M = C + I,$$
+
+y el interés es igual al capital multiplicado por la tasa y por el tiempo:
+
+$$I = C\,i\,t.$$
+
+Combinando ambas expresiones:
+
+$$M = C + C\,i\,t = C(1 + i\,t).$$
+
+Al factor $(1 + i\,t)$ se le conoce como **factor de acumulación con interés simple**. Despejando el capital en $M = C(1+i\,t)$ se obtiene:
+
+$$C = \frac{M}{1+i\,t} = M(1+i\,t)^{-1}.$$
+
+Así, si el señor Chávez tiene una deuda de \$20\,400 que debe pagar dentro de dos meses y la operación está pactada al 12\% anual de interés simple, para saldar su deuda hoy debería pagar \$20\,000. A esta cantidad se le llama **valor actual** (o valor presente) de la deuda. El capital y el valor actual representan lo mismo en contextos distintos: el capital es la cantidad que se invierte ahora para obtener después un monto mayor; el valor actual es el valor hoy de una cantidad planteada en una fecha futura.
+
+## Monto
+
+**Ejemplo (comerciante).** Un comerciante adquiere un lote de mercancía con valor de \$3\,500 que acuerda liquidar mediante un pago inmediato de \$1\,500 y un pago final 4 meses después. Acepta pagar 10\% de interés anual simple sobre el saldo. ¿Cuánto deberá pagar dentro de 4 meses?
+
+*Solución:* $C = 3\,500 - 1\,500 = 2\,000$, $i = 0{,}10$, $t = 4/12 = 1/3$. Entonces $M = 2\,000[1 + (0{,}10)(1/3)] = 2\,000(1{,}033333) = 2\,066{,}67$. Deberá pagar \$2\,066,67 (\$2\,000 de capital y \$66,67 de intereses).
+
+**Ejemplo (fondo de inversión).** Una persona deposita \$150\,000 en un fondo de inversiones bursátiles que garantiza un rendimiento de 0,8\% mensual. Si retira su depósito 24 días después, ¿cuánto recibe?
+
+*Solución:* $C = 150\,000$, $i = 0{,}008$ mensual, $t = 24/30$ meses. $M = 150\,000[1 + (0{,}008)(24/30)] = 150\,000(1 + 0{,}0064) = 150\,960$. Aquí tanto el tiempo como la tasa están en meses.
+
+## Valor actual o presente
+
+El valor actual (equivalente al capital) se obtiene despejando $C$ en la fórmula del monto: $C = M/(1+i\,t) = M(1+i\,t)^{-1}$.
+
+**Ejemplo (tanda).** Una persona participa en una “tanda” y le toca cobrar en el decimoctavo mes. Si dentro de 18 meses recibirá \$30\,000, ¿cuál es el valor actual con interés simple de 20\% anual?
+
+*Solución:* $M = 30\,000$, $t = 18/12 = 1{,}5$, $i = 0{,}20$. $C = 30\,000/[1 + 0{,}20(1{,}5)] = 30\,000/1{,}30 = 23\,076{,}92$. El valor actual de \$30\,000 realizables en 18 meses al 20\% anual simple es \$23\,076,92.
+
+**Ejemplo (terreno).** Un individuo compró un terreno pagando \$195\,000 el 1 de enero y lo vende el 1 de junio del año siguiente en \$256\,000. Considerando solo compra y venta, ¿fue conveniente si la tasa de mercado era 11\%? Se calcula el valor actual de \$256\,000, 17 meses atrás, al 11\% anual simple: $C = 256\,000/[1 + (17/12)(0{,}11)] = 256\,000/1{,}155833 \approx 221\,485{,}28$. Ganó \$26\,485,28 respecto al precio de compra, al haber invertido en el terreno en vez de en una alternativa con el mismo rendimiento de mercado.
+
+## Interés
+
+**Ejemplo.** Una persona obtiene un préstamo de \$50\,000 y acepta liquidarlo a año y medio. Mientras exista el adeudo pagará un interés simple mensual de 1,5\%. ¿Cuánto deberá pagar de interés cada mes?
+
+*Solución (a):* $C = 50\,000$, $t = 1$ mes, $i = 0{,}015$. $I = 50\,000(0{,}015)(1) = 750$ (dólares mensuales). (b) En base anual: $t = 1/12$, $i = 0{,}015 \times 12 = 0{,}18$ anual; $I = 50\,000(1/12)(0{,}18) = 750$.
+
+**Ejemplo.** Si alguien deposita \$75\,000 en una cuenta que paga 0,35\% mensual simple, ¿cuánto recibirá mensualmente de intereses? $I = 75\,000(0{,}0035)(1) = 262{,}50$ dólares mensuales.
+
+### Ejercicios (valor actual e interés)
+
+6. ¿Qué cantidad se debe invertir hoy al 1,8\% de interés simple mensual para tener \$20\,000 dentro de dos meses?  
+7. ¿Cuál es el valor de un pagaré por \$5\,000 que vence el 15 de septiembre si se considera 5\% anual simple y hoy es 11 de julio?  
+8. Para saldar una deuda, una persona debe pagar \$3\,500 el 15 de julio. ¿Con qué cantidad pagada hoy, 13 de marzo, liquidaría su deuda al 6\% anual?  
+9. Un mes después de haber obtenido un préstamo, José Luis debe pagar exactamente \$850. ¿Cuánto obtuvo en préstamo si el pago incluye intereses del 18\% anual?  
+10. ¿Cuál es el valor actual de una letra de cambio de \$9\,000 que vence en 60 días si la tasa es 17\% anual?  
+11. A una persona despedida se le paga una indemnización neta de \$45\,000 (incluye 3 meses de sueldo, etc.). ¿Qué ingreso fijo mensual le representaría depositar esa liquidación en una inversión al 18\% de interés simple anual?  
+12. ¿Qué cantidad colocada en una inversión de renta fija al 10\% de interés simple anual produce intereses mensuales de \$450?  
+13. ¿Cuánto debe pagar por concepto de intereses una persona con una deuda de \$22\,000 si la liquida a 6 meses y le cobran 16\% anual simple?  
+14. ¿Cuánto tendría que pagar mensualmente por concepto de intereses quien adeuda \$7\,500 si le cobran 8\% simple semestral?  
+15. Salomé tiene dos deudas: (a) \$80\,000 a un banco que cobra 1,5\% mensual; (b) saldo de auto \$125\,000 que pagará dentro de 8 meses, con 12\% de interés simple anual mientras tanto. ¿Cuánto pagará en los próximos seis meses por concepto de intereses?  
+16–18. (Movimientos de cuenta de crédito, saldo con abonos y cargos, comparación de ofertas de venta de terreno; ver enunciados en la práctica del capítulo.)
+
+## Tasa de interés
+
+**Ejemplo.** Una persona compra un reproductor de discos que cuesta \$1\,500. Paga \$800 de enganche y acuerda pagar \$750 tres meses después. ¿Qué tasa de interés simple pagó? $C = 700$, $t = 3/12 = 0{,}25$, $I = 750 - 700 = 50$. De $I = C\,i\,t$ se tiene $50 = 700\,i(0{,}25)$, luego $i = 50/175 = 0{,}2857$ (28,57\% anual).
+
+**Ejemplo.** Terreno comprado el 1 de enero en \$195\,000 y vendido 17 meses después en \$256\,000. ¿Qué tasa de interés simple anual rindió? De $M = C(1+i\,t)$: $256\,000 = 195\,000[1 + i(17/12)]$, entonces $256\,000/195\,000 = 1 + (17/12)i$, $(17/12)i = 0{,}312821$, $i \approx 0{,}2208$ (22,08\% anual).
+
+**Ejemplo.** Tasa de interés simple mensual equivalente a 54\% anual: $i = 0{,}54/12 = 0{,}045$ (4,5\% mensual).
+
+**Ejemplo.** Tasa mensual simple equivalente a 0,165 semestral: $i = 0{,}165/6 = 0{,}0275$ (2,75\% mensual).
+
+## Plazo o tiempo
+
+**Ejemplo.** ¿En cuánto tiempo se duplica un capital invertido al 19\% de interés anual simple? Con $M = 2$ y $C = 1$: $2 = 1[1 + 0{,}19\,t]$, $t = 1/0{,}19 \approx 5{,}26$ años; 0,26 años $\approx$ 95 días, es decir unos 5 años y 95 días.
+
+**Ejemplo.** ¿En cuánto tiempo se acumulan \$5\,000 si se depositan hoy \$3\,000 en un fondo que paga 1,2\% simple mensual? $5\,000 = 3\,000(1 + 0{,}012\,t)$, $t = 0{,}666667/0{,}012 \approx 55{,}56$ meses (55 meses y unos 17 días).
+
+## Tiempo real y tiempo aproximado
+
+Cuando el plazo se especifica por fechas, puede usarse **tiempo real** (días naturales entre fechas) o **tiempo aproximado** (meses de 30 días, año de 360 días).
+
+**Ejemplo.** Monto al 24 de diciembre de un capital de \$10\,000 depositado el 15 de mayo del mismo año en una cuenta que paga 19\% anual simple. (a) Tiempo real: del 16 de mayo al 24 de diciembre hay 223 días, $t = 223/365$. $M = 10\,000[1 + 0{,}19(223/365)] = 11\,160{,}82$. (b) Tiempo aproximado: 7 meses y 9 días = 219 días, $t = 219/360$. $M = 10\,000[1 + 0{,}19(219/360)] = 11\,155{,}83$. El cálculo aproximado es común en transacciones comerciales.
+
+**Ejemplo.** Pagaré por \$1\,700 firmado el 11 de julio al 18\% de interés. ¿En qué fecha los intereses llegan a \$150? $I = C\,i\,t$ $\Rightarrow$ $150 = 1\,700(0{,}18)\,t$, $t = 150/306 \approx 0{,}4902$ años. En días: $0{,}4902(365) \approx 179$ (tiempo real) o $0{,}4902(360) \approx 177$ (aproximado). Contando desde el 11 de julio se llega al 6 de enero del año siguiente (tiempo real) o al 7 de enero (aproximado).
+
+## Descuento
+
+El **descuento** es una operación de crédito en la que una institución adquiere letras de cambio o pagarés descontando del valor nominal una suma equivalente a los intereses del documento entre la fecha de recepción y la de vencimiento, anticipando así el valor actual.
+
+### Descuento comercial
+
+El descuento se calcula sobre el **valor nominal** $M$: $D = M\,d\,t$, donde $d$ es la tasa de descuento y $t$ el tiempo. El valor anticipado es $C = M - D$.
+
+**Ejemplo.** Un pagaré con valor nominal \$185\,000 vence en 2 meses. Se descuenta comercialmente al 20\% anual. $D = 185\,000(0{,}20)(2/12) = 6\,166{,}67$. Valor anticipado: $185\,000 - 6\,166{,}67 = 178\,833{,}33$.
+
+**Ejemplo.** Una empresa descontó un pagaré y recibió \$166\,666,67. Tasa de descuento 30\%, vencimiento 4 meses después del descuento. $D = (C+D)\,d\,t$ con $C = 166\,666{,}67$, $d = 0{,}30$, $t = 1/3$. De $D(1-d\,t) = C\,d\,t$ se obtiene $D = C\,d\,t/(1-d\,t) = 16\,666{,}67/0{,}90 \approx 18\,518{,}52$. Valor nominal $M = C + D \approx 185\,185{,}19$.
+
+**Ejemplo.** Documento descontado por el que se recibe \$945,05; tasa 25\%, valor nominal \$1\,000. $D = 54{,}95 = 1\,000(0{,}25)\,t$ $\Rightarrow$ $t \approx 0{,}2198$ años (aprox. 2 meses y 19 días).
+
+### Descuento real o justo
+
+El descuento justo se calcula sobre el **valor que se anticipa** (valor actual): $M = C(1+i\,t)$, de donde $C = M/(1+i\,t)$ y el descuento es $D = M - C$.
+
+**Ejemplo.** Con los datos del primer caso de descuento: $M = 185\,000$, $t = 2/12$, $i = 0{,}20$. $C = 185\,000/[1 + 0{,}20(2/12)] = 185\,000/1{,}033333 = 179\,032{,}26$. Descuento real $= 185\,000 - 179\,032{,}26 = 5\,967{,}74$ (inferior al comercial).
+
+**Ejemplo.** Del caso en que la empresa recibió \$166\,666,67: con descuento real $M = 166\,666{,}67[1 + 0{,}30(1/3)] = 183\,333{,}34$. El descuento justo equivale a un porcentaje del capital; el comercial, del monto.
+
+### Ejercicios (descuento y gráficas)
+
+39. Elaborar una gráfica del interés en un mes con capital \$1\,000 en depósitos a plazo de 60, 90, 180 y 360 días.  
+40. Confeccionar gráficas del monto para las mismas alternativas.  
+41. Descuento comercial de un documento que vence en 5 meses, valor nominal \$3\,850, descontado al 18\% tres meses antes del vencimiento.  
+42. Descuento real del documento del ejercicio 41.  
+43–62. (Descuento en fechas dadas, tasas de descuento, valor nominal, anticipación, CETES; ver lista en la práctica.)
+
+## Gráficas de interés simple
+
+Con $C = 1$, $I = i\,t$ es una recta que pasa por el origen con pendiente $i$. $M = 1 + i\,t$ es una recta con ordenada al origen 1 y pendiente $i$. A mayor tasa, mayor pendiente (interés y monto crecen más rápido).
+
+## Ecuaciones de valores equivalentes
+
+En muchas operaciones hay dos o más transacciones que deben replantearse en una sola. La fórmula del monto $M = C(1+i\,t)$ es ya una ecuación de valores equivalentes. En general se elige una **fecha focal** y se lleva a esa fecha el valor de cada deuda y de cada pago; la suma de los valores de las deudas debe igualar la suma de los valores de los pagos.
+
+**Ejemplo.** Pagaré \$120\,000 a 90 días al 25\%. A los 30 días contrae otra deuda de \$100\,000 a 2 meses sin intereses. A los 2 meses paga \$150\,000 y acuerda saldar el resto con un pago final a los 5 meses (3 meses después) con interés del 30\%. Determinar el pago final.
+
+Se elige como fecha focal el mes 5. Valor de la deuda I en mes 5: $120\,000[1+0{,}25(3/12)]$ a 90 días = \$127\,500; luego capitalizar 2 meses al 30\%: $127\,500[1+0{,}30(2/12)] = 133\,875$. Valor de la deuda II en mes 5: $100\,000[1+0{,}30(2/12)] = 105\,000$. Valor del pago A en mes 5: $150\,000[1+0{,}30(3/12)] = 161\,250$. Si $X$ es el pago final en mes 5: $133\,875 + 105\,000 = 161\,250 + X$, por tanto $X = 77\,625$.
+
+*Importante:* En interés simple, cambiar la fecha focal produce resultados distintos; la ecuación debe plantearse según lo pactado.
+
+**Ejemplo (fecha focal en mes 4).** Con la misma situación pero fecha focal en el mes 4, se llevan las deudas y el pago de \$150\,000 al mes 4 y se descuenta $X$ un mes. La ecuación resulta en $X \approx 77\,579{,}69$, distinto al usar mes 5.
+
+**Ejemplo.** Deuda hace 8 meses por \$200\,000 al 40\% simple, vence en 4 meses; otra de \$150\,000 hace 2 meses al 35\% simple, vence en 2 meses. Con interés del 42\%, ¿qué pago $X$ hoy salda las deudas si se compromete a pagar \$100\,000 dentro de 6 meses? Fecha focal: hoy. Valor en vencimiento de la primera: $200\,000(1{,}40) = 280\,000$; valor hoy: $280\,000/[1+0{,}42(4/12)] = 245\,614{,}04$. Segunda al vencimiento: $150\,000[1+0{,}35(4/12)] = 167\,500$; valor hoy: $167\,500/[1+0{,}42(2/12)] = 156\,542{,}06$. Valor hoy de \$100\,000 en 6 meses: $100\,000/[1+0{,}42(6/12)] = 82\,644{,}63$. Entonces $X = 245\,614{,}04 + 156\,542{,}06 - 82\,644{,}63 = 319\,511{,}47$.
+
+## Aplicaciones: ventas a plazo, tarjetas de crédito, empeño, pagos anticipados
+
+**Ejemplo (cuenta de crédito).** Saldo al 1 de junio \$4\,000; abono 16 de junio \$2\,000; cargos 11 de julio \$2\,500 y 31 de julio \$150; abono 15 de agosto \$2\,000. Calcular saldo al 15 de septiembre con 18\% anual simple. Se va actualizando el saldo periodo a periodo con $M = C(1+i\,t)$ (usando tiempo aproximado 360 o real según convención). Del 1 al 16 de junio: $4\,000[1+0{,}18(15/360)] = 4\,030$; menos abono 2\,000 $\Rightarrow$ 2\,030. Este saldo se capitaliza hasta el 11 de julio, se suman cargos, etc. Resultado típico: saldo al 15 de septiembre cercano a \$2\,828.
+
+**Ejemplo (tarjetas de crédito).** Los intereses que cobran muchos bancos se calculan con interés simple sobre saldos diarios o por periodos entre movimientos. La “tasa anualizada” y la “tasa mensual” anunciadas no siempre coinciden con la tasa efectiva usada en el cálculo; conviene verificar con el detalle de operaciones (fechas, saldos, días).
+
+**Ejemplo (empeño).** En el Nacional Monte de Piedad se empeña un televisor por \$1\,500 al 2,5\% mensual. Para recuperarlo a los 50 días: $M = 1\,500[1 + 0{,}025(50/30)] = 1\,500(1{,}0417) = 1\,562{,}50$.
+
+**Ejemplo (descuento por pronto pago).** Términos 5/10, n/30 en una factura de \$12\,000: 5\% de descuento si se paga en 10 días; neto a 30 días. (a) ¿Conviene un préstamo al 30\% para pagar al décimo día? Descuento = 600, paga 11\,400. Usa el dinero 20 días; costo del préstamo: $11\,400(0{,}30)(20/360) = 190$. Ahorro neto 410, sí conviene. (b) Mayor tasa de interés simple a la que convendría obtener crédito para aprovechar el descuento: $600 = 11\,400\,i\,(20/360)$ $\Rightarrow$ $i \approx 0{,}9474$ (94,74\% anual).
+
+### Ejercicios (ecuaciones de valores equivalentes y aplicaciones)
+
+63. Pagar \$2\,500 en 3 meses y \$8\,500 en 6 meses. ¿Qué cantidad pagar hoy para saldar al 12\% simple?  
+64. La señora Moreno adeuda \$5\,000 (ya con intereses) a 8 meses. Si paga \$3\,000 a los 2 meses, ¿cuánto deberá pagar al cabo de 8 meses al 30\% anual usando fecha focal en 8 meses?  
+65. El señor Gómez presta \$3\,500 el 14 de julio a 5,5 meses al 10\% simple, y 4 meses después \$2\,000 al 14\% a 3 meses. Con equivalencia al 15\%, ¿qué cantidad recibida el 14 de diciembre liquida esos préstamos?  
+66. Monte de Piedad cobra 5,5\% mensual. ¿Cuánto pagar dentro de 3 meses quien empeñó hace un mes un televisor por \$800 y hoy empeña un reloj por \$750?  
+67–77. (Tres pagarés y pago único; dos pagos iguales y fecha focal; inversión con dos retornos; horno eléctrico en 3 pagos; dos opciones de pago y $X$; rescate de alhaja; precio de contado de auto; mora e interés; saldo de pagaré con dos abonos; tasa en plan a crédito; estado de cuenta y tasa cobrada.)

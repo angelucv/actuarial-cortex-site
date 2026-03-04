@@ -1,0 +1,449 @@
+---
+number: false
+---
+
+# Valor presente actuarial y dotales puros {#cap-valor-presente-actuarial .unnumbered .unlisted}
+
+Con el modelo de supervivencia y las tablas de mortalidad ya presentados en la Parte I, podemos cuantificar el valor hoy de beneficios que dependen de que una persona de edad $x$ esté viva o no en el futuro. Este capítulo introduce el **valor presente actuarial** (APV) para beneficios contingentes a la supervivencia, a partir del caso más simple: el **dotal puro**. Se definen las **funciones conmutativas** $D_x$ y $N_x$, que simplifican los cálculos en toda la materia. Se incorpora la terminología y las relaciones del manual de Weishaus [@weishaus2013]: valor presente esperado (expected present value), prima neta única (net single premium), variable aleatoria $Z$ del valor presente del beneficio, notación internacional para el dotal puro y regla de momentos para segundos momentos. Neill [@neill1977] denomina **funciones monetarias** a las que combinan mortalidad e interés; $D_x$ es la primera función conmutativa que aparece.
+
+## Contexto histórico e infraestructura axiomática de la Parte II
+
+La Parte II constituye el núcleo donde la incertidumbre biométrica se amalgama con la certidumbre financiera para dar origen al **valor presente actuarial** (APV). La siguiente exposición, estrictamente histórica y determinística, recorre la evolución de la notación, las funciones conmutativas y el legado de los grandes actuarios que permitieron la transición de la especulación mercantil a la ciencia aplicada, en coherencia con el enfoque clásico de esta obra y del ecosistema CVEA/EECA-UCV.
+
+### Ontología del valor presente actuarial: de la intuición a la formalización
+
+El concepto de renta vitalicia o de seguro no nació como una abstracción matemática, sino como una respuesta a la necesidad de estabilidad financiera ante el riesgo de longevidad o de muerte prematura. El desarrollo del APV (o valor presente esperado) representa uno de los logros intelectuales más significativos de la disciplina en los siglos XVII y XVIII: permitió que las obligaciones contingentes fueran tratadas con el mismo rigor que las deudas financieras ciertas.
+
+Antes de la formalización de la probabilidad por Pascal y Fermat en 1654, la valoración de anualidades se basaba en reglas empíricas, como la tabla de Ulpiano en la Roma del siglo III d.C. La correspondencia entre Pascal y Fermat sobre el «problema de los puntos» —cómo dividir equitativamente las apuestas en un juego interrumpido— proporcionó la base lógica para entender que el valor de un pago futuro incierto debe ponderarse por su probabilidad de ocurrencia.
+
+En **1671**, **Johan de Witt**, Gran Pensionario de Holanda, aplicó estos conceptos en su obra *Waerdye van lyfrenten naer proportie van losrenten* [@dewitt1671; @hendriks1852]. De Witt demostró que el precio justo de una anualidad vitalicia no era un múltiplo arbitrario del pago anual, sino la **suma descontada** de los pagos futuros, donde cada término se multiplica por la probabilidad de que el rentista sobreviva hasta ese instante. Aunque su trabajo fue olvidado hasta el siglo XIX, su metodología estableció el **principio de equivalencia** que rige la Parte II: el valor de la prima debe igualar el valor presente de los beneficios esperados.
+
+En **1693**, **Edmond Halley** elevó el modelo de De Witt al utilizar datos demográficos reales de la ciudad de Breslavia para construir la primera tabla de mortalidad científicamente sólida [@halley1693]. Halley integró la biometría con el interés compuesto y proporcionó una fórmula para la valoración de una **anualidad vitalicia** de 1 unidad anual sobre una vida de edad $x$:
+
+$$a_x = \sum_{t=1}^{\infty} v^t\,{}_tp_x,$$
+
+donde $v = (1+i)^{-1}$ es el factor de descuento financiero y ${}_tp_x$ es la probabilidad biométrica de supervivencia. Esta estructura multiplicativa (descuento × probabilidad) es el axioma fundamental del seguro de vida determinístico. Halley demostró así que el riesgo humano podía gestionarse mediante la ley de los grandes números, concepto que Jacob Bernoulli formalizaría poco después.
+
+### La revolución conmutativa: eficiencia algorítmica y el método de columnas
+
+Uno de los mayores desafíos para los actuarios de los siglos XVIII y XIX fue la carga computacional de evaluar sumatorias para cada edad y tasa de interés. La invención de las **funciones conmutativas** permitió simplificar estos procesos, transformando sumas complejas en cocientes de valores tabulados.
+
+En **1785**, el matemático alemán **Johannes Nikolaus Tetens** publicó un manual donde introdujo un método para simplificar el cálculo de anualidades mediante lo que hoy conocemos como la columna $D_x$ y una versión inicial de $N_x$, definiendo la columna sumatoria desde la edad actual (definición «inicial»), lo que facilitaba la valoración de rentas anticipadas [@tetens1785].
+
+En el mundo anglosajón, **George Barrett** desarrolló hacia **1811** un sistema similar de forma independiente, basándose en datos de mortalidad de Suecia y Francia [@barrett1811]. Barrett ofreció su método a la Royal Society y a diversas oficinas de seguros, pero fue rechazado inicialmente. Fue **Francis Baily** quien, en la segunda edición de su *Doctrine of Life Annuities* (1813) [@baily1813], publicó el método de Barrett en un apéndice, reconociendo su valor práctico para el actuario que trabajaba sin herramientas mecánicas de cálculo.
+
+**Griffith Davies**, actuario galés, transformó el método de Barrett en **1825** [@davies1825]. Davies introdujo las letras $D$, $N$ y $S$ para las funciones conmutativas (posiblemente por *Denominator*, *Numerator*, *Summation*). La gran diferencia fue la redefinición de $N_x$ en forma **terminal**: $N_x = D_{x+1} + D_{x+2} + \cdots$, de modo que la anualidad vencida se expresara como $a_x = N_x/D_x$. El Institute of Actuaries de Londres adoptó la versión de Davies, que explica la notación de la mayoría de los textos clásicos británicos y la que se usa en este libro.
+
+| Evolución de la función conmutativa | Autor principal | Innovación específica | Impacto en la Parte II |
+|------------------------------------|-----------------|------------------------|-------------------------|
+| Definición inicial de $N_x$ | Johannes Tetens (1785) | $N_x = D_x + D_{x+1} + \cdots$ | Facilitó valoración de rentas anticipadas |
+| Introducción de columnas en UK | George Barrett (1813) | Método tabular sistemático | Reducción del tiempo de cálculo manual |
+| Letras $D$, $N$, $S$ y forma terminal | Griffith Davies (1825) | $N_x = D_{x+1} + D_{x+2} + \cdots$ | Estandarización de cocientes simplificados |
+| Símbolos de seguro $C$, $M$, $R$ | William Morgan (años 1830) | Integración de $d_x$ en columnas | Valoración de beneficios por fallecimiento |
+| Notación con sufijo de edad | Benjamin Gompertz (1825) | Uso de $x$ como subíndice | Paso de etiquetas a funciones matemáticas |
+
+::: {.callout-note}
+## Nota histórica: Del precio de la renta vitalicia al valor presente actuarial
+
+La fórmula $a_x = \sum_{t=1}^{\infty} v^t\,{}_tp_x$ de Halley (1693) unifica en un solo objeto el **descuento financiero** ($v^t$) y la **probabilidad de supervivencia** (${}_tp_x$). Ese valor es a la vez el «precio justo» de una renta vitalicia y el **valor presente esperado** del flujo de pagos. Las funciones conmutativas $D_x = l_x\,v^x$ y $N_x$ (en la forma terminal de Davies) permiten escribir todos los valores de la Parte II —dotales puros (capítulo 5), seguros de vida (capítulo 6), rentas contingentes (capítulo 7)— como cocientes de columnas, sin recalcular sumatorias para cada edad. La misma estructura se extiende a primas y reservas en la Parte III.
+:::
+
+### Estandarización notacional: el camino hacia la IAN
+
+La notación actuarial moderna es el resultado de un proceso de consenso internacional. A principios del siglo XIX, **Francis Baily** y **Joshua Milne** dominaban la escena técnica con sistemas opuestos (letras romanas mayúsculas vs minúsculas para rentas); ninguno usaba subíndices para la edad de forma sistemática.
+
+Un hito fundamental fue la publicación de *On the Value of Annuities and Reversionary Payments* (**1843**) por **David Jones**, actuario de la Universal Life Assurance Office, bajo el auspicio de la Society for the Diffusion of Useful Knowledge [@jonestable1843]. Jones adoptó la letra $p$ para la probabilidad de supervivencia, $a$ para las rentas y $A$ para los seguros; su sistema fue tan intuitivo que el Institute of Actuaries, fundado cinco años después, basó sus exámenes iniciales en gran medida en los volúmenes de Jones.
+
+La transición final hacia la **Notación Actuarial Internacional (IAN)** se cristalizó en el **Segundo Congreso Internacional de Actuarios** (Londres, **1898**) [@congress1898]. El comité, en el que figuraron T.B. Sprague y **George King**, propuso un sistema unificado basado en el «Key to Notation» del libro de King (1887) [@king1887]. El sistema introdujo la lógica posicional que se enseña en los capítulos de la Parte II:
+
+- **Sufijo subíndice derecho:** indica la edad de la vida (ej. $a_x$, $A_x$).
+- **Prefijo subíndice izquierdo:** indica la duración del término (ej. ${}_nE_x$, ${}_nq_x$).
+- **Barra vertical prefija:** indica diferimiento (ej. ${}_n|a_x$).
+- **Marcas sobre el símbolo:** barra $\bar{\phantom{a}}$ para pagos continuos, diéresis $\ddot{\phantom{a}}$ para anualidades anticipadas.
+- **Sufijo entre paréntesis:** frecuencia de pagos por año (ej. $a_x^{(m)}$).
+
+Esta estructura fue refinada en el 14.º Congreso (Madrid, 1954) [@ian1954] y constituye el estándar vigente para los actuarios determinísticos.
+
+### Figuras fundacionales y sus aportes técnicos
+
+**Richard Price** (1723–1791), matemático y filósofo moral, amigo de Franklin y Jefferson, estableció en la Equitable Life que las primas debían depender de la edad de forma científica y que las compañías debían mantener registros transparentes de sus pasivos [@price1771]. Es el autor intelectual del concepto de **prima nivelada**: cobrar el costo real de mortalidad en cada edad haría el seguro inaccesible para los ancianos; la prima nivelada garantiza equidad intergeneracional (tema de la Parte III).
+
+**William Morgan** (1750–1833), considerado padre de la ciencia actuarial moderna, introdujo el sufijo $x$ en los símbolos de Davies y desarrolló la valoración prospectiva y la reserva como pasivo legal [@morgan1779].
+
+**Thorvald Nicolai Thiele** (1838–1910), actuario y astrónomo danés, proporcionó en **1875** la **ecuación diferencial de Thiele**, que describe la evolución en el tiempo de la reserva matemática (Parte III) [@thiele1875]. La ecuación vincula prima neta, interés devengado y costo de mortalidad en un flujo continuo.
+
+**Karl Hattendorff** (1834–1882) es recordado por el **teorema de Hattendorff** (1868) [@hattendorff1868]: las «pérdidas anuales» de una póliza bajo el principio de equivalencia son variables aleatorias no correlacionadas con esperanza cero. Este resultado permite expresar la varianza total de una cartera como suma de varianzas individuales y sienta bases para el margen de solvencia exigido por reguladores.
+
+**Arthur Hunter** (1869–1964), actuario escocés radicado en Estados Unidos, desarrolló el **sistema de calificación numérica** (junto con Oscar Rogers), introduciendo recargos por condiciones médicas o estilos de vida y permitiendo que personas con riesgos agravados accedieran al seguro mediante primas ajustadas matemáticamente.
+
+| Actuario | Período | Contribución clave | Legado en el texto |
+|----------|---------|--------------------|--------------------|
+| Richard Price | 1723–1791 | Tabla de Northampton; ética de la suficiencia | Prima nivelada (Parte III) |
+| William Morgan | 1750–1833 | Valoración prospectiva | Reserva como pasivo legal |
+| Benjamin Gompertz | 1779–1865 | Ley analítica $\mu_x$ | Cálculo biológico continuo (Parte I) |
+| Thorvald Thiele | 1838–1910 | Ecuación diferencial de la reserva | Dinámica de la reserva (Parte III) |
+| Karl Hattendorff | 1834–1882 | Teorema de varianza | Medición del riesgo de insolvencia |
+| Arthur Hunter | 1869–1964 | Calificación numérica | Estandarización y selección de riesgos |
+
+### Integración de la tradición actuarial venezolana
+
+A finales del siglo XIX, aseguradoras venezolanas como C.A. Seguros Marítimo (1886) y La Venezolana de Seguros (1893) operaban sin tablas de mortalidad locales y con criterios de valoración puramente comerciales. Un hito técnico fue la labor del ingeniero **Luis Márquez Muñoz-Tébar**, quien sistematizó los registros de rentas públicas y sentó bases para la recolección estadística gubernamental.
+
+La transformación ocurrió con la **Ley de Inspección y Vigilancia de las Empresas de Seguros** de 1935 y su reforma de **1938**. Esta normativa obligó a las compañías a constituir sus reservas técnicas legales utilizando métodos actuariales formales, con funciones conmutativas y descuento compuesto, convirtiendo al actuario en figura central para la estabilidad del sistema financiero nacional.
+
+El **Dr. Erich Michalup** es la figura central de la actuaría venezolana. Su llegada al país en **1938** marcó el inicio de la era científica de los seguros. Michalup publicó la primera **Tabla Venezolana de Mortalidad** (1941–1942), eliminando la dependencia de datos foráneos, y asesoró a los Ministerios de Guerra y Hacienda en la estructuración de pensiones militares y de la deuda pública utilizando rentas ciertas y diferidas. En su tesis de 1938, «La dependencia del riesgo relativo de la tasa de interés», exploró analíticamente cómo las fluctuaciones en la curva de tipos impactan la valoración de reservas, antecedente de conceptos como la duración y la inmunización. La fundación del **Departamento de Ciencias Estadísticas y Actuariales** en 1953 (luego Escuela Universitaria en 1956) fue la culminación del esfuerzo por dotar a Venezuela de talento cuantitativo local, en el que se inscribe la EECA-UCV y el CVEA.
+
+### Textos de referencia y mapeo con esta obra
+
+La Parte II y III de este libro se apoyan en el enfoque determinístico de las siguientes obras clásicas:
+
+- **Jordan** [@jordan1982]: *Society of Actuaries' Textbook on Life Contingencies* (1982). Capítulos 3–4 (rentas y seguros de vida), 5 (primas netas anuales), 6 (reservas a prima nivelada). Relación $A_x = 1 - d\,\ddot{a}_x$ y distinción prospectivo/retrospectivo.
+- **Neill** [@neill1977]: *Life Contingencies* (1977). Cap. 1 (tabla de mortalidad y estimación de probabilidades), cap. 7 (pagos no anuales, periodicidad fraccionaria). Perspectiva práctica y reporting.
+- **Weishaus** [@weishaus2013]: Manual SOA Exam MLC (2013). Variable aleatoria $Z$, regla de momentos para segundos momentos, transformaciones de la fuerza de mortalidad. Claridad metodológica para problemas y notación IAN.
+- **Bowers et al.** [@bowers1997]: *Actuarial Mathematics* (1997). Fundamentos determinísticos de rigor insuperable; su tratamiento de utilidad y aversión al riesgo contextualiza por qué un individuo paga una prima cierta por una pérdida contingente.
+
+### Síntesis: el valor de la tradición clásica
+
+La expansión de la Parte II con estos elementos históricos y contextuales permite reconocer que cada variable en la ecuación de una anualidad o de un seguro tiene un peso histórico: el factor $v$ representa la solución ética al lucro cesante; la estructura $v^t\,{}_tp_x$ resume la fusión entre descuento financiero y supervivencia que Halley y sus sucesores formalizaron; las funciones $D_x$, $N_x$, $C_x$, $M_x$ son el legado de Tetens, Barrett, Davies y Morgan. Esta obra se erige así como puente entre la tradición europea y anglosajona y la práctica actuarial venezolana —Ley de 1938, Michalup, EECA-UCV—, formando actuarios capaces de auditar sistemas complejos y de entender la evolución del riesgo humano en el tiempo dentro del marco determinístico clásico.
+
+---
+
+## Valor presente esperado y variable aleatoria del beneficio (Weishaus)
+
+Un seguro de vida paga un **beneficio** al tomador (o a su patrimonio) en caso de fallecimiento (o de supervivencia, según el tipo de contrato). Puede pagarse en cualquier momento de muerte, solo si la muerte ocurre en un plazo fijo, o solo después de un plazo diferido; el beneficio puede variar según el momento del siniestro. Interesa el **valor esperado del valor presente** del beneficio: es la cantidad que hoy habría que reservar para financiar ese beneficio. Para un grupo grande de pólizas independientes, si se reserva el valor presente esperado por cada una, la ley de los grandes números garantiza que, en promedio, se dispondrá de los recursos necesarios para pagar los beneficios [@weishaus2013]. También interesa la **varianza** del valor presente para cuantificar el riesgo y, si hace falta, usar aproximaciones normales.
+
+El valor presente esperado del beneficio recibe varios nombres equivalentes: **valor presente actuarial** (actuarial present value), **prima neta única** (net single premium), ya que sería la prima única que cobraría la aseguradora por el contrato sin incluir gastos ni margen [@weishaus2013]. En este libro se usan indistintamente «valor presente actuarial» y «prima neta única» para el valor esperado del valor presente del beneficio.
+
+Se denota por **$Z$** la **variable aleatoria** que representa el valor presente del pago del beneficio. Para seguros que pagan al **final del año de fallecimiento** (seguros discretos), $Z$ es una variable aleatoria discreta y su esperanza se calcula con la tabla de mortalidad. La esperanza de una variable aleatoria discreta es la suma de «probabilidad de cada resultado × valor de $Z$ en ese resultado». Para un seguro sobre $(x)$ con beneficio $b_k$ pagadero al final del año $k$ si el fallecimiento ocurre en ese año, $Z = b_k\,v^{k+1}$ con probabilidad ${}_{k|1}q_x = {}_kp_x\,q_{x+k}$, y:
+
+$$\mathbb{E}[Z] = \sum_{k=0}^{\infty} b_k\,v^{k+1}\,{}_kp_x\,q_{x+k}. \tag{10.1}$$
+
+Para el **segundo momento**, $\mathbb{E}[Z^2] = \sum_{k=0}^{\infty} b_k^2\,v^{2(k+1)}\,{}_kp_x\,q_{x+k}$: al elevar al cuadrado el beneficio, el factor de descuento pasa a $v^{2(k+1)}$, lo que equivale a usar el doble de la fuerza de interés [@weishaus2013].
+
+## Principio del valor presente para un pago contingente
+
+De los estudios de probabilidad se recuerda que si $p$ es la probabilidad de que una persona reciba cierto pago de valor $K$, el producto $K \cdot p$ es su **esperanza**. Si el pago es diferido $n$ años, el valor presente de esa esperanza es $K \, p \, v^n$, donde $v^n$ es el factor de descuento calculado con una tasa de interés apropiada.
+
+Supóngase ahora que una persona de edad $x$ recibirá el pago de $K$ al final de $n$ años **si está viva** en ese momento. La probabilidad requerida es la de que $x$ sobreviva $n$ años, es decir ${}_np_x$, por lo que el valor presente esperado es $K \cdot {}_np_x \cdot v^n$. Este tipo de pago diferido contingente a la supervivencia se llama **dotal puro** de $n$ años por un monto $K$.
+
+*Ejemplo (Weishaus):* Un contrato sobre (40) paga 1000 u.m. al final del año si (40) fallece durante ese año. La variable $Z$ del valor presente del pago vale $1000\,v$ si hay fallecimiento en el primer año y 0 en caso contrario. El valor presente esperado es $\mathbb{E}[Z] = 1000\,v\,q_{40}$ [@weishaus2013].
+
+## Dotal puro: definición y notación
+
+Un **dotal puro** (pure endowment) de $n$ años por 1 sobre $(x)$ paga 1 al final de $n$ años **si** $(x)$ sobrevive hasta entonces, y 0 en caso contrario [@weishaus2013]. No hay pago por fallecimiento; solo por supervivencia.
+
+El valor presente a la edad $x$ de un dotal puro de $n$ años por 1 se denota de dos formas en la **notación actuarial internacional** (IAN): $nE_x$ (estilo renta) y $A_{x:\overline{n}|}^{\,\,1}$ (estilo seguro; el 1 sobre la $n$ indica que el pago se hace solo si termina el período cierto de $n$ años antes que $(x)$). Ambas notaciones son equivalentes. La **variable aleatoria** $Z$ del valor presente del dotal puro toma solo dos valores: $Z = v^n$ si $K_x \geq n$ (supervive $n$ años) y $Z = 0$ en caso contrario. Por tanto:
+
+$$nE_x = A_{x:\overline{n}|}^{\,\,1} = \mathbb{E}[Z] = {}_np_x \, v^n = \frac{v^n \, l_{x+n}}{l_x}.$$
+
+Reescribiendo:
+
+$$nE_x = \frac{v^n \, l_{x+n}}{l_x} \cdot \frac{v^x}{v^x} = \frac{v^{n+x} \, l_{x+n}}{v^x \, l_x}.$$
+
+## Funciones conmutativas $D_x$ y $N_x$
+
+Se define la **función conmutativa** $D_x$ como:
+
+$$D_x = v^x \, l_x,$$
+
+de modo que:
+
+$$nE_x = \frac{D_{x+n}}{D_x}. \tag{2.1}$$
+
+Así, el cálculo de $nE_x$ a partir de datos de mortalidad e interés (que involucra el producto $v^n \, l_{x+n}/l_x$) se reduce, con el uso de funciones conmutativas, a una simple división $D_{x+n}/D_x$. Las funciones conmutativas permiten simplificaciones aún mayores en expresiones más complejas que $nE_x$. Los valores de $D_x$ y otras funciones conmutativas suelen estar tabulados para cada edad $x$ y para las distintas tablas de mortalidad.
+
+La utilidad de estas funciones no es solo el ahorro de trabajo: al reducir el número de operaciones se disminuye también la posibilidad de error, sobre todo cuando se automatizan muchos cálculos. Además, son muy útiles para simplificar la construcción y la manipulación de las fórmulas actuariales.
+
+## Prima pura única (PPU) del dotal puro
+
+$nE_x$ puede interpretarse como la **prima pura única** a la edad $x$ para un dotal puro de $n$ años por 1 unidad monetaria: es el pago único que $(x)$ debe hacer para comprar un contrato que le pague 1 unidad monetaria al final de $n$ años si se encuentra vivo en ese momento. Lo «puro» o «neto» indica que no se ha hecho provisión para gastos de la transacción.
+
+### Ejemplo (CSO58)
+
+¿Cuál es la prima pura única a los 35 años de un dotal puro de duración 20 años y monto asegurado de 1.000 unidades monetarias, usando la tabla de mortalidad Commissioners Standard Ordinary 1958 (CSO58) y una tasa de interés anual del 3%?
+
+Usando la columna de $D_x$:
+
+$$1.000 \cdot {}_{20}E_{35} = 1.000 \cdot \frac{D_{55}}{D_{35}} = 1.000 \cdot \frac{1\,639\,329{,}7}{3\,331\,295{,}4} = 492{,}10.$$
+
+Interpretación: en la tabla CSO58, $l_{35} = 9\,373\,807$. Si cada una de esas personas contribuye con 492,10 al fondo, que rinde 3% anual, al cabo de 20 años la acumulación puede repartirse entre los sobrevivientes a la edad 55. Si las premisas se cumplen, cada sobreviviente recibiría 1.000.
+
+| Concepto | Valor |
+|----------|--------|
+| Vivos originales a la edad 35 | 9.373.807 |
+| Contribución de cada uno | 492,10 |
+| Monto total del fondo | 4.612.850.455 |
+| Factor de actualización $(1{,}03)^{20}$ | — |
+| Total acumulado después de 20 años | 8.331.319.894 |
+| Sobrevivientes a la edad 55 | 8.331.317 |
+| Monto por sobreviviente | 1.000 |
+
+Esto ilustra el significado de **acumular fondos con beneficio de sobrevivencia**: lo que recibe cada sobreviviente incluye una parte de lo que «dejan» quienes fallecieron antes de los 55 años. Así, el beneficio total (interés + sobrevivencia) hace que 492,10 a los 35 se conviertan en 1.000 a los 55; solo con interés al 3%, 492,10 en 20 años darían aproximadamente 888,79.
+
+## Interpretación de $nE_x$ como factor de descuento y acumulación
+
+En general, $nE_x$ representa:
+
+1. El monto necesario a la edad $x$ para acumular en $n$ años un **beneficio de interés y sobrevivencia** de 1 unidad monetaria para quien llegue vivo a la edad $x+n$.
+2. El **valor presente** a la edad $x$ de un pago de 1 unidad al final de $n$ años, descontado por interés y sobrevivencia.
+
+Por tanto, $nE_x$ se puede usar como **factor de descuento** (interés y sobrevivencia), de forma análoga a $v^n$ para el interés solo. A su vez, $1/nE_x$ actúa como **factor acumulador** para interés y sobrevivencia, análogo a $(1+i)^n$ para acumular solo intereses. Neill [@neill1977] subraya que el valor acumulado de 1 unidad pagada por $(x)$ hace $n$ años, con beneficio de interés y mortalidad, es exactamente $1/nE_x$.
+
+### Regla de momentos y varianza del dotal puro (Weishaus)
+
+Para seguros estándar cuyo beneficio en cada año es 0 o 1, el **$k$-ésimo momento** del valor presente $Z$ coincide con el **primer momento** calculado a $k$ veces la fuerza de interés $\delta$ [@weishaus2013]. Así, el segundo momento de un dotal puro de 1 a $n$ años es el valor de $nE_x$ calculado al doble de $\delta$ (o, equivalentemente, con $v^2$ en lugar de $v$): ${}^2(nE_x) = {}_np_x\,v^{2n}$. La **varianza** del dotal puro es $\operatorname{Var}(Z) = {}_np_x\,v^{2n}\,{}_nq_x = {}_np_x\,{}_nq_x\,v^{2n}$, ya que $Z$ solo toma los valores 0 y $v^n$ (variable tipo Bernoulli).
+
+En notación con presubíndice: cuando el presubíndice de un símbolo actuarial es $k$, indica que el valor se calcula a $k$ veces la fuerza de interés. Por ejemplo, ${}^2A_x$ es el valor presente esperado de un seguro de vida entera de 1 sobre $(x)$ calculado al doble de $\delta$. Entonces $\operatorname{Var}(Z) = {}^2(nE_x) - (nE_x)^2$ para el dotal puro.
+
+### Relación del dotal puro con otros seguros estándar (Weishaus)
+
+En los capítulos de seguros de vida (cap. 6) se verá que el **seguro temporal** a $n$ años es igual a vida entera menos seguro diferido $n$ años; el **seguro diferido** $n$ años es un dotal puro de $n$ años que «entrega» un seguro de vida entera sobre $(x+n)$; y el **seguro mixto** (endowment) a $n$ años es la suma del seguro temporal a $n$ años y del dotal puro a $n$ años. Por tanto, el cálculo de primas únicas de seguros temporales, diferidos y mixtos se apoya en las columnas de **dotales puros** $nE_x$ y en las de seguros de vida entera [@weishaus2013]. En tablas ilustrativas (p. ej. Illustrative Life Table) suelen darse valores de $nE_x$ para $n = 5$, 10 y 20; para $n = 15$ se usa $nE_x = {}_5E_x \cdot {}_{10}E_{x+5}$ o ${}_{10}E_x \cdot {}_5E_{x+10}$.
+
+### Identidades útiles (capítulo 5)
+
+- $nE_x = D_{x+n}/D_x = v^n\,{}_np_x$.
+- Cadena: ${}_{n+m}E_x = {}_nE_x \cdot {}_mE_{x+n}$.
+- Regla de momentos (dotal): $\mathbb{E}[Z^2] = {}^2(nE_x)$ (valorar con $v^2$); $\operatorname{Var}(Z) = {}_np_x\,{}_nq_x\,v^{2n}$.
+- Conexión con rentas: ${}_n|\ddot{a}_x = {}_nE_x\,\ddot{a}_{x+n}$. Conexión con seguros: ${}_{n|}A_x = {}_nE_x\,A_{x+n}$; $A_{x:\overline{n}|} = A_{x:\overline{n}|}^1 + {}_nE_x$.
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. Dotal puro y acumulación (Jordan/Neill)**  
+(a) Valor presente al 3% de 2.000 u.m. pagaderas a (40) si sobrevive 15 años. (b) ¿A cuánto acumula 1 u.m. hoy a 15 años con beneficio de supervivencia?  
+**Solución.** (a) $2.000\cdot {}_{15}E_{40}=2.000\cdot D_{55}/D_{40}$ (usar tabla). (b) $1/{}_{15}E_{40}$ u.m. a 55 si (40) sobrevive.
+
+**2. PNU con conmutativas**  
+Si $D_{30}=50\,000$, $D_{55}=20\,000$, calcular ${}_{25}E_{30}$ y la PNU por 1.000 u.m. a 25 años para (30).  
+**Solución.** ${}_{25}E_{30}=D_{55}/D_{30}=20\,000/50\,000=0{,}4$; PNU $=1.000\times 0{,}4=400$ u.m.
+
+**3. Variable $Z$ del dotal (Weishaus)**  
+Para dotal a $n$ años por 1, escribir $Z$ en función de $K_x$ y $v$.  
+**Solución.** $Z=v^n$ si $K_x\geq n$; $Z=0$ si $K_x<n$. $\mathbb{E}[Z]={}_np_x\,v^n=nE_x$.
+
+**4. Segundo momento y varianza**  
+Si ${}_{20}E_{35}=0{,}45$ y ${}^2(_{20}E_{35})=0{,}30$ (a doble fuerza), estimar $\operatorname{Var}(Z)$ para dotal 20 años por 1.  
+**Solución.** $\operatorname{Var}(Z)={}^2(nE_x)-(nE_x)^2=0{,}30-0{,}2025=0{,}0975$.
+
+**5. Factor de acumulación**  
+Si ${}_{10}E_{40}=0{,}6$, ¿cuánto acumula 500 u.m. pagadas hoy por (40) a 10 años con supervivencia?  
+**Solución.** $500/{}_{10}E_{40}=500/0{,}6\approx 833{,}33$ u.m. (si sobrevive).
+
+**6. Relación $nE_x = D_{x+n}/D_x$**  
+Dado $D_{50}=2\,000$, $D_{60}=1\,200$, calcular ${}_{10}E_{50}$.  
+**Solución.** ${}_{10}E_{50}=D_{60}/D_{50}=1\,200/2\,000=0{,}6$.
+
+**7. Tipo parcial: PNU**  
+Calcular la PNU de un dotal de 5.000 u.m. a 15 años para (45) si $D_{45}=1\,800$ y $D_{60}=900$.  
+**Solución.** ${}_{15}E_{45}=900/1\,800=0{,}5$; PNU $=5.000\times 0{,}5=2.500$ u.m.
+
+**8. Valor esperado $\mathbb{E}[Z]$**  
+Para dotal $n$ años por beneficio $b$, escribir $\mathbb{E}[Z]$ en notación estándar.  
+**Solución.** $\mathbb{E}[Z]=b\cdot {}_np_x\,v^n=b\cdot nE_x$ (Weishaus: net single premium).
+
+**9. Descomposición temporal + diferido**  
+Expresar el seguro temporal a $n$ años en función de vida entera y dotal (Weishaus).  
+**Solución.** $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$ (temporal = vida entera − diferido).
+
+**10. Varianza $\operatorname{Var}(Z)={}_np_x\,{}_nq_x\,v^{2n}$**  
+Verificar para dotal por 1: $Z$ Bernoulli-type con valores $0$ y $v^n$.  
+**Solución.** $\mathbb{E}[Z]={}_np_x\,v^n$, $\mathbb{E}[Z^2]={}_np_x\,v^{2n}$; $\operatorname{Var}(Z)={}_np_x\,v^{2n}-({}_np_x\,v^n)^2={}_np_x\,{}_nq_x\,v^{2n}$.
+
+**11. $nE_x$ con tabla ilustrativa**  
+Si la tabla da ${}_5E_{40}=0{,}85$, ${}_{10}E_{45}=0{,}70$, obtener ${}_{15}E_{40}$ (producto).  
+**Solución.** ${}_{15}E_{40}={}_5E_{40}\cdot {}_{10}E_{45}=0{,}85\times 0{,}70=0{,}595$.
+
+**12. Tipo parcial: dos dotales**  
+Dotal 10 años por 2.000 u.m. para (50) y dotal 20 años por 3.000 u.m. para (50). Si $D_{50}=2\,500$, $D_{60}=1\,500$, $D_{70}=600$, calcular PNU total.  
+**Solución.** $2.000\cdot D_{60}/D_{50}+3.000\cdot D_{70}/D_{50}=2.000\times 0{,}6+3.000\times 0{,}24=1.200+720=1.920$ u.m.
+
+**13. Interés y mortalidad**  
+Explicar por qué $nE_x$ decrece cuando $i$ aumenta.  
+**Solución.** $D_{x+n}=v^{x+n}\,l_{x+n}$; al subir $i$, $v$ baja y $D_{x+n}$ baja, luego $nE_x=D_{x+n}/D_x$ baja.
+
+**14. Regla de momentos (Weishaus)**  
+Para dotal, el $n$-ésimo momento de $Z$ se calcula con tipo de interés $j$ tal que $v_j^n=v^n$ a tipo $i$. Comentar.  
+**Solución.** $\mathbb{E}[Z^n]={}_np_x\,v^{n\cdot n}$ a tipo $n\delta$ (o $v^2$ para segundo momento).
+
+**15. Prima única = APV**  
+Justificar que la PNU del dotal es el valor presente actuarial del beneficio.  
+**Solución.** Por principio de equivalencia: prima única = $\mathbb{E}[Z]=$ APV(beneficio).
+
+**16. Tipo parcial: varianza**  
+Si ${}_{10}E_{40}=0{,}5$, ${}_10p_{40}=0{,}92$, $v^{10}=0{,}55$, calcular $\operatorname{Var}(Z)$ para dotal 10 años por 1.  
+**Solución.** ${}^2(_{10}E_{40})={}_10p_{40}\,v^{20}=0{,}92\times 0{,}55^2\approx 0{,}278$; $\operatorname{Var}(Z)=0{,}278-0{,}25=0{,}028$.
+
+**17. Relación con seguro mixto**  
+Escribir el seguro mixto (endowment) a $n$ años como suma de temporal y dotal.  
+**Solución.** $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+nE_x$ (Weishaus).
+
+**18. Cálculo con $l_x$ y $v$**  
+Si no hay tabla $D_x$, expresar ${}_{5}E_{40}$ con $l_{40}$, $l_{45}$, $v^5$.  
+**Solución.** ${}_{5}E_{40}=v^5\,l_{45}/l_{40}$ (equivalentemente $D_{45}/D_{40}$ si $D_x=v^x\,l_x$).
+
+**19. Beneficio variable**  
+Si el beneficio en $n$ años es $b_n$, el APV es $b_n\cdot nE_x$. Para beneficio 1.000 u.m., PNU $=1.000\cdot nE_x$.
+
+**20. Síntesis tipo parcial**  
+(a) Definir dotal puro y notación $nE_x$. (b) Con $D_{35}=3\,000$, $D_{50}=1\,200$, calcular ${}_{15}E_{35}$ y PNU por 8.000 u.m. (Jordan/Neill/Weishaus).  
+**Solución.** (a) El **dotal puro** a $n$ años es un beneficio pagadero al final del año $n$ si $(x)$ sobrevive $n$ años. La notación $nE_x$ (o ${}_nE_x$) denota el valor presente actuarial de 1 u.m. pagadera en $n$ años si (x) sobrevive: $nE_x = D_{x+n}/D_x = v^n \, l_{x+n}/l_x \cdot (l_x/D_x)$ en términos de conmutativas. (b) ${}_{15}E_{35} = D_{50}/D_{35} = 1\,200/3\,000 = 0{,}4$. PNU por 8.000 u.m. = $8\,000 \times 0{,}4 = 3\,200$ u.m.
+
+**21. Beneficio variable en el tiempo (programa)**  
+Un contrato paga $b_n$ u.m. si (x) sobrevive $n$ años. Escribir el APV en notación con $nE_x$ y $b_n$.  
+**Solución.** El valor presente del pago en $n$ es $b_n \, v^n \, {}_np_x = b_n \cdot nE_x$ (con $nE_x = D_{x+n}/D_x$). Si hay varios pagos en momentos $n_1, n_2, \ldots$, el APV total es $\sum b_{n_j} \cdot {}_{n_j}E_x$. Los exámenes pueden pedir beneficios $b_n$ en progresión aritmética o con leyes de formación específicas (programa Tema 2).
+
+**22. Tipo parcial: dos dotales y total**  
+Dotal 5 años por 2.000 u.m. y dotal 10 años por 3.000 u.m. para (50). $D_{50}=2\,000$, $D_{55}=1\,600$, $D_{60}=1\,200$. Calcular PNU total paso a paso.  
+**Solución.** ${}_5E_{50} = D_{55}/D_{50} = 1\,600/2\,000 = 0{,}8$; PNU primer dotal = $2\,000 \times 0{,}8 = 1\,600$ u.m. ${}_{10}E_{50} = D_{60}/D_{50} = 1\,200/2\,000 = 0{,}6$; PNU segundo dotal = $3\,000 \times 0{,}6 = 1\,800$ u.m. PNU total = $1\,600 + 1\,800 = 3\,400$ u.m.
+
+**23. Varianza: desarrollo algebraico**  
+Para dotal a $n$ años por 1 u.m., $Z = v^n$ si $K_x \geq n$ y $Z = 0$ si no. Verificar $\operatorname{Var}(Z) = {}_np_x\,{}_nq_x\,v^{2n}$.  
+**Solución.** $\mathbb{E}[Z] = {}_np_x\,v^n = nE_x$. $\mathbb{E}[Z^2] = {}_np_x\,(v^n)^2 = {}_np_x\,v^{2n}$ (porque $Z^2 = v^{2n}$ cuando $Z \neq 0$). Entonces $\operatorname{Var}(Z) = \mathbb{E}[Z^2] - (\mathbb{E}[Z])^2 = {}_np_x\,v^{2n} - ({}_np_x\,v^n)^2 = {}_np_x\,v^{2n}(1 - {}_np_x) = {}_np_x\,{}_nq_x\,v^{2n}$.
+
+**24. Factor de acumulación con supervivencia**  
+Si ${}_{10}E_{40} = 0{,}6$, ¿cuánto debe depositar hoy (40) para acumular 5.000 u.m. en 10 años si sobrevive (beneficio de interés y supervivencia)?  
+**Solución.** El factor de acumulación con supervivencia a 10 años es $1/{}_{10}E_{40} = 1/0{,}6$. Para acumular 5.000 u.m. (si sobrevive), el depósito hoy debe ser $5\,000 \times {}_{10}E_{40} = 5\,000 \times 0{,}6 = 3\,000$ u.m. (equivalente: 3.000 u.m. hoy tienen valor esperado 5.000 u.m. en 10 años condicionado a supervivencia).
+
+**25. Conexión con rentas y seguros (Temas 2–3)**  
+Indicar cómo aparecen los dotales $nE_x$ en las fórmulas de rentas de vida y seguros de muerte.  
+**Solución.** En rentas: renta diferida $n$ años = ${}_n|\ddot{a}_x = {}_nE_x \, \ddot{a}_{x+n}$. En seguros: diferido ${}_{n|}A_x = {}_nE_x \, A_{x+n}$; mixto $A_{x:\overline{n}|} = A_{x:\overline{n}|}^1 + {}_nE_x$. Los dotales son los «bloques» que combinan descuento financiero y supervivencia (Jordan, Weishaus).
+
+**26.** $D_{50}=2\,000$, $D_{60}=1\,200$. Calcular ${}_{10}E_{50}$ y PNU por 3.000 u.m. **Solución.** ${}_{10}E_{50}=D_{60}/D_{50}=0{,}6$; PNU $=3\,000\times 0{,}6=1\,800$ u.m.
+
+**27.** Interpretar $Z$ para dotal a $n$ años: valores posibles. **Solución.** $Z=v^n$ si sobrevive $n$ años; $Z=0$ si no; $\mathbb{E}[Z]={}_nE_x$.
+
+**28.** Si ${}_5E_{35}=0{,}85$ y ${}_{10}E_{40}=0{,}65$, obtener ${}_{15}E_{35}$ (cadena). **Solución.** ${}_{15}E_{35}={}_5E_{35}\cdot {}_{10}E_{40}=0{,}85\times 0{,}65=0{,}5525$.
+
+**29.** Segundo momento del dotal por 1: escribir con ${}^2(nE_x)$. **Solución.** $\mathbb{E}[Z^2]={}^2(nE_x)$ valorado a fuerza $2\delta$.
+
+**30.** Relación $nE_x = v^n \, {}_np_x$ bajo tabla. **Solución.** $nE_x = v^n \, l_{x+n}/l_x = v^n \, {}_np_x$ (def. conmutativas).
+
+**31.** Dotal 8 años por 2.000 u.m. (42). $D_{42}=1\,800$, $D_{50}=1\,350$. PNU. **Solución.** ${}_8E_{42}=1\,350/1\,800=0{,}75$; PNU $=2\,000\times 0{,}75=1\,500$ u.m.
+
+**32.** ¿Por qué $nE_x < v^n$ cuando hay mortalidad? **Solución.** $nE_x=v^n\,{}_np_x$ y ${}_np_x<1$ si $q>0$.
+
+**33.** APV de dos pagos: 1.000 u.m. en 5 años y 2.000 u.m. en 10 años si (40) sobrevive. **Solución.** $1\,000\,{}_5E_{40}+2\,000\,{}_{10}E_{40}$.
+
+**34.** Varianza del dotal: $\operatorname{Var}(Z)={}_np_x\,{}_nq_x\,v^{2n}$. Deducir. **Solución.** $Z$ Bernoulli con éxito $v^n$; $\operatorname{Var}(Z)={}_np_x(1-{}_np_x)v^{2n}={}_np_x\,{}_nq_x\,v^{2n}$.
+
+**35.** Factor de acumulación $1/{}_nE_x$: interpretar. **Solución.** Cuántas u.m. en $n$ años (si sobrevive) equivalen a 1 u.m. hoy.
+
+**36.** $D_{45}=1\,600$, $D_{55}=1\,000$, $D_{65}=600$. ${}_{10}E_{45}$, ${}_{20}E_{45}$. **Solución.** ${}_{10}E_{45}=1\,000/1\,600=0{,}625$; ${}_{20}E_{45}=600/1\,600=0{,}375$.
+
+**37.** Descomposición $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$ en palabras. **Solución.** Mixto = pago si muerte antes de $n$ + pago si supervive $n$ años.
+
+**38.** Beneficio 500 u.m. en $t=3$ y 500 en $t=7$ si (x) sobrevive. APV. **Solución.** $500\,{}_3E_x+500\,{}_7E_x$.
+
+**39.** Si $i$ baja, ¿qué pasa con $nE_x$? **Solución.** $v$ sube, luego $nE_x=v^n\,{}_np_x$ sube.
+
+**40.** Regla de momentos: $\mathbb{E}[Z^2]$ para dotal a interés $2\delta$. **Solución.** ${}^2(nE_x)$ con $v^2=e^{-2\delta}$.
+
+**41.** PNU dotal 12 años por 8.000 u.m. (38). ${}_{12}E_{38}=0{,}55$. **Solución.** PNU $=8\,000\times 0{,}55=4\,400$ u.m.
+
+**42.** Escribir $nE_x$ con $D_x$ y $D_{x+n}$. **Solución.** $nE_x=D_{x+n}/D_x$.
+
+**43.** Variable $Z$ para dotal por $b$: $\mathbb{E}[Z]$ y $\operatorname{Var}(Z)$. **Solución.** $\mathbb{E}[Z]=b\,{}_nE_x$; $\operatorname{Var}(Z)=b^2\,{}_np_x\,{}_nq_x\,v^{2n}$.
+
+**44.** Renta diferida: ${}_n|\ddot{a}_x={}_nE_x\,\ddot{a}_{x+n}$. Verificar dimensiones. **Solución.** APV de renta que empieza en $n$ = dotal $n$ años × renta desde $x+n$.
+
+**45.** Dos dotales: 5 años 1.000 u.m. y 10 años 2.000 u.m. (45). ${}_5E_{45}=0{,}9$, ${}_{10}E_{45}=0{,}7$. PNU total. **Solución.** $1\,000\times 0{,}9+2\,000\times 0{,}7=2\,300$ u.m.
+
+**46.** Relación ${}_{n+m}E_x={}_nE_x\cdot {}_mE_{x+n}$. **Solución.** Descomposición temporal: sobrevivir $n+m$ = sobrevivir $n$ y luego $m$ desde $x+n$.
+
+**47.** Tabla: $l_{40}$, $l_{50}$, $v=0{,}96$. Escribir ${}_{10}E_{40}$ con $l$. **Solución.** ${}_{10}E_{40}=v^{10}\,l_{50}/l_{40}$.
+
+**48.** Prima única = APV del beneficio. Justificar. **Solución.** Equivalencia: prima única debe igualar el valor esperado del beneficio descontado.
+
+**49.** Dotal 20 años (30). $D_{30}=3\,000$, $D_{50}=1\,500$. PNU por 6.000 u.m. **Solución.** ${}_{20}E_{30}=0{,}5$; PNU $=3\,000$ u.m.
+
+**50.** Síntesis: indicar tres usos de $nE_x$ en el libro. **Solución.** (1) PNU dotal puro; (2) renta diferida ${}_n|\ddot{a}_x$; (3) seguro diferido ${}_{n|}A_x$ y mixto.
+
+
+---
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe calcular el valor presente actuarial (APV), la PNU o la magnitud indicada usando dotales ${}_nE_x$, conmutativas $D_x$ y las relaciones con seguros y rentas. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Calcular el valor presente al 4% de 1.000 u.m. pagaderas a (30) si sobrevive 25 años (Neill).
+
+2. **Se pide:** ¿A cuánto acumulan 500 u.m. hoy por (25) a 30 años con interés 4% y supervivencia? (Neill).
+
+3. **Se pide:** Si ${}_{20}E_{35}=0{,}4921$, interpretar como PNU y como factor de acumulación (Weishaus).
+
+4. **Se pide:** Verificar $\operatorname{Var}(Z)={}_np_x\,{}_nq_x\,v^{2n}$ para dotal por 1 (Weishaus).
+
+5. **Tipo parcial.** **Se pide:** $D_{40}=2\,000$, $D_{55}=1\,000$. Calcular ${}_{15}E_{40}$ y PNU por 4.000 u.m.
+
+6. **Se pide:** Escribir $Z$ (variable valor presente) para dotal a $n$ años por 1.
+
+7. **Se pide:** Explicar la relación entre seguro temporal, diferido y dotal (Weishaus).
+
+8. **Se pide:** Si ${}_5E_{40}=0{,}8$ y ${}_{10}E_{45}=0{,}6$, calcular ${}_{15}E_{40}$.
+
+9. **Tipo parcial.** **Se pide:** Dotal 20 años por 10.000 u.m. para (40). $D_{40}=2\,500$, $D_{60}=1\,000$. Calcular la PNU.
+
+10. **Se pide:** Segundo momento de $Z$ para el dotal: ¿a qué tipo de interés se valora? (Weishaus regla de momentos).
+
+11. **Se pide:** Expresar $nE_x$ con $l_x$, $v$ e interés.
+
+12. **Se pide:** ¿Por qué la PNU es el APV del beneficio?
+
+13. **Tipo parcial.** **Se pide:** Dos dotales: 5 años por 2.000 y 10 años por 3.000 para (50). $D_{50}=2\,000$, $D_{55}=1\,600$, $D_{60}=1\,200$. Calcular la PNU total.
+
+14. **Se pide:** Varianza del dotal: escribir la fórmula con ${}^2(nE_x)$.
+
+15. **Se pide:** Factor de acumulación con supervivencia $1/{}_nE_x$ (Jordan).
+
+16. **Se pide:** Descomposición $A_{x:\overline{n}|}=A_{x:\overline{n}|}^1+{}_nE_x$.
+
+17. **Tipo parcial.** **Se pide:** (a) Definir valor presente actuarial. (b) Dotal 15 años por 5.000 para (45). $D_{45}=1\,800$, $D_{60}=900$. Calcular PNU.
+
+18. **Se pide:** Relacionar $nE_x$ con la probabilidad ${}_np_x$ y el factor $v^n$.
+
+19. **Se pide:** Si $i$ sube, ¿qué pasa con $nE_x$? Justificar.
+
+20. **Tipo parcial.** **Se pide:** Variable $Z$ para dotal por $b$. Calcular $\mathbb{E}[Z]$ y $\operatorname{Var}(Z)$ en notación estándar (Jordan/Neill/Weishaus).
+
+21. **Se pide:** Beneficio en progresión: pagos $b_k = 1\,000 + 100k$ si (x) sobrevive al año $k$ ($k=1,2,\ldots,10$). Escribir el APV con ${}_kE_x$.
+
+22. **Se pide:** Con $D_{40}=2\,500$, $D_{55}=1\,500$, calcular ${}_{15}E_{40}$ y la PNU de un dotal de 6.000 u.m. a 15 años para (40).
+
+23. **Se pide:** Verificar que $\mathbb{E}[Z^2]$ para dotal por 1 se obtiene valorando a fuerza de interés $2\delta$ (regla de momentos).
+
+24. **Tipo parcial.** **Se pide:** Dotal 25 años por 10.000 u.m. (30). $D_{30}=50\,000$, $D_{55}=20\,000$. Calcular la PNU e interpretar ${}_{25}E_{30}$.
+
+25. **Se pide:** Relacionar $nE_x$ con la probabilidad ${}_np_x$ y el factor financiero $v^n$; explicar por qué $nE_x < v^n$ cuando $q_x > 0$.
+
+26. **Se pide:** Con $D_{55}=1\,200$, $D_{65}=720$, calcular ${}_{10}E_{55}$ y la PNU de un dotal de 5.000 u.m. a 10 años para (55).  
+27. **Se pide:** Escribir el APV de 1.000 u.m. en 7 años y 2.000 u.m. en 14 años si (40) sobrevive (con ${}_7E_{40}$, ${}_{14}E_{40}$).  
+28. **Tipo parcial.** **Se pide:** Dotal 15 años por 4.000 u.m. (45). $D_{45}=2\,000$, $D_{60}=1\,000$. Calcular PNU y ${}_{15}E_{45}$.  
+29. **Se pide:** Verificar que $\operatorname{Var}(Z)$ del dotal por 1 es ${}_np_x\,{}_nq_x\,v^{2n}$.  
+30. **Se pide:** Si ${}_6E_{40}=0{,}75$ y ${}_4E_{46}=0{,}9$, calcular ${}_{10}E_{40}$ usando la cadena.  
+31. **Se pide:** Explicar por qué la PNU es el valor esperado del valor presente del beneficio.  
+32. **Se pide:** Beneficio: 500 u.m. si (50) sobrevive 5 años y 1.500 u.m. si sobrevive 15 años. Escribir APV.  
+33. **Tipo parcial.** **Se pide:** $D_{48}=1\,700$, $D_{58}=1\,020$. Calcular ${}_{10}E_{48}$ y PNU por 3.400 u.m.  
+34. **Se pide:** Relación entre $nE_x$ y el factor de descuento $v^n$ cuando la mortalidad es nula.  
+35. **Se pide:** Segundo momento $\mathbb{E}[Z^2]$ para dotal por $b$: fórmula con ${}^2(nE_x)$.  
+36. **Se pide:** Dotal 18 años (32). ${}_{18}E_{32}=0{,}48$. PNU por 7.500 u.m.  
+37. **Se pide:** Descomposición del mixto $A_{x:\overline{n}|}$ en temporal más dotal.  
+38. **Tipo parcial.** **Se pide:** Dos dotales: 4 años 2.000 y 8 años 3.000 para (44). ${}_4E_{44}=0{,}88$, ${}_8E_{44}=0{,}72$. PNU total.  
+39. **Se pide:** Si $i$ aumenta, ¿$nE_x$ sube o baja? Justificar con $v^n$.  
+40. **Se pide:** Factor de acumulación con supervivencia: cuánto depositar hoy para tener 10.000 u.m. en 20 años si (35) sobrevive (con ${}_{20}E_{35}$).  
+41. **Se pide:** Variable $Z$ para dotal: valores posibles y probabilidades.  
+42. **Se pide:** Escribir ${}_nE_x$ usando $l_x$, $l_{x+n}$, $v$.  
+43. **Tipo parcial.** **Se pide:** (a) Definir dotal puro. (b) $D_{42}=1\,900$, $D_{52}=1\,140$. PNU dotal 10 años por 5.000 u.m. (42).  
+44. **Se pide:** APV de una renta que paga 1 u.m. al final del año $k$ si (x) sobrevive ($k=1,\ldots,n$): relación con ${}_kE_x$.  
+45. **Se pide:** Varianza del dotal por 2.000 u.m. a 10 años si ${}_{10}E_{40}=0{,}6$.  
+46. **Se pide:** Relación $A_{x:\overline{n}|}^1=A_x-{}_nE_x\,A_{x+n}$: interpretar en palabras.  
+47. **Tipo parcial.** **Se pide:** Dotal 25 años por 8.000 u.m. (28). $D_{28}=4\,000$, $D_{53}=1\,600$. Calcular PNU.  
+48. **Se pide:** Regla de momentos: a qué fuerza de interés se valora $\mathbb{E}[Z^2]$ para el dotal.  
+49. **Se pide:** Con $D_{60}=1\,000$, $D_{70}=450$, calcular ${}_{10}E_{60}$ y la PNU de un dotal de 4.000 u.m. a 10 años para (60).  
+50. **Se pide:** Síntesis: tres aplicaciones de los dotales $nE_x$ en rentas y seguros (Jordan/Weishaus).
+
+---
+
+*Contenido basado en la guía docente de la asignatura, Jordan [@jordan1982], Neill [@neill1977] y Weishaus [@weishaus2013]. Las funciones conmutativas $N_x$ y su uso en rentas de vida se desarrollan en el [capítulo 7](#cap-anualidades-contingentes) (anualidades contingentes).*

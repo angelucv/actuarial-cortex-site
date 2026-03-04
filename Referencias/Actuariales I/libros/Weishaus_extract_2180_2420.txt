@@ -1,0 +1,276 @@
+5000(4-790) (
+
+1-- 4790) =1201.18/
+
+5000	5000
+
+The variance is l803p80 3q80. Notice that the variance of the number who die in the three years is the same.
+
+First, q(x,OJ= Ux-lx+il/ l, = 1/(100-xJ, so q(48,0J = 1/52, q(49,0J = 1/51, q(50, OJ= 1/50, and q(51, OJ=
+
+1/49. Then	•
+
+p(48, OJ= 1-1/52 = 0.980769
+
+p(49, lJ= 1-0.95/51= 0.981373
+
+p(50,2J = 1-0.982/50= 0.980792 p(51,3J = 1-0.983/49= 0.980792
+
+2p(48, OJ= (0.980769J(0.981373J = 0.962500
+
+2p(50,2J= (0.980792J(0.980792J =0.961953 z12q(48, OJ= 0.962500(1-0.961953J =I 0.0:16621
+
+The given fraction is
+
+201ssq15	20P1sssq35
+
+55q35	55q35
+
+20P1=s
+
+S,,(35J
+
+S,,(l5J
+
+By linear interpolation, S,,(15J = 0.7 and S,,(35J = 0.48. So the quotient is 0.48/0.7 =I 0,6857141. (Al
+
+Quiz Solutions
+
+2-1.  Use equation (2.1) to relate S50 to S40.
+
+Sso(30J=	s,o(40J
+
+S,o(lOJ
+
+s,0(40J= l.3-o.02(4oJ = o.5 S40(10J= l -0.005(10J = 0.95
+
+0 5
+
+S50(30J=	•  =I 0,52631
+
+0.95  ·	·
+
+2-2. Since 312q45 = 3p4szq4,, we deduce 2q48 = (l/6J/(2/3J = 1/4, and therefore /50/ 148 = 1- 2q48 = 3/4 and
+
+148= 450(4/3J = 600. Then /50= 148 -  d48- d49, or 450 = 600-80-d49, implying d49 = -
+
+SOA MLC Study Manual-13th edition
+
+Lesson 3
+
+Survival Distributions: Force of Mortality
+
+Reading: Actuarial Mathematics for Life Contingent Risks zed edition 2.3
+
+As discussed in the previous lesson, we are assuming that the distribution function of the time-to-death ran­ dom variable Tx, or F,(t), is differentiable, and therefore the probability density function of the time-to-death random variable, or f,( t ), is
+
+(t)= dF,(t) =- dS,(t)
+
+fx	dt	dt
+
+We can derive F or S from f by integrating:
+
+FAt)=i' fAu)du
+
+S,(t)=J,"" f,(u)du
+
+A function related to density is the force of mortality, denoted byµ,. For the time-to-death random variable T.x, this is the hazard rate function discussed in Lesson 1, in the third bullet o:q page 1. It measures the rate of mortality at age x, given survival to age x. It can also be defined as the probability of death in a small amount of time after age x1 given survival to age x, or
+
+Now,
+
+µ,=
+
+1
+
+Jim -Pr(1,j x+dxl1,j>x)
+
+dx	>O+ dx
+
+Pr[To	x + h I To> x)
+
+so the force of mortality can be written as
+
+So(x)-So(x + h) So(x)
+
+µ=,
+
+_l_	lim So(x)-So(x + h)
+
+So(x)h~o	h dS,,(x)/dx
+
+So(x)
+
+fo(x)
+
+So(x)
+
+(')
+
+('*)
+
+Since S,(t) =So(x + t)/S0(x), differentiating this expression witl1 respect to t, we get
+
+f,(t)= fo(x + t)/So(x)
+
+It follows that
+
+SOA MLCStudy Manual- J31hedition
+
+f,(t)
+
+S,(t)
+
+f,(x+ t)/So(x)
+
+So(x+ t)/So(x)
+
+37
+
+fo(x+t) So(x + t)
+
+and by(")
+
+Therefore
+
+fo(x+ t)		fAt) µx+r= So(x+t)	Sx{t)
+
+f,(t)
+
+µ_Hf= S,(t)
+
+(3.1)
+
+regardless of which x or t you pick. As long as you hold the sum x + t fixed, you're free to pick any x and t you wish in order to calculate µx+t· For example, if you want to calculate µ50 and you are given probability functions fi0(t) and .5':i0(1), you may calculate µ50 = fi0(20)/S:i0(20).
+
+In the Bower's textbook formerly on the syllabus, despite the fact that µn, is only a function of x + t and
+
+not a function of x and t separately, they used the notationµ,( t) to mean the same as what we mean by µx+·t This emphasizes that x is generally held fixed and only t varies. On the exam, they can use either notation. Just remember thatµx+1 = µ,( t). For example, µ50 = µ30(20) = µ15(35). The "default" value of the argument t is 0, not 1. µ20 is not µ20(!). Sometimes, the notation µ(x) is used to mean µx, In this manual, we will almost always use the notation µx and not µ,(t) or µ(x), and the exam will do the same, except for those cases in whichµ is a function of both x and t, which will be discussed later on in the course.
+
+Since S,(t) =, px  and F,(t) = ,qx  so that f,(t) = d1qxfdt, formula (3.1) can be written as
+
+d,qx/dt
+
+µ-x+1=- -
+
+1Px
+
+(3.2)
+
+The derivative of the logarithm of a function equals the derivative of the function divided by the function:
+
+Therefore from(*), we have
+
+dlnh(x)
+
+dx
+
+dh(x)/dx h(x)
+
+for any function h
+
+dlnS,,(x)
+
+dx
+
+or
+
+dlnS,(t)
+
+dt dln,px dt
+
+where we're free to choose any x and t that add up to the subscript ofµ. Going in the other direction
+
+S,(t)=exp(-L'µx+. ds J
+
+1
+
+1Px=exp(-J, µx+,dsJ
+
+=exp(- J:+rµ,dsJ
+
+(3.3)
+
+(3.4)
+
+(3.5)
+
+(3.6)
+
+(3.7)
+
+The only difference between the last two expressions is the variable of integration; otherwise they are equiva­
+
+lent.
+
+What you should remember about equations (3.6) and (3.7) is if you integrate µx fmn a lower bound to an upper bound, and then exponentiate the negative of the in,egral, you get the probability of survival to the age represented by the upper bound, conditional on survival to the age represented by the lower bound. You can calculate ,qx as the complement of an exponentiated integral, but you cannot calculate fluqx directly in this fashion. Instead, you express it as Ip x - t+uP x and calculate the two survival probabilities in terms of µs,
+
+SOAMLCStudy ManuaJ-131h edition
+
+EXAMPLE3A You are given1 that µ35+1 = 1/(100+ t).
+
+Calculate 10p35.
+
+Calculate 20q 45.
+
+Calculate 10120q40.
+
+ANSWER:	1. We want the probability of survival to 45 given survival to 35, so we'll integrateµ from age 35 to age 45. µ35( O) represents age 35 and µ35(10) represents age 45.
+
+10P3s = exp (-	µ3s+s ds)
+
+( l10
+
+= exp(-(ln 110-ln 100))
+
+= expln 100 =110
+
+110	11
+
+We calculate the probability of survival to 65 given survival to 45 and then take the complement.
+
+zup45 =exp (- 1:oµ3s+s ds)
+
+30
+
+(	ds )
+
+=exp-(	J10  lO0+s
+
+= exp(-(ln 130-ln ll0))
+
+110	11
+
+=expln-=-
+
+130	13
+
+This can be evaluated as 10p40-30p40 or as 1op4020q50; either way, we need two integrals to evaluate this. We'll use the former expression. We already saw in the previous two solutions that for this force of mortality, rPx =(65+x)/(65+ X + t).
+
+1012oq10 =10P10 -30P10
+
+65+40	65+40
+
+65+50	65+70
+
+105	105 =I--- I	□
+
+=-ll5 -1-35  0.135266
+
+1This is a Parelo distribution, a poor model for human morlality, and is used only to illustrate the concept of calculating probabilities from the force of mortality.
+
+SOAMLCS!udyManual-1:1111edition Copyfighl ©2013 ASM
+
+Quiz 3-1 The force of mortality is µx =0.001./x.
+
+Calculate the probability of someone age 20 surviving 30 years and then dying in the next 10 years.
+
+By equation (3.1), the density function for 7 is
+
+(3.8)
+
+Thus, probabilities of Tx being in a given range can be computed byintegrating rP x µx+c over that range:
+
+Ic+u
+
+and in particular,
+

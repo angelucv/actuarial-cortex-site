@@ -1,0 +1,853 @@
+---
+number: false
+---
+
+# Rentas de vida (anualidades contingentes) {#cap-anualidades-contingentes .unnumbered .unlisted}
+
+Tras haber introducido el valor presente actuarial, el dotal puro y los seguros de vida (capítulos 5 y 6), en este capítulo se desarrolla el valor presente de las **rentas de vida**: series de pagos contingentes a la supervivencia de una vida de edad $x$. La fórmula $a_x = \sum_{t=1}^{\infty} v^t\,{}_tp_x$ que aquí se utiliza es la misma estructura que Halley formalizó en 1693 con datos de Breslavia; la notación con sufijo $x$ y la columna $N_x$ en forma terminal siguen la convención de Davies adoptada por el Institute of Actuaries (véase el [contexto histórico del cap. 5](#cap-valor-presente-actuarial)). Se cubren rentas con pagos anuales (vencidas y anticipadas), pagos fraccionarios ($m$ veces al año), rentas continuas, rentas variables y un resumen de notación. Se incorpora la visión de Weishaus [@weishaus2013]: tipos estándar (vitalicia, temporal, diferida, cierto-y-vitalicia), variable aleatoria del valor presente de la renta anticipada ($\ddot{a}_{\overline{K_x+1}|}$), relación directa con el seguro de vida entera $\ddot{a}_x = (1 - A_x)/d$, y renta con término cierto seguido de vitalicia (*certain-and-life*). Las fórmulas se expresan en términos de las funciones conmutativas $D_x$, $N_x$ y $S_x$.
+
+Según Neill [@neill1977], una **renta de vida** (*life annuity*) es una serie de pagos a intervalos iguales (anuales si no se indica lo contrario) durante la vida de una persona dada. Puede ser **temporal** (limitada a un número de años) o **vitalicia** (se supone vitalicia si no se especifica). Puede ser **diferida** (el primer pago se produce varios años después) o **inmediata** (en una renta anual, el primer pago es un año después del inicio). En notación internacional (IAN) los símbolos para el valor presente esperado son los mismos que para rentas continuas, sustituyendo la barra sobre la $a$ por **diéresis** (doble punto) para rentas **anticipadas** [@weishaus2013]. Todas estas variantes se formalizan a continuación.
+
+## Rentas de vida con pagos anuales
+
+### Renta vitalicia vencida $a_x$
+
+Una **renta vitalicia** que pague 1 anualmente a $(x)$ es una serie de pagos de 1 al final de cada año mientras $(x)$ viva. El primer pago ocurre al final del año 1 si $(x)$ está vivo. El valor presente se denota por $a_x$ y puede expresarse como suma de dotales puros:
+
+$$a_x = {}_1E_x + {}_2E_x + \cdots + {}_{w-x-1}E_x = \sum_{t=1}^{w-x-1} {}_tE_x.$$
+
+En términos de probabilidades y descuento:
+
+$$a_x = \sum_{t=1}^{w-x-1} v^t \, {}_tp_x = \frac{1}{D_x} \sum_{t=1}^{w-x-1} D_{x+t}.$$
+
+Se define la **función conmutativa** $N_x$ como:
+
+$$N_x = \sum_{t=0}^{w-x-1} D_{x+t},$$
+
+de modo que $\sum_{t=1}^{w-x-1} D_{x+t} = N_{x+1}$. Por tanto:
+
+$$a_x = \frac{N_{x+1}}{D_x}. \tag{2.2}$$
+
+La relación $N_x = N_{x+1} + D_x$ permite tabular $N_x$ de forma recursiva. Con ello, $a_x$ se obtiene con una sola división.
+
+### Renta temporal vencida $a_{x:\overline{n}|}$
+
+Una **renta temporal de vida** por $n$ años paga 1 al final de cada año durante $n$ años si $(x)$ sobrevive. Su valor presente se denota $a_{x:\overline{n}|}$ (o ${}_n a_x$):
+
+$$a_{x:\overline{n}|} = \sum_{t=1}^{n} {}_tE_x = \frac{1}{D_x} \sum_{t=1}^{n} D_{x+t} = \frac{N_{x+1} - N_{x+n+1}}{D_x}. \tag{2.3}$$
+
+### Renta vitalicia diferida $n|a_x$
+
+Una **renta vitalicia diferida** $n$ años para $(x)$ paga 1 al final de cada año, comenzando en la edad $x+n+1$. Su valor presente es $n|a_x$:
+
+$$n|a_x = \sum_{t=n+1}^{w-x-1} {}_tE_x = \frac{1}{D_x} \sum_{t=n+1}^{w-x-1} D_{x+t} = \frac{N_{x+n+1}}{D_x}. \tag{2.4}$$
+
+Equivalencias útiles: $n|a_x = a_x - a_{x:\overline{n}|}$ y $n|a_x = {}_nE_x \cdot a_{x+n}$.
+
+### Renta diferida y temporal $n|a_{x:\overline{m}|}$
+
+Renta que paga 1 al final de cada año durante $m$ años, con primer pago a la edad $x+n+1$:
+
+$$n|a_{x:\overline{m}|} = \frac{N_{x+n+1} - N_{x+n+m+1}}{D_x}. \tag{2.5}$$
+
+### Rentas anticipadas
+
+Cuando los pagos ocurren al **inicio** de cada período, la renta es **anticipada**; el valor actual se distingue con diéresis sobre la $a$:
+
+$$\ddot{a}_x = \frac{N_x}{D_x}, \quad \ddot{a}_{x:\overline{n}|} = \frac{N_x - N_{x+n}}{D_x}, \quad n|\ddot{a}_x = \frac{N_{x+n}}{D_x}, \quad n|\ddot{a}_{x:\overline{m}|} = \frac{N_{x+n} - N_{x+n+m}}{D_x}. \tag{2.6--2.9}$$
+
+Relaciones entre rentas anticipadas y vencidas:
+
+$$\ddot{a}_x = 1 + a_x; \quad \ddot{a}_{x:\overline{n}|} = 1 + a_{x:\overline{n-1}|}; \quad n|\ddot{a}_x = {}_nE_x + n|a_x; \quad n|\ddot{a}_{x:\overline{m}|} = {}_nE_x + n|a_{x:\overline{m-1}|}. \tag{2.10--2.13}$$
+
+### Variable del valor presente y relación con el seguro
+Una **renta vitalicia anticipada** (annuity-due) de 1 sobre $(x)$ paga 1 al **inicio** de cada año mientras $(x)$ viva. El **valor presente** de esa secuencia de pagos es una variable aleatoria: si $(x)$ sobrevive $K_x$ años completos y fallece en el año $K_x+1$, recibe $K_x+1$ pagos (en los instantes $0, 1, \ldots, K_x$), por lo que el valor presente es $\ddot{a}_{\overline{K_x+1}|} = (1 - v^{K_x+1})/d$ [@weishaus2013]. Tomando esperanza y recordando que $\mathbb{E}[v^{K_x+1}] = A_x$ (seguro de vida entera pagadero al final del año de muerte), se obtiene:
+
+$$\ddot{a}_x = \frac{1 - A_x}{d}. \tag{Weishaus 17.2--17.3}$$
+
+Análogamente, una **renta temporal anticipada** a $n$ años tiene valor presente aleatorio $\ddot{a}_{\overline{\min(K_x+1,\,n)}|}$; como $v^{\min(K_x+1,n)}$ es el valor presente de un **seguro mixto** a $n$ años de 1, se tiene $\ddot{a}_{x:\overline{n}|} = (1 - A_{x:\overline{n}|})/d$. Para la **renta diferida** $n$ años, $n|\ddot{a}_x = {}_nE_x\,\ddot{a}_{x+n}$ (dotal puro de $n$ años que «entrega» una renta vitalicia anticipada sobre $(x+n)$). Las relaciones $\ddot{a}_{x:\overline{n}|} = \ddot{a}_x - {}_nE_x\,\ddot{a}_{x+n}$ y $n|\ddot{a}_x = {}_nE_x\,\ddot{a}_{x+n}$ permiten pasar de vitalicia a temporal y diferida usando columnas de ${}_nE_x$ y $\ddot{a}_x$ en tablas ilustrativas [@weishaus2013].
+
+### Renta con término cierto y vitalicia (certain-and-life, Weishaus)
+
+Una **renta cierto-y-vitalicia** (certain-and-life annuity-due) a $n$ años paga 1 al inicio de cada año durante los **primeros $n$ años con certeza** (independientemente de la supervivencia) y, a partir del instante $n$, 1 al inicio de cada año **mientras $(x)$ viva**. Su valor presente es la suma de una renta cierta anticipada a $n$ años ($\ddot{a}_{\overline{n}|}$) y una renta vitalicia anticipada diferida $n$ años ($n|\ddot{a}_x = {}_nE_x\,\ddot{a}_{x+n}$). En notación: $\ddot{a}_{x:\overline{n}|}^{(c)} = \ddot{a}_{\overline{n}|} + {}_nE_x\,\ddot{a}_{x+n}$. Este tipo de renta aparece en planes con garantía mínima de pagos y en el programa (TEMA 7: rentas con términos ciertos) [@weishaus2013].
+
+### Primer pago en fracción de año $_{1/k}|\ddot{a}_x$
+
+Si la renta empieza al final de la fracción $1/k$ de año, puede aproximarse por interpolación lineal entre $\ddot{a}_x$ (primer pago en 0) y $a_x$ (primer pago en 1):
+
+$$_{1/k}|\ddot{a}_x \approx \left(1 - \frac{1}{k}\right) \ddot{a}_x + \frac{1}{k} a_x = \ddot{a}_x - \frac{1}{k}.$$
+
+### Renta acumulada (contenida/reprimida) $s_{x:\overline{n}|}$
+
+Si cada miembro del grupo de edad $x$ paga 1 al final de cada año durante $n$ años y el fondo se acumula con interés y supervivencia, la participación de cada sobreviviente a la edad $x+n$ es la **renta de vida acumulada** $s_{x:\overline{n}|}$:
+
+$$s_{x:\overline{n}|} = \frac{N_{x+1} - N_{x+n+1}}{D_{x+n}}. \tag{2.14}$$
+
+Para la renta anticipada acumulada:
+
+$$\ddot{s}_{x:\overline{n}|} = \frac{N_x - N_{x+n}}{D_{x+n}}. \tag{2.15}$$
+
+Se cumple $s_{x:\overline{n}|} = a_{x:\overline{n}|} \cdot \frac{1}{{}_nE_x}$ (valor actual acumulado $n$ años con interés y supervivencia).
+
+### Fórmula general y tablas selectas
+
+Todas las fórmulas de rentas de esta sección son de la forma:
+
+$$\frac{N_y - N_{y+n}}{D_x}, \tag{2.16}$$
+
+donde $y$ es la edad en que se realiza el **primer** pago, $n$ es el **número** de pagos y $x$ la edad de contratación.
+
+**Ejemplo:** Valor actual a prima única de una renta de vida diferida 10 años y temporal 15 años para $(36)$: primer pago a la edad 47, luego $y=47$, $n=15$, $x=36$:
+
+$$_{10}|a_{36:\overline{15}|} = \frac{N_{47} - N_{62}}{D_{36}}.$$
+
+Valor acumulado de esa misma renta a la edad 62: $(N_{47} - N_{62})/D_{62}$.
+
+Para **tablas selectas** con período selecto $k$ años, se usan funciones conmutativas selectas $D_{[x]+t}$, $N_{[x]+t}$ para $t < k$ y las ordinarias $D_{x+t}$, $N_{x+t}$ para $t \geq k$. Por ejemplo, la renta vitalicia diferida $n$ años para $[x]$: $n|a_{[x]} = N_{[x]+n+1}/D_{[x]}$ si $n < k-1$, y $n|a_{[x]} = N_{x+n+1}/D_{[x]}$ si $n \geq k-1$.
+
+En lo que sigue, «renta» se refiere a renta de vida; cuando no hay contingencia de vida se usará **renta cierta**.
+
+***
+
+## Rentas pagaderas $m$ veces al año
+
+En la práctica las rentas de vida suelen pagarse con frecuencia mayor que anual (semestral, trimestral, mensual). El valor actual de una renta vitalicia vencida de 1 pagadera $m$ veces al año a $(x)$ se denota $a_x^{(m)}$: pagos de $1/m$ a las edades $x+1/m$, $x+2/m$, … contingentes a la supervivencia.
+
+$$a_x^{(m)} = \frac{1}{m\,D_x} \sum_{t=1}^{\infty} D_{x+t/m}.$$
+
+Cuando $l_x$ (y por tanto $D_{x+t/m}$) no está definida para edades fraccionarias, la sumatoria se aproxima. Usando la **fórmula de Woolhouse** (caso particular de Euler-Maclaurin) [@woolhouse1869] y la relación $\frac{dD_x}{dx} = -D_x(\mu_x + \delta)$ se obtiene:
+
+$$a_x^{(m)} \approx a_x + \frac{m-1}{2m} - \frac{m^2-1}{12m^2}(\mu_x + \delta). \tag{2.18}$$
+
+En la práctica suele usarse la aproximación (dos primeros términos):
+
+$$a_x^{(m)} \approx a_x + \frac{m-1}{2m}. \tag{2.19}$$
+
+Rentas diferidas y temporales pagaderas $m$ veces al año:
+
+$$n|a_x^{(m)} \approx n|a_x + \frac{m-1}{2m} \, {}_nE_x; \quad a_{x:\overline{n}|}^{(m)} \approx a_{x:\overline{n}|} + \frac{m-1}{2m}\left(1 - {}_nE_x\right). \tag{2.20--2.21}$$
+
+Rentas anticipadas:
+
+$$\ddot{a}_x^{(m)} \approx \ddot{a}_x - \frac{m-1}{2m}; \quad n|\ddot{a}_x^{(m)} \approx n|\ddot{a}_x - \frac{m-1}{2m}\, {}_nE_x; \quad \ddot{a}_{x:\overline{n}|}^{(m)} \approx \ddot{a}_{x:\overline{n}|} - \frac{m-1}{2m}\left(1 - {}_nE_x\right). \tag{2.22--2.24}$$
+
+En términos de $D_x$ y $N_x$ (vencidas): $a_x^{(m)} \approx (N_{x+1} + \frac{m-1}{2m}D_x)/D_x$, $n|a_x^{(m)} \approx (N_{x+n+1} + \frac{m-1}{2m}D_{x+n})/D_x$, $a_{x:\overline{n}|}^{(m)} \approx (N_{x+1} - N_{x+n+1} + \frac{m-1}{2m}(D_x - D_{x+n}))/D_x$; fórmulas análogas para las anticipadas con $N_x$, $N_{x+n}$, etc.
+
+***
+
+## Rentas continuas
+
+Cuando $m \to \infty$, la renta es **continua**. El valor actual de una renta de vida continua de 1 para $(x)$, pagadera de forma instantánea a lo largo del año, se denota $\bar{a}_x$:
+
+$$\bar{a}_x = \lim_{m\to\infty} a_x^{(m)} = \int_0^{\infty} v^t \, {}_tp_x \, dt = \frac{1}{D_x} \int_0^{\infty} D_{x+t}\,dt. \tag{2.25}$$
+
+Aproximación práctica (hacer $m\to\infty$ en (2.19)):
+
+$$\bar{a}_x \approx a_x + \frac{1}{2}. \tag{2.27}$$
+
+Se definen los conmutativos continuos $\bar{D}_x = \int_0^1 D_{x+t}\,dt$ y $\bar{N}_x = \int_0^{\infty} D_{x+t}\,dt$, con la aproximación $\bar{D}_x \approx \frac{1}{2}(D_x + D_{x+1})$, de modo que:
+
+$$\bar{a}_x = \frac{\bar{N}_x}{D_x}. \tag{2.28--2.30}$$
+
+Rentas continuas temporal y diferida:
+
+$$\bar{a}_{x:\overline{n}|} = \frac{\bar{N}_x - \bar{N}_{x+n}}{D_x}; \quad n|\bar{a}_x = \frac{\bar{N}_{x+n}}{D_x}. \tag{2.31--2.33}$$
+
+Derivadas útiles:
+
+$$\frac{d\bar{N}_x}{dx} = -D_x, \qquad \frac{d\bar{a}_x}{dx} = \bar{a}_x(\mu_x + \delta) - 1. \tag{2.34--2.37}$$
+
+***
+
+## Renta cierto-y-vitalicia y rentas con término garantizado (Tema 7)
+
+El **Tema 7** del programa aborda rentas completas, **garantizadas** y rentas con términos ciertos. La **renta cierto-y-vitalicia** (*certain-and-life*) es el bloque básico para planes de jubilación y seguros educacionales: garantiza un flujo de pagos mínimo durante $n$ años con certeza y, si el titular sobrevive más de $n$ años, continúa el pago de por vida.
+
+### Definición y línea del tiempo
+
+Una **renta cierto-y-vitalicia** de 1 u.m. al inicio de cada año para $(x)$ paga:
+
+- **Durante los primeros $n$ años:** 1 u.m. al inicio de cada año **con certeza** (no depende de la supervivencia).
+- **A partir del año $n$:** 1 u.m. al inicio de cada año **mientras $(x)$ viva** (renta de vida desde la edad $x+n$).
+
+La línea del tiempo se descompone en dos tramos: (1) una **renta cierta anticipada** de $n$ años, $\ddot{a}_{\overline{n}|}$; (2) una **renta de vida anticipada** diferida $n$ años, ${}_n|\ddot{a}_x = {}_nE_x\,\ddot{a}_{x+n}$.
+
+### Valor presente
+
+$$\text{VP} = \ddot{a}_{\overline{n}|} + {}_nE_x\,\ddot{a}_{x+n}.$$
+
+En conmutativas: $\ddot{a}_{\overline{n}|} = (1-v^n)/d$ y ${}_nE_x = D_{x+n}/D_x$, $\ddot{a}_{x+n} = N_{x+n}/D_{x+n}$, luego ${}_nE_x\,\ddot{a}_{x+n} = N_{x+n}/D_x$. Así el valor presente puede escribirse como suma de la renta cierta y del valor actual de la renta vitalicia diferida.
+
+Esta descomposición es fundamental para planes de jubilación (p. ej. 10 años ciertos + vitalicia) y para seguros educacionales donde se busca un flujo mínimo independiente de la supervivencia del titular.
+
+### Planes donde la reserva supera la suma asegurada
+
+En **seguros dotales de ahorro** o en contratos de larga duración, la **reserva matemática** en ciertos años puede llegar a ser **mayor que la suma asegurada** nominal. Si el beneficio por fallecimiento se limitara al capital nominal, la aseguradora obtendría una «ganancia por muerte» (se queda con el exceso de la reserva sobre el capital pagado), lo cual es inaceptable desde el punto de vista ético y técnico.
+
+La práctica correcta es **ajustar el beneficio por fallecimiento** de modo que, cuando la reserva terminal supere la suma asegurada, el pago en caso de muerte sea **al menos la reserva terminal** (o el máximo entre la suma asegurada y la reserva). Así se evita la ganancia por muerte y se garantiza que el ahorro acumulado del asegurado no sea capturado por la aseguradora. En fórmulas: si $_kV > b$ (reserva en $k$ mayor que el capital contractual $b$), el beneficio por muerte en ese año debe ser $\max(b, {}_kV)$ o, según el contrato, la reserva terminal. Este ajuste es un requisito técnico y de equidad en la profesión actuarial.
+
+***
+
+## Rentas variables
+
+El valor actual de una renta variable suele expresarse como combinación de rentas niveladas. Por ejemplo, una renta que paga 1 durante $n$ años y luego 2 por el resto de la vida tiene valor $a_x + n|a_x$ o bien $a_{x:\overline{n}|} + 2\,n|a_x$.
+
+### Rentas crecientes
+
+$(Ia)_x$: renta de vida creciente que paga 1 al final del año 1, 2 al final del año 2, etc., mientras $(x)$ viva:
+
+$$(Ia)_x = \sum_{t=1}^{\infty} t\,v^t\,{}_tp_x = \sum_{t=0}^{\infty} {}_t|a_x = \frac{S_{x+1}}{D_x}, \tag{2.38--2.39}$$
+
+donde $S_x = \sum_{t=0}^{\infty} N_{x+t}$.
+
+Renta creciente temporal $n$ años (el incremento cesa en el año $n$):
+
+$$(Ia)_{x:\overline{n}|} = \frac{S_{x+1} - S_{x+n+1} - n\,N_{x+n+1}}{D_x}. \tag{2.40}$$
+
+Renta creciente que sube 1 cada año hasta el año $n$ y luego se mantiene constante por el resto de vida:
+
+$$(I_n a)_x = \frac{S_{x+1} - S_{x+n+1}}{D_x}. \tag{2.41}$$
+
+### Rentas decrecientes
+
+$(Da)_{x:\overline{n}|}$: renta temporal decreciente que paga $n$ al final del año 1, $n-1$ al final del año 2, …, 1 al final del año $n$:
+
+$$(Da)_{x:\overline{n}|} = \frac{n\,N_{x+1} - (S_{x+2} - S_{x+n+2})}{D_x}. \tag{2.42}$$
+
+Anticipadas: $(I\ddot{a})_x = S_x/D_x$; $(D\ddot{a})_{x:\overline{n}|} = (n\,N_x - (S_{x+1} - S_{x+n+1}))/D_x$.
+
+Cualquier renta variable (regular o no) puede desarrollarse expresando los beneficios como suma de dotales puros.
+
+### Rentas variables pagaderas $m$ veces al año y continuas
+
+Si el pago anual total se reparte en $m$ plazos iguales con incremento solo al cambio de año:
+
+$$(Ia)_x^{(m)} \approx \frac{S_{x+1} + \frac{m-1}{2m}N_x}{D_x}. \tag{2.43}$$
+
+Si la **tasa** de pago crece continuamente durante el año (pagos $1/m^2$, $2/m^2$, … en cada $1/m$ de año):
+
+$$(I^{(m)}a)_x^{(m)} \approx (Ia)_x + \frac{m^2-1}{12m^2}. \tag{2.44}$$
+
+Renta continua creciente (tasa $t$ en el instante $t$): $(I\bar{a})_x = \bar{S}_x/D_x$; aproximación $(I\bar{a})_x \approx (Ia)_x + \frac{1}{2}\ddot{a}_x$. Renta de incremento continuo $(\bar{I}\bar{a})_x = \frac{1}{D_x}\int_0^{\infty} t\,D_{x+t}\,dt$; aproximación $(\bar{I}\bar{a})_x \approx (Ia)_x + 1/12$ (fórmulas 2.45--2.47).
+
+***
+
+## Efectos de la variación en el interés y la mortalidad
+
+$a_x$ depende de la tabla de mortalidad y de la tasa de interés $i$. Para estimar el efecto de un cambio en $i$:
+
+$$\frac{d}{di}a_x = -v\,(Ia)_x; \quad \Delta a_x \approx -v\,(Ia)_x\,\Delta i. \tag{2.48}$$
+
+Aproximación para el valor de la renta a una nueva tasa $j$ cuando se dispone del valor a tasa $i$:
+
+$$a_x^{(j)} \approx a_x^{(i)} - \frac{j-i}{1+i}(Ia)_x^{(i)}. \tag{2.49}$$
+
+**Efecto de la mortalidad:** un cambio constante $c$ en la fuerza de mortalidad $\mu$ es equivalente, para el dotal puro, a un cambio igual en la fuerza de interés $\delta$: $A_{x:\overline{n}|}^{\,\,1} = e^{-\int_0^n (\mu_{x+t}+\delta)\,dt}$; si $\mu' = \mu + c$, el nuevo valor coincide con el calculado con $\delta' = \delta + c$. Lo mismo aplica en términos análogos a las rentas. Para leyes como la de Makeham $\mu_x = A + B c^x$, un cambio en $A$ equivale a un cambio en $\delta$; un cambio en $B$ puede interpretarse como un cambio en la edad; un cambio en $c$ implica una expansión o contracción en la escala de edad.
+
+***
+
+## Resumen de la notación (principios básicos)
+
+- **Símbolo principal** con prefijos y sufijos (sub o superíndices) define la función.
+- **Sufijo subíndice** (derecha): edad y orden del evento.
+- **Prefijo subíndice** (izquierda): duración y posición en el tiempo.
+- **Barra subíndice a la izquierda:** diferimiento.
+- **Sufijo $x:\overline{n}$:** vida de edad $x$ y término cierto $n$ años.
+- **Sufijo entre paréntesis** (ej. $(m)$): periodicidad ($m$ veces al año).
+- **Barra sobre el símbolo:** pagos instantáneos (límite $m\to\infty$).
+- **Diéresis** sobre la $a$: renta anticipada (vs. vencida).
+
+**Símbolos:** $E$, $A$ = valor presente de dotal puro de 1; $a$ = valor presente de renta de 1; $s$ = monto acumulado de renta de 1; $(Ia)$ = renta creciente; $(Da)$ = renta decreciente. Barra sobre $a$ = pago instantáneo; barra sobre $I$ o $D$ = incremento/decremento instantáneo.
+
+**Funciones conmutativas:** $D_x = v^x l_x$; $N_x = \sum_{t\ge 0} D_{x+t}$; $S_x = \sum_{t\ge 0} N_{x+t}$; $\bar{D}_x = \int_0^1 D_{x+t}\,dt$; $\bar{N}_x = \int_0^{\infty} D_{x+t}\,dt$; $\bar{S}_x = \sum_{t\ge 0} \bar{N}_{x+t}$.
+
+***
+
+## Ejercicios
+
+En las soluciones se indica el razonamiento, los pasos intermedios y el resultado final.
+
+### Ejercicios resueltos
+
+**1. Renta vitalicia y temporal**  
+$N_{41}=120\,000$, $N_{46}=95\,000$, $N_{51}=72\,000$, $D_{40}=8\,000$. (a) $\ddot{a}_{40}$. (b) $\ddot{a}_{40:\overline{10}|}$ (sup. $N_{50}=80\,000$).  
+**Solución.**  
+**Paso 1.** Usar las conmutativas: $N_x = N_{x+1}+D_x$, $\ddot{a}_x=N_x/D_x$ y $\ddot{a}_{x:\overline{n}|}=(N_x-N_{x+n})/D_x$. Aquí $N_{40}=N_{41}+D_{40}=120\,000+8\,000=128\,000$.  
+**Paso 2.** Calcular la renta vitalicia y la temporal: $\ddot{a}_{40}=128\,000/8\,000=16$ y $\ddot{a}_{40:\overline{10}|}=(128\,000-80\,000)/8\,000=6$.  
+**Resultado.** $\ddot{a}_{40}=16$ y $\ddot{a}_{40:\overline{10}|}=6$.
+
+***
+
+**2. $\ddot{a}_x=(1-A_x)/d$**  
+Si $A_x=0{,}30$, $i=0{,}04$, calcular $d$ y $\ddot{a}_x$.  
+**Solución.**  
+**Paso 1.** Calcular la tasa de descuento $d=i/(1+i)$: $d=0{,}04/1{,}04\approx 0{,}03846$.  
+**Paso 2.** Aplicar la relación $1=A_x+d\,\ddot{a}_x$, es decir, $\ddot{a}_x=(1-A_x)/d=(1-0{,}30)/0{,}03846\approx 18{,}18$.  
+**Resultado.** $d\approx 0{,}03846$ y $\ddot{a}_x\approx 18{,}18$.
+
+***
+
+**3. Renta cierto-y-vitalicia**  
+Valor presente de renta: 10 años ciertos + vitalicia desde 10, para (40).  
+**Solución.**  
+**Paso 1.** Descomponer la renta en una parte cierta de 10 años y una renta vitalicia anticipada diferida 10 años.  
+**Paso 2.** El valor presente es la suma de ambas: $\text{VP}=\ddot{a}_{\overline{10}|}+{}_{10}E_{40}\,\ddot{a}_{50}$.  
+**Resultado.** Valor presente $\ddot{a}_{\overline{10}|}+{}_{10}E_{40}\,\ddot{a}_{50}$.
+
+***
+
+**4. $a_{x:\overline{n}|}$ con $N_{x+1}$, $N_{x+n+1}$**  
+Expresar $a_{x:\overline{n}|}$ en conmutativas.  
+**Solución.**  
+**Paso 1.** Recordar que $a_{x:\overline{n}|} = \frac{1}{D_x}\sum_{t=1}^{n}D_{x+t}$.  
+**Paso 2.** Usar $N_{x+1}=\sum_{t\ge 0}D_{x+1+t}$ y $N_{x+n+1}=\sum_{t\ge 0}D_{x+n+1+t}$ para ver que $\sum_{t=1}^{n}D_{x+t}=N_{x+1}-N_{x+n+1}$. Entonces $a_{x:\overline{n}|}=(N_{x+1}-N_{x+n+1})/D_x$.  
+**Resultado.** $a_{x:\overline{n}|}=(N_{x+1}-N_{x+n+1})/D_x$.
+
+***
+
+**5. Variable PV renta anticipada**  
+Para renta vitalicia anticipada de 1, el valor presente aleatorio es $\ddot{a}_{\overline{K_x+1}|}$. Verificar $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}]=\ddot{a}_x$.  
+**Solución.**  
+**Paso 1.** Para una vida que sobrevive $K_x$ años completos, el número de pagos es $K_x+1$ y el valor presente es $\ddot{a}_{\overline{K_x+1}|}=(1-v^{K_x+1})/d$.  
+**Paso 2.** Tomando esperanza: $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}] = (1-\mathbb{E}[v^{K_x+1}])/d=(1-A_x)/d=\ddot{a}_x$.  
+**Resultado.** Se cumple $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}]=\ddot{a}_x$.
+
+***
+
+**6. Diferida $n|\ddot{a}_x={}_nE_x\,\ddot{a}_{x+n}$**  
+Con $D_{40}=2\,000$, $D_{50}=1\,200$, $N_{50}=15\,000$, calcular ${}_{10}|\ddot{a}_{40}$.  
+**Solución.**  
+**Paso 1.** ${}_{10}|\ddot{a}_{40}={}_{10}E_{40}\,\ddot{a}_{50}$; ${}_{10}E_{40}=D_{50}/D_{40}=1\,200/2\,000=0{,}6$.  
+**Paso 2.** $\ddot{a}_{50}=N_{50}/D_{50}=15\,000/1\,200=12{,}5$; ${}_{10}|\ddot{a}_{40}=0{,}6\times 12{,}5=7{,}5$.  
+**Resultado.** ${}_{10}|\ddot{a}_{40}=7{,}5$.
+
+***
+
+**7. Tipo parcial: tres rentas**  
+Calcular $\ddot{a}_{45}$, $\ddot{a}_{45:\overline{15}|}$, ${}_{5}|\ddot{a}_{45}$ con $N_{45}=100\,000$, $N_{46}=95\,000$, $N_{60}=55\,000$, $N_{61}=52\,000$, $D_{45}=6\,000$, $D_{50}=4\,500$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_{45}=N_{45}/D_{45}=100\,000/6\,000\approx 16{,}67$; $\ddot{a}_{45:\overline{15}|}=(N_{45}-N_{60})/D_{45}=(100\,000-55\,000)/6\,000=7{,}5$.  
+**Paso 2.** ${}_{5}|\ddot{a}_{45}={}_5E_{45}\,\ddot{a}_{50}$; ${}_5E_{45}=D_{50}/D_{45}=4\,500/6\,000=0{,}75$; $\ddot{a}_{50}=N_{50}/D_{50}$ (si se dispone de $N_{50}$).  
+**Resultado.** $\ddot{a}_{45}\approx 16{,}67$, $\ddot{a}_{45:\overline{15}|}=7{,}5$, ${}_{5}|\ddot{a}_{45}=0{,}75\,\ddot{a}_{50}$.
+
+***
+
+**8. Relación $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$**  
+Deducir desde PV = suma de pagos esperados.  
+**Solución.**  
+**Paso 1.** Identidad actuarial: valor presente de la renta temporal + valor del seguro temporal (beneficio 1 al fallecimiento en $n$ años) = 1 en valor presente.  
+**Paso 2.** $A_{x:\overline{n}|}+d\,\ddot{a}_{x:\overline{n}|}=1$ ⇒ $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$.  
+**Resultado.** $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$.
+
+***
+
+**9. Renta vencida $a_x=N_{x+1}/D_x$**  
+Si $N_{41}=120\,000$, $D_{40}=8\,000$, calcular $a_{40}$.  
+**Solución.**  
+**Paso 1.** $a_x$ = valor presente de renta vitalicia vencida (primer pago al final del año 1); $a_x=N_{x+1}/D_x$.  
+**Paso 2.** $a_{40}=N_{41}/D_{40}=120\,000/8\,000=15$.  
+**Resultado.** $a_{40}=15$ (equivale a $\ddot{a}_{40}-1$ bajo interés constante).
+
+***
+
+**10. Demostrar $\ddot{a}_{x:\overline{n}|}=1+a_{x:\overline{n-1}|}$**  
+**Solución.**  
+**Paso 1.** Renta anticipada temporal: primer pago 1 en $t=0$; los siguientes $n-1$ pagos forman una renta vencida temporal de $n-1$ años desde el año 1.  
+**Paso 2.** VP = $1 + a_{x:\overline{n-1}|}$ (el 1 es el pago inicial; $a_{x:\overline{n-1}|}$ valora los pagos al final de los años 1, …, $n-1$).  
+**Resultado.** $\ddot{a}_{x:\overline{n}|}=1+a_{x:\overline{n-1}|}$.
+
+***
+
+**11. Tipo parcial: PNU renta**  
+Renta vitalicia anticipada 500 u.m. anuales para (50). $\ddot{a}_{50}=14$. PNU.  
+**Solución.**  
+**Paso 1.** PNU de renta = cuantía anual × valor presente actuarial de la renta unitaria.  
+**Paso 2.** PNU $=500\times \ddot{a}_{50}=500\times 14=7\,000$ u.m.  
+**Resultado.** PNU = 7\,000 u.m.
+
+***
+
+**12. Diferida: notación $n|\ddot{a}_x$**  
+Interpretar ${}_{10}|\ddot{a}_{40}$: primer pago en el año 10 si (40) vive.  
+**Solución.**  
+**Paso 1.** ${}_{10}|\ddot{a}_{40}$ = valor presente de una renta vitalicia anticipada que comienza en el año 10 si (40) sobrevive hasta entonces.  
+**Paso 2.** VP = factor de descuento y supervivencia ${}_{10}E_{40}$ × renta vitalicia desde edad 50 = ${}_{10}E_{40}\,\ddot{a}_{50}$.  
+**Resultado.** ${}_{10}|\ddot{a}_{40}={}_{10}E_{40}\,\ddot{a}_{50}$ (primer pago al inicio del año 10).
+
+***
+
+**13. Relación $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$**  
+Comprobar recursión.  
+**Solución.**  
+**Paso 1.** Hoy se paga 1 (primer pago de la renta anticipada).  
+**Paso 2.** Con probabilidad $p_x$ (40) sobrevive un año; el valor presente de los pagos futuros desde $x+1$ es $\ddot{a}_{x+1}$, valorado un año atrás: $v\,p_x\,\ddot{a}_{x+1}$.  
+**Resultado.** $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$.
+
+***
+
+**14. Certain-and-life 10 años (TEMA 7)**  
+Valor presente: 10 pagos ciertos + vitalicia desde año 10. Fórmula.  
+**Solución.**  
+**Paso 1.** Primera parte: renta cierta 10 años (VP = $\ddot{a}_{\overline{10}|}$). Segunda parte: renta vitalicia que empieza al inicio del año 10 si (x) vive (VP = ${}_{10}E_x\,\ddot{a}_{x+10}$).  
+**Paso 2.** VP total = $\ddot{a}_{\overline{10}|}+{}_{10}E_x\,\ddot{a}_{x+10}$.  
+**Resultado.** VP = $\ddot{a}_{\overline{10}|}+{}_{10}E_x\,\ddot{a}_{x+10}$.
+
+***
+
+**15. Tipo parcial: conmutativas**  
+$N_{50}=80\,000$, $N_{55}=55\,000$, $D_{50}=5\,000$. Calcular $\ddot{a}_{50}$ y $\ddot{a}_{50:\overline{5}|}$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x=N_x/D_x$; $\ddot{a}_{x:\overline{n}|}=(N_x-N_{x+n})/D_x$.  
+**Paso 2.** $\ddot{a}_{50}=80\,000/5\,000=16$; $\ddot{a}_{50:\overline{5}|}=(80\,000-55\,000)/5\,000=5$.  
+**Resultado.** $\ddot{a}_{50}=16$, $\ddot{a}_{50:\overline{5}|}=5$.
+
+***
+
+**16. $a_x$ y $\ddot{a}_x$**  
+Relación $a_x=\ddot{a}_x-1$ (aproximada bajo hipótesis estándar).  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x$ tiene primer pago en 0; $a_x$ tiene primer pago al final del año 1.  
+**Paso 2.** $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$; $a_x=v\,p_x\,\ddot{a}_{x+1}$ (solo pagos desde año 1), luego $a_x=\ddot{a}_x-1$.  
+**Resultado.** $a_x=\ddot{a}_x-1$ si primera renta vencida en 1.
+
+***
+
+**17. Renta temporal vencida**  
+$a_{x:\overline{n}|}=(N_{x+1}-N_{x+n+1})/D_x$. Con $N_{41}$, $N_{51}$, $D_{40}$, dar $a_{40:\overline{10}|}$.  
+**Solución.**  
+**Paso 1.** Renta vencida temporal $n$ años: pagos al final de los años 1, …, $n$; $a_{x:\overline{n}|}=(N_{x+1}-N_{x+n+1})/D_x$.  
+**Paso 2.** Con $x=40$, $n=10$: $a_{40:\overline{10}|}=(N_{41}-N_{51})/D_{40}$.  
+**Resultado.** $a_{40:\overline{10}|}=(N_{41}-N_{51})/D_{40}$.
+
+***
+
+**18. Padre e hijo**  
+Renta 100 u.m. al hijo desde 21 años. Hijo 10 años. Notación y PNU.  
+**Solución.**  
+**Paso 1.** Renta diferida 11 años para (10) (primer pago a los 21 años): valor presente unitario ${}_{11}|\ddot{a}_{10}={}_{11}E_{10}\,\ddot{a}_{21}$.  
+**Paso 2.** PNU $=100\cdot {}_{11}E_{10}\,\ddot{a}_{21}$.  
+**Resultado.** PNU $=100\cdot {}_{11}E_{10}\,\ddot{a}_{21}$.
+
+***
+
+**19. Verificar $\ddot{a}_x=(1-A_x)/d$**  
+Con $A_x=0{,}25$, $d=0{,}04$ verificar la relación.  
+**Solución.**  
+**Paso 1.** De $1=A_x+d\,\ddot{a}_x$ se tiene $\ddot{a}_x=(1-A_x)/d$.  
+**Paso 2.** $\ddot{a}_x=(1-0{,}25)/0{,}04=18{,}75$.  
+**Resultado.** $\ddot{a}_x=18{,}75$.
+
+***
+
+**20. Síntesis tipo parcial**  
+(a) Definir $\ddot{a}_x$, $\ddot{a}_{x:\overline{n}|}$, ${}_n|\ddot{a}_x$. (b) Con $D_{40}=8\,000$, $N_{40}=128\,000$, $N_{50}=80\,000$, calcular $\ddot{a}_{40}$ y $\ddot{a}_{40:\overline{10}|}$.  
+**Solución.**  
+**Paso 1.** (a) $\ddot{a}_x$: VP renta vitalicia anticipada 1 u.m. al inicio de cada año; $\ddot{a}_{x:\overline{n}|}$: temporal $n$ años; ${}_n|\ddot{a}_x$: diferida $n$ años (primer pago en año $n$).  
+**Paso 2.** (b) $\ddot{a}_{40}=128\,000/8\,000=16$; $\ddot{a}_{40:\overline{10}|}=(128\,000-80\,000)/8\,000=6$.  
+**Resultado.** (a) Definiciones estándar. (b) $\ddot{a}_{40}=16$, $\ddot{a}_{40:\overline{10}|}=6$.
+
+***
+
+**21. Renta garantizada (Tema 7)**  
+Escribir el VP de una renta que paga 1 u.m. al inicio de cada año durante 15 años con certeza y luego vitalicia para (40).  
+**Solución.**  
+**Paso 1.** Cierto 15 años + vitalicia desde 55: VP = renta cierta 15 años + renta vitalicia diferida 15 años.  
+**Paso 2.** VP $= \ddot{a}_{\overline{15}|} + {}_{15}E_{40}\,\ddot{a}_{55}$.  
+**Resultado.** VP $= \ddot{a}_{\overline{15}|} + {}_{15}E_{40}\,\ddot{a}_{55}$ (Tema 7).
+
+***
+
+**22. Relación $\ddot{a}_x=(1-A_x)/d$**  
+Deducir a partir de $A_x + d\,\ddot{a}_x = 1$ (identidad actuarial).  
+**Solución.**  
+**Paso 1.** Identidad: valor del seguro de vida entera (1 u.m. al fallecimiento) + valor de la «renta» de descuento $d$ por año = 1.  
+**Paso 2.** $1 = A_x + d\,\ddot{a}_x$ ⇒ $\ddot{a}_x = (1-A_x)/d$.  
+**Resultado.** $\ddot{a}_x = (1-A_x)/d$; permite obtener $\ddot{a}_x$ desde $A_x$ y $d$.
+
+***
+
+**23. Tipo parcial: PNU renta**  
+Renta vitalicia anticipada 400 u.m./año para (55). $\ddot{a}_{55}=13$. Calcular PNU.  
+**Solución.**  
+**Paso 1.** PNU = cuantía anual × $\ddot{a}_x$.  
+**Paso 2.** PNU $= 400 \times 13 = 5\,200$ u.m.  
+**Resultado.** PNU = 5\,200 u.m.
+
+***
+
+**24. Diferida**  
+${}_{10}|\ddot{a}_{40} = {}_{10}E_{40}\,\ddot{a}_{50}$. Si ${}_{10}E_{40}=0{,}6$ y $\ddot{a}_{50}=12$, calcular ${}_{10}|\ddot{a}_{40}$.  
+**Solución.**  
+**Paso 1.** ${}_{10}|\ddot{a}_{40}$ = VP de renta vitalicia anticipada que comienza en el año 10.  
+**Paso 2.** ${}_{10}|\ddot{a}_{40} = {}_{10}E_{40}\,\ddot{a}_{50} = 0{,}6 \times 12 = 7{,}2$.  
+**Resultado.** ${}_{10}|\ddot{a}_{40} = 7{,}2$.
+
+***
+
+**25. Rentas en progresión (Tema 2)**  
+Si los pagos son $b_k$ al inicio del año $k$, el APV es $\sum_{k \geq 1} b_k \, v^{k-1} \, {}_{k-1}p_x$. Escribir para $b_k = 1 + 0{,}1(k-1)$ (creciente).  
+**Solución.**  
+**Paso 1.** $b_k = 1 + 0{,}1(k-1)$; el APV es la suma de una renta nivelada y una renta en progresión aritmética.  
+**Paso 2.** APV $= \ddot{a}_x + 0{,}1\,(I\ddot{a})_x$ (notación estándar renta creciente; programa beneficios variables).  
+**Resultado.** APV $= \ddot{a}_x + 0{,}1\,(I\ddot{a})_x$.
+
+***
+
+**26.** $N_{50}=70\,000$, $D_{50}=5\,000$. Calcular $\ddot{a}_{50}$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x=N_x/D_x$.  
+**Paso 2.** $\ddot{a}_{50}=70\,000/5\,000=14$.  
+**Resultado.** $\ddot{a}_{50}=14$.
+
+***
+
+**27.** $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$. Verificar con $N_x$, $N_{x+n}$, $D_x$.  
+**Solución.**  
+**Paso 1.** Identidad $A_{x:\overline{n}|}+d\,\ddot{a}_{x:\overline{n}|}=1$.  
+**Paso 2.** $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$; con conmutativas $\ddot{a}_{x:\overline{n}|}=(N_x-N_{x+n})/D_x$.  
+**Resultado.** Relación verificada.
+
+***
+
+**28.** Renta diferida 8 años (52). ${}_8E_{52}=0{,}68$, $\ddot{a}_{60}=11$. PNU por 200 u.m./año.  
+**Solución.**  
+**Paso 1.** PNU = 200 × ${}_8|\ddot{a}_{52}$ = 200 × ${}_8E_{52}\,\ddot{a}_{60}$.  
+**Paso 2.** PNU $=200\times 0{,}68\times 11=1\,496$ u.m.  
+**Resultado.** PNU = 1\,496 u.m.
+
+***
+
+**29.** $a_x$ y $\ddot{a}_x$: relación.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$ (primer pago 1 + valor actualizado del resto).  
+**Paso 2.** $a_x=v\,p_x\,\ddot{a}_{x+1}$ (sin el pago inicial), luego $a_x=\ddot{a}_x-1$.  
+**Resultado.** $a_x=\ddot{a}_x-1$.
+
+***
+
+**30.** Certain-and-life 15 años (40): escribir VP con $\ddot{a}_{\overline{15}|}$, ${}_{15}E_{40}$, $\ddot{a}_{55}$.  
+**Solución.**  
+**Paso 1.** 15 años ciertos + vitalicia desde 55.  
+**Paso 2.** VP $=\ddot{a}_{\overline{15}|}+{}_{15}E_{40}\,\ddot{a}_{55}$.  
+**Resultado.** VP $=\ddot{a}_{\overline{15}|}+{}_{15}E_{40}\,\ddot{a}_{55}$.
+
+***
+
+**31.** $A_{55}=0{,}25$, $d=0{,}04$. Calcular $\ddot{a}_{55}$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x=(1-A_x)/d$.  
+**Paso 2.** $\ddot{a}_{55}=(1-0{,}25)/0{,}04=18{,}75$.  
+**Resultado.** $\ddot{a}_{55}=18{,}75$.
+
+***
+
+**32.** Renta temporal 10 años vencida: $a_{45:\overline{10}|}$ con $N_{46}$, $N_{56}$, $D_{45}$.  
+**Solución.**  
+**Paso 1.** $a_{x:\overline{n}|}=(N_{x+1}-N_{x+n+1})/D_x$.  
+**Paso 2.** $a_{45:\overline{10}|}=(N_{46}-N_{56})/D_{45}$.  
+**Resultado.** $a_{45:\overline{10}|}=(N_{46}-N_{56})/D_{45}$.
+
+***
+
+**33.** Recursión $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$. Deducir.  
+**Solución.**  
+**Paso 1.** Hoy se paga 1. Con probabilidad $p_x$ se sobrevive un año; desde $x+1$ el VP de la renta es $\ddot{a}_{x+1}$.  
+**Paso 2.** Valorado en 0: $v\,p_x\,\ddot{a}_{x+1}$. Luego $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$.  
+**Resultado.** Recursión deducida.
+
+***
+
+**34.** PNU renta vitalicia anticipada 150 u.m. (60). $\ddot{a}_{60}=10$.  
+**Solución.**  
+**Paso 1.** PNU = cuantía × $\ddot{a}_{60}$.  
+**Paso 2.** PNU $=150\times 10=1\,500$ u.m.  
+**Resultado.** PNU = 1\,500 u.m.
+
+***
+
+**35.** Diferida ${}_n|\ddot{a}_x={}_nE_x\,\ddot{a}_{x+n}$: verificar con $D_x$, $D_{x+n}$, $N_{x+n}$.  
+**Solución.**  
+**Paso 1.** ${}_nE_x=D_{x+n}/D_x$; $\ddot{a}_{x+n}=N_{x+n}/D_{x+n}$.  
+**Paso 2.** ${}_n|\ddot{a}_x={}_nE_x\,\ddot{a}_{x+n}=(D_{x+n}/D_x)(N_{x+n}/D_{x+n})=N_{x+n}/D_x$.  
+**Resultado.** ${}_n|\ddot{a}_x=N_{x+n}/D_x$.
+
+***
+
+**36.** $\ddot{a}_{40:\overline{20}|}=12$, $d=0{,}04$. Calcular $A_{40:\overline{20}|}$.  
+**Solución.**  
+**Paso 1.** $A_{x:\overline{n}|}=1-d\,\ddot{a}_{x:\overline{n}|}$.  
+**Paso 2.** $A_{40:\overline{20}|}=1-0{,}04\times 12=0{,}52$.  
+**Resultado.** $A_{40:\overline{20}|}=0{,}52$.
+
+***
+
+**37.** Renta garantizada 7 años + vitalicia (48).  
+**Solución.**  
+**Paso 1.** Cierto 7 años + vitalicia desde 55.  
+**Paso 2.** VP $=\ddot{a}_{\overline{7}|}+{}_7E_{48}\,\ddot{a}_{55}$.  
+**Resultado.** VP $=\ddot{a}_{\overline{7}|}+{}_7E_{48}\,\ddot{a}_{55}$.
+
+***
+
+**38.** Relación $a_x=\ddot{a}_x-1$ (aproximada si primera renta vencida en 1).  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x$: primer pago en 0; $a_x$: primer pago al final del año 1.  
+**Paso 2.** $a_x=v\,p_x\,\ddot{a}_{x+1}=\ddot{a}_x-1$ (por recursión $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$).  
+**Resultado.** $a_x=\ddot{a}_x-1$.
+
+***
+
+**39.** $N_{58}=45\,000$, $N_{63}=30\,000$, $D_{58}=4\,200$. Calcular $\ddot{a}_{58:\overline{5}|}$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_{x:\overline{n}|}=(N_x-N_{x+n})/D_x$.  
+**Paso 2.** $\ddot{a}_{58:\overline{5}|}=(45\,000-30\,000)/4\,200\approx 3{,}57$.  
+**Resultado.** $\ddot{a}_{58:\overline{5}|}\approx 3{,}57$.
+
+***
+
+**40.** Variable valor presente renta: $\ddot{a}_{\overline{K_x+1}|}$. $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}]=\ddot{a}_x$.  
+**Solución.**  
+**Paso 1.** Si (x) sobrevive $K_x$ años completos, recibe $K_x+1$ pagos; el valor presente aleatorio es $\ddot{a}_{\overline{K_x+1}|}$.  
+**Paso 2.** La esperanza de ese valor presente es $\ddot{a}_x$ (definición de renta vitalicia anticipada).  
+**Resultado.** $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}]=\ddot{a}_x$.
+
+***
+
+**41.** Renta 300 u.m. anual anticipada por 15 años (50). $\ddot{a}_{50:\overline{15}|}=10{,}5$. PNU.  
+**Solución.**  
+**Paso 1.** PNU = 300 × $\ddot{a}_{50:\overline{15}|}$.  
+**Paso 2.** PNU $=300\times 10{,}5=3\,150$ u.m.  
+**Resultado.** PNU = 3\,150 u.m.
+
+***
+
+**42.** Diferida 12 años: ${}_{12}|\ddot{a}_{42}$. Con ${}_{12}E_{42}=0{,}55$, $\ddot{a}_{54}=11{,}2$. PNU por 100 u.m.  
+**Solución.**  
+**Paso 1.** PNU = 100 × ${}_{12}E_{42}\,\ddot{a}_{54}$.  
+**Paso 2.** PNU $=100\times 0{,}55\times 11{,}2=616$ u.m.  
+**Resultado.** PNU = 616 u.m.
+
+***
+
+**43.** $\ddot{a}_{x:\overline{n}|}=1+a_{x:\overline{n-1}|}$. Demostrar.  
+**Solución.**  
+**Paso 1.** Renta anticipada temporal: pago 1 en $t=0$; los $n-1$ pagos siguientes (años 1, …, $n-1$) forman renta vencida temporal $a_{x:\overline{n-1}|}$.  
+**Paso 2.** VP total = $1 + a_{x:\overline{n-1}|}$.  
+**Resultado.** $\ddot{a}_{x:\overline{n}|}=1+a_{x:\overline{n-1}|}$.
+
+***
+
+**44.** Certain-and-life: primeros $n$ años pago cierto; después vitalicio.  
+**Solución.**  
+**Paso 1.** Renta cierta $n$ años (VP $\ddot{a}_{\overline{n}|}$) + renta vitalicia diferida $n$ años (VP ${}_nE_x\,\ddot{a}_{x+n}$).  
+**Paso 2.** VP total $=\ddot{a}_{\overline{n}|}+{}_nE_x\,\ddot{a}_{x+n}$.  
+**Resultado.** VP $=\ddot{a}_{\overline{n}|}+{}_nE_x\,\ddot{a}_{x+n}$.
+
+***
+
+**45.** $A_{48:\overline{12}|}=0{,}45$, $d=0{,}038$. Calcular $\ddot{a}_{48:\overline{12}|}$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$.  
+**Paso 2.** $\ddot{a}_{48:\overline{12}|}=(1-0{,}45)/0{,}038\approx 14{,}47$.  
+**Resultado.** $\ddot{a}_{48:\overline{12}|}\approx 14{,}47$.
+
+***
+
+**46.** Renta creciente $(I\ddot{a})_x$: idea del APV.  
+**Solución.**  
+**Paso 1.** Pagos 1, 2, 3, … u.m. al inicio de los años 1, 2, 3, …  
+**Paso 2.** APV $=\sum_{k\geq 1} k\,v^{k-1}\,{}_{k-1}p_x$ (notación $(I\ddot{a})_x$).  
+**Resultado.** $(I\ddot{a})_x$ = valor presente de renta vitalicia anticipada creciente 1, 2, 3, …
+
+***
+
+**47.** Padre (50) renta al hijo hasta que cumpla 25; hijo tiene 15. Años de pago: 10.  
+**Solución.**  
+**Paso 1.** Renta temporal 10 años (desde hoy hasta que el hijo cumpla 25); el padre (50) paga mientras viva.  
+**Paso 2.** VP = cuantía × $\ddot{a}_{50:\overline{10}|}$ (renta temporal anticipada 10 años para (50)).  
+**Resultado.** VP con $\ddot{a}_{50:\overline{10}|}$.
+
+***
+
+**48.** $\ddot{a}_x=(1-A_x)/d$: usar para $\ddot{a}_{60}$ si $A_{60}=0{,}32$, $d=0{,}04$.  
+**Solución.**  
+**Paso 1.** $\ddot{a}_x=(1-A_x)/d$.  
+**Paso 2.** $\ddot{a}_{60}=(1-0{,}32)/0{,}04=17$.  
+**Resultado.** $\ddot{a}_{60}=17$.
+
+***
+
+**49.** Renta temporal 8 años anticipada (55). $\ddot{a}_{55:\overline{8}|}=6{,}5$. PNU por 250 u.m./año.  
+**Solución.**  
+**Paso 1.** PNU = 250 × $\ddot{a}_{55:\overline{8}|}$.  
+**Paso 2.** PNU $=250\times 6{,}5=1\,625$ u.m.  
+**Resultado.** PNU = 1\,625 u.m.
+
+***
+
+**50.** Síntesis: escribir VP de renta «10 años ciertos + vitalicia desde (40)».  
+**Solución.**  
+**Paso 1.** 10 años ciertos: $\ddot{a}_{\overline{10}|}$; vitalicia desde año 10 para (40): ${}_{10}E_{40}\,\ddot{a}_{50}$.  
+**Paso 2.** VP $=\ddot{a}_{\overline{10}|}+{}_{10}E_{40}\,\ddot{a}_{50}$.  
+**Resultado.** VP $=\ddot{a}_{\overline{10}|}+{}_{10}E_{40}\,\ddot{a}_{50}$.
+
+
+***
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe calcular el valor presente de la renta, la PNU o la expresión indicada usando $\ddot{a}_x$, $a_x$, conmutativas $N_x$, $D_x$. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Expresar $a_{x:\overline{n}|}$ con $N_{x+1}$, $N_{x+n+1}$, $D_x$. Calcular $a_{35:\overline{15}|}$ con la tabla del curso.
+
+***
+
+2. **Se pide:** Renta de 100 u.m. al hijo desde que cumpla 21 años; el hijo tiene 10 años. Calcular el valor actuarial y la PNU.
+
+***
+
+3. **Se pide:** Demostrar $\ddot{a}_{x:\overline{n}|}=1+a_{x:\overline{n-1}|}$.
+
+***
+
+4. **Se pide:** Si $A_x=0{,}30$, $i=0{,}04$, calcular $\ddot{a}_x$ con $\ddot{a}_x=(1-A_x)/d$.
+
+***
+
+5. **Se pide:** Renta cierto-y-vitalicia 10 años para (40): escribir la fórmula con $\ddot{a}_{\overline{10}|}$, ${}_{10}E_{40}$, $\ddot{a}_{50}$.
+
+***
+
+6. **Se pide:** Variable valor presente de la renta anticipada: $\ddot{a}_{\overline{K_x+1}|}$. Relación con $A_x$.
+
+***
+
+7. **Tipo parcial.** **Se pide:** $N_{45}=100\,000$, $N_{50}=75\,000$, $D_{45}=6\,000$. Calcular $\ddot{a}_{45}$, $\ddot{a}_{45:\overline{5}|}$.
+
+***
+
+8. **Se pide:** ${}_n|\ddot{a}_x={}_nE_x\,\ddot{a}_{x+n}$: deducir con conmutativas.
+
+***
+
+9. **Se pide:** Deducir la relación $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$.
+
+***
+
+10. **Se pide:** Diferencia entre $a_x$ y $\ddot{a}_x$ (momento de la primera renta: 0 vs 1).
+
+***
+
+11. **Tipo parcial.** **Se pide:** PNU de renta vitalicia anticipada de 300 u.m. para (55). $\ddot{a}_{55}=12$. Calcular.
+
+***
+
+12. **Se pide:** Renta temporal vencida: escribir la fórmula con $N_{x+1}$, $N_{x+n+1}$.
+
+***
+
+13. **Se pide:** Certain-and-life (TEMA 7): ¿qué paga en los primeros $n$ años?
+
+***
+
+14. **Se pide:** Recursión $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$.
+
+***
+
+15. **Se pide:** Con $A_{40:\overline{20}|}=0{,}5$, $d=0{,}04$, calcular $\ddot{a}_{40:\overline{20}|}$.
+
+***
+
+16. **Se pide:** Renta diferida 15 años: ${}_{15}|\ddot{a}_{40}$. Expresar con ${}_{15}E_{40}$ y $\ddot{a}_{55}$.
+
+***
+
+17. **Tipo parcial.** **Se pide:** (a) Escribir $\ddot{a}_x$ en conmutativas. (b) Con $D_{50}=5\,000$, $N_{50}=80\,000$, $N_{60}=50\,000$, calcular $\ddot{a}_{50}$ y $\ddot{a}_{50:\overline{10}|}$.
+
+***
+
+18. **Se pide:** Renta garantizada 5 años + vitalicia: escribir el valor presente.
+
+***
+
+19. **Se pide:** Verificar que $\ddot{a}_x>a_x$ (mismo tipo de interés).
+
+***
+
+20. **Tipo parcial.** **Se pide:** Renta de 200 u.m. anuales anticipada por 20 años para (40). $\ddot{a}_{40:\overline{20}|}=12$. Calcular la PNU (Jordan/Neill/Weishaus).
+
+***
+
+21. **Tema 7.** **Se pide:** Renta cierto-y-vitalicia: 20 años ciertos + vitalicia para (35). Escribir la fórmula con $\ddot{a}_{\overline{20}|}$, ${}_{20}E_{35}$, $\ddot{a}_{55}$.
+
+***
+
+22. **Se pide:** Demostrar $\ddot{a}_{x:\overline{n}|}=1+a_{x:\overline{n-1}|}$.
+
+***
+
+23. **Se pide:** Con $A_{50}=0{,}28$, $d=0{,}04$, calcular $\ddot{a}_{50}$ por $\ddot{a}_x=(1-A_x)/d$.
+
+***
+
+24. **Tipo parcial.** **Se pide:** Renta diferida 15 años, 100 u.m./año para (40). ${}_{15}E_{40}=0{,}5$, $\ddot{a}_{55}=12$. Calcular la PNU.
+
+***
+
+25. **Se pide:** Renta con pagos en progresión aritmética: idea del APV (Tema 2, beneficios variables).
+
+***
+
+26. **Se pide:** Con $N_{52}=65\,000$, $D_{52}=4\,800$, calcular $\ddot{a}_{52}$ y $\ddot{a}_{52:\overline{8}|}$ si $N_{60}=42\,000$.  
+***
+27. **Se pide:** Demostrar $\ddot{a}_{x:\overline{n}|}=(1-A_{x:\overline{n}|})/d$ a partir de $A_{x:\overline{n}|}=1-d\,\ddot{a}_{x:\overline{n}|}$.  
+***
+28. **Tipo parcial.** **Se pide:** Renta vitalicia anticipada 400 u.m. (58). $\ddot{a}_{58}=9{,}5$. PNU.  
+***
+29. **Se pide:** Renta diferida 10 años (45): ${}_{10}|\ddot{a}_{45}$. Expresar con ${}_{10}E_{45}$ y $\ddot{a}_{55}$.  
+***
+30. **Se pide:** Diferencia $a_{x:\overline{n}|}$ y $\ddot{a}_{x:\overline{n}|}$ (primera renta en 1 vs 0).  
+***
+31. **Se pide:** Certain-and-life 20 años (35). Escribir VP con $\ddot{a}_{\overline{20}|}$, ${}_{20}E_{35}$, $\ddot{a}_{55}$.  
+***
+32. **Se pide:** Si $A_{62}=0{,}38$, $d=0{,}04$, calcular $\ddot{a}_{62}$.  
+***
+33. **Tipo parcial.** **Se pide:** $D_{47}=5\,200$, $N_{47}=88\,000$, $N_{52}=62\,000$. Calcular $\ddot{a}_{47}$ y $\ddot{a}_{47:\overline{5}|}$.  
+***
+34. **Se pide:** Recursión $\ddot{a}_x=1+v\,p_x\,\ddot{a}_{x+1}$: interpretar cada sumando.  
+***
+35. **Se pide:** Renta temporal 12 años vencida (48): fórmula con $N_{49}$, $N_{61}$, $D_{48}$.  
+***
+36. **Se pide:** PNU renta 180 u.m./año anticipada por 18 años (42). $\ddot{a}_{42:\overline{18}|}=11{,}2$.  
+***
+37. **Se pide:** Renta garantizada 4 años + vitalicia (55). Escribir VP.  
+***
+38. **Se pide:** Verificar $\ddot{a}_x>a_x$ algebraicamente.  
+***
+39. **Tipo parcial.** **Se pide:** Renta diferida 8 años, 120 u.m./año (50). ${}_8E_{50}=0{,}62$, $\ddot{a}_{58}=10{,}8$. PNU.  
+***
+40. **Se pide:** Variable valor presente: $\ddot{a}_{\overline{K_x+1}|}$. ¿Por qué $\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}]=\ddot{a}_x$?  
+***
+41. **Se pide:** $\ddot{a}_{55:\overline{10}|}=8{,}5$, $d=0{,}04$. Calcular $A_{55:\overline{10}|}$.  
+***
+42. **Se pide:** Renta cierto-y-vitalicia: qué se paga en los primeros $n$ años y después.  
+***
+43. **Tipo parcial.** **Se pide:** (a) Definir renta diferida. (b) ${}_{15}E_{40}=0{,}5$, $\ddot{a}_{55}=12$. PNU renta 100 u.m. diferida 15 años (40).  
+***
+44. **Se pide:** Relación $a_{x:\overline{n}|}$ con $N_{x+1}$, $N_{x+n+1}$, $D_x$.  
+***
+45. **Se pide:** Renta creciente: pagos 1, 2, 3, … al inicio de cada año. Notación $(I\ddot{a})_x$.  
+***
+46. **Se pide:** Con $A_{45:\overline{15}|}=0{,}42$, $d=0{,}038$, calcular $\ddot{a}_{45:\overline{15}|}$.  
+***
+47. **Tipo parcial.** **Se pide:** Renta 250 u.m. anual anticipada por 20 años (38). $\ddot{a}_{38:\overline{20}|}=12{,}4$. PNU.  
+***
+48. **Se pide:** Diferida ${}_n|\ddot{a}_x={}_nE_x\,\ddot{a}_{x+n}$: deducir con conmutativas.  
+***
+49. **Se pide:** Renta temporal 6 años vencida (52). $a_{52:\overline{6}|}$ con $N_{53}$, $N_{59}$, $D_{52}$.  
+***
+50. **Se pide:** Síntesis: escribir el VP de «renta garantizada 5 años + vitalicia desde (50)» con notación estándar.
+
+***
+
+*Contenido basado en la guía docente de la asignatura, Jordan [@jordan1982], Neill [@neill1977] y Weishaus [@weishaus2013]. Los seguros de vida (pagos al fallecimiento) se tratan en el [capítulo 6](#cap-seguros-vida).*

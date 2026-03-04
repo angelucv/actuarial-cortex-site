@@ -1,0 +1,329 @@
+---
+number: false
+---
+
+# Primas periódicas netas {#cap-primas-periodicas .unnumbered .unlisted}
+
+En la práctica, la mayoría de los contratos de seguro o renta no se pagan con una sola prima al inicio, sino mediante **primas periódicas** (por ejemplo anuales o mensuales) mientras el contrato esté en vigor. Cuando esas primas se calculan de forma que su valor presente actuarial sea igual al valor presente de los beneficios, se habla de **primas netas periódicas** o **primas netas niveladas** (*net level premiums*). Weishaus [@weishaus2013] desarrolla su exposición a partir de la **pérdida futura** $L$: con primas periódicas, $L$ es el valor presente de los beneficios menos el valor presente de las primas; el **principio de equivalencia** exige $\mathbb{E}[L]=0$, lo que determina la prima. El manual cubre el cálculo de primas netas **desde tablas de mortalidad** (conmutativas), **desde fórmulas** (por ejemplo bajo fuerza de mortalidad constante) y **primas pagaderas $m$ veces al año** (*mthly*). Este capítulo presenta la **ecuación de equivalencia** para primas periódicas y las fórmulas estándar para seguros de vida entera, temporal y dotal, siguiendo a Jordan [@jordan1982], Weishaus y al material de Matemáticas Actuariales I (PL II-2024). En la notación de Neill [@neill1977], $P_x$ es la prima anual de un seguro de vida entera, $P_{x:\overline{n}|}^1$ la del temporal de $n$ años y $P_{x:\overline{n}|}$ la del dotal; si la prima se paga durante menos años que la duración del contrato se usa un prefijo (por ejemplo $_hP_x$ para primas limitadas a $h$ años). El método es siempre igualar el valor presente de los beneficios al valor presente de la renta de primas (prima × renta de vida correspondiente).
+
+## Ecuación de equivalencia
+
+Sea un contrato que otorga ciertos beneficios (seguro, renta o combinación) con valor presente actuarial $B$. Si el asegurado paga una **renta de primas** (por ejemplo, $P$ al inicio de cada año mientras viva, durante un número limitado o ilimitado de años), la equidad actuarial exige:
+
+$$\text{Valor presente actuarial de las primas} = \text{Valor presente actuarial de los beneficios}.$$
+
+A esta igualdad se la conoce como **ecuación de equivalencia**. La prima $P$ que la satisface es la **prima neta periódica** del contrato. En lo que sigue se supone que las primas se pagan **al inicio** de cada año (anticipadas); las fórmulas usan entonces la renta de vida anticipada $\ddot{a}_{x:\overline{n}|}$ o $\ddot{a}_x$.
+
+### Pérdida futura con primas niveladas (Weishaus)
+
+Con **primas periódicas** (no única), la **pérdida futura neta** $L$ en el momento de emisión sigue siendo el valor presente de los beneficios menos el valor presente de las primas [@weishaus2013]. Para un seguro de vida entera discreto por 1 u.m., si el asegurado paga una prima $P$ al inicio de cada año mientras viva, el valor presente de las primas es $P\,\ddot{a}_{\overline{K_x+1}|}$ (variable aleatoria: depende de $K_x$). El valor presente del beneficio es $Z = v^{K_x+1}$. Por tanto:
+
+$$_0 L = Z - P\,\ddot{a}_{\overline{K_x+1}|} = v^{K_x+1} - P\,\frac{1-v^{K_x+1}}{d}.$$
+
+El **principio de equivalencia** exige $\mathbb{E}[_0 L] = 0$, es decir $\mathbb{E}[Z] = P\,\mathbb{E}[\ddot{a}_{\overline{K_x+1}|}]$, o sea $A_x = P\,\ddot{a}_x$. Así se recupera $P = A_x/\ddot{a}_x$. Weishaus subraya que este método (igualar la esperanza de la pérdida futura a cero) es el estándar para calcular la prima neta nivelada y que, una vez fijada $P$, las realizaciones de $_0 L$ pueden ser positivas o negativas según el momento de fallecimiento.
+
+## Prima nivelada para seguro de vida entera
+
+Consideremos un **seguro de vida entera** por 1 unidad, con pago al final del año de muerte. El valor presente de los beneficios es $A_x$. Si el asegurado paga una prima $P$ al inicio de cada año mientras viva, el valor presente de las primas es $P\,\ddot{a}_x$. La ecuación de equivalencia es:
+
+$$P\,\ddot{a}_x = A_x,$$
+
+de donde la **prima neta anual nivelada** para seguro de vida entera es:
+
+$$P_x = \frac{A_x}{\ddot{a}_x}.$$
+
+Usando $A_x = 1 - d\,\ddot{a}_x$ se obtiene $P_x\,\ddot{a}_x = 1 - d\,\ddot{a}_x$, es decir:
+
+$$P_x = \frac{1}{\ddot{a}_x} - d.$$
+
+En términos de conmutativas, $P_x = M_x/N_x$.
+
+## Prima nivelada para seguro temporal
+
+Para un **seguro temporal** de $n$ años por 1 unidad (pago al final del año de muerte), el valor presente de los beneficios es $A_{x:\overline{n}|}^1$. Si se pagan $n$ primas anuales al inicio de cada año (mientras se viva), el valor presente de las primas es $P\,\ddot{a}_{x:\overline{n}|}$. La ecuación de equivalencia:
+
+$$P\,\ddot{a}_{x:\overline{n}|} = A_{x:\overline{n}|}^1$$
+
+proporciona la **prima neta anual nivelada** para el temporal:
+
+$$P_{x:\overline{n}|}^1 = \frac{A_{x:\overline{n}|}^1}{\ddot{a}_{x:\overline{n}|}} = \frac{M_x - M_{x+n}}{N_x - N_{x+n}}.$$
+
+## Prima nivelada para seguro dotal
+
+En un **seguro dotal** de $n$ años por 1 unidad (pago por muerte dentro de $n$ años o por supervivencia a $n$ años), el valor presente de los beneficios es $A_{x:\overline{n}|}$. Con $n$ primas anuales anticipadas:
+
+$$P\,\ddot{a}_{x:\overline{n}|} = A_{x:\overline{n}|},$$
+
+de modo que la prima neta anual nivelada del dotal es:
+
+$$P_{x:\overline{n}|} = \frac{A_{x:\overline{n}|}}{\ddot{a}_{x:\overline{n}|}} = \frac{M_x - M_{x+n} + D_{x+n}}{N_x - N_{x+n}}.$$
+
+## Primas limitadas (pago durante $h$ años)
+
+En muchos contratos la prima se paga solo durante un número **limitado** de años $h$ (por ejemplo, 10 o 20 años), aunque el beneficio pueda extenderse más allá. Si el contrato es un **seguro de vida entera** y se pagan $h$ primas anuales de importe $P$ al inicio de cada año:
+
+$$P\,\ddot{a}_{x:\overline{h}|} = A_x,$$
+
+por lo que la **prima neta anual limitada a $h$ pagos** para vida entera es:
+
+$$_hP_x = \frac{A_x}{\ddot{a}_{x:\overline{h}|}} = \frac{M_x}{N_x - N_{x+h}}.$$
+
+Análogamente, para un **seguro dotal** de $n$ años con primas solo durante los primeros $h$ años ($h \leq n$):
+
+$$_hP_{x:\overline{n}|} = \frac{A_{x:\overline{n}|}}{\ddot{a}_{x:\overline{h}|}}.$$
+
+Estas fórmulas son las que aparecen en el material de reservas y primas de riesgo del curso.
+
+## Relación con anualidades contingentes
+
+Todas las expresiones anteriores dependen de las **anualidades de vida** $\ddot{a}_x$, $\ddot{a}_{x:\overline{n}|}$, etc., ya estudiadas en el capítulo de rentas contingentes. La prima neta periódica no es más que el cociente entre el valor presente del beneficio y el valor presente de una renta unitaria anticipada durante el período de pago de primas. Por tanto, las tablas de $D_x$, $N_x$, $M_x$ permiten calcular tanto los seguros como las primas niveladas y limitadas de forma sistemática.
+
+## Notación actuarial internacional y cálculo desde tablas (Weishaus)
+
+En la **notación actuarial internacional** (IAN), la prima neta anual se denota con la letra $P$ y subíndices que identifican el tipo de contrato [@weishaus2013]. Para seguros con pago al final del año de muerte: $P_x$ (vida entera), $P_{x:\overline{n}|}^1$ (temporal $n$ años), $P_{x:\overline{n}|}$ (dotal $n$ años). Cuando la prima se paga solo durante $h$ años se usa el presubíndice $_h$: $_hP_x$, $_hP_{x:\overline{n}|}$. Para seguros **totalmente continuos** (beneficio pagadero en el momento del fallecimiento y prima pagadera de forma continua), la prima anual continua se suele escribir $P(\bar{A}_x)$ o $\bar{P}(\bar{A}_x)$; entonces $\bar{P}(\bar{A}_x)\,\bar{a}_x = \bar{A}_x$, es decir $P = \bar{A}_x/\bar{a}_x$. Bajo fuerza de mortalidad constante $\mu$ y fuerza de interés $\delta$, $\bar{A}_x = \mu/(\mu+\delta)$ y $\bar{a}_x = 1/(\mu+\delta)$, por lo que la prima continua para vida entera es $\bar{P} = \mu$ (no depende de $\delta$ en ese caso; Weishaus, Lesson 24).
+
+**Cálculo desde tablas de mortalidad.** La lección «Net Premiums from Life Tables» de Weishaus [@weishaus2013] enfatiza que, con tablas y conmutativas $D_x$, $N_x$, $M_x$, la prima neta se obtiene como cociente de los valores correspondientes al APV del beneficio y al APV de la renta de primas. Así, $P_x = M_x/N_x$, $P_{x:\overline{n}|}^1 = (M_x - M_{x+n})/(N_x - N_{x+n})$, $P_{x:\overline{n}|} = (M_x - M_{x+n} + D_{x+n})/(N_x - N_{x+n})$, $_hP_x = M_x/(N_x - N_{x+h})$. No es necesario memorizar fórmulas cerradas; basta identificar el beneficio y el período de pago de primas y usar las expresiones en conmutativas.
+
+## Primas desde fórmulas y primas continuas (Weishaus)
+
+**Desde fórmulas analíticas.** Cuando la mortalidad y el interés se modelan de forma analítica (por ejemplo fuerza de mortalidad constante $\mu$ y fuerza de interés $\delta$), la prima neta puede expresarse en forma cerrada. Para un seguro **totalmente continuo** de vida entera: $\bar{P} = \bar{A}_x/\bar{a}_x = \mu$ (ya que $\bar{A}_x = \mu/(\mu+\delta)$ y $\bar{a}_x = 1/(\mu+\delta)$). Para un temporal continuo a $n$ años, $\bar{P} = \bar{A}_{x:\overline{n}|}^1/\bar{a}_{x:\overline{n}|}$; con $\mu$ y $\delta$ constantes, tanto el numerador como el denominador tienen expresión cerrada y el cociente resulta de nuevo $\mu$ (el sistema «no tiene memoria»). Para seguros discretos bajo hipótesis particulares (por ejemplo UDD o fuerza constante entre edades enteras), pueden derivarse fórmulas equivalentes en función de $q_x$, $i$, etc., que se estudian en el material de fórmulas de primas (Weishaus, «Net Premiums from Formulas»).
+
+**Primas totalmente continuas.** Si el beneficio es continuo (pago en el momento del fallecimiento) y la prima se paga de forma continua a tasa constante $\bar{P}$ por año, la ecuación de equivalencia es $\bar{P}\,\bar{a}_x = \bar{A}_x$, de donde $\bar{P} = \bar{A}_x/\bar{a}_x$. Para un dotal mixto continuo a $n$ años: $\bar{P}\,\bar{a}_{x:\overline{n}|} = \bar{A}_{x:\overline{n}|}$. Si la prima se paga solo durante $h$ años (limitada), $\bar{P}\,\bar{a}_{x:\overline{h}|} = \bar{A}_x$ para vida entera.
+
+## Primas pagaderas $m$ veces al año (Weishaus, mthly)
+
+En muchos contratos la prima se paga **más de una vez al año** (por ejemplo mensual o trimestral). La notación estándar es $P^{(m)}$: la prima pagada al inicio de cada período de $1/m$ años, de modo que el total anual es $m\,P^{(m)}$ [@weishaus2013]. El valor presente de las primas es $P^{(m)}\,\ddot{a}_x^{(m)}$, donde $\ddot{a}_x^{(m)}$ es el valor presente de una renta de vida anticipada que paga $1/m$ al inicio de cada $1/m$ de año mientras $(x)$ viva (es decir, 1 u.m. por año en total, repartida en $m$ pagos). La ecuación de equivalencia para un seguro de vida entera es:
+
+$$P^{(m)}\,\ddot{a}_x^{(m)} = A_x,$$
+
+de donde $P^{(m)} = A_x/\ddot{a}_x^{(m)}$. La relación entre $\ddot{a}_x^{(m)}$ y $\ddot{a}_x$ depende de la hipótesis de mortalidad entre edades enteras (por ejemplo UDD); típicamente $\ddot{a}_x^{(m)} = \alpha(m)\,\ddot{a}_x - \beta(m)$ con factores de ajuste $\alpha(m)$, $\beta(m)$. Por tanto $P^{(m)}$ difiere de la prima anual $P = A_x/\ddot{a}_x$; en la práctica, $P^{(m)}$ es ligeramente mayor que $P/m$ porque el valor actual de la renta de primas pagada $m$ veces al año es menor que el de la renta anual (los pagos se reciben antes en promedio), por lo que para igualar el mismo beneficio la prima por período debe ser algo mayor. El programa (TEMA 4) incluye «primas fraccionadas»; el cálculo exacto requiere las expresiones de $\ddot{a}_x^{(m)}$ en conmutativas o las fórmulas de Woolhouse/approximations.
+
+## Descomposición prima de ahorro y prima de riesgo
+
+En el contexto de primas periódicas suele utilizarse la **descomposición en prima de ahorro y prima de riesgo**. Para un seguro temporal, por ejemplo, la prima $P_{x:\overline{n}|}^1$ cubre el riesgo de muerte durante $n$ años; la parte que no se «consume» como beneficio por muerte se acumula como ahorro (reserva). Esta descomposición es útil para la contabilidad del contrato y para el análisis de la reserva matemática, que se trata en el capítulo siguiente.
+
+### Costo del seguro (prima de riesgo) y capital en riesgo
+
+El **costo del seguro** o **prima de riesgo** en el año $k+1$ es la parte de la prima que cubre exclusivamente el **riesgo de muerte** en ese año. Se define como el valor actual (a inicio del año $k+1$) del beneficio esperado por muerte, neto de la reserva que ya se tiene constituida para ese momento. Si $b_{k+1}$ es el beneficio por muerte pagadero al final del año $k+1$ y ${}_{k+1}V$ es la reserva matemática al final de ese año (que «pertenece» al asegurado en caso de supervivencia), el **capital en riesgo** para la aseguradora en el año $k+1$ es $b_{k+1} - {}_{k+1}V$: lo que realmente paga de más si hay fallecimiento. La **prima de riesgo** en el año $k+1$ es:
+
+$$P_{\text{riesgo},\,k+1} = v\cdot q_{x+k}\cdot (b_{k+1} - {}_{k+1}V).$$
+
+La **prima de ahorro** en el año $k+1$ es el complemento: $P_{\text{ahorro},\,k+1} = P - P_{\text{riesgo},\,k+1}$, donde $P$ es la prima nivelada. Así, $P = P_{\text{riesgo}} + P_{\text{ahorro}}$: la prima cubre el costo esperado del seguro (prima de riesgo) y el incremento de la reserva (prima de ahorro). El programa y los exámenes de la EECA-UCV exigen que el estudiante demuestre la igualdad entre la prima de ahorro obtenida por su propia fórmula y la que resulta de restar la prima de riesgo a la prima nivelada; esta descomposición es vital para entender el **capital en riesgo** de la compañía en cada período.
+
+### Identidades útiles (capítulo 10)
+
+- **Ecuación de equivalencia:** $P\,\ddot{a}_x = A_x$ (vida entera); $P_{x:\overline{n}|}\,\ddot{a}_{x:\overline{n}|} = A_{x:\overline{n}|}$ (mixto).
+- **Prima en conmutativas:** $P_x = M_x/N_x$; $P_{x:\overline{n}|} = (M_x - M_{x+n} + D_{x+n})/(N_x - N_{x+n})$.
+- **Relación $P_x = 1/\ddot{a}_x - d$:** se deduce de $A_x = P_x\,\ddot{a}_x$ y $A_x = 1 - d\,\ddot{a}_x$.
+- **Prima limitada $h$ años (vida entera):** $_hP_x = A_x/\ddot{a}_{x:\overline{h}|} = M_x/(N_x - N_{x+h})$.
+
+---
+
+## Ejercicios
+
+### Ejercicio resuelto (prima nivelada: vida entera y temporal)
+
+**Enunciado.** Con $M_{45}=1\,500$, $N_{45}=25\,000$, $M_{55}=1\,100$, $N_{55}=18\,000$, $D_{45}=2\,000$, calcular (a) la prima neta anual nivelada $P_{45}$ para un seguro de vida entera por 1 u.m. y (b) la prima neta anual nivelada $P_{45:\overline{10}|}^1$ para un temporal a 10 años por 1 u.m.
+
+**Solución.** (a) $P_{45} = A_{45}/\ddot{a}_{45} = M_{45}/N_{45} = 1\,500/25\,000 = 0{,}06$.  
+(b) $P_{45:\overline{10}|}^1 = (M_{45}-M_{55})/(N_{45}-N_{55}) = (1\,500-1\,100)/(25\,000-18\,000) = 400/7\,000 = 0{,}0571$.
+
+### Ejercicio resuelto 2 (Prima continua con fuerza de mortalidad constante — Weishaus)
+
+**Enunciado.** Un seguro de vida entera **totalmente continuo** (beneficio al momento del fallecimiento) tiene prima pagadera de forma continua. Fuerza de mortalidad $\mu = 0{,}01$ y fuerza de interés $\delta = 0{,}04$. Calcular la prima neta anual continua $\bar{P}$ por 1 u.m.
+
+**Solución.** Por equivalencia $\bar{P}\,\bar{a}_x = \bar{A}_x$, luego $\bar{P} = \bar{A}_x/\bar{a}_x$. Bajo fuerza constante $\bar{A}_x = \mu/(\mu+\delta) = 0{,}01/0{,}05 = 0{,}2$ y $\bar{a}_x = 1/(\mu+\delta) = 1/0{,}05 = 20$. Por tanto $\bar{P} = 0{,}2/20 = 0{,}01 = \mu$. Weishaus [@weishaus2013] observa que en este caso la prima continua de vida entera coincide con la fuerza de mortalidad (el sistema no tiene memoria).
+
+**3. Prima limitada 20 años (Jordan)**  
+Vida entera 20.000 u.m., primas solo 20 años. Ecuación: $G\,\ddot{a}_{50:\overline{20}|}=20\,000\,A_{50}$; $_20P_{50}=M_{50}/(N_{50}-N_{70})$ por 1 u.m.  
+**4. $P_x=(1/\ddot{a}_x)-d$**  
+De $A_x=1-d\,\ddot{a}_x$ y $A_x=P_x\,\ddot{a}_x$ se tiene $P_x\,\ddot{a}_x=1-d\,\ddot{a}_x$, luego $P_x=1/\ddot{a}_x-d$.  
+**5. Temporal: prima y renta**  
+Temporal 15 años 5.000 para (40), prima 180 u.m. $P_{40:\overline{15}|}^1=180/5\,000=0{,}036$ por 1 u.m. Si $A_{40:\overline{15}|}^1=0{,}05$, $\ddot{a}_{40:\overline{15}|}=A/P=0{,}05/0{,}036\approx 1{,}39$.  
+**6. Pérdida futura (Weishaus)**  
+$_0 L=v^{K_x+1}-P\,\ddot{a}_{\overline{K_x+1}|}$. $\mathbb{E}[_0 L]=0$ ⇒ $A_x=P\,\ddot{a}_x$ ⇒ $P=A_x/\ddot{a}_x$.  
+**7. Prima $m$ veces al año**  
+$P^{(m)}\ddot{a}_x^{(m)}=A_x$; $\ddot{a}_x^{(m)}$ = APV de renta 1 u.a. pagadera $m$ veces al año (Weishaus).  
+**8. Prima limitada $_hP_x$**  
+$_hP_x=A_x/\ddot{a}_{x:\overline{h}|}=M_x/(N_x-N_{x+h})$.  
+**9. Prima dotal**  
+$P_{x:\overline{n}|}=A_{x:\overline{n}|}/\ddot{a}_{x:\overline{n}|}=(M_x-M_{x+n}+D_{x+n})/(N_x-N_{x+n})$.  
+**10. Tipo parcial**  
+$M_{40}=320$, $N_{40}=8\,000$, $M_{50}=200$, $N_{50}=5\,000$, $D_{40}=2\,000$. $P_{40}=M_{40}/N_{40}=0{,}04$; $P_{40:\overline{10}|}^1=(320-200)/(8\,000-5\,000)=0{,}04$.  
+**11. Prima continua**  
+$\bar{P}=\bar{A}_x/\bar{a}_x$; bajo $\mu$ constante $\bar{P}=\mu$ (Weishaus).  
+**12. Conmutativas**  
+$P_x=M_x/N_x$ (vida entera).  
+**13. Temporal $n$**  
+$P_{x:\overline{n}|}^1=A_{x:\overline{n}|}^1/\ddot{a}_{x:\overline{n}|}=(M_x-M_{x+n})/(N_x-N_{x+n})$.  
+**14. $_10P_{50}$**  
+Primas 10 años para vida entera: $A_{50}=P\,\ddot{a}_{50:\overline{10}|}$ ⇒ $P=A_{50}/\ddot{a}_{50:\overline{10}|}$.  
+**15. $_20P_{50}$ en conmutativas**  
+$_20P_{50}=M_{50}/(N_{50}-N_{70})$ (primas 20 años).  
+**16. $P^{(m)}$ y total anual**  
+Total anual = $m\,P^{(m)}$; ecuación $P^{(m)}\ddot{a}_x^{(m)}=A_x$.  
+**17. Relación $A_x=P_x\,\ddot{a}_x$**  
+Equivalencia: valor presente primas = valor presente beneficio.  
+**18. Mixto**  
+$P_{x:\overline{n}|}=(M_x-M_{x+n}+D_{x+n})/(N_x-N_{x+n})$.  
+**19. Verificar $P_x=1/\ddot{a}_x-d$**  
+Con $A_x=1-d\,\ddot{a}_x$ y $P_x=A_x/\ddot{a}_x$ se obtiene $P_x=1/\ddot{a}_x-d$.  
+**20. Síntesis tipo parcial**  
+(a) Ecuación equivalencia: $G\,\ddot{a}=$ APV beneficios. (b) $P_{45}=M_{45}/N_{45}=1\,500/25\,000=0{,}06$; $P_{45:\overline{10}|}^1=(M_{45}-M_{55})/(N_{45}-N_{55})=400/7\,000\approx 0{,}0571$ (Jordan/Neill/Weishaus).
+
+**21. Prima fraccionada (Tema 4)**  
+Si la prima se paga $m$ veces al año, la ecuación de equivalencia es $P^{(m)}\,\ddot{a}_x^{(m)}=A_x$. Indicar qué representa $\ddot{a}_x^{(m)}$ y por qué $P^{(m)}$ no es exactamente $P/m$.  
+**Solución.** $\ddot{a}_x^{(m)}$ es el valor presente de una renta de 1 u.m. pagadera en $m$ fracciones iguales al año (al inicio de cada período $1/m$), mientras (x) viva. $P^{(m)} \neq P/m$ porque el valor presente de $m$ pagos de $P/m$ al inicio de cada subperíodo no es $\ddot{a}_x/m$ (los momentos de pago y de valoración difieren); la relación exacta depende de la hipótesis de mortalidad dentro del año (programa Tema 4).
+
+**22. Análisis prima de ahorro y de riesgo (Tema 4)**  
+Para un temporal a $n$ años, interpretar $P_{x:\overline{n}|}^1$ como «parte de riesgo» y la acumulación de (prima − costo esperado año) como ahorro.  
+**Solución.** En cada año, la prima $P$ cubre el «costo» esperado del beneficio ($q_{x+k}\,b$) y el resto se acumula como reserva (ahorro). La reserva al año $k$ es el valor acumulado de esas diferencias; por tanto la prima se descompone en prima de riesgo (cobertura año a año) y prima de ahorro (reserva futura) (Tema 4 del programa).
+
+**23. Tipo parcial: prima nivelada**  
+Seguro temporal 15 años 8.000 u.m. (40). $\ddot{a}_{40:\overline{15}|}=10$, $A_{40:\overline{15}|}^1=0{,}06$. Calcular la prima neta anual $P$.  
+**Solución.** $P \cdot \ddot{a}_{40:\overline{15}|} = 8\,000 \cdot A_{40:\overline{15}|}^1$, luego $P = 8\,000 \times 0{,}06/10 = 48$ u.m./año.
+
+**24. Prima limitada**  
+Vida entera por 1 u.m. con primas solo los primeros 20 años. Escribir $_20P_x$ en conmutativas.  
+**Solución.** $_20P_x = A_x/\ddot{a}_{x:\overline{20}|} = M_x/(N_x - N_{x+20})$.
+
+**25. Relación $P_x = 1/\ddot{a}_x - d$**  
+Deducir a partir de $A_x = P_x\,\ddot{a}_x$ y $A_x = 1 - d\,\ddot{a}_x$.  
+**Solución.** Igualando: $P_x\,\ddot{a}_x = 1 - d\,\ddot{a}_x$, luego $P_x = (1 - d\,\ddot{a}_x)/\ddot{a}_x = 1/\ddot{a}_x - d$.
+
+**26.** $P_x=A_x/\ddot{a}_x$. Con $A_{50}=0{,}28$, $\ddot{a}_{50}=14$. Calcular $P_{50}$. **Solución.** $P_{50}=0{,}28/14=0{,}02$ (2% de la suma asegurada).
+
+**27.** Prima limitada 15 años vida entera (45). $_15P_{45}=A_{45}/\ddot{a}_{45:\overline{15}|}$. **Solución.** Con conmutativas: $M_{45}/(N_{45}-N_{60})$.
+
+**28.** Ecuación de equivalencia temporal 10 años: $P\,\ddot{a}_{40:\overline{10}|}=A_{40:\overline{10}|}^1$. **Solución.** Prima nivelada × renta temporal = PNU temporal.
+
+**29.** $P_{55}=0{,}025$, $\ddot{a}_{55}=13$. Verificar $A_{55}=P_{55}\,\ddot{a}_{55}$. **Solución.** $A_{55}=0{,}025\times 13=0{,}325$.
+
+**30.** $_20P_{40}$: prima limitada 20 años para vida entera (40). **Solución.** $_20P_{40}=A_{40}/\ddot{a}_{40:\overline{20}|}=M_{40}/(N_{40}-N_{60})$.
+
+**31.** Temporal 12 años 6.000 u.m. (48). $P_{48:\overline{12}|}^1=0{,}035$. Prima anual. **Solución.** Prima $=6\,000\times 0{,}035=210$ u.m./año.
+
+**32.** Relación $P_x=1/\ddot{a}_x-d$. Con $\ddot{a}_{60}=12$, $d=0{,}04$. **Solución.** $P_{60}=1/12-0{,}04\approx 0{,}0433$.
+
+**33.** Prima continua $\bar{P}=\bar{A}_x/\bar{a}_x$. Bajo $\mu$, $\delta$ constantes: $\bar{P}=\mu$. **Solución.** $\bar{A}_x=\mu/(\mu+\delta)$, $\bar{a}_x=1/(\mu+\delta)$ ⇒ $\bar{P}=\mu$.
+
+**34.** Pérdida $_0 L$ con primas niveladas: $Z-P\,\ddot{a}_{\overline{K_x+1}|}$. **Solución.** Valor presente beneficio menos valor presente primas.
+
+**35.** $P_{50:\overline{10}|}^1$ para temporal 10 años (50). **Solución.** $P_{50:\overline{10}|}^1=A_{50:\overline{10}|}^1/\ddot{a}_{50:\overline{10}|}$.
+
+**36.** Prima fraccionada $P^{(m)}$: ecuación $P^{(m)}\ddot{a}_x^{(m)}=A_x$. **Solución.** Prima $m$ veces al año × renta anticipada $m$ veces = PNU.
+
+**37.** Vida entera 10.000 u.m. (55). $P_{55}=0{,}022$. Prima anual. **Solución.** Prima $=10\,000\times 0{,}022=220$ u.m./año.
+
+**38.** Descomposición prima de ahorro + prima de riesgo (temporal). **Solución.** Prima de ahorro aumenta reserva; prima de riesgo cubre beneficio por muerte.
+
+**39.** $_10P_{45}$ con $A_{45}$, $\ddot{a}_{45:\overline{10}|}$. **Solución.** $_10P_{45}=A_{45}/\ddot{a}_{45:\overline{10}|}$.
+
+**40.** Mixto 15 años: $P_{x:\overline{15}|}=A_{x:\overline{15}|}/\ddot{a}_{x:\overline{15}|}$. **Solución.** Prima nivelada = PNU mixto / renta temporal 15 años.
+
+**41.** $\mathbb{E}[_0 L]=0$ cuando prima es la prima neta nivelada. **Solución.** Por definición de equivalencia.
+
+**42.** Prima limitada $h$ años para temporal $n$ ($h\leq n$): $_hP_{x:\overline{n}|}^1$. **Solución.** $_hP_{x:\overline{n}|}^1=A_{x:\overline{n}|}^1/\ddot{a}_{x:\overline{h}|}$.
+
+**43.** Con $M_{58}=200$, $N_{58}=3\,000$, $D_{58}=1\,100$. $P_{58}$. **Solución.** $P_{58}=M_{58}/N_{58}=200/3\,000\approx 0{,}0667$.
+
+**44.** Temporal 18 años (42). Prima 180 u.m./año por 5.000 u.m. $P_{42:\overline{18}|}^1$ por 1 u.m. **Solución.** $P_{42:\overline{18}|}^1=180/5\,000=0{,}036$.
+
+**45.** Prima continua vida entera: $\bar{P}=\bar{A}_x/\bar{a}_x$. **Solución.** Equivalencia en continuo.
+
+**46.** $A_{48}=0{,}30$, $\ddot{a}_{48}=15$. Calcular $P_{48}$ y verificar $1-d\,\ddot{a}_{48}$. **Solución.** $P_{48}=0{,}30/15=0{,}02$; $1-d\,\ddot{a}_{48}=1-0{,}04\times 15=0{,}4$ (no igual a $A_{48}$ si $d\neq 0{,}02$; relación $A=1-d\ddot{a}$).
+
+**47.** $_15P_{50}$: primas solo primeros 15 años, vida entera. **Solución.** $_15P_{50}=A_{50}/\ddot{a}_{50:\overline{15}|}$.
+
+**48.** Ecuación $G\,\ddot{a}=A+\text{gastos}$ para prima bruta $G$. **Solución.** Valor presente primas brutas = valor presente beneficios + gastos.
+
+**49.** Prima nivelada temporal $n$ años: cuántos pagos de prima. **Solución.** Hasta $n$ pagos (o hasta fallecimiento si antes).
+
+**50.** Síntesis: escribir $P_x$, $P_{x:\overline{n}|}^1$, $_hP_x$ en una línea con conmutativas. **Solución.** $P_x=M_x/N_x$; $P_{x:\overline{n}|}^1=(M_x-M_{x+n})/(N_x-N_{x+n})$; $_hP_x=M_x/(N_x-N_{x+h})$.
+
+
+---
+
+### Ejercicios propuestos (50)
+
+En cada ejercicio se debe obtener la prima neta o la magnitud indicada; escribir la ecuación de equivalencia cuando corresponda. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Seguro de vida entera por 20.000 u.m. con primas limitadas a 20 años. Escribir la ecuación de equivalencia y obtener $_20P_{50}$ en función de conmutativas (Jordan).
+
+2. **Se pide:** Verificar algebraicamente que $P_x = (1/\ddot{a}_x) - d$ a partir de $A_x = 1 - d\,\ddot{a}_x$ y $A_x = P_x\,\ddot{a}_x$ (Neill).
+
+3. **Se pide:** Seguro temporal 15 años por 5.000 u.m. para (40); la prima anual es 180 u.m. Calcular $P_{40:\overline{15}|}^1$ por 1 u.m. de beneficio y hallar $\ddot{a}_{40:\overline{15}|}$ si $A_{40:\overline{15}|}^1=0{,}05$.
+
+4. **Se pide:** Para un seguro temporal a $n$ años con prima nivelada $P$, definir la pérdida $_0 L$ y deducir que $P = A_{x:\overline{n}|}^1/\ddot{a}_{x:\overline{n}|}$ (Weishaus).
+
+5. **Se pide:** Explicar la ecuación $P^{(m)}\ddot{a}_x^{(m)}=A_x$: qué representa $\ddot{a}_x^{(m)}$ y por qué en general $P^{(m)} \neq P/m$ (Weishaus).
+
+6. **Tipo parcial.** **Se pide:** Calcular $_15P_{40}$ (prima limitada a 15 años para vida entera) usando $D_{40}$, $M_{40}$, $N_{40}$, $N_{55}$.
+
+7. **Se pide:** Escribir la fórmula de la prima neta limitada a $h$ años para un seguro de vida entera, $_hP_x$, en conmutativas.
+
+8. **Se pide:** Definir la prima continua $\bar{P}$ para un seguro de vida entera y dar la fórmula $\bar{P} = \bar{A}_x/\bar{a}_x$.
+
+9. **Se pide:** Bajo fuerza de mortalidad constante $\mu$ y fuerza de interés $\delta$, comprobar que la prima continua vida entera verifica $\bar{P} = \mu$.
+
+10. **Se pide:** Escribir $P_{x:\overline{n}|}$ (prima nivelada para un mixto a $n$ años) en función de conmutativas $M_x$, $D_x$, $N_x$, etc.
+
+11. **Tipo parcial.** **Se pide:** (a) Enunciar la ecuación de equivalencia para primas niveladas. (b) Con $M_{50}$, $N_{50}$, $M_{60}$, $N_{60}$, $D_{50}$ dados, calcular $P_{50}$ y $P_{50:\overline{10}|}^1$.
+
+12. **Se pide:** Justificar que la pérdida futura $_0 L$ con primas niveladas (prima neta) cumple $\mathbb{E}[_0 L]=0$.
+
+13. **Se pide:** Escribir la ecuación de equivalencia cuando la prima se paga $m$ veces al año (prima fraccionada) y relacionar con la renta $\ddot{a}_x^{(m)}$.
+
+14. **Se pide:** Explicar conceptualmente la diferencia entre prima anual y prima continua (momento del pago y fórmula).
+
+15. **Tipo parcial.** **Se pide:** Seguro temporal 10 años por 8.000 u.m. para (45). Dados $\ddot{a}_{45:\overline{10}|}=8$ y $A_{45:\overline{10}|}^1=0{,}04$, calcular la prima neta anual.
+
+16. **Se pide:** Deducir la relación $A_x = P_x\,\ddot{a}_x$ a partir de la ecuación de equivalencia para vida entera.
+
+17. **Se pide:** Dar la fórmula de $_hP_{x:\overline{n}|}$ (prima limitada a $h$ años para un temporal o mixto a $n$ años) cuando $h \leq n$.
+
+18. **Se pide:** A partir de tablas de mortalidad y de las columnas $M_x$, $N_x$, $D_x$, escribir la fórmula de $P_x$ (Weishaus).
+
+19. **Se pide:** Bajo $\mu$ y $\delta$ constantes, indicar cómo se obtiene la prima neta (única o nivelada) en forma cerrada.
+
+20. **Tipo parcial.** **Se pide:** Vida entera por 1 u.m. para (55) con primas pagadas solo los primeros 15 años. Dados $\ddot{a}_{55}=14$, $\ddot{a}_{55:\overline{15}|}=10$, $A_{55}=0{,}30$, calcular $_15P_{55}$ (Jordan/Neill/Weishaus).
+
+21. **Tema 4.** **Se pide:** Prima pagada $m$ veces al año: escribir la ecuación $P^{(m)}\ddot{a}_x^{(m)}=A_x$ y la relación aproximada o exacta entre $P^{(m)}$ y la prima anual $P$.
+
+22. **Se pide:** Explicar la descomposición de la prima nivelada en «prima de ahorro» y «prima de riesgo» para un seguro temporal.
+
+23. **Se pide:** Con $P_{40:\overline{20}|}=0{,}05$ y $\ddot{a}_{40:\overline{20}|}=12$, calcular el valor del mixto por 1 u.m., $A_{40:\overline{20}|}$.
+
+24. **Se pide:** Escribir la fórmula de la prima continua $\bar{P}$ y su valor cuando $\mu$ y $\delta$ son constantes.
+
+25. **Tipo parcial.** **Se pide:** Seguro temporal 20 años por 10.000 u.m. para (40); la prima neta anual es 350 u.m. Calcular $\ddot{a}_{40:\overline{20}|}$ si $A_{40:\overline{20}|}^1=0{,}04$.
+
+26. **Se pide:** Con $A_{52}=0{,}26$, $\ddot{a}_{52}=14{,}5$, calcular $P_{52}$ y verificar $A_{52}=P_{52}\,\ddot{a}_{52}$.  
+27. **Se pide:** Prima limitada 12 años para vida entera (48). Escribir $_12P_{48}$ en conmutativas.  
+28. **Tipo parcial.** **Se pide:** Temporal 15 años 7.000 u.m. (42). $\ddot{a}_{42:\overline{15}|}=10$, $A_{42:\overline{15}|}^1=0{,}05$. Prima neta anual.  
+29. **Se pide:** Deducir $P_x=1/\ddot{a}_x-d$ desde $A_x=P_x\,\ddot{a}_x$ y $A_x=1-d\,\ddot{a}_x$.  
+30. **Se pide:** $_18P_{40}$: ecuación de equivalencia y fórmula con $M_{40}$, $N_{40}$, $N_{58}$.  
+31. **Se pide:** Prima continua $\bar{P}$ para vida entera: definición y fórmula con $\bar{A}_x$, $\bar{a}_x$.  
+32. **Se pide:** Bajo $\mu$, $\delta$ constantes, comprobar $\bar{P}=\mu$ para vida entera continuo.  
+33. **Tipo parcial.** **Se pide:** Vida entera 15.000 u.m. (58). $P_{58}=0{,}028$. Prima anual.  
+34. **Se pide:** Descomposición prima de ahorro y prima de riesgo para un temporal a $n$ años.  
+35. **Se pide:** $P_{45:\overline{12}|}$ para mixto 12 años (45). Fórmula con conmutativas.  
+36. **Se pide:** Prima fraccionada $P^{(4)}$: relación aproximada con $P$ (prima anual).  
+37. **Se pide:** $\mathbb{E}[_0 L]=0$ con primas niveladas: justificar.  
+38. **Tipo parcial.** **Se pide:** (a) Ecuación de equivalencia para primas niveladas. (b) Con $M_{55}$, $N_{55}$, $D_{55}$ calcular $P_{55}$.  
+39. **Se pide:** $_10P_{50:\overline{25}|}$: prima limitada 10 años para un contrato a 25 años. Fórmula.  
+40. **Se pide:** Temporal 8 años 4.000 u.m. (55). Prima 140 u.m./año. Hallar $P_{55:\overline{8}|}^1$ por 1 u.m.  
+41. **Se pide:** Escribir $P_{x:\overline{n}|}$ (prima nivelada mixto) con $M_x$, $D_x$, $N_x$, $N_{x+n}$, $D_{x+n}$.  
+42. **Se pide:** Prima bruta $G$: ecuación cuando hay gastos (concepto).  
+43. **Tipo parcial.** **Se pide:** Seguro temporal 14 años 6.000 u.m. (46). $\ddot{a}_{46:\overline{14}|}=9{,}5$, $A_{46:\overline{14}|}^1=0{,}045$. Prima neta.  
+44. **Se pide:** Relación entre $P^{(m)}$ y $P$ cuando $m\to\infty$ (prima continua).  
+45. **Se pide:** Vida entera (60) con primas solo 12 años. $_12P_{60}$ con $A_{60}$, $\ddot{a}_{60:\overline{12}|}$.  
+46. **Se pide:** Verificar $A_x=P_x\,\ddot{a}_x$ con $P_x=M_x/N_x$, $A_x=M_x/D_x$, $\ddot{a}_x=N_x/D_x$.  
+47. **Tipo parcial.** **Se pide:** Mixto 20 años por 8.000 (38). $P_{38:\overline{20}|}=0{,}04$. Prima anual.  
+48. **Se pide:** Definir prima de ahorro y prima de riesgo en el año $k+1$.  
+49. **Se pide:** Con $N_{62}=2\,400$, $M_{62}=180$, $D_{62}=1\,000$, calcular $P_{62}$.  
+50. **Se pide:** Síntesis: escribir $P_x$, $P_{x:\overline{n}|}^1$ y $_hP_x$ en una línea (fórmulas).
+
+---
+
+*Referencias: Jordan [@jordan1982]; Neill [@neill1977]; Weishaus [@weishaus2013].*

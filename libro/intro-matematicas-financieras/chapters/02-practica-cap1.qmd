@@ -1,0 +1,182 @@
+---
+number: false
+---
+
+# Práctica capítulo 1 {#practica-cap1 .unnumbered}
+
+Esta sección contiene ejercicios y problemas correspondientes al Capítulo 1 (Medición del interés). Parte del contenido se apoya en la colección **Financieras I** y en los textos citados en la bibliografía, con notación unificada [Andrade López, 2017; Déniz Tadeo et al., 2016; Díaz Mata y Aguilera, 2013].
+
+## Conversión entre períodos de tiempo (referencia: Andrade López)
+
+En muchos problemas es necesario expresar el plazo en distintas unidades (días, meses, trimestres, años). Tomando como base 1 año = 360 días, 1 mes = 30 días:
+
+| Referencia | Días | Meses | Bimestre | Trimestre | Semestre | Año |
+|------------|------|-------|----------|-----------|----------|-----|
+| 1 día | 1 | 1/30 | 1/60 | 1/90 | 1/180 | 1/360 |
+| 1 mes | 30 | 1 | 1/2 | 1/3 | 1/6 | 1/12 |
+| 1 trimestre | 90 | 3 | 3/2 | 1 | 1/2 | 1/4 |
+| 1 semestre | 180 | 6 | 3 | 2 | 1 | 1/2 |
+| 1 año | 360 | 12 | 6 | 4 | 2 | 1 |
+
+**Ejemplo (vaciado Andrade).** 78 días = 78/30 = 2,6 meses = 78/360 = 0,2166 años = 78/90 = 0,8666 trimestres = 78/180 = 0,4333 semestres. 13 años = 26 semestres = 156 meses = 78 bimestres = 4.680 días. 29 trimestres = 87 meses = 2.610 días = 7,25 años = 14,5 semestres.
+
+## Valor presente
+
+1. Hallar el valor acumulado de \$500 invertidos durante cinco años al 8\% anual convertible trimestralmente.
+2. Hallar el valor presente de \$1.000 a ser pagados al final de seis años al 6\% anual pagadero por adelantado y convertible semestralmente.
+3. Calcular el valor presente de \$1.000 a recibir en 3 años al 9\% anual, usando interés simple e interés compuesto, y comparar resultados.
+4. Determinar el valor presente de \$2.000 a ser pagados dentro de 10 años al 10\% nominal convertible mensualmente.
+
+## Tasa efectiva de descuento
+
+5. Suponga una inversión de \$10.000 al 5\% compuesto anual. Calcular la tasa efectiva de descuento del año 4.
+6. Calcular el valor presente de \$500 a recibir en 3,25 años usando una tasa de descuento compuesto del 6\% (usar fracción final con descuento simple).
+7. Comparar valor presente de \$2.000 en 4 años: (a) interés compuesto al 8\%; (b) descuento compuesto al 8\%.
+
+## Tasas nominales de interés y descuento
+
+8. Hallar la tasa nominal de interés convertible trimestralmente equivalente a una tasa nominal de descuento del 6\% anual convertible mensualmente.
+9. Calcular la tasa nominal de descuento convertible bimestralmente equivalente a una tasa nominal de interés del 8\% convertible trimestralmente.
+10. Dado $i^{(m)} = 0{,}1844144$ y $d^{(m)} = 0{,}1802608$, hallar $m$.
+11. Si $r = i^{(4)}/d^{(4)}$, expresar el factor de descuento $v$ en función de $r$.
+12. Ordenar $i$, $i^{(m)}$, $d$, $d^{(m)}$ y $\delta$ en orden creciente de magnitud (suponer $m > 1$).
+
+## Fuerza de interés
+
+13. Monto con fuerza constante $\delta = 0{,}05$: para \$1.000 durante 10 años, calcular $A(10) = K e^{\delta t}$.
+14. El fondo A crece a interés simple del 10\%; el fondo B con descuento simple del 5\%. Hallar el instante $t$ en que las fuerzas de interés de ambos fondos son iguales.
+15. Encontrar la tasa efectiva nivelada de interés durante tres años equivalente a tasas efectivas de descuento del 8\%, 7\% y 6\% en los años 1, 2 y 3.
+
+## Funciones de acumulación
+
+16. Dada $A(t) = t^2 + 2t + 3$: (a) encontrar la función de acumulación $a(t)$; (b) verificar propiedades de $a(t)$; (c) encontrar $I_n$.
+17. Si $i$ y $d$ son tasas equivalentes de interés simple y descuento simple sobre $t$ períodos, demostrar que $i - d = id\,t$.
+18. Expresar $d^{(4)}$ como función de $i^{(3)}$; expresar $i^{(6)}$ como función de $d^{(2)}$.
+19. Demostrar $i^{(m)} = d^{(m)}(1+i)^{1/m}$ e interpretar verbalmente.
+20. Valor acumulado de \$100 al final de dos años: (a) tasa nominal anual 6\% convertible trimestralmente; (b) tasa nominal anual de descuento 6\% convertible una vez cada cuatro años.
+
+---
+
+## Ejercicios resueltos (mínimo 20)
+
+**R1.** Dada $A(t) = t^2 + 2t + 3$. (a) Función de acumulación $a(t)$. (b) Verificar propiedades. (c) Hallar $I_n$.  
+*Solución:* (a) $a(t) = A(t)/A(0) = (t^2+2t+3)/3$. (b) $a(0)=1$; continua y creciente. (c) $I_n = A(n)-A(n-1) = 2n+1$.
+
+**R2.** Inversión \$5.000 con $a(t) = (t^2+2t+3)/3$. Interés ganado entre $t=3$ y $t=4$.  
+*Solución:* $I = 5.000\bigl(a(4)-a(3)\bigr) = 5.000(9-6) = 15.000$ (con $a(4)=9$, $a(3)=6$).
+
+**R3.** Se sabe $a(t) = a\,t^2 + b$, $a(0)=1$. Si \$100 en $t=0$ se acumulan a \$172 en $t=3$, hallar valor acumulado en $t=10$ de \$100 invertidos en $t=5$.  
+*Solución:* $b=1$; $a(3)=9a+1=1{,}72 \Rightarrow a=0{,}08$. $a(t)=0{,}08t^2+1$. Valor pedido $= 100\,a(10)/a(5) = 100 \cdot (9/3) = 300$.
+
+**R4.** $A(t) = 100 + 5t$. Hallar $i_1$ e $i_{10}$.  
+*Solución:* $i_1 = (A(1)-A(0))/A(0) = 5/100 = 0{,}05$. $i_{10} = (A(10)-A(9))/A(9) = 5/145 \approx 0{,}0345$ (decrece con $t$).
+
+**R5.** $A(t) = 100(1{,}1)^t$. Hallar $i_1$ e $i_{10}$.  
+*Solución:* $i_1 = 0{,}10$; $i_{10} = (1{,}1)^{10}-(1{,}1)^9$ sobre $(1{,}1)^9 = 0{,}10$ (constante bajo interés compuesto).
+
+**R6.** Demostrar $A(n) = (1+i_n)A(n-1)$.  
+*Solución:* Por definición $i_n = (A(n)-A(n-1))/A(n-1)$; despejando se obtiene la identidad.
+
+**R7.** Valor acumulado \$500 en 5 años al 8\% convertible trimestralmente.  
+*Solución:* $i^{(4)}=0{,}08$, 20 trimestres, $j=0{,}02$. $A = 500(1{,}02)^{20} \approx 742{,}97$.
+
+**R8.** Valor presente \$1.000 en 6 años al 6\% pagadero por adelantado convertible semestralmente.  
+*Solución:* $d^{(2)}=0{,}06$, 12 semestres, factor $= (1-d/2)^{12} = (0{,}97)^{12}$. $\mathrm{PV} = 1.000(0{,}97)^{12} \approx 693{,}84$.
+
+**R9.** VP \$1.000 en 3 años al 9\%: interés simple vs compuesto.  
+*Solución:* Simple: $\mathrm{PV} = 1.000/(1+0{,}27) = 787{,}40$. Compuesto: $\mathrm{PV} = 1.000/(1{,}09)^3 \approx 772{,}18$.
+
+**R10.** Inversión \$10.000 al 5\% compuesto. Tasa efectiva de descuento del año 4.  
+*Solución:* $d_4 = I_4/A(4) = i/(1+i) = 0{,}05/1{,}05 \approx 0{,}0476$ (4,76\%).
+
+**R11.** VP \$500 en 3,25 años al 6\% descuento compuesto (fracción con descuento simple).  
+*Solución:* $v^{3{,}25} \approx (0{,}94)^3(1-0{,}25 \cdot 0{,}06) = (0{,}94)^3 \cdot 0{,}985$. $\mathrm{PV} \approx 415$.
+
+**R12.** Fuerza constante $\delta=0{,}05$: monto \$1.000 en 10 años.  
+*Solución:* $A(10) = 1.000\,e^{0{,}5} \approx 1.648{,}72$.
+
+**R13.** Fondo A: interés simple 10\%; fondo B: descuento simple 5\%. Instante $t$ con $\delta_A = \delta_B$.  
+*Solución:* $\delta_A = 0{,}10/(1+0{,}10t)$, $\delta_B = 0{,}05/(1-0{,}05t)$. Igualando: $0{,}10(1-0{,}05t) = 0{,}05(1+0{,}10t)$ $\Rightarrow$ $t=5$.
+
+**R14.** Tasas de descuento 8\%, 7\%, 6\% en años 1–3. Tasa efectiva nivelada $i$ equivalente.  
+*Solución:* Factor acumulado $= 1/[(0{,}92)(0{,}93)(0{,}94)]$; $(1+i)^3$ igual a ese factor $\Rightarrow$ $i \approx 0{,}0752$.
+
+**R15.** Dados $i^{(m)}$ y $d^{(m)}$, hallar $m$. Relación $i^{(m)}/d^{(m)} = (1+i)^{1/m}$.  
+*Solución:* De $(1+i)^{1/m} = 1 + i^{(m)}/m$ y análogo para $d^{(m)}$ se despeja $m$; con los valores numéricos dados $m=4$.
+
+**R16.** Ordenar $d < d^{(m)} < \delta < i^{(m)} < i$ para $m>1$.  
+*Solución:* Con $v=(1+i)^{-1}$: $d=1-v$, $d^{(m)}=m(1-v^{1/m})$, $\delta=-\ln v$, $i^{(m)}=m(v^{-1/m}-1)$; comparando se obtiene el orden.
+
+**R17.** Expresar $d^{(4)}$ en función de $i^{(3)}$.  
+*Solución:* $1+i = (1+i^{(3)}/3)^3$, $1-d = (1-d^{(4)}/4)^4$; de $(1+i)^{-1} = 1-d$ se obtiene $d^{(4)} = 4\bigl(1 - (1+i)^{-1/4}\bigr)$ y sustituir $i$ por $(1+i^{(3)}/3)^3-1$.
+
+**R18.** Demostrar $i^{(m)} = d^{(m)}(1+i)^{1/m}$.  
+*Solución:* $(1+i)^{1/m} - 1 = i^{(m)}/m$ y $1-(1-d)^{1/m} = d^{(m)}/m$; como $(1-d)^{-1} = 1+i$, se tiene $(1+i)^{1/m} = 1/(1-d)^{1/m}$; operando se llega a la igualdad.
+
+**R19.** Valor acumulado \$100 en 2 años: (a) $i^{(4)}=6\%$; (b) $d^{(1/4)}=6\%$ (convertible cada 4 años).  
+*Solución:* (a) $100(1+0{,}06/4)^{8} \approx 112{,}65$. (b) Período 2 años = 0,5 “períodos de 4 años”; $d_{\mathrm{per}} = 0{,}06 \cdot 4 = 0{,}24$; $\mathrm{PV}$ por 0,5 periodos con $v=0{,}76$; $A = 100/v^{0{,}5} \approx 114{,}72$.
+
+**R20.** Monto con fuerza variable $\delta_s = 0{,}05 + 0{,}01s$. VP de \$100 en $t=2$ y en $t=4$.  
+*Solución:* $a(t) = \exp\bigl(\int_0^t (0{,}05+0{,}01s)\,ds\bigr) = \exp(0{,}05t + 0{,}005t^2)$. $\mathrm{PV}(2) = 100/a(2)$, $\mathrm{PV}(4) = 100/a(4)$; sumando se obtiene el VP total de los dos pagos.
+
+---
+
+## Ejercicios propuestos (nivel avanzado)
+
+**A1.** Función $a(t) = 1 + 0{,}1t + 0{,}01t^2$. Hallar $\delta(t)$ y verificar que $\int_0^5 \delta(s)\,ds = \ln a(5)$.
+
+**A2.** Bajo interés compuesto, probar que $\delta = \ln(1+i)$ y que $i^{(m)} \to \delta$ cuando $m \to \infty$.
+
+**A3.** Fuerza de interés $\delta_t = 1/(1+t)$. Obtener $a(t)$ y el monto de \$K$ en $t=10$.
+
+**A4.** Demostrar que bajo descuento compuesto $v^{n+k} = v^n(1-kd)$ es una aproximación de primer orden para $k$ pequeño.
+
+**A5.** Dada la tabla de montos $A(0)=1.000$, $A(1)=1.060$, $A(2)=1.113$, $A(3)=1.157{,}52$, hallar $i_1,i_2,i_3$ y la tasa efectiva nivelada a 3 años.
+
+**A6.** Probar que $d < \delta < i$ cuando $i>0$ y dar una cota para $\delta - d$ en función de $i$.
+
+**A7.** Inversión con $a(t) = e^{0{,}04t + 0{,}001t^2}$. Calcular el interés ganado en el quinto año sobre un capital de \$20.000.
+
+**A8.** Tasa nominal $i^{(12)} = 0{,}12$. Hallar la tasa efectiva anual $i$, la fuerza de interés $\delta$ y la tasa de descuento efectiva $d$.
+
+**A9.** Un préstamo se valora con interés simple al 8\% el primer año y compuesto al 8\% el segundo. Comparar con (a) todo simple 8\%; (b) todo compuesto 8\%.
+
+**A10.** Fondo con aportes de \$C al inicio de cada año durante $n$ años y fuerza de interés constante $\delta$. Expresar el valor acumulado en $t=n$ en términos de $\ddot{s}_{\overline{n}|}$ evaluado con $i = e^\delta - 1$.
+
+**A11.** Demostrar la identidad $1/a_{\overline{n}|} = 1/s_{\overline{n}|} + i$ usando solo definiciones de $a_{\overline{n}|}$ y $s_{\overline{n}|}$.
+
+**A12.** Dado $i^{(4)} = 0{,}08$ y $d^{(2)}$, hallar $d^{(2)}$ sin usar la tasa efectiva $i$ (solo relaciones entre nominales).
+
+**A13.** Valor presente de una perpetuidad inmediata con pagos de 1 al final de cada $k$ períodos, tasa $i$ por período. Expresar en términos de $v^k$ y verificar que tiende a $1/i$ cuando $k \to 0$.
+
+**A14.** Fuerza de interés $\delta_t = \alpha + \beta t$. Obtener $a(t)$ y el valor acumulado de una renta continua de intensidad 1 durante $n$ años.
+
+**A15.** Interés variable: $i_1=0{,}05$, $i_2=0{,}06$, $i_3=0{,}04$. Monto de \$10.000 en 3 años. Tasa efectiva nivelada equivalente.
+
+**A16.** Probar que bajo interés compuesto $(1+i)^n - 1 = i\,s_{\overline{n}|}$ y $1 - v^n = i\,a_{\overline{n}|}$.
+
+**A17.** Banco ofrece 10\% nominal convertible trimestralmente. Otra entidad ofrece 10{,}2\% nominal convertible semestralmente. ¿Cuál es preferible para un depósito a 2 años?
+
+**A18.** Descuento comercial (simple) al 9\% vs descuento compuesto al 9\% para un pagaré de \$5.000 a 90 días. Comparar valor líquido recibido.
+
+**A19.** Función de acumulación $a(t) = (1+t)^2$. Verificar propiedades; hallar $i_n$; demostrar que no corresponde a interés compuesto.
+
+**A20.** Consistencia: si se define $v = 1/(1+i)$ y $d = 1-v$, probar que $1/d - 1/i = 1$.
+
+---
+
+## Ejercicios vaciados de la colección Financieras I (Cap. 1)
+
+Los siguientes enunciados y soluciones están adaptados de los textos de la carpeta Financieras I; la notación se unificó a $K$, $A(t)$, $a(t)$, $i$, $v$, etc.
+
+**V1 (Andrade).** En un proyecto se invierten \$2.000.000 y al final de un año se reciben \$2.500.000. (a) Calcular el interés obtenido. (b) Calcular la tasa de interés mensual (simple y compuesto).  
+*Solución:* (a) $I = 2.500.000 - 2.000.000 = 500.000$. (b) Simple: $i = (F/P - 1)/n = (2{,}5/2 - 1)/12 \approx 2{,}08\%$ mensual. Compuesto: $i = (F/P)^{1/n} - 1 = (2{,}5/2)^{1/12} - 1 \approx 1{,}88\%$ efectivo mensual.
+
+**V2 (Andrade).** Pedro pide un préstamo de \$6.500.000 al 20\% anual con vencimiento a un año. ¿Cuánto debe pagar al finalizar el año (interés simple e interés compuesto)?  
+*Solución:* En un solo período son equivalentes: $A(1) = 6.500.000(1 + 0{,}20) = 7.800.000$.
+
+**V3 (Andrade).** Se invirtieron \$2.000.000 y a los 3 años se recibieron \$3.600.000. ¿Qué tasa trimestral arrojó la operación (simple y compuesto)?  
+*Solución:* 12 trimestres. Simple: $i = (3{,}6/2 - 1)/12 \approx 6{,}67\%$ por trimestre. Compuesto: $i = (3{,}6/2)^{1/12} - 1 \approx 5{,}02\%$ efectivo trimestral.
+
+**V4 (Andrade).** ¿Cuánto tiempo se necesita para duplicar la inversión en una corporación que paga 1,5\% mensual?  
+*Solución:* Con interés compuesto: $n = \ln(2)/\ln(1{,}015) \approx 46{,}56$ meses (aprox. 3,88 años).

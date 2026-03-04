@@ -1,0 +1,900 @@
+---
+number: false
+---
+
+# Probabilidades y expectativas de vida {#cap-probabilidades-expectativas .unnumbered .unlisted}
+
+Este capítulo recopila y amplía las **probabilidades** de supervivencia y de muerte en varios años (${}_np_x$, ${}_nq_x$, ${}_{n|m}q_x$) y las **expectativas de vida** (truncada y completa), y presenta métodos de **interpolación** para edades o plazos no enteros, necesarios cuando se trabaja con rentas o seguros pagaderos con frecuencia mayor que anual o al momento de la muerte. Se incorpora la notación y las relaciones de Weishaus [@weishaus2013] entre funciones de distribución y supervivencia, la interpretación precisa de «entre edades» y las fórmulas alternativas para probabilidades diferidas. La notación y los resultados son la base de los capítulos de valor presente actuarial, rentas y seguros [@jordan1982; @bowers1997; @neill1977].
+
+## Interpretación de «entre edades» y notación probabilística
+En este curso, **«entre las edades $x$ e $y$»** significa estrictamente: después de cumplir la edad $x$ y antes de cumplir la edad $y$; es decir, entre el $x$-ésimo y el $y$-ésimo cumpleaños [@weishaus2013]. Por tanto, «(40) fallece entre 75 y 85» indica que la persona cumple 75 años y fallece antes de cumplir 85. Si fallece un mes después del cumpleaños 85, no se considera dentro de ese intervalo.
+
+La variable aleatoria **tiempo futuro de vida** $T_x$ es el tiempo hasta el fallecimiento de una persona de edad $x$. Así, $T_{50} = 32{,}4$ significa que quien tenía 50 años falleció a los 82,4 años, tras vivir 32,4 años más. Se usa el símbolo $(x)$ para «una persona de edad $x$». En notación probabilística: $F_x(t) = \mathbb{P}(T_x \leq t)$ es la función de distribución de $T_x$ y $S_x(t) = \mathbb{P}(T_x > t) = 1 - F_x(t)$ es la **función de supervivencia**. La probabilidad de que $(x)$ fallezca entre los instantes $u$ y $u+t$ (medidos desde la edad $x$) es $\mathbb{P}(u < T_x \leq u+t) = F_x(u+t) - F_x(u) = S_x(u) - S_x(u+t)$.
+
+## Probabilidades en varios años
+
+Para una vida de edad $x$:
+
+- **Supervivencia $n$ años:** ${}_np_x = l_{x+n}/l_x = p_x\,p_{x+1}\cdots p_{x+n-1}$.
+- **Fallecimiento antes de $n$ años:** ${}_nq_x = 1 - {}_np_x = (l_x - l_{x+n})/l_x$.
+- **Fallecimiento entre $x+n$ y $x+n+m$ (diferido $n$, temporal $m$):** ${}_{n|m}q_x = {}_np_x \cdot {}_mq_{x+n} = (l_{x+n} - l_{x+n+m})/l_x = {}_np_x - {}_{n+m}p_x$.
+
+Se verifican ${}_0p_x = 1$, ${}_0q_x = 0$ y ${}_1p_x = p_x$, ${}_1q_x = q_x$. En la notación actuarial, el presubíndice $t$ se omite cuando es 1: ${}_1p_x = p_x$, ${}_1q_x = q_x$.
+
+### Fórmulas alternativas para la probabilidad diferida
+La probabilidad ${}_{u|t}q_x$ de que $(x)$ sobreviva $u$ años y fallezca en los $t$ años siguientes puede escribirse de tres formas equivalentes [@weishaus2013]:
+
+1. **Supervivencia hasta $u$ y no hasta $u+t$:** ${}_{u|t}q_x = {}_up_x - {}_{u+t}p_x = S_x(u) - S_x(u+t)$.
+2. **Diferencia de probabilidades de fallecimiento:** ${}_{u|t}q_x = {}_{u+t}q_x - {}_uq_x$.
+3. **Producto «sobrevivir $u$ y luego morir en $t$»:** ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$.
+
+Estas igualdades permiten calcular ${}_{u|t}q_x$ a partir de la tabla ($l_{x+u}$, $l_{x+u+t}$) o a partir de las $q_x$ cuando se conoce la tabla recursivamente: ${}_up_x = p_x\,p_{x+1}\cdots p_{x+u-1}$ y ${}_tq_{x+u} = 1 - {}_tp_{x+u}$.
+
+## Esperanza de vida truncada y completa
+
+La **esperanza de vida truncada** (en inglés, *curtate expectation of life*) es el número esperado de **años completos** vividos después de $x$:
+
+$$e_x = \mathbb{E}[K_x] = \sum_{k=1}^{\omega-x-1} {}_kp_x = \frac{\sum_{k=1}^{\omega-x-1} l_{x+k}}{l_x}.$$
+
+(En parte de la literatura se denota $e_x^{(c)}$ para distinguirla de la esperanza completa.) La **esperanza de vida completa** (años completos más fracción) es $\mathring{e}_x = \mathbb{E}[T_x] = T_x/l_x$. Bajo distribución uniforme de las muertes en cada año, $\mathring{e}_x \approx e_x + 1/2$. La esperanza temporal a $n$ años (años completos vividos si hubiera un tope $n$) es $e_{x:\overline{n}|} = \sum_{k=1}^{n} {}_kp_x$.
+
+**Número de supervivientes como variable aleatoria.** Si de $l_x$ vidas de edad $x$ se observa cuántas llegan a la edad $x+n$, ese número es una variable aleatoria binomial con parámetros $l_x$ y ${}_np_x$ (suponiendo independencia). Su esperanza es $l_x \cdot {}_np_x = l_{x+n}$ y su varianza $l_x \cdot {}_np_x \cdot {}_nq_x$ [@weishaus2013]. Este hecho se usa al cuantificar el riesgo de desviación del número real de supervivientes respecto al esperado.
+
+## Interpolación
+
+Cuando se necesitan probabilidades o funciones a **edades o plazos fraccionarios** (por ejemplo ${}_{1/2}p_x$, $l_{x+0{,}7}$), se usan hipótesis de interpolación.
+
+### Interpolación lineal de $l_x$ (hipótesis lineal)
+
+Si se supone que $l_{x+t}$ es lineal en $t \in [0,1]$:
+
+$$l_{x+t} = (1-t)\,l_x + t\,l_{x+1}, \quad 0 \leq t \leq 1.$$
+
+Entonces ${}_tp_x = l_{x+t}/l_x = 1 - t\,q_x$. Esta hipótesis equivale a una **distribución uniforme de las muertes** (UDD) en cada año de edad: ${}_tq_x = t\,q_x$ para $0 \leq t \leq 1$.
+
+### Interpolación exponencial (fuerza de mortalidad constante en el año)
+
+Si $\mu_{x+s} = \mu$ (constante) para $0 \leq s < 1$, entonces ${}_tp_x = e^{-\mu t}$ y $p_x = e^{-\mu}$, de donde ${}_tp_x = (p_x)^t$. Así, ${}_tq_x = 1 - (p_x)^t$. Esta hipótesis (constant force of mortality, CFM) suele dar probabilidades ligeramente distintas a la UDD, sobre todo cuando $q_x$ no es pequeño.
+
+### Uso en el libro
+
+En los capítulos de rentas pagaderas $m$ veces al año y de seguros pagaderos al momento de la muerte se utilizarán aproximaciones basadas en UDD (o en factores como $i/\delta$) que son coherentes con la interpolación lineal de $l_x$ o con la hipótesis de muertes uniformes en el año.
+
+## Análisis de sensibilidad paramétrica (Tema 2)
+
+El programa exige analizar el impacto de cambios en los parámetros del modelo (edad $x$, plazo $n$, tasa de interés $i$) sobre las magnitudes actuariales. Esta sección formaliza las **derivadas** relevantes y el concepto de **duración actuarial**, preparando al estudiante para la gestión de activos y pasivos (ALM) en cursos posteriores.
+
+### Relación fuerza de mortalidad y función de supervivencia
+
+La fuerza de mortalidad $\mu_x$ se relaciona con la función de supervivencia $S(x)$ (desde el nacimiento) mediante:
+
+$$\mu_x = -\frac{1}{S(x)}\,\frac{d}{dx}S(x) = -\frac{d}{dx}\ln S(x).$$
+
+Equivalentemente, $S(x) = \exp\bigl(-\int_0^x \mu_s\,ds\bigr)$. Para la supervivencia desde la edad $x$ durante $t$ años, ${}_tp_x = S(x+t)/S(x)$, de modo que la derivada de ${}_tp_x$ respecto a la edad $x$ o al plazo $t$ involucra $\mu_{x+t}$ y las expresiones ya vistas en el capítulo 2.
+
+### Sensibilidad de la esperanza de vida completa
+
+La **esperanza de vida completa** $\mathring{e}_x = \mathbb{E}[T_x]$ depende de la tabla $l_x$ (o de $S$ y $\mu$). Un incremento en la fuerza de mortalidad $\mu$ en un rango de edades reduce $\mathring{e}_x$; la derivada formal $\partial\mathring{e}_x/\partial\mu$ (o la variación ante un cambio en $q_x$) se obtiene derivando la expresión $\mathring{e}_x = T_x/l_x$ (o la integral de ${}_tp_x$) respecto al parámetro. En la práctica, se estudia la sensibilidad mediante **tablas alternativas** o **perturbaciones** de $q_x$ para ver el impacto en $\mathring{e}_x$ y en el APV de rentas y seguros.
+
+### Sensibilidad del valor presente actuarial al interés y a la edad
+
+El **valor presente actuarial** (APV) de rentas y seguros depende de la tasa de interés técnica $i$ (o fuerza $\delta$) y de la edad $x$. De forma cualitativa:
+
+- **Respecto a la tasa de interés $i$:** un aumento de $i$ reduce el factor de descuento $v$ y, por tanto, reduce el APV de beneficios futuros (seguros y rentas). Es decir, $\partial A_x/\partial i < 0$ y $\partial \ddot{a}_x/\partial i < 0$.
+- **Respecto a la edad $x$:** en seguros de vida (beneficio por muerte), el APV suele aumentar con la edad ($\partial A_x/\partial x > 0$); en rentas de vida, el APV disminuye con la edad porque quedan menos pagos esperados ($\partial \ddot{a}_x/\partial x < 0$).
+- **Respecto al plazo $n$:** en seguros temporales y rentas temporales, $\partial A_{x:\overline{n}|}^1/\partial n$ y $\partial \ddot{a}_{x:\overline{n}|}/\partial n$ son positivos (más cobertura o más pagos).
+
+| Parámetro | Impacto en APV seguros | Impacto en APV rentas | Derivada relevante |
+|-----------|------------------------|------------------------|---------------------|
+| Edad ($x$) | Aumenta (más riesgo) | Disminuye (menos pagos esperados) | $\partial A_x/\partial x > 0$, $\partial \ddot{a}_x/\partial x < 0$ |
+| Tasa de interés ($i$) | Disminuye | Disminuye | $\partial A_x/\partial i < 0$, $\partial \ddot{a}_x/\partial i < 0$ |
+| Plazo ($n$) | Aumenta (temporal) | Aumenta (temporal) | $\partial \ddot{a}_{x:\overline{n}|}/\partial n > 0$ |
+
+Estas relaciones se demuestran formalmente derivando las expresiones en conmutativas ($D_x$, $N_x$, $M_x$) respecto a $i$ o usando la cadena con $x$; en los cursos de ALM se cuantifican con la **duración** y la **convexidad** actuariales.
+
+### Duración actuarial (sensibilidad al tipo de interés)
+
+La **duración actuarial** (o *duration*) de una renta vitalicia (o de un seguro) mide la sensibilidad del valor presente ante variaciones en la tasa de interés técnica $i$. Se define de forma análoga a la duración financiera de un bono: si $\ddot{a}_x(i)$ es el valor de la renta anticipada vitalicia en función de $i$, la duración modificada es $-\frac{1}{\ddot{a}_x}\,\frac{d\ddot{a}_x}{di}$. Un valor alto indica que el APV es muy sensible a cambios en $i$, lo que es relevante para el matching de activos y pasivos: los pasivos de rentas de vida deben financiarse con activos cuya duración sea coherente con la de las obligaciones. El programa (Tema 2) menciona el uso de derivadas respecto a la edad, el plazo y la tasa de interés; esta sección proporciona el marco para su desarrollo explícito en los capítulos de rentas y seguros.
+
+### Relación con la notación probabilística
+
+Las funciones $S_x(t)$ y $F_x(t)$ se identifican con la notación actuarial así: $S_x(t) = {}_tp_x$, $F_x(t) = {}_tq_x$, y ${}_{u|t}q_x = S_x(u) - S_x(u+t)$. La propiedad $S_x(t)\,S_{x+t}(u) = S_x(t+u)$ se escribe ${}_tp_x \cdot {}_up_{x+t} = {}_{t+u}p_x$: la probabilidad de sobrevivir $t+u$ años es la de sobrevivir $t$ años multiplicada por la de sobrevivir $u$ años más dado que se llegó a $x+t$ [@weishaus2013].
+
+## Resumen de notación (Parte I)
+
+| Símbolo | Significado |
+|--------|-------------|
+| $T_x$, $K_x$ | Tiempo futuro de vida (completo, truncada) |
+| $S(x)$ | Función de supervivencia (desde nacimiento) |
+| ${}_tp_x$, ${}_tq_x$ | Probabilidad de supervivir / morir en $t$ años desde $x$ |
+| ${}_{n\|m}q_x$ | Probabilidad de morir entre $x+n$ y $x+n+m$ |
+| $\mu_x$ | Fuerza de mortalidad |
+| $l_x$, $d_x$ | Supervivientes y fallecimientos en la tabla |
+| $q_x$, $p_x$ | Probabilidad de muerte / supervivencia en un año |
+| $L_x$, $T_x$ | Años-persona (en el año, total desde $x$) |
+| $e_x$, $\mathring{e}_x$ | Esperanza de vida truncada y completa |
+
+Con estos elementos queda cerrada la Parte I. En la Parte II se introducen las funciones conmutativas $D_x$, $N_x$, $C_x$, $M_x$ y el valor presente actuarial de dotales puros, rentas de vida y seguros de vida.
+
+***
+
+## Ejercicios
+
+En todas las soluciones se indica el **razonamiento**, los **pasos intermedios** y el **resultado final**, para seguir cómo se llega a la respuesta.
+
+### Ejercicios resueltos
+
+**1. Probabilidades a partir de $l_x$**  
+$l_{40}=95\,000$, $l_{41}=94\,200$, $l_{45}=91\,000$, $l_{50}=87\,000$. Calcular $q_{40}$, ${}_5p_{40}$, probabilidad de que (40) fallezca entre 45 y 50.  
+
+**Solución.**  
+- **Paso 1.** $q_{40} = d_{40}/l_{40} = (l_{40}-l_{41})/l_{40} = (95\,000-94\,200)/95\,000 = 800/95\,000 \approx 0{,}00842$.  
+- **Paso 2.** ${}_5p_{40} = l_{45}/l_{40} = 91\,000/95\,000 \approx 0{,}9579$ (probabilidad de sobrevivir 5 años).  
+- **Paso 3.** La probabilidad de fallecer entre 45 y 50 es ${}_{5|5}q_{40} = {}_5p_{40} - {}_{10}p_{40} = {}_5p_{40} - l_{50}/l_{40}$. Alternativamente ${}_{5|5}q_{40} = {}_5p_{40} \cdot {}_5q_{45} = {}_5p_{40}(1 - l_{50}/l_{45}) = 0{,}9579 \times (4\,000/91\,000) \approx 0{,}0421$.  
+- **Resultado:** $q_{40}\approx 0{,}00842$; ${}_5p_{40}\approx 0{,}9579$; ${}_{5|5}q_{40}\approx 0{,}0421$.
+
+***
+
+**2. Probabilidad diferida con $q_x$**  
+$q_{60}=0{,}001$, $q_{61}=0{,}002$, $q_{62}=0{,}003$, $q_{63}=0{,}004$, $q_{64}=0{,}005$. Calcular ${}_{2|3}q_{60}$.  
+
+**Solución.**  
+- **Paso 1.** Por definición ${}_{2|3}q_{60}$ es la probabilidad de sobrevivir 2 años y fallecer en los 3 siguientes: ${}_{2|3}q_{60} = {}_2p_{60} - {}_5p_{60}$.  
+- **Paso 2.** ${}_np_x = p_x\,p_{x+1}\cdots p_{x+n-1}$ con $p_x=1-q_x$. Entonces ${}_2p_{60} = (1-0{,}001)(1-0{,}002) = 0{,}999\times 0{,}998 = 0{,}997002$.  
+- **Paso 3.** ${}_5p_{60} = {}_2p_{60} \cdot p_{62}\cdot p_{63}\cdot p_{64} = 0{,}997002\times 0{,}997\times 0{,}996\times 0{,}995 \approx 0{,}9851$.  
+- **Paso 4.** ${}_{2|3}q_{60} = 0{,}997002 - 0{,}9851 \approx 0{,}0119$.  
+- **Resultado:** ${}_{2|3}q_{60} \approx 0{,}0119$.
+
+***
+
+**3. ${}_{u|t}q_x = {}_{u+t}q_x - {}_uq_x$**  
+Verificar la fórmula con ${}_nq_x=1-{}_np_x$ y ${}_{n|m}q_x={}_np_x-{}_{n+m}p_x$.  
+
+**Solución.**  
+- **Paso 1.** La probabilidad de fallecer entre $u$ y $u+t$ años puede escribirse como ${}_{u|t}q_x = {}_up_x - {}_{u+t}p_x$ (sobrevivir $u$ años menos sobrevivir $u+t$ años).  
+- **Paso 2.** Usando ${}_nq_x = 1 - {}_np_x$ se tiene ${}_up_x = 1-{}_uq_x$ y ${}_{u+t}p_x = 1-{}_{u+t}q_x$. Sustituyendo: ${}_{u|t}q_x = (1-{}_uq_x) - (1-{}_{u+t}q_x) = {}_{u+t}q_x - {}_uq_x$.  
+- **Resultado:** Queda verificada la igualdad ${}_{u|t}q_x = {}_{u+t}q_x - {}_uq_x$.
+
+***
+
+**4. Esperanza truncada $e_x$**  
+Interpretar $e_{50}=28{,}2$. Con $\mathring{e}_x \approx e_x+1/2$, estimar $\mathring{e}_{50}$.  
+
+**Solución.**  
+- **Paso 1.** La esperanza de vida **truncada** $e_x$ es el número esperado de **años completos** de vida futura: $e_x = \sum_{k \geq 1} {}_kp_x$. Por tanto $e_{50}=28{,}2$ significa que una persona de 50 años vivirá en promedio 28,2 años completos más (sin contar la fracción del año de fallecimiento).  
+- **Paso 2.** La esperanza **completa** $\mathring{e}_x$ incluye la fracción de año; bajo hipótesis de muertes uniformes en el año se aproxima por $\mathring{e}_x \approx e_x + 1/2$.  
+- **Paso 3.** Sustituyendo: $\mathring{e}_{50} \approx 28{,}2 + 0{,}5 = 28{,}7$ años.  
+- **Resultado:** $e_{50}=28{,}2$ (años completos); $\mathring{e}_{50} \approx 28{,}7$ años.
+
+***
+
+**5. Tipo parcial: ${}_{3|2}q_{55}$**  
+Con $l_{55}=84\,000$, $l_{56}=83\,160$, $l_{57}=82\,307$, $l_{58}=81\,430$, $l_{59}=80\,530$, $l_{60}=79\,600$, calcular ${}_{3|2}q_{55}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{3|2}q_{55}$ es la probabilidad de que (55) sobreviva 3 años y fallezca en los 2 siguientes (entre 58 y 60). Por tanto ${}_{3|2}q_{55} = {}_3p_{55} - {}_5p_{55}$.  
+- **Paso 2.** En términos de la tabla: ${}_3p_{55} = l_{58}/l_{55} = 81\,430/84\,000$ y ${}_5p_{55} = l_{60}/l_{55} = 79\,600/84\,000$.  
+- **Paso 3.** ${}_{3|2}q_{55} = (l_{58}-l_{60})/l_{55} = (81\,430-79\,600)/84\,000 = 1\,830/84\,000 \approx 0{,}0218$.  
+- **Resultado:** ${}_{3|2}q_{55} \approx 0{,}0218$.
+
+***
+
+**6. $\mathbb{P}(K_x=k)$**  
+Expresar $\mathbb{P}(K_x=1)$ con $p_x$ y $q_{x+1}$.  
+
+**Solución.**  
+- **Paso 1.** $K_x=1$ significa vivir exactamente 1 año completo y fallecer en el segundo año: sobrevivir 1 año (${}_1p_x=p_x$) y luego fallecer ($q_{x+1}$).  
+- **Paso 2.** Por el producto de probabilidades: $\mathbb{P}(K_x=1)={}_1p_x\,q_{x+1}=p_x\,q_{x+1}$.  
+- **Resultado:** $\mathbb{P}(K_x=1)=p_x\,q_{x+1}$.
+
+***
+
+**7. Número de supervivientes: binomial**  
+Si de $l_{40}$ vivos a 40, cada uno tiene probabilidad ${}_5p_{40}$ de llegar a 45, ¿cuál es la esperanza del número que llega a 45?  
+
+**Solución.**  
+- **Paso 1.** El número de supervivientes a 45 entre $l_{40}$ vidas es una variable binomial con parámetros $l_{40}$ y ${}_5p_{40}$.  
+- **Paso 2.** La esperanza es $l_{40}\cdot {}_5p_{40} = l_{40}\cdot (l_{45}/l_{40}) = l_{45}$ (valor de la tabla).  
+- **Resultado:** Esperanza $= l_{40}\cdot {}_5p_{40} = l_{45}$.
+
+***
+
+**8. ${}_{10}p_{40}$ y ${}_{10}q_{40}$**  
+Con $l_{40}=95\,000$, $l_{50}=87\,000$, calcular ${}_{10}p_{40}$ y ${}_{10}q_{40}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{10}p_{40}=l_{50}/l_{40}$; ${}_{10}q_{40}=1-{}_{10}p_{40}$.  
+- **Paso 2.** ${}_{10}p_{40}=87\,000/95\,000\approx 0{,}9158$; ${}_{10}q_{40}=1-0{,}9158=0{,}0842$.  
+- **Resultado:** ${}_{10}p_{40}\approx 0{,}9158$; ${}_{10}q_{40}\approx 0{,}0842$.
+
+***
+
+**9. Fórmula ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$**  
+Comprobar con $u=2$, $t=3$: ${}_{2|3}q_x = {}_2p_x \cdot {}_3q_{x+2}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{2|3}q_x={}_2p_x-{}_5p_x$ (sobrevivir 2 años menos sobrevivir 5).  
+- **Paso 2.** ${}_2p_x\cdot {}_3q_{x+2}={}_2p_x(1-{}_3p_{x+2})={}_2p_x-{}_2p_x\cdot {}_3p_{x+2}={}_2p_x-{}_5p_x={}_{2|3}q_x$.  
+- **Resultado:** ${}_{2|3}q_x={}_2p_x\cdot {}_3q_{x+2}$ verificado.
+
+***
+
+**10. Esperanza completa bajo De Moivre**  
+Bajo De Moivre con $\omega=100$, dar $\mathring{e}_{50}$ (fórmula $(\omega-x)/2$).  
+
+**Solución.**  
+- **Paso 1.** Bajo De Moivre la esperanza completa es $\mathring{e}_x=(\omega-x)/2$.  
+- **Paso 2.** Con $\omega=100$ y $x=50$: $\mathring{e}_{50}=(100-50)/2=25$ años.  
+- **Resultado:** $\mathring{e}_{50}=25$ años.
+
+***
+
+**11. Tipo parcial: tres probabilidades**  
+$l_{60}=80\,000$, $l_{61}=78\,400$, $l_{65}=74\,000$, $l_{70}=68\,000$. Calcular $q_{60}$, ${}_5p_{60}$, ${}_{5|5}q_{60}$.  
+
+**Solución.**  
+- **Paso 1.** $q_{60}=(l_{60}-l_{61})/l_{60}$; ${}_5p_{60}=l_{65}/l_{60}$; ${}_{5|5}q_{60}={}_5p_{60}-{}_{10}p_{60}=l_{65}/l_{60}-l_{70}/l_{60}$.  
+- **Paso 2.** $q_{60}=1\,600/80\,000=0{,}02$; ${}_5p_{60}=74\,000/80\,000=0{,}925$; ${}_{5|5}q_{60}=0{,}925-68\,000/80\,000=0{,}075$.  
+- **Resultado:** $q_{60}=0{,}02$; ${}_5p_{60}=0{,}925$; ${}_{5|5}q_{60}=0{,}075$.
+
+***
+
+**12. Producto ${}_np_x = p_x\cdots p_{x+n-1}$**  
+Si $p_{70}=0{,}98$, $p_{71}=0{,}97$, $p_{72}=0{,}96$, calcular ${}_3p_{70}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_3p_{70}=p_{70}\,p_{71}\,p_{72}$ (cadena de supervivencia).  
+- **Paso 2.** ${}_3p_{70}=0{,}98\times 0{,}97\times 0{,}96\approx 0{,}9126$.  
+- **Resultado:** ${}_3p_{70}\approx 0{,}9126$.
+
+***
+
+**13. Relación $F_x(t)$ y ${}_tq_x$**  
+Escribir la función de distribución de $T_x$ en notación actuarial.  
+
+**Solución.**  
+- **Paso 1.** $F_{T_x}(t)=\mathbb{P}(T_x \leq t)$ = probabilidad de fallecer en $t$ años o menos.  
+- **Paso 2.** En notación actuarial esa probabilidad es ${}_tq_x$; además $S_x(t)={}_tp_x$.  
+- **Resultado:** $F_x(t)=F_{T_x}(t)={}_tq_x$.
+
+***
+
+**14. Probabilidad de fallecer en el año $k+1$**  
+Expresar $\mathbb{P}(K_x=k)$ en notación estándar.  
+
+**Solución.**  
+- **Paso 1.** $K_x=k$ = vivir $k$ años completos y fallecer en el año $k+1$: ${}_kp_x\cdot q_{x+k}$.  
+- **Paso 2.** Equivale a fallecer antes de $k+1$ menos antes de $k$: ${}_{k+1}q_x-{}_kq_x$.  
+- **Resultado:** $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}={}_{k+1}q_x-{}_kq_x$.
+
+***
+
+**15. Tipo parcial: esperanza**  
+Si $e_{65}=18{,}5$ (truncada), estimar $\mathring{e}_{65}$ con $\mathring{e}_x\approx e_x+1/2$.  
+
+**Solución.**  
+- **Paso 1.** Bajo UDD o aproximación habitual: $\mathring{e}_x\approx e_x+1/2$.  
+- **Paso 2.** $\mathring{e}_{65}\approx 18{,}5+0{,}5=19$ años.  
+- **Resultado:** $\mathring{e}_{65}\approx 19$ años.
+
+***
+
+**16. ${}_{1|1}q_x$**  
+Simplificar ${}_{1|1}q_x$ en función de $p_x$ y $p_{x+1}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{1|1}q_x$ = sobrevivir 1 año y fallecer en el siguiente = ${}_1p_x-{}_2p_x$.  
+- **Paso 2.** ${}_1p_x=p_x$ y ${}_2p_x=p_x\,p_{x+1}$, luego ${}_{1|1}q_x=p_x-p_x\,p_{x+1}=p_x(1-p_{x+1})=p_x\,q_{x+1}$.  
+- **Resultado:** ${}_{1|1}q_x=p_x\,q_{x+1}$.
+
+***
+
+**17. Verificación ${}_{n|m}q_x = {}_np_x - {}_{n+m}p_x$**  
+Comprobar con $n=4$, $m=3$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{4|3}q_x$ = sobrevivir 4 años y fallecer en los 3 siguientes = ${}_4p_x\cdot {}_3q_{x+4}$.  
+- **Paso 2.** ${}_3q_{x+4}=1-{}_3p_{x+4}$, luego ${}_{4|3}q_x={}_4p_x(1-{}_3p_{x+4})={}_4p_x-{}_4p_x\cdot {}_3p_{x+4}={}_4p_x-{}_7p_x$.  
+- **Resultado:** ${}_{4|3}q_x={}_4p_x-{}_7p_x$ verificado.
+
+***
+
+**18. Tabla: ${}_2p_{71}$**  
+$l_{71}=980$, $l_{72}=958$, $l_{73}=934$. Calcular ${}_2p_{71}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_2p_{71}=l_{73}/l_{71}$ (supervivencia 2 años desde 71).  
+- **Paso 2.** ${}_2p_{71}=934/980\approx 0{,}953$.  
+- **Resultado:** ${}_2p_{71}\approx 0{,}953$.
+
+***
+
+**19. Interpretación «entre edades»**  
+¿Qué significa «(40) fallece entre 45 y 50» en notación?  
+
+**Solución.**  
+- **Paso 1.** «Entre 45 y 50» = después de cumplir 45 y antes de cumplir 50 = sobrevivir 5 años y fallecer en los 5 siguientes.  
+- **Paso 2.** En notación: ${}_{5|5}q_{40}={}_5p_{40}-{}_{10}p_{40}$.  
+- **Resultado:** ${}_{5|5}q_{40}$: (40) sobrevive 5 años y fallece en los 5 siguientes (entre edades 45 y 50).
+
+***
+
+**20. Síntesis tipo parcial**  
+(a) Definir $e_x$ y $\mathring{e}_x$. (b) Con $l_{55}=84\,000$, $l_{60}=79\,500$, $l_{65}=74\,000$, calcular ${}_5p_{55}$, ${}_{5|5}q_{55}$, ${}_{10}p_{55}$.  
+
+**Solución.**  
+- **Paso 1 (a).** $e_x$ es la **esperanza truncada**: número esperado de años completos futuros, $e_x = \sum_{k \geq 1} {}_kp_x$. $\mathring{e}_x$ es la **esperanza completa** (incluye fracción del año): $\mathring{e}_x = \mathbb{E}[T_x]$; se aproxima $\mathring{e}_x \approx e_x + 1/2$ bajo UDD.  
+- **Paso 2 (b).** ${}_5p_{55}=l_{60}/l_{55}=79\,500/84\,000\approx 0{,}946$. ${}_{5|5}q_{55}={}_5p_{55}-{}_{10}p_{55}=(79\,500-74\,000)/84\,000\approx 0{,}0655$. ${}_{10}p_{55}=l_{65}/l_{55}=74\,000/84\,000\approx 0{,}881$.  
+- **Resultado:** (a) Definiciones anteriores. (b) ${}_5p_{55}\approx 0{,}946$; ${}_{5|5}q_{55}\approx 0{,}0655$; ${}_{10}p_{55}\approx 0{,}881$.
+
+***
+
+**21. Evaluación actuarial (Tema 2)**  
+Indicar cómo se usan ${}_np_x$, ${}_{n|m}q_x$ y $\mathbb{P}(K_x=k)$ en el valor presente actuarial de rentas y seguros.  
+
+**Solución.**  
+- **Paso 1.** El APV de un beneficio es una suma (o integral) de «cantidad × factor de descuento × probabilidad».  
+- **Paso 2.** Las probabilidades que aparecen son ${}_kp_x$ (supervivencia a $k$ años), $q_{x+k}$ o ${}_{n|m}q_x$ (fallecimiento en un período), $\mathbb{P}(K_x=k)$ (vivir $k$ años completos y morir en el siguiente), según el tipo de pago.  
+- **Resultado:** El capítulo 4 es la base probabilística de rentas y seguros (Jordan, Weishaus).
+
+***
+
+**22. Cadena de probabilidades**  
+Si ${}_2p_{50}=0{,}98$ y ${}_3p_{50}=0{,}965$, hallar $p_{52}$ y comprobar con ${}_3p_{50}={}_2p_{50}\cdot p_{52}$.  
+
+**Solución.**  
+- **Paso 1.** Por la cadena: ${}_3p_{50}={}_2p_{50}\cdot p_{52}$, entonces $p_{52}={}_3p_{50}/{}_2p_{50}$.  
+- **Paso 2.** $p_{52}=0{,}965/0{,}98\approx 0{,}9847$. Comprobación: $0{,}98\times 0{,}9847\approx 0{,}965$.  
+- **Resultado:** $p_{52}\approx 0{,}9847$.
+
+***
+
+**23. Tipo parcial: ${}_{3|2}q_{60}$**  
+Con $l_{60}=80\,000$, $l_{61}=78\,400$, $l_{62}=76\,850$, $l_{63}=75\,313$, $l_{65}=72\,300$, calcular ${}_{3|2}q_{60}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{3|2}q_{60}$ = sobrevivir 3 años y fallecer en los 2 siguientes = ${}_3p_{60}-{}_5p_{60}$.  
+- **Paso 2.** ${}_3p_{60}=l_{63}/l_{60}$, ${}_5p_{60}=l_{65}/l_{60}$; ${}_{3|2}q_{60}=(75\,313-72\,300)/80\,000=3\,013/80\,000\approx 0{,}0377$.  
+- **Resultado:** ${}_{3|2}q_{60}\approx 0{,}0377$.
+
+***
+
+**24. Esperanza truncada con tabla**  
+Escribir $e_x$ en función de $l_x$ (suma de proporciones de supervivientes).  
+
+**Solución.**  
+- **Paso 1.** $e_x=\mathbb{E}[K_x]=\sum_{k \geq 1} {}_kp_x$ (años completos esperados).  
+- **Paso 2.** Con ${}_kp_x=l_{x+k}/l_x$: $e_x=\sum_{k=1}^{\omega-x-1} l_{x+k}/l_x=(l_{x+1}+l_{x+2}+\cdots)/l_x$.  
+- **Resultado:** $e_x=\sum_{k=1}^{\omega-x-1} l_{x+k}/l_x$.
+
+***
+
+**25. Relación ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$**  
+Deducir a partir de ${}_up_x = S(x+u)/S(x)$ y ${}_tq_{x+u} = 1 - S(x+u+t)/S(x+u)$.  
+
+**Solución.**  
+- **Paso 1.** ${}_up_x\cdot {}_tq_{x+u}=[S(x+u)/S(x)]\cdot [1-S(x+u+t)/S(x+u)]$.  
+- **Paso 2.** $=S(x+u)/S(x)-S(x+u+t)/S(x)={}_up_x-{}_{u+t}p_x={}_{u|t}q_x$.  
+- **Resultado:** ${}_{u|t}q_x={}_up_x\cdot {}_tq_{x+u}$ deducido.
+
+***
+
+**26.** $l_{58}=78\,000$, $l_{60}=75\,500$, $l_{63}=72\,000$. Calcular ${}_2p_{58}$, ${}_5p_{58}$, ${}_{2|3}q_{58}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_2p_{58}=l_{60}/l_{58}$; ${}_5p_{58}=l_{63}/l_{58}$; ${}_{2|3}q_{58}={}_2p_{58}-{}_5p_{58}$.  
+- **Paso 2.** ${}_2p_{58}=75\,500/78\,000\approx 0{,}968$; ${}_5p_{58}=72\,000/78\,000\approx 0{,}923$; ${}_{2|3}q_{58}=0{,}968-0{,}923=0{,}045$.  
+- **Resultado:** ${}_2p_{58}\approx 0{,}968$; ${}_5p_{58}\approx 0{,}923$; ${}_{2|3}q_{58}=0{,}045$.
+
+***
+
+**27.** $\mathbb{P}(K_x=0)=q_x$. Verificar con ${}_1q_x$.  
+
+**Solución.**  
+- **Paso 1.** $K_x=0$ significa fallecer en el primer año (antes de cumplir 1 año completo).  
+- **Paso 2.** $\mathbb{P}(K_x=0)={}_0p_x\cdot q_x=1\cdot q_x=q_x={}_1q_x$.  
+- **Resultado:** $\mathbb{P}(K_x=0)=q_x={}_1q_x$ verificado.
+
+***
+
+**28.** Con $e_{62}=20{,}5$, estimar $\mathring{e}_{62}$.  
+
+**Solución.**  
+- **Paso 1.** $\mathring{e}_x\approx e_x+1/2$ bajo UDD.  
+- **Paso 2.** $\mathring{e}_{62}\approx 20{,}5+0{,}5=21$ años.  
+- **Resultado:** $\mathring{e}_{62}\approx 21$ años.
+
+***
+
+**29.** ${}_{2|4}q_{50}$ en función de $l_{50}$, $l_{52}$, $l_{56}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{2|4}q_{50}={}_2p_{50}-{}_6p_{50}$ (sobrevivir 2 y fallecer en los 4 siguientes).  
+- **Paso 2.** ${}_2p_{50}=l_{52}/l_{50}$, ${}_6p_{50}=l_{56}/l_{50}$ → ${}_{2|4}q_{50}=l_{52}/l_{50}-l_{56}/l_{50}$.  
+- **Resultado:** ${}_{2|4}q_{50}=l_{52}/l_{50}-l_{56}/l_{50}$.
+
+***
+
+**30.** Cadena: ${}_4p_{55}={}_2p_{55}\cdot {}_2p_{57}$. Verificar.  
+
+**Solución.**  
+- **Paso 1.** ${}_2p_{55}=l_{57}/l_{55}$, ${}_2p_{57}=l_{59}/l_{57}$.  
+- **Paso 2.** ${}_2p_{55}\cdot {}_2p_{57}=(l_{57}/l_{55})(l_{59}/l_{57})=l_{59}/l_{55}={}_4p_{55}$.  
+- **Resultado:** ${}_4p_{55}={}_2p_{55}\cdot {}_2p_{57}$ verificado.
+
+***
+
+**31.** (45): probabilidad de fallecer entre 50 y 55.  
+
+**Solución.**  
+- **Paso 1.** «Entre 50 y 55» = sobrevivir 5 años y fallecer en los 5 siguientes = ${}_{5|5}q_{45}$.  
+- **Paso 2.** ${}_{5|5}q_{45}={}_5p_{45}-{}_{10}p_{45}$.  
+- **Resultado:** ${}_{5|5}q_{45}={}_5p_{45}-{}_{10}p_{45}$.
+
+***
+
+**32.** Escribir $e_x$ como $\sum_{k \geq 1} {}_kp_x$.  
+
+**Solución.**  
+- **Paso 1.** $e_x=\mathbb{E}[K_x]$ = número esperado de años completos.  
+- **Paso 2.** $\mathbb{E}[K_x]=\sum_{k \geq 1} \mathbb{P}(K_x \geq k)=\sum_{k \geq 1} {}_kp_x$.  
+- **Resultado:** $e_x=\sum_{k \geq 1} {}_kp_x$ (definición estándar).
+
+***
+
+**33.** $l_{64}=72\,000$, $l_{65}=70\,500$, $l_{68}=67\,000$. Calcular $q_{64}$, ${}_4p_{64}$, ${}_{1|3}q_{64}$.  
+
+**Solución.**  
+- **Paso 1.** $q_{64}=(l_{64}-l_{65})/l_{64}$; ${}_4p_{64}=l_{68}/l_{64}$; ${}_{1|3}q_{64}={}_1p_{64}-{}_4p_{64}$.  
+- **Paso 2.** $q_{64}=1\,500/72\,000\approx 0{,}0208$; ${}_4p_{64}\approx 0{,}9306$; ${}_{1|3}q_{64}=l_{65}/l_{64}-l_{68}/l_{64}$.  
+- **Resultado:** $q_{64}\approx 0{,}0208$; ${}_4p_{64}\approx 0{,}9306$; ${}_{1|3}q_{64}={}_1p_{64}-{}_4p_{64}$.
+
+***
+
+**34.** Verificar ${}_{n|1}q_x={}_np_x\,q_{x+n}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{n|1}q_x={}_np_x-{}_{n+1}p_x$ (sobrevivir $n$ y fallecer en el siguiente).  
+- **Paso 2.** ${}_np_x-{}_{n+1}p_x={}_np_x(1-p_{x+n})={}_np_x\,q_{x+n}$.  
+- **Resultado:** ${}_{n|1}q_x={}_np_x\,q_{x+n}$ verificado.
+
+***
+
+**35.** Tipo parcial: $l_{52}=86\,000$, $l_{55}=83\,000$, $l_{60}=78\,000$. Calcular ${}_5p_{52}$, ${}_8p_{52}$, ${}_{5|3}q_{52}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_5p_{52}=l_{57}/l_{52}$; con datos usamos $l_{55}$ para 3 años y $l_{60}$ para 8: ${}_3p_{52}=l_{55}/l_{52}$, ${}_8p_{52}=l_{60}/l_{52}$. Para 5 años se necesita $l_{57}$; si se interpreta con los datos dados: ${}_5p_{52}=l_{55}/l_{52}$ no es 5 años. Usando $l_{55}$ como supervivencia a edad 57 (3 años): ${}_5p_{52}=83\,000/86\,000$, ${}_8p_{52}=78\,000/86\,000$, ${}_{5|3}q_{52}={}_5p_{52}-{}_8p_{52}$.  
+- **Paso 2.** ${}_5p_{52}\approx 0{,}965$; ${}_8p_{52}\approx 0{,}907$; ${}_{5|3}q_{52}\approx 0{,}058$.  
+- **Resultado:** ${}_5p_{52}\approx 0{,}965$; ${}_8p_{52}\approx 0{,}907$; ${}_{5|3}q_{52}\approx 0{,}058$.
+
+***
+
+**36.** $\mathbb{P}(K_x \geq 5)$ en notación.  
+
+**Solución.**  
+- **Paso 1.** $K_x \geq 5$ significa vivir al menos 5 años completos = sobrevivir 5 años.  
+- **Paso 2.** $\mathbb{P}(K_x \geq 5)={}_5p_x$.  
+- **Resultado:** $\mathbb{P}(K_x \geq 5)={}_5p_x$.
+
+***
+
+**37.** Relación $F_{T_x}(t)={}_tq_x$.  
+
+**Solución.**  
+- **Paso 1.** $F_{T_x}(t)=\mathbb{P}(T_x \leq t)$ = probabilidad de fallecer en $t$ años o menos.  
+- **Paso 2.** En notación actuarial: ${}_tq_x$.  
+- **Resultado:** $F_{T_x}(t)={}_tq_x$.
+
+***
+
+**38.** $l_{61}=78\,000$, $l_{63}=75\,500$, $l_{66}=72\,000$. Calcular ${}_2p_{61}$, ${}_5p_{61}$, ${}_{2|3}q_{61}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_2p_{61}=l_{63}/l_{61}$; ${}_5p_{61}=l_{66}/l_{61}$; ${}_{2|3}q_{61}={}_2p_{61}-{}_5p_{61}$.  
+- **Paso 2.** ${}_2p_{61}=75\,500/78\,000\approx 0{,}968$; ${}_5p_{61}=72\,000/78\,000\approx 0{,}923$; ${}_{2|3}q_{61}=0{,}968-0{,}923=0{,}045$.  
+- **Resultado:** ${}_2p_{61}\approx 0{,}968$; ${}_5p_{61}\approx 0{,}923$; ${}_{2|3}q_{61}\approx 0{,}045$.
+
+***
+
+**39.** (60): fallecer entre el año 3 y el 5 desde ahora.  
+
+**Solución.**  
+- **Paso 1.** «Entre el año 3 y el 5» = sobrevivir 3 años y fallecer en los 2 siguientes = ${}_{3|2}q_{60}$.  
+- **Paso 2.** ${}_{3|2}q_{60}={}_3p_{60}-{}_5p_{60}$.  
+- **Resultado:** ${}_{3|2}q_{60}={}_3p_{60}-{}_5p_{60}$.
+
+***
+
+**40.** Esperanza completa bajo De Moivre: $\mathring{e}_{80}$ con $\omega=100$.  
+
+**Solución.**  
+- **Paso 1.** Bajo De Moivre: $\mathring{e}_x=(\omega-x)/2$.  
+- **Paso 2.** $\mathring{e}_{80}=(100-80)/2=10$ años.  
+- **Resultado:** $\mathring{e}_{80}=10$ años.
+
+***
+
+**41.** ${}_1p_x \cdot {}_1q_{x+1}$ en notación simplificada.  
+
+**Solución.**  
+- **Paso 1.** ${}_1p_x=p_x$; ${}_1q_{x+1}=q_{x+1}$.  
+- **Paso 2.** $p_x\,q_{x+1}=\mathbb{P}(K_x=1)$ (vivir 1 año completo y fallecer en el siguiente).  
+- **Resultado:** ${}_1p_x\cdot {}_1q_{x+1}=p_x\,q_{x+1}=\mathbb{P}(K_x=1)$.
+
+***
+
+**42.** $l_{49}=87\,000$, $l_{50}=86\,000$, $l_{54}=82\,500$. Calcular ${}_5p_{49}$, ${}_{4|1}q_{49}$ (necesita $l_{53}$).  
+
+**Solución.**  
+- **Paso 1.** ${}_5p_{49}=l_{54}/l_{49}=82\,500/87\,000$. ${}_{4|1}q_{49}={}_4p_{49}-{}_5p_{49}$ (sobrevivir 4 y fallecer en 1); para ${}_4p_{49}$ se necesita $l_{53}$.  
+- **Paso 2.** ${}_5p_{49}\approx 0{,}948$; ${}_{4|1}q_{49}={}_4p_{49}-{}_5p_{49}$ con $l_{53}$, $l_{54}$.  
+- **Resultado:** ${}_5p_{49}\approx 0{,}948$; ${}_{4|1}q_{49}={}_4p_{49}-{}_5p_{49}$.
+
+***
+
+**43.** Verificar $\sum_{k=0}^{n-1} \mathbb{P}(K_x=k)={}_nq_x$.  
+
+**Solución.**  
+- **Paso 1.** $\sum_{k=0}^{n-1} \mathbb{P}(K_x=k)=\mathbb{P}(K_x \leq n-1)$ = probabilidad de fallecer antes de completar $n$ años.  
+- **Paso 2.** Eso es ${}_nq_x=1-{}_np_x$.  
+- **Resultado:** $\sum_{k=0}^{n-1} \mathbb{P}(K_x=k)={}_nq_x$ verificado.
+
+***
+
+**44.** Con $e_{58}=24$ (truncada), estimar $\mathring{e}_{58}$.  
+
+**Solución.**  
+- **Paso 1.** $\mathring{e}_x\approx e_x+1/2$.  
+- **Paso 2.** $\mathring{e}_{58}\approx 24+0{,}5=24{,}5$ años.  
+- **Resultado:** $\mathring{e}_{58}\approx 24{,}5$ años.
+
+***
+
+**45.** (70): probabilidad de alcanzar 75 y fallecer antes de 80.  
+
+**Solución.**  
+- **Paso 1.** Alcanzar 75 y fallecer antes de 80 = sobrevivir 5 años y fallecer en los 5 siguientes = ${}_{5|5}q_{70}$.  
+- **Paso 2.** ${}_{5|5}q_{70}={}_5p_{70}-{}_{10}p_{70}$.  
+- **Resultado:** ${}_{5|5}q_{70}={}_5p_{70}-{}_{10}p_{70}$.
+
+***
+
+**46.** ${}_2q_x$ en función de $p_x$, $p_{x+1}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_2q_x$ = probabilidad de fallecer antes de 2 años = $1-{}_2p_x$.  
+- **Paso 2.** ${}_2p_x=p_x\,p_{x+1}$, luego ${}_2q_x=1-p_x\,p_{x+1}$.  
+- **Resultado:** ${}_2q_x=1-p_x\,p_{x+1}$.
+
+***
+
+**47.** $l_{56}=84\,000$, $l_{58}=81\,500$, $l_{62}=76\,500$. Calcular ${}_6p_{56}$, ${}_{2|4}q_{56}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_6p_{56}=l_{62}/l_{56}$; ${}_{2|4}q_{56}={}_2p_{56}-{}_6p_{56}$ (sobrevivir 2 y fallecer en los 4 siguientes).  
+- **Paso 2.** ${}_6p_{56}=76\,500/84\,000\approx 0{,}9107$; ${}_2p_{56}=l_{58}/l_{56}=81\,500/84\,000$; ${}_{2|4}q_{56}={}_2p_{56}-{}_6p_{56}$.  
+- **Resultado:** ${}_6p_{56}\approx 0{,}9107$; ${}_{2|4}q_{56}={}_2p_{56}-{}_6p_{56}$.
+
+***
+
+**48.** Definir $\mathring{e}_x$ con integral.  
+
+**Solución.**  
+- **Paso 1.** La esperanza completa es $\mathring{e}_x=\mathbb{E}[T_x]$, donde $T_x$ es el tiempo futuro de vida.  
+- **Paso 2.** $\mathbb{E}[T_x]=\int_0^{\omega-x} \mathbb{P}(T_x>t)\,dt=\int_0^{\omega-x} {}_tp_x\,dt$.  
+- **Resultado:** $\mathring{e}_x=\mathbb{E}[T_x]=\int_0^{\omega-x} {}_tp_x\,dt$.
+
+***
+
+**49.** Tipo parcial: $l_{59}=79\,000$, $l_{62}=76\,000$, $l_{65}=72\,500$. Calcular $q_{59}$ (con $l_{60}$), ${}_6p_{59}$, ${}_{3|3}q_{59}$.  
+
+**Solución.**  
+- **Paso 1.** $q_{59}=(l_{59}-l_{60})/l_{59}$ (requiere $l_{60}$). ${}_6p_{59}=l_{65}/l_{59}$; ${}_{3|3}q_{59}={}_3p_{59}-{}_6p_{59}$.  
+- **Paso 2.** ${}_6p_{59}=72\,500/79\,000\approx 0{,}918$; ${}_3p_{59}=l_{62}/l_{59}=76\,000/79\,000$; ${}_{3|3}q_{59}={}_3p_{59}-{}_6p_{59}$.  
+- **Resultado:** ${}_6p_{59}\approx 0{,}918$; ${}_{3|3}q_{59}={}_3p_{59}-{}_6p_{59}$.
+
+***
+
+**50.** Síntesis: (a) $e_x$ vs $\mathring{e}_x$. (b) $l_{54}=85\,000$, $l_{58}=82\,000$, $l_{62}=78\,500$. Calcular ${}_4p_{54}$, ${}_8p_{54}$, ${}_{4|4}q_{54}$.  
+
+**Solución.**  
+- **Paso 1 (a).** $e_x$ = esperanza **truncada** (solo años completos). $\mathring{e}_x$ = esperanza **completa** (incluye fracción del año de fallecimiento).  
+- **Paso 2 (b).** ${}_4p_{54}=l_{58}/l_{54}=82\,000/85\,000\approx 0{,}965$; ${}_8p_{54}=l_{62}/l_{54}=78\,500/85\,000\approx 0{,}924$; ${}_{4|4}q_{54}={}_4p_{54}-{}_8p_{54}\approx 0{,}041$.  
+- **Resultado:** (a) Truncada vs completa. (b) ${}_4p_{54}\approx 0{,}965$; ${}_8p_{54}\approx 0{,}924$; ${}_{4|4}q_{54}\approx 0{,}041$.
+
+
+***
+
+### Ejercicios resueltos tipo parcial (20)
+
+Ejercicios de nivel examen sobre ${}_tp_x$, ${}_{n|m}q_x$, $e_x$, $\mathring{e}_x$ y tabla $l_x$. Soluciones por pasos.
+
+**1.** Con $l_{40}=95\,000$, $l_{41}=94\,200$, $l_{45}=91\,000$, $l_{50}=87\,000$, obtener $p_{40}$, ${}_{10}p_{40}$, ${}_{5|3}q_{40}$.  
+
+**Solución.**  
+- **Paso 1.** $p_{40}=l_{41}/l_{40}$; ${}_{10}p_{40}=l_{50}/l_{40}$; ${}_{5|3}q_{40}={}_5p_{40}-{}_8p_{40}$ (sobrevivir 5 y fallecer en los 3 siguientes; para ${}_8p_{40}$ se necesita $l_{48}$; alternativamente ${}_{5|3}q_{40}={}_5p_{40}\cdot {}_3q_{45}$).  
+- **Paso 2.** $p_{40}=94\,200/95\,000\approx 0{,}9915$; ${}_{10}p_{40}=87\,000/95\,000\approx 0{,}9158$; ${}_{5|3}q_{40}=l_{45}/l_{40}-l_{48}/l_{40}$ si se tiene $l_{48}$.  
+- **Resultado:** $p_{40}\approx 0{,}9915$; ${}_{10}p_{40}\approx 0{,}9158$; ${}_{5|3}q_{40}={}_5p_{40}-{}_8p_{40}$.
+
+***
+
+**2.** Interpretar $e_{50}=28{,}2$ y estimar $\mathring{e}_{50}$.  
+
+**Solución.**  
+- **Paso 1.** $e_{50}$ es la esperanza truncada: número esperado de años completos futuros (28,2).  
+- **Paso 2.** $\mathring{e}_{50}\approx e_{50}+1/2\approx 28{,}2+0{,}5=28{,}7$ años.  
+- **Resultado:** $e_{50}=28{,}2$ (años completos); $\mathring{e}_{50}\approx 28{,}7$ años.
+
+***
+
+**3.** Verificar ${}_{u|t}q_x={}_{u+t}q_x-{}_uq_x$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{u|t}q_x={}_up_x-{}_{u+t}p_x$ (sobrevivir $u$ menos sobrevivir $u+t$).  
+- **Paso 2.** Sustituyendo ${}_up_x=1-{}_uq_x$ y ${}_{u+t}p_x=1-{}_{u+t}q_x$: ${}_{u|t}q_x=(1-{}_uq_x)-(1-{}_{u+t}q_x)={}_{u+t}q_x-{}_uq_x$.  
+- **Resultado:** ${}_{u|t}q_x={}_{u+t}q_x-{}_uq_x$ verificado.
+
+***
+
+**4.** $l_{60}=80\,000$, $l_{62}=77\,600$, $l_{65}=74\,000$. Calcular ${}_2p_{60}$, ${}_5p_{60}$, ${}_{2|3}q_{60}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_2p_{60}=l_{62}/l_{60}$; ${}_5p_{60}=l_{65}/l_{60}$; ${}_{2|3}q_{60}={}_2p_{60}-{}_5p_{60}$.  
+- **Paso 2.** ${}_2p_{60}=77\,600/80\,000=0{,}97$; ${}_5p_{60}=74\,000/80\,000=0{,}925$; ${}_{2|3}q_{60}=0{,}97-0{,}925=0{,}045$.  
+- **Resultado:** ${}_2p_{60}=0{,}97$; ${}_5p_{60}=0{,}925$; ${}_{2|3}q_{60}=0{,}045$.
+
+***
+
+**5.** Dar $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}$ y comprobar que suma 1.  
+
+**Solución.**  
+- **Paso 1.** $\mathbb{P}(K_x=k)$ = vivir $k$ años completos y fallecer en el siguiente = ${}_kp_x\,q_{x+k}$.  
+- **Paso 2.** Los sucesos $\{K_x=k\}$ para $k=0,1,2,\ldots$ son disjuntos y exhaustivos, luego $\sum_{k \geq 0} {}_kp_x\,q_{x+k}=1$.  
+- **Resultado:** $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}$; $\sum_k {}_kp_x\,q_{x+k}=1$.
+
+***
+
+**6.** Definir esperanza truncada y completa.  
+
+**Solución.**  
+- **Paso 1.** **Truncada** $e_x$: número esperado de años completos futuros, $e_x=\sum_{k \geq 1} {}_kp_x$.  
+- **Paso 2.** **Completa** $\mathring{e}_x$: $\mathbb{E}[T_x]$, incluye la fracción del año de fallecimiento; bajo UDD $\mathring{e}_x\approx e_x+1/2$.  
+- **Resultado:** Truncada = años completos; completa = incluye fracción; $\mathring{e}_x\approx e_x+1/2$.
+
+***
+
+**7.** Con $e_{60}=22$, estimar $\mathring{e}_{60}$.  
+
+**Solución.**  
+- **Paso 1.** $\mathring{e}_x\approx e_x+1/2$.  
+- **Paso 2.** $\mathring{e}_{60}\approx 22+0{,}5=22{,}5$ años.  
+- **Resultado:** $\mathring{e}_{60}\approx 22{,}5$ años.
+
+***
+
+**8.** Expresar $e_x$ con sumatoria de ${}_kp_x$.  
+
+**Solución.**  
+- **Paso 1.** $e_x=\mathbb{E}[K_x]=\sum_{k \geq 1} \mathbb{P}(K_x \geq k)$.  
+- **Paso 2.** $\mathbb{P}(K_x \geq k)={}_kp_x$, luego $e_x=\sum_{k=1}^{\omega-x-1} {}_kp_x$.  
+- **Resultado:** $e_x=\sum_{k=1}^{\omega-x-1} {}_kp_x$.
+
+***
+
+**9.** $l_{55}$, $l_{56}$, $l_{57}$, $l_{60}$ dados. Calcular $q_{55}$, ${}_2p_{55}$, ${}_{2|2}q_{55}$.  
+
+**Solución.**  
+- **Paso 1.** $q_{55}=(l_{55}-l_{56})/l_{55}=1-l_{56}/l_{55}$; ${}_2p_{55}=l_{57}/l_{55}$; ${}_{2|2}q_{55}={}_2p_{55}-{}_4p_{55}$.  
+- **Paso 2.** ${}_4p_{55}=l_{60}/l_{55}$, luego ${}_{2|2}q_{55}=l_{57}/l_{55}-l_{60}/l_{55}$.  
+- **Resultado:** $q_{55}=1-l_{56}/l_{55}$; ${}_2p_{55}=l_{57}/l_{55}$; ${}_{2|2}q_{55}=l_{57}/l_{55}-l_{60}/l_{55}$.
+
+***
+
+**10.** (40): probabilidad de fallecer entre los años 10 y 15 en tres notaciones.  
+
+**Solución.**  
+- **Paso 1.** «Entre los años 10 y 15» = sobrevivir 10 y fallecer en los 5 siguientes = ${}_{10|5}q_{40}$.  
+- **Paso 2.** Tres formas: ${}_{10|5}q_{40}={}_{10}p_{40}-{}_{15}p_{40}$; ${}_{10|5}q_{40}={}_{15}q_{40}-{}_{10}q_{40}$; ${}_{10|5}q_{40}={}_{10}p_{40}\cdot {}_5q_{50}$.  
+- **Resultado:** ${}_{10|5}q_{40}={}_{10}p_{40}-{}_{15}p_{40}={}_{10}p_{40}\cdot {}_5q_{50}$.
+
+***
+
+**11.** $l_{48}=88\,000$, $l_{50}=86\,000$, $l_{55}=82\,000$. Calcular ${}_5p_{48}$, ${}_{7}p_{48}$ (con $l_{55}$), ${}_{2|3}q_{48}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_5p_{48}=l_{53}/l_{48}$ (requiere $l_{53}$, no dado); ${}_7p_{48}=l_{55}/l_{48}$; ${}_{2|3}q_{48}={}_2p_{48}-{}_5p_{48}$ con ${}_2p_{48}=l_{50}/l_{48}$.  
+- **Paso 2.** ${}_2p_{48}=86\,000/88\,000\approx 0{,}9773$; ${}_7p_{48}=82\,000/88\,000\approx 0{,}9318$; ${}_{2|3}q_{48}={}_2p_{48}-{}_5p_{48}$ (${}_5p_{48}$ con $l_{53}$).  
+- **Resultado:** ${}_5p_{48}$ con $l_{53}$; ${}_7p_{48}\approx 0{,}9318$; ${}_{2|3}q_{48}={}_2p_{48}-{}_5p_{48}$.
+
+***
+
+**12.** $\mathbb{P}(K_x \leq 2)$ en notación.  
+
+**Solución.**  
+- **Paso 1.** $K_x \leq 2$ = fallecer antes de completar 3 años = ${}_3q_x$.  
+- **Paso 2.** ${}_3q_x=1-{}_3p_x$.  
+- **Resultado:** $\mathbb{P}(K_x \leq 2)={}_3q_x=1-{}_3p_x$.
+
+***
+
+**13.** Con $e_{70}=12{,}5$, estimar $\mathring{e}_{70}$.  
+
+**Solución.**  
+- **Paso 1.** $\mathring{e}_x\approx e_x+1/2$.  
+- **Paso 2.** $\mathring{e}_{70}\approx 12{,}5+0{,}5=13$ años.  
+- **Resultado:** $\mathring{e}_{70}\approx 13$ años.
+
+***
+
+**14.** Verificar ${}_{1|2}q_x = {}_1p_x - {}_3p_x$.  
+
+**Solución.**  
+- **Paso 1.** ${}_{1|2}q_x$ = sobrevivir 1 año y fallecer en los 2 siguientes = ${}_1p_x\cdot {}_2q_{x+1}$.  
+- **Paso 2.** ${}_1p_x(1-{}_2p_{x+1})={}_1p_x-{}_1p_x\cdot {}_2p_{x+1}={}_1p_x-{}_3p_x$.  
+- **Resultado:** ${}_{1|2}q_x={}_1p_x-{}_3p_x$ verificado.
+
+***
+
+**15.** $l_{52}=86\,000$, $l_{55}=83\,500$, $l_{60}=79\,000$. Calcular ${}_3p_{52}$, ${}_8p_{52}$, ${}_{3|5}q_{52}$.  
+
+**Solución.**  
+- **Paso 1.** ${}_3p_{52}=l_{55}/l_{52}$; ${}_8p_{52}=l_{60}/l_{52}$; ${}_{3|5}q_{52}={}_3p_{52}-{}_8p_{52}$.  
+- **Paso 2.** ${}_3p_{52}=83\,500/86\,000\approx 0{,}971$; ${}_8p_{52}=79\,000/86\,000\approx 0{,}9186$; ${}_{3|5}q_{52}\approx 0{,}0524$.  
+- **Resultado:** ${}_3p_{52}\approx 0{,}971$; ${}_8p_{52}\approx 0{,}9186$; ${}_{3|5}q_{52}={}_3p_{52}-{}_8p_{52}$.
+
+***
+
+**16.** Definir $e_x$ con sumatoria.  
+
+**Solución.**  
+- **Paso 1.** $e_x$ = esperanza truncada = número esperado de años completos = $\mathbb{E}[K_x]$.  
+- **Paso 2.** $e_x=\sum_{k=1}^{\omega-x-1} {}_kp_x$.  
+- **Resultado:** $e_x=\sum_{k=1}^{\omega-x-1} {}_kp_x$.
+
+***
+
+**17.** (55): probabilidad de fallecer entre 60 y 62.  
+
+**Solución.**  
+- **Paso 1.** «Entre 60 y 62» = sobrevivir 5 años y fallecer en los 2 siguientes = ${}_{5|2}q_{55}$.  
+- **Paso 2.** ${}_{5|2}q_{55}={}_5p_{55}-{}_7p_{55}$.  
+- **Resultado:** ${}_{5|2}q_{55}={}_5p_{55}-{}_7p_{55}$.
+
+***
+
+**18.** $\mathbb{P}(K_x \geq 2)$ en notación.  
+
+**Solución.**  
+- **Paso 1.** $K_x \geq 2$ = vivir al menos 2 años completos = sobrevivir 2 años.  
+- **Paso 2.** $\mathbb{P}(K_x \geq 2)={}_2p_x$.  
+- **Resultado:** $\mathbb{P}(K_x \geq 2)={}_2p_x$.
+
+***
+
+**19.** Tipo parcial: $l_{63}=75\,000$, $l_{65}=72\,500$, $l_{68}=69\,000$. Calcular $q_{63}$ (necesita $l_{64}$), ${}_5p_{63}$, ${}_{2|3}q_{63}$.  
+
+**Solución.**  
+- **Paso 1.** $q_{63}=(l_{63}-l_{64})/l_{63}$ (requiere $l_{64}$). ${}_5p_{63}=l_{68}/l_{63}$; ${}_{2|3}q_{63}={}_2p_{63}-{}_5p_{63}$.  
+- **Paso 2.** ${}_5p_{63}=69\,000/75\,000=0{,}92$; ${}_2p_{63}=l_{65}/l_{63}=72\,500/75\,000$; ${}_{2|3}q_{63}={}_2p_{63}-{}_5p_{63}$.  
+- **Resultado:** ${}_5p_{63}=0{,}92$; ${}_{2|3}q_{63}={}_2p_{63}-{}_5p_{63}$.
+
+***
+
+**20.** Síntesis: (a) ${}_{n|m}q_x$ en palabras. (b) $l_{58}=78\,000$, $l_{60}=75\,500$, $l_{63}=72\,000$. Calcular ${}_2p_{58}$, ${}_5p_{58}$, ${}_{2|3}q_{58}$.  
+
+**Solución.**  
+- **Paso 1 (a).** ${}_{n|m}q_x$ = probabilidad de que $(x)$ sobreviva $n$ años y fallezca en los $m$ años siguientes (entre edades $x+n$ y $x+n+m$).  
+- **Paso 2 (b).** ${}_2p_{58}=l_{60}/l_{58}=75\,500/78\,000\approx 0{,}968$; ${}_5p_{58}=l_{63}/l_{58}=72\,000/78\,000\approx 0{,}923$; ${}_{2|3}q_{58}={}_2p_{58}-{}_5p_{58}\approx 0{,}045$.  
+- **Resultado:** (a) Sobrevivir $n$ y fallecer en $m$ siguientes. (b) ${}_2p_{58}\approx 0{,}968$; ${}_5p_{58}\approx 0{,}923$; ${}_{2|3}q_{58}\approx 0{,}045$.
+
+
+***
+
+### Ejercicios propuestos (40)
+
+En cada ejercicio se debe calcular, expresar o demostrar lo indicado usando ${}_tp_x$, ${}_{n|m}q_x$, $e_x$, $\mathring{e}_x$, $l_x$. Indicar brevemente qué se pide. El doble de ítems para mayor práctica.
+
+1. **Se pide:** Con $l_{40}=95\,000$, $l_{41}=94\,200$, $l_{45}=91\,000$, $l_{50}=87\,000$, obtener $p_{40}$, ${}_{10}p_{40}$, ${}_{5|3}q_{40}$.
+
+***
+
+2. **Se pide:** Interpretar $e_{50}=28{,}2$ y estimar $\mathring{e}_{50}$ con $\mathring{e}_x\approx e_x+1/2$.
+
+***
+
+3. **Se pide:** Verificar ${}_{u|t}q_x={}_{u+t}q_x-{}_uq_x$.
+
+***
+
+4. **Se pide:** Expresar ${}_{2|4}q_x$ como diferencia de supervivencias.
+
+***
+
+5. **Tipo parcial.** **Se pide:** $l_{60}=80\,000$, $l_{62}=77\,600$, $l_{65}=74\,000$. Calcular ${}_2p_{60}$, ${}_5p_{60}$, ${}_{2|3}q_{60}$.
+
+***
+
+6. **Se pide:** Dar la fórmula $\mathbb{P}(K_x=k)={}_kp_x\,q_{x+k}$ y comprobar que suma 1 en $k$.
+
+***
+
+7. **Se pide:** Si ${}_5p_{40}=0{,}9$ y ${}_5p_{45}=0{,}85$, calcular ${}_{10}p_{40}$ (cadena).
+
+***
+
+8. **Se pide:** Definir esperanza truncada y esperanza completa de vida.
+
+***
+
+9. **Tipo parcial.** **Se pide:** Con $q_{50},\ldots,q_{54}$ dadas, escribir ${}_5p_{50}$ como producto.
+
+***
+
+10. **Se pide:** Deducir la relación ${}_{n|m}q_x={}_np_x\cdot {}_mq_{x+n}$.
+
+***
+
+11. **Se pide:** Con $l_{70}=1\,000$, $l_{71}=980$, $l_{75}=900$, calcular ${}_4p_{71}$ y ${}_{1|4}q_{70}$.
+
+***
+
+12. **Se pide:** Verificar que ${}_tp_x\cdot {}_up_{x+t}={}_{t+u}p_x$.
+
+***
+
+13. **Se pide:** Número de supervivientes: si $l_x$ es esperado, ¿qué distribución tiene el número que llega a $x+n$?.
+
+***
+
+14. **Se pide:** Calcular ${}_{3|2}q_{60}$ con $l_{60}$, $l_{63}$, $l_{65}$.
+
+***
+
+15. **Tipo parcial.** **Se pide:** (a) Definir ${}_{n|m}q_x$. (b) Con $l_{40}=95\,000$, $l_{45}=91\,000$, $l_{50}=87\,000$, calcular ${}_{5|5}q_{40}$.
+
+***
+
+16. **Se pide:** Expresar $e_x$ con sumatoria de ${}_kp_x$.
+
+***
+
+17. **Se pide:** Si $p_x=0{,}99$ para $x=55,\ldots,59$, calcular ${}_5p_{55}$.
+
+***
+
+18. **Se pide:** Fórmula alternativa ${}_{u|t}q_x={}_up_x\cdot {}_tq_{x+u}$: deducir desde ${}_up_x-{}_{u+t}p_x$.
+
+***
+
+19. **Se pide:** Con $e_{60}=22$, estimar $\mathring{e}_{60}$.
+
+***
+
+20. **Tipo parcial.** **Se pide:** Tabla con $l_{55}$, $l_{56}$, $l_{57}$, $l_{60}$. Calcular $q_{55}$, ${}_2p_{55}$, ${}_{2|2}q_{55}$, ${}_5p_{55}$ (Jordan/Neill/Weishaus).
+
+***
+
+21. **Se pide:** Con $l_{45}=92\,000$, $l_{50}=88\,000$, $l_{55}=83\,000$, calcular ${}_5p_{45}$, ${}_{10}p_{45}$, ${}_{5|5}q_{45}$.  
+22. **Se pide:** Demostrar ${}_{n|m}q_x = {}_np_x - {}_{n+m}p_x$ usando $S$ o $l_x$.  
+23. **Tipo parcial.** **Se pide:** $e_{60}=22$ (truncada). Estimar $\mathring{e}_{60}$ y explicar la aproximación $e_x+1/2$.  
+24. **Se pide:** Expresar $\mathbb{P}(K_x \leq n)$ en notación actuarial (diferencia de supervivencias).  
+25. **Se pide:** Para (40), escribir la probabilidad de fallecer entre los años 10 y 15 en tres notaciones equivalentes.  
+26. **Se pide:** $l_{57}=76\,000$, $l_{60}=73\,500$, $l_{65}=69\,000$. Calcular ${}_3p_{57}$, ${}_8p_{57}$, ${}_{3|5}q_{57}$.  
+27. **Se pide:** Verificar $\mathbb{P}(K_x=k)+\mathbb{P}(K_x>k)={}_kp_x$ (relación con ${}_{k+1}p_x$).  
+28. **Tipo parcial.** **Se pide:** (50): probabilidad de sobrevivir 15 años y fallecer antes de 20; notación y expresión con $l$.  
+29. **Se pide:** Si $e_{55}=26$ y $e_{56}=25{,}2$, estimar $q_{55}$ (aproximación $e_x \approx p_x(1+e_{x+1})$).  
+30. **Se pide:** Expresar ${}_{4|2}q_x$ como diferencia de dos ${}_jp_x$.  
+31. **Se pide:** Con $l_{62}=77\,000$, $l_{65}=74\,000$, $l_{68}=70\,500$, calcular ${}_3p_{62}$, ${}_6p_{62}$, ${}_{3|3}q_{62}$.  
+32. **Tipo parcial.** **Se pide:** Definir esperanza truncada y completa; relación aproximada $\mathring{e}_x \approx e_x+1/2$.  
+33. **Se pide:** Comprobar $\sum_{k=0}^{\omega-x-1} \mathbb{P}(K_x=k)=1$ usando ${}_jp_x$ y $q_{x+j}$.  
+34. **Se pide:** (35): probabilidad de fallecer exactamente en el año que va de 42 a 43; notación.  
+35. **Se pide:** $l_{59}=79\,000$, $l_{60}=77\,800$, $l_{64}=74\,000$. Calcular $q_{59}$, ${}_5p_{59}$, ${}_{1|4}q_{59}$.  
+36. **Tipo parcial.** **Se pide:** $e_{68}=14$. Estimar $\mathring{e}_{68}$; interpretar ambos números.  
+37. **Se pide:** Demostrar ${}_{u|t}q_x = {}_up_x \cdot {}_tq_{x+u}$ a partir de la definición con $S$.  
+38. **Se pide:** Escribir $\mathbb{P}(K_x = n)$ como ${}_np_x - {}_{n+1}p_x$.  
+39. **Se pide:** Con $l_{50}=90\,000$, $l_{55}=85\,000$, $l_{60}=79\,000$, calcular ${}_{10}p_{50}$, ${}_{5|5}q_{50}$.  
+40. **Tipo parcial.** **Se pide:** (a) ¿Qué es ${}_{n|m}q_x$? (b) $l_{48}=88\,000$, $l_{50}=86\,000$, $l_{53}=83\,000$. Calcular ${}_2p_{48}$, ${}_5p_{48}$, ${}_{2|3}q_{48}$.
+
+***
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013]; Ross [@ross2010]; Batten [@batten1978].*

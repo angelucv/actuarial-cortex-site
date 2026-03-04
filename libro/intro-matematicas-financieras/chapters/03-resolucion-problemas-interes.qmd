@@ -1,0 +1,385 @@
+---
+number: false
+---
+
+# Capítulo 2: Resolución de problemas de interés {#cap-resolucion-problemas .unnumbered}
+
+En el desarrollo del presente material se han utilizado como referencia los textos de @broverman2017, @kellison2008 y @vaaler2009. Sin embargo, es importante destacar que, en esta sección en particular, se han adoptado predominantemente los enfoques propuestos por @kellison2008 y @vaaler2009. Ambos autores aportan perspectivas valiosas que enriquecen el análisis y la comprensión del tema tratado, ofreciendo herramientas conceptuales fundamentales para el desarrollo del contenido presentado.
+
+Agradecemos a los autores mencionados por sus contribuciones al campo, las cuales han sido esenciales para la elaboración de esta guía teórico-práctica.
+
+## Introducción
+
+La teoría del interés se apoya en un conjunto reducido de ideas nucleares. En el Capítulo 1 se presentaron las medidas cuantitativas básicas; en este capítulo se organizan **principios generales** para abordar problemas típicos de interés y construir un método de trabajo ordenado que permita aplicar, con eficacia, los conceptos del capítulo previo a situaciones financieras más variadas [@kellison2008, cap. 2; @broverman2017; @diazmata2013, §2.10].
+
+En el contexto de la integración global de los mercados, la disciplina ha pasado de ser una extensión del álgebra a una herramienta de gestión de riesgos y valuación de activos complejos. En este capítulo se integran, además de la ecuación de valor y el despeje de variables, el análisis de sensibilidad (duración, convexidad), la medición de la tasa real (Fisher), la valoración por costo amortizado y TIE, la estructura temporal de tasas (spot y forward), la inmunización actuarial y aplicaciones como swaps, fondos de jubilación y productos indexados (UDI, UVR).
+
+Con el dominio de los dos primeros capítulos se pueden resolver la mayoría de los ejercicios prácticos. Los capítulos posteriores persiguen dos metas complementarias:
+
+1. **Ampliar el catálogo de operaciones financieras reales** y precisar la terminología usada en la práctica profesional (amortización, fondos de amortización, anualidades).
+2. **Desarrollar esquemas de análisis** que, a menudo, conducen a procedimientos más eficientes que el uso mecánico de fórmulas elementales.
+
+Como consecuencia de este enfoque, en ocasiones aparecerán fórmulas resumidas. Aun así, el número de expresiones que conviene memorizar es pequeño. Una dificultad frecuente es confiar ciegamente en "recetas" sin atender a los principios. Es clave recordar que los problemas de interés se resuelven **desde fundamentos**: aplicar esos principios no suele ser tan costoso como se piensa y, además, evita errores de interpretación [@kellison2008].
+
+## El problema básico
+
+El contenido de este apartado se inspira en @kellison2008, adaptado al contexto de la EECA-UCV. En esencia, todo problema de interés gira en torno a **cuatro magnitudes**:
+
+1. El **capital inicial** (monto invertido al comienzo).
+2. La **duración** del horizonte temporal.
+3. La **tasa** (o fuerza) de interés, o alternativamente una tasa de descuento.
+4. El **valor acumulado** al final del período considerado.
+
+Conociendo tres de ellas, la cuarta queda determinada. En ejercicios de valor futuro la incógnita típica es el monto final; en ejercicios de valor presente, el capital inicial.
+
+**Orientaciones útiles al resolver** [@kellison2008, cap. 2]:
+
+- **a) Unidad de tiempo.** El año es la referencia más común; con tasas nominales convertibles suele trabajarse en la unidad de conversión; con capitalización continua, el año permanece como unidad práctica.
+- **b) Tasa de rendimiento (yield rate).** Es la tasa que iguala valores en fechas distintas (p. ej. 100 en $t=0$ equivale a 110 en $t=1$ si la tasa es 10%); se extiende a flujos con múltiples pagos.
+- **c) Punto de vista.** Puede analizarse desde el prestatario o desde el prestamista; las cantidades relevantes y la ecuación de valor son las mismas; solo cambia la narrativa.
+- **d) Terminología.** Identificar siempre los flujos de caja y aplicar los principios básicos; el rótulo del producto financiero no reemplaza el análisis.
+
+## Ecuación de valor
+
+El contenido de este apartado se inspira en @broverman2017, adaptado al contexto de la EECA-UCV. En Matemáticas Financieras, una transacción puede representarse mediante una **ecuación de valor**, que equilibra los flujos de efectivo (entradas y salidas) en un **momento de referencia** (fecha focal) determinado. No solo importa la magnitud de cada flujo, sino también el tiempo en que ocurre; cada flujo debe expresarse en su valor presente o acumulado según corresponda [@diazmata2013, §2.10].
+
+En términos generales, la ecuación de valor iguala:
+
+1. El **valor acumulado de los pagos ya realizados** más el **valor presente de los pagos pendientes**.
+2. El **valor acumulado de los ingresos recibidos** más el **valor presente de los ingresos futuros**.
+
+Este procedimiento es una de las herramientas fundamentales en el análisis de operaciones financieras [@broverman2017]. La **fecha de comparación** puede elegirse arbitrariamente; el resultado no depende de esa elección, pero los cálculos pueden simplificarse eligiendo una fecha conveniente.
+
+### Raíces filosóficas y éticas: lucrum cessans y damnum emergens
+
+Aunque el álgebra de la ecuación de valor se formalizó tras la Revolución Científica, el fundamento del "valor del dinero en el tiempo" tiene raíces en el pensamiento económico de la Alta Edad Media. Durante siglos, la aplicación de intereses y el descuento de valores futuros fueron condenados como usura bajo la premisa de que el dinero era estéril y no podía engendrar más dinero. A medida que el comercio transnacional se expandía, juristas y moralistas introdujeron excepciones canónicas que sentaron las bases lógicas del costo de oportunidad y la prima de riesgo moderna. Esas excepciones se cristalizaron en dos conceptos fundamentales: **lucrum cessans** (el lucro cesante: la ganancia legítima que un prestamista pierde por no poder invertir su capital durante el plazo del préstamo) y **damnum emergens** (el daño emergente: el riesgo de pérdida del capital asumido al extender crédito). Al admitir estos "títulos externos" al valor nominal, la conceptualización del equilibrio pasó de exigir una estricta igualdad aritmética a aceptar una ecualización proporcional en el tiempo, justificando la aplicación de una tasa de descuento y reconociendo que una unidad monetaria presente tiene un valor superior a una futura.
+
+### TIR, VAN y limitaciones de la ecuación de valor
+
+La evolución de este principio culminó en métricas estandarizadas: la **Tasa Interna de Retorno (TIR)** y el **Valor Presente Neto (VAN)**. La TIR es la tasa de descuento efectiva anualizada que iguala el valor presente de los egresos con el valor presente de los ingresos (es decir, la tasa que hace el VAN cero). Se aplica tanto *ex ante* (selección de inversiones) como *ex post* (rendimiento histórico de carteras). Sin embargo, la confianza ciega en la ecuación de valor para despejar tasas introduce debates teóricos sustanciales.
+
+| Limitación matemática | Descripción | Implicación en la ecuación de valor |
+|----------------------|-------------|--------------------------------------|
+| **Supuesto de reinversión** | La TIR asume que todos los flujos intermedios se reinvierten a esa misma TIR hasta el final del horizonte. | Sobrestima la rentabilidad equivalente anual si la TIR es muy alta frente al costo de capital del mercado. |
+| **Raíces múltiples y ambigüedad** | Según la regla de los signos de Descartes, flujos no convencionales (más de un cambio de signo) pueden generar múltiples tasas que satisfacen la ecuación. | Invalida a la TIR como criterio único; obliga a usar VAN o TIR Modificada (TIRM). |
+| **Proyectos mutuamente excluyentes** | Con diferentes escalas o duraciones, la TIR puede favorecer proyectos más pequeños con altas tasas sobre proyectos más grandes con mayor VAN absoluto. | Requiere análisis incremental de las diferencias marginales de flujos entre opciones. |
+
+Para mitigar las distorsiones del supuesto de reinversión, la disciplina desarrolló la **Tasa Interna de Retorno Modificada (TIRM)**, que asume que los flujos positivos se reinvierten al costo de capital de la empresa (o a una tasa libre de riesgo) y que los desembolsos iniciales se financian a la tasa de endeudamiento, proporcionando un reflejo más preciso del rendimiento real sobre el capital empleado. La resolución de la variable "tasa desconocida" exige que el analista reconozca no solo la mecánica del despeje iterativo o la interpolación lineal, sino también las suposiciones subyacentes sobre el costo de oportunidad.
+
+**Ejemplo 1 (Pago de matrícula en cuotas desiguales).** Un estudiante de la EECA recibe un préstamo de Bs. 1.200 para cancelar su matrícula al inicio del semestre (1 de enero). El préstamo devenga una tasa de interés efectiva mensual de 5%. El acuerdo establece tres cuotas: Bs. 500 el 1 de febrero, Bs. 400 el 1 de marzo y un pago final $X$ el 1 de abril. ¿Cuál debe ser el valor de $X$?
+
+*Solución.* Con referencia el 1 de enero ($t=0$), $v = 1/(1{,}05)$. Valor recibido: 1.200. Valor presente de los pagos: $500v + 400v^2 + X v^3$. Ecuación: $1.200 = 500v + 400v^2 + X v^3$. Despejando: $X = \bigl(1.200 - (500v + 400v^2)\bigr)/v^3$ (sustituir $v \approx 0{,}95238$ para el valor numérico).
+
+**Ejemplo 2 (Compra de equipos de cómputo para investigación).** Un profesor de la EECA adquiere equipos por Bs. 2.000 el 1 de mayo; tasa efectiva quincenal 3%. Pagos: Bs. 700 el 15 de mayo, Bs. 800 el 30 de mayo, y $Y$ el 15 de junio. ¿Cuál debe ser $Y$?
+
+*Solución.* Con referencia el 15 de junio ($t=3$ quincenas), $j=0{,}03$: valor acumulado de lo recibido $2.000(1+j)^3$; de lo pagado $700(1+j)^2 + 800(1+j) + Y$. Ecuación: $2.000(1+j)^3 = 700(1+j)^2 + 800(1+j) + Y$, luego $Y = 2.000(1+j)^3 - 700(1+j)^2 - 800(1+j)$. *Comentario:* la fecha de referencia elegida no altera la solución; solo la conveniencia algebraica.
+
+**Ejercicio — Crédito semanal del estudiante (EECA-UCV).** Cada viernes de febrero (7, 14, 21 y 28) el estudiante B realiza una compra a crédito de Bs. 900; tasa efectiva semanal $j=6\%$. Para cancelar se acuerdan cuatro cuotas los viernes de marzo; paga Bs. 1.000 los días 7, 14 y 21. ¿Cuánto debe pagar el 28 de marzo ($X$)?
+
+*Solución con fecha de valoración en $t=0$ (7 de febrero).* $v = 1/1{,}06$. Valor presente de lo recibido: $900(1+v+v^2+v^3)$. Valor presente de lo pagado: $1.000(v^4+v^5+v^6) + X v^7$. Ecuación: $900(1+v+v^2+v^3) = 1.000(v^4+v^5+v^6) + X v^7$, de donde $X = \bigl(900(1+v+v^2+v^3) - 1.000(v^4+v^5+v^6)\bigr)/v^7$. *Verificación con fecha en $t=7$ (28 de marzo):* acumulando a $t=7$ con $j=0{,}06$ se obtiene el mismo $X$. La solución no depende de la fecha de valoración elegida.
+
+## Sustitución de obligaciones financieras: vencimiento común y vencimiento medio
+
+Los Temas 3 y 7 del programa oficial exigen el dominio de dos categorías taxonómicas que deben tratarse como constructos teóricos autónomos: el **vencimiento común** y el **vencimiento medio**. Esta sección formaliza ambos conceptos y enseña a despejar la variable tiempo utilizando logaritmos.
+
+**Vencimiento común.** Dado un conjunto de obligaciones heterogéneas $\{C_1, C_2, \ldots, C_k\}$ con vencimientos respectivos $\{t_1, t_2, \ldots, t_k\}$, el **vencimiento común** es la fecha $n$ en la cual un único capital $C$ (previamente acordado) sustituye financieramente a dicho conjunto. La ecuación de valor en la fecha focal $n$ (valorando todos los capitales en $n$) es
+
+$$C = \sum_{j=1}^{k} C_j\,(1+i)^{n - t_j} \quad \text{(si } t_j \leq n \text{)},$$
+
+o, llevando todo a valor presente en $t=0$ con factor $v = (1+i)^{-1}$,
+
+$$C\,v^n = \sum_{j=1}^{k} C_j\,v^{t_j}. \tag{3.VC}$$
+
+De (3.VC) se despeja $n$ aplicando logaritmos: $v^n = \frac{1}{C}\sum_{j=1}^{k} C_j\,v^{t_j}$, luego
+
+$$n = \frac{\ln\left(\sum_{j=1}^{k} C_j\,v^{t_j}\right) - \ln C}{\ln v} = \frac{\ln\left(\sum_{j=1}^{k} C_j\,v^{t_j}\right) - \ln C}{\ln(1+i)}.$$
+
+Bajo interés compuesto, la propiedad de escindibilidad de $a(t)$ implica que la elección de la fecha focal no altera el resultado; así, el vencimiento común queda unívocamente determinado y otorga seguridad jurídica y financiera a los contratos de largo plazo.
+
+**Vencimiento medio.** Es el caso particular y analíticamente más rico en que el capital sustituto es exactamente la **suma aritmética** de los capitales originales: $C = \sum_{j=1}^{k} C_j$. La fecha de vencimiento medio $n^*$ satisface entonces
+
+$$\left(\sum_{j=1}^{k} C_j\right) v^{n^*} = \sum_{j=1}^{k} C_j\,v^{t_j}, \quad \text{es decir} \quad v^{n^*} = \frac{\sum_{j=1}^{k} C_j\,v^{t_j}}{\sum_{j=1}^{k} C_j},$$
+
+de donde $n^* = \frac{\ln\left(\sum C_j v^{t_j}\right) - \ln\left(\sum C_j\right)}{\ln(1+i)}$.
+
+**Divergencia entre vencimiento medio teórico y media ponderada aritmética.** En la práctica comercial se usa con frecuencia la **media ponderada de los tiempos** $\bar{t} = \frac{\sum C_j t_j}{\sum C_j}$. Bajo el estricto régimen de interés compuesto, la fecha de vencimiento medio *teórica* $n^*$ **no coincide** con $\bar{t}$: $n^*$ es la solución de una ecuación exponencial (valor presente equivalente), mientras que $\bar{t}$ es un promedio lineal. La **demostración** de que $\bar{t}$ aproxima $n^*$ en condiciones restrictivas se apoya en la **expansión en series de Taylor de primer grado**: para $i$ pequeño y plazos $t_j$ no demasiado grandes, $\ln(1+i) \approx i$ y $v^{t} \approx 1 - i\,t$ en primera aproximación; entonces la ecuación de valor se linealiza y la solución tiende a la media ponderada. En intervalos cortos y tasas reducidas, $\bar{t}$ funciona como **aproximación válida y aceptada** en la práctica; sin embargo, el **error de truncamiento** se amplifica a largo plazo y con tasas elevadas, por lo que el actuario debe recurrir al despeje exacto mediante logaritmos cuando se requiera precisión. Esta explicación eleva el texto de un manual de cálculo a un tratado de finanzas matemáticas alineado con el programa de la asignatura (Código 4600).
+
+**Resumen.** En interés simple, bajo descuento racional, el vencimiento medio se aproxima por $t_{\mathrm{medio}} = \frac{\sum C_i t_i}{\sum C_i}$. En interés compuesto, el vencimiento común y el vencimiento medio se obtienen resolviendo la ecuación de valor correspondiente y despejando $n$ con logaritmos.
+
+## Tiempo desconocido
+
+Esta sección se inspira en @kellison2008; los ejemplos han sido adaptados para uso docente en la EECA-UCV. Al conocer tres de las cuatro cantidades (capital, monto, tasa y tiempo) puede determinarse la restante. Aquí la incógnita es el **tiempo**; se usa $K$ para el capital.
+
+**Un pago único: despeje con logaritmos.** Si $M = K(1+i)^n$, entonces
+$$n = \frac{\ln(M/K)}{\ln(1+i)}. \tag{3.1}$$
+
+**Varios pagos: fecha equivalente.** Dados pagos $s_1, \ldots, s_n$ en instantes $t_1, \ldots, t_n$ y $v = (1+i)^{-1}$, el pago único equivalente $S = \sum_{k=1}^n s_k$ en el instante $t$ cumple
+$$S\,v^t = \sum_{k=1}^n s_k\,v^{t_k}, \tag{3.2a}$$
+de donde
+$$t = \frac{\ln\left(\sum_{k=1}^n s_k\,v^{t_k}\right) - \ln S}{\ln v}. \tag{3.2b}$$
+Para tasas moderadas puede usarse el promedio ponderado: $\bar{t} = \sum s_k t_k / \sum s_k$.
+
+**Tiempo para duplicar.** El número de períodos para duplicar el capital es
+$$n_{\times 2} = \frac{\ln 2}{\ln(1+i)}, \tag{3.4a}$$
+y la aproximación práctica **regla del 72**:
+$$n_{\times 2} \approx \frac{72}{i(\%)}, \tag{3.4b}$$
+donde $i(\%)$ es la tasa efectiva anual en porcentaje. La regla del 72 surge de $\ln(1+i) \approx i$ para $i$ pequeño; se usa 72 por facilidad de división (2, 3, 4, 6, 8, 9, 12) y buena precisión entre 3% y 15%. *Ejemplos:* $i=9\% \Rightarrow n \approx 8$ años; $i=12\% \Rightarrow n \approx 6$ años. *Precauciones:* convertir a tasa efectiva anual; para tasas muy bajas o altas usar (3.4a).
+
+**Cuadro (tiempo para duplicar).** Regla del 72 vs. valor exacto (años):
+
+| Tasa de interés | Regla del 72 | Valor exacto |
+|-----------------|--------------|--------------|
+| 5%              | 14,40        | 14,21        |
+| 7%              | 10,29        | 10,24        |
+| 9%              | 8,00         | 8,04         |
+| 12%             | 6,00         | 6,12         |
+| 15%             | 4,80         | 4,96         |
+
+**Ejemplo A (nominal convertible trimestralmente).** De $K = 900$ a $M = 1.400$ con 12% nominal convertible trimestralmente. Tasa por trimestre $j = 0{,}12/4 = 0{,}03$; $n = \ln(1.400/900)/\ln(1{,}03) \approx 14{,}95$ trimestres $\approx 3{,}74$ años.
+
+**Ejemplo B (fecha equivalente).** Pagos: \$300 en mes 1, \$500 en mes 3, \$200 en mes 5; tasa mensual $i=0{,}02$, $v=(1+i)^{-1}$, $S=1.000$. $t = \bigl(\ln(300 v + 500 v^3 + 200 v^5) - \ln 1.000\bigr)/\ln v$. Aproximación ponderada: $\bar{t} = (300\cdot 1 + 500\cdot 3 + 200\cdot 5)/1.000 = 2{,}8$ meses.
+
+**Ejemplo (drop payment).** Un fondo de \$25.000 debe acumularse con depósitos de \$1.000 al final de cada año al 8\% efectivo. Ecuación $1.000\,s_{\overline{n}|0{,}08} = 25.000$, luego $s_{\overline{n}|0{,}08} = 25$. Se verifica $s_{\overline{14}|} \approx 24{,}215$ y $s_{\overline{15}|} \approx 27{,}152$, por tanto se requieren 14 depósitos completos más un depósito final $X$ un año después: $1.000\,s_{\overline{14}|} + X = 25.000$, de donde $X = 25.000 - 24.215 = 785$. Alternativamente, al final del año 14 el saldo es $24.215$; un año más sin depósitos da $24.215 \times 1{,}08 = 26.152$, que excede el objetivo, por lo que en ese caso el “depósito final” sería negativo (retiro del exceso).
+
+## Aplicaciones de la ecuación de valor
+
+Las ecuaciones de valores equivalentes se usan en ventas a plazo, tarjetas de crédito, préstamos prendarios y pagos anticipados de facturas [@diazmata2013, §2.11]. Procedimiento: (1) identificar flujos y fechas; (2) elegir fecha focal; (3) trasladar cada flujo a esa fecha; (4) plantear la igualdad y despejar la incógnita.
+
+**Ventas a plazo.** En una compra a crédito, el valor actual (en la fecha de compra) de todos los pagos pactados debe igualar el precio de contado o el saldo financiado. Cualquier reestructuración (cambiar cuotas, fechas o número de pagos) se valúa con la misma tasa, trasladando todos los flujos a una fecha focal.
+
+**Tarjetas de crédito.** El saldo en una cuenta de crédito se obtiene llevando cada movimiento (cargos y abonos) a la fecha de corte: cada saldo intermedio se capitaliza con interés simple (o el que indique el contrato) hasta el siguiente movimiento, y el nuevo saldo es el anterior más cargos menos abonos. La ecuación de valor aplicada período a período reproduce el estado de cuenta [@diazmata2013, §2.11].
+
+**Préstamos prendarios (empeño).** Se recibe un capital $C$ y se pacta recuperar la prenda pagando un monto $M$ en una fecha futura; $M = C(1+it)$ con la tasa y plazo acordados. El problema es de monto o de valor actual según la incógnita.
+
+**Pagos anticipados y descuento por pronto pago.** En facturación comercial es frecuente ofrecer descuento si se paga antes del vencimiento (p. ej. “5/10, n/30”: 5% de descuento si se paga en 10 días; neto a 30 días). Para decidir si conviene pedir crédito para aprovechar el descuento, se compara el ahorro por el pronto pago con el costo de interés del crédito durante el período entre la fecha de pago anticipado y la fecha de vencimiento neto. La tasa máxima de interés a la que convendría endeudarse es aquella para la cual el interés sobre el importe pagado (precio menos descuento) durante esos días iguala el descuento ofrecido [@diazmata2013, §2.11].
+
+## Medición técnica de la tasa de interés real y compensación inflacionaria
+
+La inflación es el principal factor de erosión del valor del dinero en el tiempo; es obligatorio distinguir entre **tasa nominal** $i$ y **tasa real** $r$. Una tasa nominal elevada puede enmascarar un rendimiento neto negativo si la inflación $f$ supera la capacidad de crecimiento del capital. La **relación de Fisher** es el estándar para el ajuste inflacionario [@kellison2008; @broverman2017]:
+
+$$(1 + i) = (1 + r)(1 + f).$$
+
+De aquí se deriva la **tasa real de interés**:
+
+$$r = \frac{i - f}{1 + f}.$$
+
+En contextos de alta inflación (p. ej. economías latinoamericanas), omitir el factor $(1+f)$ en el denominador —aproximación simplista $r \approx i - f$— conlleva errores significativos. La tasa real es el verdadero indicador de la eficiencia del capital.
+
+| Escenario económico | Tasa nominal $i$ | Inflación $f$ | Tasa real $r$ |
+|---------------------|------------------|---------------|---------------|
+| Estabilidad         | 4,50%            | 2,00%         | $\approx 2{,}45\%$ |
+| Inflación moderada   | 15,00%           | 10,00%        | $\approx 4{,}55\%$ |
+| Alta inflación       | 40,00%           | 50,00%        | $\approx -6{,}67\%$ |
+
+## Técnica del dato fantasma en ecuaciones de valor complejas
+
+Cuando la incógnita es la magnitud de un flujo en estructuras no uniformes (reestructuración con periodos de gracia, abonos extraordinarios, tasas variables), la **técnica del dato fantasma** evita despejes algebraicos engorrosos usando la proporcionalidad financiera. Es una aplicación directa de la **linealidad** de la ecuación de valor y de la consistencia temporal del interés compuesto: asignar valores proporcionales arbitrarios a flujos desconocidos permite despejar tiempos o tasas; en ese sentido, los principios de compensación intertemporal (lucrum cessans) se han codificado en axiomas matemáticos que rigen desde la evaluación de una hipoteca hasta la estructuración de la deuda corporativa global. Se asigna un valor arbitrario conveniente (p. ej. 100 o 1.000) al flujo desconocido; con ese valor se construye la ecuación de valor en la fecha focal y se obtiene un resultado hipotético. Cuando se requiere comparar opciones donde no se conocen las cuantías absolutas pero sí su relación proporcional (p. ej. un pago es el doble de otro), se puede asignar 1 y 2 respectivamente en la ecuación de valor para despejar la tasa de rendimiento o el tiempo. Por la linealidad del interés compuesto respecto al capital:
+
+$$\text{Renta real} = \frac{\text{Valor objetivo} \times \text{Dato fantasma}}{\text{Valor obtenido con el fantasma}}.$$
+
+Es especialmente eficiente con calculadora financiera o hoja de cálculo y facilita la valoración de pasivos cuando los términos contractuales han sufrido modificaciones sustanciales.
+
+## Valoración por costo amortizado y tasa de interés efectiva
+
+En normativas internacionales de reporte financiero se utiliza el **costo amortizado** y una **tasa de interés efectiva (TIE)** que iguala el valor en libros inicial con los flujos de efectivo futuros. Desde el punto de vista algebraico, la TIE es la TIR que resuelve $\text{Precio neto inicial} = \sum_{t=1}^{n} CF_t/(1 + \text{TIE})^t$, incorporando costos de transacción y comisiones en el precio neto. El estudiante debe dominar esta valoración recursiva del saldo insoluto y el efecto de las comisiones sobre el rendimiento real, con independencia del marco normativo concreto.
+
+## Análisis de sensibilidad: duración Macaulay y duración modificada
+
+El análisis formal del riesgo de tasa de interés no existió de manera estandarizada hasta las vísperas de la Segunda Guerra Mundial. A principios del siglo XX, los inversores evaluaban el riesgo de un bono casi exclusivamente por su **vencimiento final** (maturity); un bono a 20 años se consideraba el doble de riesgoso que uno a 10. Esa visión simplista fue desmantelada por el economista **Frederick R. Macaulay**. Trabajando para el National Bureau of Economic Research (NBER), Macaulay recopiló y analizó series de tasas de interés, rendimientos de bonos y precios de acciones en EE. UU. desde 1856 hasta 1936. Su obra *Some Theoretical Problems Suggested by the Movements of Interest Rates, Bond Yields and Stock Prices in the United States since 1856* (1938) se centró en los bonos ferroviarios de alta calificación. Durante el auge ferroviario estadounidense del siglo XIX, las corporaciones emitieron bonos con vencimientos extremadamente largos (50 e incluso 100 años). Macaulay detectó una **anomalía**: el vencimiento final nominal sobreestimaba enormemente la "madurez efectiva" real. Un bono con cupones no es un préstamo de suma única pagadero en la fecha final, sino un portafolio de flujos distribuidos en el tiempo; para bonos a muy largo plazo, los cupones intermedios representaban la inmensa mayoría del valor presente, haciendo el pago del principal en el año 100 financieramente minúsculo una vez descontado. Macaulay propuso una métrica que calcula un **promedio ponderado por valor presente del tiempo hasta el cobro de cada flujo**, y acuñó el término **Duración** para este concepto.
+
+**Fórmula de la Duración de Macaulay.** Se define rigurosamente como:
+
+$$D = \frac{\sum_{t=1}^{n} t \cdot CF_t \cdot (1+i)^{-t}}{\sum_{t=1}^{n} CF_t \cdot (1+i)^{-t}} = \frac{\sum_{t=1}^{n} t \cdot v^t \cdot CF_t}{P},$$
+
+donde $t$ es el período del flujo, $CF_t$ el flujo de caja en $t$, $i$ la tasa de rendimiento hasta el vencimiento, $v = (1+i)^{-1}$ y $P$ el precio actual del bono.
+
+**Evolución hacia la gestión dinámica de riesgos.** La duración de Macaulay fue inicialmente ignorada por gestores y banqueros durante décadas, en parte por la estabilidad artificial de las tasas en la posguerra y Bretton Woods. En la década de 1970, con el colapso del patrón oro y la volatilidad inflacionaria, la academia redescubrió su valor. Lawrence Fisher, John Hicks y David Durand formularon la **Duración Modificada** ($D_{\mathrm{mod}}$), demostrando que la invención de Macaulay representa casi exactamente la primera derivada negativa del precio del bono respecto a su tasa de rendimiento:
+
+$$D_{\mathrm{mod}} = \frac{D}{1+i} \approx -\frac{1}{P}\,\frac{dP}{di}.$$
+
+La regla de oro del análisis de sensibilidad: por cada aumento (o disminución) del 1% en las tasas de mercado, el precio del bono caerá (o subirá) en un porcentaje aproximadamente igual a su duración modificada. Esta transición transformó la matemática financiera de un ejercicio de valoración estática en una disciplina de cobertura y gestión de riesgos dinámica.
+
+| Propiedad axiomática de la duración | Implicación financiera |
+|------------------------------------|------------------------|
+| **Bonos cupón cero** | La duración es exactamente igual al plazo de vencimiento físico; todo el riesgo de tasa se concentra en la fecha final. |
+| **Impacto inverso de la tasa de cupón** | A mayor cupón, menor duración; los flujos tempranos recuperan valor más rápido y reducen el promedio ponderado. |
+| **Comportamiento asintótico** | La duración de un bono perpetuo nunca sobrepasa el límite $1 + 1/i$; un bono a 100 años reacciona casi igual que uno a 30 ante shocks de tasas. |
+
+## Convexidad: curvatura del valor ante cambios en la tasa
+
+La **convexidad** $C$ mide la curvatura de la relación precio–tasa; es la segunda derivada del precio respecto a la tasa, normalizada por el precio:
+
+$$C = \frac{1}{P}\,\frac{d^2 P}{di^2} = \frac{\sum t(t+1)\,v^{t+2}\,CF_t}{P}.$$
+
+Para flujos tradicionales $C > 0$: el precio sube más de lo que predice la duración cuando las tasas bajan, y baja menos cuando suben. **Derivación de la sensibilidad (Taylor):** si $P(i)$ es el precio en función de la tasa, la expansión de Taylor alrededor de $i_0$ es $P(i) \approx P(i_0) + P'(i_0)(i-i_0) + \frac{1}{2}P''(i_0)(i-i_0)^2$. Dividiendo por $P(i_0)$ y definiendo **duración modificada** $D_{\mathrm{mod}} = -P'(i_0)/P(i_0)$ y **convexidad** $C = P''(i_0)/P(i_0)$, se obtiene la aproximación de segundo orden:
+
+$$\frac{\Delta P}{P} \approx -D_{\mathrm{mod}}\,\Delta i + \frac{1}{2}\,C\,(\Delta i)^2.$$
+
+La duración da la aproximación lineal; la convexidad corrige el error de curvatura y permite una gestión más precisa en entornos de alta volatilidad (p. ej. inmunización de Redington: igualar duración de activos y pasivos y asegurar convexidad de activos mayor que la de pasivos).
+
+## Estructura temporal de tasas: spot y forward
+
+En mercados reales la tasa no es única para todos los plazos; existe una **curva de rendimientos**. La **tasa spot** $s_t$ es el rendimiento anualizado de una inversión que comienza ahora y termina en $t$. La **tasa forward** $f_{t_1,t_2}$ es la tasa pactada hoy para una operación entre $t_1$ y $t_2$. Por no arbitraje:
+
+$$(1 + s_{t_2})^{t_2} = (1 + s_{t_1})^{t_1}\,(1 + f_{t_1,t_2})^{t_2 - t_1}.$$
+
+La valuación de flujos irregulares debe realizarse descontando cada flujo con su tasa spot correspondiente, no con una única tasa promedio. La construcción de curvas de rendimiento (spot y forward) es fundamental para descontar flujos cuando no existe un mercado activo para el instrumento. La tasa spot a $n$ años es el promedio geométrico implícito de las tasas forward sucesivas.
+
+### Dinámica macroeconómica: Fisher, Keynes y la morfología de la curva de rendimientos
+
+Comprender por qué la curva de rendimientos cambia de forma (empinamiento, aplanamiento o inversión) requiere revisar la dialéctica de la teoría económica a principios del siglo XX.
+
+**La ecuación de Fisher y las expectativas de inflación (1896-1930).** **Irving Fisher** (1867–1947), en *Appreciation and Interest* (1896), *The Rate of Interest* (1907) y *The Theory of Interest* (1930), proporcionó la primera fundamentación coherente de por qué la curva cambia de forma. Observó que el prestamista racional exige compensación no solo por renunciar a la liquidez, sino por la **pérdida esperada de poder adquisitivo** durante el préstamo. Esto condujo a la **Ecuación de Fisher**:
+
+$$(1+i) = (1+r_{\mathrm{real}})(1+f),$$
+
+donde $i$ es la tasa nominal, $r_{\mathrm{real}}$ el rendimiento real neto de inflación y $f$ la tasa de inflación esperada. En tiempo continuo: $\delta_{\mathrm{nominal}} = \delta_{\mathrm{real}} + \delta_{\mathrm{inflación}}$. Fisher documentó que durante gran parte del siglo XIX la curva de rendimientos en EE. UU. estuvo **crónicamente invertida** (tasas cortas más altas que largas). Explicó que en una época de crecimiento con deflación persistente, los agentes anticipaban precios futuros más bajos, por lo que los prestatarios no estaban dispuestos a pagar tasas altas a largo plazo; la curva invertida era "normal" en ese entorno deflacionario. Esta base estableció la **Teoría de las Expectativas Puras**: las tasas a largo plazo (y las forward implícitas) son esencialmente un promedio geométrico de las tasas cortas esperadas.
+
+**La teoría de la preferencia por la liquidez de Keynes (1930-1936).** Tras la crisis de 1929 y la Gran Depresión, **John Maynard Keynes** argumentó en *A Treatise on Money* (1930) y *The General Theory of Employment, Interest and Money* (1936) que el interés no es solo el precio de la abstinencia del consumo, sino la **recompensa por desprenderse de la liquidez absoluta** (atesorar efectivo). Formalizó el concepto de **Prima de Liquidez**: dado que la incertidumbre y el riesgo aumentan con el horizonte temporal, los inversores adversos al riesgo exigen una prima adicional de rendimiento para inmovilizar capital en bonos a 10, 20 o 30 años frente a letras del tesoro a 3 meses. En entornos inflacionarios contemporáneos, la forma "normal" de la curva tiene pendiente positiva y ascendente.
+
+| Componente de la tasa de interés | Descripción e impacto histórico |
+|----------------------------------|----------------------------------|
+| **Tasa libre de riesgo** | Ancla del mercado (deuda soberana corto plazo); históricamente manipulada (p. ej. control de la curva por la Fed en los años 40 para financiar la guerra). |
+| **Prima por expectativas de inflación** | Descrita por Fisher; principio subyacente para productos indexados (UDI, UVR). |
+| **Prima de liquidez y riesgo de plazo** | Formalizada por Keynes; genera la pendiente ascendente de la curva. |
+
+El análisis se refinó con la capacidad computacional a finales del siglo XX: investigadores aplicaron **Análisis de Componentes Principales (PCA)** a series históricas de tasas y encontraron que más del 95% de la varianza en los movimientos diarios de la curva de EE. UU. se explica por tres factores: **Nivel** (desplazamientos paralelos), **Pendiente** (inversión o empinamiento) y **Curvatura** (movimientos tipo mariposa). Esta formalización es el fundamento de las estrategias de cobertura, inmunización y arbitraje avanzadas.
+
+| Plazo (años) | Tasa spot $s_t$ | Forward implícita $f_{t-1,t}$ |
+|--------------|-----------------|-------------------------------|
+| 1 | 3,00% | 3,00% |
+| 2 | 3,50% | 4,00% |
+| 3 | 3,80% | 4,40% |
+| 4 | 4,00% | 4,60% |
+
+## Valuación de bonos: precio básico y fórmula de Makeham
+
+Un bono es un instrumento de deuda a largo plazo. Su precio $P$ se determina descontando los cupones y el valor nominal (o de redención) a la tasa de rendimiento del mercado $i$. Si el bono paga cupón $Fr$ (nominal $\times$ tasa cupón) en cada periodo y redime por $C$ en $n$ periodos:
+
+$$P = Fr \cdot a_{\overline{n}|i} + C\,(1+i)^{-n}. \tag{3.bono}$$
+
+### William Makeham y la valuación analítica de bonos (1875)
+
+El estudio de la valuación de bonos constituye una sección crítica de este capítulo, y la **fórmula de Makeham** es una herramienta analítica indispensable. El actuario británico **William Matthew Makeham** (1826–1891) es conocido por haber refinado en 1860 la ley de mortalidad de Gompertz (ley de Gompertz-Makeham), introduciendo un término constante para el riesgo de mortalidad independiente de la edad. Su comprensión del cálculo continuo y las funciones de supervivencia lo posicionó como una de las mentes analíticas más formidables del siglo XIX. Las herramientas desarrolladas por el Institute of Actuaries para valorar rentas vitalicias —descuento riguroso de flujos a muy largo plazo afectados por probabilidades de supervivencia— se trasladaron casi intactas a la valoración de instrumentos de renta fija. En **1875**, Makeham publicó un trabajo seminal con una fórmula innovadora para la valuación de préstamos, bonos y anualidades que revolucionaría el análisis de los títulos de renta fija.
+
+**Descomposición matemática de la fórmula de Makeham.** La fórmula expresa el precio exacto del bono $P$ como:
+
+$$P = K + \frac{g}{i}(C - K),$$
+
+donde:
+
+- $C$ = valor de redención al vencimiento (frecuentemente el valor nominal).
+- $K = C \cdot v^n$ = valor presente del capital de redención descontado a la tasa de rendimiento efectiva del mercado $i$.
+- $g$ = tasa de cupón periódica (calculada sobre el capital de redención $C$).
+- $i$ = tasa de rendimiento efectiva periódica exigida por los inversores.
+
+El genio de la formulación radica en expresar el valor presente de la corriente de pagos en función directa del principal descontado ($K$), en lugar de sumar cupones individuales mediante el factor de anualidad $a_{\overline{n}|i}$.
+
+| Componente de valuación | Equivalencia en la lógica de Makeham | Perspectiva analítica |
+|-------------------------|--------------------------------------|------------------------|
+| Valor presente de cupones | $\frac{g}{i}(C - K)$ | Valor presente de una anualidad que modela el diferencial entre el interés que paga el bono ($g$) y el requerido por el mercado ($i$) sobre el capital no redimido. |
+| Valor presente del principal | $K$ | Núcleo del valor residual descontado, aislado del flujo de rentas. |
+| Prima o descuento | $(P - C)$ o $(C - P)$ | Si $g > i$, la fracción es mayor que 1 → precio con prima; si $g < i$, cotiza con descuento. |
+
+Makeham demostró que el precio del bono es equivalente al valor presente de su redención ($K$) más el valor presente de una perpetuidad ajustada que representa el interés adicional (o el déficit) que paga el instrumento respecto al rendimiento basal del mercado. A más de un siglo de su publicación, la fórmula sigue facilitando el análisis profundo de la renta fija y permite derivar expresiones de atajo para duración y convexidad en regímenes de costo amortizado y tasa de interés efectiva (TIE).
+
+**Precio sucio, precio limpio e interés acumulado.** Entre fechas de cupón, el comprador debe compensar al vendedor por la parte del cupón ya devengada. El **precio sucio** (dirty price) es el valor de mercado total que se paga; el **precio limpio** (flat price) es el precio sucio menos el interés acumulado desde el último pago de cupón. El cálculo exacto del interés acumulado depende de la convención de días (p. ej. Actual/Actual).
+
+**Aplicación en Venezuela: Deuda Pública Nacional y sensibilidad al riesgo país.** La resolución de problemas de interés en Venezuela encuentra un campo de aplicación directo en la valoración de los títulos de la **Deuda Pública Nacional (DPN)** y los bonos de corporaciones estatales como Petróleos de Venezuela (PDVSA). Como caso práctico puede considerarse la emisión **DPN-02 de abril de 2003**, destinada al financiamiento de programas de modernización educativa: el decreto estipula una estructura de amortización en lapsos semestrales con cupones trimestrales exentos de tributos nacionales. El desafío técnico para el estudiante es aplicar la ecuación de valor en una fecha focal específica, integrando el cálculo del **interés acumulado** para discernir entre **precio limpio** y **precio sucio** en las sesiones de la Bolsa de Valores de Caracas. Además, debe considerarse el concepto de **fuerza cancelatoria** de los bonos venezolanos: su uso al valor nominal para el pago de obligaciones tributarias representa una prima de valor extra-financiera que altera el rendimiento efectivo para el tenedor. La **duración de Macaulay** y la **convexidad** se presentan como defensas matemáticas frente a los choques en la percepción del riesgo país: el default selectivo de **2017** es un escenario real para analizar cómo el aumento drástico en las tasas de descuento desplomó el valor de mercado de los bonos soberanos y de PDVSA. El actuario debe poder modelar cómo un cambio en el nivel de las tasas forward afecta el valor presente de las reservas matemáticas de una aseguradora que posee estos títulos en su portafolio, conectando este capítulo con la gestión de activos y pasivos (ALM).
+
+## Unicidad de la tasa de rendimiento y raíces múltiples
+
+Cuando la incógnita es la tasa (p. ej. TIR), la ecuación de valor puede tener **múltiples soluciones reales o ninguna**. La regla de los signos de Descartes: el número máximo de raíces positivas reales de un polinomio es igual al número de cambios de signo en sus coeficientes. En proyectos con flujos negativos intermedios (grandes desembolsos, desmantelamientos) pueden aparecer varias tasas que igualan el VPN a cero, generando ambigüedad. Criterios de descarte: (1) **Método del saldo del proyecto:** exigir que el saldo insoluto sea siempre positivo (inversiones) o siempre negativo (préstamos) durante toda la vida para garantizar una TIR única. (2) **Tasa de reinversión externa:** los flujos intermedios no siempre se reinvierten a la misma TIR, lo que vincula con finanzas corporativas.
+
+| Patrón de flujos | Cambios de signo | ¿TIR única garantizada? |
+|------------------|------------------|-------------------------|
+| $(-100, 50, 60, 70)$ | 1 | Sí |
+| $(-100, 150, -60)$ | 2 | Posibles 2 soluciones |
+| $(100, -200, 101)$ | 2 | Posibles 2 soluciones |
+
+## Modelado económico: equilibrio de mercado y punto de equilibrio financiero
+
+La tasa de interés es el **precio de equilibrio** que iguala la oferta de fondos (ahorro) con la demanda (inversión). Un aumento en la tasa desplaza el **punto de equilibrio financiero** de una empresa hacia arriba: se exige un volumen de ventas mayor para cubrir costos fijos y servicio de la deuda. La fórmula del punto de equilibrio financiero ($x_{BE}$) integra el interés:
+
+$$x_{BE} = \frac{CF + \text{Interés}}{P - CV},$$
+
+donde $CF$ son costos fijos, $P$ precio unitario y $CV$ costo variable unitario. Ignorar el componente financiero lleva a decisiones de producción erróneas que comprometen la solvencia.
+
+## Saldo promedio diario (SPD) y tarjetas de crédito
+
+El **método del saldo promedio diario (SPD)** es el estándar bancario para cargos financieros en tarjetas de crédito. El SPD se obtiene sumando el saldo insoluto al cierre de cada día del periodo de facturación y dividiendo entre el número de días. El interés del periodo ($I$) es:
+
+$$I = (\mathrm{SPD}) \cdot \frac{i}{360} \cdot n,$$
+
+con $i$ tasa nominal anual y $n$ días del ciclo. El **timing** del pago es crítico: un pago al inicio del ciclo reduce el SPD mucho más que el mismo pago al final. El modelado de "pagos mínimos" muestra cómo la capitalización de intereses no pagados puede llevar a una espiral de deuda (anatocismo).
+
+## Indexación y unidades de valor (UDI, UVR) en amortización
+
+En economías con historial inflacionario, las operaciones de largo plazo suelen pactarse en **unidades de cuenta indexadas** (UDI en México, UVR en Colombia). La indexación traslada el riesgo de inflación al deudor, manteniendo una tasa real constante; el valor en moneda local puede crecer aceleradamente si la inflación se dispara. El modelado requiere: (1) calcular la cuota nivelada en la unidad indexada; (2) proyectar el valor futuro de la unidad según expectativas de inflación; (3) convertir cada cuota y saldo a moneda local para el flujo de caja del deudor. Así se explica por qué el saldo nominal de una hipoteca indexada puede aumentar a pesar de realizar pagos mensuales.
+
+## Inmunización actuarial: estrategia de Redington
+
+La **inmunización** busca proteger el valor neto (superávit) de una institución ante cambios en las tasas de interés. A principios de la década de 1950, las grandes compañías de seguros de vida británicas enfrentaban un grave **desajuste de plazos** entre activos y pasivos (Asset-Liability Mismatch): pasivos rígidos a muy largo plazo (pólizas de vida entera, rentas vitalicias) y activos en bonos con vencimientos dispares. Un cambio repentino en la estructura de tasas podía colapsar el valor de los activos más rápido que el de los pasivos, destruyendo el superávit y amenazando la solvencia.
+
+En **1952**, **Frank Mitchell Redington** (1906–1984), Jefe Actuario de la Prudential en Londres, presentó ante el Institute of Actuaries el artículo fundacional "Review of the Principles of Life-Office Valuations". Redington abordó matemáticamente el problema de la **estabilización del superávit** y bautizó el objetivo como **inmunización**: invertir los activos de tal manera que el negocio existente fuera inmune a un cambio general y paralelo en la tasa de interés de mercado. El impacto fue tan profundo que su presentación fue descrita como "un rayo caído del cielo" y "lo más parecido a una revelación religiosa en el rol de actuario".
+
+**Fundamentos matemáticos de la inmunización.** Definiendo el superávit como $S(i) = V_A(i) - V_L(i)$ (valor presente de activos menos pasivos en función de la tasa), Redington buscaba $\Delta S \ge 0$ ante shocks de tasas. Aplicando la expansión en series de Taylor a la función de valor presente del superávit, estipuló **tres condiciones necesarias y suficientes** para inmunización frente a pequeños shocks paralelos:
+
+1. **Igualdad de valores presentes (solvencia base):** $V_A \ge V_L$ en el punto de partida.
+2. **Igualdad de duraciones (protección de primera derivada):** $D_A = D_L$, de modo que $S'(i) = 0$ y se neutralice el riesgo de primer orden.
+3. **Dispersión de convexidad (protección de segunda derivada):** $C_A > C_L$, de modo que $S''(i) > 0$; ante grandes variaciones de la tasa, el valor de los activos caiga más lentamente o suba más rápido que el de los pasivos, protegiendo el capital.
+
+En el mismo año (1952), A.J. Haynes y R.J. Kirton publicaron un trabajo independiente bajo el término "insulation" (aislamiento), enfocado en el **cash-flow matching** (emparejamiento exacto de flujos fecha por fecha, o dedicación estricta). Redington abordó el problema desde la teoría de valoración analítica macro, permitiendo mayor flexibilidad táctica y abriendo la puerta al **Liability Driven Investment (LDI)** contemporáneo. La limitación histórica del modelo clásico de Redington es que asume una curva de rendimientos plana y cambios exclusivamente paralelos; si la curva se invierte o se empina de forma asimétrica, la inmunización puede fallar. Modelos estocásticos multifactoriales posteriores generalizan la inmunización para curvas dinámicas (véase Perspectivas 2026).
+
+## Penalizaciones por retiro anticipado y arbitraje en depósitos
+
+En depósitos a plazo (certificados, CD), las cláusulas de **penalización** por retiro anticipado reducen el rendimiento efectivo. Dos opciones para el inversionista: (1) **Permanencia:** mantener el capital hasta el vencimiento y recibir el interés pactado. (2) **Salida y reinversión (arbitraje):** retirar, asumir la penalización (reducción de tasa o pérdida de intereses de últimos periodos) y reinvertir el remanente en una alternativa con tasa superior. El retiro anticipado solo es racional si la tasa de mercado actual ha subido lo suficiente para compensar la pérdida por penalización en el horizonte restante. Este enfoque vincula las matemáticas financieras con la teoría de incentivos y el arbitraje.
+
+## Fuerza de interés y modelado de crecimiento continuo
+
+La **fuerza de interés** $\delta$ representa la intensidad instantánea de crecimiento del capital; es el límite cuando la frecuencia de capitalización tiende a infinito (véase Capítulo 1). El monto acumulado bajo fuerza variable $\delta_s$ es:
+
+$$A(t) = C \cdot \exp\left(\int_0^t \delta_s\,ds\right).$$
+
+Si $\delta$ es constante: $\delta = \ln(1+i)$. El modelado continuo simplifica los cálculos en seguros de vida y derivados donde los flujos pueden ocurrir en cualquier instante. Introduce el uso del cálculo diferencial e integral aplicado a las finanzas.
+
+## Valuación de swaps de tasas de interés
+
+Un **interest rate swap (IRS)** es un contrato donde dos partes intercambian flujos de intereses: una paga tasa fija y la otra tasa variable (TIIE, LIBOR, etc.) sobre un capital nocional. La **tasa de swap** $R$ es la que hace que el valor presente del contrato sea cero en la firma. Fórmula simplificada con factores de descuento $P(t_k)$ basados en las tasas spot:
+
+$$R = \frac{1 - P(t_n)}{\sum_{k=1}^n P(t_k)}.$$
+
+A diferencia de bonos, préstamos y anualidades cuyas matemáticas existen desde hace siglos, los **contratos de swap** son instrumentos sintéticos que no existían de manera formalizada y estandarizada antes de la década de 1980. Su creación alteró irreversiblemente la ingeniería financiera.
+
+### El swap IBM–Banco Mundial (1981): nacimiento del mercado global de derivados
+
+El contexto fue la **estanflación** de finales de los años setenta. Para quebrar la inflación de dos dígitos en EE. UU., el presidente de la Fed **Paul Volcker** elevó las tasas de interés a niveles récord (tasa de fondos federales por encima del 16% hacia 1981). En Europa, las tasas eran sustancialmente más bajas (p. ej. 6–8% en franco suizo y marco alemán).
+
+**El dilema del Banco Mundial.** El Banco Internacional de Reconstrucción y Fomento (BIRF) necesitaba captar fondos a tasas reducidas para prestar a países en desarrollo. Los mercados de Suiza y Alemania ofrecían tasas favorables (6–8%) frente al 16–17% en dólares, pero el Banco había alcanzado el **límite regulatorio** de endeudamiento permitido por los gobiernos suizo y alemán y no podía emitir más bonos en CHF o DEM.
+
+**La exposición de IBM.** Años antes, IBM había emitido deuda en francos suizos y marcos alemanes para financiar su expansión internacional. Tras la subida de tasas en EE. UU., el dólar se apreció fuertemente frente a las divisas europeas. IBM generaba ingresos principalmente en dólares pero sus pasivos eran en moneda europea; estaba expuesta a un **riesgo cambiario y de repreciación** masivo. Deseaba convertir sus pasivos en CHF y DEM a obligaciones en dólares para alinear la moneda de los pasivos con la de sus ingresos.
+
+**La solución de Salomon Brothers (11 de agosto de 1981).** Un equipo de banqueros de inversión estructuró el **primer contrato formal de swap de divisas y tasas de interés** registrado. Arquitectura: (1) El Banco Mundial emitió un bono por 290 millones de dólares en el mercado estadounidense (donde no tenía restricciones). (2) IBM y el Banco Mundial celebraron un contrato por el cual IBM asumió el servicio completo de la deuda en dólares del nuevo bono del Banco. (3) A cambio, el Banco Mundial asumió el servicio de la deuda preexistente de IBM en CHF y DEM, transfiriendo los fondos para que IBM pagara a sus acreedores europeos.
+
+| Elemento del swap (agosto 1981) | Beneficio para el Banco Mundial | Beneficio para IBM |
+|----------------------------------|----------------------------------|---------------------|
+| Posición de moneda efectiva | Liquidez operativa en CHF y DEM | Obligaciones convertidas a USD |
+| Problema resuelto | Superó los topes legales de endeudamiento en Suiza y Alemania | Mitigó la exposición al riesgo cambiario; alineó pasivos con ingresos operativos |
+| Eficiencia de costos | Redujo el costo efectivo de financiamiento (del ~16% en USD al ~8,9% en divisas sintéticas) | Fijó deuda predecible en USD y materializó ganancias por la apreciación del dólar |
+
+Este hito demostró que las matemáticas del descuento, la TIR y la equivalencia temporal no solo valoran pasivamente la deuda, sino que pueden emplearse para **arbitrar ineficiencias globales** en los mercados de capitales. De una operación aislada de 290 millones de dólares en 1981, el mercado OTC de derivados de tasas y divisas se expandiría a centenas de billones de dólares de valor nocional, cimentando el andamiaje del sistema financiero global interconectado.
+
+## Fondos de jubilación y anualidades crecientes
+
+Los aportes para el retiro (Afores, fondos privados) suelen crecer con el salario, el cual evoluciona geométricamente por inflación o méritos. Se modelan como **anualidades en progresión geométrica**. Si $P$ es el primer aporte, $g$ la tasa de crecimiento salarial e $i$ la tasa de rendimiento del fondo, el valor acumulado $M$ tras $n$ periodos es:
+
+$$M = P \cdot \frac{(1+i)^n - (1+g)^n}{i - g}.$$
+
+El factor $g$ actúa como palanca del saldo final; la sensibilidad ante $i$ es extrema por el horizonte largo (30–40 años). Esta sección permite planificar el retiro evaluando el impacto de comisiones y beneficios fiscales en el monto final acumulado.
+
+## Recomendaciones estratégicas para la edición
+
+- **Terminología:** Utilizar de forma consistente "costo amortizado" y "tasa de interés efectiva (TIE)" en los problemas de valoración de activos y pasivos.
+- **Rigor en medidas de riesgo:** No calcular un precio sin considerar su duración o convexidad; presentar el interés como factor de volatilidad del valor, no solo como costo de capital.
+- **Instrumental técnico:** Fomentar el uso de calculadora financiera y hojas de cálculo con funciones actuariales, vinculándolas siempre con la teoría subyacente para evitar el "efecto caja negra".
+- **Contextualización:** Nutrir los ejercicios con datos reales (UDI, UVR, TIIE, LIBOR) para que el lector reconozca la aplicabilidad inmediata en su entorno profesional.

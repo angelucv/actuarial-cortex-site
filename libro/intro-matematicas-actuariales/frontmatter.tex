@@ -1,0 +1,117 @@
+% Front matter: portada, segunda portada, créditos, autores, agradecimientos
+% Mismo estilo que Financieras: página 1 = imagen de fondo a sangre (luego se insertan logo y título);
+% página 2 = fondo blanco, título, autores, logo Ediciones CVEA, EECA/UCV.
+
+\pagestyle{empty}
+
+% ----- Página 1: Portada (imagen compuesta: fondo verde + logo horizontal grande + Ediciones CVEA) -----
+\newgeometry{left=0pt,right=0pt,top=0pt,bottom=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\noindent
+\IfFileExists{portada-final.png}{%
+  \includegraphics[width=1.02\paperwidth,height=1.02\paperheight,keepaspectratio]{portada-final.png}%
+}{\IfFileExists{portada-actuariales-propuesta.png}{%
+  \includegraphics[width=1.02\paperwidth,height=1.02\paperheight,keepaspectratio]{portada-actuariales-propuesta.png}%
+}{%
+  \begin{center}
+  \vspace*{3cm}
+  {\Huge\bfseries Introducción a las Matemáticas Actuariales}\\[1.5em]
+  {\Large Material docente --- Matemáticas Actuariales I}\\[2cm]
+  {\large Prof. Felipe Moreno \quad Prof. Jorge Días \quad Prof. Angel Colmenares}\\[1em]
+  {\large CVEA / EECA-UCV}
+  \end{center}
+}}
+\newpage
+\restoregeometry
+
+% ----- Página 2: Segunda portada (interior, fondo blanco) -----
+\thispagestyle{empty}
+\vspace*{1.2cm}
+\begin{center}
+{\Huge\bfseries Introducción}\\[0.6em]
+{\Huge\bfseries a las Matemáticas Actuariales}\\[1.5em]
+{\Large Material docente --- Matemáticas Actuariales I}\\[1.8cm]
+{\Large
+Prof. Felipe Moreno\\
+Prof. Jorge Días\\
+Prof. Angel Colmenares}\\[2.2cm]
+\IfFileExists{assets/logos/Ediciones_CVEA_Logo_BN.png}{%
+  \includegraphics[width=0.5\textwidth,keepaspectratio]{assets/logos/Ediciones_CVEA_Logo_BN.png}\\[1.2cm]
+}{\IfFileExists{Ediciones_CVEA_Logo_BN.png}{%
+  \includegraphics[width=0.5\textwidth,keepaspectratio]{Ediciones_CVEA_Logo_BN.png}\\[1.2cm]
+}{}}
+{\Huge\bfseries Ediciones CVEA}
+\end{center}
+\vfill
+\begin{center}
+{\large
+Escuela de Estadística y Ciencias Actuariales (EECA)\\[0.4em]
+Universidad Central de Venezuela (UCV)}
+\end{center}
+\vspace{1.5cm}
+\newpage
+
+% ----- Página 3: Créditos / Derechos reservados -----
+\thispagestyle{empty}
+\vspace*{1.5cm}
+\begin{center}
+\textbf{Introducción a las Matemáticas Actuariales}\\
+Material docente --- Matemáticas Actuariales I\\[1cm]
+Primera edición\\[2cm]
+\end{center}
+
+Prohibida la reproducción total o parcial de esta obra, por cualquier medio, sin la autorización escrita del editor.
+
+\vspace{1em}
+\textbf{DERECHOS RESERVADOS} \copyright\ \the\year, respecto de la primera edición por\\
+\textbf{Ediciones CVEA}\\
+Centro Venezolano de Estudios Actuariales (CVEA)\\
+Escuela de Estadística y Ciencias Actuariales (EECA)\\
+Universidad Central de Venezuela
+
+\vspace{0.8em}
+Av. Los Ilustres, Los Chaguaramos\\
+Caracas 1040, Venezuela
+
+\vspace{0.5em}
+\textit{Primera edición}\\
+ISBN: 978-XXX-XXX-XXX-X (por asignar)
+
+\vspace{1em}
+\small
+Impreso en Venezuela \textit{/} Printed in Venezuela
+
+\vfill
+\newpage
+
+% ----- Página 4: Sobre esta obra (tributo y reconocimientos) -----
+\thispagestyle{empty}
+\vspace*{1.2cm}
+\begin{center}
+{\LARGE\bfseries Sobre esta obra}
+\end{center}
+\vspace{1.2cm}
+
+Este material es la \textbf{Introducción a las Matemáticas Actuariales} (Matemáticas Actuariales I), desarrollada en el marco del Centro Venezolano de Estudios Actuariales (CVEA) y la Escuela de Estadística y Ciencias Actuariales (EECA) de la Universidad Central de Venezuela. El contenido base proviene del curso \textit{Matemáticas Actuariales I} (período lectivo II-2024). Se asume como prerrequisito el libro \textit{Introducción a las Matemáticas Financieras} (Ediciones CVEA).
+
+\vspace{1em}
+\textbf{Reconocimiento al Prof. Felipe Moreno.} Este libro es un reconocimiento y un tributo al \textbf{Profesor Felipe Moreno}, por parte del \textbf{Centro Venezolano de Estudios Actuariales (CVEA)} y de los profesores \textbf{Jorge Días} y \textbf{Angel Colmenares}, compiladores de este material y en su momento alumnos del Prof. Moreno. El Prof. Felipe Moreno se graduó como actuario en 1990 y poco después inició su labor docente en la EECA-UCV. A lo largo de más de tres décadas ha formado a generaciones de actuarios con una exigencia y un rigor en la materia que siempre lo han caracterizado. Hoy, próximo a su jubilación, este texto busca recoger y preservar parte de su conocimiento y de su manera de enseñar las matemáticas actuariales: la claridad en los conceptos, el encadenamiento lógico de los temas y la alta exigencia que ha marcado a sus alumnos. Con esta obra, el CVEA y los profesores Días y Colmenares le expresan su gratitud y su reconocimiento por tantos años de intensa labor al servicio de la formación actuarial en Venezuela.
+
+\vfill
+\newpage
+
+% ----- Página 5: Agradecimientos -----
+\thispagestyle{empty}
+\vspace*{1.5cm}
+\begin{center}
+{\large\bfseries Agradecimientos}
+\end{center}
+\vspace{1.5cm}
+
+El CVEA agradece a la Escuela de Estadística y Ciencias Actuariales (EECA) de la Universidad Central de Venezuela por el apoyo institucional para la elaboración de este material docente y a los profesores y estudiantes cuyas observaciones enriquecen el proyecto.
+
+\vfill
+\newpage
+\pagestyle{plain}
+\let\cleardoublepage\savedcleardoublepage

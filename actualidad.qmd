@@ -1,0 +1,112 @@
+---
+title: "Actualidad"
+subtitle: "Noticias, eventos y editorial"
+toc: true
+---
+
+Sección de **comunicación dinámica** de Actuarial Cortex: noticias del sector, eventos académicos y notificaciones.
+
+## Novedades {#novedades}
+
+Últimas incorporaciones al sitio: nuevos artículos, libros publicados, cursos o secciones y noticias.
+
+| Fecha | Tipo | Novedad | Enlace |
+|-------|------|---------|--------|
+| — | — | Sin novedades recientes. | — |
+
+## Noticias del sector en tiempo real {#noticias-tiempo-real}
+
+### Titulares recientes (seguros y actuarial)
+
+Las siguientes noticias se obtienen del feed de Google Noticias en cada compilación de la página. Fuente: búsqueda «seguros» y «actuarial».
+
+```{r}
+#| label: noticias-google-rss
+#| echo: false
+#| results: asis
+#| cache: false
+url_rss <- "https://news.google.com/rss/search?q=seguros+actuarial&hl=es"
+tryCatch({
+  xml <- xml2::read_xml(
+    url_rss,
+    options = c("NOBLANKS", "NOCDATA"),
+    user_agent = "Mozilla/5.0 (compatible; ActuarialCortex/1.0)"
+  )
+  items <- xml2::xml_find_all(xml, "//item")[1:min(10, length(xml2::xml_find_all(xml, "//item")))]
+  if (length(items) == 0) stop("No items")
+  cat('<ul class="list-unstyled noticias-feed">\n')
+  for (it in items) {
+    title <- xml2::xml_text(xml2::xml_find_first(it, "title"))
+    link  <- xml2::xml_text(xml2::xml_find_first(it, "link"))
+    date  <- xml2::xml_text(xml2::xml_find_first(it, "pubDate"))
+    if (is.na(link)) link <- ""
+    if (is.na(date)) date <- ""
+    if (nchar(date) > 0) date <- paste0(" <small class=\"text-muted\">", date, "</small>")
+    cat(sprintf('  <li class="mb-2"><a href="%s" target="_blank" rel="noopener">%s</a>%s</li>\n',
+                link, title, date))
+  }
+  cat('</ul>\n')
+  cat('<p class="small text-muted">Más resultados en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
+}, error = function(e) {
+  cat('<p class="text-muted">No se pudieron cargar titulares en este momento. Ver en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
+})
+```
+
+### Enlaces a fuentes
+
+Enlaces a portales de noticias y actualidad del mundo actuarial y asegurador. Abre los enlaces para ver titulares y noticias actualizadas.
+
+| Fuente | Enlace | Descripción |
+|--------|--------|-------------|
+| **SOA — News & Publications** | [soa.org/news-and-publications](https://www.soa.org/news-and-publications/) | Noticias, investigaciones y comunicados de la Society of Actuaries. |
+| **CAS — News & Updates** | [casact.org/news](https://www.casact.org/news) | Actualidad de la Casualty Actuarial Society (seguros de no vida). |
+| **IAA — News** | [actuaries.org/news](https://www.actuaries.org/News) | Noticias de la International Actuarial Association. |
+| **The Actuary (IFoA)** | [theactuary.com](https://www.theactuary.com/) | Revista y noticias del Instituto de Actuarios del Reino Unido. |
+| **Google Noticias — búsqueda "actuarial"** | [news.google.com](https://news.google.com/search?q=actuarial&hl=es) | Titulares recientes que mencionan temas actuariales. |
+| **Google Noticias — búsqueda "seguros"** | [news.google.com](https://news.google.com/search?q=seguros&hl=es) | Noticias del sector asegurador. |
+
+## Revistas e instancias de referencia
+
+Enlaces a revistas e instancias de interés para la comunidad actuarial y estadística:
+
+**Revistas y publicaciones**
+
+- [Anales del Instituto de Actuarios Españoles](https://revistas.actuarios.org/) — Principal publicación científica en español en ciencia actuarial (JCR, FECYT).
+- [Society of Actuaries (SOA)](https://www.soa.org/) — Publicaciones, investigación y certificación (EE. UU. e internacional).
+- [Casualty Actuarial Society (CAS)](https://www.casact.org/) — Seguros de no vida y riesgo operacional.
+- [International Actuarial Association (IAA)](https://www.actuaries.org/) — Asociación internacional de actuarios.
+- [ASTIN Bulletin](https://www.cambridge.org/core/journals/astin-bulletin) — Revista del Comité ASTIN (IAE).
+
+**Repositorios e información sectorial**
+
+- [FASECOLDA — Biblioteca](https://biblioteca.fasecolda.com/) — Catálogo y recursos del sector asegurador colombiano (referencia regional).
+- [IVSS](https://www.ivss.gob.ve/) — Instituto Venezolano de los Seguros Sociales.
+- [Sudeaseg](https://www.sudeaseg.gob.ve/) — Superintendencia de la Actividad Aseguradora (Venezuela).
+
+**Tendencias e insurtech**
+
+- [China Insurtech (HTML)](Referencias/Recursos_HTML/China_Insurtech.html) — Exploración de tendencias y modelos de negocio insurtech en Asia.
+
+## Calendario de eventos {#calendario}
+
+Calendario para **eventos organizados o coorganizados por Actuarial Cortex**: defensas de TFPG, seminarios, conferencias y ofertas de formación. Las fechas se irán actualizando aquí.
+
+| Fecha | Evento | Lugar / modalidad |
+|-------|--------|-------------------|
+| *Por definir* | Próximas defensas TFPG (Vol. II y III) | UCV / por anunciar |
+| *Por definir* | Webinars y cursos (Series de Tiempo, módulos R/Python) | [Cursos](docencia/index.qmd#cursos) |
+
+Para proponer un evento: [Contacto](contacto.qmd).
+
+## Noticias y blog
+
+Artículos de opinión técnica y análisis de coyuntura económica y actuarial.
+
+## Editorial (Notificaciones)
+
+- **Call for Papers:** [Resources — Materiales académicos](resources/index.qmd) mantiene convocatoria abierta para manuscritos con revisión por pares.
+- **Actualizaciones:** nuevas publicaciones, volúmenes y libros se anunciarán en esta sección y en la página de Resources.
+
+---
+
+Para proponer noticias o eventos: [Contacto](contacto.qmd).

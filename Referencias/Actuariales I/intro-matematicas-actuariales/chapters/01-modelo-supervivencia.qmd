@@ -1,0 +1,543 @@
+---
+number: false
+---
+
+# Modelo de supervivencia {#cap-modelo-supervivencia .unnumbered .unlisted}
+
+La Parte I del libro establece los fundamentos probabilísticos y demográficos necesarios para valorar beneficios contingentes a la supervivencia o a la muerte. En este capítulo se introduce el **modelo de supervivencia**: la edad de fallecimiento (o, de forma equivalente, el tiempo futuro de vida) se modela como una variable aleatoria, y se definen la función de supervivencia y las probabilidades básicas que utilizarán los capítulos siguientes. La exposición sigue el enfoque clásico de los textos de contingencias de vida (Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]).
+
+Neill [@neill1977] subraya que las contingencias de vida son una aplicación de la matemática al estudio de pagos que dependen de la **supervivencia** o de la **muerte** de personas, y que tales cálculos —que suelen incluir tanto la mortalidad como el interés compuesto— son fundamentales para el actuario y se requieren en seguros de vida, fondos de pensiones y mutualidades. Al igual que en el interés se adoptan hipótesis sobre la tasa futura y se trabaja con tablas de funciones financieras, en contingencias de vida se adoptan hipótesis sobre la **mortalidad futura** y se trabaja con tablas de funciones basadas en esa mortalidad. La **tabla de mortalidad** (o tabla de vida) contiene en su forma básica las funciones que no involucran interés; las que combinan mortalidad e interés se verán a partir de la Parte II.
+
+## Tiempo futuro de vida
+
+Consideremos una persona que ha alcanzado la edad $x$ (entera). El **tiempo futuro de vida** es el tiempo que transcurre desde la edad $x$ hasta el fallecimiento. Puede medirse de dos maneras:
+
+- **Tiempo futuro de vida completo** (o *continuous future lifetime*): variable aleatoria $T_x$ (o $T(x)$), que representa el número de años completos **y fracción** de año vividos después de $x$. Se supone que $T_x \geq 0$ y que existe una edad límite $\omega$ tal que $T_x \leq \omega - x$.
+- **Tiempo futuro de vida curta** (o *curtate future lifetime*): variable aleatoria $K_x$ (o $K(x)$), que representa el **número entero** de años completos vividos después de $x$. Es decir, $K_x = \lfloor T_x \rfloor$ (parte entera de $T_x$). Así, $K_x$ toma valores en $\{0, 1, 2, \ldots, \omega - x - 1\}$.
+
+En la notación actuarial, $(x)$ denota una vida de edad $x$; por ejemplo, «el beneficio se paga si $(x)$ sobrevive $n$ años» significa que el pago depende de que $T_x > n$ (o, en versión discreta, $K_x \geq n$).
+
+## Función de supervivencia
+
+La **función de supervivencia** (o *survival function*) $S(x)$ representa la probabilidad de que un recién nacido sobreviva al menos hasta la edad $x$. Por tanto, $S(0) = 1$ y $S(x)$ es no creciente. En muchos desarrollos se supone que $S$ es derivable y que existe una edad límite $\omega$ con $S(\omega) = 0$.
+
+La probabilidad de que $(x)$ sobreviva al menos $t$ años más es la probabilidad condicional de sobrevivir hasta $x+t$ dado que se ha alcanzado $x$:
+
+$${}_tp_x = \mathbb{P}(T_x > t) = \mathbb{P}(\text{supervivencia al menos } t \text{ años desde } x) = \frac{S(x+t)}{S(x)}.$$
+
+En particular, $p_x = {}_1p_x = S(x+1)/S(x)$ es la probabilidad de que $(x)$ sobreviva un año. La probabilidad de que $(x)$ fallezca antes de cumplir $x+t$ es:
+
+$${}_tq_x = 1 - {}_tp_x = \mathbb{P}(T_x \leq t).$$
+
+Cuando $t=1$ se escribe $q_x = {}_1q_x$. Se usan también las notaciones *deferidas*: ${}_{n|m}q_x$ denota la probabilidad de que $(x)$ sobreviva $n$ años y fallezca en los siguientes $m$ años, es decir ${}_{n|m}q_x = {}_np_x \cdot {}_mq_{x+n} = {}_np_x - {}_{n+m}p_x$.
+
+## Función de distribución del tiempo futuro de vida
+
+La función de distribución de $T_x$ es $F_{T_x}(t) = {}_tq_x$ para $t \geq 0$. Si existe densidad $f_{T_x}(t)$, entonces:
+
+$$f_{T_x}(t) = \frac{d}{dt}\,{}_tq_x = -\frac{d}{dt}\,{}_tp_x.$$
+
+Más adelante se relacionará esta densidad con la **fuerza de mortalidad** $\mu_{x+t}$. La distribución de la vida curta $K_x$ es discreta: $\mathbb{P}(K_x = k) = {}_kp_x\,q_{x+k} = {}_{k+1}q_x - {}_kq_x$ para $k = 0, 1, 2, \ldots$.
+
+### Notación probabilística y actuarial (Weishaus)
+
+En la literatura se usan dos estilos: **notación probabilística** (argumentos entre paréntesis, p. ej. $F_x(t)$, $S_x(t)$) y **notación actuarial** (subíndices y presubíndices: ${}_tp_x$, ${}_tq_x$, ${}_{u|t}q_x$) [@weishaus2013]. La equivalencia es:
+
+- ${}_tp_x = S_x(t) = \mathbb{P}(T_x > t)$ (supervivencia al menos $t$ años desde $x$).
+- ${}_tq_x = F_x(t) = \mathbb{P}(T_x \leq t)$ (fallecimiento antes de $t$ años).
+- ${}_{u|t}q_x$: probabilidad de que $(x)$ sobreviva $u$ años y fallezca en los siguientes $t$ años; ${}_{u|t}q_x = S_x(u) - S_x(u+t) = {}_uq_x - {}_{u+t}q_x = {}_up_x \cdot {}_tq_{x+u}$.
+
+Una **función de supervivencia** $S_x(t)$ debe cumplir: $S_x(0)=1$; ser no creciente en $t$; $\lim_{t\to\infty} S_x(t)=0$. Además suele suponerse diferenciable (salvo en un número finito de puntos) para definir la densidad. Una relación fundamental es:
+
+$${}_tp_x \cdot {}_up_{x+t} = {}_{t+u}p_x;$$
+
+es decir, la probabilidad de que $(x)$ sobreviva $t+u$ años es el producto de que sobreviva $t$ años y que $(x+t)$ sobreviva otros $u$ años. Con $x=0$ y notando $S_0$ la supervivencia desde el nacimiento: $S_x(t) = S_0(x+t)/S_0(x)$ [@weishaus2013].
+
+## Hipótesis y convenciones
+
+En el modelo determinístico de contingencias de vida que se utiliza en este libro se supone que las probabilidades de muerte y supervivencia están dadas por una **tabla de mortalidad** (o por una función de supervivencia $S$ o una fuerza de mortalidad $\mu$). No se modela la incertidumbre sobre la tabla misma (enfoque estocástico de la mortalidad). Además, se trabaja con edades enteras $x$ y, cuando hace falta, con hipótesis de distribución de muertes dentro del año (por ejemplo, distribución uniforme) para edades fraccionarias.
+
+En el siguiente capítulo se introduce la **fuerza de mortalidad** $\mu_x$, que caracteriza la intensidad instantánea de fallecimiento y permite vincular $S$, $p_x$, $q_x$ y las tablas de mortalidad de forma coherente.
+
+::: {.callout-note}
+## Nota histórica: Los orígenes del modelo de supervivencia
+
+La idea de modelar el tiempo futuro de vida como una variable aleatoria y de tabular «proporciones de vivos» por edad tiene sus raíces en el siglo XVII. **John Graunt** (1662) [@graunt1662] estimó las primeras tablas de supervivencia a partir de registros de defunciones en Londres. **Edmond Halley** (1693) [@halley1693] utilizó datos de Breslavia para construir una tabla de vida y valorar rentas vitalicias con descuento financiero, sentando las bases del valor presente actuarial. La notación moderna con $T_x$, $K_x$, ${}_tp_x$ y ${}_tq_x$ hereda el espíritu de aquellos cálculos: la probabilidad de supervivencia o de fallecimiento en un horizonte dado es el núcleo sobre el que se construyen primas y reservas en los capítulos posteriores.
+:::
+
+---
+
+## Ejercicios
+
+### Ejercicios resueltos
+
+**1. Interpretación de $T_x$, $K_x$ y probabilidades (Jordan/Neill)**  
+Para una vida de edad $x$, (a) ¿Qué representa $K_x = 3$? (b) Escribir en notación estándar la probabilidad de que $(x)$ sobreviva al menos 5 años y fallezca antes de cumplir 8 años desde $x$.  
+**Solución.**
+
+- **(a)** $K_x$ es el número entero de años completos vividos después de la edad $x$: $K_x = \lfloor T_x \rfloor$. Si $K_x = 3$, la persona vivió 3 años completos tras $x$ y falleció en el cuarto año → $3 \leq T_x < 4$.
+- **(b)** Suceso: «sobrevive al menos 5 años y fallece antes de 8» = ${}_{5|3}q_x$. Por definición: ${}_{5|3}q_x = {}_5p_x \cdot {}_3q_{x+5}$. Con ${}_3q_{x+5} = 1 - {}_3p_{x+5}$ y ${}_5p_x \cdot {}_3p_{x+5} = {}_8p_x$ queda ${}_{5|3}q_x = {}_5p_x - {}_8p_x$.
+
+**2. Función de supervivencia y $p_x$ (elemental)**  
+Si $S(30)=0{,}98$ y $S(31)=0{,}975$, hallar la probabilidad de que (30) sobreviva un año.  
+**Solución.**
+
+- Probabilidad pedida: ${}_1p_{30} = p_{30}$.
+- Fórmula: $p_x = S(x+1)/S(x)$.
+- Sustituyendo: $p_{30} = S(31)/S(30) = 0{,}975/0{,}98 = 0{,}9949$ (99,49\%).
+
+
+**3. Relación ${}_tp_x \cdot {}_up_{x+t} = {}_{t+u}p_x$ (Weishaus)**  
+Comprobar que la probabilidad de que (40) sobreviva 10 años es el producto de que sobreviva 4 años y que (44) sobreviva 6 años.  
+**Solución.**
+
+- Relación: ${}_tp_x \cdot {}_up_{x+t} = {}_{t+u}p_x$.
+- Con $t=4$, $u=6$: ${}_{10}p_{40} = {}_4p_{40} \cdot {}_6p_{44}$ (dos etapas: sobrevivir 4 años y luego 6 más).
+
+**4. Expresión de $\mathbb{P}(K_x = k)$**    
+Escribir $\mathbb{P}(K_x = 2)$ en notación actuarial.  
+**Solución.** $K_x = 2$ significa que la persona fallece en el tercer año (entre las edades $x+2$ y $x+3$). Para ello debe sobrevivir 2 años completos y luego fallecer en el año siguiente: $\mathbb{P}(K_x = 2) = {}_2p_x \cdot q_{x+2}$. Equivalentemente, es la probabilidad de fallecer antes de 3 años menos la de fallecer antes de 2: $\mathbb{P}(K_x = 2) = {}_3q_x - {}_2q_x$.
+
+**5. Probabilidad diferida ${}_{n|m}q_x$**  
+Interpretar ${}_{2|5}q_{50}$ y expresarla como diferencia de supervivencias.  
+**Solución.** ${}_{2|5}q_{50}$ es la probabilidad de que (50) sobreviva 2 años y fallezca en los 5 años siguientes (es decir, entre las edades 52 y 57). Interpretación: «sobrevive hasta 52 y luego fallece antes de 57». En fórmula: ${}_{2|5}q_{50} = {}_2p_{50} \cdot {}_5q_{52}$. Como ${}_2p_{50} \cdot {}_5p_{52} = {}_7p_{50}$, se tiene ${}_{2|5}q_{50} = {}_2p_{50} - {}_7p_{50}$ (diferencia de probabilidades de supervivencia).
+
+**6. $S_0$ y supervivencia condicional (Weishaus)**  
+Si $S_0(60)=0{,}9$ y $S_0(65)=0{,}75$, calcular ${}_5p_{60}$.  
+**Solución.** La función $S_0(x)$ es la probabilidad de que un recién nacido llegue vivo a la edad $x$. La probabilidad condicional de que (60) sobreviva 5 años es la probabilidad de llegar a 65 dado que se llegó a 60: ${}_5p_{60} = S_0(65)/S_0(60)$. Sustituyendo: ${}_5p_{60} = 0{,}75/0{,}9 = 5/6 \approx 0{,}833$ (83,3\%).
+
+**7. Vida curta y tiempo completo**  
+¿Qué relación hay entre $K_x$ y $T_x$? Dar un ejemplo con $K_x = 0$.  
+**Solución.** Por definición, $K_x$ es la parte entera de $T_x$: $K_x = \lfloor T_x \rfloor$. Así, $K_x$ toma valores 0, 1, 2, … según el número de años completos vividos. Si $K_x = 0$, la persona fallece en el primer año tras $x$, es decir $0 \leq T_x < 1$.
+
+**8. Edad límite $\omega$**  
+Si $\omega = 120$, ¿cuál es el máximo valor posible de $K_{100}$?  
+**Solución.** $K_{100}$ cuenta los años completos vividos después de 100. La edad máxima es $\omega = 120$, por tanto el tiempo futuro de vida completo satisface $T_{100} \leq 20$. Los años completos posibles son 0, 1, …, 19 (si fallece justo antes de 120, $K_{100} = 19$). Por tanto el máximo de $K_{100}$ es $\omega - 100 - 1 = 19$.
+
+**9. Función de distribución de $T_x$**  
+Escribir $F_{T_x}(t)$ en notación actuarial.  
+**Solución.** La función de distribución de $T_x$ en el instante $t$ es la probabilidad de que $T_x \leq t$, es decir, de que (x) fallezca antes de $t$ años. Por definición del capítulo, $F_{T_x}(t) = {}_tq_x$. Como ${}_tp_x + {}_tq_x = 1$, también $F_{T_x}(t) = 1 - {}_tp_x$.
+
+**10. Densidad del tiempo de vida**  
+Si existe $f_{T_x}(t)$, ¿cómo se relaciona con ${}_tp_x$?  
+**Solución.** La densidad es la derivada de la función de distribución: $f_{T_x}(t) = \frac{d}{dt}F_{T_x}(t) = \frac{d}{dt}\,{}_tq_x$. Como ${}_tq_x = 1 - {}_tp_x$, se tiene $f_{T_x}(t) = -\frac{d}{dt}\,{}_tp_x$. Más adelante esta densidad se relaciona con la fuerza de mortalidad $\mu_{x+t}$.
+
+**11. Probabilidad de supervivencia a $n$ años**  
+Expresar ${}_np_x$ en términos de $S$ (con $x=0$).  
+**Solución.** Por definición, ${}_np_x$ es la probabilidad de que (x) sobreviva al menos $n$ años, es decir que $T_x > n$. En términos de la función de supervivencia desde el nacimiento, $S_0(x+t)$ es la probabilidad de llegar vivo a $x+t$. Condicionando a haber llegado a $x$: ${}_np_x = S_0(x+n)/S_0(x)$. Si se denota $S(x)=S_0(x)$, queda ${}_np_x = S(x+n)/S(x)$.
+
+**12. Tipo parcial: cálculo con $S$**  
+Dado $S(20)=0{,}99$, $S(25)=0{,}98$, $S(30)=0{,}96$, calcular ${}_5p_{25}$ y ${}_{10}p_{20}$.  
+**Solución.** Aplicando ${}_tp_x = S(x+t)/S(x)$:  
+${}_5p_{25} = S(30)/S(25) = 0{,}96/0{,}98 = 0{,}9796$ (97,96\%).  
+${}_{10}p_{20} = S(30)/S(20) = 0{,}96/0{,}99 = 0{,}9697$ (96,97\%).  
+Nótese que (20) tiene mayor probabilidad de llegar a 30 que (25) de llegar a 30 en 10 años, porque (20) parte de una $S(20)$ mayor.
+
+**13. Descomposición ${}_{n|m}q_x = {}_np_x \cdot {}_mq_{x+n}$**  
+Para (55), expresar la probabilidad de fallecer entre los 60 y 65 años usando ${}_5p_{55}$ y una probabilidad a 5 años.  
+**Solución.** Fallecer entre 60 y 65 significa: sobrevivir 5 años (hasta 60) y luego fallecer en los 5 años siguientes. Por tanto ${}_{5|5}q_{55} = {}_5p_{55} \cdot {}_5q_{60}$. La probabilidad ${}_5q_{60}$ es «fallecer antes de 65 dado que se llegó a 60», es decir $1 - {}_5p_{60}$. Así ${}_{5|5}q_{55} = {}_5p_{55}(1 - {}_5p_{60})$.
+
+**14. Verificación $S_x(0)=1$**  
+¿Por qué $S_x(0) = {}_0p_x = 1$?  
+**Solución.** $S_x(0) = {}_0p_x$ es la probabilidad de «sobrevivir 0 años» desde la edad $x$. Es el suceso cierto: quien tiene edad $x$ ha sobrevivido 0 años adicionales en ese instante. En fórmula: ${}_0p_x = S(x+0)/S(x) = 1$. Toda función de supervivencia condicional debe cumplir $S_x(0)=1$ (Weishaus [@weishaus2013]).
+
+**15. Rango de $T_x$**  
+Para edad $x$ y edad límite $\omega$, indicar el soporte de $T_x$.  
+**Solución.** $T_x$ es el tiempo futuro de vida de (x), por tanto $T_x \geq 0$. Como nadie sobrevive más allá de $\omega$, $T_x \leq \omega - x$. Así el soporte de $T_x$ es el intervalo $[0, \omega - x]$. Según la convención (incluir o no el extremo), puede escribirse $(0, \omega-x]$ si se asume que la muerte en $\omega$ tiene probabilidad nula.
+
+**16. Tipo parcial: dos vidas y notación**  
+Escribir en notación estándar: «(45) sobrevive al menos 10 años» y «(45) fallece entre el año 10 y el 15».  
+**Solución.** «(45) sobrevive al menos 10 años» = suceso $T_{45} > 10$ = probabilidad ${}_{10}p_{45}$. «(45) fallece entre el año 10 y el 15» = sobrevive 10 y fallece antes de 15 = ${}_{10|5}q_{45}$. Por la regla de la diferencia: ${}_{10|5}q_{45} = {}_10p_{45} - {}_{15}p_{45}$.
+
+**17. Relación ${}_tq_x + {}_tp_x$**  
+Demostrar que ${}_tq_x + {}_tp_x = 1$.  
+**Solución.** Los sucesos «$T_x > t$» (sobrevivir más de $t$ años) y «$T_x \leq t$» (fallecer en $t$ años o menos) son complementarios y exhaustivos. Por tanto $\mathbb{P}(T_x > t) + \mathbb{P}(T_x \leq t) = 1$, es decir ${}_tp_x + {}_tq_x = 1$. De aquí se deduce ${}_tq_x = 1 - {}_tp_x$.
+
+**18. Valores de $K_x$**  
+¿Qué valores puede tomar $K_x$ si $\omega - x = 30$?  
+**Solución.** $K_x$ es el número de años completos vividos después de $x$, con $T_x \leq \omega - x = 30$. Si $T_x \in (k, k+1]$ entonces $K_x = k$. Los valores posibles son $k = 0, 1, \ldots, 29$ (si $T_x \in (29,30]$ entonces $K_x = 29$; si $T_x = 30$ exacto, $K_x = 30$ solo si se admite el extremo). Usualmente $K_x \in \{0, 1, \ldots, \omega - x - 1\}$ o hasta 29 en este caso.
+
+**19. Cálculo con tabla conceptual**  
+Si ${}_3p_{70} = 0{,}85$ y ${}_4p_{70} = 0{,}80$, obtener $p_{73}$.  
+**Solución.** Por la relación en cadena, ${}_4p_{70} = {}_3p_{70} \cdot p_{73}$: para vivir 4 años desde 70 hay que vivir 3 y luego un año más (edad 73). Despejando: $p_{73} = {}_4p_{70}/{}_3p_{70} = 0{,}80/0{,}85 = 16/17 \approx 0{,}941$ (94,1\%).
+
+**20. Síntesis tipo parcial**  
+Un contrato paga si (50) sobrevive 20 años. Expresar la probabilidad de pago en notación actuarial y la de no pago.  
+**Solución.** Pago del beneficio si (50) alcanza la edad 70: probabilidad ${}_{20}p_{50}$. No pago = fallecimiento antes de 20 años: probabilidad ${}_{20}q_{50}$. Como son complementarios: ${}_{20}q_{50} = 1 - {}_{20}p_{50}$.
+
+**21. Contexto histórico (Tema 1 programa)**  
+Indicar por qué el modelo de supervivencia $T_x$, $K_x$ es la base de la evaluación actuarial de beneficios contingentes.  
+**Solución.** Los contratos de seguro y rentas pagan según si la persona sobrevive o fallece en ciertos plazos. El modelo define esos sucesos de forma probabilística: $T_x$ y $K_x$ determinan «cuándo» ocurre la muerte y permiten calcular probabilidades como ${}_tp_x$, ${}_tq_x$, ${}_{n|m}q_x$, que son la base del valor presente actuarial (Jordan, Neill). Sin este modelo no podría definirse prima neta ni reserva.
+
+**22. Cadena de supervivencia**  
+Si ${}_2p_{60} = 0{,}96$ y ${}_3p_{60} = 0{,}94$, hallar $p_{62}$ y comprobar la relación con ${}_2p_{60}$.  
+**Solución.** ${}_3p_{60} = {}_2p_{60} \cdot p_{62}$, luego $p_{62} = {}_3p_{60}/{}_2p_{60} = 0{,}94/0{,}96 \approx 0{,}9792$. Se ha usado la descomposición: sobrevivir 3 años = sobrevivir 2 y luego 1 más.
+
+**23. Probabilidad de fallecer en un año concreto**  
+Expresar la probabilidad de que (40) fallezca exactamente en el año que va de la edad 45 a la 46 en notación estándar.  
+**Solución.** Es el suceso $K_{40} = 5$ (5 años completos vividos, fallecimiento en el sexto año). Por tanto $\mathbb{P}(K_{40} = 5) = {}_5p_{40} \cdot q_{45} = {}_6q_{40} - {}_5q_{40}$.
+
+**24. Soporte de $K_x$ y suma de probabilidades**  
+Comprobar que $\sum_{k=0}^{\omega-x-1} \mathbb{P}(K_x = k) = 1$.  
+**Solución.** Los sucesos $\{K_x = k\}$ para $k = 0, 1, \ldots, \omega-x-1$ son disjuntos y exhaustivos (en cada realización $K_x$ toma exactamente un valor). Por tanto la suma de sus probabilidades es 1. En notación: $\sum_k {}_kp_x\,q_{x+k} = 1$ (la suma sobre el soporte de $K_x$).
+
+**25. Tipo parcial integrador**  
+(a) Definir $T_x$ y $K_x$. (b) Dado $S(35)=0{,}95$, $S(40)=0{,}92$, $S(45)=0{,}88$, calcular ${}_5p_{40}$ y la probabilidad de que (35) fallezca entre 40 y 45.  
+**Solución.**
+
+- **(a)** $T_x$: tiempo futuro de vida completo (continuo). $K_x = \lfloor T_x \rfloor$: años completos futuros.
+- **(b)** ${}_5p_{40} = S(45)/S(40) = 0{,}88/0{,}92 \approx 0{,}9565$. Fallecer entre 40 y 45 para (35): ${}_{5|5}q_{35} = {}_5p_{35} - {}_10p_{35} = (0{,}92 - 0{,}88)/0{,}95 \approx 0{,}0421$.
+
+**26. Interpretación de ${}_{3|2}q_x$**  
+Interpretar ${}_{3|2}q_x$ y expresarla como ${}_3p_x - {}_5p_x$.  
+**Solución.** ${}_{3|2}q_x$ = probabilidad de que (x) sobreviva 3 años y fallezca en los 2 siguientes. Equivale a ${}_3p_x - {}_5p_x$ (diferencia de supervivencias).
+
+**27. $S$ exponencial**  
+Si $S(x)=e^{-0{,}005x}$ para $x \geq 0$, hallar ${}_{20}p_{30}$.  
+**Solución.** ${}_{20}p_{30} = S(50)/S(30) = e^{-0{,}25}/e^{-0{,}15} = e^{-0{,}1} \approx 0{,}9048$.
+
+**28. Rango de $K_x$ con $\omega$**  
+Para $x=80$ y $\omega=100$, indicar los valores posibles de $K_{80}$.  
+**Solución.** $T_{80} \leq 20$ → $K_{80} \in \{0, 1, \ldots, 19\}$ (o hasta 20 si se incluye el extremo).
+
+**29. Probabilidad de supervivencia a 2 años**  
+Si $p_x = 0{,}99$ y $p_{x+1} = 0{,}98$, obtener ${}_2p_x$.  
+**Solución.** ${}_2p_x = p_x \cdot p_{x+1} = 0{,}99 \times 0{,}98 = 0{,}9702$.
+
+**30. Diferida ${}_{1|4}q_{40}$**  
+Expresar ${}_{1|4}q_{40}$ en términos de ${}_1p_{40}$ y una probabilidad a 4 años.  
+**Solución.** ${}_{1|4}q_{40} = {}_1p_{40} \cdot {}_4q_{41} = {}_1p_{40}(1 - {}_4p_{41}) = {}_1p_{40} - {}_5p_{40}$.
+
+**31. $F_{T_x}(t)$ y $S_x(t)$**  
+Escribir $S_x(t)$ en función de $F_{T_x}(t)$.  
+**Solución.** $S_x(t) = {}_tp_x = \mathbb{P}(T_x > t) = 1 - F_{T_x}(t)$.
+
+**32. Máximo de $K_x$**  
+Si $\omega - x = 25$, ¿cuál es el máximo valor de $K_x$?  
+**Solución.** Máximo $K_x = 24$ (si $T_x \in (24,25]$) o 25 si se admite $T_x = 25$.
+
+**33. Cadena para tres años**  
+Si ${}_1p_x = 0{,}99$, ${}_2p_x = 0{,}98$, ${}_3p_x = 0{,}97$, hallar $p_{x+2}$.  
+**Solución.** ${}_3p_x = {}_2p_x \cdot p_{x+2}$ → $p_{x+2} = {}_3p_x/{}_2p_x = 0{,}97/0{,}98 \approx 0{,}9898$.
+
+**34. Notación ${}_{n|1}q_x$**  
+Simplificar ${}_{n|1}q_x$ usando $p_{x+n}$.  
+**Solución.** ${}_{n|1}q_x = {}_np_x \cdot q_{x+n} = {}_np_x (1 - p_{x+n}) = {}_np_x - {}_{n+1}p_x$.
+
+**35. Supervivencia y fallecimiento complementarios**  
+Verificar ${}_{10}p_{50} + {}_{10}q_{50} = 1$.  
+**Solución.** Sucesos «sobrevivir al menos 10 años» y «fallecer antes de 10 años» son complementarios → suma = 1.
+
+**36. $S_0$ y ${}_np_x$**  
+Dado $S_0(25)=0{,}98$, $S_0(30)=0{,}95$, calcular ${}_5p_{25}$.  
+**Solución.** ${}_5p_{25} = S_0(30)/S_0(25) = 0{,}95/0{,}98 \approx 0{,}9694$.
+
+**37. $\mathbb{P}(K_x \geq 1)$**  
+Expresar $\mathbb{P}(K_x \geq 1)$ en notación actuarial.  
+**Solución.** $\mathbb{P}(K_x \geq 1) = {}_1p_x = p_x$.
+
+**38. Diferida 2 años, ventana 3 años**  
+Para (55), escribir la probabilidad de fallecer entre los 57 y 60 años.  
+**Solución.** ${}_{2|3}q_{55} = {}_2p_{55} - {}_5p_{55}$.
+
+**39. Vida curta $K_x = 1$**  
+¿Qué significa $K_x = 1$ en términos de $T_x$?  
+**Solución.** La persona vivió exactamente 1 año completo tras $x$ y falleció en el segundo año → $1 \leq T_x < 2$.
+
+**40. Tabla conceptual**  
+Si ${}_2p_{65} = 0{,}92$ y ${}_3p_{65} = 0{,}89$, obtener $p_{67}$.  
+**Solución.** $p_{67} = {}_3p_{65}/{}_2p_{65} = 0{,}89/0{,}92 \approx 0{,}9674$.
+
+**41. Suma de probabilidades**  
+Explicar por qué $\sum_{k=0}^{\omega-x-1} {}_kp_x\,q_{x+k} = 1$.  
+**Solución.** Es la suma de $\mathbb{P}(K_x = k)$ sobre todos los valores posibles de $K_x$; los sucesos son disjuntos y exhaustivos.
+
+**42. $S(x)$ decreciente**  
+Si $S(40) > S(45)$, ¿qué se puede decir de ${}_5p_{40}$?  
+**Solución.** ${}_5p_{40} = S(45)/S(40) < 1$; es la probabilidad de sobrevivir 5 años desde 40.
+
+**43. Igualdad ${}_{n|m}q_x$**  
+Demostrar ${}_{n|m}q_x = {}_np_x \cdot {}_mq_{x+n}$ usando $S$.  
+**Solución.** ${}_np_x = S(x+n)/S(x)$, ${}_mq_{x+n} = 1 - S(x+n+m)/S(x+n)$; producto = $S(x+n)/S(x) - S(x+n+m)/S(x) = {}_{n|m}q_x$.
+
+**44. Edad límite**  
+Para $\omega = 115$ y $x = 95$, dar el intervalo de valores de $T_{95}$.  
+**Solución.** $0 \leq T_{95} \leq \omega - 95 = 20$ → $[0, 20]$.
+
+**45. Probabilidad de no llegar a edad**  
+Expresar la probabilidad de que (30) no llegue vivo a 35 en notación estándar.  
+**Solución.** ${}_5q_{30} = 1 - {}_5p_{30}$.
+
+**46. Relación $q_x$ y $p_x$**  
+Escribir $q_x$ en función de $p_x$.  
+**Solución.** $q_x = 1 - p_x = 1 - {}_1p_x$.
+
+**47. Tres etapas**  
+Verificar ${}_{15}p_{40} = {}_5p_{40} \cdot {}_5p_{45} \cdot {}_5p_{50}$.  
+**Solución.** Por la cadena: ${}_{15}p_{40} = {}_5p_{40} \cdot {}_{10}p_{45} = {}_5p_{40} \cdot {}_5p_{45} \cdot {}_5p_{50}$. Correcto.
+
+**48. $\mathbb{P}(K_x \leq 2)$**  
+Escribir $\mathbb{P}(K_x \leq 2)$ en notación con ${}_tp_x$ y $q$.  
+**Solución.** $\mathbb{P}(K_x \leq 2) = {}_3q_x = 1 - {}_3p_x$; o $\mathbb{P}(K_x=0)+\mathbb{P}(K_x=1)+\mathbb{P}(K_x=2)$.
+
+**49. Beneficio por supervivencia**  
+Un pago se realiza si (60) alcanza 70 años. Escribir la probabilidad en notación.  
+**Solución.** ${}_{10}p_{60}$.
+
+**50. Síntesis**  
+Dado $S(40)=0{,}95$, $S(45)=0{,}90$, $S(50)=0{,}84$, calcular ${}_5p_{45}$ y ${}_{10}q_{40}$.  
+**Solución.** ${}_5p_{45} = S(50)/S(45) = 0{,}84/0{,}90 \approx 0{,}9333$; ${}_{10}q_{40} = 1 - S(50)/S(40) = 1 - 0{,}84/0{,}95 \approx 0{,}1158$.
+
+
+---
+
+### Ejercicios resueltos tipo parcial (20)
+
+Los siguientes ejercicios son de nivel examen parcial: se pide definiciones, notación y cálculos breves con la función $S$ o probabilidades ${}_tp_x$, ${}_{n|m}q_x$. En cada uno la solución va por pasos. Hay espacio entre ejercicios para facilitar la lectura.
+
+**1. Tipo parcial — Definiciones y notación**  
+(a) Definir $T_x$ y $K_x$. (b) Escribir en notación estándar la probabilidad de que (40) sobreviva al menos 10 años y fallezca antes de 15 años.
+
+**Solución.**
+
+- **(a)** $T_x$: tiempo futuro de vida completo (continuo). $K_x = \lfloor T_x \rfloor$: años completos vividos después de $x$.
+- **(b)** Suceso: sobrevive 10 años y fallece antes de 15 → ${}_{10|5}q_{40} = {}_{10}p_{40} - {}_{15}p_{40}$.
+
+**2. Tipo parcial — Cálculo con $S$**  
+Dados $S(50)=0{,}92$, $S(55)=0{,}88$, $S(60)=0{,}82$, calcular ${}_5p_{55}$ y ${}_{10}q_{50}$.
+
+**Solución.**
+
+- ${}_5p_{55} = S(60)/S(55) = 0{,}82/0{,}88 \approx 0{,}9318$.
+- ${}_{10}q_{50} = 1 - {}_{10}p_{50} = 1 - S(60)/S(50) = 1 - 0{,}82/0{,}92 \approx 0{,}1087$.
+
+**3. Tipo parcial — Rango de $K_x$ y $T_x$**  
+Para (60) con $\omega = 100$, dar el máximo de $K_{60}$ y el rango de $T_{60}$.
+
+**Solución.**
+
+- Máximo de $K_{60}$: $\omega - 60 - 1 = 39$ (años completos posibles: 0, …, 39).
+- Rango de $T_{60}$: $[0, \omega - 60] = [0, 40]$.
+
+**4. Tipo parcial — Probabilidad de pago**  
+Un beneficio se paga si (55) alcanza 65 años. Escribir la probabilidad de pago y la de no pago en notación estándar.
+
+**Solución.**
+
+- Pago: (55) sobrevive 10 años → ${}_{10}p_{55}$.
+- No pago: fallece antes de 10 años → ${}_{10}q_{55} = 1 - {}_{10}p_{55}$.
+
+**5. Tipo parcial — Diferida y cadena**  
+Si ${}_2p_{60} = 0{,}96$ y ${}_3p_{60} = 0{,}94$, hallar $p_{62}$. Comprobar con la cadena ${}_3p_{60} = {}_2p_{60} \cdot p_{62}$.
+
+**Solución.**
+
+- De ${}_3p_{60} = {}_2p_{60} \cdot p_{62}$ se tiene $p_{62} = {}_3p_{60}/{}_2p_{60} = 0{,}94/0{,}96 \approx 0{,}9792$.
+- Comprobación: $0{,}96 \times 0{,}9792 \approx 0{,}94$.
+
+**6. Tipo parcial — Expresión $\mathbb{P}(K_x = k)$**  
+Escribir $\mathbb{P}(K_x = 2)$ en notación con ${}_jp_x$ y $q_{x+j}$.
+
+**Solución.**
+
+- $K_x = 2$ significa: sobrevivir 2 años y fallecer en el siguiente.
+- $\mathbb{P}(K_x = 2) = {}_2p_x \cdot q_{x+2}$.
+
+**7. Tipo parcial — Edad límite**  
+Si $\omega = 120$, ¿cuál es el máximo valor posible de $K_{100}$?
+
+**Solución.**
+
+- $T_{100} \leq \omega - 100 = 20$. Años completos: $K_{100} \in \{0,\ldots,19\}$.
+- Máximo: $K_{100} = 19$.
+
+**8. Tipo parcial — Diferencia de supervivencias**  
+Expresar ${}_{3|2}q_x$ como diferencia de dos probabilidades de supervivencia.
+
+**Solución.**
+
+- ${}_{3|2}q_x$ = sobrevivir 3 años y fallecer en los 2 siguientes.
+- Equivale a ${}_{3|2}q_x = {}_3p_x - {}_5p_x$.
+
+**9. Tipo parcial — Síntesis**  
+Dado $S(20)=0{,}99$, $S(25)=0{,}98$, $S(30)=0{,}96$, calcular ${}_5p_{25}$ y ${}_{10}p_{20}$. Interpretar brevemente.
+
+**Solución.**
+
+- ${}_5p_{25} = S(30)/S(25) = 0{,}96/0{,}98 \approx 0{,}9796$.
+- ${}_{10}p_{20} = S(30)/S(20) = 0{,}96/0{,}99 \approx 0{,}9697$.
+- (25) tiene algo más de probabilidad de llegar a 30 en 10 años que (20) en 10 años, por partir de $S(25)$ mayor en relación a $S(30)$.
+
+**10. Tipo parcial — Integrador**  
+(a) Relación ${}_tq_x + {}_tp_x = 1$. (b) Para (40), escribir la probabilidad de fallecer exactamente entre el año 5 y el 6 desde ahora.
+
+**Solución.**
+
+- **(a)** Sucesos «$T_x > t$» y «$T_x \leq t$» son complementarios → ${}_tp_x + {}_tq_x = 1$.
+- **(b)** Fallecer entre año 5 y 6 = $K_{40} = 5$ → $\mathbb{P}(K_{40}=5) = {}_5p_{40} \cdot q_{45}$.
+
+**11. Tipo parcial — $S$ y ${}_np_x$**  
+Si $S(45)=0{,}92$, $S(50)=0{,}88$, $S(55)=0{,}82$, calcular ${}_5p_{50}$ y ${}_{10}q_{45}$.  
+**Solución.** ${}_5p_{50} = S(55)/S(50) = 0{,}82/0{,}88 \approx 0{,}9318$; ${}_{10}q_{45} = 1 - S(55)/S(45) = 1 - 0{,}82/0{,}92 \approx 0{,}1087$.
+
+**12. Tipo parcial — $\mathbb{P}(K_x = 3)$**  
+Escribir $\mathbb{P}(K_x = 3)$ en notación con ${}_jp_x$ y $q_{x+3}$.  
+**Solución.** $\mathbb{P}(K_x = 3) = {}_3p_x \cdot q_{x+3}$.
+
+**13. Tipo parcial — Rango $T_x$**  
+Para (70) con $\omega = 95$, dar el soporte de $T_{70}$.  
+**Solución.** $T_{70} \in [0, \omega - 70] = [0, 25]$.
+
+**14. Tipo parcial — Pago a 15 años**  
+Un beneficio se paga si (40) alcanza 55 años. Escribir probabilidad de pago y de no pago.  
+**Solución.** Pago: ${}_{15}p_{40}$. No pago: ${}_{15}q_{40} = 1 - {}_{15}p_{40}$.
+
+**15. Tipo parcial — Cadena**  
+Si ${}_4p_{55} = 0{,}94$ y ${}_5p_{55} = 0{,}91$, hallar $p_{59}$.  
+**Solución.** $p_{59} = {}_5p_{55}/{}_4p_{55} = 0{,}91/0{,}94 \approx 0{,}9681$.
+
+**16. Tipo parcial — Diferida**  
+Expresar ${}_{4|3}q_x$ como diferencia de supervivencias.  
+**Solución.** ${}_{4|3}q_x = {}_4p_x - {}_7p_x$.
+
+**17. Tipo parcial — Edad límite $K_{90}$**  
+Si $\omega = 100$, máximo de $K_{90}$.  
+**Solución.** Máximo $K_{90} = \omega - 90 - 1 = 9$.
+
+**18. Tipo parcial — $F_{T_x}$ y ${}_tq_x$**  
+Relacionar $F_{T_x}(t)$ con ${}_tq_x$.  
+**Solución.** $F_{T_x}(t) = \mathbb{P}(T_x \leq t) = {}_tq_x$.
+
+**19. Tipo parcial — Dos edades**  
+$S(35)=0{,}96$, $S(40)=0{,}92$, $S(45)=0{,}87$. Calcular ${}_5p_{40}$ y probabilidad de que (35) fallezca entre 40 y 45.  
+**Solución.** ${}_5p_{40} = 0{,}87/0{,}92 \approx 0{,}9457$; ${}_{5|5}q_{35} = {}_5p_{35} - {}_10p_{35} = 0{,}92/0{,}96 - 0{,}87/0{,}96 \approx 0{,}0521$.
+
+**20. Tipo parcial — Integrador final**  
+(a) ¿Qué es ${}_{n|m}q_x$? (b) Si $S(50)=0{,}90$, $S(55)=0{,}85$, $S(60)=0{,}78$, calcular ${}_5p_{55}$ y ${}_{10}q_{50}$.  
+**Solución.** (a) Probabilidad de sobrevivir $n$ años y fallecer en los $m$ siguientes. (b) ${}_5p_{55} = 0{,}78/0{,}85 \approx 0{,}9176$; ${}_{10}q_{50} = 1 - 0{,}78/0{,}90 \approx 0{,}1333$.
+
+
+---
+
+### Ejercicios propuestos (40)
+
+En cada ejercicio se debe obtener o expresar lo indicado, usando las definiciones del capítulo ($S$, $T_x$, $K_x$, ${}_tp_x$, ${}_{n|m}q_x$). Indicar brevemente qué se pide. Hay espacio entre ítems (el doble de ejercicios respecto a la versión base para mayor práctica).
+
+1. **Se pide:** Si $S(30)=0{,}98$ y $S(31)=0{,}975$, obtener la probabilidad de que un recién nacido llegue vivo a 30 años y la probabilidad $p_{30}$ (Jordan).
+
+
+2. **Se pide:** Expresar $\mathbb{P}(K_x = 0)$ y $\mathbb{P}(K_x \geq n)$ en función de ${}_tp_x$ y $q_x$ (Neill).
+
+
+3. **Se pide:** Comprobar que ${}_{3|2}q_x = {}_3p_x - {}_5p_x$ (Weishaus).
+
+
+4. **Se pide:** Dado $S_0(40)=0{,}95$ y $S_0(45)=0{,}90$, calcular ${}_5p_{40}$.
+
+
+5. **Se pide:** Escribir $\mathbb{P}(K_x \leq n)$ en notación actuarial estándar.
+
+6. **Se pide:** Si ${}_2p_x = 0{,}96$ y ${}_3p_x = 0{,}94$, hallar $p_{x+2}$.
+
+
+7. **Tipo parcial.** **Se pide:** Para (60) con $\omega = 100$, dar el máximo de $K_{60}$ y el rango de $T_{60}$.
+
+
+8. **Se pide:** Demostrar ${}_{n|m}q_x = {}_np_x \cdot {}_mq_{x+n}$ usando la función $S$.
+
+
+9. **Se pide:** Si $S(x)=e^{-0{,}01x}$ para $x \geq 0$, hallar ${}_{10}p_{20}$.
+
+
+10. **Se pide:** Interpretar «$(x)$ fallece en el año $k+1$» en términos de $K_x$ y $T_x$.
+
+11. **Tipo parcial.** **Se pide:** Dadas $S(50)=0{,}92$, $S(55)=0{,}88$, $S(60)=0{,}82$, calcular ${}_5p_{55}$ y ${}_{10}q_{50}$.
+
+
+12. **Se pide:** Expresar la probabilidad de que (35) fallezca entre 10 y 15 años desde ahora en notación actuarial.
+
+
+13. **Se pide:** Verificar que $S_x(t)$ es no creciente en $t$ (Weishaus).
+
+
+14. **Se pide:** Escribir $\mathbb{P}(K_x = k)$ usando solo ${}_jp_x$ y $q_{x+j}$ para $j$ adecuados.
+
+15. **Se pide:** Si ${}_5p_{40} = 0{,}9$ y ${}_5p_{45} = 0{,}85$, calcular ${}_{10}p_{40}$ (suponiendo relación de cadena).
+
+
+16. **Tipo parcial.** **Se pide:** Un beneficio se paga si (55) alcanza 65 años. Escribir la probabilidad de pago y la de no pago en notación estándar.
+
+
+17. **Se pide:** Relacionar ${}_tq_x$ con la función de distribución $F_{T_x}(t)$.
+
+18. **Se pide:** Para $\omega = 110$ y $x = 90$, indicar los posibles valores de $K_{90}$.
+
+
+19. **Se pide:** Si ${}_1p_x = 0{,}99$, ${}_2p_x = 0{,}98$, obtener $q_x$ y $q_{x+1}$.
+
+
+20. **Tipo parcial.** **Se pide:** (a) Definir $T_x$ y $K_x$. (b) Escribir la probabilidad de que (40) sobreviva 5 años y fallezca antes de 8 años (Jordan/Neill/Weishaus).
+
+
+21. **Se pide:** Justificar que ${}_np_x$ es no creciente en $n$ para $x$ fijo (utilidad en el programa).
+
+
+22. **Se pide:** Si $S_0(25)=0{,}98$ y $S_0(30)=0{,}95$, calcular ${}_5p_{25}$ e interpretar el resultado.
+
+
+23. **Se pide:** Escribir $\mathbb{P}(K_x \geq 3)$ en notación con ${}_tp_x$ y $q_{x+j}$.
+
+
+24. **Tipo parcial.** **Se pide:** Para (55) con $\omega=100$, dar el máximo de $K_{55}$, el rango de $T_{55}$ y la probabilidad de que sobreviva al menos 30 años en notación.
+
+
+25. **Se pide:** Relacionar la función de distribución $F_{T_x}(t)$ con la esperanza de vida (concepto para temas posteriores).
+
+
+26. **Se pide:** Si $S(22)=0{,}995$, $S(27)=0{,}985$, $S(32)=0{,}97$, calcular ${}_5p_{27}$ y ${}_{10}p_{22}$.
+
+
+27. **Se pide:** Demostrar ${}_{2|3}q_x = {}_2p_x - {}_5p_x$ usando la definición de diferida.
+
+
+28. **Tipo parcial.** **Se pide:** (40): escribir en notación la probabilidad de fallecer exactamente entre el año 7 y el 8 desde ahora.
+
+
+29. **Se pide:** Para $\omega = 100$ y $x = 85$, indicar los posibles valores de $K_{85}$ y el rango de $T_{85}$.
+
+
+30. **Se pide:** Si ${}_3p_x = 0{,}95$ y ${}_4p_x = 0{,}93$, hallar $p_{x+3}$ usando la cadena de supervivencia.
+
+
+31. **Se pide:** Expresar la probabilidad de que (50) sobreviva al menos 20 años y fallezca antes de 25 años en notación estándar.
+
+
+32. **Tipo parcial.** **Se pide:** Dadas $S(60)=0{,}88$, $S(65)=0{,}80$, $S(70)=0{,}70$, calcular ${}_5p_{65}$ y ${}_{10}q_{60}$.
+
+
+33. **Se pide:** Escribir $\mathbb{P}(K_x = n)$ como diferencia de dos probabilidades de supervivencia.
+
+
+34. **Se pide:** Verificar que $S_x(0)=1$ y $\lim_{t \to \infty} S_x(t)=0$ para una función de supervivencia condicional.
+
+
+35. **Se pide:** Si $p_{70} = 0{,}96$, $p_{71} = 0{,}94$, $p_{72} = 0{,}92$, calcular ${}_3p_{70}$.
+
+
+36. **Tipo parcial.** **Se pide:** Un contrato paga si (45) llega vivo a 60 años. Escribir la probabilidad de pago y la de no pago; expresar la de no pago como ${}_{15}q_{45}$.
+
+
+37. **Se pide:** Relacionar ${}_tq_x$ con $F_{T_x}(t)$ y con la densidad $f_{T_x}(t)$ si existe.
+
+
+38. **Se pide:** Para (35), escribir la probabilidad de fallecer entre los 40 y 45 años usando ${}_5p_{35}$ y ${}_5p_{40}$.
+
+
+39. **Se pide:** Si $\omega = 120$ y $x = 100$, dar el máximo de $K_{100}$ y justificar con $T_{100}$.
+
+
+40. **Tipo parcial.** **Se pide:** (a) Definir función de supervivencia $S(x)$. (b) Dado $S(40)=0{,}95$, $S(45)=0{,}90$, calcular ${}_5p_{40}$ y la probabilidad de que (40) fallezca antes de 5 años.
+
+---
+
+*Referencias: Jordan [@jordan1982]; Bowers et al. [@bowers1997]; Neill [@neill1977]; Weishaus [@weishaus2013].*
