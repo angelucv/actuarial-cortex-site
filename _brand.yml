@@ -4,7 +4,11 @@
 meta:
   name: "Actuarial Cortex"
 
-logo: "logo-AC/logo-ac-blanco.png"
+logo:
+  images:
+    header: "logo-AC/logo-ac-blanco.png"
+  medium: header
+  large: header
 
 color:
   palette:
