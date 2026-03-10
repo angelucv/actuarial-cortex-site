@@ -105,6 +105,14 @@ Curso orientado a actuarios y profesionales que requieran proyecciones de mortal
 
 El **modelo para los libros de Actuarial Cortex** es la plantilla **Quarto Book** basada en *Applied Machine Learning Using mlr3 in R*. Incluye partes, capítulos, PDF descargable, sidebar y búsqueda; ya está adaptada al hub (título, logo, pie de página).
 
-**Libro de referencia:** *Applied Machine Learning Using mlr3 in R* — [Descargar PDF](mlr3book.pdf) *(coloca el PDF compilado en la carpeta `resources/` con el nombre `mlr3book.pdf` para habilitar el enlace).*
+**Libro de referencia:** *Applied Machine Learning Using mlr3 in R* — [Descargar PDF](mlr3book.pdf).
+:::
+
+::: {.rvea-section #casos-aplicados}
+## Casos aplicados y demos vinculados
+
+Los materiales académicos del hub se conectan con desarrollos tecnológicos y dashboards que muestran su aplicación práctica. Un ejemplo central es el **SUDEASEG Dashboard — Insurdata**, que utiliza modelos y procesos ETL inspirados en estos materiales para construir un panel de inteligencia de datos del mercado asegurador venezolano.
+
+[Abrir SUDEASEG Dashboard](https://insurdata-dashboard.streamlit.app/){.rvea-btn-articulos target="_blank"}
 :::
 

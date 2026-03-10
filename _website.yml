@@ -44,12 +44,12 @@ website:
       - icon: building
         text: "Sobre Cortex"
         href: sobre-cortex.qmd
+      - icon: grid-3x3-gap
+        text: "SUDEASEG Dashboard"
+        href: "https://insurdata-dashboard.streamlit.app/"
       - icon: people-fill
         text: "Miembros"
         href: miembros.qmd
-      - icon: grid-3x3-gap
-        text: "Cortex Suite"
-        href: cortex-suite.qmd
       - icon: journal-bookmark-fill
         text: "Portal de cursos"
         href: docencia/index.qmd

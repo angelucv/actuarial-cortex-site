@@ -48,4 +48,4 @@ Como editor del hub se presentan recomendaciones estratégicas: (1) transición 
 
 ---
 
-*Artículo completo con código reproducible (R, INLA, sf, gstat) y figuras en carpeta de referencias del hub. PDF disponible según proceso editorial.*
+El artículo completo, con código reproducible (R, INLA, sf, gstat) y figuras detalladas, forma parte del primer volumen de Resources y se distribuye a través del canal editorial de Actuarial Cortex.

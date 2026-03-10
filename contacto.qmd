@@ -33,5 +33,3 @@ Canales de atención de **Actuarial Cortex** para **solicitudes de investigació
 - **Otro correo de contacto:** [angelc.ucv@gmail.com](mailto:angelc.ucv@gmail.com)
 - **Instagram:** [@actuarial_cortex](https://instagram.com/actuarial_cortex)
 - **Equipo y perfiles:** [Miembros](miembros.qmd)
-
-*(Se puede añadir aquí un formulario de contacto cuando esté definido.)*

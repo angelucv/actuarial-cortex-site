@@ -29,7 +29,7 @@ jobs:
 
       - name: Install Quarto
         run: |
-          curl -sL -o quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-linux-amd64.deb"
+          curl -sL -o quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v1.7.33/quarto-1.7.33-linux-amd64.deb"
           sudo dpkg -i quarto.deb
 
       - name: Render site (HTML, with R execution)

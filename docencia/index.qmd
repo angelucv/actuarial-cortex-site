@@ -89,14 +89,14 @@ format:
 ```{=html}
 <nav class="portal-nav-bar" aria-label="Navegación principal">
   <div class="portal-nav-bar-inner">
-    <a href="../index.qmd">Inicio</a><span class="sep">·</span>
-    <a href="../sobre-cortex.qmd">Sobre Cortex</a><span class="sep">·</span>
-    <a href="../miembros.qmd">Miembros</a><span class="sep">·</span>
+    <a href="../index.html">Inicio</a><span class="sep">·</span>
+    <a href="../sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
+    <a href="../miembros.html">Miembros</a><span class="sep">·</span>
     <a href="../resources/index.html">Resources</a><span class="sep">·</span>
     <a href="../cortex-suite.html">Cortex Suite</a><span class="sep">·</span>
-    <a href="index.qmd" class="active">Cursos</a><span class="sep">·</span>
-    <a href="../actualidad.qmd">Actualidad</a><span class="sep">·</span>
-    <a href="../contacto.qmd">Contacto</a>
+    <a href="index.html" class="active">Cursos</a><span class="sep">·</span>
+    <a href="../actualidad.html">Actualidad</a><span class="sep">·</span>
+    <a href="../contacto.html">Contacto</a>
   </div>
 </nav>
 ```
@@ -163,7 +163,7 @@ Hemos estructurado nuestros programas en módulos especializados y progresivos. 
 - **Enfoque corporativo real:** Enseñamos a utilizar R y Python integrados en los flujos de trabajo (incl. Office/Power BI) que utilizan las empresas e instituciones financieras.
 - **Rigor Científico y Matemático:** No solo enseñamos a escribir código; enseñamos la estadística, la probabilidad y la matemática actuarial que fundamentan los modelos.
 - **Eficiencia y Escalabilidad:** Aprende a superar los límites de las hojas de cálculo tradicionales procesando millones de registros en segundos.
-- **Proyectos Aplicados:** Casos de estudio reales: desde la predicción de abandono de clientes (churn) hasta la tarificación de pólizas de seguros.
+- **Proyectos Aplicados:** Casos de estudio reales: desde la predicción de abandono de clientes (churn) hasta la tarificación de pólizas de seguros, incluyendo el **SUDEASEG Dashboard — Insurdata**, donde se recorre el ciclo completo de datos (extracción SUDEASEG, ETL, base de datos y visualización con Streamlit).
 
 Los cursos están orientados inicialmente a **programación en software libre** para los diversos sectores: **banca, seguros y pensiones**. Se dictan en la **plataforma Moodle**, referente en enseñanza en línea; el acceso a inscripciones y materiales está en el enlace [Plataforma de cursos (Moodle)](https://cvea.gnomio.com/){target="_blank"}.
 
@@ -175,7 +175,7 @@ Ficha técnica, programa, objetivos e inscripción del curso orientado a actuari
 
 [**Ir al curso Series de Tiempo con Python**](series-tiempo/index.qmd)
 
-**Recurso complementario:** [Series de tiempo y actores del mercado (HTML)](../Referencias/Recursos_HTML/Series-de-tiempo-Actores.html) — Análisis dinámico de actores y series temporales.
+**Recurso complementario:** análisis dinámico de actores y series temporales, basado en materiales internos del hub.
 
 ### Plataforma de cursos (Moodle) {#plataforma}
 

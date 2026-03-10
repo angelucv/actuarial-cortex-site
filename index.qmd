@@ -66,15 +66,13 @@ include-in-header: assets/meta.html
 ```
 
 ```{=html}
-<nav class="portal-nav-bar" aria-label="Navegación principal">
+<!-- Barra interna tipo portal, versión simplificada para el home -->
+<nav class="portal-nav-bar" aria-label="Navegación rápida del hub">
   <div class="portal-nav-bar-inner">
     <a href="index.html" class="active">Inicio</a><span class="sep">·</span>
     <a href="sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
-    <a href="miembros.html">Miembros</a><span class="sep">·</span>
     <a href="resources/index.html">Resources</a><span class="sep">·</span>
-    <a href="cortex-suite.html">Cortex Suite</a><span class="sep">·</span>
     <a href="docencia/index.html">Cursos</a><span class="sep">·</span>
-    <a href="actualidad.html">Actualidad</a><span class="sep">·</span>
     <a href="contacto.html">Contacto</a>
   </div>
 </nav>
@@ -85,7 +83,10 @@ include-in-header: assets/meta.html
 <div class="intro intro_f" style="background-color: black;">
   <div class="intro-slideshow">
     <div class="image-wrapper">
-      <img src="assets/img/home-hero-noticias.jpg" alt="Actualidad y noticias" style="width: 100%; height: 100%; object-fit: cover;">
+      <!-- Fondo ilustrativo específico de Actuarial Cortex (no compartido con CVEA) -->
+      <img src="https://images.pexels.com/photos/6476584/pexels-photo-6476584.jpeg?auto=compress&cs=tinysrgb&w=1600"
+           alt="Actuarial Cortex — datos, modelos y visualizaciones"
+           style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45) saturate(1.2);">
     </div>
   </div>
   <div class="scroll-text intro-text">
@@ -114,20 +115,11 @@ include-in-header: assets/meta.html
   </div>
 </div>
 
-<!-- Bloque A: Ejes Académicos (El Núcleo Universitario) — iconos uno debajo del otro -->
+<!-- Bloque A: Ejes Cortex (núcleo del hub) — iconos uno debajo del otro -->
 <div class="container-blue" id="bloque-academico">
-  <p style="text-align:center; color: white; margin-bottom: 1rem;"><strong>Ejes Académicos</strong> — La razón de ser del centro y su producción intelectual.</p>
+  <p style="text-align:center; color: white; margin-bottom: 1rem;"><strong>Ejes Cortex</strong> — Conectar teoría, datos y práctica en un flujo continuo de valor.</p>
   <div class="layout_grid_objectives">
     <div class="achievements">
-      <a href="#identidad" class="work work-link">
-        <div class="work-icon">
-          <lord-icon src="https://cdn.lordicon.com/zjscbpdr.json" trigger="loop" delay="250" colors="primary:#30c9e8,secondary:#38666A" style="width:100px;height:100px"></lord-icon>
-          <p class="work-heading scroll-text">Inicio</p>
-        </div>
-        <div class="work-description">
-          <p class="work-text scroll-text">Identidad institucional y enlaces rápidos.</p>
-        </div>
-      </a>
       <a href="sobre-cortex.html" class="work work-link">
         <div class="work-icon">
           <lord-icon src="https://cdn.lordicon.com/zjscbpdr.json" trigger="loop" delay="250" colors="primary:#30c9e8,secondary:#38666A" style="width:100px;height:100px"></lord-icon>
@@ -137,13 +129,13 @@ include-in-header: assets/meta.html
           <p class="work-text scroll-text">Identidad, ejes del hub y propósito.</p>
         </div>
       </a>
-      <a href="investigacion/index.html" class="work work-link">
+      <a href="resources/index.html" class="work work-link">
         <div class="work-icon">
           <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="loop" delay="250" colors="primary:#30c9e8,secondary:#104891" style="width:100px;height:100px"></lord-icon>
-          <p class="work-heading scroll-text">Investigación</p>
+          <p class="work-heading scroll-text">Resources</p>
         </div>
         <div class="work-description">
-          <p class="work-text scroll-text">Resources y Model Hub. Producción científica.</p>
+          <p class="work-text scroll-text">Artículos, materiales académicos y Model Hub.</p>
         </div>
       </a>
       <a href="docencia/index.html" class="work work-link">
@@ -155,33 +147,26 @@ include-in-header: assets/meta.html
           <p class="work-text scroll-text">Formación continua, Series de Tiempo y recursos pedagógicos.</p>
         </div>
       </a>
-      <a href="servicios/index.html" class="work work-link">
+      <a href="cortex-suite.html" class="work work-link">
         <div class="work-icon">
           <lord-icon src="https://cdn.lordicon.com/jkzrgmvk.json" trigger="loop" delay="400" colors="primary:#38666A,secondary:#30c9e8" style="width:100px;height:100px"></lord-icon>
-          <p class="work-heading scroll-text">Extensión</p>
+          <p class="work-heading scroll-text">Cortex Suite</p>
         </div>
         <div class="work-description">
-          <p class="work-text scroll-text">Consultoría estratégica, demos y vinculación con la industria.</p>
-        </div>
-      </a>
-      <a href="observatorio.html" class="work work-link">
-        <div class="work-icon">
-          <lord-icon src="https://cdn.lordicon.com/gkstbnbz.json" trigger="loop" delay="1000" colors="primary:#38666A" style="width:100px;height:100px"></lord-icon>
-          <p class="work-heading scroll-text">Observatorio</p>
-        </div>
-        <div class="work-description">
-          <p class="work-text scroll-text">Variables biométricas, financieras y de previsión. Indicadores dinámicos.</p>
+          <p class="work-text scroll-text">Demos, soluciones modulares y servicios analíticos.</p>
         </div>
       </a>
     </div>
   </div>
 </div>
 
-<!-- Bloque B: Gestión y Vinculación (El Motor Operativo) — imágenes una al lado de la otra -->
-<p style="text-align:center; margin-top: 2rem;"><strong>Gestión y Vinculación</strong> — Sostenibilidad, dinamismo y comunicación con el entorno.</p>
+<!-- Bloque B: Explora el hub — tarjetas principales -->
+<p style="text-align:center; margin-top: 2rem;"><strong>Explora el hub de Actuarial Cortex</strong> — Accede rápido a las rutas clave.</p>
 <div class="wrap">
   <div class="tile">
-    <img src="assets/img/home-rvea.jpeg" alt="Resources"/>
+    <img src="https://images.pexels.com/photos/6476588/pexels-photo-6476588.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         alt="Resources — Materiales académicos y modelos"
+         style="object-position: center;">
     <a href="resources/index.html">
       <div class="text">
         <h1>Resources</h1>
@@ -191,7 +176,9 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="assets/img/home-cursos.jpeg" alt="Cursos"/>
+    <img src="https://images.pexels.com/photos/6693722/pexels-photo-6693722.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         alt="Cursos — Formación aplicada en R y Python"
+         style="object-position: center;">
     <a href="docencia/index.html#cursos">
       <div class="text">
         <h1>Cursos</h1>
@@ -201,7 +188,9 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="assets/img/home-suite.jpeg" alt="Cortex Suite"/>
+    <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         alt="Cortex Suite — Analítica y soluciones modulares"
+         style="object-position: center;">
     <a href="cortex-suite.html">
       <div class="text">
         <h1>Cortex Suite</h1>
@@ -211,21 +200,25 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="assets/img/home-actualidad.jpeg" alt="Actualidad"/>
-    <a href="actualidad.html">
+    <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         alt="SUDEASEG Dashboard — Inteligencia de datos del sector asegurador"
+         style="object-position: center;">
+    <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener">
       <div class="text">
-        <h1>Actualidad</h1>
-        <p class="animate-text">Noticias del sector, eventos académicos y crónicas institucionales.</p>
+        <h1>SUDEASEG Dashboard</h1>
+        <p class="animate-text">Analítica y BI del sector asegurador venezolano sobre datos SUDEASEG.</p>
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
     </a>
   </div>
   <div class="tile">
-    <img src="assets/img/home-contacto.jpeg" alt="Contacto"/>
-    <a href="contacto.html">
+    <img src="https://images.pexels.com/photos/7567525/pexels-photo-7567525.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         alt="Actualidad — Noticias y contexto del sector"
+         style="object-position: center;">
+    <a href="actualidad.html">
       <div class="text">
-        <h1>Contacto / Soporte</h1>
-        <p class="animate-text">Solicitudes de investigación, consultoría y soporte técnico.</p>
+        <h1>Actualidad</h1>
+        <p class="animate-text">Noticias del sector, eventos académicos y crónicas institucionales.</p>
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
     </a>
@@ -251,13 +244,9 @@ include-in-header: assets/meta.html
 
 ## Enlaces rápidos
 
-- [**Investigación**](investigacion/index.qmd) — Resources, Model Hub
-- [**Docencia**](docencia/index.qmd) — Cursos, recursos, próximas ofertas
-- [**Extensión / Servicios**](servicios/index.qmd) — Consultoría, demos, observatorio
-- [**Cortex Suite**](cortex-suite.qmd) — Plataforma modular: tecnología a medida y analítica para su operatividad
-- [**Observatorio**](observatorio.qmd) — Variables biométricas, financieras y de previsión
-- [**Actualidad**](actualidad.qmd) — Noticias, eventos, Call for Papers
-- [**Contacto**](contacto.qmd) — Solicitudes y soporte
+- [**Quiero aprender**](docencia/index.qmd) — Portal de cursos, rutas de formación y recursos docentes.
+- [**Quiero consultar modelos y materiales**](resources/index.qmd) — Artículos, Model Hub y materiales académicos.
+- [**Quiero ver demos y servicios**](cortex-suite.qmd) — Cortex Suite, demos y oferta de consultoría.
 
 ## Últimas noticias del sector
 

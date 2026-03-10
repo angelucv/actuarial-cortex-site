@@ -9,6 +9,8 @@ listing:
       # image: assets/img/dashboard-preview.png  # Descomenta cuando tengas la captura
     - title: "Mapa de Riesgo de Mortalidad"
       path: demo-mapa.qmd
+    - title: "SUDEASEG Dashboard — Insurdata"
+      path: https://insurdata-dashboard.streamlit.app/
 format:
   html:
     include-in-header:
@@ -58,4 +60,10 @@ Contacto a través de [Miembros](../miembros.qmd) y [Contacto](../contacto.qmd).
 
 ## Galería de demos
 
-A continuación se listan los demos disponibles. Añade capturas en `assets/img/` (por ejemplo `dashboard-preview.png`) y referéncialas en `listing.contents` para mostrar miniaturas en cada tarjeta.
+La galería reúne los demos interactivos de **Cortex Suite** más relevantes para el sector asegurador y previsional:
+
+- **Simulador de Reservas IBNR**: permite trabajar con triángulos de siniestros, ajustar supuestos de desarrollo y visualizar el impacto en las reservas IBNR.
+- **Mapa de Riesgo de Mortalidad**: muestra, mediante mapas interactivos, cómo varía el riesgo biométrico por territorio e identifica clusters de alta mortalidad.
+- **SUDEASEG Dashboard — Insurdata**: panel de inteligencia de datos del mercado asegurador venezolano sobre estadísticas oficiales de SUDEASEG.
+
+Desde las tarjetas de la parte superior de esta página puedes abrir cada demo y explorar su funcionalidad en detalle.

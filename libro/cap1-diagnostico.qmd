@@ -6,7 +6,7 @@ title: "Diagnóstico del sistema de pensiones"
 
 El diagnóstico del sistema de pensiones en Venezuela requiere abandonar las tablas estáticas heredadas (Masjuán, CSO 1980) y adoptar modelos dinámicos que capturen la tendencia de la mortalidad y la longevidad.
 
-*Este capítulo es un placeholder. Desarrollar con contenido de los libros y materiales docentes (plan editorial del hub 2025-2026).*
+Este capítulo presenta una síntesis de resultados y discusiones sobre solvencia, longevidad y estructuras de beneficios, basada en trabajos recientes del hub y referencias clave de la literatura.
 
 ## Referencias clave
 

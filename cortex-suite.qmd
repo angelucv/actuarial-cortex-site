@@ -109,6 +109,7 @@ format:
 ```{=html}
 <div class="suite-cta-bar" id="suite-cta-bar">
   <a href="https://cvea-suite-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir Demos</a>
+  <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir SUDEASEG Dashboard</a>
 </div>
 <script src="assets/js/text.js"></script>
 ```
@@ -154,7 +155,12 @@ El mercado asegurador venezolano se encuentra en una encrucijada financiera y t�
 - **Ramos y productos:** Análisis de indicadores de siniestralidad por producto dentro de cada ramo (automóviles, salud, personas, patrimoniales, fianzas).
 - **Cumplimiento normativo y estrés:** Evaluación visual del nivel de cumplimiento en materia de legitimación de capitales (LC/FT) y simulaciones de estrés sobre patrimonio y reservas.
 
-[**Abrir Cortex Insurance Suite**](https://cvea-suite-demos.streamlit.app/Insurance_Suite){.btn .btn-primary target="_blank"}
+**Demo destacado — SUDEASEG Dashboard (Insurdata)**
+
+- **Descripción:** Panel de inteligencia de datos del sector asegurador venezolano basado en estadísticas históricas de la SUDEASEG. Integra scraping/web-ETL, normalización monetaria, almacenamiento en Supabase (PostgreSQL) y visualización interactiva con Streamlit.
+- **Lo que puedes explorar:** evolución de primas y siniestros, análisis por empresa y ramo, indicadores clave de desempeño del mercado y consistencia de datos reguladores.
+
+[**Abrir SUDEASEG Dashboard**](https://insurdata-dashboard.streamlit.app/){.btn .btn-primary target="_blank"}
 
 ---
 
@@ -208,11 +214,11 @@ El tejido productivo venezolano abarca logística, agroindustria y manufactura, 
 **Tarificación actuarial telemática**
 
 - **Aplicativo Shiny (telemática):** [Ver demo en línea](https://7rho5x-profesor-angel.shinyapps.io/ActuarialTelematicsV2/){target="_blank"}
-- **Ejemplo detallado (HTML):** [Xaringan1 — Tarificación telemática](Referencias/Recursos_HTML/Xaringan1.html){target="_blank"}
+- **Ejemplo detallado (HTML):** disponible en la colección de recursos internos de Actuarial Cortex.
 
 **Prototipo Actuarial Insurtech (Shiny, R)**
 
-- Dashboard avanzado (ActuarialInsurtechCARAMELS): indicadores técnicos, comparación aseguradora vs mercado, simulación de cartera; referencia en `Referencias/ActuarialInsurtechCARAMELS/`.
+- Dashboard avanzado (ActuarialInsurtechCARAMELS): indicadores técnicos, comparación aseguradora vs mercado y simulación de cartera, presentado como caso de estudio insurtech dentro del hub.
 
 ---
 

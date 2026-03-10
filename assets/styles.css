@@ -61,6 +61,17 @@ main.content.column-page {
 .btn-21 span:hover:before { background: linear-gradient(to top, transparent, var(--cvea-teal)); }
 .btn-21 span:hover:after { background: linear-gradient(to left, transparent, var(--cvea-teal)); }
 
+/* Override fondo de la sección .intro para Actuarial Cortex
+   (sustituye la imagen base usada originalmente en CVEA) */
+.intro {
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%),
+    url("https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Hero CVEA: contenedor y capa del fondo animado */
 .hero-cvea {
   flex-direction: column;

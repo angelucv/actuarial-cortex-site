@@ -28,44 +28,39 @@ format:
 
 El **Portal de materiales** es la interfaz de referencia de Actuarial Cortex para el control editorial de los materiales académicos (Resources). Desde aquí se accede al **plan de publicación de los tres volúmenes**, el estado de cada manuscrito y el enlace al repositorio donde se gestionan los artículos.
 
-**Repositorio editorial:** [cvea-rvea](https://github.com/angelucv/cvea-rvea) (manuscritos en Quarto, plantilla editorial, referencias BibTeX).
-
-::: {.callout-note}
-## Acceso al repositorio
-El contenido de los materiales académicos (manuscritos, plantilla, datos y código reproducible) se gestiona en el repositorio **cvea-rvea**. Si tienes permisos de colaborador, clona el repositorio y trabaja en la carpeta del volumen y artículo correspondiente.
-:::
+**Repositorio editorial:** [cvea-rvea](https://github.com/angelucv/cvea-rvea) (manuscritos en Quarto, plantilla editorial, referencias BibTeX; acceso según permisos institucionales).
 
 ## Volumen I — Fundamentos, demografía y sostenibilidad del sistema de previsión social
 
-| Artículo / tema | Autor(es) | Estado | Ver artículo | Carpeta en repo |
-|-----------------|-----------|--------|--------------|------------------|
-| Análisis espacio-temporal de la mortalidad en Venezuela (1996-2016) | Prof. Angel Colmenares | Listo | [HTML](https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.html){target="_blank"} · [PDF](https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.pdf){target="_blank"} | `vol1/art-colmenares/` |
-| Modelación y proyección de la mortalidad neonatal, postneonatal y en la niñez por entidad federal | Arlet Moreno, Prof. Angel Colmenares | Listo | [HTML](https://angelucv.github.io/cvea-articulos/articulo-moreno-colmenares-mortalidad-infantil.html){target="_blank"} · [PDF](https://angelucv.github.io/cvea-articulos/articulo-moreno-colmenares-mortalidad-infantil.pdf){target="_blank"} | `vol1/art-moreno-arlet/` |
-| Tema por definir | Prof. Jorge Dias | Pendiente | — | `vol1/art-dias/` |
-| Valuación actuarial de bases técnicas Masjuán | Daylin Moreno | Borrador | — | `vol1/art-moreno-daylin/` |
-| Pensiones y jubilaciones; gobernanza y sostenibilidad | José Raúl Gálvez | Borrador | — | `vol1/art-galvez/` |
-| Tabla de mortalidad dinámica Lee-Carter (LC15) | Daniel Azuaje | Borrador | — | `vol1/art-azuaje/` |
+| Artículo / tema | Autor(es) | Estado | Ver artículo | Referencia interna |
+|-----------------|-----------|--------|--------------|--------------------|
+| Análisis espacio-temporal de la mortalidad en Venezuela (1996-2016) | Prof. Angel Colmenares | Listo | [HTML](https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.html){target="_blank"} · [PDF](https://angelucv.github.io/cvea-articulos/articulo-colmenares-espacio-temporal.pdf){target="_blank"} | Vol. I · Colmenares |
+| Modelación y proyección de la mortalidad neonatal, postneonatal y en la niñez por entidad federal | Arlet Moreno, Prof. Angel Colmenares | Listo | [HTML](https://angelucv.github.io/cvea-articulos/articulo-moreno-colmenares-mortalidad-infantil.html){target="_blank"} · [PDF](https://angelucv.github.io/cvea-articulos/articulo-moreno-colmenares-mortalidad-infantil.pdf){target="_blank"} | Vol. I · Moreno-Arlet |
+| Tema por definir | Prof. Jorge Dias | Pendiente | — | Vol. I · Dias |
+| Valuación actuarial de bases técnicas Masjuán | Daylin Moreno | Borrador | — | Vol. I · Moreno |
+| Pensiones y jubilaciones; gobernanza y sostenibilidad | José Raúl Gálvez | Borrador | — | Vol. I · Gálvez |
+| Tabla de mortalidad dinámica Lee-Carter (LC15) | Daniel Azuaje | Borrador | — | Vol. I · Azuaje |
 
 ## Volumen II — Las dimensiones de la mortalidad (causa, género y territorio)
 
-| Artículo / tema | Autor(es) | Estado | Carpeta en repo |
-|-----------------|-----------|--------|------------------|
-| Proyección de la mortalidad por causas (Lee-Carter y CoDa) | Iliria Herrera | Borrador | `vol2/` |
-| Tablas de decrecimiento múltiple con Cadenas de Markov | Williams Fernandez | Pendiente | `vol2/` |
-| Principales causas (población masculina) | Kelvin Guedez | Pendiente | `vol2/` |
-| Principales causas (población femenina) | Dorielys Rangel | Pendiente | `vol2/` |
-| Tablas de decrecimiento múltiple (regiones) | Kennya Briceño | Pendiente | `vol2/` |
-| Principales causas (Los Llanos y Capital) | Daniela Godoy | Pendiente | `vol2/` |
-| Principales causas (Oriental y Guayana) | Oriana Lopez | Pendiente | `vol2/` |
+| Artículo / tema | Autor(es) | Estado | Referencia interna |
+|-----------------|-----------|--------|--------------------|
+| Proyección de la mortalidad por causas (Lee-Carter y CoDa) | Iliria Herrera | Borrador | Vol. II · Herrera |
+| Tablas de decrecimiento múltiple con Cadenas de Markov | Williams Fernandez | Pendiente | Vol. II · Fernandez |
+| Principales causas (población masculina) | Kelvin Guedez | Pendiente | Vol. II · Guedez |
+| Principales causas (población femenina) | Dorielys Rangel | Pendiente | Vol. II · Rangel |
+| Tablas de decrecimiento múltiple (regiones) | Kennya Briceño | Pendiente | Vol. II · Briceño |
+| Principales causas (Los Llanos y Capital) | Daniela Godoy | Pendiente | Vol. II · Godoy |
+| Principales causas (Oriental y Guayana) | Oriana Lopez | Pendiente | Vol. II · Lopez |
 
 ## Volumen III — Perspectivas internacionales y fronteras en la modelización
 
-| Artículo / tema | Autor(es) | Estado | Carpeta en repo |
-|-----------------|-----------|--------|------------------|
-| Análisis comparativo de métodos de proyección (Chile y Japón) | Eleazar Domínguez | Pendiente | `vol3/` |
-| Medición del riesgo de longevidad (Portugal) | Oliver Triveño | Pendiente | `vol3/` |
-| Comparativa internacional (Países Bajos, Bélgica) | Luis Alvarez | Pendiente | `vol3/` |
-| Comparativa internacional (Italia, Grecia) | José Mendoza | Pendiente | `vol3/` |
+| Artículo / tema | Autor(es) | Estado | Referencia interna |
+|-----------------|-----------|--------|--------------------|
+| Análisis comparativo de métodos de proyección (Chile y Japón) | Eleazar Domínguez | Pendiente | Vol. III · Domínguez |
+| Medición del riesgo de longevidad (Portugal) | Oliver Triveño | Pendiente | Vol. III · Triveño |
+| Comparativa internacional (Países Bajos, Bélgica) | Luis Alvarez | Pendiente | Vol. III · Alvarez |
+| Comparativa internacional (Italia, Grecia) | José Mendoza | Pendiente | Vol. III · Mendoza |
 
 ## Leyenda de estados
 

@@ -16,4 +16,4 @@ format:
 
 Proyección de la mortalidad por causas de fallecimiento integrando el modelo Lee-Carter con Análisis de Datos Composicionales (CoDa). Permite capturar la evolución de la estructura de causas y su impacto en las reservas actuariales.
 
-*Este artículo es un placeholder. Sustituir por el manuscrito completo cuando esté disponible.*
+La versión completa del estudio desarrolla en detalle la especificación del modelo, los escenarios de proyección y las implicaciones para la gestión de riesgos de longevidad.

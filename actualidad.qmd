@@ -12,7 +12,7 @@ Sección de **comunicación dinámica** de Actuarial Cortex: noticias del sector
 
 | Fecha | Tipo | Novedad | Enlace |
 |-------|------|---------|--------|
-| — | — | Sin novedades recientes. | — |
+| 2026-03-10 | Demo | Lanzamiento del **SUDEASEG Dashboard — Insurdata**, panel de inteligencia de datos del sector asegurador venezolano. | [Abrir demo](https://insurdata-dashboard.streamlit.app/){target="_blank"} |
 
 ## Noticias del sector en tiempo real {#noticias-tiempo-real}
 
@@ -82,10 +82,6 @@ Enlaces a revistas e instancias de interés para la comunidad actuarial y estad�
 - [FASECOLDA — Biblioteca](https://biblioteca.fasecolda.com/) — Catálogo y recursos del sector asegurador colombiano (referencia regional).
 - [IVSS](https://www.ivss.gob.ve/) — Instituto Venezolano de los Seguros Sociales.
 - [Sudeaseg](https://www.sudeaseg.gob.ve/) — Superintendencia de la Actividad Aseguradora (Venezuela).
-
-**Tendencias e insurtech**
-
-- [China Insurtech (HTML)](Referencias/Recursos_HTML/China_Insurtech.html) — Exploración de tendencias y modelos de negocio insurtech en Asia.
 
 ## Calendario de eventos {#calendario}
 
