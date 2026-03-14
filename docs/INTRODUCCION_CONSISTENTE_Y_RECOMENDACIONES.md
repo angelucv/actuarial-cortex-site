@@ -69,3 +69,35 @@ Para que todos los aplicativos (Gestión Social, Detección de Fraude, Dashboard
 | **Cortex Suite (demos)** | Sidebar y barra superior: «Ir a Actuarial Cortex». Texto con enlace al sitio. |
 
 Actualizar este documento si se añaden nuevos aplicativos o se cambia la URL del sitio.
+
+---
+
+## Sugerencias para los textos de página de inicio (por aplicativo)
+
+### 1. Detección de Fraude (Banca) — **Ya alineado**
+- Tiene la frase de anclaje y la línea específica; «Actuarial Cortex» enlazado. Mantener tal cual.
+
+### 2. Dashboard Actividad Aseguradora (Insurdata)
+- **Sugerencia:** Añadir **antes** de «¿Qué es este aplicativo?» un párrafo corto:
+  - *«**[Actuarial Cortex](https://actuarial-cortex.pages.dev/)** es un hub de conocimiento y tecnología actuarial. Este **dashboard** forma parte de su oferta para el sector asegurador: explota el anuario «Seguro en Cifras» de la Superintendencia de la Actividad Aseguradora.»*
+- Luego dejar el bloque «¿Qué es este aplicativo?» como está (o acortar la primera frase para no repetir “anuario”).
+
+### 3. Cortex Suite (Demos por sector)
+- **Sugerencia:** Poner primero la línea del hub y después la descripción del demo:
+  - *«**[Actuarial Cortex](URL)** es un hub de conocimiento y tecnología actuarial. **Cortex Suite** es un conjunto de demos interactivos por sector (banca, seguros, retail, salud, control) que muestran analítica, cuadros de mando y modelos con datos simulados. Todas las funcionalidades son adaptables a las necesidades de cada organización.»*
+- Se puede eliminar la línea en cursiva duplicada debajo si se integra todo arriba.
+
+### 4. Gestión Social — Admin (página de inicio)
+- **Sugerencia:** Añadir una línea al inicio del bloque `cortex-admin-intro`:
+  - *«**[Actuarial Cortex](https://actuarial-cortex.pages.dev/)** es un hub de conocimiento y tecnología actuarial. Esta herramienta, **Gestión Social**, es una suite completa para la gestión de solicitudes y ayudas sociales.»*
+- Después seguir con: «La base es una base de datos…» (tal cual o ligeramente reordenado).
+
+### 5. Gestión Social — Dashboard
+- **Sugerencia:** Debajo del título «Tablero de Gestión Social de Actuarial Cortex», añadir una línea:
+  - *«*Parte de [Actuarial Cortex](URL): hub de conocimiento y tecnología actuarial. Este aplicativo ofrece gestión de casos, KPIs, mapa por estados y visión histórica.*»*
+- Opcional: acortar un poco la segunda línea actual para no repetir ideas.
+
+### Regla breve
+- **Primera frase:** Actuarial Cortex + hub + “Este aplicativo / Este dashboard forma parte…”
+- **Segunda frase:** Qué hace este aplicativo en una línea.
+- **Resto:** Descripción detallada o listado de funciones (como ahora).
