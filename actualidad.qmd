@@ -1,5 +1,5 @@
 ---
-title: "Actualidad"
+title: "Actualidad | Actuarial Cortex"
 subtitle: "Noticias, eventos y editorial"
 toc: true
 ---

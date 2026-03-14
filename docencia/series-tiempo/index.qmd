@@ -1,5 +1,5 @@
 ---
-title: "Series de Tiempo con Python para Actuarios"
+title: "Series de Tiempo con Python | Actuarial Cortex"
 author: "Prof. Angel Colmenares"
 listing:
   type: table

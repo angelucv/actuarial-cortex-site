@@ -1,5 +1,5 @@
 ---
-title: "Model Hub"
+title: "Model Hub | Actuarial Cortex"
 subtitle: "Repositorio de scripts, Excel actuarial y bases de datos abiertas"
 toc: true
 ---

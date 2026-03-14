@@ -1,5 +1,5 @@
 ---
-title: "Actuarial Suite"
+title: "Actuarial Suite | Actuarial Cortex"
 subtitle: "Todos los aplicativos y demos en un solo lugar"
 page-layout: custom
 title-block-banner: false

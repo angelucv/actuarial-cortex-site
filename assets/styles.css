@@ -355,3 +355,30 @@ header#title-block-header.quarto-title-block.default {
   .portal-nav-bar { padding: 0.35rem 0.4rem; }
   .portal-nav-bar a { font-size: 0.78rem; padding: 0.3rem 0.45rem; }
 }
+
+/* Contraste accesible: hero y pie de página (WCAG AA) */
+.hero-cvea-content,
+.hero-cvea-content p,
+.hero-cvea-content .hero-rotate-line,
+.hero-cvea-content .txt-rotate,
+.intro_f.hero-suite .suite-hero-title,
+.intro_f.hero-suite .suite-hero-tagline,
+.intro_f.hero-suite .suite-hero-rotate {
+  color: #fff !important;
+}
+.hero-cvea-content .txt-rotate > .wrap { border-right-color: #fff; }
+.nav-footer,
+.quarto-footer {
+  background: #1a1a1a !important;
+  color: #fff !important;
+}
+.nav-footer a,
+.quarto-footer a,
+.nav-footer .nav-link,
+.quarto-footer .nav-link {
+  color: #fff !important;
+}
+.nav-footer a:hover,
+.quarto-footer a:hover {
+  color: var(--cortex-cyan, #45a9c4) !important;
+}

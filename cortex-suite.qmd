@@ -1,5 +1,5 @@
 ---
-title: "Cortex Suite: Solución Tecnológica a la Medida"
+title: "Cortex Suite | Actuarial Cortex"
 subtitle: "Transforme su operatividad con tecnología a medida y analítica de alto nivel"
 page-layout: custom
 title-block-banner: false
@@ -145,10 +145,10 @@ Estos aplicativos están en línea y pueden probarse desde aquí.
 
 | Demo | Descripción | Enlace |
 |------|-------------|--------|
-| **Dashboard Actividad Aseguradora** | Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa. | [Abrir](https://insurdata-dashboard.streamlit.app/){.btn .suite-table-btn target="_blank"} |
-| **Gestión Social** | Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django). | [Abrir](https://angelucv-actuarial-cortex-gestion-social.hf.space){.btn .suite-table-btn target="_blank"} |
-| **Detección de Fraude (Banca)** | Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit). | [Abrir](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn .suite-table-btn target="_blank"} |
-| **Demos por sector** | Banca, Seguros, Retail, Salud, Control — plataforma unificada. | [Abrir](https://actuarial-cortex-demos.streamlit.app/){.btn .suite-table-btn target="_blank"} |
+| **Dashboard Actividad Aseguradora** | Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa. | [Ir](https://insurdata-dashboard.streamlit.app/){.btn .suite-table-btn target="_blank"} |
+| **Gestión Social** | Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django). | [Ir](https://angelucv-actuarial-cortex-gestion-social.hf.space){.btn .suite-table-btn target="_blank"} |
+| **Detección de Fraude (Banca)** | Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit). | [Ir](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn .suite-table-btn target="_blank"} |
+| **Demos por sector** | Banca, Seguros, Retail, Salud, Control — plataforma unificada. | [Ir](https://actuarial-cortex-demos.streamlit.app/){.btn .suite-table-btn target="_blank"} |
 
 ```{=html}
 </div>

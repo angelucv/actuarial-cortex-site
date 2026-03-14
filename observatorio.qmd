@@ -1,5 +1,5 @@
 ---
-title: "Observatorio de Variables Actuariales"
+title: "Observatorio | Actuarial Cortex"
 subtitle: "Motor dinámico del portal — indicadores biométricos, financieros y de previsión"
 toc: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Portal de materiales"
+title: "Portal de materiales | Actuarial Cortex"
 subtitle: "Control editorial — Volúmenes y artículos"
 format:
   html:

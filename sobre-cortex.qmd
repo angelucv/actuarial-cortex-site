@@ -1,5 +1,5 @@
 ---
-title: "Sobre Actuarial Cortex"
+title: "Sobre Cortex | Actuarial Cortex"
 subtitle: "Hub personal de conocimiento y tecnología actuarial"
 toc: true
 toc-depth: 2

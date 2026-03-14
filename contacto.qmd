@@ -1,5 +1,5 @@
 ---
-title: "Contacto y soporte"
+title: "Contacto | Actuarial Cortex"
 subtitle: "Canales de atención para investigación, consultoría y soporte técnico"
 toc: true
 ---

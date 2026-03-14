@@ -1,14 +1,9 @@
 ---
-title: "Servicios y Demos Analíticos"
+title: "Servicios | Actuarial Cortex"
 subtitle: "Eje de Extensión"
 listing:
   type: grid
   contents:
-    - title: "Simulador de Reservas IBNR"
-      path: demo-ibnr.qmd
-      # image: assets/img/dashboard-preview.png  # Descomenta cuando tengas la captura
-    - title: "Mapa de Riesgo de Mortalidad"
-      path: demo-mapa.qmd
     - title: "Dashboard Actividad Aseguradora — Insurdata"
       path: https://insurdata-dashboard.streamlit.app/
 format:
@@ -51,19 +46,13 @@ Formulario de solicitud de asesoría técnica y convenios de pasantías industri
 
 ## Demos y galería
 
-- **Demos interactivos:** simuladores de reservas IBNR, mapas de riesgo de mortalidad (tarjetas siguientes). Para aplicaciones Streamlit o Shiny se utilizan iframes optimizados.
+- **Demos interactivos:** todos los aplicativos y demos (Dashboard Actividad Aseguradora, Gestión Social, Detección de Fraude, demos por sector y más) están reunidos en [**Cortex Suite**](../cortex-suite.qmd). Desde ahí puedes acceder a cada uno con un solo clic.
 - **Formación continua y talleres:** sesiones orientadas a actuarios, reguladores y profesionales; alineadas con los materiales académicos y los libros del hub.
 - **Informes técnicos y policy briefs:** síntesis de hallazgos en formato breve con recomendaciones de política (IVSS, Sudeaseg, aseguradoras, decisores).
 - **Reproducibilidad:** cuando el código de un demo esté en repositorio público, se enlaza desde la descripción.
 
 Contacto a través de [Miembros](../miembros.qmd) y [Contacto](../contacto.qmd).
 
-## Galería de demos
+## Demos destacados
 
-La galería reúne los demos interactivos de **Cortex Suite** más relevantes para el sector asegurador y previsional:
-
-- **Simulador de Reservas IBNR**: permite trabajar con triángulos de siniestros, ajustar supuestos de desarrollo y visualizar el impacto en las reservas IBNR.
-- **Mapa de Riesgo de Mortalidad**: muestra, mediante mapas interactivos, cómo varía el riesgo biométrico por territorio e identifica clusters de alta mortalidad.
-- **Dashboard Actividad Aseguradora — Insurdata**: panel de inteligencia de datos del mercado asegurador venezolano sobre estadísticas oficiales de SUDEASEG.
-
-Desde las tarjetas de la parte superior de esta página puedes abrir cada demo y explorar su funcionalidad en detalle.
+En la tarjeta superior se enlaza el **Dashboard Actividad Aseguradora (Insurdata)**. El resto de demos (por sector, Gestión Social, Detección de Fraude, etc.) están en [**Cortex Suite**](../cortex-suite.qmd).

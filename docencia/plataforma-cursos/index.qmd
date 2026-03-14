@@ -1,5 +1,5 @@
 ---
-title: "Plataforma de cursos"
+title: "Plataforma de cursos | Actuarial Cortex"
 subtitle: "Cursos de Actuarial Cortex en Moodle"
 toc: false
 ---

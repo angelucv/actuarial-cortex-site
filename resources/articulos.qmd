@@ -1,5 +1,5 @@
 ---
-title: "Artículos"
+title: "Artículos | Actuarial Cortex"
 subtitle: "Manuscritos por volumen — Resources"
 format:
   html:

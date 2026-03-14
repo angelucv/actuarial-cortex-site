@@ -1,5 +1,5 @@
 ---
-title: "Materiales Académicos"
+title: "Resources | Actuarial Cortex"
 subtitle: "Actuarial Cortex Hub"
 page-layout: custom
 title-block-banner: false

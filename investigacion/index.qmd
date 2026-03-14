@@ -1,5 +1,5 @@
 ---
-title: "Investigación"
+title: "Investigación | Actuarial Cortex"
 subtitle: "Producción de conocimiento — Resources y Model Hub"
 toc: true
 ---

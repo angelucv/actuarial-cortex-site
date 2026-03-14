@@ -1,5 +1,5 @@
 ---
-title: "Demo: Reservas Estocásticas IBNR"
+title: "Demo: Reservas IBNR | Actuarial Cortex"
 format:
   html:
     page-layout: full

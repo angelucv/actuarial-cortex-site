@@ -1,5 +1,5 @@
 ---
-title: "Docencia"
+title: "Cursos | Actuarial Cortex"
 subtitle: "Formación continua y recursos para estudiantes"
 page-layout: custom
 title-block-banner: false

@@ -1,5 +1,5 @@
 ---
-title: "Miembros"
+title: "Miembros | Actuarial Cortex"
 subtitle: "Equipo central, colaboradores y profesores"
 toc: false
 format:

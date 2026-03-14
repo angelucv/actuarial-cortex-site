@@ -1,5 +1,5 @@
 ---
-title: "Inicio"
+title: "Inicio | Actuarial Cortex"
 subtitle: "Hub de Innovación Actuarial — Investigación, Docencia y Extensión"
 page-layout: custom
 title-block-banner: false

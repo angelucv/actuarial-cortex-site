@@ -1,5 +1,5 @@
 ---
-title: "Demo: Mapa de Riesgo de Mortalidad"
+title: "Demo: Mapa de Riesgo | Actuarial Cortex"
 format:
   html:
     page-layout: full
