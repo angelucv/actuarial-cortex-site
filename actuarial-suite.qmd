@@ -79,8 +79,8 @@ Dashboard de análisis de fraude en Streamlit: exposición al riesgo (IER), tasa
 
 Demos interactivos por ecosistema: **Banca**, **Seguros**, **Retail**, **Salud** y **Control**. Incluyen indicadores de liquidez, reservas, siniestralidad, inteligencia comercial y torre de control operativa.
 
-[**Ver detalle y abrir demos**](cortex-suite.qmd){.btn} · [**Abrir plataforma de demos**](https://actuarial-cortex-demos.streamlit.app/){.btn target="_blank"}
+[**Ver detalle y abrir demos**](cortex-suite.html){.btn} · [**Abrir plataforma de demos**](https://actuarial-cortex-demos.streamlit.app/){.btn target="_blank"}
 
 ---
 
-Para más información o propuestas a medida: [Contacto](contacto.qmd).
+Para más información o propuestas a medida: [Contacto](contacto.html).
