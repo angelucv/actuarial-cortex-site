@@ -108,7 +108,7 @@ format:
 
 ```{=html}
 <div class="suite-cta-bar" id="suite-cta-bar">
-  <a href="https://cvea-suite-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir Demos</a>
+  <a href="https://actuarial-cortex-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir Demos</a>
   <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir SUDEASEG Dashboard</a>
 </div>
 <script src="assets/js/text.js"></script>
@@ -140,7 +140,7 @@ El sector financiero venezolano opera hoy bajo un esquema bimonetario único, do
 - **Riesgo de crédito:** Visualización del flujo de la cartera entre estados de riesgo (normal, riesgo significativo, impago); relación entre puntuación crediticia y probabilidad de incumplimiento; ajuste de parámetros y cálculo de la pérdida esperada.
 - **Riesgo de mercado y tesorería:** Gráficos de evolución de índices o bonos; mapa de correlaciones entre distintas carteras de inversión.
 
-[**Abrir Cortex Bank Suite**](https://cvea-suite-demos.streamlit.app/){.btn .btn-primary target="_blank"}
+[**Abrir Cortex Bank Suite**](https://actuarial-cortex-demos.streamlit.app/){.btn .btn-primary target="_blank"}
 
 ---
 
@@ -175,7 +175,7 @@ El sector de consumo masivo en Venezuela está experimentando un notable renacim
 - **Inventario y canastas:** Red de afinidades entre productos (qué se compra junto con qué), para apoyar decisiones de surtido y promociones.
 - **Análisis a la medida:** Herramienta de exploración donde el usuario puede cruzar variables (forma de pago, categoría, hora, etc.) y construir sus propias tablas y gráficos sin programar.
 
-[**Abrir Cortex Retail Suite**](https://cvea-suite-demos.streamlit.app/Retail_Suite){.btn .btn-primary target="_blank"}
+[**Abrir Cortex Retail Suite**](https://actuarial-cortex-demos.streamlit.app/3_Retail_Suite){.btn .btn-primary target="_blank"}
 
 ---
 
@@ -190,7 +190,7 @@ El sector salud en Venezuela enfrenta mayor demanda, prevalencia de enfermedades
 - **Solvencia y reservas:** Proyección del patrimonio del fondo a varios años mediante simulaciones; posibilidad de introducir inflación médica e inflación general por separado para ver el impacto en las reservas.
 - **Tarificación y modalidades:** Comparación de la rentabilidad entre atención tradicional, asistencia domiciliaria y telemedicina; simulador de primas donde se pueden ajustar coaseguro, deducible y tope de cobertura, y comprobar si se cumple el margen de suficiencia exigido por la normativa.
 
-[**Abrir Cortex Health Suite**](https://cvea-suite-demos.streamlit.app/Health_Suite){.btn .btn-primary target="_blank"}
+[**Abrir Cortex Health Suite**](https://actuarial-cortex-demos.streamlit.app/4_Health_Suite){.btn .btn-primary target="_blank"}
 
 ---
 
@@ -205,7 +205,7 @@ El tejido productivo venezolano abarca logística, agroindustria y manufactura, 
 - **Sostenibilidad y gastos:** Diagrama que desglosa el presupuesto operativo (combustible, peajes, mantenimiento, depreciación) hasta el margen operativo neto; selector de periodos y escenarios de sobrecostos.
 - **Análisis a la medida:** Exploración libre de los datos: cruce de estado de las máquinas, tiempos de ciclo, costos y otras variables para detectar ineficiencias sin necesidad de programar.
 
-[**Abrir Cortex Control Suite**](https://cvea-suite-demos.streamlit.app/Control_Suite){.btn .btn-primary target="_blank"}
+[**Abrir Cortex Control Suite**](https://actuarial-cortex-demos.streamlit.app/5_Control_Suite){.btn .btn-primary target="_blank"}
 
 ---
 
