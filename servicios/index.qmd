@@ -17,6 +17,11 @@ format:
         .listing-grid .listing-card { background: #38666A !important; color: white !important; border-radius: 8px; }
         .quarto-listing-grid .listing-card a,
         .quarto-listing-grid .listing-card .listing-title { color: white !important; }
+        .suite-demos-wrapper { max-width: min(640px, 90%); margin-left: auto; margin-right: auto; overflow-x: auto; padding: 1.5rem; border-radius: 12px; background: #f8f9fa; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .suite-demos-wrapper table { width: 100%; min-width: 420px; }
+        .suite-demos-wrapper h2 { margin-top: 0; }
+        .suite-table-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+        .suite-table-btn:hover { background: #2a4f52; color: #fff !important; }
         </style>
 ---
 
@@ -53,6 +58,40 @@ Formulario de solicitud de asesoría técnica y convenios de pasantías industri
 
 Contacto a través de [Miembros](../miembros.qmd) y [Contacto](../contacto.qmd).
 
-## Demos destacados
+## Demos desplegados
 
-En la tarjeta superior se enlaza el **Dashboard Actividad Aseguradora (Insurdata)**. El resto de demos (por sector, Gestión Social, Detección de Fraude, etc.) están en [**Cortex Suite**](../cortex-suite.qmd).
+Estos aplicativos están en línea y pueden probarse desde aquí.
+
+```{=html}
+<style>
+.demos-cards .demo-card { background: #f8f9fa; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+.demos-cards .demo-card h4 { margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #1a365d; }
+.demos-cards .demo-card p { margin: 0 0 0.75rem 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4; }
+.demos-cards .demo-card .demo-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+.demos-cards .demo-card .demo-btn:hover { background: #2d5154; color: #fff !important; }
+</style>
+<div class="demos-cards" style="max-width: 640px; margin: 1.5rem 0;">
+  <div class="demo-card">
+    <h4>Dashboard Actividad Aseguradora</h4>
+    <p>Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa.</p>
+    <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
+  </div>
+  <div class="demo-card">
+    <h4>Gestión Social</h4>
+    <p>Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django).</p>
+    <a href="https://angelucv-actuarial-cortex-gestion-social.hf.space" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
+  </div>
+  <div class="demo-card">
+    <h4>Detección de Fraude (Banca)</h4>
+    <p>Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit).</p>
+    <a href="https://angelucv-actuarial-cortex-bank-fraud.hf.space" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
+  </div>
+  <div class="demo-card">
+    <h4>Demos por sector</h4>
+    <p>Banca, Seguros, Retail, Salud, Control — plataforma unificada.</p>
+    <a href="https://actuarial-cortex-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
+  </div>
+</div>
+```
+
+También puedes acceder a todos desde [**Cortex Suite**](../cortex-suite.qmd).

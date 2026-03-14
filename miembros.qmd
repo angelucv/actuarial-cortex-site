@@ -11,6 +11,10 @@ format:
         .comite-editorial-member { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
         .comite-editorial-member img { flex-shrink: 0; }
         .comite-editorial-member .comite-info { flex: 1; }
+        @media (max-width: 767px) {
+          .comite-editorial-member { flex-direction: column; }
+          .comite-editorial-member img { margin: 0 auto; }
+        }
         </style>
 ---
 
