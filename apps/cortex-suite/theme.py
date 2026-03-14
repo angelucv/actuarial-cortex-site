@@ -138,6 +138,15 @@ body, .stApp {{
 CORTEX_SITE_URL = "https://actuarial-cortex.pages.dev/"
 
 
+def render_sidebar_footer() -> None:
+    """Pie unificado del menú lateral: Prof. Angel Colmenares y Actuarial Cortex."""
+    st.sidebar.markdown("---")
+    st.sidebar.caption("**Elaborado por el Prof. Angel Colmenares**")
+    st.sidebar.caption("© Actuarial Cortex")
+    st.sidebar.caption("Conocimiento · Tecnología · Formación")
+    st.sidebar.caption("actuarial.cortex@gmail.com | @actuarial_cortex")
+
+
 def cvea_header(title: str, subtitle: str | None = None) -> None:
     """Cabecera con logo Actuarial Cortex, título y subtítulo (Cortex Suite)."""
     apply_cvea_theme()
@@ -145,6 +154,7 @@ def cvea_header(title: str, subtitle: str | None = None) -> None:
     if LOGO_SIDEBAR_STR:
         st.sidebar.image(LOGO_SIDEBAR_STR)
     st.sidebar.markdown(f"[**Ir a Actuarial Cortex**]({CORTEX_SITE_URL})")
+    render_sidebar_footer()
     col_logo, col_text = st.columns([1, 3])
     with col_logo:
         if LOGO_HEADER_STR:

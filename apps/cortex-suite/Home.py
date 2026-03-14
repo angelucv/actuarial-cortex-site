@@ -1,6 +1,6 @@
 import streamlit as st
 from pathlib import Path
-from theme import apply_cvea_theme, LOGO_MAIN_STR, LOGO_SIDEBAR_STR, CORTEX_SITE_URL
+from theme import apply_cvea_theme, LOGO_MAIN_STR, LOGO_SIDEBAR_STR, CORTEX_SITE_URL, render_sidebar_footer
 
 st.set_page_config(
     page_title="Cortex Suite Demos",
@@ -14,7 +14,7 @@ apply_cvea_theme()
 if LOGO_SIDEBAR_STR:
     st.sidebar.image(LOGO_SIDEBAR_STR)
 st.sidebar.markdown(f"[**Ir a Actuarial Cortex**]({CORTEX_SITE_URL})")
-st.sidebar.markdown("---")
+render_sidebar_footer()
 
 st.markdown("<div class='cvea-topbar'>Cortex Suite — Demos interactivos</div>", unsafe_allow_html=True)
 st.markdown(f"<a href='{CORTEX_SITE_URL}' class='cvea-back'>← Ir a Actuarial Cortex</a>", unsafe_allow_html=True)
