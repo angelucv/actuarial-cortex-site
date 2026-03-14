@@ -72,7 +72,6 @@ include-in-header: assets/meta.html
     <a href="index.html" class="active">Inicio</a><span class="sep">·</span>
     <a href="sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
     <a href="resources/index.html">Resources</a><span class="sep">·</span>
-    <a href="actuarial-suite.html">Actuarial Suite</a><span class="sep">·</span>
     <a href="docencia/index.html">Cursos</a><span class="sep">·</span>
     <a href="contacto.html">Contacto</a>
   </div>
