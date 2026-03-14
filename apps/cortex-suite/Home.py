@@ -24,12 +24,9 @@ if LOGO_MAIN_STR and Path(LOGO_MAIN_STR).exists():
 else:
     st.markdown("## Cortex Suite — Actuarial Cortex")
 
-st.markdown("""
-**Descripción del demo.** Cortex Suite es un conjunto de demos interactivos por sector (banca, seguros, retail, salud, control) 
-que muestran analítica, cuadros de mando y modelos con datos simulados. Todas las funcionalidades son **adaptables** 
-a las necesidades y procesos específicos de cada organización.
+st.markdown(f"""
+**[Actuarial Cortex]({CORTEX_SITE_URL})** es un hub de conocimiento y tecnología actuarial. **Cortex Suite** es un conjunto de demos interactivos por sector (banca, seguros, retail, salud, control) que muestran analítica, cuadros de mando y modelos con datos simulados. Todas las funcionalidades son **adaptables** a las necesidades y procesos específicos de cada organización.
 """)
-st.markdown(f"*Sitio web: [Actuarial Cortex]({CORTEX_SITE_URL}) — Hub de conocimiento y tecnología actuarial.*")
 
 st.subheader("Demos por sector")
 st.markdown("""
