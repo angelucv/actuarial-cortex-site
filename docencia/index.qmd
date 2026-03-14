@@ -74,7 +74,10 @@ format:
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
-    <img src="../logo-AC/logo-AC-AC-vertical-horizontal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown moodle-hero-logo">
+    <picture>
+      <source srcset="../logo-AC/logo-AC-AC-vertical-horizontal-blanco.webp" type="image/webp">
+      <img src="../logo-AC/logo-AC-AC-vertical-horizontal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown moodle-hero-logo">
+    </picture>
     <h1 class="animate__animated animate__fadeInDown moodle-hero-title">Plataforma de Cursos</h1>
     <p class="moodle-hero-words animate__animated animate__fadeIn">
       <span class="txt-rotate" id="moodle-txt-rotate"></span>

@@ -9,6 +9,7 @@ project:
     - apps/cortex-suite
     - apps/gestion-social
     - logo-AC
+    - robots.txt
   render:
     - index.qmd
     - sobre-cortex.qmd

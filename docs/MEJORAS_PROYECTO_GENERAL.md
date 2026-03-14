@@ -8,12 +8,12 @@ Documento de referencia con mejoras priorizadas para el sitio web y los demos co
 
 ### 1.1 SEO y descubribilidad
 - **Meta descripción y Open Graph:** Definir `description` y etiquetas OG por página (o por defecto en `_quarto.yml`) para que al compartir en redes se vea título, descripción e imagen.
-- **URL canónica:** Si usas dominio propio además de `pages.dev`, indicar canonical para evitar contenido duplicado.
-- **Sitemap:** Quarto genera `sitemap.xml`; verificar que Cloudflare lo sirva y que esté referenciado en `robots.txt` si aplica.
+- **URL canónica:** Si usas dominio propio además de `pages.dev`, indicar canonical para evitar contenido duplicado. *Cómo:* en `assets/og-meta.html` se incluye `<link rel="canonical" href="https://actuarial-cortex.pages.dev/">`; si cambias de dominio, actualiza esa URL.
+- **Sitemap:** Quarto genera `sitemap.xml` al construir el sitio cuando en `_website.yml` está definido `site-url`. *Cómo:* el archivo `robots.txt` en la raíz del proyecto se copia a `_site` (vía `resources` en `_quarto.yml`) y debe contener `Sitemap: https://actuarial-cortex.pages.dev/sitemap.xml` para que los buscadores encuentren el sitemap.
 - **Títulos por página:** Revisar que cada `.qmd` tenga un `title` claro y que incluya "Actuarial Cortex" donde ayude (ej. "Cortex Suite | Actuarial Cortex").
 
 ### 1.2 Rendimiento y técnico
-- **Imágenes:** Usar formatos modernos (WebP) donde sea posible y tamaños adecuados; lazy loading si hay muchas imágenes en una página.
+- **Imágenes (WebP):** Usar formatos modernos (WebP) donde sea posible y tamaños adecuados; lazy loading si hay muchas imágenes en una página. *Cómo:* (1) Convertir PNG/JPG a WebP (herramientas: `cwebp` de Google, ImageMagick, o sitios como squoosh.app). (2) En HTML usar `<picture>`: `<picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="..."></picture>` para que navegadores compatibles carguen WebP y el resto use el fallback. (3) Opcional: en Quarto, incluir en el header un bloque condicional por página para las imágenes críticas (hero, logo).
 - **Recursos externos:** Los CDN (animate.css, lord-icon, etc.) están bien; valorar cargar solo lo necesario o self-host si quieres menos dependencias.
 - **Build:** Revisar que `_site` y `site_libs` no se suban al repo si Cloudflare construye desde el repo (build desde Quarto en CI); así el repo queda más ligero.
 
@@ -42,17 +42,17 @@ Documento de referencia con mejoras priorizadas para el sitio web y los demos co
 
 ### 2.2 Experiencia de uso
 - **Carga inicial:** En Streamlit/HF, la primera carga puede ser lenta (p. ej. descarga de datos); un mensaje tipo "Cargando…" o un spinner mejora la percepción.
-- **Errores amigables:** Si un demo falla (API, dato faltante), mostrar un mensaje claro y, si aplica, enlace a Actuarial Cortex o a contacto.
+- **Errores amigables:** Si un demo falla (API, dato faltante), mostrar un mensaje claro y, si aplica, enlace a Actuarial Cortex o a contacto. *Cómo (Streamlit):* envolver la carga de datos en `try/except` y usar `st.error("...")` + `st.stop()` con un texto tipo "No se pudieron cargar los datos. Intente más tarde o contacte a [Actuarial Cortex](url).". *Cómo (Django):* opcionalmente una plantilla `500.html` personalizada con mensaje amigable y enlace al sitio.
 - **Datos de ejemplo:** Dejar claro en cada demo que son "datos de demostración" o "simulados" cuando corresponda, para no generar malentendidos.
 
 ### 2.3 Técnico
 - **Variables de entorno:** Secretos (tokens, DB) fuera del código; en HF/Streamlit usar secrets/variables del entorno.
-- **Logs y salud:** En Django (Gestión Social), revisar que en producción no se expongan trazas sensibles y que `DEBUG` esté en `False`; opcional: endpoint de salud para monitoreo.
+- **Logs y salud:** En Django (Gestión Social), revisar que en producción no se expongan trazas sensibles y que `DEBUG` esté en `False`; opcional: endpoint de salud para monitoreo. *Cómo (Django):* vista que responda `JsonResponse({"status": "ok"}, status=200)` en una ruta tipo `/health/`; en Hugging Face / Streamlit no suele hacerse endpoint propio (la plataforma hace health checks).
 - **Dependencias:** Fijar versiones en `requirements.txt` (o `environment.yml`) en cada app para builds reproducibles.
 
 ### 2.4 Documentación interna
 - **README por app:** En cada repo (Insurdata, Bank Fraud, Gestión Social, Cortex Suite), un README breve: qué es, cómo ejecutarlo en local, cómo desplegar y enlace al sitio Actuarial Cortex.
-- **Changelog ligero:** Un `CHANGELOG.md` o sección en README con fechas y cambios relevantes ayuda a mantener el historial del proyecto.
+- **Changelog ligero:** Un `CHANGELOG.md` o sección en README con fechas y cambios relevantes ayuda a mantener el historial del proyecto. *Cómo:* en la raíz del repo del sitio hay `CHANGELOG.md`; usar formato tipo "Añadido / Cambiado / Corregido" y fechas o versiones.
 
 ---
 

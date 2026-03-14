@@ -42,9 +42,12 @@ include-in-header: assets/meta.html
   </div>
   <div class="hero-cvea-content">
     <a href="index.html">
-      <img src="logo-AC/logo-AC-AC-vertical-horizontal-blanco.png"
-           alt="Actuarial Cortex"
-           style="max-width: 60%; height: auto; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));">
+      <picture>
+        <source srcset="logo-AC/logo-AC-AC-vertical-horizontal-blanco.webp" type="image/webp">
+        <img src="logo-AC/logo-AC-AC-vertical-horizontal-blanco.png"
+             alt="Actuarial Cortex"
+             style="max-width: 60%; height: auto; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));">
+      </picture>
     </a>
     <p class="hero-rotate-line">
       <span class="txt-rotate" data-period="2000" data-rotate='[
@@ -96,7 +99,10 @@ include-in-header: assets/meta.html
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125" class="svg-quote" style="width: 60px; height: auto;"><path fill="#FFFFFF" fill-rule="evenodd" d="M6.438,50.5v35.875h35.875V50.5h-20.5c0-11.321,9.179-20.5,20.5-20.5V14.625C22.498,14.625,6.438,30.686,6.438,50.5z M93.562,30V14.625c-19.814,0-35.875,16.061-35.875,35.875v35.875h35.875V50.5h-20.5C73.062,39.179,82.241,30,93.562,30z"/></svg>
         </div>
         <p class="quote-copy" style="color:white;"><i>Compartir conocimiento y herramientas para fortalecer la práctica actuarial.</i></p>
-        <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" style="width: 180px; margin-bottom: 16px;">
+        <picture>
+          <source srcset="logo-AC/logo-ac-blanco.webp" type="image/webp">
+          <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" style="width: 180px; margin-bottom: 16px;">
+        </picture>
       </div>
     </div>
   </div>
@@ -110,7 +116,10 @@ include-in-header: assets/meta.html
   <div class="layout_grid_objectives_mob">
     <div class="quote-container">
       <h1 class="quote-text scroll-text" style="color:white;">Actuarial Cortex se articula en tres ejes: Conocimiento · Tecnología · Formación</h1>
-      <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" style="width: 180px; margin-bottom: 16px;">
+      <picture>
+        <source srcset="logo-AC/logo-ac-blanco.webp" type="image/webp">
+        <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" style="width: 180px; margin-bottom: 16px;">
+      </picture>
     </div>
   </div>
 </div>

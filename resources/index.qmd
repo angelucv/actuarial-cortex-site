@@ -62,7 +62,10 @@ format:
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
+    <picture>
+    <source srcset="../logo-AC/logo-actuarial-cortex-principal-blanco.webp" type="image/webp">
     <img src="../logo-AC/logo-actuarial-cortex-principal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown rvea-hero-logo">
+  </picture>
     <h1 class="animate__animated animate__fadeInDown rvea-hero-title">Materiales Académicos del Actuarial Cortex Hub</h1>
     <p class="rvea-hero-rotate animate__animated animate__fadeIn" id="rvea-rotate-wrap"><span class="txt-rotate" id="rvea-txt-rotate"></span></p>
   </div>

@@ -24,7 +24,10 @@ format:
 ```{=html}
 <div class="hero-cvea intro_f cvea-intro hero-suite">
   <div class="hero-cvea-content">
-    <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
+    <picture>
+      <source srcset="logo-AC/logo-ac-blanco.webp" type="image/webp">
+      <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
+    </picture>
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Actuarial Suite</h1>
     <p class="animate__animated animate__fadeIn suite-hero-tagline">Aplicativos y demos — un solo menú</p>
   </div>

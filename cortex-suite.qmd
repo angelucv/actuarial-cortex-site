@@ -37,6 +37,9 @@ format:
         .suite-btn-demos-bar { margin: 0 0.5rem; }
         .suite-table-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
         .suite-table-btn:hover { background: #2a4f52; color: #fff !important; }
+        .suite-demos-wrapper { max-width: min(640px, 90%); margin-left: auto; margin-right: auto; overflow-x: auto; padding: 1.5rem; border-radius: 12px; background: #f8f9fa; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .suite-demos-wrapper table { width: 100%; min-width: 420px; }
+        .suite-demos-wrapper h2 { margin-top: 0; }
         @media (max-width: 768px) {
           .hero-suite { min-height: 45vh !important; padding-top: 70px !important; }
           .suite-hero-logo { max-width: 36% !important; margin-bottom: 0.35rem !important; }
@@ -80,7 +83,10 @@ format:
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
-    <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" class="animate__animated animate__fadeInDown suite-hero-logo">
+    <picture>
+      <source srcset="logo-AC/logo-ac-blanco.webp" type="image/webp">
+      <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" class="animate__animated animate__fadeInDown suite-hero-logo">
+    </picture>
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Cortex Suite</h1>
     <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas</p>
     <p class="suite-hero-rotate animate__animated animate__fadeIn">
@@ -129,7 +135,9 @@ Para responder a esta necesidad nace **Cortex Suite**, un ecosistema tecnológic
 
 **Analítica Avanzada y Predictiva:** El cerebro actuarial y estadístico. Módulos especializados que aplican modelos matemáticos complejos, inteligencia artificial y simulaciones estocásticas (pruebas de estrés, modelos de supervivencia, proyecciones de demanda) para generar escenarios futuros que retroalimentan y blindan la estrategia del negocio.
 
-**Mapa de aplicativos:** rutas locales, repositorios en GitHub y URLs en web de todos los aplicativos (sitio, Insurdata, Gestión Social, Detección de Fraude, Cortex Suite, Tarificación telemática): [docs/ACTUARIAL_CORTEX_APLICATIVOS.md](https://github.com/angelucv/actuarial-cortex-site/blob/main/docs/ACTUARIAL_CORTEX_APLICATIVOS.md) (repositorio del sitio).
+```{=html}
+<div class="suite-demos-wrapper">
+```
 
 ## Demos desplegados
 
@@ -141,6 +149,10 @@ Estos aplicativos están en línea y pueden probarse desde aquí.
 | **Gestión Social** | Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django). | [Abrir](https://angelucv-actuarial-cortex-gestion-social.hf.space){.btn .suite-table-btn target="_blank"} |
 | **Detección de Fraude (Banca)** | Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit). | [Abrir](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn .suite-table-btn target="_blank"} |
 | **Demos por sector** | Banca, Seguros, Retail, Salud, Control — plataforma unificada. | [Abrir](https://actuarial-cortex-demos.streamlit.app/){.btn .suite-table-btn target="_blank"} |
+
+```{=html}
+</div>
+```
 
 ---
 
