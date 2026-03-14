@@ -1,6 +1,21 @@
 # Resumen: Aplicativos Actuarial Cortex
 
-**Dónde está este documento:** Este archivo vive en `docs/` del repositorio del sitio (`actuarial-cortex-site`) para que el mapa de aplicativos quede dentro del repo. Puede existir también una copia en el workspace `cvea-platform`. Actualizar la tabla al añadir aplicativos o cambiar URLs.
+**Dónde está este documento (para no perder las rutas):**
+- **En este repo:** `docs/ACTUARIAL_CORTEX_APLICATIVOS.md` — [Ver en GitHub](https://github.com/angelucv/actuarial-cortex-site/blob/main/docs/ACTUARIAL_CORTEX_APLICATIVOS.md).
+- **En el workspace:** puede existir una copia en `cvea-platform` en la raíz.
+
+Usar esta tabla como **fuente de verdad** para rutas locales, repos y URLs. Actualizarla al añadir aplicativos o cambiar rutas.
+
+---
+
+## Cómo no perder las rutas
+
+1. **Siempre que vayas a tocar un app,** abre este archivo y usa la **ruta completa** de la columna «Carpeta local».
+2. **Gestión Social** está **dentro** de la carpeta del sitio pero es un **repo Git aparte** (repo anidado):
+   - **Ruta local:** `C:\Users\Angel\actuarial-cortex-site\gestion-social-django`
+   - Para commit/push de Gestión Social: `cd` a esa carpeta y ejecutar `git add`, `git commit`, `git push origin main` **desde ahí** (no desde la raíz de `actuarial-cortex-site`). Remotes: `origin` = GitHub (actuarial-cortex-suite-gestion-social), `hf` = Hugging Face.
+3. **Cortex Suite (demos)** no tiene repo propio: el código está en `apps/cortex-suite/` de este repo; commit/push desde la raíz de `actuarial-cortex-site`.
+4. El resto de apps (Insurdata, Detección de Fraude) tienen cada uno su carpeta y su repo; commit/push desde la carpeta indicada en la tabla.
 
 ---
 
@@ -50,8 +65,8 @@ Todas las rutas locales son completas (Windows) para evitar confusiones. Ajustar
 
 ## Notas
 
-- **Gestión Social:** El código puede estar en `C:\Users\Angel\actuarial-cortex-site\gestion-social-django` o en un clon `C:\Users\Angel\actuarial-cortex-suite-gestion-social`. El despliegue en HF se hace desde GitHub (sync con GitHub Actions).
-- **Demos Cortex Suite:** El "Main file path" en Streamlit Cloud es `apps/cortex-suite/Home.py` del repo `actuarial-cortex-site`.
+- **Gestión Social:** Ruta local: `C:\Users\Angel\actuarial-cortex-site\gestion-social-django`. Es un **repo Git anidado** (tiene su propio `.git`); los commits se hacen desde esa carpeta. Remotes: `origin` → GitHub (actuarial-cortex-suite-gestion-social), `hf` → Hugging Face.
+- **Demos Cortex Suite:** Código en `apps/cortex-suite/` de este repo. "Main file path" en Streamlit Cloud: `apps/cortex-suite/Home.py`. Commit/push desde la raíz del sitio.
 - Actualizar la tabla y las rutas si añades aplicativos, cambias URLs o usas otra unidad/carpeta (p. ej. `D:\`).
 
 ---
