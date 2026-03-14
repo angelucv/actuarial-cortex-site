@@ -80,7 +80,7 @@ format:
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
-    <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
+    <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" class="animate__animated animate__fadeInDown suite-hero-logo">
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Cortex Suite</h1>
     <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas</p>
     <p class="suite-hero-rotate animate__animated animate__fadeIn">

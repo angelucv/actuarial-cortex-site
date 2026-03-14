@@ -84,7 +84,7 @@ include-in-header: assets/meta.html
   <div class="intro-slideshow">
     <div class="image-wrapper">
       <!-- Fondo ilustrativo específico de Actuarial Cortex (no compartido con CVEA) -->
-      <img src="https://images.pexels.com/photos/6476584/pexels-photo-6476584.jpeg?auto=compress&cs=tinysrgb&w=1600"
+      <img src="https://images.pexels.com/photos/6476584/pexels-photo-6476584.jpeg?auto=compress&cs=tinysrgb&w=1600" loading="lazy"
            alt="Actuarial Cortex — datos, modelos y visualizaciones"
            style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45) saturate(1.2);">
     </div>
@@ -96,7 +96,7 @@ include-in-header: assets/meta.html
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125" class="svg-quote" style="width: 60px; height: auto;"><path fill="#FFFFFF" fill-rule="evenodd" d="M6.438,50.5v35.875h35.875V50.5h-20.5c0-11.321,9.179-20.5,20.5-20.5V14.625C22.498,14.625,6.438,30.686,6.438,50.5z M93.562,30V14.625c-19.814,0-35.875,16.061-35.875,35.875v35.875h35.875V50.5h-20.5C73.062,39.179,82.241,30,93.562,30z"/></svg>
         </div>
         <p class="quote-copy" style="color:white;"><i>Compartir conocimiento y herramientas para fortalecer la práctica actuarial.</i></p>
-        <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" style="width: 180px; margin-bottom: 16px;">
+        <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" style="width: 180px; margin-bottom: 16px;">
       </div>
     </div>
   </div>
@@ -110,7 +110,7 @@ include-in-header: assets/meta.html
   <div class="layout_grid_objectives_mob">
     <div class="quote-container">
       <h1 class="quote-text scroll-text" style="color:white;">Actuarial Cortex se articula en tres ejes: Conocimiento · Tecnología · Formación</h1>
-      <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" style="width: 180px; margin-bottom: 16px;">
+      <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" loading="lazy" style="width: 180px; margin-bottom: 16px;">
     </div>
   </div>
 </div>
@@ -164,7 +164,7 @@ include-in-header: assets/meta.html
 <p style="text-align:center; margin-top: 2rem;"><strong>Explora el hub de Actuarial Cortex</strong> — Accede rápido a las rutas clave.</p>
 <div class="wrap">
   <div class="tile">
-    <img src="https://images.pexels.com/photos/6476588/pexels-photo-6476588.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    <img src="https://images.pexels.com/photos/6476588/pexels-photo-6476588.jpeg?auto=compress&cs=tinysrgb&w=1600" loading="lazy"
          alt="Resources — Materiales académicos y modelos"
          style="object-position: center;">
     <a href="resources/index.html">
@@ -176,7 +176,7 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="https://images.pexels.com/photos/6693722/pexels-photo-6693722.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    <img src="https://images.pexels.com/photos/6693722/pexels-photo-6693722.jpeg?auto=compress&cs=tinysrgb&w=1600" loading="lazy"
          alt="Cursos — Formación aplicada en R y Python"
          style="object-position: center;">
     <a href="docencia/index.html#cursos">
@@ -188,7 +188,7 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1600" loading="lazy"
          alt="Cortex Suite — Analítica y soluciones modulares"
          style="object-position: center;">
     <a href="cortex-suite.html">
@@ -200,7 +200,7 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1600" loading="lazy"
          alt="SUDEASEG Dashboard — Inteligencia de datos del sector asegurador"
          style="object-position: center;">
     <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener">
@@ -212,7 +212,7 @@ include-in-header: assets/meta.html
     </a>
   </div>
   <div class="tile">
-    <img src="https://images.pexels.com/photos/7567525/pexels-photo-7567525.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    <img src="https://images.pexels.com/photos/7567525/pexels-photo-7567525.jpeg?auto=compress&cs=tinysrgb&w=1600" loading="lazy"
          alt="Actualidad — Noticias y contexto del sector"
          style="object-position: center;">
     <a href="actualidad.html">

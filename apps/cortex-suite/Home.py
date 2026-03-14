@@ -26,6 +26,8 @@ else:
 
 st.markdown(f"""
 **[Actuarial Cortex]({CORTEX_SITE_URL})** es un hub de conocimiento y tecnología actuarial. **Cortex Suite** es un conjunto de demos interactivos por sector (banca, seguros, retail, salud, control) que muestran analítica, cuadros de mando y modelos con datos simulados. Todas las funcionalidades son **adaptables** a las necesidades y procesos específicos de cada organización.
+
+*Todos los demos utilizan **datos simulados o de demostración** con fines ilustrativos.*
 """)
 
 st.subheader("Demos por sector")
