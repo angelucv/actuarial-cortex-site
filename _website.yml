@@ -28,7 +28,7 @@ website:
           - text: "Cursos"
             href: docencia/index.qmd
           - text: "Actuarial Suite"
-            href: actuarial-suite.qmd
+            href: actuarial-suite.html
           - text: "Cortex Suite"
             href: cortex-suite.qmd
           - text: "Servicios"
@@ -48,7 +48,7 @@ website:
         href: sobre-cortex.qmd
       - icon: grid-3x3-gap
         text: "Actuarial Suite"
-        href: actuarial-suite.qmd
+        href: actuarial-suite.html
       - icon: collection
         text: "Cortex Suite"
         href: cortex-suite.qmd

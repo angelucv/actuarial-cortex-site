@@ -35,6 +35,8 @@ format:
         .suite-cta-bar { background: #1a2e30; padding: 1rem 1.5rem; text-align: center; position: relative; z-index: 9999; }
         .suite-cta-bar a { text-decoration: none; }
         .suite-btn-demos-bar { margin: 0 0.5rem; }
+        .suite-table-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+        .suite-table-btn:hover { background: #2a4f52; color: #fff !important; }
         @media (max-width: 768px) {
           .hero-suite { min-height: 45vh !important; padding-top: 70px !important; }
           .suite-hero-logo { max-width: 36% !important; margin-bottom: 0.35rem !important; }
@@ -113,7 +115,7 @@ format:
   <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Dashboard Actividad Aseguradora</a>
   <a href="https://angelucv-actuarial-cortex-gestion-social.hf.space" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Gestión Social</a>
   <a href="https://angelucv-actuarial-cortex-bank-fraud.hf.space" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Detección de Fraude</a>
-  <a href="actuarial-suite.html" class="suite-btn-demos suite-btn-demos-bar">Ver todos (Actuarial Suite)</a>
+  <a href="https://7rho5x-profesor-angel.shinyapps.io/ActuarialTelematicsV2/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Tarificación telemática</a>
 </div>
 <script src="assets/js/text.js"></script>
 ```
@@ -127,6 +129,19 @@ Para responder a esta necesidad nace **Cortex Suite**, un ecosistema tecnológic
 **Monitoreo y Cuadros de Mando:** La sala de mando en tiempo real. Aquí, la gerencia interactúa con visualizaciones dinámicas, evalúa indicadores clave de rendimiento (KPIs), recibe alertas tempranas e interactúa con simuladores de escenarios para la toma de decisiones ágiles y fundamentadas en evidencia.
 
 **Analítica Avanzada y Predictiva:** El cerebro actuarial y estadístico. Módulos especializados que aplican modelos matemáticos complejos, inteligencia artificial y simulaciones estocásticas (pruebas de estrés, modelos de supervivencia, proyecciones de demanda) para generar escenarios futuros que retroalimentan y blindan la estrategia del negocio.
+
+## Demos desplegados
+
+Estos aplicativos están en línea y pueden probarse desde aquí.
+
+| Demo | Descripción | Enlace |
+|------|-------------|--------|
+| **Dashboard Actividad Aseguradora** | Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa. | [Abrir](https://insurdata-dashboard.streamlit.app/){.btn .suite-table-btn target="_blank"} |
+| **Gestión Social** | Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django). | [Abrir](https://angelucv-actuarial-cortex-gestion-social.hf.space){.btn .suite-table-btn target="_blank"} |
+| **Detección de Fraude (Banca)** | Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit). | [Abrir](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn .suite-table-btn target="_blank"} |
+| **Demos por sector** | Banca, Seguros, Retail, Salud, Control — plataforma unificada. | [Abrir](https://actuarial-cortex-demos.streamlit.app/){.btn .suite-table-btn target="_blank"} |
+
+---
 
 ## Demos interactivos por sector
 
@@ -210,19 +225,6 @@ El tejido productivo venezolano abarca logística, agroindustria y manufactura, 
 - **Análisis a la medida:** Exploración libre de los datos: cruce de estado de las máquinas, tiempos de ciclo, costos y otras variables para detectar ineficiencias sin necesidad de programar.
 
 [**Abrir Cortex Control Suite**](https://actuarial-cortex-demos.streamlit.app/5_Control_Suite){.btn .btn-primary target="_blank"}
-
----
-
-## Demos desplegados (Actuarial Suite)
-
-Estos aplicativos están en línea y pueden probarse desde aquí. Para ver el listado completo: [Actuarial Suite](actuarial-suite.html).
-
-| Demo | Descripción | Enlace |
-|------|-------------|--------|
-| **Dashboard Actividad Aseguradora** | Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa. | [Abrir](https://insurdata-dashboard.streamlit.app/){target="_blank"} |
-| **Gestión Social** | Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django). | [Abrir](https://angelucv-actuarial-cortex-gestion-social.hf.space){target="_blank"} |
-| **Detección de Fraude (Banca)** | Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit). | [Abrir](https://angelucv-actuarial-cortex-bank-fraud.hf.space){target="_blank"} |
-| **Demos por sector** | Banca, Seguros, Retail, Salud, Control — plataforma unificada. | [Abrir](https://actuarial-cortex-demos.streamlit.app/){target="_blank"} |
 
 ---
 
