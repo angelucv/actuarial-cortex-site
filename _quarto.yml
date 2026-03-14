@@ -7,6 +7,7 @@ project:
     - assets/articulos
     - Referencias/Recursos_HTML
     - apps/cortex-suite
+    - apps/gestion-social
     - logo-AC
   render:
     - index.qmd
@@ -24,6 +25,7 @@ project:
 format:
   html:
     embed-resources: false
+    include-in-header: assets/og-meta.html
 
 metadata-files:
   - _website.yml

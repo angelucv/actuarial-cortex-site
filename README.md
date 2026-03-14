@@ -8,7 +8,10 @@
 
 Este repositorio contiene el **código fuente del portal web de Actuarial Cortex**, construido con **Quarto** y pensado para desplegarse en plataformas estáticas (por ejemplo, **Cloudflare Pages**).
 
-**Mapa de aplicativos:** tabla con rutas locales, repos en GitHub y URLs en web de todos los aplicativos (sitio, Insurdata, Gestión Social, Detección de Fraude, Cortex Suite, Tarificación telemática): [docs/ACTUARIAL_CORTEX_APLICATIVOS.md](docs/ACTUARIAL_CORTEX_APLICATIVOS.md).
+**Documentación del proyecto:**
+- **[Mapa de aplicativos](docs/ACTUARIAL_CORTEX_APLICATIVOS.md)** — Rutas locales, repos en GitHub y URLs en web de todos los aplicativos.
+- **[Estado del proyecto](docs/ESTADO_PROYECTO.md)** — Qué está en producción, en beta o planeado.
+- **[Mejoras del proyecto](docs/MEJORAS_PROYECTO_GENERAL.md)** — Mejoras sugeridas para la web y los aplicativos (SEO, accesibilidad, documentación, mantenimiento).
 
 ---
 

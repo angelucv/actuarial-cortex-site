@@ -1,7 +1,8 @@
 # Configuración del sitio — Menú lateral por ejes (Investigación, Docencia, Extensión)
 website:
   title: "Actuarial Cortex"
-  site-url: ""
+  description: "Hub de conocimiento, tecnología y formación en ciencias actuariales. Resources, Cursos, Cortex Suite y demos."
+  site-url: "https://actuarial-cortex.pages.dev"
   favicon: logo-AC/logo-ac-blanco.png
 
   navbar:
@@ -14,6 +15,7 @@ website:
     left:
       - icon: list
         text: "Menú"
+        aria-label: "Abrir menú de navegación"
         menu:
           - text: "Inicio"
             href: index.qmd
@@ -41,18 +43,23 @@ website:
       - icon: house-fill
         text: "Inicio"
         href: index.qmd
+        aria-label: "Ir a Inicio"
       - icon: building
         text: "Sobre Cortex"
         href: sobre-cortex.qmd
+        aria-label: "Ir a Sobre Cortex"
       - icon: collection
         text: "Cortex Suite"
         href: cortex-suite.qmd
+        aria-label: "Ir a Cortex Suite"
       - icon: people-fill
         text: "Miembros"
         href: miembros.qmd
+        aria-label: "Ir a Miembros"
       - icon: journal-bookmark-fill
         text: "Portal de cursos"
         href: docencia/index.qmd
+        aria-label: "Ir al Portal de cursos"
     tools:
       - icon: envelope-fill
         href: "mailto:actuarial.cortex@gmail.com"

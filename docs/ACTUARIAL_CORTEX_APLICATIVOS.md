@@ -71,6 +71,17 @@ Todas las rutas locales son completas (Windows) para evitar confusiones. Ajustar
 
 ---
 
+## Revisión trimestral (checklist)
+
+Cada pocos meses conviene:
+
+- [ ] Comprobar que los enlaces desde el sitio a los demos (Streamlit, Hugging Face, Shiny) siguen funcionando.
+- [ ] Confirmar que los despliegues (Cloudflare, Streamlit Cloud, HF) se actualizan correctamente al hacer push a `main`.
+- [ ] Revisar que la tabla de este documento sigue al día (rutas, repos, URLs).
+- [ ] Actualizar [ESTADO_PROYECTO.md](ESTADO_PROYECTO.md) si algo pasa a beta o a producción.
+
+---
+
 ## Recomendaciones de enlaces (consistencia en el sitio)
 
 - **Internos (mismo sitio):** Usar siempre extensión `.html` (p. ej. `cortex-suite.html`, `resources/index.html`). Las páginas en subcarpetas usan `../` para volver a la raíz (p. ej. `../contacto.html`).

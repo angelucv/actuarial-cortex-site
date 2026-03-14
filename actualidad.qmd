@@ -48,7 +48,7 @@ tryCatch({
   cat('</ul>\n')
   cat('<p class="small text-muted">Más resultados en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
 }, error = function(e) {
-  cat('<p class="text-muted">No se pudieron cargar titulares. Ver en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
+  cat('<p class="text-muted">No se pudieron cargar los titulares en este momento. Puedes ver noticias del sector en <a href="https://news.google.com/search?q=seguros+actuarial&hl=es" target="_blank" rel="noopener">Google Noticias</a>.</p>')
 })
 ```
 
