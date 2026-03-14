@@ -204,7 +204,7 @@ include-in-header: assets/meta.html
     <a href="actuarial-suite.html">
       <div class="text">
         <h1>Actuarial Suite</h1>
-        <p class="animate-text">SUDEASEG, Gestión Social, Bank Fraud y demos por sector en un solo menú.</p>
+        <p class="animate-text">Dashboard Actividad Aseguradora, Gestión Social, Detección de Fraude y demos por sector.</p>
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
     </a>
@@ -227,7 +227,7 @@ include-in-header: assets/meta.html
          style="object-position: center;">
     <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener">
       <div class="text">
-        <h1>SUDEASEG Dashboard</h1>
+        <h1>Dashboard Actividad Aseguradora</h1>
         <p class="animate-text">Analítica y BI del sector asegurador venezolano sobre datos SUDEASEG.</p>
         <div class="dots"><span></span><span></span><span></span></div>
       </div>

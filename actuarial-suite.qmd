@@ -51,11 +51,11 @@ Desde aquí accede a todos los aplicativos y demos de Actuarial Cortex: dashboar
 
 ---
 
-## Dashboard SUDEASEG (Insurdata)
+## Dashboard Actividad Aseguradora (Insurdata)
 
 Panel de control de inteligencia de datos del sector asegurador venezolano basado en información de la **Superintendencia de la Actividad Aseguradora (SUDEASEG)**. Incluye extracción, ETL, normalización monetaria (BCV), persistencia en Supabase y visualización con Streamlit: resumen, primas/siniestros y análisis por empresa.
 
-[**Abrir Dashboard SUDEASEG**](https://insurdata-dashboard.streamlit.app/){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/insurdata-dashboard){target="_blank"}
+[**Abrir Dashboard Actividad Aseguradora**](https://insurdata-dashboard.streamlit.app/){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/insurdata-dashboard){target="_blank"}
 
 ---
 

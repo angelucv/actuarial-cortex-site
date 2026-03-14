@@ -111,8 +111,8 @@ El **modelo para los libros de Actuarial Cortex** es la plantilla **Quarto Book*
 ::: {.rvea-section #casos-aplicados}
 ## Casos aplicados y demos vinculados
 
-Los materiales académicos del hub se conectan con desarrollos tecnológicos y dashboards que muestran su aplicación práctica. Un ejemplo central es el **SUDEASEG Dashboard — Insurdata**, que utiliza modelos y procesos ETL inspirados en estos materiales para construir un panel de inteligencia de datos del mercado asegurador venezolano.
+Los materiales académicos del hub se conectan con desarrollos tecnológicos y dashboards que muestran su aplicación práctica. Un ejemplo central es el **Dashboard Actividad Aseguradora — Insurdata**, que utiliza modelos y procesos ETL inspirados en estos materiales para construir un panel de inteligencia de datos del mercado asegurador venezolano.
 
-[Abrir SUDEASEG Dashboard](https://insurdata-dashboard.streamlit.app/){.rvea-btn-articulos target="_blank"}
+[Abrir Dashboard Actividad Aseguradora](https://insurdata-dashboard.streamlit.app/){.rvea-btn-articulos target="_blank"}
 :::
 

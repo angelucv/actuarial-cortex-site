@@ -12,7 +12,7 @@ Sección de **comunicación dinámica** de Actuarial Cortex: noticias del sector
 
 | Fecha | Tipo | Novedad | Enlace |
 |-------|------|---------|--------|
-| 2026-03-10 | Demo | Lanzamiento del **SUDEASEG Dashboard — Insurdata**, panel de inteligencia de datos del sector asegurador venezolano. | [Abrir demo](https://insurdata-dashboard.streamlit.app/){target="_blank"} |
+| 2026-03-10 | Demo | Lanzamiento del **Dashboard Actividad Aseguradora — Insurdata**, panel de inteligencia de datos del sector asegurador venezolano. | [Abrir demo](https://insurdata-dashboard.streamlit.app/){target="_blank"} |
 
 ## Noticias del sector en tiempo real {#noticias-tiempo-real}
 

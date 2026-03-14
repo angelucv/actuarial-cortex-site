@@ -53,7 +53,7 @@ website:
         text: "Cortex Suite"
         href: cortex-suite.qmd
       - icon: bar-chart-line
-        text: "SUDEASEG Dashboard"
+        text: "Dashboard Actividad Aseguradora"
         href: "https://insurdata-dashboard.streamlit.app/"
       - icon: people-fill
         text: "Miembros"

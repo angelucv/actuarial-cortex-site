@@ -163,7 +163,7 @@ Hemos estructurado nuestros programas en módulos especializados y progresivos. 
 - **Enfoque corporativo real:** Enseñamos a utilizar R y Python integrados en los flujos de trabajo (incl. Office/Power BI) que utilizan las empresas e instituciones financieras.
 - **Rigor Científico y Matemático:** No solo enseñamos a escribir código; enseñamos la estadística, la probabilidad y la matemática actuarial que fundamentan los modelos.
 - **Eficiencia y Escalabilidad:** Aprende a superar los límites de las hojas de cálculo tradicionales procesando millones de registros en segundos.
-- **Proyectos Aplicados:** Casos de estudio reales: desde la predicción de abandono de clientes (churn) hasta la tarificación de pólizas de seguros, incluyendo el **SUDEASEG Dashboard — Insurdata**, donde se recorre el ciclo completo de datos (extracción SUDEASEG, ETL, base de datos y visualización con Streamlit).
+- **Proyectos Aplicados:** Casos de estudio reales: desde la predicción de abandono de clientes (churn) hasta la tarificación de pólizas de seguros, incluyendo el **Dashboard Actividad Aseguradora — Insurdata**, donde se recorre el ciclo completo de datos (extracción SUDEASEG, ETL, base de datos y visualización con Streamlit).
 
 Los cursos están orientados inicialmente a **programación en software libre** para los diversos sectores: **banca, seguros y pensiones**. Se dictan en la **plataforma Moodle**, referente en enseñanza en línea; el acceso a inscripciones y materiales está en el enlace [Plataforma de cursos (Moodle)](https://cvea.gnomio.com/){target="_blank"}.
 

@@ -17,9 +17,9 @@ Gráficos dinámicos de las últimas tablas de mortalidad calibradas por el hub:
 
 Seguimiento de la **inflación actuarial** y de las **tasas técnicas de descuento** relevantes para reservas, tarificación y valuación de pensiones. Insumos para el sector asegurador, banca y previsión social.
 
-**Caso aplicado:** el **SUDEASEG Dashboard — Insurdata** integra series históricas de la Superintendencia de la Actividad Aseguradora con un panel de inteligencia de negocios desplegado en Streamlit. Permite analizar primas, siniestros y otras métricas clave del mercado asegurador venezolano.
+**Caso aplicado:** el **Dashboard Actividad Aseguradora — Insurdata** integra series históricas de la Superintendencia de la Actividad Aseguradora con un panel de inteligencia de negocios desplegado en Streamlit. Permite analizar primas, siniestros y otras métricas clave del mercado asegurador venezolano.
 
-[Abrir SUDEASEG Dashboard](https://insurdata-dashboard.streamlit.app/){target="_blank"}
+[Abrir Dashboard Actividad Aseguradora](https://insurdata-dashboard.streamlit.app/){target="_blank"}
 
 ## Variables de previsión
 
