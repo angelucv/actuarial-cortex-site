@@ -38,8 +38,7 @@ format:
     <a href="sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
     <a href="miembros.html">Miembros</a><span class="sep">·</span>
     <a href="resources/index.html">Resources</a><span class="sep">·</span>
-    <a href="actuarial-suite.html" class="active">Actuarial Suite</a><span class="sep">·</span>
-    <a href="cortex-suite.html">Cortex Suite</a><span class="sep">·</span>
+    <a href="cortex-suite.html" class="active">Cortex Suite</a><span class="sep">·</span>
     <a href="docencia/index.html">Cursos</a><span class="sep">·</span>
     <a href="actualidad.html">Actualidad</a><span class="sep">·</span>
     <a href="contacto.html">Contacto</a>

@@ -147,15 +147,6 @@ include-in-header: assets/meta.html
           <p class="work-text scroll-text">Formación continua, Series de Tiempo y recursos pedagógicos.</p>
         </div>
       </a>
-      <a href="actuarial-suite.html" class="work work-link">
-        <div class="work-icon">
-          <lord-icon src="https://cdn.lordicon.com/jkzrgmvk.json" trigger="loop" delay="400" colors="primary:#38666A,secondary:#30c9e8" style="width:100px;height:100px"></lord-icon>
-          <p class="work-heading scroll-text">Actuarial Suite</p>
-        </div>
-        <div class="work-description">
-          <p class="work-text scroll-text">Todos los aplicativos y demos en un solo lugar.</p>
-        </div>
-      </a>
       <a href="cortex-suite.html" class="work work-link">
         <div class="work-icon">
           <lord-icon src="https://cdn.lordicon.com/jkzrgmvk.json" trigger="loop" delay="400" colors="primary:#38666A,secondary:#30c9e8" style="width:100px;height:100px"></lord-icon>
@@ -192,18 +183,6 @@ include-in-header: assets/meta.html
       <div class="text">
         <h1>Cursos</h1>
         <p class="animate-text">Rutas de aprendizaje en R y Python: fundamentos, datos, modelado actuarial y ML.</p>
-        <div class="dots"><span></span><span></span><span></span></div>
-      </div>
-    </a>
-  </div>
-  <div class="tile">
-    <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1600"
-         alt="Actuarial Suite — Aplicativos y demos"
-         style="object-position: center;">
-    <a href="actuarial-suite.html">
-      <div class="text">
-        <h1>Actuarial Suite</h1>
-        <p class="animate-text">Dashboard Actividad Aseguradora, Gestión Social, Detección de Fraude y demos por sector.</p>
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
     </a>

@@ -8,6 +8,8 @@
 
 Este repositorio contiene el **código fuente del portal web de Actuarial Cortex**, construido con **Quarto** y pensado para desplegarse en plataformas estáticas (por ejemplo, **Cloudflare Pages**).
 
+**Mapa de aplicativos:** tabla con rutas locales, repos en GitHub y URLs en web de todos los aplicativos (sitio, Insurdata, Gestión Social, Detección de Fraude, Cortex Suite, Tarificación telemática): [docs/ACTUARIAL_CORTEX_APLICATIVOS.md](docs/ACTUARIAL_CORTEX_APLICATIVOS.md).
+
 ---
 
 ## ¿Qué ofrece la web de Actuarial Cortex?
@@ -188,6 +190,7 @@ actuarial-cortex-site/
 ├─ Referencias/
 ├─ assets/
 ├─ logo-AC/
+├─ gestion-social-django/   ← App Django (Admin, BD, tablero); desplegable en Hugging Face
 ├─ site_libs/
 └─ _site/
 ```

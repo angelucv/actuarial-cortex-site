@@ -100,7 +100,6 @@ format:
     <a href="sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
     <a href="miembros.html">Miembros</a><span class="sep">·</span>
     <a href="resources/index.html">Resources</a><span class="sep">·</span>
-    <a href="actuarial-suite.html">Actuarial Suite</a><span class="sep">·</span>
     <a href="cortex-suite.html" class="active">Cortex Suite</a><span class="sep">·</span>
     <a href="docencia/index.html">Cursos</a><span class="sep">·</span>
     <a href="actualidad.html">Actualidad</a><span class="sep">·</span>
@@ -129,6 +128,8 @@ Para responder a esta necesidad nace **Cortex Suite**, un ecosistema tecnológic
 **Monitoreo y Cuadros de Mando:** La sala de mando en tiempo real. Aquí, la gerencia interactúa con visualizaciones dinámicas, evalúa indicadores clave de rendimiento (KPIs), recibe alertas tempranas e interactúa con simuladores de escenarios para la toma de decisiones ágiles y fundamentadas en evidencia.
 
 **Analítica Avanzada y Predictiva:** El cerebro actuarial y estadístico. Módulos especializados que aplican modelos matemáticos complejos, inteligencia artificial y simulaciones estocásticas (pruebas de estrés, modelos de supervivencia, proyecciones de demanda) para generar escenarios futuros que retroalimentan y blindan la estrategia del negocio.
+
+**Mapa de aplicativos:** rutas locales, repositorios en GitHub y URLs en web de todos los aplicativos (sitio, Insurdata, Gestión Social, Detección de Fraude, Cortex Suite, Tarificación telemática): [docs/ACTUARIAL_CORTEX_APLICATIVOS.md](https://github.com/angelucv/actuarial-cortex-site/blob/main/docs/ACTUARIAL_CORTEX_APLICATIVOS.md) (repositorio del sitio).
 
 ## Demos desplegados
 
