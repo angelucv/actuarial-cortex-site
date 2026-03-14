@@ -65,7 +65,7 @@ Estos aplicativos están en línea y pueden probarse desde aquí.
 ```{=html}
 <style>
 .demos-cards .demo-card { background: #f8f9fa; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
-.demos-cards .demo-card h4 { margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #1a365d; }
+.demos-cards .demo-card h4 { margin: 0 0 0.5rem 0; font-size: 1.2rem; font-weight: 700; color: #1a365d; }
 .demos-cards .demo-card p { margin: 0 0 0.75rem 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4; }
 .demos-cards .demo-card .demo-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
 .demos-cards .demo-card .demo-btn:hover { background: #2d5154; color: #fff !important; }
