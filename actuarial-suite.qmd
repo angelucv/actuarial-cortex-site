@@ -67,11 +67,11 @@ Aplicativo **Django** para gestión de solicitudes y ayudas sociales: Admin (car
 
 ---
 
-## Demo Detección de Fraude (Bank Fraud)
+## Detección de Fraude (Banca)
 
 Dashboard de análisis de fraude en Streamlit: exposición al riesgo (IER), tasa de fraude, segmentación por marca de tarjeta o categoría de comercio. Desplegado en Hugging Face.
 
-[**Abrir Demo Detección de Fraude**](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn target="_blank"}
+[**Abrir Detección de Fraude**](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn target="_blank"}
 
 ---
 

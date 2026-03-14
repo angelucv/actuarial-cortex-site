@@ -78,7 +78,7 @@ format:
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
-    <img src="logo-AC/logo-actuarial-cortex-principal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
+    <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Cortex Suite</h1>
     <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas</p>
     <p class="suite-hero-rotate animate__animated animate__fadeIn">
@@ -98,6 +98,7 @@ format:
     <a href="sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
     <a href="miembros.html">Miembros</a><span class="sep">·</span>
     <a href="resources/index.html">Resources</a><span class="sep">·</span>
+    <a href="actuarial-suite.html">Actuarial Suite</a><span class="sep">·</span>
     <a href="cortex-suite.html" class="active">Cortex Suite</a><span class="sep">·</span>
     <a href="docencia/index.html">Cursos</a><span class="sep">·</span>
     <a href="actualidad.html">Actualidad</a><span class="sep">·</span>
@@ -108,8 +109,11 @@ format:
 
 ```{=html}
 <div class="suite-cta-bar" id="suite-cta-bar">
-  <a href="https://actuarial-cortex-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir Demos</a>
-  <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir SUDEASEG Dashboard</a>
+  <a href="https://actuarial-cortex-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Demos por sector</a>
+  <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Dashboard SUDEASEG</a>
+  <a href="https://angelucv-actuarial-cortex-gestion-social.hf.space" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Gestión Social</a>
+  <a href="https://angelucv-actuarial-cortex-bank-fraud.hf.space" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Detección de Fraude</a>
+  <a href="actuarial-suite.html" class="suite-btn-demos suite-btn-demos-bar">Ver todos (Actuarial Suite)</a>
 </div>
 <script src="assets/js/text.js"></script>
 ```
@@ -209,6 +213,19 @@ El tejido productivo venezolano abarca logística, agroindustria y manufactura, 
 
 ---
 
+## Demos desplegados (Actuarial Suite)
+
+Estos aplicativos están en línea y pueden probarse desde aquí. Para ver el listado completo: [Actuarial Suite](actuarial-suite.html).
+
+| Demo | Descripción | Enlace |
+|------|-------------|--------|
+| **Dashboard SUDEASEG** | Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa. | [Abrir](https://insurdata-dashboard.streamlit.app/){target="_blank"} |
+| **Gestión Social** | Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django). | [Abrir](https://angelucv-actuarial-cortex-gestion-social.hf.space){target="_blank"} |
+| **Detección de Fraude (Banca)** | Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit). | [Abrir](https://angelucv-actuarial-cortex-bank-fraud.hf.space){target="_blank"} |
+| **Demos por sector** | Banca, Seguros, Retail, Salud, Control — plataforma unificada. | [Abrir](https://actuarial-cortex-demos.streamlit.app/){target="_blank"} |
+
+---
+
 ## Cortex Suite Lab — Otros desarrollos demostrativos
 
 **Tarificación actuarial telemática**
@@ -222,4 +239,4 @@ El tejido productivo venezolano abarca logística, agroindustria y manufactura, 
 
 ---
 
-Para conocer más o solicitar una propuesta adaptada a su organización: [Contacto](contacto.qmd) · [Miembros](miembros.qmd).
+Para conocer más o solicitar una propuesta adaptada a su organización: [Contacto](contacto.html) · [Miembros](miembros.html).
