@@ -1,4 +1,4 @@
-# CVEA Control Suite — Flotas, OEE, mantenimiento, gastos, PyGWalker
+# Cortex Control Suite — Flotas, OEE, mantenimiento, gastos, PyGWalker
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,16 +6,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 from theme import cvea_header
 
-st.set_page_config(page_title="CVEA Control Suite (CVEA-CS)", page_icon="⚙️", layout="wide")
+st.set_page_config(page_title="Cortex Control Suite", page_icon="⚙️", layout="wide")
 cvea_header(
-    "CVEA Control Suite (CVEA-CS)",
+    "Cortex Control Suite",
     "Cadena de suministro, mantenimiento predictivo, gastos operativos y análisis exploratorio — Datos simulados",
 )
 
 @st.cache_data
 def get_logistics_data(n=12_000):
     rng = np.random.default_rng(333)
-    # Venezuela bounds approx
     lat = 10.0 + rng.uniform(-2, 2, n)
     lon = -66.5 + rng.uniform(-3, 3, n)
     consumo = rng.lognormal(3, 0.5, n)
@@ -38,7 +37,6 @@ def get_logistics_data(n=12_000):
     })
 
 df_log = get_logistics_data()
-
 st.sidebar.header("Controles")
 variabilidad_combustible = st.sidebar.slider("Variabilidad precio/disponibilidad combustible (%)", -20.0, 20.0, 0.0, 1.0) / 100
 fecha_ini = st.sidebar.date_input("Fecha inicio auditoría", pd.Timestamp("2024-01-01"))
@@ -81,7 +79,6 @@ with tab2:
     st.plotly_chart(fig_heat)
     st.subheader("Curva de supervivencia — Probabilidad de falla a 30 días")
     t = np.linspace(0, 30, 100)
-    # Weibull simplificado
     shape, scale = 1.5, 25
     surv = np.exp(-(t / scale) ** shape)
     prob_falla_30 = 1 - surv[-1]
@@ -95,10 +92,7 @@ with tab2:
 with tab3:
     st.subheader("Desglose presupuesto operativo (Waterfall)")
     presupuesto = 2_500_000
-    diesel = -600_000
-    peajes = -80_000
-    mantenimiento = -120_000
-    depreciacion = -200_000
+    diesel, peajes, mantenimiento, depreciacion = -600_000, -80_000, -120_000, -200_000
     margen = presupuesto + diesel + peajes + mantenimiento + depreciacion
     x = ["Presupuesto total", "Diesel", "Peajes", "Mantenimiento flota", "Depreciación", "Margen operativo neto"]
     y = [presupuesto, diesel, peajes, mantenimiento, depreciacion, margen]

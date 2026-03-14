@@ -1,4 +1,4 @@
-# CVEA Bank Suite — Credit & Market Risk (NIIF 9, SUDEBAN)
+# Cortex Bank Suite — Credit & Market Risk (NIIF 9, SUDEBAN)
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,9 +7,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from theme import cvea_header
 
-st.set_page_config(page_title="CVEA Bank Suite (CVEA-BS)", page_icon="🏦", layout="wide")
+st.set_page_config(page_title="Cortex Bank Suite", page_icon="🏦", layout="wide")
 cvea_header(
-    "CVEA Bank Suite (CVEA-BS)",
+    "Cortex Bank Suite",
     "Credit & Market Risk Desk — NIIF 9 · Datos simulados",
 )
 
@@ -22,7 +22,6 @@ def get_credit_portfolio(n=10_000):
     monto = np.clip(rng.lognormal(9, 0.9, n) * 300, 500, 200000)
     tasa = 0.04 + (850 - score) / 10000 + rng.uniform(-0.005, 0.01, n)
     dias_mora = np.where(rng.random(n) < 0.92, 0, rng.exponential(45, n).astype(int))
-    # PD aproximada por score
     pd_val = np.clip(1 / (1 + np.exp((score - 600) / 80)) * 0.15 + rng.uniform(0, 0.02, n), 0.001, 0.95)
     estrato = pd.cut(ingreso, bins=[0, 500, 1500, 5000, 100000], labels=["Bajo", "Medio", "Medio-Alto", "Alto"])
     return pd.DataFrame({
@@ -72,7 +71,6 @@ def get_correlation_matrix():
     corr = np.corrcoef(rets.T)
     return pd.DataFrame(corr, index=[f"Cartera {i+1}" for i in range(n)], columns=[f"Cartera {i+1}" for i in range(n)])
 
-# Sidebar
 st.sidebar.header("Controles globales")
 choque_macro = st.sidebar.slider("Choque macroeconómico (% impacto inflación/devaluación)", -15.0, 15.0, 0.0, 0.5) / 100
 moneda = st.sidebar.selectbox("Vista", ["Moneda Nacional (MN)", "Moneda Extranjera (ME)"], index=1)
@@ -81,7 +79,6 @@ meta_solvencia = st.sidebar.slider("Meta de solvencia interna (%)", 10.0, 40.0, 
 
 df_cred = get_credit_portfolio()
 series = get_series_bimonetarias()
-# Aplicar choque a ratios
 series["liquidez_ratio"] = series["liquidez_ratio"] * (1 - choque_macro)
 liquidez_actual = float(series["liquidez_ratio"].iloc[-1])
 solvencia_sim = 0.1628 * (1 - choque_macro * 0.5)
@@ -97,11 +94,8 @@ with tab1:
     c2.metric("Solvencia", f"{solvencia_sim:.2%}", "—")
     c3.metric("Índice de morosidad", f"{morosidad_sim:.2%}", "—")
     c4.metric("Nivel intermediación financiera", f"{intermed_sim:.1%}", "—")
-
-    # Tacómetros de cumplimiento de metas
     col_g1, col_g2 = st.columns(2)
     with col_g1:
-        cumplimiento_liq = min(liquidez_actual / meta_liquidez if meta_liquidez > 0 else 0, 2.0)
         fig_g1 = go.Figure(
             go.Indicator(
                 mode="gauge+number",
@@ -115,16 +109,12 @@ with tab1:
                         {"range": [meta_liquidez * 100, meta_liquidez * 150], "color": "#ffe599"},
                         {"range": [meta_liquidez * 150, meta_liquidez * 200], "color": "#d9ead3"},
                     ],
-                    "threshold": {
-                        "line": {"color": "red", "width": 4},
-                        "value": meta_liquidez * 100,
-                    },
+                    "threshold": {"line": {"color": "red", "width": 4}, "value": meta_liquidez * 100},
                 },
                 title={"text": "Liquidez vs meta"},
             )
         )
         st.plotly_chart(fig_g1)
-
     with col_g2:
         fig_g2 = go.Figure(
             go.Indicator(
@@ -139,16 +129,12 @@ with tab1:
                         {"range": [meta_solvencia * 100, meta_solvencia * 150], "color": "#ffe599"},
                         {"range": [meta_solvencia * 150, meta_solvencia * 200], "color": "#d9ead3"},
                     ],
-                    "threshold": {
-                        "line": {"color": "red", "width": 4},
-                        "value": meta_solvencia * 100,
-                    },
+                    "threshold": {"line": {"color": "red", "width": 4}, "value": meta_solvencia * 100},
                 },
                 title={"text": "Solvencia vs meta interna"},
             )
         )
         st.plotly_chart(fig_g2)
-
     st.subheader("Evolución del fondeo (últimos 12 meses)")
     fig_fondo = go.Figure()
     fig_fondo.add_trace(go.Scatter(x=series["fecha"], y=series["captaciones_mn"], name="Captaciones", line=dict(color="blue")))
@@ -158,11 +144,9 @@ with tab1:
 
 with tab2:
     st.subheader("Migración de cartera (NIIF 9 — Stages)")
-    # Stages: 1 Normal, 2 Riesgo significativo, 3 Default
     df_cred["stage"] = np.where(df_cred["dias_mora"] > 90, "Stage 3: Default",
                          np.where((df_cred["dias_mora"] > 30) | (df_cred["probabilidad_default"] > 0.15), "Stage 2: Riesgo significativo", "Stage 1: Normal"))
     stage_counts = df_cred["stage"].value_counts()
-    # Sankey: Stage1 -> Stage2 -> Stage3 (simplificado con flujos simulados)
     s1, s2, s3 = stage_counts.get("Stage 1: Normal", 0), stage_counts.get("Stage 2: Riesgo significativo", 0), stage_counts.get("Stage 3: Default", 0)
     nodes = ["Stage 1\nNormal", "Stage 2\nRiesgo sign.", "Stage 3\nDefault"]
     source = [0, 0, 1]
@@ -174,12 +158,9 @@ with tab2:
     )])
     fig_sankey.update_layout(title="Migración entre estadios de riesgo", height=400)
     st.plotly_chart(fig_sankey)
-
-    st.subheader("Score crediticio vs Probabilidad de incumplimiento (PD)")
     fig_scatter = px.scatter(df_cred.sample(min(2000, len(df_cred))), x="score_crediticio", y="probabilidad_default", color="estrato_ingreso",
                              title="Credit Score vs PD (por estrato de ingreso)", opacity=0.6)
     st.plotly_chart(fig_scatter)
-
     st.subheader("Cálculo ECL (Pérdida esperada) — EAD × PD × LGD")
     lgd_default = 0.45
     lgd = st.data_editor(pd.DataFrame([{"LGD (Loss Given Default)": lgd_default}]), hide_index=True)

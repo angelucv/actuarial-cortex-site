@@ -6,7 +6,7 @@ project:
   resources:
     - assets/articulos
     - Referencias/Recursos_HTML
-    - apps/cvea-suite-demos
+    - apps/cortex-suite
     - logo-AC
   render:
     - index.qmd

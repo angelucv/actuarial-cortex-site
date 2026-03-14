@@ -203,7 +203,7 @@ actuarial-cortex-site/
   - Indica recursos que deben copiarse tal cual:
     - `assets/articulos`
     - `Referencias/Recursos_HTML`
-    - `apps/cvea-suite-demos`
+    - `apps/cortex-suite`
     - `logo-AC`
   - Lista las páginas y secciones a renderizar:
     - Páginas raíz: `index.qmd`, `sobre-cortex.qmd`, `miembros.qmd`, `cortex-suite.qmd`, `observatorio.qmd`, `actualidad.qmd`, `contacto.qmd`.

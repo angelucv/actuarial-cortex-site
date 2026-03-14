@@ -1,4 +1,4 @@
-# CVEA Retail Suite — POS, precios multimoneda, canastas, PyGWalker
+# Cortex Retail Suite — POS, precios multimoneda, canastas, PyGWalker
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,9 +6,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from theme import cvea_header
 
-st.set_page_config(page_title="CVEA Retail Suite (CVEA-RS)", page_icon="🛒", layout="wide")
+st.set_page_config(page_title="Cortex Retail Suite", page_icon="🛒", layout="wide")
 cvea_header(
-    "CVEA Retail Suite (CVEA-RS)",
+    "Cortex Retail Suite",
     "Inteligencia comercial, elasticidad de precios, canastas y Self-Service BI — Datos simulados",
 )
 
@@ -49,7 +49,6 @@ def get_transactions(n=55_000):
 
 @st.cache_data
 def get_association_flows():
-    # Flujos Harina -> Margarina, etc.
     items = ["Harina", "Margarina", "Leche", "Pan", "Café", "Azúcar"]
     rng = np.random.default_rng(202)
     links = []
@@ -60,7 +59,6 @@ def get_association_flows():
     return links
 
 df_ret = get_transactions()
-
 st.sidebar.header("Filtros")
 regiones = st.sidebar.multiselect("Región", options=sorted(df_ret["region"].unique()), default=sorted(df_ret["region"].unique()))
 formatos = st.sidebar.multiselect("Formato de tienda", options=sorted(df_ret["formato_tienda"].unique()), default=sorted(df_ret["formato_tienda"].unique()))
@@ -80,14 +78,13 @@ with tab1:
     part = df_f.groupby(["categoria_producto", "marca_tipo"])["precio_usd"].sum().reset_index()
     part["participacion"] = part["precio_usd"] / part["precio_usd"].sum()
     fig_treemap = px.treemap(part, path=["categoria_producto", "marca_tipo"], values="precio_usd", title="Participación (Tradicional ~61%)")
-st.plotly_chart(fig_treemap)
+    st.plotly_chart(fig_treemap)
 
 with tab2:
     st.subheader("Curva de demanda (precio vs tasa de cambio)")
     costo_import = st.slider("Costo importado (USD)", 0.5, 2.0, 1.0, 0.1)
     tc_oficial = st.slider("Tipo de cambio oficial (s_t)", 30.0, 50.0, 36.0, 0.5)
     tc_paralelo = st.slider("Tipo de cambio paralelo (b_t)", 35.0, 60.0, 42.0, 0.5)
-    # Restricciones P >= s_t P*, P >= b_t P*
     p_min_oficial = tc_oficial * costo_import
     p_min_paralelo = tc_paralelo * costo_import
     if p_min_paralelo > p_min_oficial * 1.5:

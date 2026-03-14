@@ -1,4 +1,4 @@
-# CVEA Health Suite — Morbilidad, auditoría clínica, reservas, tarificación
+# Cortex Health Suite — Morbilidad, auditoría clínica, reservas, tarificación
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,9 +6,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from theme import cvea_header
 
-st.set_page_config(page_title="CVEA Health Suite (CVEA-HS)", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Cortex Health Suite", page_icon="🏥", layout="wide")
 cvea_header(
-    "CVEA Health Suite (CVEA-HS)",
+    "Cortex Health Suite",
     "Monitoreo epidemiológico, auditoría clínica, solvencia y tarificación — Datos simulados",
 )
 
@@ -33,7 +33,6 @@ def get_health_claims(n=22_000):
     return pd.DataFrame(records)
 
 df_h = get_health_claims()
-
 st.sidebar.header("Controles")
 sensibilidad_auditoria = st.sidebar.slider("Sensibilidad de auditoría (umbral revisión)", 0.1, 0.9, 0.5, 0.05)
 inflacion_medica = st.sidebar.number_input("Inflación médica (% anual)", 0.0, 100.0, 25.0, 1.0) / 100
@@ -60,7 +59,6 @@ with tab2:
     st.subheader("Costo por procedimiento vs baremo")
     fig_violin = px.violin(df_h, x="tipo_servicio", y="costo_facturado_usd", box=True, points="outliers")
     st.plotly_chart(fig_violin)
-    # Shewhart-style: costo promedio diario
     df_h["fecha"] = pd.to_datetime(df_h["fecha_admision"]).dt.date
     daily = df_h.groupby("fecha")["costo_facturado_usd"].mean().reset_index()
     daily["fecha"] = pd.to_datetime(daily["fecha"])
@@ -74,7 +72,6 @@ with tab2:
     fig_control.add_trace(go.Scatter(x=daily["fecha"], y=daily["LIC"], line=dict(dash="dash", color="red"), name="LIC"))
     fig_control.update_layout(title="Gráfico de control (Shewhart) — Costo promedio por admisión", height=350)
     st.plotly_chart(fig_control)
-    # Auditoría: Isolation Forest style - marcar outliers
     from sklearn.ensemble import IsolationForest
     X = df_h[["costo_facturado_usd", "limite_baremo_usd"]].copy()
     X["ratio"] = X["costo_facturado_usd"] / (X["limite_baremo_usd"] + 1)
@@ -87,11 +84,8 @@ with tab2:
 with tab3:
     st.subheader("Simulación Monte Carlo — Patrimonio del fondo a 5 años (Teoría de la ruina)")
     np.random.seed(222)
-    años = 5
-    paths = 100
-    patrimonio_inicial = 5_000_000
-    ingresos_anuales = 3_200_000
-    gastos_base = 2_800_000
+    años, paths = 5, 100
+    patrimonio_inicial, ingresos_anuales, gastos_base = 5_000_000, 3_200_000, 2_800_000
     proy = np.zeros((paths, años + 1))
     proy[:, 0] = patrimonio_inicial
     for t in range(1, años + 1):

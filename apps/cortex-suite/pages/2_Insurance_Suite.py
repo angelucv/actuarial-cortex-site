@@ -1,4 +1,4 @@
-# CVEA Insurance Suite — Reservas, siniestralidad, cumplimiento
+# Cortex Insurance Suite — Reservas, siniestralidad, cumplimiento
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,16 +6,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 from theme import cvea_header
 
-st.set_page_config(page_title="CVEA Insurance Suite (CVEA-IS)", page_icon="🛡️", layout="wide")
+st.set_page_config(page_title="Cortex Insurance Suite", page_icon="🛡️", layout="wide")
 cvea_header(
-    "CVEA Insurance Suite (CVEA-IS)",
+    "Cortex Insurance Suite",
     "Reservas técnicas, siniestralidad por ramo y cumplimiento LC/FT — Datos simulados",
 )
 
 @st.cache_data
 def get_runoff_triangle(years=10):
     rng = np.random.default_rng(33)
-    # Triángulo de desarrollo: filas = año ocurrencia, columnas = año desarrollo
     tri = np.zeros((years, years))
     for i in range(years):
         for j in range(years - i):
@@ -59,12 +58,7 @@ modelo_reserva = st.sidebar.radio("Modelo de proyección IBNR", ["Chain Ladder",
 choque_infl = st.sidebar.slider("Choque inflacionario exógeno (%)", -10.0, 10.0, 0.0, 0.5) / 100
 
 tab1, tab2, tab3, tab4 = st.tabs(
-    [
-        "Visión general",
-        "Monitoreo de reservas (SUDEASEG)",
-        "Ramos y productos",
-        "Cumplimiento y estrés",
-    ]
+    ["Visión general", "Monitoreo de reservas (SUDEASEG)", "Ramos y productos", "Cumplimiento y estrés"]
 )
 
 with tab1:
@@ -75,23 +69,19 @@ with tab1:
     siniestros = primas * rng_vis.uniform(0.4, 0.9, len(ramos))
     df_vs = pd.DataFrame({"Ramo": ramos, "Primas_cobradas": primas, "Siniestros_pagados": siniestros})
     df_vs["Siniestralidad"] = df_vs["Siniestros_pagados"] / df_vs["Primas_cobradas"]
-
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Primas totales (USD)", f"{df_vs['Primas_cobradas'].sum():,.0f}")
     c2.metric("Siniestros totales (USD)", f"{df_vs['Siniestros_pagados'].sum():,.0f}")
     c3.metric("Siniestralidad promedio", f"{df_vs['Siniestralidad'].mean():.1%}")
     c4.metric("Número de ramos", f"{len(ramos)}")
-
     st.subheader("Primas cobradas por ramo")
     fig_primas = px.bar(df_vs, x="Ramo", y="Primas_cobradas", title="Primas cobradas por ramo")
     st.plotly_chart(fig_primas)
-
     st.subheader("Siniestralidad por ramo")
     fig_sin = px.bar(df_vs, x="Ramo", y="Siniestralidad", text="Siniestralidad", range_y=[0, 1])
     fig_sin.update_traces(texttemplate="%{text:.1%}", textposition="outside")
     fig_sin.update_layout(title="Siniestralidad por ramo")
     st.plotly_chart(fig_sin)
-
     meta_sin = st.sidebar.slider("Meta de siniestralidad técnica (%)", 30.0, 90.0, 65.0, 1.0) / 100
     sin_prom = float(df_vs["Siniestralidad"].mean())
     fig_g = go.Figure(
@@ -126,7 +116,6 @@ with tab2:
     ]
     df_res = pd.DataFrame(reservas, columns=["Reserva", "Descripción resumida"])
     st.table(df_res)
-
     st.subheader("Triángulo de desarrollo de siniestros (pagados)")
     tri_display = triangle_raw.copy()
     tri_display = tri_display.style.background_gradient(axis=None, cmap="YlOrRd")
@@ -161,17 +150,8 @@ with tab3:
         for prod in productos[ramo]:
             prima = rng_det.uniform(100_000, 900_000)
             sin_pago = prima * rng_det.uniform(0.3, 0.95)
-            filas.append(
-                {
-                    "Ramo": ramo,
-                    "Producto": prod,
-                    "Primas": prima,
-                    "Siniestros_pagados": sin_pago,
-                    "Siniestralidad": sin_pago / prima,
-                }
-            )
+            filas.append({"Ramo": ramo, "Producto": prod, "Primas": prima, "Siniestros_pagados": sin_pago, "Siniestralidad": sin_pago / prima})
     df_prod = pd.DataFrame(filas)
-
     ramo_sel = st.selectbox("Ramo", ramos)
     df_sel = df_prod[df_prod["Ramo"] == ramo_sel]
     c1, c2, c3, c4 = st.columns(4)
@@ -179,7 +159,6 @@ with tab3:
     c2.metric("Siniestros (ramo)", f"{df_sel['Siniestros_pagados'].sum():,.0f}")
     c3.metric("Siniestralidad media", f"{df_sel['Siniestralidad'].mean():.1%}")
     c4.metric("Nº productos", f"{df_sel['Producto'].nunique()}")
-
     fig_prod = px.bar(df_sel, x="Producto", y="Siniestralidad", text="Siniestralidad", range_y=[0, 1])
     fig_prod.update_traces(texttemplate="%{text:.1%}", textposition="outside")
     fig_prod.update_layout(title=f"Siniestralidad por producto — {ramo_sel}")
@@ -189,21 +168,17 @@ with tab4:
     st.subheader("Cumplimiento SUDEASEG y prueba de estrés")
     st.subheader("Prueba de estrés sobre patrimonio")
     choque_central = st.slider("Choque inflacionario (%)", -10.0, 10.0, float(choque_infl * 100), 0.5, key="stress_slider") / 100
-    # Métricas que reaccionan al choque
     base_ratio = 0.734
     new_ratio = base_ratio * (1 + choque_central * 0.5)
     c1, c2, c3 = st.columns(3)
     c1.metric("Ratio IBNR/costos (base)", f"{base_ratio:.3f}", "—")
     c2.metric("Ratio IBNR/costos (post-choque)", f"{new_ratio:.3f}", f"{(new_ratio - base_ratio) / base_ratio * 100:+.1f}%")
     c3.metric("Choque aplicado", f"{choque_central * 100:+.1f}%", "—")
-    # Fan chart simulado
     periods = 60
     rng = np.random.RandomState(77)
     base = 100 * np.exp(np.cumsum(rng.normal(0.002, 0.02, periods)))
-    p75_lo = base * 0.85
-    p75_hi = base * 1.15
-    p95_lo = base * 0.70
-    p95_hi = base * 1.35
+    p75_lo, p75_hi = base * 0.85, base * 1.15
+    p95_lo, p95_hi = base * 0.70, base * 1.35
     x = list(range(periods))
     fig_fan = go.Figure()
     fig_fan.add_trace(go.Scatter(x=x, y=p95_hi, fill=None, line=dict(color="lightblue")))
@@ -213,13 +188,10 @@ with tab4:
     fig_fan.add_trace(go.Scatter(x=x, y=base, line=dict(color="darkblue", width=2), name="Central"))
     fig_fan.update_layout(title="Trayectoria probable de pagos futuros (IC 75% y 95%)", height=400)
     st.plotly_chart(fig_fan)
-
-with tab4:
     st.subheader("Cumplimiento SUDEASEG — LC/FT/FPADM")
-    # Radar: Conozca a su cliente, Intermediarios, Reportes sistemáticos
     categorias = ["Conozca a su cliente", "Intermediarios", "Reportes sistemáticos", "Formación", "Debida diligencia"]
-    rng = np.random.RandomState(88)
-    valores = rng.uniform(60, 95, 5)
+    rng_radar = np.random.RandomState(88)
+    valores = rng_radar.uniform(60, 95, 5)
     fig_radar = go.Figure()
     fig_radar.add_trace(go.Scatterpolar(r=list(valores) + [valores[0]], theta=categorias + [categorias[0]], fill="toself", name="Calificación"))
     fig_radar.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=False, height=450)
