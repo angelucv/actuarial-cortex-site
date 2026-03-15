@@ -10,7 +10,7 @@ En esta página se recoge el **perfil profesional, currículum detallado, formac
 
 Actuario preparado para el estudio, planteamiento, formulación y aplicación de modelos de contenido matemático acerca de fenómenos que involucran riesgos, con el fin de proveer información para la planeación, la previsión y la toma de decisiones. Enfocado principalmente en el **análisis de series temporales** y en la aplicación de modelos actuariales y estadísticos al sector asegurador, banca y políticas públicas.
 
-Es **Profesor a Tiempo Completo** de la Universidad Central de Venezuela, en la Facultad de Ciencias Económicas y Sociales (FACES), Escuela de Estadística y Ciencias Actuariales (EECA), desde abril de 2011. Ha sido **Jefe del Departamento de Actuariado en dos ocasiones:** de 2016 a 2018 y desde 2026; además ha sido Jefe de la Cátedra de Computación y actualmente **Jefe de la Cátedra de Seguros**. Propuso e inició la reforma curricular de un programa con más de 30 años de antigüedad, introduciendo nuevas tecnologías y temas actuales; ha cambiado el contenido curricular de todas las asignaturas que dicta y ha diseñado y dictado el contenido de tres cursos electivos. Representante Profesoral electo ante el Consejo de Escuela de la EECA para el periodo 2023-2025.
+Es **Profesor a Tiempo Completo** de la Universidad Central de Venezuela, en la Facultad de Ciencias Económicas y Sociales (FACES), Escuela de Estadística y Ciencias Actuariales (EECA), desde abril de 2011. Desde 2025 es **Profesor Asistente**, con **Mención Honorífica** por su trabajo de investigación. Este ascenso marca un hito importante, rompiendo una brecha de 30 años sin profesores de escalafón en el Departamento de Actuariado de la EECA. Ha sido **Jefe del Departamento de Actuariado en dos ocasiones:** de 2016 a 2018 y, desde 2026, nuevamente Jefe del Departamento de Actuariado; además ha sido **Jefe de la Cátedra de Computación** y **Jefe de la Cátedra de Seguros**. Propuso e inició la reforma curricular de un programa con más de 30 años de antigüedad, introduciendo nuevas tecnologías y temas actuales; ha cambiado el contenido curricular de todas las asignaturas que dicta y ha diseñado y dictado el contenido de tres cursos electivos. Representante Profesoral electo ante el Consejo de Escuela de la EECA para el periodo 2023-2025.
 
 **Registro:** Actuario Independiente N° AI-000067.
 
@@ -69,7 +69,7 @@ Es **Profesor a Tiempo Completo** de la Universidad Central de Venezuela, en la 
 
 ## Libros y materiales en el hub
 
-En [**Resources**](resources/index.qmd) de Actuarial Cortex están a la orden el libro **Demografía, Mortalidad y Previsión Social en la Venezuela del Siglo XXI** y otros materiales. En proceso de redacción hay varios libros en colaboración (matemáticas actuariales, matemáticas financieras, entre otros). En el marco del [Centro Venezolano de Estudios Actuariales (CVEA)](https://cvea.pages.dev/cvea-suite){target="_blank"} y la [Revista Venezolana de Actuariado (RVEA)](resources/index.qmd) se difunden investigaciones y recursos del hub.
+En [**Resources**](resources/index.qmd) de Actuarial Cortex están a la orden diversos materiales y libros en colaboración; varios títulos están en proceso de redacción (matemáticas actuariales, matemáticas financieras, entre otros). En el marco del [Centro Venezolano de Estudios Actuariales (CVEA)](https://cvea.pages.dev/cvea-suite){target="_blank"} y la [Revista Venezolana de Actuariado (RVEA)](resources/index.qmd) se difunden investigaciones y recursos del hub.
 
 ## Otras investigaciones y vinculación
 
@@ -98,7 +98,3 @@ En [**Resources**](resources/index.qmd) de Actuarial Cortex están a la orden el
 - **ORCID:** [0000-0002-8866-1377](https://orcid.org/0000-0002-8866-1377){target="_blank"}
 - **ResearchGate:** [researchgate.net/profile/Angel-Colmenares](https://www.researchgate.net/profile/Angel-Colmenares){target="_blank"}
 - **Instagram (Actuarial Cortex):** [@actuarial_cortex](https://instagram.com/actuarial_cortex){target="_blank"}
-
-## Referencias
-
-Parte de los códigos y ejemplos docentes (p. ej. en *Time Series with Python*) provienen de materiales de [cienciadedatos.net](https://cienciadedatos.net/){target="_blank"} y de referencias bibliográficas citadas en cada recurso. Se irán incorporando progresivamente códigos y materiales propios.

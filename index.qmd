@@ -245,6 +245,8 @@ include-in-header: assets/meta.html
 
 ## Inicio — Identidad y propósito
 
+![Prof. Angel Colmenares](assets/angel-colmenares-inicio.png){width=280 style="border-radius: 12px; margin-bottom: 1rem; display: block;"}
+
 **Actuarial Cortex** es un **hub personal de conocimiento y tecnología actuarial** impulsado por el Prof. **Angel Colmenares**. Con un enfoque en **Conocimiento — Tecnología — Formación**, integra modelos, herramientas y materiales docentes aplicados a seguros, pensiones, riesgo financiero y ciencia de datos, sirviendo de puente entre la academia y la práctica profesional.
 
 - **Sobre Cortex:** Identidad, ejes del hub (conocimiento aplicado, tecnología y demos, formación continua). [Ver página Sobre Cortex](sobre-cortex.qmd).
