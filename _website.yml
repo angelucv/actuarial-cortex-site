@@ -27,8 +27,6 @@ website:
             href: referencias-autoria.qmd
           - text: "Resources"
             href: resources/index.qmd
-          - text: "Model Hub"
-            href: investigacion/model-hub.qmd
           - text: "Cursos"
             href: docencia/index.qmd
           - text: "Cortex Suite"
@@ -60,10 +58,10 @@ website:
         text: "Miembros"
         href: miembros.qmd
         aria-label: "Ir a Miembros"
-      - icon: journal-bookmark-fill
-        text: "Portal de cursos"
-        href: docencia/index.qmd
-        aria-label: "Ir al Portal de cursos"
+      - icon: briefcase-fill
+        text: "Portafolio"
+        href: servicios/portafolio.qmd
+        aria-label: "Ir al Portafolio de servicios"
     tools:
       - icon: envelope-fill
         href: "mailto:actuarial.cortex@gmail.com"

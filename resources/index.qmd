@@ -111,6 +111,12 @@ El **modelo para los libros de Actuarial Cortex** es la plantilla **Quarto Book*
 **Libro de referencia:** *Applied Machine Learning Using mlr3 in R* — [Descargar PDF](mlr3book.pdf).
 :::
 
+::: {.rvea-section #model-hub}
+## Model Hub
+
+Repositorio de herramientas técnicas reproducibles: scripts R/Python, plantillas Excel actuarial y bases de datos abiertas, alineadas con la investigación del hub. [**Ir al Model Hub**](../investigacion/model-hub.qmd).
+:::
+
 ::: {.rvea-section #casos-aplicados}
 ## Casos aplicados y demos vinculados
 

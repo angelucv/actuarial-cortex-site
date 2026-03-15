@@ -14,6 +14,7 @@ project:
     - index.qmd
     - sobre-cortex.qmd
     - miembros.qmd
+    - referencias-autoria.qmd
     - cortex-suite.qmd
     - observatorio.qmd
     - actualidad.qmd

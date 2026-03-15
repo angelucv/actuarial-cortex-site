@@ -1,97 +1,28 @@
 ---
 title: "Servicios | Actuarial Cortex"
 subtitle: "Eje de Extensión"
-listing:
-  type: grid
-  contents:
-    - title: "Dashboard Actividad Aseguradora — Insurdata"
-      path: https://insurdata-dashboard.streamlit.app/
 format:
   html:
     include-in-header:
       text: |
         <style>
-        /* Galería de demos: fondo en las cajas */
-        .quarto-listing-grid .listing-card,
-        .quarto-listing-grid .grid-item,
-        .listing-grid .listing-card { background: #38666A !important; color: white !important; border-radius: 8px; }
-        .quarto-listing-grid .listing-card a,
-        .quarto-listing-grid .listing-card .listing-title { color: white !important; }
-        .suite-demos-wrapper { max-width: min(640px, 90%); margin-left: auto; margin-right: auto; overflow-x: auto; padding: 1.5rem; border-radius: 12px; background: #f8f9fa; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-        .suite-demos-wrapper table { width: 100%; min-width: 420px; }
-        .suite-demos-wrapper h2 { margin-top: 0; }
-        .suite-table-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+        .suite-table-btn { display: inline-block; padding: 8px 18px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1rem; margin: 0.5rem 0.5rem 0.5rem 0; }
         .suite-table-btn:hover { background: #2a4f52; color: #fff !important; }
         </style>
 ---
 
-El **eje de Extensión** de Actuarial Cortex vincula el hub con la industria mediante **consultoría estratégica**, **observatorio de variables**, **servicios al sector** y la oferta de **Cortex Suite**: plataforma modular de tecnología a medida y analítica de alto nivel para transformar la operatividad de su organización. Transferencia tecnológica y aplicaciones directas de la investigación publicada en Resources y en los libros (mortalidad, reservas, riesgo territorial).
+El **eje de Extensión** de Actuarial Cortex vincula el hub con la industria mediante consultoría estratégica, observatorio de variables, servicios al sector y la oferta de **Cortex Suite**: plataforma modular de tecnología a medida y analítica de alto nivel.
 
-- **Cortex Suite:** Plataforma modular (ingesta de datos, motor de reglas y scoring, control financiero, Business Intelligence) para banca, seguros, salud, retail y más. [Conocer Cortex Suite](../cortex-suite.qmd).
+Para el detalle de servicios profesionales por ámbito (asegurador, banca, analítica, formación, investigación) y los aplicativos de referencia, véase el **Portafolio de servicios**. Para demos interactivos y soluciones modulares, **Cortex Suite**. Observatorio de variables y contacto a continuación.
 
-## Consultoría estratégica — Portafolio
+::: {.callout-tip}
+## Acceso rápido
 
-- **Actividad Aseguradora:** diseño técnico de productos, cálculo preciso de reservas, auditorías externas.
-- **Banca y Seguridad Social:** modelado de riesgo de crédito, valuaciones de sostenibilidad fiscal.
-- **Sectores no tradicionales:** modelado actuarial del riesgo de deserción (churn), determinación de baremos, cuantificación financiera de riesgo operacional.
+[**Ver Portafolio de servicios**](portafolio.qmd){.suite-table-btn} — Listado detallado de servicios, aplicativos de referencia y perfil.
 
-**Casos de estudio:** documentos que explican problemas resueltos sin revelar datos confidenciales (en desarrollo).
+[**Conocer Cortex Suite**](../cortex-suite.qmd){.suite-table-btn} — Demos, dashboards y soluciones en línea.
+:::
 
-## Formación y cursos
+**Observatorio:** visualizaciones de variables biométricas, financieras y demográficas en [Observatorio](../observatorio.qmd).
 
-Actuarial Cortex ofrece [**cursos y rutas de aprendizaje**](../docencia/index.qmd#cursos) en análisis de datos, modelado actuarial y matemáticas financieras con R y Python: desde fundamentos analíticos hasta machine learning y despliegue de modelos. Los programas están orientados a profesionales de banca, seguros y pensiones. Ver [Cursos](../docencia/index.qmd#cursos) para el detalle de módulos y ofertas.
-
-## Observatorio actuarial (Dashboard)
-
-Visualizaciones interactivas de **variables biométricas** (mortalidad), **financieras** (tasas de interés) y **demográficas**; boletines de indicadores mensuales. Detalle en [Observatorio](../observatorio.qmd).
-
-## Servicios al sector
-
-Formulario de solicitud de asesoría técnica y convenios de pasantías industriales. [Contacto](../contacto.qmd).
-
-## Demos y galería
-
-- **Demos interactivos:** todos los aplicativos y demos (Dashboard Actividad Aseguradora, Gestión Social, Detección de Fraude, demos por sector y más) están reunidos en [**Cortex Suite**](../cortex-suite.qmd). Desde ahí puedes acceder a cada uno con un solo clic.
-- **Formación continua y talleres:** sesiones orientadas a actuarios, reguladores y profesionales; alineadas con los materiales académicos y los libros del hub.
-- **Informes técnicos y policy briefs:** síntesis de hallazgos en formato breve con recomendaciones de política (IVSS, Sudeaseg, aseguradoras, decisores).
-- **Reproducibilidad:** cuando el código de un demo esté en repositorio público, se enlaza desde la descripción.
-
-Contacto a través de [Miembros](../miembros.qmd) y [Contacto](../contacto.qmd).
-
-## Demos desplegados
-
-Estos aplicativos están en línea y pueden probarse desde aquí.
-
-```{=html}
-<style>
-.demos-cards .demo-card { background: #f8f9fa; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
-.demos-cards .demo-card h4 { margin: 0 0 0.5rem 0; font-size: 1.2rem; font-weight: 700; color: #1a365d; }
-.demos-cards .demo-card p { margin: 0 0 0.75rem 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4; }
-.demos-cards .demo-card .demo-btn { display: inline-block; padding: 6px 14px; background: #38666A; color: #fff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
-.demos-cards .demo-card .demo-btn:hover { background: #2d5154; color: #fff !important; }
-</style>
-<div class="demos-cards" style="max-width: 640px; margin: 1.5rem 0;">
-  <div class="demo-card">
-    <h4>Dashboard Actividad Aseguradora</h4>
-    <p>Inteligencia de datos del sector asegurador (SUDEASEG). Primas, siniestros, análisis por empresa.</p>
-    <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
-  </div>
-  <div class="demo-card">
-    <h4>Gestión Social</h4>
-    <p>Gestión de solicitudes y ayudas sociales: Admin, dashboard con KPIs, mapa por estados, visión histórica (Django).</p>
-    <a href="https://angelucv-actuarial-cortex-gestion-social.hf.space" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
-  </div>
-  <div class="demo-card">
-    <h4>Detección de Fraude (Banca)</h4>
-    <p>Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría (Streamlit).</p>
-    <a href="https://angelucv-actuarial-cortex-bank-fraud.hf.space" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
-  </div>
-  <div class="demo-card">
-    <h4>Demos por sector</h4>
-    <p>Banca, Seguros, Retail, Salud, Control — plataforma unificada.</p>
-    <a href="https://actuarial-cortex-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="demo-btn">Ir</a>
-  </div>
-</div>
-```
-
-También puedes acceder a todos desde [**Cortex Suite**](../cortex-suite.qmd).
+**Contacto:** asesoría técnica y convenios — [Contacto](../contacto.qmd).
