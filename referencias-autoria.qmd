@@ -1,0 +1,101 @@
+---
+title: "Referencias y autoría | Actuarial Cortex"
+subtitle: "Perfil, formación, experiencia y publicaciones — Prof. Angel Colmenares"
+toc: true
+---
+
+## Sobre el Prof. Angel Colmenares
+
+Actuario preparado para el estudio, planteamiento, formulación y aplicación de modelos de contenido matemático acerca de fenómenos que involucran riesgos, con el fin de proveer información para la planeación, la previsión y la toma de decisiones. Enfocado principalmente en el **análisis de series temporales** y en la aplicación de modelos actuariales y estadísticos al sector asegurador, banca y políticas públicas.
+
+Es **Profesor a Tiempo Completo** de la Universidad Central de Venezuela, en la Facultad de Ciencias Económicas y Sociales (FACES), Escuela de Estadística y Ciencias Actuariales (EECA), desde abril de 2011. Ha sido **Jefe del Departamento de Actuariado en dos ocasiones:** de 2016 a 2018 y desde 2026; además ha sido Jefe de la Cátedra de Computación y actualmente **Jefe de la Cátedra de Seguros**. Propuso e inició la reforma curricular de un programa con más de 30 años de antigüedad, introduciendo nuevas tecnologías y temas actuales; ha cambiado el contenido curricular de todas las asignaturas que dicta y ha diseñado y dictado el contenido de tres cursos electivos. Representante Profesoral electo ante el Consejo de Escuela de la EECA para el periodo 2023-2025.
+
+**Registro:** Actuario Independiente N° AI-000067.
+
+## Educación
+
+- **PhD en Matemáticas** — Universidad Central de Venezuela, Facultad de Ciencias, Escuela de Matemáticas (2025 – actualmente).
+- **PhD en Estadística** — Universidad Dongbei de Finanzas y Economía (东北财经大学), Dalian, Provincia de Liaoning, China (2018-2022; no finalizado por la pandemia).
+- **Magister Scientiarum, mención Modelos Aleatorios** — Universidad Central de Venezuela, Facultad de Ciencias, Escuela de Matemáticas (2011-2016).
+- **Licenciado en Ciencias Actuariales** — Universidad Central de Venezuela, Facultad de Ciencias Económicas y Sociales, Escuela de Estadística y Ciencias Actuariales (2004-2010).
+- **Bachiller en Administración, mención Procesamiento de Datos** — Colegio Agustiniano San Judas Tadeo (1999-2004).
+
+## Materias dictadas (EECA-UCV)
+
+- Análisis Numérico
+- Matemáticas de Pensiones y Matemáticas Actuariales III
+- Teoría de la Mortalidad
+- Computación I y Computación II
+- Técnicas Actuariales
+- Seguros de Personas
+- Computación Actuarial y Computación Aplicada a los Seguros (electivas)
+- La Actividad Aseguradora en Venezuela (electiva)
+
+## Experiencia laboral
+
+- **Vicepresidente de Suscripción** — C.N.A. de Seguros La Previsora (septiembre 2022 – mayo 2024). Consejero de la presidenta en materia de riesgo; líder del equipo que analiza datos estadísticos y decide coberturas; construcción de cartera rentable de reaseguro; desarrollo de objetivos, estrategias y procesos a corto y largo plazo; monitoreo de riesgos y cumplimiento regulatorio y técnico.
+- **Profesional Actuarial V y fundador del Área de Investigación y Trabajos Especiales** — Dirección Actuarial, Superintendencia de la Actividad Aseguradora (agosto 2012 – agosto 2022; 10 años, 2018-2022 en permiso por estudios). Investigación y propuestas sobre el sistema asegurador; metodologías actuariales para seguimiento, control, diseño de tarifas y condiciones de pólizas; impulso del sistema único de información del sector asegurador venezolano; tasa de seguro solidario funerario, vida y salud; tasa de salud única; proyecto de seguro solidario agrícola, industrial y residencial.
+- **Vicepresidente Ejecutivo de Riesgo** — Banco de Venezuela (septiembre 2017 – septiembre 2018). Asesor del presidente en materia de riesgo; responsable de un equipo de unas 800 personas en análisis, otorgamiento y seguimiento de créditos y vigilancia de riesgos; creación de la Unidad de Administración Integral de Riesgos (UAIR); primeros modelos de calificación de riesgo desarrollados internamente; reestructuración de la vicepresidencia.
+- **Subgerente de la Unidad de Control de Gestión** — Gerencia de Control de Gestión y Estudios Especiales, Vicepresidencia de Riesgo Actuarial y Financiero, C.N.A. de Seguros La Previsora (agosto 2011 – agosto 2012). Indicadores técnicos y productivos; unificación de criterios técnicos; asesoría técnico-operativa y socioeconómica basada en estudios de riesgo.
+- **Profesional Actuarial II** — Departamento Actuarial, Gerencia de Personas, Seguros Horizonte, C.A. (diciembre 2008 – agosto 2011). Notas técnicas actuariales en ramos de personas; cálculo, revisión y auditoría de reservas técnicas; renovación, proyección de siniestralidad y cotización de pólizas colectivas.
+- **Actuario** — Benefits Corporativa, Plan administrado Rontarca Salud, C.A. / Rontarca Prima Willis (octubre – noviembre 2008). Estudios de siniestralidad e informes de gestión.
+
+## Participación institucional (EECA-UCV)
+
+- Miembro de comisiones: investigación, pasantías, biblioteca, extensión, infraestructura, equivalencias.
+- Comisiones de enlace: EECA–SUDEASEG, EECA–SiSS, EECA–TSS.
+- Jefe de la comisión de investigación y pasantías: transformación de pasantías en trabajos de grado; acuerdos con SUDEASEG, Superintendencia de Seguridad Social, Tesorería de la Seguridad Social y Banco de Venezuela. **Supervisión de más de 50 trabajos de grado** en seguros y finanzas (hasta 2025).
+- Representación estudiantil (EECA): Secretario General y consejero estudiantil (2008-2009), Secretario de Deportes (2007-2008).
+
+## Conocimientos generales y aptitudes
+
+- Enfocado en modelos matemáticos sobre fenómenos de riesgo, planeación, previsión y toma de decisiones; énfasis en **series temporales**.
+- **Programación y paquetes:** Nivel **avanzado:** R (Shiny, entre otros), **Python** (Streamlit, Docker, Supabase, Django, entre otros). Nivel medio: Visual Basic, SPSS, Weka, Gretl, Matlab, Knime, LaTeX, Orange, Eviews. Nivel básico: SQL, SAS, STATA, RapidMiner, TensorFlow.
+- **Idiomas:** inglés (medio); chino mandarín (básico).
+
+## Cursos en línea y materiales docentes
+
+- **[Time Series with Python](https://angel-colmenares.quarto.pub/time-series-python-web/)** — Curso de series temporales con Python (ARIMA, SARIMAX, gradient boosting, demanda energética, modelos de IA). Incluye [Referencias y autoría](https://angel-colmenares.quarto.pub/time-series-python-web/Referencias%20y%20Autoria.html) del autor.
+
+## Investigación y publicaciones arbitradas
+
+- Colmenares, A., Yan, X., & Wang, W. (2021). Determinants in the forecast of the gross national income of China and India from 1952 to 2015. *Journal of Management Science and Engineering*, *6*(3), 268–294. [doi:10.1016/j.jmse.2021.06.001](https://doi.org/10.1016/j.jmse.2021.06.001){target="_blank"}
+- Colmenares, A., & Wang, J. (2021). Double ensemble system for wind energy forecasting based on generalized autoregressive conditional heteroskedasticity and neural network models with variational mode decomposition. *Energy Sources, Part A: Recovery, Utilization, and Environmental Effects*, 1–18. [doi:10.1080/15567036.2021.1922550](https://doi.org/10.1080/15567036.2021.1922550){target="_blank"}
+
+**Revisor en revistas arbitradas:** Journal of Finance and Investment (Open Access), Energy & Resources Economics (Open Access), Environmental Economics and Sustainability (Open Access).
+
+## Libros y materiales en el hub
+
+En [**Resources**](resources/index.qmd) de Actuarial Cortex están a la orden el libro **Demografía, Mortalidad y Previsión Social en la Venezuela del Siglo XXI** y otros materiales. En proceso de redacción hay varios libros en colaboración (matemáticas actuariales, matemáticas financieras, entre otros). En el marco del [Centro Venezolano de Estudios Actuariales (CVEA)](https://cvea.pages.dev/cvea-suite){target="_blank"} y la [Revista Venezolana de Actuariado (RVEA)](resources/index.qmd) se difunden investigaciones y recursos del hub.
+
+## Otras investigaciones y vinculación
+
+- **Miembro fundador del Centro Venezolano de Estudios sobre China (CVEC)** desde 2017; Coordinador del Área de Estudios Socio-Demográficos; publicaciones en [cvechina.org](https://cvechina.org/){target="_blank"}.
+
+## Premios, seminarios y cursos de formación (selección)
+
+- Participante del Programa de Sinólogos 2024, Shanghái, China (noviembre–diciembre 2024).
+- Taller de redacción de competencias, Dirección de Desarrollo Curricular, UCV (noviembre 2024).
+- Taller sobre delitos informáticos, C.N.A. de Seguros La Previsora (septiembre 2022).
+- Diplomado Formación integral para el docente de la UCV Aletheia (julio 2018).
+- Reconocimiento por Tutor Académico del Proyecto "Promoviendo la Cultura Estadística y Actuarial", Unidad de Servicio Comunitario FACES (noviembre 2016).
+- Fundamentos de la Seguridad Social, Superintendencia de la Seguridad Social (noviembre 2015).
+- Diplomado en Ciencias de Datos, UCV (noviembre 2015).
+- Diplomado en Instituciones Financieras, Softline Consultores (octubre 2015).
+- Auditoría Forense, Centro Nacional de Adiestramiento (agosto 2014).
+- Ponente en la Conferencia Seguros Solidarios y Seguro Agrícola, UCV (octubre 2014).
+- Análisis de estados financieros, IESA (julio 2014).
+- Otros talleres en evaluación del desempeño, LC/FT, primeros auxilios, montaña, servicio comunitario, jornadas académicas EECA-UCV, entre otros (2007-2012).
+
+## Contacto
+
+- **Correo personal / UCV:** [angelc.ucv@gmail.com](mailto:angelc.ucv@gmail.com) · [angel.colmenares@ucv.ve](mailto:angel.colmenares@ucv.ve)
+- **Actuarial Cortex:** [actuarial.cortex@gmail.com](mailto:actuarial.cortex@gmail.com) · [Contacto](contacto.qmd)
+- **LinkedIn:** [linkedin.com/in/angel-colmenares-a2ab06204](https://ve.linkedin.com/in/angel-colmenares-a2ab06204){target="_blank"}
+- **ORCID:** [0000-0002-8866-1377](https://orcid.org/0000-0002-8866-1377){target="_blank"}
+- **ResearchGate:** [researchgate.net/profile/Angel-Colmenares](https://www.researchgate.net/profile/Angel-Colmenares){target="_blank"}
+- **Instagram (Actuarial Cortex):** [@actuarial_cortex](https://instagram.com/actuarial_cortex){target="_blank"}
+
+## Referencias
+
+Parte de los códigos y ejemplos docentes (p. ej. en *Time Series with Python*) provienen de materiales de [cienciadedatos.net](https://cienciadedatos.net/){target="_blank"} y de referencias bibliográficas citadas en cada recurso. Se irán incorporando progresivamente códigos y materiales propios.

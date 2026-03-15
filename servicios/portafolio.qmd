@@ -1,0 +1,75 @@
+---
+title: "Portafolio de servicios | Actuarial Cortex"
+subtitle: "Servicios profesionales — sector asegurador, banca, analítica, tecnología y formación"
+toc: true
+---
+
+**Actuarial Cortex** es una plataforma para la oferta de servicios a la medida de cada sector, impulsada por el **Prof. Angel Colmenares**, donde se ofrecen servicios de **asesoría, certificación, modelado, implementación de soluciones y formación** para compañías de seguros, banca, retail y otras organizaciones. A continuación se detalla la oferta por ámbito; en cada bloque se mencionan aplicativos ya desarrollados que ejemplifican lo que puede implementarse a la medida.
+
+## Sector asegurador
+
+- **Certificación de reservas técnicas** — Revisión y certificación de reservas técnicas (vida, no vida, salud) de compañías de seguros, alineadas con normativa y buenas prácticas.
+- **Creación y diseño de productos de seguro** — Diseño de productos (vida, no vida, salud), tarificación, condiciones y documentación técnica; apoyo en lanzamiento y revisión de productos.
+- **Actuario externo** — Servicios de actuario externo: revisión de modelos, reservas, premios y reportes; apoyo a comités técnicos y relación con el regulador.
+- **Análisis de cartera y siniestralidad** — Análisis de siniestralidad por ramo y producto, persistencia, experiencia de siniestros y recomendaciones de precios y reservas.
+- **Cumplimiento normativo y reportes** — Apoyo en reportes regulatorios, indicadores y requisitos de la superintendencia.
+
+**Aplicativos de referencia:**
+
+- [**Dashboard Seguro en Cifras**](https://insurdata-dashboard.streamlit.app/){target="_blank"} — Inteligencia de datos del sector asegurador (primas, siniestros, análisis por empresa). Ejemplo de lo que puede desplegarse para su compañía.
+- [**Tarificación telemática**](https://7rho5x-profesor-angel.shinyapps.io/ActuarialTelematicsV2/){target="_blank"} — Tarificación de seguros basada en variables telemáticas (uso, distancia, comportamiento). Ejemplo de creación de productos y modelos de prima aplicables al sector asegurador.
+
+## Sector bancario y riesgo financiero
+
+- **Asesoría de riesgo** — Riesgo de crédito, mercado y liquidez; alineación con marcos normativos (p. ej. NIIF 9) y modelos de scoring.
+- **Valuación de instrumentos y carteras** — Valuación de activos y pasivos, curvas de tasas, pruebas de estrés y análisis de sensibilidad.
+- **Detección de fraude y riesgo operacional** — Indicadores (IER), análisis de fraude por canal o segmento y apoyo en modelos de riesgo operacional.
+
+**Aplicativo de referencia:** [**Detección de Fraude (Banca)**](https://angelucv-actuarial-cortex-bank-fraud.hf.space){target="_blank"} — Análisis de fraude: IER, tasa de fraude, segmentación por marca de tarjeta o categoría. Muestra de capacidades implementables en banca.
+
+## Optimización de procesos y analítica (retail y otros sectores)
+
+- **Consultoría para optimización de procesos** — Análisis de procesos operativos, cuellos de botella, propuestas de mejora y métricas de seguimiento (incluyendo entornos con grandes volúmenes de datos).
+- **Analítica para retail y sectores con alto volumen de datos** — Análisis de ventas, participación de mercado, elasticidad de precios, canastas de compra y demanda; dashboards y reportes para decisiones comerciales.
+- **Modelado y pronósticos (series temporales)** — Modelado temporal para demanda, ventas, siniestros o indicadores operativos; pronósticos y escenarios para planificación.
+
+**Aplicativos de referencia:** [**Demos por sector**](https://actuarial-cortex-demos.streamlit.app/){target="_blank"} — Banca, Seguros, Retail, Salud, Control: indicadores, reservas, inteligencia comercial y torre de control. Ejemplos por ecosistema que pueden adaptarse a su organización.
+
+## Gestión de casos, solicitudes y operaciones
+
+- **Gestión de solicitudes y ayudas** — Diseño e implementación de flujos de solicitudes, aprobaciones, seguimiento y reportes (ayudas sociales, beneficios, casos internos).
+- **Dashboards operativos y KPIs** — Cuadros de mando con KPIs, distribución por estatus, mapas por territorio y visión histórica.
+- **Automatización de flujos de datos** — Reducción de dependencia de Excel; integración de cargas, reportes y alertas.
+
+**Aplicativo de referencia:** [**Gestión Social**](https://angelucv-actuarial-cortex-gestion-social.hf.space){target="_blank"} — Gestión de solicitudes y ayudas: Admin, dashboard con KPIs, mapa por estados y visión histórica. Solución adaptable a otros sectores (control de casos, inventario, operaciones).
+
+## Tecnología y aplicativos
+
+- **Diseño e implementación de aplicativos y dashboards** — Dashboards, aplicativos de gestión y cuadros de mando a la medida.
+- **Mapas y visualización geográfica** — Mapas interactivos, análisis por territorio y visualización de indicadores por zona (seguros, banca, retail, operaciones).
+
+**Aplicativo de referencia:** [**Mapa de servicios financieros y salud**](https://actuarial-cortex-mapa-servicios.streamlit.app/){target="_blank"} — Bancos, cajeros, aseguradoras, hospitales y farmacias en mapas interactivos y por estado. Ejemplo de capacidades de geolocalización y visualización reutilizables.
+
+## Formación y capacitación
+
+- **Cursos en temas actuariales** — Matemáticas actuariales, seguros de vida y no vida, reservas, tarificación y normativa del sector asegurador.
+- **Formación en análisis de datos y modelado** — Herramientas (R, Python, Excel), análisis de datos, series temporales y modelado para equipos técnicos o gerenciales.
+- **Talleres in company** — Talleres adaptados a la empresa (aseguradoras, banca, retail) sobre reservas, riesgo, dashboards o uso de aplicativos.
+
+**Curso en línea:** [**Time Series with Python**](https://angel-colmenares.quarto.pub/time-series-python-web/){target="_blank"} — Curso de series temporales con Python (ARIMA, SARIMAX, gradient boosting, demanda energética, modelos de inteligencia artificial). Perfil completo, publicaciones y contacto: [**Referencias y autoría**](../referencias-autoria.qmd).
+
+## Investigación y asesoría técnica
+
+- **Investigación aplicada y estudios técnicos** — Estudios sobre mortalidad, tablas de experiencia, proyecciones demográficas o financieras; soporte a publicaciones y documentos técnicos.
+- **Asesoría para políticas públicas y regulación** — Asesoría técnica a reguladores, fondos de pensiones o instituciones públicas en reservas, sostenibilidad y diseño de esquemas.
+
+En el marco del [**Centro Venezolano de Estudios Actuariales (CVEA)**](https://cvea.pages.dev/cvea-suite){target="_blank"} y la [**Revista Venezolana de Actuariado (RVEA)**](../resources/index.qmd) se difunden investigaciones y materiales del hub. En [**Resources**](../resources/index.qmd) están a la orden el libro *Demografía, Mortalidad y Previsión Social en la Venezuela del Siglo XXI* y otros materiales; actualmente están en proceso de redacción diversos libros en colaboración (matemáticas actuariales, matemáticas financieras, entre otros).
+
+**Artículos publicados (Prof. Angel Colmenares):**
+
+- Colmenares, A., Yan, X., & Wang, W. (2021). Determinants in the forecast of the gross national income of China and India from 1952 to 2015. *Journal of Management Science and Engineering*, *6*(3), 268–294. [doi:10.1016/j.jmse.2021.06.001](https://doi.org/10.1016/j.jmse.2021.06.001){target="_blank"}.
+- Colmenares, A., & Wang, J. (2021). Double ensemble system for wind energy forecasting based on generalized autoregressive conditional heteroskedasticity and neural network models with variational mode decomposition. *Energy Sources Part A: Recovery, Utilization, and Environmental Effects*, 1–18. [doi:10.1080/15567036.2021.1922550](https://doi.org/10.1080/15567036.2021.1922550){target="_blank"}.
+
+---
+
+Todos los aplicativos citados están en línea y pueden explorarse desde [**Cortex Suite**](../cortex-suite.qmd) y el [**Observatorio**](../observatorio.qmd). Si desea conversar sobre implementación a la medida o formación, puede escribir a [**Contacto**](../contacto.qmd).

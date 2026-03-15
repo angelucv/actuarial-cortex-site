@@ -23,6 +23,8 @@ website:
             href: sobre-cortex.qmd
           - text: "Miembros"
             href: miembros.qmd
+          - text: "Referencias y autoría"
+            href: referencias-autoria.qmd
           - text: "Resources"
             href: resources/index.qmd
           - text: "Model Hub"
@@ -32,7 +34,11 @@ website:
           - text: "Cortex Suite"
             href: cortex-suite.qmd
           - text: "Servicios"
-            href: servicios/index.qmd
+            menu:
+              - text: "Servicios"
+                href: servicios/index.qmd
+              - text: "Portafolio de servicios"
+                href: servicios/portafolio.qmd
           - text: "Observatorio"
             href: observatorio.qmd
           - text: "Actualidad"
