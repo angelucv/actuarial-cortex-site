@@ -67,8 +67,9 @@ En el marco del [**Centro Venezolano de Estudios Actuariales (CVEA)**](https://c
 
 **Artículos publicados (Prof. Angel Colmenares):**
 
-- Colmenares, A., Yan, X., & Wang, W. (2021). Determinants in the forecast of the gross national income of China and India from 1952 to 2015. *Journal of Management Science and Engineering*, *6*(3), 268–294. [doi:10.1016/j.jmse.2021.06.001](https://doi.org/10.1016/j.jmse.2021.06.001){target="_blank"}.
-- Colmenares, A., & Wang, J. (2021). Double ensemble system for wind energy forecasting based on generalized autoregressive conditional heteroskedasticity and neural network models with variational mode decomposition. *Energy Sources Part A: Recovery, Utilization, and Environmental Effects*, 1–18. [doi:10.1080/15567036.2021.1922550](https://doi.org/10.1080/15567036.2021.1922550){target="_blank"}.
+- Colmenares, A., Yan, X., & Wang, W. (2021). Determinants in the forecast of the gross national income of China and India from 1952 to 2015. *Journal of Management Science and Engineering*, *6*(3), 268–294. [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S209623202100038X){target="_blank"} · [doi](https://doi.org/10.1016/j.jmse.2021.06.001){target="_blank"}.
+- Colmenares, A., & Wang, J. (2021). Double ensemble system for wind energy forecasting based on generalized autoregressive conditional heteroskedasticity and neural network models with variational mode decomposition. *Energy Sources Part A: Recovery, Utilization, and Environmental Effects*, 1–18. [Taylor & Francis](https://www.tandfonline.com/doi/abs/10.1080/15567036.2021.1922550){target="_blank"} · [doi](https://doi.org/10.1080/15567036.2021.1922550){target="_blank"}.
+- Colmenares, A. (2025). Political disputes, economic sanctions, and use of cryptocurrencies in Iran and Venezuela. *RUDN Journal of Public Administration*, *12*(2), 255–280. [RUDN / RCSI](https://journals.rcsi.science/2312-8313/article/view/317847){target="_blank"} · [doi](https://doi.org/10.22363/2312-8313-2025-12-2-255-280){target="_blank"}.
 
 ---
 

@@ -34,11 +34,9 @@ website:
           - text: "Cortex Suite"
             href: cortex-suite.qmd
           - text: "Servicios"
-            menu:
-              - text: "Servicios"
-                href: servicios/index.qmd
-              - text: "Portafolio de servicios"
-                href: servicios/portafolio.qmd
+            href: servicios/index.qmd
+          - text: "Portafolio de servicios"
+            href: servicios/portafolio.qmd
           - text: "Observatorio"
             href: observatorio.qmd
           - text: "Actualidad"
