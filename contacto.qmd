@@ -31,5 +31,6 @@ Canales de atención de **Actuarial Cortex** para **solicitudes de investigació
 - **Correo del hub:** [actuarial.cortex@gmail.com](mailto:actuarial.cortex@gmail.com)
 - **Correo institucional (UCV):** [angel.colmenares@ucv.ve](mailto:angel.colmenares@ucv.ve)
 - **Otro correo de contacto:** [angelc.ucv@gmail.com](mailto:angelc.ucv@gmail.com)
-- **Instagram:** [@actuarial_cortex](https://instagram.com/actuarial_cortex)
+- **LinkedIn (Actuarial Cortex):** [linkedin.com/company/actuarial-cortex](https://www.linkedin.com/company/actuarial-cortex/){target="_blank"}
+- **Instagram:** [@actuarial_cortex](https://instagram.com/actuarial_cortex){target="_blank"}
 - **Equipo y perfiles:** [Miembros](miembros.qmd)

@@ -66,6 +66,9 @@ website:
       - icon: envelope-fill
         href: "mailto:actuarial.cortex@gmail.com"
         aria-label: "Correo Actuarial Cortex"
+      - icon: linkedin
+        href: "https://www.linkedin.com/company/actuarial-cortex/"
+        aria-label: "LinkedIn Actuarial Cortex"
       - icon: instagram
         href: "https://instagram.com/actuarial_cortex"
         aria-label: "Instagram Actuarial Cortex"
@@ -82,5 +85,7 @@ website:
     right:
       - text: "actuarial.cortex@gmail.com"
         href: "mailto:actuarial.cortex@gmail.com"
+      - text: "LinkedIn"
+        href: "https://www.linkedin.com/company/actuarial-cortex/"
       - text: "@actuarial_cortex"
         href: "https://instagram.com/actuarial_cortex"

@@ -94,7 +94,8 @@ En [**Resources**](resources/index.qmd) de Actuarial Cortex están a la orden di
 
 - **Correo personal / UCV:** [angelc.ucv@gmail.com](mailto:angelc.ucv@gmail.com) · [angel.colmenares@ucv.ve](mailto:angel.colmenares@ucv.ve)
 - **Actuarial Cortex:** [actuarial.cortex@gmail.com](mailto:actuarial.cortex@gmail.com) · [Contacto](contacto.qmd)
-- **LinkedIn:** [linkedin.com/in/angel-colmenares-a2ab06204](https://ve.linkedin.com/in/angel-colmenares-a2ab06204){target="_blank"}
+- **LinkedIn (perfil personal):** [linkedin.com/in/angel-colmenares-a2ab06204](https://ve.linkedin.com/in/angel-colmenares-a2ab06204){target="_blank"}
+- **LinkedIn (Actuarial Cortex):** [linkedin.com/company/actuarial-cortex](https://www.linkedin.com/company/actuarial-cortex/){target="_blank"}
 - **ORCID:** [0000-0002-8866-1377](https://orcid.org/0000-0002-8866-1377){target="_blank"}
 - **ResearchGate:** [researchgate.net/profile/Angel-Colmenares](https://www.researchgate.net/profile/Angel-Colmenares){target="_blank"}
 - **Instagram (Actuarial Cortex):** [@actuarial_cortex](https://instagram.com/actuarial_cortex){target="_blank"}
