@@ -4,6 +4,8 @@ subtitle: "Perfil, formación, experiencia y publicaciones — Prof. Angel Colme
 toc: true
 ---
 
+En esta página se recoge el **perfil profesional, currículum detallado, formación, experiencia laboral y publicaciones** del Prof. Angel Colmenares, con enlaces a los artículos y datos de contacto.
+
 ## Sobre el Prof. Angel Colmenares
 
 Actuario preparado para el estudio, planteamiento, formulación y aplicación de modelos de contenido matemático acerca de fenómenos que involucran riesgos, con el fin de proveer información para la planeación, la previsión y la toma de decisiones. Enfocado principalmente en el **análisis de series temporales** y en la aplicación de modelos actuariales y estadísticos al sector asegurador, banca y políticas públicas.
