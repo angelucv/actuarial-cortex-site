@@ -1,5 +1,5 @@
 ---
-title: "Actuarial Suite | Actuarial Cortex"
+title: "Actuarial Suite"
 subtitle: "Todos los aplicativos y demos en un solo lugar"
 page-layout: custom
 title-block-banner: false
@@ -24,12 +24,9 @@ format:
 ```{=html}
 <div class="hero-cvea intro_f cvea-intro hero-suite">
   <div class="hero-cvea-content">
-    <picture>
-      <source srcset="logo-AC/logo-ac-blanco.webp" type="image/webp">
-      <img src="logo-AC/logo-ac-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
-    </picture>
+    <img src="logo-AC/logo-actuarial-cortex-principal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Actuarial Suite</h1>
-    <p class="animate__animated animate__fadeIn suite-hero-tagline">Aplicativos y demos — un solo menú</p>
+    <p class="animate__animated animate__fadeIn suite-hero-tagline">Aplicativos y demos — un solo menú · verificado mar. 2026</p>
   </div>
 </div>
 ```
@@ -41,7 +38,8 @@ format:
     <a href="sobre-cortex.html">Sobre Cortex</a><span class="sep">·</span>
     <a href="miembros.html">Miembros</a><span class="sep">·</span>
     <a href="resources/index.html">Resources</a><span class="sep">·</span>
-    <a href="cortex-suite.html" class="active">Cortex Suite</a><span class="sep">·</span>
+    <a href="actuarial-suite.html" class="active">Actuarial Suite</a><span class="sep">·</span>
+    <a href="cortex-suite.html">Cortex Suite</a><span class="sep">·</span>
     <a href="docencia/index.html">Cursos</a><span class="sep">·</span>
     <a href="actualidad.html">Actualidad</a><span class="sep">·</span>
     <a href="contacto.html">Contacto</a>
@@ -51,13 +49,15 @@ format:
 
 Desde aquí accede a todos los aplicativos y demos de Actuarial Cortex: dashboards regulatorios, gestión social, detección de fraude y demos por sector (banca, seguros, retail, salud, control).
 
+Los códigos de los aplicativos enlazados viven en repositorios **`angelucv/*`** en GitHub (sitio Quarto, Insurdata, gestión social, demo bancaria y mapa de servicios), en línea con la documentación interna del proyecto.
+
 ---
 
-## Dashboard Actividad Aseguradora (Insurdata)
+## Dashboard SUDEASEG (Insurdata)
 
 Panel de control de inteligencia de datos del sector asegurador venezolano basado en información de la **Superintendencia de la Actividad Aseguradora (SUDEASEG)**. Incluye extracción, ETL, normalización monetaria (BCV), persistencia en Supabase y visualización con Streamlit: resumen, primas/siniestros y análisis por empresa.
 
-[**Abrir Dashboard Actividad Aseguradora**](https://insurdata-dashboard.streamlit.app/){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/insurdata-dashboard){target="_blank"}
+[**Abrir Dashboard SUDEASEG**](https://insurdata-dashboard.streamlit.app/){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/insurdata-dashboard){target="_blank"}
 
 ---
 
@@ -65,15 +65,23 @@ Panel de control de inteligencia de datos del sector asegurador venezolano basad
 
 Aplicativo **Django** para gestión de solicitudes y ayudas sociales: Admin (carga, filtros, import/export), dashboard con KPIs, mapa por estados y visión histórica. Desplegado en Hugging Face.
 
-[**Abrir Gestión Social**](https://angelucv-actuarial-cortex-gestion-social.hf.space){.btn target="_blank"}
+[**Abrir Gestión Social**](https://angelucv-actuarial-cortex-gestion-social.hf.space){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/actuarial-cortex-suite-gestion-social){target="_blank"}
 
 ---
 
-## Detección de Fraude (Banca)
+## Demo Detección de Fraude (Bank Fraud)
 
 Dashboard de análisis de fraude en Streamlit: exposición al riesgo (IER), tasa de fraude, segmentación por marca de tarjeta o categoría de comercio. Desplegado en Hugging Face.
 
-[**Abrir Detección de Fraude**](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn target="_blank"}
+[**Abrir Demo Detección de Fraude**](https://angelucv-actuarial-cortex-bank-fraud.hf.space){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/actuarial-cortex-demo-bank){target="_blank"}
+
+---
+
+## Mapa de servicios
+
+Mapa interactivo de entidades (bancos, cajeros, aseguradoras, salud, farmacias) en Venezuela; mismo aplicativo que se embebe en [Observatorio](observatorio.qmd).
+
+[**Abrir Mapa de servicios**](https://actuarial-cortex-mapa-servicios.streamlit.app/){.btn target="_blank"} · [**Código (GitHub)**](https://github.com/angelucv/actuarial-cortex-mapa-servicios){target="_blank"}
 
 ---
 
@@ -81,8 +89,8 @@ Dashboard de análisis de fraude en Streamlit: exposición al riesgo (IER), tasa
 
 Demos interactivos por ecosistema: **Banca**, **Seguros**, **Retail**, **Salud** y **Control**. Incluyen indicadores de liquidez, reservas, siniestralidad, inteligencia comercial y torre de control operativa.
 
-[**Ver detalle y abrir demos**](cortex-suite.html){.btn} · [**Abrir plataforma de demos**](https://actuarial-cortex-demos.streamlit.app/){.btn target="_blank"}
+[**Ver detalle y abrir demos**](cortex-suite.qmd){.btn} · [**Abrir plataforma de demos**](https://actuarial-cortex-demos.streamlit.app/){.btn target="_blank"}
 
 ---
 
-Para más información o propuestas a medida: [Contacto](contacto.html).
+Para más información o propuestas a medida: [Contacto](contacto.qmd).

@@ -5,7 +5,7 @@ Demos por sector: **Bank**, **Insurance**, **Retail**, **Health**, **Control**. 
 ## Ejecución local
 
 ```bash
-cd apps/cvea-suite-demos
+cd apps/cortex-suite
 pip install -r requirements.txt
 streamlit run Home.py
 ```

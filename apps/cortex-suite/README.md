@@ -33,9 +33,10 @@ En el navegador se abrirá la app; use el menú lateral para ir a cada demo (1. 
 
 ## Logos
 
-La app busca los logos en la raíz del repo (`logo-AC/`):
+La app busca los logos en la raíz del repo (`logo-AC/`), solo variantes **Actuarial Cortex** (sin logos personales):
 
-- Área principal (fondo blanco): `logo-AC-AC-vertical-horizontal-negro.png`
-- Sidebar: `logo-AC-AC-vertical-blanco.png`
+- Home (fondo claro): `logo-actuarial-cortex-principal-negro.png`
+- Sidebar (fondo oscuro): `logo-actuarial-cortex-vertical-blanco.png`
+- Cabecera de cada demo: `logo-actuarial-cortex-vertical-negro.png`
 
 Si `logo-AC` no existe, la app sigue funcionando y muestra el título en lugar de las imágenes.

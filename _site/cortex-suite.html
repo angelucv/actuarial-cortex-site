@@ -87,7 +87,56 @@ ul.task-list li input[type="checkbox"] {
   max-height: 48px !important;
   width: auto !important;
 }
+/* Título "Actuarial Cortex" en dos líneas, al lado del logo (izquierda) */
+.navbar-title,
+.navbar-brand-container .navbar-brand:not(.navbar-brand-logo) {
+  display: block !important;
+  color: #fff !important;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  font-size: 0.9em;
+  white-space: normal !important;
+  overflow: visible !important;
+  max-width: 5.5em; /* fuerza dos líneas: Actuarial / Cortex si el script no ha corrido */
+}
+.navbar-brand-container .navbar-brand:not(.navbar-brand-logo) {
+  display: block !important;
+  overflow: visible !important;
+  max-width: none;
+}
+.navbar-brand-container {
+  overflow: visible !important;
+}
+/* Móvil: título más pequeño para que "Actuarial" y "Cortex" quepan sin cortarse */
+@media (max-width: 991px) {
+  .navbar-title,
+  .navbar-brand-container .navbar-brand:not(.navbar-brand-logo) .navbar-title {
+    font-size: 0.7em !important;
+    max-width: 5em !important;
+  }
+}
 </style>
+<script>
+(function() {
+  function twoLineTitle() {
+    var t = document.querySelector('.navbar-title');
+    if (t && /Actuarial\s+Cortex/.test(t.textContent)) {
+      t.innerHTML = 'Actuarial<br>Cortex';
+    }
+  }
+  function run() {
+    twoLineTitle();
+    /* Por si Quarto o el tema pintan el navbar después */
+    setTimeout(twoLineTitle, 100);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
 <!-- Meta y título Actuarial Cortex -->
 <title>Actuarial Cortex — Hub de conocimiento y tecnología actuarial</title>
 <meta name="description" content="Actuarial Cortex — Conocimiento, tecnología y formación en ciencias actuariales. Resources, Cursos y Cortex Suite.">
@@ -274,14 +323,14 @@ body.cortex-menu-open #quarto-document-content {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <style>
 .hero-suite { min-height: 55vh !important; padding-top: 100px; background-color: #1a2e30 !important; }
-.suite-hero-logo { max-width: 80%; height: auto; margin-bottom: 1rem; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
-.suite-hero-title { color: #fff !important; font-size: clamp(2rem, 6vw, 3.5rem) !important; margin: 0.4rem 0 !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+.suite-hero-logo { max-width: 44%; height: auto; margin-bottom: 0.5rem; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+.suite-hero-title { color: #fff !important; font-size: clamp(1.5rem, 4.5vw, 2.5rem) !important; margin: 0.3rem 0 !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
 .intro_f.hero-suite p.suite-hero-tagline,
-.hero-suite .hero-cvea-content p.suite-hero-tagline { color: rgba(255,255,255,0.95) !important; font-size: clamp(2rem, 6vw, 3.5rem) !important; margin: 0.3rem 0 !important; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
-.suite-hero-rotate { color: #fff !important; font-size: clamp(1.2rem, 3.5vw, 1.75rem) !important; font-weight: 600; margin: 0.75rem 0; min-height: 1.5em; }
+.hero-suite .hero-cvea-content p.suite-hero-tagline { color: rgba(255,255,255,0.95) !important; font-size: clamp(1.1rem, 3.5vw, 1.75rem) !important; margin: 0.25rem 0 !important; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+.suite-hero-rotate { color: #fff !important; font-size: clamp(1rem, 2.8vw, 1.4rem) !important; font-weight: 600; margin: 0.5rem 0; min-height: 1.5em; }
 .suite-hero-rotate .txt-rotate .wrap { border-right-color: rgba(255,255,255,0.8); }
-.suite-hero-cta { margin-top: 1.25rem; }
-.suite-tagline-anim { display: inline-block; margin-bottom: 1rem; color: #fff !important; font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 500; position: relative; padding: 10px 20px; cursor: default; }
+.suite-hero-cta { margin-top: 1rem; }
+.suite-tagline-anim { display: inline-block; margin-bottom: 0.75rem; color: #fff !important; font-size: clamp(0.95rem, 2vw, 1.2rem); font-weight: 500; position: relative; padding: 8px 16px; cursor: default; }
 .suite-tagline-anim::before, .suite-tagline-anim::after { content: ""; position: absolute; background: linear-gradient(to right, transparent, rgba(255,255,255,0.6)); animation: suite-border-r 2s linear infinite; }
 .suite-tagline-anim::before { top: 0; left: 0; width: 100%; height: 2px; }
 .suite-tagline-anim::after { top: 0; right: 0; width: 2px; height: 100%; animation: suite-border-b 2s linear infinite; animation-delay: 1s; transform: translateY(-100%); }
@@ -298,6 +347,15 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 .suite-cta-bar { background: #1a2e30; padding: 1rem 1.5rem; text-align: center; position: relative; z-index: 9999; }
 .suite-cta-bar a { text-decoration: none; }
 .suite-btn-demos-bar { margin: 0 0.5rem; }
+@media (max-width: 768px) {
+  .hero-suite { min-height: 45vh !important; padding-top: 70px !important; }
+  .suite-hero-logo { max-width: 36% !important; margin-bottom: 0.35rem !important; }
+  .suite-hero-title { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; margin: 0.2rem 0 !important; }
+  .hero-suite .suite-hero-tagline { font-size: clamp(0.85rem, 3vw, 1.15rem) !important; margin: 0.15rem 0 !important; }
+  .suite-hero-rotate { font-size: clamp(0.85rem, 2.5vw, 1rem) !important; margin: 0.4rem 0 !important; }
+  .suite-tagline-anim { font-size: clamp(0.8rem, 2vw, 0.95rem) !important; padding: 5px 12px !important; }
+  .suite-btn-demos { padding: 10px 20px; font-size: 0.95rem; }
+}
 </style>
 
 
@@ -390,14 +448,14 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <span class="menu-text">Sobre Cortex</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="https://insurdata-dashboard.streamlit.app/"> <i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+<span class="menu-text">SUDEASEG Dashboard</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./miembros.html"> <i class="bi bi-people-fill" role="img">
 </i> 
 <span class="menu-text">Miembros</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./cortex-suite.html" aria-current="page"> <i class="bi bi-grid-3x3-gap" role="img">
-</i> 
-<span class="menu-text">Cortex Suite</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./docencia/index.html"> <i class="bi bi-journal-bookmark-fill" role="img">
@@ -469,9 +527,9 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
     </css-doodle>
   </div>
   <div class="hero-cvea-content">
-    <img src="logo-AC/logo-AC-AC-vertical-horizontal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
+    <img src="logo-AC/logo-actuarial-cortex-principal-blanco.png" alt="Actuarial Cortex" class="animate__animated animate__fadeInDown suite-hero-logo">
     <h1 class="animate__animated animate__fadeInDown suite-hero-title">Cortex Suite</h1>
-    <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas de Actuarial Cortex</p>
+    <p class="animate__animated animate__fadeIn suite-hero-tagline">Soluciones Tecnológicas</p>
     <p class="suite-hero-rotate animate__animated animate__fadeIn">
       <span class="txt-rotate" data-period="2000" data-rotate="[&quot;Banca&quot;, &quot;Seguros&quot;, &quot;Retail&quot;, &quot;Salud&quot;, &quot;Control&quot;, &quot;Reservas&quot;, &quot;Demos&quot;, &quot;Analítica&quot;, &quot;Cuadros de mando&quot;, &quot;Predictivo&quot;]"></span>
     </p>
@@ -493,7 +551,8 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
   </div>
 </nav>
 <div class="suite-cta-bar" id="suite-cta-bar">
-  <a href="https://cvea-suite-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir Demos</a>
+  <a href="https://actuarial-cortex-demos.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir Demos</a>
+  <a href="https://insurdata-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="suite-btn-demos suite-btn-demos-bar">Abrir SUDEASEG Dashboard</a>
 </div>
 <script src="assets/js/text.js"></script>
 <p>El entorno empresarial venezolano actual, caracterizado por su <strong>dinamismo bimonetario</strong>, retos inflacionarios y una notable reactivación en sectores clave, exige herramientas de gestión que vayan mucho más allá del simple reporte estático. Las empresas modernas no solo necesitan registrar sus operaciones diarias, sino <strong>comprenderlas en tiempo real</strong> y, más importante aún, <strong>predecir sus resultados futuros</strong> para proteger su patrimonio.</p>
@@ -515,7 +574,7 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <li><strong>Riesgo de crédito:</strong> Visualización del flujo de la cartera entre estados de riesgo (normal, riesgo significativo, impago); relación entre puntuación crediticia y probabilidad de incumplimiento; ajuste de parámetros y cálculo de la pérdida esperada.</li>
 <li><strong>Riesgo de mercado y tesorería:</strong> Gráficos de evolución de índices o bonos; mapa de correlaciones entre distintas carteras de inversión.</li>
 </ul>
-<p><a href="https://cvea-suite-demos.streamlit.app/" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Bank Suite</strong></a></p>
+<p><a href="https://actuarial-cortex-demos.streamlit.app/1_Bank_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Bank Suite</strong></a></p>
 <hr>
 </section>
 <section id="cortex-insurance-suite" class="level2">
@@ -528,7 +587,12 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <li><strong>Ramos y productos:</strong> Análisis de indicadores de siniestralidad por producto dentro de cada ramo (automóviles, salud, personas, patrimoniales, fianzas).</li>
 <li><strong>Cumplimiento normativo y estrés:</strong> Evaluación visual del nivel de cumplimiento en materia de legitimación de capitales (LC/FT) y simulaciones de estrés sobre patrimonio y reservas.</li>
 </ul>
-<p><a href="https://cvea-suite-demos.streamlit.app/Insurance_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Insurance Suite</strong></a></p>
+<p><strong>Demo destacado — SUDEASEG Dashboard (Insurdata)</strong></p>
+<ul>
+<li><strong>Descripción:</strong> Panel de inteligencia de datos del sector asegurador venezolano basado en estadísticas históricas de la SUDEASEG. Integra scraping/web-ETL, normalización monetaria, almacenamiento en Supabase (PostgreSQL) y visualización interactiva con Streamlit.</li>
+<li><strong>Lo que puedes explorar:</strong> evolución de primas y siniestros, análisis por empresa y ramo, indicadores clave de desempeño del mercado y consistencia de datos reguladores.</li>
+</ul>
+<p><a href="https://insurdata-dashboard.streamlit.app/" class="btn btn-primary" target="_blank"><strong>Abrir SUDEASEG Dashboard</strong></a></p>
 <hr>
 </section>
 <section id="cortex-retail-suite" class="level2">
@@ -541,7 +605,7 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <li><strong>Inventario y canastas:</strong> Red de afinidades entre productos (qué se compra junto con qué), para apoyar decisiones de surtido y promociones.</li>
 <li><strong>Análisis a la medida:</strong> Herramienta de exploración donde el usuario puede cruzar variables (forma de pago, categoría, hora, etc.) y construir sus propias tablas y gráficos sin programar.</li>
 </ul>
-<p><a href="https://cvea-suite-demos.streamlit.app/Retail_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Retail Suite</strong></a></p>
+<p><a href="https://actuarial-cortex-demos.streamlit.app/3_Retail_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Retail Suite</strong></a></p>
 <hr>
 </section>
 <section id="cortex-health-suite" class="level2">
@@ -554,7 +618,7 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <li><strong>Solvencia y reservas:</strong> Proyección del patrimonio del fondo a varios años mediante simulaciones; posibilidad de introducir inflación médica e inflación general por separado para ver el impacto en las reservas.</li>
 <li><strong>Tarificación y modalidades:</strong> Comparación de la rentabilidad entre atención tradicional, asistencia domiciliaria y telemedicina; simulador de primas donde se pueden ajustar coaseguro, deducible y tope de cobertura, y comprobar si se cumple el margen de suficiencia exigido por la normativa.</li>
 </ul>
-<p><a href="https://cvea-suite-demos.streamlit.app/Health_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Health Suite</strong></a></p>
+<p><a href="https://actuarial-cortex-demos.streamlit.app/4_Health_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Health Suite</strong></a></p>
 <hr>
 </section>
 <section id="cortex-control-suite-visión-general-y-industria" class="level2">
@@ -567,7 +631,7 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <li><strong>Sostenibilidad y gastos:</strong> Diagrama que desglosa el presupuesto operativo (combustible, peajes, mantenimiento, depreciación) hasta el margen operativo neto; selector de periodos y escenarios de sobrecostos.</li>
 <li><strong>Análisis a la medida:</strong> Exploración libre de los datos: cruce de estado de las máquinas, tiempos de ciclo, costos y otras variables para detectar ineficiencias sin necesidad de programar.</li>
 </ul>
-<p><a href="https://cvea-suite-demos.streamlit.app/Control_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Control Suite</strong></a></p>
+<p><a href="https://actuarial-cortex-demos.streamlit.app/5_Control_Suite" class="btn btn-primary" target="_blank"><strong>Abrir Cortex Control Suite</strong></a></p>
 <hr>
 </section>
 <section id="cortex-suite-lab-otros-desarrollos-demostrativos" class="level2">
@@ -575,11 +639,11 @@ button.suite-btn-demos { border: 2px solid rgba(255,255,255,0.5); outline: none;
 <p><strong>Tarificación actuarial telemática</strong></p>
 <ul>
 <li><strong>Aplicativo Shiny (telemática):</strong> <a href="https://7rho5x-profesor-angel.shinyapps.io/ActuarialTelematicsV2/" target="_blank">Ver demo en línea</a></li>
-<li><strong>Ejemplo detallado (HTML):</strong> <a href="Referencias/Recursos_HTML/Xaringan1.html" target="_blank">Xaringan1 — Tarificación telemática</a></li>
+<li><strong>Ejemplo detallado (HTML):</strong> disponible en la colección de recursos internos de Actuarial Cortex.</li>
 </ul>
 <p><strong>Prototipo Actuarial Insurtech (Shiny, R)</strong></p>
 <ul>
-<li>Dashboard avanzado (ActuarialInsurtechCARAMELS): indicadores técnicos, comparación aseguradora vs mercado, simulación de cartera; referencia en <code>Referencias/ActuarialInsurtechCARAMELS/</code>.</li>
+<li>Dashboard avanzado (ActuarialInsurtechCARAMELS): indicadores técnicos, comparación aseguradora vs mercado y simulación de cartera, presentado como caso de estudio insurtech dentro del hub.</li>
 </ul>
 <hr>
 <p>Para conocer más o solicitar una propuesta adaptada a su organización: <a href="./contacto.html">Contacto</a> · <a href="./miembros.html">Miembros</a>.</p>

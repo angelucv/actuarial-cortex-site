@@ -65,10 +65,10 @@ Texto introductorio (el que ya tienes): “El entorno empresarial venezolano… 
 Luego, las **5 subsecciones** actuales (resumen; en la página se mantendría el detalle que ya existe):
 
 1. **Cortex Bank Suite** — liquidez, riesgo de crédito, tesorería.  
-   [Abrir Cortex Bank Suite](https://actuarial-cortex-demos.streamlit.app/)
+   [Abrir Cortex Bank Suite](https://actuarial-cortex-demos.streamlit.app/1_Bank_Suite)
 
 2. **Cortex Insurance Suite** — reservas, siniestralidad, ramos, cumplimiento.  
-   [Abrir Cortex Insurance Suite](https://actuarial-cortex-demos.streamlit.app/)  
+   [Abrir Cortex Insurance Suite](https://actuarial-cortex-demos.streamlit.app/2_Insurance_Suite)  
    (Aquí se puede mencionar que el Dashboard Actividad Aseguradora es el demo destacado de datos regulatorios.)
 
 3. **Cortex Retail Suite** — inteligencia comercial, precios, inventario.  
